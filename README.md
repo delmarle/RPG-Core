@@ -14,9 +14,9 @@ How flexible it is?
 Feature list:
 - Saving system
 - Mechanics:
-  -Swappable character creation
-  -Swappable Ui
-  -Swapable character Controller / input / camera
+-Swappable character creation
+-Swappable Ui
+-Swapable character Controller / input / camera
 -Stats: Attributes, Vitals, Statistics, Elements
 -Characters: Races, Player classes, Npcs
 -Party, switch Character
