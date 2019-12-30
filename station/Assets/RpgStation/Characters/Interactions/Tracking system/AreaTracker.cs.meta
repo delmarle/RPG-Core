@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 56a33a022be02194da1a7cf2de39e6f9
+labels:
+- Controller
+- Fire
+- Track
+- Target
+- Collider
+- Trigger
+- Event
+- Message
+- Projectile
+- Detonate
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

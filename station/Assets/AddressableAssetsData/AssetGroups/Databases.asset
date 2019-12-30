@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Databases
+  m_EditorClassIdentifier: 
+  m_GroupName: Databases
+  m_Data:
+    m_SerializedData: []
+  m_GUID: b4c7a9d8f6a3d47798dcb7c9e379b4eb
+  m_SerializeEntries:
+  - m_GUID: 106734c5c7d86433aa9060651149368e
+    m_Address: SkillDb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2621992d5554c42cf8682741204d2c73
+    m_Address: NpcDb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 31c12955b23ed40da8f357537c19baf3
+    m_Address: InteractionConfigsDb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 37ace511571e94249a1cc705202cb244
+    m_Address: FactionSettingsDb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3f61d8f46248944468ba8f8cec1848d4
+    m_Address: FactionDb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 47388dcf78bfd4254b9fffd4e57f4732
+    m_Address: AttributesDb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 55f19c0240f854066be0e6d6451a6e4f
+    m_Address: PassiveAbilitiesDb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5c9ed5b8209f64d14ac9bbb2b79cdcfc
+    m_Address: StatisticDb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 766895e4e75b04de68e0778c9f83de90
+    m_Address: FloatingPopupDb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 79198aef42dbf4af7acbb2f62931c2ee
+    m_Address: PlayerClassDb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 91bb43d0eca7b44c4a1905de2ba632c8
+    m_Address: GameSettingsDb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a09cd99e65e4540eda7e3dec73b26ede
+    m_Address: RaceDb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cd5bde4a051df43a38d1803dbca539cf
+    m_Address: ScenesDb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d9c5ac7d52e1d40f387bbc17d7393f4b
+    m_Address: ActiveAbilitiesDb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e8fe627bd668e4f01aac823da9a30464
+    m_Address: VitalsDb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 74ddb1c5c6fe849afaba132576175fc1, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: b9a090048a5f849dab934de3e1e30c7b, type: 2}
+    - {fileID: 11400000, guid: 0d8e0ace39f30455f8379f2427c5197a, type: 2}
