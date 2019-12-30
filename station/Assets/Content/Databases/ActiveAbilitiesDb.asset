@@ -1,0 +1,180 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cb47b6e2f4d34d55bd8f6562002aee5, type: 3}
+  m_Name: ActiveAbilitiesDb
+  m_EditorClassIdentifier: 
+  _db:
+    m_keys:
+    - f9dd12be-e332-4758-9f96-a3e49898f915
+    - 139d35b1-5b25-4e39-b1a3-ec7fbabcdce9
+    - c1f76797-57de-4931-807e-b3ef0e53f686
+    - cb6a6afb-5cb7-4bbb-b5bb-edf277d65b53
+    m_values:
+    - Name: self damage
+      Description: 
+      Icon: {fileID: 21300000, guid: bbe66970ad0684898a7599780fb4eebd, type: 3}
+      ParentSkillId: 0
+      UseRank: 0
+      Ranks:
+      - CastDistance: 0
+        CoolDown: 0
+        Casting:
+          Option: 0
+          Length: 1
+          AnimationId: 0
+          StartSound: {fileID: 0}
+        Invoking:
+          Option: 0
+          Length: 1
+          AnimationId: 0
+          InvokeSound: 
+        VitalsUsed: []
+        ProjectileDrivers: []
+        DirectDrivers:
+        - Delay: 0
+          Effects:
+            EffectName: 
+            Damages:
+            - EffectName: 
+              EffectIcon: {fileID: 0}
+              MinValue: 25
+              MaxValue: 55
+              CriticalBonus: 0
+            Heals: []
+            Modifiers: []
+            Teleports: []
+            Resurects: []
+          Target: 0
+      Targeting:
+        TargetRequiredState: 0
+        UsedAbilityTargeting: 0
+    - Name: Health Buff
+      Description: 
+      Icon: {fileID: 21300000, guid: 22dd3ed9069ea4f9395d316b543d2f54, type: 3}
+      ParentSkillId: 0
+      UseRank: 0
+      Ranks:
+      - CastDistance: 12
+        CoolDown: 5
+        Casting:
+          Option: 0
+          Length: 1
+          AnimationId: 0
+          StartSound: {fileID: 0}
+        Invoking:
+          Option: 0
+          Length: 1
+          AnimationId: 0
+          InvokeSound: 
+        VitalsUsed: []
+        ProjectileDrivers: []
+        DirectDrivers:
+        - Delay: 0.2
+          Effects:
+            EffectName: 
+            Damages: []
+            Heals: []
+            Modifiers:
+            - EffectName: Health Bonus I
+              EffectIcon: {fileID: 21300000, guid: 7c14a8981cb194074acf4526a454d842,
+                type: 3}
+              ModifierType: 0
+              AttributesBuffs: []
+              VitalsBuffs:
+              - Id: 0
+                Value: 80
+              StatisticsBuffs: []
+              MaxStack: 1
+              Length: 45
+              Identifier: health_bonus
+            Teleports: []
+            Resurects: []
+          Target: 1
+      Targeting:
+        TargetRequiredState: 0
+        UsedAbilityTargeting: 2
+    - Name: self heal
+      Description: 
+      Icon: {fileID: 21300000, guid: 5b6f368a6aafd48b18f097c98b34c0e7, type: 3}
+      ParentSkillId: 0
+      UseRank: 0
+      Ranks:
+      - CastDistance: 0
+        CoolDown: 0
+        Casting:
+          Option: 0
+          Length: 1
+          AnimationId: 0
+          StartSound: {fileID: 0}
+        Invoking:
+          Option: 0
+          Length: 1
+          AnimationId: 0
+          InvokeSound: 
+        VitalsUsed: []
+        ProjectileDrivers: []
+        DirectDrivers:
+        - Delay: 0
+          Effects:
+            EffectName: 
+            Damages: []
+            Heals:
+            - EffectName: 
+              EffectIcon: {fileID: 0}
+              MinValue: 25
+              MaxValue: 100
+            Modifiers: []
+            Teleports: []
+            Resurects: []
+          Target: 0
+      Targeting:
+        TargetRequiredState: 0
+        UsedAbilityTargeting: 0
+    - Name: Portal to home
+      Description: 
+      Icon: {fileID: 21300000, guid: 72a10be6e5eb9426d916eaaed1b57052, type: 3}
+      ParentSkillId: 0
+      UseRank: 0
+      Ranks:
+      - CastDistance: 0
+        CoolDown: 0
+        Casting:
+          Option: 0
+          Length: 1
+          AnimationId: 0
+          StartSound: {fileID: 0}
+        Invoking:
+          Option: 0
+          Length: 1
+          AnimationId: 0
+          InvokeSound: 
+        VitalsUsed: []
+        ProjectileDrivers: []
+        DirectDrivers:
+        - Delay: 1
+          Effects:
+            EffectName: 
+            Damages: []
+            Heals: []
+            Modifiers: []
+            Teleports:
+            - EffectName: 
+              EffectIcon: {fileID: 21300000, guid: 3bb8f67ff13d340439a0f48c543b035a,
+                type: 3}
+              Destination:
+                SceneId: 93436f6d-41e9-441a-a2a3-58e5cc7b4e4b
+                SpawnId: 0
+            Resurects: []
+          Target: 0
+      Targeting:
+        TargetRequiredState: 0
+        UsedAbilityTargeting: 0

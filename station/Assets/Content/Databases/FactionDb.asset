@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f84b9b611194d44c5a211af5f601097d, type: 3}
+  m_Name: FactionDb
+  m_EditorClassIdentifier: 
+  _db:
+    m_keys:
+    - 80054ef2-9410-4d10-bc02-794e4cec6f76
+    - d9ba39c4-6ca8-466f-a70e-a2da923bfcf7
+    - 49fb2357-2e84-4f05-a822-f2b5fa88a7af
+    - 58aa1065-2f7d-4587-a660-5ed255f5e27a
+    m_values:
+    - Name: Alliance
+      Icon: {fileID: 0}
+      Description: 
+      DefaultStance: 2
+      StanceToSelf: 1
+      Relations:
+        m_keys: []
+        m_values: 
+    - Name: Northern
+      Icon: {fileID: 0}
+      Description: 
+      DefaultStance: 2
+      StanceToSelf: 2
+      Relations:
+        m_keys: []
+        m_values: 
+    - Name: Celt
+      Icon: {fileID: 0}
+      Description: 
+      DefaultStance: 2
+      StanceToSelf: 2
+      Relations:
+        m_keys: []
+        m_values: 
+    - Name: Aliens
+      Icon: {fileID: 21300000, guid: 8cffe4504d48d784aa1269ffe7fa4a0f, type: 3}
+      Description: 
+      DefaultStance: 2
+      StanceToSelf: 0
+      Relations:
+        m_keys:
+        - 80054ef2-9410-4d10-bc02-794e4cec6f76
+        m_values: 03000000

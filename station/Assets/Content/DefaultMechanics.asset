@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e8b0b29f1b5c48a7b4ce5b9948a80f9, type: 3}
+  m_Name: DefaultMechanics
+  m_EditorClassIdentifier: 
+  _cameraReference: {fileID: 189416, guid: a1b2d826b9b664375acdbeac7b9ed593, type: 3}
+  LoadingScreen:
+    m_AssetGUID: a5a5bfa5659914f22816fcb386bbe885
+    m_SubObjectName: 
+  UiPrefab: {fileID: 7496396962417799805, guid: 170845c02f2314fb5956a5549c219b40,
+    type: 3}

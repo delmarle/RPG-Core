@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11e284ea20bc24154a195da7b7e8cd4e, type: 3}
+  m_Name: NpcDb
+  m_EditorClassIdentifier: 
+  _db:
+    m_keys:
+    - 184a36ca-bca9-4b32-a711-93fe55440ae1
+    m_values:
+    - Name: Baby Chomper
+      Description: 
+      Icon: {fileID: 21300000, guid: 08b7977576c234054a3b565718d4de1f, type: 3}
+      RaceId: bd81baa9-becb-4179-bbef-147611432d15
+      FactionId: 58aa1065-2f7d-4587-a660-5ed255f5e27a
+      PrefabId: chomper
+      UseHealth: 1
+      HealthVital:
+        Id: 0
+        Value: 45
+      UseSecondaryHealth: 0
+      SecondaryHealthVital:
+        Id: 0
+        Value: 0
+      EnergyVitals: []
+      AttributesBonuses: []
+      StatisticsBonuses: []
+      OwnedAbilities: []
+      StatsCalculator: {fileID: 11400000, guid: f2fb6755890074a3a92afa231a099f0f,
+        type: 2}
+      Attack:
+        BaseDamage:
+          EffectName: 
+          EffectIcon: {fileID: 0}
+          MinValue: 5
+          MaxValue: 22
+          CriticalBonus: 0
+        CriticalChance: 0
+        Range: 2
+        Speed: 1.4

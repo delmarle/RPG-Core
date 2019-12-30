@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dec353f61ab4403e803ac664fd5750d, type: 3}
+  m_Name: FactionSettingsDb
+  m_EditorClassIdentifier: 
+  Database:
+    Ranks:
+    - Name: Loved
+      Value: 200
+    - Name: Liked
+      Value: 10
+    - Name: Neutral
+      Value: 0
+    - Name: Disliked
+      Value: -100
+    - Name: Hated
+      Value: -200
+    DefaultPlayerFaction: 80054ef2-9410-4d10-bc02-794e4cec6f76

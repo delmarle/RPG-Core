@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc2d27bd95e3247eca5c183ceded7394, type: 3}
+  m_Name: InteractionConfigsDb
+  m_EditorClassIdentifier: 
+  _db:
+    m_keys:
+    - d5b6b817-ae1d-433c-ac62-44bdf4ad593b
+    - 04cf1f5b-91a1-4c06-b8a1-2c2868bcb6f6
+    - 6f392000-1c94-4f91-a599-fc0619d5e673
+    m_values:
+    - Layer: 8
+      InteractibleType:
+        _classRef: Station.Button, Assembly-CSharp
+      ShowHintMode: 3
+      HideHintOptions:
+        UseDelay: 0
+        Delay: 5
+        UseDistance: 1
+        Distance: 10
+        UseCameraAngle: 0
+        CameraAngle: 90
+      TryInteractMode: 1
+      HoverMode: 0
+      InteractionTime: 0
+      _CastingData:
+        Option: 0
+        Length: 2
+        AnimationId: 0
+        StartSound: {fileID: 0}
+    - Layer: 0
+      InteractibleType:
+        _classRef: Station.HarvestNode, Assembly-CSharp
+      ShowHintMode: 0
+      HideHintOptions:
+        UseDelay: 0
+        Delay: 5
+        UseDistance: 0
+        Distance: 10
+        UseCameraAngle: 0
+        CameraAngle: 90
+      TryInteractMode: 1
+      HoverMode: 0
+      InteractionTime: 0
+      _CastingData:
+        Option: 0
+        Length: 1
+        AnimationId: 0
+        StartSound: {fileID: 0}
+    - Layer: 8
+      InteractibleType:
+        _classRef: Station.Portal, Assembly-CSharp
+      ShowHintMode: 3
+      HideHintOptions:
+        UseDelay: 0
+        Delay: 5
+        UseDistance: 1
+        Distance: 15
+        UseCameraAngle: 0
+        CameraAngle: 90
+      TryInteractMode: 1
+      HoverMode: 0
+      InteractionTime: 0
+      _CastingData:
+        Option: 0
+        Length: 1
+        AnimationId: 0
+        StartSound: {fileID: 0}

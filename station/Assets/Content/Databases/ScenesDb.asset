@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15f03f2b8805d446b8f289515090e41e, type: 3}
+  m_Name: ScenesDb
+  m_EditorClassIdentifier: 
+  _db:
+    m_keys:
+    - 93436f6d-41e9-441a-a2a3-58e5cc7b4e4b
+    - e77d2c4e-05f5-455f-86f5-922c4a61d9d7
+    m_values:
+    - Reference:
+        SceneAsset: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+        _scenePath: zone_01
+      Icon: {fileID: 21300000, guid: 27f889dcba1d16e4382107e471321a38, type: 3}
+      VisualName: zone_01
+      SpawnPoints:
+      - VisualName: Entrance
+        Description: near the gate
+        Icon: {fileID: 0}
+        Positions:
+        - {x: -26.62, y: 22.34, z: -56.6}
+        - {x: -26.62, y: 22.34, z: -55.6}
+        Direction: {x: -0, y: 0, z: 0}
+      - VisualName: spawn_1
+        Description: 
+        Icon: {fileID: 0}
+        Positions: []
+        Direction: {x: 0, y: 0, z: 0}
+    - Reference:
+        SceneAsset: {fileID: 102900000, guid: 78be0b237e5f14c819b39a07ee4e23da, type: 3}
+        _scenePath: zone_02
+      Icon: {fileID: 21300000, guid: b7414fdd0411d364ab74c963a05b62d3, type: 3}
+      VisualName: zone_02
+      SpawnPoints:
+      - VisualName: arrival from 01
+        Description: when you arrive from zone_01
+        Icon: {fileID: 0}
+        Positions:
+        - {x: 18.668678, y: 0.61, z: 30.358315}
+        - {x: 18.797358, y: 0.61, z: 29.366627}
+        Direction: {x: -0, y: 172.60681, z: -0}
