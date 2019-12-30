@@ -41,8 +41,9 @@ MonoBehaviour:
       DefaultStance: 2
       StanceToSelf: 2
       Relations:
-        m_keys: []
-        m_values: 
+        m_keys:
+        - 80054ef2-9410-4d10-bc02-794e4cec6f76
+        m_values: 03000000
     - Name: Aliens
       Icon: {fileID: 21300000, guid: 8cffe4504d48d784aa1269ffe7fa4a0f, type: 3}
       Description: 
