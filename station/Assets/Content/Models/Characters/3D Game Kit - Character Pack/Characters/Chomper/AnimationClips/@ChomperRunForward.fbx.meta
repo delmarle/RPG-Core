@@ -1,0 +1,945 @@
+fileFormatVersion: 2
+guid: 1e35373135394fa45852a3e55ba00889
+ModelImporter:
+  serializedVersion: 26
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: Body
+  - first:
+      1: 100004
+    second: Chest
+  - first:
+      1: 100006
+    second: Core
+  - first:
+      1: 100008
+    second: Hips
+  - first:
+      1: 100010
+    second: Interior1
+  - first:
+      1: 100012
+    second: Interior2
+  - first:
+      1: 100014
+    second: Left_AnteriorHand
+  - first:
+      1: 100016
+    second: Left_AnteriorIndex1
+  - first:
+      1: 100018
+    second: Left_AnteriorIndexEnd
+  - first:
+      1: 100020
+    second: Left_AnteriorLowerLeg
+  - first:
+      1: 100022
+    second: Left_AnteriorMiddle2
+  - first:
+      1: 100024
+    second: Left_AnteriorMiddleEnd
+  - first:
+      1: 100026
+    second: Left_AnteriorPinky1
+  - first:
+      1: 100028
+    second: Left_AnteriorPinkyEnd
+  - first:
+      1: 100030
+    second: Left_AnteriorUpperLeg
+  - first:
+      1: 100032
+    second: Left_Eye
+  - first:
+      1: 100034
+    second: Left_FrontFeather1
+  - first:
+      1: 100036
+    second: Left_FrontFeather2
+  - first:
+      1: 100038
+    second: Left_FrontFeather3
+  - first:
+      1: 100040
+    second: Left_FrontFeatherEnd
+  - first:
+      1: 100042
+    second: Left_MiddleFeather1
+  - first:
+      1: 100044
+    second: Left_MiddleFeather2
+  - first:
+      1: 100046
+    second: Left_MiddleFeather3
+  - first:
+      1: 100048
+    second: Left_MiddleFeatherEnd
+  - first:
+      1: 100050
+    second: Left_Mouth
+  - first:
+      1: 100052
+    second: Left_Nostril
+  - first:
+      1: 100054
+    second: Left_NostrilEnd
+  - first:
+      1: 100056
+    second: Left_PosteriorHand
+  - first:
+      1: 100058
+    second: Left_PosteriorIndex
+  - first:
+      1: 100060
+    second: Left_PosteriorIndexEnd
+  - first:
+      1: 100062
+    second: Left_PosteriorLowerLeg
+  - first:
+      1: 100064
+    second: Left_PosteriorMiddle
+  - first:
+      1: 100066
+    second: Left_PosteriorMiddleEnd
+  - first:
+      1: 100068
+    second: Left_PosteriorPinky
+  - first:
+      1: 100070
+    second: Left_PosteriorPinkyEnd
+  - first:
+      1: 100072
+    second: Left_PosteriorUpperLeg
+  - first:
+      1: 100074
+    second: Left_RearFeather1
+  - first:
+      1: 100076
+    second: Left_RearFeather2
+  - first:
+      1: 100078
+    second: Left_RearFeather3
+  - first:
+      1: 100080
+    second: Left_RearFeatherEnd
+  - first:
+      1: 100082
+    second: Left_UpperMouth1
+  - first:
+      1: 100084
+    second: Left_UpperMouth2
+  - first:
+      1: 100086
+    second: LeftLowerMouth1
+  - first:
+      1: 100088
+    second: LeftLowerMouth2
+  - first:
+      1: 100090
+    second: LowerMouth
+  - first:
+      1: 100092
+    second: LowerMouthEnd
+  - first:
+      1: 100094
+    second: Right_AnteriorHand
+  - first:
+      1: 100096
+    second: Right_AnteriorIndex1
+  - first:
+      1: 100098
+    second: Right_AnteriorIndexEnd
+  - first:
+      1: 100100
+    second: Right_AnteriorLowerLeg
+  - first:
+      1: 100102
+    second: Right_AnteriorMiddle1
+  - first:
+      1: 100104
+    second: Right_AnteriorMiddleEnd
+  - first:
+      1: 100106
+    second: Right_AnteriorPinky1
+  - first:
+      1: 100108
+    second: Right_AnteriorPinkyEnd
+  - first:
+      1: 100110
+    second: Right_AnteriorUpperLeg
+  - first:
+      1: 100112
+    second: Right_Eye
+  - first:
+      1: 100114
+    second: Right_FrontFeather1
+  - first:
+      1: 100116
+    second: Right_FrontFeather2
+  - first:
+      1: 100118
+    second: Right_FrontFeather3
+  - first:
+      1: 100120
+    second: Right_FrontFeatherEnd
+  - first:
+      1: 100122
+    second: Right_MiddleFeather1
+  - first:
+      1: 100124
+    second: Right_MiddleFeather2
+  - first:
+      1: 100126
+    second: Right_MiddleFeather3
+  - first:
+      1: 100128
+    second: Right_MiddleFeatherEnd
+  - first:
+      1: 100130
+    second: Right_Mouth
+  - first:
+      1: 100132
+    second: Right_Nostril
+  - first:
+      1: 100134
+    second: Right_NostrilEnd
+  - first:
+      1: 100136
+    second: Right_PosteriorHand
+  - first:
+      1: 100138
+    second: Right_PosteriorIndex
+  - first:
+      1: 100140
+    second: Right_PosteriorIndexEnd
+  - first:
+      1: 100142
+    second: Right_PosteriorLowerLeg
+  - first:
+      1: 100144
+    second: Right_PosteriorMiddle
+  - first:
+      1: 100146
+    second: Right_PosteriorMiddleEnd
+  - first:
+      1: 100148
+    second: Right_PosteriorPinky
+  - first:
+      1: 100150
+    second: Right_PosteriorPinkyEnd
+  - first:
+      1: 100152
+    second: Right_PosteriorUpperLeg
+  - first:
+      1: 100154
+    second: Right_RearFeather1
+  - first:
+      1: 100156
+    second: Right_RearFeather2
+  - first:
+      1: 100158
+    second: Right_RearFeather3
+  - first:
+      1: 100160
+    second: Right_RearFeatherEnd
+  - first:
+      1: 100162
+    second: Right_UpperMouth1
+  - first:
+      1: 100164
+    second: Right_UpperMouth2
+  - first:
+      1: 100166
+    second: RightLowerMouth1
+  - first:
+      1: 100168
+    second: RightLowerMouth2
+  - first:
+      1: 100170
+    second: Root
+  - first:
+      1: 100172
+    second: Skeleton
+  - first:
+      1: 100174
+    second: Stalk1
+  - first:
+      1: 100176
+    second: Stalk2
+  - first:
+      1: 100178
+    second: Stalk3
+  - first:
+      1: 100180
+    second: Stalk4
+  - first:
+      1: 100182
+    second: Tail1
+  - first:
+      1: 100184
+    second: Tail3
+  - first:
+      1: 100186
+    second: TailEnd
+  - first:
+      1: 100188
+    second: TailI2
+  - first:
+      1: 100190
+    second: Tongue1
+  - first:
+      1: 100192
+    second: Tongue2
+  - first:
+      1: 100194
+    second: Tongue3
+  - first:
+      1: 100196
+    second: TongueEnd
+  - first:
+      1: 100198
+    second: Upper_Mouth
+  - first:
+      1: 100200
+    second: Upper_MouthEnd
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: Body
+  - first:
+      4: 400004
+    second: Chest
+  - first:
+      4: 400006
+    second: Core
+  - first:
+      4: 400008
+    second: Hips
+  - first:
+      4: 400010
+    second: Interior1
+  - first:
+      4: 400012
+    second: Interior2
+  - first:
+      4: 400014
+    second: Left_AnteriorHand
+  - first:
+      4: 400016
+    second: Left_AnteriorIndex1
+  - first:
+      4: 400018
+    second: Left_AnteriorIndexEnd
+  - first:
+      4: 400020
+    second: Left_AnteriorLowerLeg
+  - first:
+      4: 400022
+    second: Left_AnteriorMiddle2
+  - first:
+      4: 400024
+    second: Left_AnteriorMiddleEnd
+  - first:
+      4: 400026
+    second: Left_AnteriorPinky1
+  - first:
+      4: 400028
+    second: Left_AnteriorPinkyEnd
+  - first:
+      4: 400030
+    second: Left_AnteriorUpperLeg
+  - first:
+      4: 400032
+    second: Left_Eye
+  - first:
+      4: 400034
+    second: Left_FrontFeather1
+  - first:
+      4: 400036
+    second: Left_FrontFeather2
+  - first:
+      4: 400038
+    second: Left_FrontFeather3
+  - first:
+      4: 400040
+    second: Left_FrontFeatherEnd
+  - first:
+      4: 400042
+    second: Left_MiddleFeather1
+  - first:
+      4: 400044
+    second: Left_MiddleFeather2
+  - first:
+      4: 400046
+    second: Left_MiddleFeather3
+  - first:
+      4: 400048
+    second: Left_MiddleFeatherEnd
+  - first:
+      4: 400050
+    second: Left_Mouth
+  - first:
+      4: 400052
+    second: Left_Nostril
+  - first:
+      4: 400054
+    second: Left_NostrilEnd
+  - first:
+      4: 400056
+    second: Left_PosteriorHand
+  - first:
+      4: 400058
+    second: Left_PosteriorIndex
+  - first:
+      4: 400060
+    second: Left_PosteriorIndexEnd
+  - first:
+      4: 400062
+    second: Left_PosteriorLowerLeg
+  - first:
+      4: 400064
+    second: Left_PosteriorMiddle
+  - first:
+      4: 400066
+    second: Left_PosteriorMiddleEnd
+  - first:
+      4: 400068
+    second: Left_PosteriorPinky
+  - first:
+      4: 400070
+    second: Left_PosteriorPinkyEnd
+  - first:
+      4: 400072
+    second: Left_PosteriorUpperLeg
+  - first:
+      4: 400074
+    second: Left_RearFeather1
+  - first:
+      4: 400076
+    second: Left_RearFeather2
+  - first:
+      4: 400078
+    second: Left_RearFeather3
+  - first:
+      4: 400080
+    second: Left_RearFeatherEnd
+  - first:
+      4: 400082
+    second: Left_UpperMouth1
+  - first:
+      4: 400084
+    second: Left_UpperMouth2
+  - first:
+      4: 400086
+    second: LeftLowerMouth1
+  - first:
+      4: 400088
+    second: LeftLowerMouth2
+  - first:
+      4: 400090
+    second: LowerMouth
+  - first:
+      4: 400092
+    second: LowerMouthEnd
+  - first:
+      4: 400094
+    second: Right_AnteriorHand
+  - first:
+      4: 400096
+    second: Right_AnteriorIndex1
+  - first:
+      4: 400098
+    second: Right_AnteriorIndexEnd
+  - first:
+      4: 400100
+    second: Right_AnteriorLowerLeg
+  - first:
+      4: 400102
+    second: Right_AnteriorMiddle1
+  - first:
+      4: 400104
+    second: Right_AnteriorMiddleEnd
+  - first:
+      4: 400106
+    second: Right_AnteriorPinky1
+  - first:
+      4: 400108
+    second: Right_AnteriorPinkyEnd
+  - first:
+      4: 400110
+    second: Right_AnteriorUpperLeg
+  - first:
+      4: 400112
+    second: Right_Eye
+  - first:
+      4: 400114
+    second: Right_FrontFeather1
+  - first:
+      4: 400116
+    second: Right_FrontFeather2
+  - first:
+      4: 400118
+    second: Right_FrontFeather3
+  - first:
+      4: 400120
+    second: Right_FrontFeatherEnd
+  - first:
+      4: 400122
+    second: Right_MiddleFeather1
+  - first:
+      4: 400124
+    second: Right_MiddleFeather2
+  - first:
+      4: 400126
+    second: Right_MiddleFeather3
+  - first:
+      4: 400128
+    second: Right_MiddleFeatherEnd
+  - first:
+      4: 400130
+    second: Right_Mouth
+  - first:
+      4: 400132
+    second: Right_Nostril
+  - first:
+      4: 400134
+    second: Right_NostrilEnd
+  - first:
+      4: 400136
+    second: Right_PosteriorHand
+  - first:
+      4: 400138
+    second: Right_PosteriorIndex
+  - first:
+      4: 400140
+    second: Right_PosteriorIndexEnd
+  - first:
+      4: 400142
+    second: Right_PosteriorLowerLeg
+  - first:
+      4: 400144
+    second: Right_PosteriorMiddle
+  - first:
+      4: 400146
+    second: Right_PosteriorMiddleEnd
+  - first:
+      4: 400148
+    second: Right_PosteriorPinky
+  - first:
+      4: 400150
+    second: Right_PosteriorPinkyEnd
+  - first:
+      4: 400152
+    second: Right_PosteriorUpperLeg
+  - first:
+      4: 400154
+    second: Right_RearFeather1
+  - first:
+      4: 400156
+    second: Right_RearFeather2
+  - first:
+      4: 400158
+    second: Right_RearFeather3
+  - first:
+      4: 400160
+    second: Right_RearFeatherEnd
+  - first:
+      4: 400162
+    second: Right_UpperMouth1
+  - first:
+      4: 400164
+    second: Right_UpperMouth2
+  - first:
+      4: 400166
+    second: RightLowerMouth1
+  - first:
+      4: 400168
+    second: RightLowerMouth2
+  - first:
+      4: 400170
+    second: Root
+  - first:
+      4: 400172
+    second: Skeleton
+  - first:
+      4: 400174
+    second: Stalk1
+  - first:
+      4: 400176
+    second: Stalk2
+  - first:
+      4: 400178
+    second: Stalk3
+  - first:
+      4: 400180
+    second: Stalk4
+  - first:
+      4: 400182
+    second: Tail1
+  - first:
+      4: 400184
+    second: Tail3
+  - first:
+      4: 400186
+    second: TailEnd
+  - first:
+      4: 400188
+    second: TailI2
+  - first:
+      4: 400190
+    second: Tongue1
+  - first:
+      4: 400192
+    second: Tongue2
+  - first:
+      4: 400194
+    second: Tongue3
+  - first:
+      4: 400196
+    second: TongueEnd
+  - first:
+      4: 400198
+    second: Upper_Mouth
+  - first:
+      4: 400200
+    second: Upper_MouthEnd
+  - first:
+      43: 4300000
+    second: Body
+  - first:
+      74: 7400000
+    second: ChomperRunForward
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: Body
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: ChomperRunForward
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 1
+      lastFrame: 23
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Skeleton
+        weight: 1
+      - path: Skeleton/Root
+        weight: 1
+      - path: Skeleton/Root/Core
+        weight: 1
+      - path: Skeleton/Root/Core/Chest
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Left_AnteriorUpperLeg
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Left_AnteriorUpperLeg/Left_AnteriorLowerLeg
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Left_AnteriorUpperLeg/Left_AnteriorLowerLeg/Left_AnteriorHand
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Left_AnteriorUpperLeg/Left_AnteriorLowerLeg/Left_AnteriorHand/Left_AnteriorIndex1
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Left_AnteriorUpperLeg/Left_AnteriorLowerLeg/Left_AnteriorHand/Left_AnteriorIndex1/Left_AnteriorIndexEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Left_AnteriorUpperLeg/Left_AnteriorLowerLeg/Left_AnteriorHand/Left_AnteriorMiddle2
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Left_AnteriorUpperLeg/Left_AnteriorLowerLeg/Left_AnteriorHand/Left_AnteriorMiddle2/Left_AnteriorMiddleEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Left_AnteriorUpperLeg/Left_AnteriorLowerLeg/Left_AnteriorHand/Left_AnteriorPinky1
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Left_AnteriorUpperLeg/Left_AnteriorLowerLeg/Left_AnteriorHand/Left_AnteriorPinky1/Left_AnteriorPinkyEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Left_Mouth
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/LowerMouth
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/LowerMouth/LeftLowerMouth1
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/LowerMouth/LeftLowerMouth2
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/LowerMouth/LowerMouthEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/LowerMouth/RightLowerMouth1
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/LowerMouth/RightLowerMouth2
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Right_AnteriorUpperLeg
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Right_AnteriorUpperLeg/Right_AnteriorLowerLeg
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Right_AnteriorUpperLeg/Right_AnteriorLowerLeg/Right_AnteriorHand
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Right_AnteriorUpperLeg/Right_AnteriorLowerLeg/Right_AnteriorHand/Right_AnteriorIndex1
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Right_AnteriorUpperLeg/Right_AnteriorLowerLeg/Right_AnteriorHand/Right_AnteriorIndex1/Right_AnteriorIndexEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Right_AnteriorUpperLeg/Right_AnteriorLowerLeg/Right_AnteriorHand/Right_AnteriorMiddle1
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Right_AnteriorUpperLeg/Right_AnteriorLowerLeg/Right_AnteriorHand/Right_AnteriorMiddle1/Right_AnteriorMiddleEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Right_AnteriorUpperLeg/Right_AnteriorLowerLeg/Right_AnteriorHand/Right_AnteriorPinky1
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Right_AnteriorUpperLeg/Right_AnteriorLowerLeg/Right_AnteriorHand/Right_AnteriorPinky1/Right_AnteriorPinkyEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Right_Mouth
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Tongue1
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Tongue1/Tongue2
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Tongue1/Tongue2/Tongue3
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Tongue1/Tongue2/Tongue3/TongueEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Left_FrontFeather1
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Left_FrontFeather1/Left_FrontFeather2
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Left_FrontFeather1/Left_FrontFeather2/Left_FrontFeather3
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Left_FrontFeather1/Left_FrontFeather2/Left_FrontFeather3/Left_FrontFeatherEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Left_MiddleFeather1
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Left_MiddleFeather1/Left_MiddleFeather2
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Left_MiddleFeather1/Left_MiddleFeather2/Left_MiddleFeather3
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Left_MiddleFeather1/Left_MiddleFeather2/Left_MiddleFeather3/Left_MiddleFeatherEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Left_Nostril
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Left_Nostril/Left_NostrilEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Left_RearFeather1
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Left_RearFeather1/Left_RearFeather2
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Left_RearFeather1/Left_RearFeather2/Left_RearFeather3
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Left_RearFeather1/Left_RearFeather2/Left_RearFeather3/Left_RearFeatherEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Left_UpperMouth1
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Left_UpperMouth2
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Right_FrontFeather1
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Right_FrontFeather1/Right_FrontFeather2
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Right_FrontFeather1/Right_FrontFeather2/Right_FrontFeather3
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Right_FrontFeather1/Right_FrontFeather2/Right_FrontFeather3/Right_FrontFeatherEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Right_MiddleFeather1
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Right_MiddleFeather1/Right_MiddleFeather2
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Right_MiddleFeather1/Right_MiddleFeather2/Right_MiddleFeather3
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Right_MiddleFeather1/Right_MiddleFeather2/Right_MiddleFeather3/Right_MiddleFeatherEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Right_Nostril
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Right_Nostril/Right_NostrilEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Right_RearFeather1
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Right_RearFeather1/Right_RearFeather2
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Right_RearFeather1/Right_RearFeather2/Right_RearFeather3
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Right_RearFeather1/Right_RearFeather2/Right_RearFeather3/Right_RearFeatherEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Right_UpperMouth1
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Right_UpperMouth2
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Stalk1
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Stalk1/Stalk2
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Stalk1/Stalk2/Stalk3
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Stalk1/Stalk2/Stalk3/Stalk4
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Stalk1/Stalk2/Stalk3/Stalk4/Left_Eye
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Stalk1/Stalk2/Stalk3/Stalk4/Right_Eye
+        weight: 1
+      - path: Skeleton/Root/Core/Chest/Upper_Mouth/Upper_MouthEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Hips
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Interior1
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Left_PosteriorUpperLeg
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Left_PosteriorUpperLeg/Left_PosteriorLowerLeg
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Left_PosteriorUpperLeg/Left_PosteriorLowerLeg/Left_PosteriorHand
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Left_PosteriorUpperLeg/Left_PosteriorLowerLeg/Left_PosteriorHand/Left_PosteriorIndex
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Left_PosteriorUpperLeg/Left_PosteriorLowerLeg/Left_PosteriorHand/Left_PosteriorIndex/Left_PosteriorIndexEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Left_PosteriorUpperLeg/Left_PosteriorLowerLeg/Left_PosteriorHand/Left_PosteriorMiddle
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Left_PosteriorUpperLeg/Left_PosteriorLowerLeg/Left_PosteriorHand/Left_PosteriorMiddle/Left_PosteriorMiddleEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Left_PosteriorUpperLeg/Left_PosteriorLowerLeg/Left_PosteriorHand/Left_PosteriorPinky
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Left_PosteriorUpperLeg/Left_PosteriorLowerLeg/Left_PosteriorHand/Left_PosteriorPinky/Left_PosteriorPinkyEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Right_PosteriorUpperLeg
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Right_PosteriorUpperLeg/Right_PosteriorLowerLeg
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Right_PosteriorUpperLeg/Right_PosteriorLowerLeg/Right_PosteriorHand
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Right_PosteriorUpperLeg/Right_PosteriorLowerLeg/Right_PosteriorHand/Right_PosteriorIndex
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Right_PosteriorUpperLeg/Right_PosteriorLowerLeg/Right_PosteriorHand/Right_PosteriorIndex/Right_PosteriorIndexEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Right_PosteriorUpperLeg/Right_PosteriorLowerLeg/Right_PosteriorHand/Right_PosteriorMiddle
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Right_PosteriorUpperLeg/Right_PosteriorLowerLeg/Right_PosteriorHand/Right_PosteriorMiddle/Right_PosteriorMiddleEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Right_PosteriorUpperLeg/Right_PosteriorLowerLeg/Right_PosteriorHand/Right_PosteriorPinky
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Right_PosteriorUpperLeg/Right_PosteriorLowerLeg/Right_PosteriorHand/Right_PosteriorPinky/Right_PosteriorPinkyEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Tail1
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Tail1/TailI2
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Tail1/TailI2/Tail3
+        weight: 1
+      - path: Skeleton/Root/Core/Hips/Tail1/TailI2/Tail3/TailEnd
+        weight: 1
+      - path: Skeleton/Root/Core/Interior2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: Root
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 2732fe64dd2799f439fb845921df626b,
+    type: 3}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
