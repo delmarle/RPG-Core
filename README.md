@@ -13,18 +13,18 @@ How flexible it is?
 
 Feature list:
 - Saving system
-- Mechanics:
--Swappable character creation
--Swappable Ui
--Swapable character Controller / input / camera
--Stats: Attributes, Vitals, Statistics, Elements
--Characters: Races, Player classes, Npcs
--Party, switch Character
--Factions
--Abilities
--Skills
--World, Scenes Data, Spawners, Portals
--Interaction: Button, harvestNode, portal
+- hotswappable Mechanics:
+- Swappable character creation
+- Swappable Ui
+- Swapable character Controller / input / camera
+- Stats: Attributes, Vitals, Statistics, Elements
+- Characters: Races, Player classes, Npcs
+- Party, switch Character
+- Factions
+- Abilities
+- Skills
+- World, Scenes Data, Spawners, Portals
+- Interaction: Button, harvestNode, portal
 
 Todo: 
 -Npc Basic Ai
