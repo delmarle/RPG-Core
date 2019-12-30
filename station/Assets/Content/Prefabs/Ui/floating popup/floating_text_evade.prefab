@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 494423371079238194}
   - component: {fileID: 9075793640472060079}
   m_Layer: 5
-  m_Name: floating_text_miss
+  m_Name: floating_text_evade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Miss
+  m_text: Evade
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 16bd9c090629f4af18f676bab99e9922, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
