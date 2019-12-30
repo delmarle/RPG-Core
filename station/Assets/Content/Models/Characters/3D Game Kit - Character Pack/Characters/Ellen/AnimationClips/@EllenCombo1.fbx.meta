@@ -1,0 +1,1295 @@
+fileFormatVersion: 2
+guid: 3aeb280aa07caa148891a47a136fcee4
+ModelImporter:
+  serializedVersion: 26
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: Ellen_Body
+  - first:
+      1: 100004
+    second: Ellen_Chest
+  - first:
+      1: 100006
+    second: Ellen_Hair_FrontalBase
+  - first:
+      1: 100008
+    second: Ellen_Hair_FrontalLeft
+  - first:
+      1: 100010
+    second: Ellen_Hair_FrontalLeftEnd
+  - first:
+      1: 100012
+    second: Ellen_Hair_SideDistal
+  - first:
+      1: 100014
+    second: Ellen_Hair_SideEnd
+  - first:
+      1: 100016
+    second: Ellen_Hair_SideIntermediate
+  - first:
+      1: 100018
+    second: Ellen_Hair_SideProximal
+  - first:
+      1: 100020
+    second: Ellen_HairFrontalRight
+  - first:
+      1: 100022
+    second: Ellen_HairFrontalRightEnd
+  - first:
+      1: 100024
+    second: Ellen_Head
+  - first:
+      1: 100026
+    second: Ellen_HeadEnd
+  - first:
+      1: 100028
+    second: Ellen_Hips
+  - first:
+      1: 100030
+    second: Ellen_Jaw
+  - first:
+      1: 100032
+    second: Ellen_JawEnd
+  - first:
+      1: 100034
+    second: Ellen_Left_Arm
+  - first:
+      1: 100036
+    second: Ellen_Left_Cheek
+  - first:
+      1: 100038
+    second: Ellen_Left_Eye
+  - first:
+      1: 100040
+    second: Ellen_Left_EyebrowDistal
+  - first:
+      1: 100042
+    second: Ellen_Left_EyebrowIntermediate
+  - first:
+      1: 100044
+    second: Ellen_Left_EyebrowProximal
+  - first:
+      1: 100046
+    second: Ellen_Left_Foot
+  - first:
+      1: 100048
+    second: Ellen_Left_Hand
+  - first:
+      1: 100050
+    second: Ellen_Left_Hand_Attach
+  - first:
+      1: 100052
+    second: Ellen_Left_IndexDistal
+  - first:
+      1: 100054
+    second: Ellen_Left_IndexEnd
+  - first:
+      1: 100056
+    second: Ellen_Left_IndexIntermediate
+  - first:
+      1: 100058
+    second: Ellen_Left_IndexProximal
+  - first:
+      1: 100060
+    second: Ellen_Left_LowerEyelid
+  - first:
+      1: 100062
+    second: Ellen_Left_LowerLeg
+  - first:
+      1: 100064
+    second: Ellen_Left_LowerMouth
+  - first:
+      1: 100066
+    second: Ellen_Left_MiddleDistal
+  - first:
+      1: 100068
+    second: Ellen_Left_MiddleEnd
+  - first:
+      1: 100070
+    second: Ellen_Left_MiddleIntermediate
+  - first:
+      1: 100072
+    second: Ellen_Left_MiddleProximal
+  - first:
+      1: 100074
+    second: Ellen_Left_Mouth
+  - first:
+      1: 100076
+    second: Ellen_Left_Nostril
+  - first:
+      1: 100078
+    second: Ellen_Left_PinkyDistal
+  - first:
+      1: 100080
+    second: Ellen_Left_PinkyEnd
+  - first:
+      1: 100082
+    second: Ellen_Left_PinkyIntermediate
+  - first:
+      1: 100084
+    second: Ellen_Left_PinkyProximal
+  - first:
+      1: 100086
+    second: Ellen_Left_RingDistal
+  - first:
+      1: 100088
+    second: Ellen_Left_RingEnd
+  - first:
+      1: 100090
+    second: Ellen_Left_RingIntermediate
+  - first:
+      1: 100092
+    second: Ellen_Left_RingProximal
+  - first:
+      1: 100094
+    second: Ellen_Left_Shoulder
+  - first:
+      1: 100096
+    second: Ellen_Left_ThumbDistal
+  - first:
+      1: 100098
+    second: Ellen_Left_ThumbEnd
+  - first:
+      1: 100100
+    second: Ellen_Left_ThumbIntermediate
+  - first:
+      1: 100102
+    second: Ellen_Left_ThumbProximal
+  - first:
+      1: 100104
+    second: Ellen_Left_ToeEnd
+  - first:
+      1: 100106
+    second: Ellen_Left_Toes
+  - first:
+      1: 100108
+    second: Ellen_Left_UpperArm
+  - first:
+      1: 100110
+    second: Ellen_Left_UpperEyelid
+  - first:
+      1: 100112
+    second: Ellen_Left_UpperLeg
+  - first:
+      1: 100114
+    second: Ellen_Left_UpperMouth
+  - first:
+      1: 100116
+    second: Ellen_LowerMouth
+  - first:
+      1: 100118
+    second: Ellen_Neck
+  - first:
+      1: 100120
+    second: Ellen_Right_Arm
+  - first:
+      1: 100122
+    second: Ellen_Right_Cheek
+  - first:
+      1: 100124
+    second: Ellen_Right_Eye
+  - first:
+      1: 100126
+    second: Ellen_Right_EyebrowDistal
+  - first:
+      1: 100128
+    second: Ellen_Right_EyebrowIntermediate
+  - first:
+      1: 100130
+    second: Ellen_Right_EyebrowProximal
+  - first:
+      1: 100132
+    second: Ellen_Right_Foot
+  - first:
+      1: 100134
+    second: Ellen_Right_Hand
+  - first:
+      1: 100136
+    second: Ellen_Right_Hand_Attach
+  - first:
+      1: 100138
+    second: Ellen_Right_IndexDistal
+  - first:
+      1: 100140
+    second: Ellen_Right_IndexEnd
+  - first:
+      1: 100142
+    second: Ellen_Right_IndexIntermediate
+  - first:
+      1: 100144
+    second: Ellen_Right_IndexProximal
+  - first:
+      1: 100146
+    second: Ellen_Right_LowerEyelid
+  - first:
+      1: 100148
+    second: Ellen_Right_LowerLeg
+  - first:
+      1: 100150
+    second: Ellen_Right_LowerMouth
+  - first:
+      1: 100152
+    second: Ellen_Right_MiddleDistal
+  - first:
+      1: 100154
+    second: Ellen_Right_MiddleEnd
+  - first:
+      1: 100156
+    second: Ellen_Right_MiddleIntermediate
+  - first:
+      1: 100158
+    second: Ellen_Right_MiddleProximal
+  - first:
+      1: 100160
+    second: Ellen_Right_Mouth
+  - first:
+      1: 100162
+    second: Ellen_Right_Nostril
+  - first:
+      1: 100164
+    second: Ellen_Right_PinkyDistal
+  - first:
+      1: 100166
+    second: Ellen_Right_PinkyEnd
+  - first:
+      1: 100168
+    second: Ellen_Right_PinkyIntermediate
+  - first:
+      1: 100170
+    second: Ellen_Right_PinkyProximal
+  - first:
+      1: 100172
+    second: Ellen_Right_RingDistal
+  - first:
+      1: 100174
+    second: Ellen_Right_RingEnd
+  - first:
+      1: 100176
+    second: Ellen_Right_RingIntermediate
+  - first:
+      1: 100178
+    second: Ellen_Right_RingProximal
+  - first:
+      1: 100180
+    second: Ellen_Right_Shoulder
+  - first:
+      1: 100182
+    second: Ellen_Right_ThumbDistal
+  - first:
+      1: 100184
+    second: Ellen_Right_ThumbEnd
+  - first:
+      1: 100186
+    second: Ellen_Right_ThumbIntermediate
+  - first:
+      1: 100188
+    second: Ellen_Right_ThumbProximal
+  - first:
+      1: 100190
+    second: Ellen_Right_ToeEnd
+  - first:
+      1: 100192
+    second: Ellen_Right_Toes
+  - first:
+      1: 100194
+    second: Ellen_Right_UpperArm
+  - first:
+      1: 100196
+    second: Ellen_Right_UpperEyelid
+  - first:
+      1: 100198
+    second: Ellen_Right_UpperLeg
+  - first:
+      1: 100200
+    second: Ellen_Right_UpperMouth
+  - first:
+      1: 100202
+    second: Ellen_Root
+  - first:
+      1: 100204
+    second: Ellen_Skeleton
+  - first:
+      1: 100206
+    second: Ellen_Spine
+  - first:
+      1: 100208
+    second: Ellen_TongueDistal
+  - first:
+      1: 100210
+    second: Ellen_TongueEnd
+  - first:
+      1: 100212
+    second: Ellen_TongueProximal
+  - first:
+      1: 100214
+    second: Ellen_UpperChest
+  - first:
+      1: 100216
+    second: Ellen_UpperMouth
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: Ellen_Body
+  - first:
+      4: 400004
+    second: Ellen_Chest
+  - first:
+      4: 400006
+    second: Ellen_Hair_FrontalBase
+  - first:
+      4: 400008
+    second: Ellen_Hair_FrontalLeft
+  - first:
+      4: 400010
+    second: Ellen_Hair_FrontalLeftEnd
+  - first:
+      4: 400012
+    second: Ellen_Hair_SideDistal
+  - first:
+      4: 400014
+    second: Ellen_Hair_SideEnd
+  - first:
+      4: 400016
+    second: Ellen_Hair_SideIntermediate
+  - first:
+      4: 400018
+    second: Ellen_Hair_SideProximal
+  - first:
+      4: 400020
+    second: Ellen_HairFrontalRight
+  - first:
+      4: 400022
+    second: Ellen_HairFrontalRightEnd
+  - first:
+      4: 400024
+    second: Ellen_Head
+  - first:
+      4: 400026
+    second: Ellen_HeadEnd
+  - first:
+      4: 400028
+    second: Ellen_Hips
+  - first:
+      4: 400030
+    second: Ellen_Jaw
+  - first:
+      4: 400032
+    second: Ellen_JawEnd
+  - first:
+      4: 400034
+    second: Ellen_Left_Arm
+  - first:
+      4: 400036
+    second: Ellen_Left_Cheek
+  - first:
+      4: 400038
+    second: Ellen_Left_Eye
+  - first:
+      4: 400040
+    second: Ellen_Left_EyebrowDistal
+  - first:
+      4: 400042
+    second: Ellen_Left_EyebrowIntermediate
+  - first:
+      4: 400044
+    second: Ellen_Left_EyebrowProximal
+  - first:
+      4: 400046
+    second: Ellen_Left_Foot
+  - first:
+      4: 400048
+    second: Ellen_Left_Hand
+  - first:
+      4: 400050
+    second: Ellen_Left_Hand_Attach
+  - first:
+      4: 400052
+    second: Ellen_Left_IndexDistal
+  - first:
+      4: 400054
+    second: Ellen_Left_IndexEnd
+  - first:
+      4: 400056
+    second: Ellen_Left_IndexIntermediate
+  - first:
+      4: 400058
+    second: Ellen_Left_IndexProximal
+  - first:
+      4: 400060
+    second: Ellen_Left_LowerEyelid
+  - first:
+      4: 400062
+    second: Ellen_Left_LowerLeg
+  - first:
+      4: 400064
+    second: Ellen_Left_LowerMouth
+  - first:
+      4: 400066
+    second: Ellen_Left_MiddleDistal
+  - first:
+      4: 400068
+    second: Ellen_Left_MiddleEnd
+  - first:
+      4: 400070
+    second: Ellen_Left_MiddleIntermediate
+  - first:
+      4: 400072
+    second: Ellen_Left_MiddleProximal
+  - first:
+      4: 400074
+    second: Ellen_Left_Mouth
+  - first:
+      4: 400076
+    second: Ellen_Left_Nostril
+  - first:
+      4: 400078
+    second: Ellen_Left_PinkyDistal
+  - first:
+      4: 400080
+    second: Ellen_Left_PinkyEnd
+  - first:
+      4: 400082
+    second: Ellen_Left_PinkyIntermediate
+  - first:
+      4: 400084
+    second: Ellen_Left_PinkyProximal
+  - first:
+      4: 400086
+    second: Ellen_Left_RingDistal
+  - first:
+      4: 400088
+    second: Ellen_Left_RingEnd
+  - first:
+      4: 400090
+    second: Ellen_Left_RingIntermediate
+  - first:
+      4: 400092
+    second: Ellen_Left_RingProximal
+  - first:
+      4: 400094
+    second: Ellen_Left_Shoulder
+  - first:
+      4: 400096
+    second: Ellen_Left_ThumbDistal
+  - first:
+      4: 400098
+    second: Ellen_Left_ThumbEnd
+  - first:
+      4: 400100
+    second: Ellen_Left_ThumbIntermediate
+  - first:
+      4: 400102
+    second: Ellen_Left_ThumbProximal
+  - first:
+      4: 400104
+    second: Ellen_Left_ToeEnd
+  - first:
+      4: 400106
+    second: Ellen_Left_Toes
+  - first:
+      4: 400108
+    second: Ellen_Left_UpperArm
+  - first:
+      4: 400110
+    second: Ellen_Left_UpperEyelid
+  - first:
+      4: 400112
+    second: Ellen_Left_UpperLeg
+  - first:
+      4: 400114
+    second: Ellen_Left_UpperMouth
+  - first:
+      4: 400116
+    second: Ellen_LowerMouth
+  - first:
+      4: 400118
+    second: Ellen_Neck
+  - first:
+      4: 400120
+    second: Ellen_Right_Arm
+  - first:
+      4: 400122
+    second: Ellen_Right_Cheek
+  - first:
+      4: 400124
+    second: Ellen_Right_Eye
+  - first:
+      4: 400126
+    second: Ellen_Right_EyebrowDistal
+  - first:
+      4: 400128
+    second: Ellen_Right_EyebrowIntermediate
+  - first:
+      4: 400130
+    second: Ellen_Right_EyebrowProximal
+  - first:
+      4: 400132
+    second: Ellen_Right_Foot
+  - first:
+      4: 400134
+    second: Ellen_Right_Hand
+  - first:
+      4: 400136
+    second: Ellen_Right_Hand_Attach
+  - first:
+      4: 400138
+    second: Ellen_Right_IndexDistal
+  - first:
+      4: 400140
+    second: Ellen_Right_IndexEnd
+  - first:
+      4: 400142
+    second: Ellen_Right_IndexIntermediate
+  - first:
+      4: 400144
+    second: Ellen_Right_IndexProximal
+  - first:
+      4: 400146
+    second: Ellen_Right_LowerEyelid
+  - first:
+      4: 400148
+    second: Ellen_Right_LowerLeg
+  - first:
+      4: 400150
+    second: Ellen_Right_LowerMouth
+  - first:
+      4: 400152
+    second: Ellen_Right_MiddleDistal
+  - first:
+      4: 400154
+    second: Ellen_Right_MiddleEnd
+  - first:
+      4: 400156
+    second: Ellen_Right_MiddleIntermediate
+  - first:
+      4: 400158
+    second: Ellen_Right_MiddleProximal
+  - first:
+      4: 400160
+    second: Ellen_Right_Mouth
+  - first:
+      4: 400162
+    second: Ellen_Right_Nostril
+  - first:
+      4: 400164
+    second: Ellen_Right_PinkyDistal
+  - first:
+      4: 400166
+    second: Ellen_Right_PinkyEnd
+  - first:
+      4: 400168
+    second: Ellen_Right_PinkyIntermediate
+  - first:
+      4: 400170
+    second: Ellen_Right_PinkyProximal
+  - first:
+      4: 400172
+    second: Ellen_Right_RingDistal
+  - first:
+      4: 400174
+    second: Ellen_Right_RingEnd
+  - first:
+      4: 400176
+    second: Ellen_Right_RingIntermediate
+  - first:
+      4: 400178
+    second: Ellen_Right_RingProximal
+  - first:
+      4: 400180
+    second: Ellen_Right_Shoulder
+  - first:
+      4: 400182
+    second: Ellen_Right_ThumbDistal
+  - first:
+      4: 400184
+    second: Ellen_Right_ThumbEnd
+  - first:
+      4: 400186
+    second: Ellen_Right_ThumbIntermediate
+  - first:
+      4: 400188
+    second: Ellen_Right_ThumbProximal
+  - first:
+      4: 400190
+    second: Ellen_Right_ToeEnd
+  - first:
+      4: 400192
+    second: Ellen_Right_Toes
+  - first:
+      4: 400194
+    second: Ellen_Right_UpperArm
+  - first:
+      4: 400196
+    second: Ellen_Right_UpperEyelid
+  - first:
+      4: 400198
+    second: Ellen_Right_UpperLeg
+  - first:
+      4: 400200
+    second: Ellen_Right_UpperMouth
+  - first:
+      4: 400202
+    second: Ellen_Root
+  - first:
+      4: 400204
+    second: Ellen_Skeleton
+  - first:
+      4: 400206
+    second: Ellen_Spine
+  - first:
+      4: 400208
+    second: Ellen_TongueDistal
+  - first:
+      4: 400210
+    second: Ellen_TongueEnd
+  - first:
+      4: 400212
+    second: Ellen_TongueProximal
+  - first:
+      4: 400214
+    second: Ellen_UpperChest
+  - first:
+      4: 400216
+    second: Ellen_UpperMouth
+  - first:
+      43: 4300000
+    second: Ellen_Body
+  - first:
+      74: 7400000
+    second: EllenCombo1
+  - first:
+      74: 7400002
+    second: EllenCombo1Exit
+  - first:
+      74: 7400004
+    second: EllenCombo1
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: Ellen_Body
+  - first:
+      74: -567679491501126090
+    second: EllenCombatidle
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Default_Material
+    second: {fileID: 2100000, guid: e61f771c3460146f5875519e3e9c6ff2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ellen_Body_Mat
+    second: {fileID: 2100000, guid: 016381b9be8934122896661e56546573, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ellen_Eyes_Mat
+    second: {fileID: 2100000, guid: 3b3601a8367b14c5d96e33317f729226, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ellen_Hair_Mat
+    second: {fileID: 2100000, guid: 7000a864083a54d17bb29d8a0c311ff0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ellen_Head_Mat
+    second: {fileID: 2100000, guid: b6244ee9274df4db29d43aac585f6c73, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ellen_Tear_Mat
+    second: {fileID: 2100000, guid: a7992b3277ce2485286da2211e51e783, type: 2}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: EllenCombo1
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 4
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Ellen_Body
+        weight: 1
+      - path: Ellen_Skeleton
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Left_UpperLeg
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Left_UpperLeg/Ellen_Left_LowerLeg
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Left_UpperLeg/Ellen_Left_LowerLeg/Ellen_Left_Foot
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Left_UpperLeg/Ellen_Left_LowerLeg/Ellen_Left_Foot/Ellen_Left_Toes
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Left_UpperLeg/Ellen_Left_LowerLeg/Ellen_Left_Foot/Ellen_Left_Toes/Ellen_Left_ToeEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Right_UpperLeg
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Right_UpperLeg/Ellen_Right_LowerLeg
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Right_UpperLeg/Ellen_Right_LowerLeg/Ellen_Right_Foot
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Right_UpperLeg/Ellen_Right_LowerLeg/Ellen_Right_Foot/Ellen_Right_Toes
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Right_UpperLeg/Ellen_Right_LowerLeg/Ellen_Right_Foot/Ellen_Right_Toes/Ellen_Right_ToeEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_Hand_Attach
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_IndexProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_IndexProximal/Ellen_Left_IndexIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_IndexProximal/Ellen_Left_IndexIntermediate/Ellen_Left_IndexDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_IndexProximal/Ellen_Left_IndexIntermediate/Ellen_Left_IndexDistal/Ellen_Left_IndexEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_MiddleProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_MiddleProximal/Ellen_Left_MiddleIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_MiddleProximal/Ellen_Left_MiddleIntermediate/Ellen_Left_MiddleDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_MiddleProximal/Ellen_Left_MiddleIntermediate/Ellen_Left_MiddleDistal/Ellen_Left_MiddleEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_PinkyProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_PinkyProximal/Ellen_Left_PinkyIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_PinkyProximal/Ellen_Left_PinkyIntermediate/Ellen_Left_PinkyDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_PinkyProximal/Ellen_Left_PinkyIntermediate/Ellen_Left_PinkyDistal/Ellen_Left_PinkyEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_RingProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_RingProximal/Ellen_Left_RingIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_RingProximal/Ellen_Left_RingIntermediate/Ellen_Left_RingDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_RingProximal/Ellen_Left_RingIntermediate/Ellen_Left_RingDistal/Ellen_Left_RingEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_ThumbProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_ThumbProximal/Ellen_Left_ThumbIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_ThumbProximal/Ellen_Left_ThumbIntermediate/Ellen_Left_ThumbDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_ThumbProximal/Ellen_Left_ThumbIntermediate/Ellen_Left_ThumbDistal/Ellen_Left_ThumbEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Hair_FrontalBase
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Hair_FrontalBase/Ellen_Hair_FrontalLeft
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Hair_FrontalBase/Ellen_Hair_FrontalLeft/Ellen_Hair_FrontalLeftEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Hair_FrontalBase/Ellen_HairFrontalRight
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Hair_FrontalBase/Ellen_HairFrontalRight/Ellen_HairFrontalRightEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Hair_SideProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Hair_SideProximal/Ellen_Hair_SideIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Hair_SideProximal/Ellen_Hair_SideIntermediate/Ellen_Hair_SideDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Hair_SideProximal/Ellen_Hair_SideIntermediate/Ellen_Hair_SideDistal/Ellen_Hair_SideEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_HeadEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Jaw
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Jaw/Ellen_JawEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Jaw/Ellen_Left_LowerMouth
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Jaw/Ellen_LowerMouth
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Jaw/Ellen_Right_LowerMouth
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Left_Cheek
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Left_Eye
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Left_EyebrowDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Left_EyebrowIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Left_EyebrowProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Left_LowerEyelid
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Left_Mouth
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Left_Nostril
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Left_UpperEyelid
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Left_UpperMouth
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Right_Cheek
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Right_Eye
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Right_EyebrowDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Right_EyebrowIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Right_EyebrowProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Right_LowerEyelid
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Right_Mouth
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Right_Nostril
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Right_UpperEyelid
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Right_UpperMouth
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_TongueProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_TongueProximal/Ellen_TongueDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_TongueProximal/Ellen_TongueDistal/Ellen_TongueEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_UpperMouth
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_Hand_Attach
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_IndexProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_IndexProximal/Ellen_Right_IndexIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_IndexProximal/Ellen_Right_IndexIntermediate/Ellen_Right_IndexDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_IndexProximal/Ellen_Right_IndexIntermediate/Ellen_Right_IndexDistal/Ellen_Right_IndexEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_MiddleProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_MiddleProximal/Ellen_Right_MiddleIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_MiddleProximal/Ellen_Right_MiddleIntermediate/Ellen_Right_MiddleDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_MiddleProximal/Ellen_Right_MiddleIntermediate/Ellen_Right_MiddleDistal/Ellen_Right_MiddleEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_PinkyProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_PinkyProximal/Ellen_Right_PinkyIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_PinkyProximal/Ellen_Right_PinkyIntermediate/Ellen_Right_PinkyDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_PinkyProximal/Ellen_Right_PinkyIntermediate/Ellen_Right_PinkyDistal/Ellen_Right_PinkyEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_RingProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_RingProximal/Ellen_Right_RingIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_RingProximal/Ellen_Right_RingIntermediate/Ellen_Right_RingDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_RingProximal/Ellen_Right_RingIntermediate/Ellen_Right_RingDistal/Ellen_Right_RingEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_ThumbProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_ThumbProximal/Ellen_Right_ThumbIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_ThumbProximal/Ellen_Right_ThumbIntermediate/Ellen_Right_ThumbDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_ThumbProximal/Ellen_Right_ThumbIntermediate/Ellen_Right_ThumbDistal/Ellen_Right_ThumbEnd
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 2
+    - serializedVersion: 16
+      name: EllenCombatidle
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 4
+      lastFrame: 4
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Ellen_Body
+        weight: 1
+      - path: Ellen_Skeleton
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Left_UpperLeg
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Left_UpperLeg/Ellen_Left_LowerLeg
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Left_UpperLeg/Ellen_Left_LowerLeg/Ellen_Left_Foot
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Left_UpperLeg/Ellen_Left_LowerLeg/Ellen_Left_Foot/Ellen_Left_Toes
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Left_UpperLeg/Ellen_Left_LowerLeg/Ellen_Left_Foot/Ellen_Left_Toes/Ellen_Left_ToeEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Right_UpperLeg
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Right_UpperLeg/Ellen_Right_LowerLeg
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Right_UpperLeg/Ellen_Right_LowerLeg/Ellen_Right_Foot
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Right_UpperLeg/Ellen_Right_LowerLeg/Ellen_Right_Foot/Ellen_Right_Toes
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Right_UpperLeg/Ellen_Right_LowerLeg/Ellen_Right_Foot/Ellen_Right_Toes/Ellen_Right_ToeEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_Hand_Attach
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_IndexProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_IndexProximal/Ellen_Left_IndexIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_IndexProximal/Ellen_Left_IndexIntermediate/Ellen_Left_IndexDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_IndexProximal/Ellen_Left_IndexIntermediate/Ellen_Left_IndexDistal/Ellen_Left_IndexEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_MiddleProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_MiddleProximal/Ellen_Left_MiddleIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_MiddleProximal/Ellen_Left_MiddleIntermediate/Ellen_Left_MiddleDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_MiddleProximal/Ellen_Left_MiddleIntermediate/Ellen_Left_MiddleDistal/Ellen_Left_MiddleEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_PinkyProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_PinkyProximal/Ellen_Left_PinkyIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_PinkyProximal/Ellen_Left_PinkyIntermediate/Ellen_Left_PinkyDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_PinkyProximal/Ellen_Left_PinkyIntermediate/Ellen_Left_PinkyDistal/Ellen_Left_PinkyEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_RingProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_RingProximal/Ellen_Left_RingIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_RingProximal/Ellen_Left_RingIntermediate/Ellen_Left_RingDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_RingProximal/Ellen_Left_RingIntermediate/Ellen_Left_RingDistal/Ellen_Left_RingEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_ThumbProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_ThumbProximal/Ellen_Left_ThumbIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_ThumbProximal/Ellen_Left_ThumbIntermediate/Ellen_Left_ThumbDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Left_Shoulder/Ellen_Left_UpperArm/Ellen_Left_Arm/Ellen_Left_Hand/Ellen_Left_ThumbProximal/Ellen_Left_ThumbIntermediate/Ellen_Left_ThumbDistal/Ellen_Left_ThumbEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Hair_FrontalBase
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Hair_FrontalBase/Ellen_Hair_FrontalLeft
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Hair_FrontalBase/Ellen_Hair_FrontalLeft/Ellen_Hair_FrontalLeftEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Hair_FrontalBase/Ellen_HairFrontalRight
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Hair_FrontalBase/Ellen_HairFrontalRight/Ellen_HairFrontalRightEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Hair_SideProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Hair_SideProximal/Ellen_Hair_SideIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Hair_SideProximal/Ellen_Hair_SideIntermediate/Ellen_Hair_SideDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Hair_SideProximal/Ellen_Hair_SideIntermediate/Ellen_Hair_SideDistal/Ellen_Hair_SideEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_HeadEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Jaw
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Jaw/Ellen_JawEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Jaw/Ellen_Left_LowerMouth
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Jaw/Ellen_LowerMouth
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Jaw/Ellen_Right_LowerMouth
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Left_Cheek
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Left_Eye
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Left_EyebrowDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Left_EyebrowIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Left_EyebrowProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Left_LowerEyelid
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Left_Mouth
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Left_Nostril
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Left_UpperEyelid
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Left_UpperMouth
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Right_Cheek
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Right_Eye
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Right_EyebrowDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Right_EyebrowIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Right_EyebrowProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Right_LowerEyelid
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Right_Mouth
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Right_Nostril
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Right_UpperEyelid
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_Right_UpperMouth
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_TongueProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_TongueProximal/Ellen_TongueDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_TongueProximal/Ellen_TongueDistal/Ellen_TongueEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Neck/Ellen_Head/Ellen_UpperMouth
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_Hand_Attach
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_IndexProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_IndexProximal/Ellen_Right_IndexIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_IndexProximal/Ellen_Right_IndexIntermediate/Ellen_Right_IndexDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_IndexProximal/Ellen_Right_IndexIntermediate/Ellen_Right_IndexDistal/Ellen_Right_IndexEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_MiddleProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_MiddleProximal/Ellen_Right_MiddleIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_MiddleProximal/Ellen_Right_MiddleIntermediate/Ellen_Right_MiddleDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_MiddleProximal/Ellen_Right_MiddleIntermediate/Ellen_Right_MiddleDistal/Ellen_Right_MiddleEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_PinkyProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_PinkyProximal/Ellen_Right_PinkyIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_PinkyProximal/Ellen_Right_PinkyIntermediate/Ellen_Right_PinkyDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_PinkyProximal/Ellen_Right_PinkyIntermediate/Ellen_Right_PinkyDistal/Ellen_Right_PinkyEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_RingProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_RingProximal/Ellen_Right_RingIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_RingProximal/Ellen_Right_RingIntermediate/Ellen_Right_RingDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_RingProximal/Ellen_Right_RingIntermediate/Ellen_Right_RingDistal/Ellen_Right_RingEnd
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_ThumbProximal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_ThumbProximal/Ellen_Right_ThumbIntermediate
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_ThumbProximal/Ellen_Right_ThumbIntermediate/Ellen_Right_ThumbDistal
+        weight: 1
+      - path: Ellen_Skeleton/Ellen_Root/Ellen_Hips/Ellen_Spine/Ellen_Chest/Ellen_UpperChest/Ellen_Right_Shoulder/Ellen_Right_UpperArm/Ellen_Right_Arm/Ellen_Right_Hand/Ellen_Right_ThumbProximal/Ellen_Right_ThumbIntermediate/Ellen_Right_ThumbDistal/Ellen_Right_ThumbEnd
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 2
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: Ellen_Root
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: a5674d01884853d4e8f2386a171e14d9,
+    type: 3}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
