@@ -1,0 +1,204 @@
+fileFormatVersion: 2
+guid: b93bfeb64d884874893428342c354224
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Grenadier_EyeArmor
+    100004: Grenadier_EyeArmorEnd
+    100006: Grenadier_HelmetArmor
+    100008: Grenadier_HelmetArmorEnd
+    100010: Grenadier_Hips
+    100012: Grenadier_LeftArm
+    100014: Grenadier_LeftChestArmor
+    100016: Grenadier_LeftChestArmorEnd
+    100018: Grenadier_LeftFoot
+    100020: Grenadier_LeftFootEnd
+    100022: Grenadier_LeftHand
+    100024: Grenadier_LeftHandEnd
+    100026: Grenadier_LeftHornArmor
+    100028: Grenadier_LeftHornArmorEnd
+    100030: Grenadier_LeftLowerLeg
+    100032: Grenadier_LeftShoulder
+    100034: Grenadier_LeftThumb
+    100036: Grenadier_LeftThumbEnd
+    100038: Grenadier_LeftUpperArm
+    100040: Grenadier_LeftUpperLeg
+    100042: Grenadier_RightArm
+    100044: Grenadier_RightChestArmor
+    100046: Grenadier_RightChestArmorEnd
+    100048: Grenadier_RightFoot
+    100050: Grenadier_RightFootEnd
+    100052: Grenadier_RightHand
+    100054: Grenadier_RightHandEnd
+    100056: Grenadier_RightHornArmor
+    100058: Grenadier_RightHornArmorEnd
+    100060: Grenadier_RightLowerLeg
+    100062: Grenadier_RightShoulder
+    100064: Grenadier_RightThumb
+    100066: Grenadier_RightThumbEnd
+    100068: Grenadier_RightUpperArm
+    100070: Grenadier_RightUpperLeg
+    100072: Grenadier_Root
+    100074: Grenadier_Sphere
+    100076: GrenadierMesh
+    100078: GrenadierSkeleton
+    400000: //RootNode
+    400002: Grenadier_EyeArmor
+    400004: Grenadier_EyeArmorEnd
+    400006: Grenadier_HelmetArmor
+    400008: Grenadier_HelmetArmorEnd
+    400010: Grenadier_Hips
+    400012: Grenadier_LeftArm
+    400014: Grenadier_LeftChestArmor
+    400016: Grenadier_LeftChestArmorEnd
+    400018: Grenadier_LeftFoot
+    400020: Grenadier_LeftFootEnd
+    400022: Grenadier_LeftHand
+    400024: Grenadier_LeftHandEnd
+    400026: Grenadier_LeftHornArmor
+    400028: Grenadier_LeftHornArmorEnd
+    400030: Grenadier_LeftLowerLeg
+    400032: Grenadier_LeftShoulder
+    400034: Grenadier_LeftThumb
+    400036: Grenadier_LeftThumbEnd
+    400038: Grenadier_LeftUpperArm
+    400040: Grenadier_LeftUpperLeg
+    400042: Grenadier_RightArm
+    400044: Grenadier_RightChestArmor
+    400046: Grenadier_RightChestArmorEnd
+    400048: Grenadier_RightFoot
+    400050: Grenadier_RightFootEnd
+    400052: Grenadier_RightHand
+    400054: Grenadier_RightHandEnd
+    400056: Grenadier_RightHornArmor
+    400058: Grenadier_RightHornArmorEnd
+    400060: Grenadier_RightLowerLeg
+    400062: Grenadier_RightShoulder
+    400064: Grenadier_RightThumb
+    400066: Grenadier_RightThumbEnd
+    400068: Grenadier_RightUpperArm
+    400070: Grenadier_RightUpperLeg
+    400072: Grenadier_Root
+    400074: Grenadier_Sphere
+    400076: GrenadierMesh
+    400078: GrenadierSkeleton
+    2100000: Keeper_Mat
+    2100002: Keeper_Core_Mat
+    2100004: Keeper_Eye_Mat
+    4300000: GrenadierMesh
+    7400000: GrenadierIdle
+    9500000: //RootNode
+    13700000: GrenadierMesh
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 0
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: GrenadierIdle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 251
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: Grenadier_Root
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 887cc9cbcc10e8c45b6262198cc15ee6,
+    type: 3}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
