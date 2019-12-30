@@ -1,0 +1,186 @@
+fileFormatVersion: 2
+guid: a659078ac6c48e542889eaa46bee16f6
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: DestructableBox_Chunk
+    100002: DestructableBox_Chunk1
+    100004: DestructableBox_Chunk10
+    100006: DestructableBox_Chunk11
+    100008: DestructableBox_Chunk12
+    100010: DestructableBox_Chunk13
+    100012: DestructableBox_Chunk14
+    100014: DestructableBox_Chunk15
+    100016: DestructableBox_Chunk16
+    100018: DestructableBox_Chunk17
+    100020: DestructableBox_Chunk2
+    100022: DestructableBox_Chunk3
+    100024: DestructableBox_Chunk4
+    100026: DestructableBox_Chunk5
+    100028: DestructableBox_Chunk6
+    100030: DestructableBox_Chunk7
+    100032: DestructableBox_Chunk8
+    100034: DestructableBox_Chunk9
+    100036: //RootNode
+    400000: DestructableBox_Chunk
+    400002: DestructableBox_Chunk1
+    400004: DestructableBox_Chunk10
+    400006: DestructableBox_Chunk11
+    400008: DestructableBox_Chunk12
+    400010: DestructableBox_Chunk13
+    400012: DestructableBox_Chunk14
+    400014: DestructableBox_Chunk15
+    400016: DestructableBox_Chunk16
+    400018: DestructableBox_Chunk17
+    400020: DestructableBox_Chunk2
+    400022: DestructableBox_Chunk3
+    400024: DestructableBox_Chunk4
+    400026: DestructableBox_Chunk5
+    400028: DestructableBox_Chunk6
+    400030: DestructableBox_Chunk7
+    400032: DestructableBox_Chunk8
+    400034: DestructableBox_Chunk9
+    400036: //RootNode
+    2100000: BoxBreak_blinn5SG1
+    2300000: DestructableBox_Chunk
+    2300002: DestructableBox_Chunk1
+    2300004: DestructableBox_Chunk10
+    2300006: DestructableBox_Chunk11
+    2300008: DestructableBox_Chunk12
+    2300010: DestructableBox_Chunk13
+    2300012: DestructableBox_Chunk14
+    2300014: DestructableBox_Chunk15
+    2300016: DestructableBox_Chunk16
+    2300018: DestructableBox_Chunk17
+    2300020: DestructableBox_Chunk2
+    2300022: DestructableBox_Chunk3
+    2300024: DestructableBox_Chunk4
+    2300026: DestructableBox_Chunk5
+    2300028: DestructableBox_Chunk6
+    2300030: DestructableBox_Chunk7
+    2300032: DestructableBox_Chunk8
+    2300034: DestructableBox_Chunk9
+    3300000: DestructableBox_Chunk
+    3300002: DestructableBox_Chunk1
+    3300004: DestructableBox_Chunk10
+    3300006: DestructableBox_Chunk11
+    3300008: DestructableBox_Chunk12
+    3300010: DestructableBox_Chunk13
+    3300012: DestructableBox_Chunk14
+    3300014: DestructableBox_Chunk15
+    3300016: DestructableBox_Chunk16
+    3300018: DestructableBox_Chunk17
+    3300020: DestructableBox_Chunk2
+    3300022: DestructableBox_Chunk3
+    3300024: DestructableBox_Chunk4
+    3300026: DestructableBox_Chunk5
+    3300028: DestructableBox_Chunk6
+    3300030: DestructableBox_Chunk7
+    3300032: DestructableBox_Chunk8
+    3300034: DestructableBox_Chunk9
+    4300000: DestructableBox_Chunk17
+    4300002: DestructableBox_Chunk16
+    4300004: DestructableBox_Chunk15
+    4300006: DestructableBox_Chunk14
+    4300008: DestructableBox_Chunk13
+    4300010: DestructableBox_Chunk12
+    4300012: DestructableBox_Chunk11
+    4300014: DestructableBox_Chunk10
+    4300016: DestructableBox_Chunk9
+    4300018: DestructableBox_Chunk8
+    4300020: DestructableBox_Chunk7
+    4300022: DestructableBox_Chunk6
+    4300024: DestructableBox_Chunk5
+    4300026: DestructableBox_Chunk4
+    4300028: DestructableBox_Chunk3
+    4300030: DestructableBox_Chunk2
+    4300032: DestructableBox_Chunk1
+    4300034: DestructableBox_Chunk
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BoxBreakable_mat
+    second: {fileID: 2100000, guid: 213f29d8077200a489882139504e451d, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

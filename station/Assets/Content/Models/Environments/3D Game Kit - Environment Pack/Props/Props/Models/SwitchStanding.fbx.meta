@@ -1,0 +1,179 @@
+fileFormatVersion: 2
+guid: 7d3c05bccd7388942bcf8215cf4481c2
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: polySurface1
+    100002: polySurface2
+    100004: polySurface3
+    100006: polySurface4
+    100008: polySurface5
+    100010: polySurface6
+    100012: polySurface7
+    100014: polySurface8
+    100016: polySurface9
+    100018: //RootNode
+    100020: a
+    100022: switch1
+    100024: switch2
+    100026: SwitchBase
+    100028: SwitchCrystal
+    400000: polySurface1
+    400002: polySurface2
+    400004: polySurface3
+    400006: polySurface4
+    400008: polySurface5
+    400010: polySurface6
+    400012: polySurface7
+    400014: polySurface8
+    400016: polySurface9
+    400018: //RootNode
+    400020: a
+    400022: switch1
+    400024: switch2
+    400026: SwitchBase
+    400028: SwitchCrystal
+    2100000: lambert1
+    2100002: WeaponPedestal_initialShadingGroup1
+    2100004: Crystal_mat
+    2100006: Switch_mat
+    2300000: polySurface1
+    2300002: polySurface2
+    2300004: polySurface3
+    2300006: polySurface4
+    2300008: polySurface5
+    2300010: polySurface6
+    2300012: polySurface7
+    2300014: polySurface8
+    2300016: polySurface9
+    2300018: a
+    2300020: switch1
+    2300022: switch2
+    2300024: SwitchBase
+    2300026: SwitchCrystal
+    3300000: polySurface1
+    3300002: polySurface2
+    3300004: polySurface3
+    3300006: polySurface4
+    3300008: polySurface5
+    3300010: polySurface6
+    3300012: polySurface7
+    3300014: polySurface8
+    3300016: polySurface9
+    3300018: a
+    3300020: switch1
+    3300022: switch2
+    3300024: SwitchBase
+    3300026: SwitchCrystal
+    4300000: polySurface1
+    4300002: polySurface2
+    4300004: polySurface3
+    4300006: polySurface4
+    4300008: polySurface5
+    4300010: polySurface6
+    4300012: polySurface7
+    4300014: polySurface8
+    4300016: polySurface9
+    4300018: a
+    4300020: switch1
+    4300022: switch2
+    4300024: SwitchCrystal
+    4300026: SwitchBase
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Crystal_mat
+    second: {fileID: 2100000, guid: 022a0b8394af9d343acfc52bf61093cd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SwitchCrystal_mat
+    second: {fileID: 2100000, guid: 022a0b8394af9d343acfc52bf61093cd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Switch_mat
+    second: {fileID: 2100000, guid: 25f432de59fe988418cf97841b36936a, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
