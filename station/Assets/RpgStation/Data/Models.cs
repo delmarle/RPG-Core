@@ -332,27 +332,29 @@ namespace Station
     public class ResurrectEffect : BaseEffect
     {
       public float percentRefreshed = 0.1f;
-      public override void ApplyEffect(BaseCharacter source, BaseCharacter target)
+      
+      public override ApplyEffectResult ApplyEffect(BaseCharacter source, BaseCharacter target)
       {
         if (target == null)
         {
-          return;
+          return ApplyEffectResult.MissingTarget;
         }
         SceneSystem sceneSystem = RpgStation.GetSystemStatic<SceneSystem>();
         if (sceneSystem.IsTraveling)
         {
-          return;
+          return ApplyEffectResult.Blocked;
         }
 
         if (target.IsDead == false)
         {
-          return;
+          return ApplyEffectResult.TargetIsDead;
         }
 
         GameGlobalEvents.OnBeforeLeaveScene?.Invoke();
         GameGlobalEvents.OnTriggerSceneSave?.Invoke();
 
         target.Calculator.Revive(percentRefreshed);
+        return ApplyEffectResult.Success;
       }
     }
     
@@ -360,7 +362,7 @@ namespace Station
     public class TeleportEffect : BaseEffect
     {
       public DestinationModel Destination;
-      public override void ApplyEffect(BaseCharacter source, BaseCharacter target)
+      public override ApplyEffectResult ApplyEffect(BaseCharacter source, BaseCharacter target)
       {
         GameGlobalEvents.OnBeforeLeaveScene?.Invoke();
 
@@ -372,13 +374,14 @@ namespace Station
         var sceneDb = dbSystem.GetDb<ScenesDb>();
         if (sceneSystem.IsTraveling)
         {
-          return;
+          return ApplyEffectResult.Blocked;
         }
         
         var sceneData = sceneDb.GetEntry(Destination.SceneId);
         var model = new TravelModel {SceneName = sceneData.VisualName};
         sceneSystem.InjectDestinationInSave(Destination);
         sceneSystem.TravelToZone(model);
+        return ApplyEffectResult.Success;
       }
     }
 
@@ -393,10 +396,11 @@ namespace Station
     public float Length = 10;
     public string Identifier;
 
-    public override void ApplyEffect(BaseCharacter source, BaseCharacter target)
+    public override ApplyEffectResult ApplyEffect(BaseCharacter source, BaseCharacter target)
     {
       FloatingPopupSystem.SpawnObject(ModifierType.ToString().ToLower(), EffectName,target.GetTop(), source, target, EffectIcon);
       target.Stats.ReceiveModifier(this, source);
+      return ApplyEffectResult.Success;
     }
 
     public void AddBonusToHandler(StatsHandler handler, int stacks)
@@ -455,12 +459,13 @@ namespace Station
     public float MinValue;
     public float MaxValue;
     
-    public override void ApplyEffect(BaseCharacter source, BaseCharacter target)
+    public override ApplyEffectResult ApplyEffect(BaseCharacter source, BaseCharacter target)
     {
       var calculation = source.Calculator;
       float value = Random.Range(MinValue, MaxValue);
       FloatingPopupSystem.SpawnObject("heal", ((int)value).ToString(),target.GetTop(), source, target);
       target.Calculator.Heal(new VitalChangeData((int)value,source));
+      return ApplyEffectResult.Success;
     }
   }
 
@@ -472,20 +477,53 @@ namespace Station
     public float CriticalBonus;
     public const string MeleeDamageType = "Melee";
 
-    public override void ApplyEffect(BaseCharacter source, BaseCharacter target)
+    public override ApplyEffectResult ApplyEffect(BaseCharacter source, BaseCharacter target)
     {
       if (target)
       {
         var calculation = source.Calculator;
-        //use weapon to change range + speed + damage
-        var damageData = calculation.GetDamageCalculation(MeleeDamageType,  Random.Range(MinValue, MaxValue), CriticalBonus);
-        var dmgType = damageData.IsCritical ? "damage_critical" : "damage";
-        FloatingPopupSystem.SpawnObject(dmgType, damageData.Amount.ToString(),target.GetTop(), source, target);
-        target.Calculator.ReceiveDamage(damageData);
+        
+        float hitPower = calculation.GetHitChance(90);
+        float targetEvadePower = target.Calculator.GetEvadePower();
+        float targetBlockPower = target.Calculator.GetBlockPower();
+        float total = hitPower + targetEvadePower + targetBlockPower;
+        var hitRoll = Random.Range(0, total);
+
+        var playerHit = Random.value * 100 <= hitPower;
+        if (playerHit)
+        {
+          if (hitRoll <= hitPower)
+          {
+            //we touch
+                  
+            var damageData = calculation.GetDamageCalculation(MeleeDamageType,  Random.Range(MinValue, MaxValue), CriticalBonus);
+            var dmgType = damageData.IsCritical ? FloatingPopupSystem.TYPE_DAMAGE_CRITICAL : FloatingPopupSystem.TYPE_DAMAGE;
+            FloatingPopupSystem.SpawnObject(dmgType, damageData.Amount.ToString(),target.GetTop(), source, target);
+            target.Calculator.ReceiveDamage(damageData);
+            return ApplyEffectResult.Success;
+          }
+          else if(hitRoll <= hitPower+targetEvadePower)
+          {
+            //target evaded
+            FloatingPopupSystem.SpawnObject(FloatingPopupSystem.TYPE_EVADE, string.Empty,target.GetTop(), source, target);
+            return ApplyEffectResult.Evade;
+          }
+          else
+          {
+            //target blocked
+            return ApplyEffectResult.Blocked;
+          }
+        }
+        else
+        {
+          //we miss
+          FloatingPopupSystem.SpawnObject(FloatingPopupSystem.TYPE_MISS, string.Empty,target.GetTop(), source, target);
+          return ApplyEffectResult.Miss;
+        }
       }
       else
       {
-        Debug.LogWarning("missing target for damage effect");
+        return ApplyEffectResult.MissingTarget;
       }
     }
   }

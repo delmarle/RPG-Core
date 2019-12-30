@@ -7,8 +7,12 @@ namespace Station
 {
 	public class FloatingPopupSystem : BaseSystem
 	{
+		public const string TYPE_DAMAGE = "damage";
+		public const string TYPE_DAMAGE_CRITICAL = "damage_critical";
+		public const string TYPE_MISS = "miss";
+		public const string TYPE_EVADE = "evade";
+		
 		private Dictionary<string, FloatingPopupModel> _runtimeCache;
-
 		private Camera _camera;
 		private GameObject _canvas;
 		private static FloatingPopupSystem _instance;

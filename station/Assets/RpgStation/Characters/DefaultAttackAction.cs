@@ -59,38 +59,7 @@ namespace Station
                 //out of range
                 return;
             }
-
-            
-            float hitPower = _user.Calculator.GetHitChance(89);
-            float targetEvadePower = target.Calculator.GetEvadePower();
-            float targetBlockPower = target.Calculator.GetBlockPower();
-            float total = hitPower + targetEvadePower + targetBlockPower;
-            var hitRoll = Random.Range(0, total);
-
-           
-            var playerHit = Random.value * 100 <= hitPower;
-            if (playerHit)
-            {
-                if (hitRoll <= hitPower)
-                {
-                    //we touch
-                    Data.BaseDamage.ApplyEffect(_user, target);
-                }
-                else if(hitRoll <= hitPower+targetEvadePower)
-                {
-                    //target evaded
-                }
-                else
-                {
-                    //target blocked
-                }
-            }
-            else
-            {
-                //we miss
-            }
-
-            
+            Data.BaseDamage.ApplyEffect(_user, target);
         }
     }
 }

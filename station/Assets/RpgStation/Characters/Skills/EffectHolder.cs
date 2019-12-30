@@ -12,7 +12,7 @@ namespace Station
     public List<ModifierEffect> Modifiers = new List<ModifierEffect>();
     public List<TeleportEffect> Teleports = new List<TeleportEffect>();
     public List<ResurrectEffect> Resurects = new List<ResurrectEffect>();
-    //OVER TIME
+    //OVER TIME effects
 
     public void ApplyEffects(BaseCharacter source, BaseCharacter target)
     {
