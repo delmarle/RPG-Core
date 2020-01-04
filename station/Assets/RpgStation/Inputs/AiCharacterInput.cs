@@ -38,6 +38,7 @@ namespace Station
 
         public override Vector3 Movement()
         {
+            _agent.updateRotation = false;
             if (_target != null)
             {
                 if (_agent.isOnNavMesh == false)
@@ -49,9 +50,10 @@ namespace Station
                 _agent.SetDestination(_target.position);
 
                 if (distance > _agent.stoppingDistance)
+                {
                     return _agent.desiredVelocity;
+                }
             }
-
             return base.Movement();
         }
 

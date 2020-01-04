@@ -344,6 +344,7 @@ namespace Station
   private bool _manualRotation = true;
   private void OrientRotationToMoveVector(Vector3 moveVector)
   {
+    moveVector.y = 0;
     if (_manualRotation)
     {
       _manualRotation = false;
