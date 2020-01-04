@@ -49,27 +49,27 @@ namespace Station
     Self,
     Target
   }
+  public enum RequireTargetState
+  {
+    Alive,
+    Dead,
+    Any
+  }
 
+  public enum AbilityTargeting
+  {
+    None,
+    Self,
+    SelfOrFriendly,
+    Friendly,
+    Enemy,
+    Any,
+    NotSelf
+  }
   [Serializable]
   public class Targeting
   {
-    public enum RequireTargetState
-    {
-      Alive,
-      Dead,
-      Any
-    }
-
-    public enum AbilityTargeting
-    {
-      None,
-      Self,
-      SelfOrFriendly,
-      Friendly,
-      Enemy,
-      Any,
-      NotSelf
-    }
+    
 
     public RequireTargetState TargetRequiredState;
     public AbilityTargeting UsedAbilityTargeting;

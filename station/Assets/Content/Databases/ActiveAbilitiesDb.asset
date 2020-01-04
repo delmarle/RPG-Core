@@ -103,7 +103,7 @@ MonoBehaviour:
       Targeting:
         TargetRequiredState: 0
         UsedAbilityTargeting: 2
-    - Name: self heal
+    - Name: Healing touch
       Description: 
       Icon: {fileID: 21300000, guid: 5b6f368a6aafd48b18f097c98b34c0e7, type: 3}
       ParentSkillId: 0
@@ -124,22 +124,23 @@ MonoBehaviour:
         VitalsUsed: []
         ProjectileDrivers: []
         DirectDrivers:
-        - Delay: 0
+        - Delay: 0.2
           Effects:
             EffectName: 
             Damages: []
             Heals:
-            - EffectName: 
-              EffectIcon: {fileID: 0}
+            - EffectName: Healing touch
+              EffectIcon: {fileID: 21300000, guid: 72a10be6e5eb9426d916eaaed1b57052,
+                type: 3}
               MinValue: 25
               MaxValue: 100
             Modifiers: []
             Teleports: []
             Resurects: []
-          Target: 0
+          Target: 1
       Targeting:
         TargetRequiredState: 0
-        UsedAbilityTargeting: 0
+        UsedAbilityTargeting: 2
     - Name: Portal to home
       Description: 
       Icon: {fileID: 21300000, guid: 72a10be6e5eb9426d916eaaed1b57052, type: 3}
@@ -149,7 +150,7 @@ MonoBehaviour:
       - CastDistance: 0
         CoolDown: 0
         Casting:
-          Option: 0
+          Option: 1
           Length: 1
           AnimationId: 0
           StartSound: {fileID: 0}

@@ -19,9 +19,16 @@ namespace Station
         private void Awake()
         {
            Init();
-           DontDestroyOnLoad(gameObject);
+          
         }
 
+        private void Start()
+        {
+            if (Application.isPlaying || gameObject.activeInHierarchy)
+            {
+                DontDestroyOnLoad(gameObject);
+            }
+        }
 
         private void OnDestroy()
         {
@@ -29,6 +36,8 @@ namespace Station
             {
                 value.Dispose();
             }
+
+            _instance = null;
         }
         #endregion
         

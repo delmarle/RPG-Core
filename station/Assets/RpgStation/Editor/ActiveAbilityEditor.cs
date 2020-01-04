@@ -360,10 +360,10 @@ namespace Station
     
     private static void DrawTargeting(ActiveAbility data)
     {
-      data.Targeting.UsedAbilityTargeting = (Targeting.AbilityTargeting)EditorGUILayout.EnumPopup("Required target: ",data.Targeting.UsedAbilityTargeting);
-      if (data.Targeting.UsedAbilityTargeting != Targeting.AbilityTargeting.None)
+      data.Targeting.UsedAbilityTargeting = (AbilityTargeting)EditorGUILayout.EnumPopup("Required target: ",data.Targeting.UsedAbilityTargeting);
+      if (data.Targeting.UsedAbilityTargeting != AbilityTargeting.None)
       {
-        data.Targeting.TargetRequiredState = (Targeting.RequireTargetState)EditorGUILayout.EnumPopup("Required target state: ",data.Targeting.TargetRequiredState);
+        data.Targeting.TargetRequiredState = (RequireTargetState)EditorGUILayout.EnumPopup("Required target state: ",data.Targeting.TargetRequiredState);
       }
     }
 

@@ -50,11 +50,17 @@ namespace Station
     {
       if (base.CanUse() == false)
         return false;
-
-      var targeting = _data.Targeting;
+      
       //check target requirement
+      var targeting = _data.Targeting;
       var target = _user.Target;
-      if (targeting.UsedAbilityTargeting != Targeting.AbilityTargeting.None)
+      var targetingMode = targeting.UsedAbilityTargeting;
+      if (targetingMode == AbilityTargeting.SelfOrFriendly || targetingMode == AbilityTargeting.Self)
+      {
+        return true;
+      }
+
+      if (targetingMode != AbilityTargeting.None)
       {
         //we need a target
 
@@ -64,7 +70,7 @@ namespace Station
           return false;
         }
 
-        if (targeting.TargetRequiredState == Targeting.RequireTargetState.Dead)
+        if (targeting.TargetRequiredState == RequireTargetState.Dead)
         {
           if (!_user.Target.IsDead == false)
           {
@@ -73,9 +79,9 @@ namespace Station
           }
         }
 
-        if (targeting.TargetRequiredState == Targeting.RequireTargetState.Alive)
+        if (targeting.TargetRequiredState == RequireTargetState.Alive)
         {
-          if (_user.Target.IsDead == true)
+          if (_user.Target.IsDead)
           {
             //the target should be Alive, but its not
             return false;
@@ -85,14 +91,14 @@ namespace Station
         //check distance
         switch (_data.Targeting.UsedAbilityTargeting)
         {
-          case Targeting.AbilityTargeting.Self:
+          case AbilityTargeting.Self:
             if (_user.Target != _user)
             {
               return false;
             }
 
             break;
-          case Targeting.AbilityTargeting.SelfOrFriendly:
+          case AbilityTargeting.SelfOrFriendly:
            
             if (_user.ResolveStance(target) == Stance.Enemy)
             {
@@ -101,7 +107,7 @@ namespace Station
             }
 
             break;
-          case Targeting.AbilityTargeting.Friendly:
+          case AbilityTargeting.Friendly:
             if (_user.ResolveStance(target) != Stance.Ally)
             {
               //not an friendly
@@ -109,7 +115,7 @@ namespace Station
             }
 
             break;
-          case Targeting.AbilityTargeting.Enemy:
+          case AbilityTargeting.Enemy:
             Debug.Log(_user.ResolveStance(target));
             if (_user.ResolveStance(target) != Stance.Enemy)
             {
@@ -118,7 +124,7 @@ namespace Station
             }
 
             break;
-          case Targeting.AbilityTargeting.NotSelf:
+          case AbilityTargeting.NotSelf:
             if (_user.Target == _user)
             {
               return false;
@@ -163,6 +169,26 @@ namespace Station
 
      
       #region DRIVERS IMPLEMENTATION
+      var targeting = _data.Targeting;
+      var target = _user.Target;
+      var targetingMode = targeting.UsedAbilityTargeting;
+
+      if (targetingMode == AbilityTargeting.Self )
+      {
+        target = _user;
+      }
+      if (targetingMode == AbilityTargeting.SelfOrFriendly )
+      {
+        if (target == null)
+        {
+          target = _user;
+        }
+        else if (_user.ResolveStance(target) != Stance.Ally)
+        {
+          target = _user;
+        }
+      }
+
 
       for (var index = 0; index < CurrentRank.ProjectileDrivers.Count; index++)
       {
@@ -173,7 +199,7 @@ namespace Station
           if (driver.EffectPrefab)
           {
             //todo projectile object
-            driver.Effects.ApplyEffects(_user, _user);
+            driver.Effects.ApplyEffects(_user, target);
           }
           
         });
@@ -194,7 +220,8 @@ namespace Station
           }
           else if (driver.Target == DriverTarget.Target)
           {
-            driver.Effects.ApplyEffects(_user, _user.Target);
+            Debug.Log(target);
+            driver.Effects.ApplyEffects(_user, target);
           }
         });
       }
