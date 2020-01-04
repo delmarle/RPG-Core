@@ -53,11 +53,12 @@ namespace Station
 
       var targeting = _data.Targeting;
       //check target requirement
+      var target = _user.Target;
       if (targeting.UsedAbilityTargeting != Targeting.AbilityTargeting.None)
       {
         //we need a target
 
-        if (_user.Target == null)
+        if (target == null)
         {
           //we have no target
           return false;
@@ -92,7 +93,8 @@ namespace Station
 
             break;
           case Targeting.AbilityTargeting.SelfOrFriendly:
-            if (_user.ResolveStance(_user) == Stance.Enemy)
+           
+            if (_user.ResolveStance(target) == Stance.Enemy)
             {
               //not an enemy
               return false;
@@ -100,7 +102,7 @@ namespace Station
 
             break;
           case Targeting.AbilityTargeting.Friendly:
-            if (_user.ResolveStance(_user) != Stance.Ally)
+            if (_user.ResolveStance(target) != Stance.Ally)
             {
               //not an friendly
               return false;
@@ -108,8 +110,8 @@ namespace Station
 
             break;
           case Targeting.AbilityTargeting.Enemy:
-            Debug.Log(_user.ResolveStance(_user));
-            if (_user.ResolveStance(_user) != Stance.Enemy)
+            Debug.Log(_user.ResolveStance(target));
+            if (_user.ResolveStance(target) != Stance.Enemy)
             {
               //not an enemy
               return false;

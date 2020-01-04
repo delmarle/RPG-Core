@@ -18,6 +18,7 @@ MonoBehaviour:
     - 139d35b1-5b25-4e39-b1a3-ec7fbabcdce9
     - c1f76797-57de-4931-807e-b3ef0e53f686
     - cb6a6afb-5cb7-4bbb-b5bb-edf277d65b53
+    - 9adb7935-3348-4b88-bba7-09733ef865b4
     m_values:
     - Name: self damage
       Description: 
@@ -178,3 +179,41 @@ MonoBehaviour:
       Targeting:
         TargetRequiredState: 0
         UsedAbilityTargeting: 0
+    - Name: Heavy Blow
+      Description: 
+      Icon: {fileID: 21300000, guid: 0c6bd05693fe34f33b825c503020f884, type: 3}
+      ParentSkillId: 2
+      UseRank: 0
+      Ranks:
+      - CastDistance: 0
+        CoolDown: 0
+        Casting:
+          Option: 0
+          Length: 1
+          AnimationId: 0
+          StartSound: {fileID: 0}
+        Invoking:
+          Option: 0
+          Length: 1
+          AnimationId: 0
+          InvokeSound: 
+        VitalsUsed: []
+        ProjectileDrivers: []
+        DirectDrivers:
+        - Delay: 0
+          Effects:
+            EffectName: 
+            Damages:
+            - EffectName: 
+              EffectIcon: {fileID: 0}
+              MinValue: 15
+              MaxValue: 40
+              CriticalBonus: 0
+            Heals: []
+            Modifiers: []
+            Teleports: []
+            Resurects: []
+          Target: 1
+      Targeting:
+        TargetRequiredState: 0
+        UsedAbilityTargeting: 4

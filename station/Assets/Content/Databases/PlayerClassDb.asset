@@ -41,7 +41,7 @@ MonoBehaviour:
         Value: 3
       StatisticsBonuses: []
       OwnedAbilities:
-      - Id: f9dd12be-e332-4758-9f96-a3e49898f915
+      - Id: 9adb7935-3348-4b88-bba7-09733ef865b4
         Rank: 0
         CoolDown: 0
       - Id: c1f76797-57de-4931-807e-b3ef0e53f686
