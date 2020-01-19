@@ -189,7 +189,6 @@ namespace Station
     
     public virtual void TryUseAbility(RuntimeAbility ability)
     {
-      Debug.Log("can use"+ability.CanUse());
       if (_castingAbility == ability)
       {
         return;

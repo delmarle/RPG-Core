@@ -116,7 +116,6 @@ namespace Station
 
             break;
           case AbilityTargeting.Enemy:
-            Debug.Log(_user.ResolveStance(target));
             if (_user.ResolveStance(target) != Stance.Enemy)
             {
               //not an enemy

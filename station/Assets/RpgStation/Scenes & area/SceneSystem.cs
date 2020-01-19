@@ -19,7 +19,6 @@ namespace Station
         
         protected override void OnInit()
         {
-            Debug.Log("init scene system;");
             GameGlobalEvents.OnDataBaseLoaded.AddListener(OnDatabaseReady);
             _savingSystem = _station.GetSystem<SavingSystem>();
             _dbSystem = _station.GetSystem<DbSystem>();

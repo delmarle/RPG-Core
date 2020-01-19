@@ -20,7 +20,6 @@ namespace Station
 #endregion
         public override void TryUseAbility(RuntimeAbility ability)
         {
-            Debug.Log(ability.CanUse());
             if (ability.CanUse())
             {
                 _nextAction = ability;

@@ -92,6 +92,9 @@ MonoBehaviour:
       - Id: 139d35b1-5b25-4e39-b1a3-ec7fbabcdce9
         Rank: 0
         CoolDown: 0
+      - Id: a26c2c09-1251-490d-ac31-fce4397d62c6
+        Rank: 0
+        CoolDown: 0
       OwnedSkills:
       - Id: bcbccab9-39af-4518-aa7b-20055d482bdb
         Rename: 0
