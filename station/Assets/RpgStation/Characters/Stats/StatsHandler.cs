@@ -71,12 +71,7 @@ namespace Station
    
       foreach (var attr in _attributesDb.Db)
       {
-        var attributeInstance = new Attribute
-        {
-          Character = source,
-          Stats = this,
-          StaticData =  _attributesDb.GetEntry(attr.Key)
-        };
+        var attributeInstance = new Attribute(source, _attributesDb.GetEntry(attr.Key));
         _attributes.Add(attr.Value.Id, attributeInstance);
       }
     }
@@ -96,37 +91,20 @@ namespace Station
       //set primary health
       if (healthVital!= null)
       {
-        var healthAmount  = new Vital
-        {
-          Character = source,
-          Stats = this,
-          StaticData =  _vitalsDb.GetEntry(healthVital.Id)
-        };
-
+        var healthAmount  = new Vital(source, _vitalsDb.GetEntry(healthVital.Id));
         SetupVitalEntry(VitalModel.VitalType.PrimaryHealth, healthAmount , healthVital.Id);
         
         
         if (secondaryHealthVital!= null)
         {
-          var secondaryHealthAmount  = new Vital
-          {
-            Character = source,
-            Stats = this,
-            StaticData = _vitalsDb.GetEntry(secondaryHealthVital.Id)
-          };
-       
+          var secondaryHealthAmount  =  new Vital(source, _vitalsDb.GetEntry(secondaryHealthVital.Id));
           SetupVitalEntry(VitalModel.VitalType.PrimaryHealth, secondaryHealthAmount , secondaryHealthVital.Id);
         }
       }
       
       foreach (var energyData in energyVitals)
       {
-        var vital = new Vital
-        {
-          Character = source,
-          Stats = this,
-          StaticData = _vitalsDb.GetEntry(energyData.Id)
-        };
+        var vital = new Vital(source, _vitalsDb.GetEntry(energyData.Id));
         SetupVitalEntry(VitalModel.VitalType.Energy,vital, energyData.Id);
       }
     }
@@ -144,7 +122,7 @@ namespace Station
       }
       _vitals.Add(id,vital);
       vital.RegenCycle();
-      var timer = Timer.Register(vital.StaticData.RegenCycle, () => 
+      var timer = Timer.Register(vital.Model.RegenCycle, () => 
       {
         vital.RegenCycle();
       }, null, true);
@@ -183,7 +161,7 @@ namespace Station
     public void ReceiveModifier(ModifierEffect modifier, BaseCharacter source)
     {
       //TODO handle aggro from source
-      RuntimeModifier currentEffect = null;;
+      RuntimeModifier currentEffect;
       if (_currentModifier.ContainsKey(modifier.Identifier))
       {
          currentEffect = _currentModifier[modifier.Identifier];

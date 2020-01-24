@@ -2,45 +2,27 @@
 {
   public class Attribute 
   {
+    public Attribute(BaseCharacter character, AttributeModel model)
+    {
+      _character = character;
+      _model = model;
+    }
+    
     #region [[ FIELDS ]]
-    private BaseCharacter _character;
-    public BaseCharacter Character
-    {
-      get { return _character; }
-      set { _character = value; }
-    }
-    
-    private StatsHandler _stats;
-    public StatsHandler Stats
-    {
-      get { return _stats; }
-      set { _stats = value; }
-    }
-    
-    private AttributeModel _staticData;
-    public AttributeModel StaticData
-    {
-      get { return _staticData; }
-      set { _staticData = value; }
-    }
-
+    private readonly BaseCharacter _character;
+    private readonly AttributeModel _model;
     private int _modifiedAmount;
     private int _statBonus;
     private int _equipmentBonus;
     private int _base;
-    
-    public int BaseValue 
-    {
-      get
-      {
-        _base = _character.Calculator.GetBaseAttribute(_staticData.Id);
-        return _base;
-      }
-    }
+
+    public AttributeModel Model => _model;
+
+    public int BaseValue => _character.Calculator.GetBaseAttribute(_model.Id);
 
     public int ModifiedAmount
     {
-      get { return _modifiedAmount; }
+      get => _modifiedAmount;
       set
       {
         _modifiedAmount = value;
@@ -50,7 +32,7 @@
     
     public int StatBonusAmount
     {
-      get { return _statBonus; }
+      get => _statBonus;
       set
       {
         _statBonus = value;
@@ -60,7 +42,7 @@
     
     public int EquipmentBonusAmount
     {
-      get { return _equipmentBonus; }
+      get => _equipmentBonus;
       set
       {
         _equipmentBonus = value;
@@ -68,19 +50,17 @@
       }
     }
 
-    public int MaximumValue
-    {
-      get { return BaseValue + _statBonus + _equipmentBonus + _modifiedAmount; }
-    }
+    public int MaximumValue => BaseValue + _statBonus + _equipmentBonus + _modifiedAmount;
+
     #endregion
     
     private void DoChangeEvent()
     {
       if(_character)
       {
-        if(_character.OnAttributesUpdated != null) { _character.OnAttributesUpdated.Invoke(_character); }
-        if(_character.OnVitalsUpdated != null) { _character.OnVitalsUpdated.Invoke(_character); }
-        if(_character.OnStatisticUpdated != null) { _character.OnStatisticUpdated.Invoke(_character); }
+        _character.OnAttributesUpdated?.Invoke(_character);
+        _character.OnVitalsUpdated?.Invoke(_character);
+        _character.OnStatisticUpdated?.Invoke(_character);
       }
     }
   }

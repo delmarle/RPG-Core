@@ -106,7 +106,7 @@ public class CharacterCalculation : ScriptableObject
 
     foreach (var attribute in _character.Stats.Attributes)
     {
-      foreach (var vitalBonus in  attribute.Value.StaticData.VitalBonuses)
+      foreach (var vitalBonus in  attribute.Value.Model.VitalBonuses)
       {
         
         if (vitalBonus.Id == vitalId)

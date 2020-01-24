@@ -4,37 +4,22 @@ namespace Station
 {
   public class Vital
   {
+    public Vital(BaseCharacter character, VitalModel model)
+    {
+      _character = character;
+      _model = model;
+    }
+
     #region [[ FIELDS ]]
     private BaseCharacter _character;
-    public BaseCharacter Character
-    {
-      get { return _character; }
-      set { _character = value; }
-    }
-    
-    private StatsHandler _stats;
-    public StatsHandler Stats
-    {
-      get { return _stats; }
-      set { _stats = value; }
-    }
-
-    private VitalModel _staticData;
-    public VitalModel StaticData
-    {
-      get { return _staticData; }
-      set
-      {
-        _staticData = value;
-      }
-    }
-
+    private VitalModel _model;
+    public VitalModel Model => _model;
     #region VALUE
     private int _current;
     private int _modifiedAmount;
     private int AttributesBonus
     {
-      get { return _character.Calculator.GetVitalBonusFromAttributes(_staticData.Id); }
+      get { return _character.Calculator.GetVitalBonusFromAttributes(_model.Id); }
     }
     private int _equipmentBonus;
     private int _base;
@@ -51,7 +36,7 @@ namespace Station
     {
       get
       {
-        _base = _character.Calculator.GetBaseVital(_staticData.Id);
+        _base = _character.Calculator.GetBaseVital(_model.Id);
         return _base;
       }
     }
@@ -94,7 +79,7 @@ namespace Station
     #endregion
     #region REGEN
 
-    private int _baseRegenValue {  get { return _character.Calculator.GetBaseVitalRegen(_staticData.Id); }}
+    private int _baseRegenValue {  get { return _character.Calculator.GetBaseVitalRegen(_model.Id); }}
     private int _attributeRegenBonus= 0;
     private int _modifiedRegenBonus = 0;
     
