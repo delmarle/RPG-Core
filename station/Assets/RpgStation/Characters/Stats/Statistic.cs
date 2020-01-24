@@ -1,32 +1,19 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Station
 {
   public class Statistic 
   {
     #region [[ FIELDS ]]
-    private BaseCharacter _character;
-    public BaseCharacter Character
+
+    public Statistic(BaseCharacter character, StatisticModel model)
     {
-      get { return _character; }
-      set { _character = value; }
-    }
-    
-    private StatsHandler _stats;
-    public StatsHandler Stats
-    {
-      get { return _stats; }
-      set { _stats = value; }
-    }
-    
-    private StatisticModel _model;
-    public StatisticModel Model
-    {
-      get { return _model; }
-      set { _model = value; }
+      _character = character;
+      _model = model;
     }
 
+    private BaseCharacter _character;
+    private StatisticModel _model;
     private float _modifiedAmount;
     private float _attributesBonus;
     private float _equipmentBonus;
@@ -43,7 +30,7 @@ namespace Station
 
     public float ModifiedAmount
     {
-      get { return _modifiedAmount; }
+      get => _modifiedAmount;
       set
       {
         _modifiedAmount = value;
@@ -53,7 +40,7 @@ namespace Station
     
     public float AttributesBonusAmount
     {
-      get { return _attributesBonus; }
+      get => _attributesBonus;
       set
       {
         _attributesBonus = value;
@@ -63,7 +50,7 @@ namespace Station
     
     public float EquipmentBonusAmount
     {
-      get { return _equipmentBonus; }
+      get => _equipmentBonus;
       set
       {
         _equipmentBonus = value;
@@ -75,7 +62,7 @@ namespace Station
     {
       get
       {
-        float value = BaseValue + _attributesBonus + _equipmentBonus + _modifiedAmount;
+        var value = BaseValue + _attributesBonus + _equipmentBonus + _modifiedAmount;
         return Mathf.Clamp(value ,_model.MinimumValue, _model.MaximumValue);
       }
     }
@@ -83,7 +70,7 @@ namespace Station
     
     private void DoChangeEvent()
     {
-      if(_character && _character.OnStatisticUpdated != null) { _character.OnStatisticUpdated.Invoke(_character); }
+      if(_character) { _character.OnStatisticUpdated?.Invoke(_character); }
     }
   }
 }

@@ -85,12 +85,8 @@ namespace Station
     {
       foreach (var staticStat in _statisticDb)
       {
-        var stat = new Statistic
-        {
-          Character = source,
-          Stats = this,
-          Model =  _statisticDb.GetEntry(staticStat.Id)
-        };
+        var stat = new Statistic(source, _statisticDb.GetEntry(staticStat.Id));
+       
         _statistics.Add(staticStat.Id, stat);
       }
     }
@@ -98,7 +94,6 @@ namespace Station
     public void BuildVitals(BaseCharacter source,IdIntegerValue healthVital, IdIntegerValue secondaryHealthVital, IdIntegerValue[] energyVitals)
     {
       //set primary health
-
       if (healthVital!= null)
       {
         var healthAmount  = new Vital
