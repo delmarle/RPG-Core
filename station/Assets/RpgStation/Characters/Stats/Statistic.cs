@@ -6,6 +6,7 @@ namespace Station
   {
     #region [[ FIELDS ]]
 
+    public const string MOVEMENT_SPEED_ID = "movement_speed";
     public Statistic(BaseCharacter character, StatisticModel model)
     {
       _character = character;

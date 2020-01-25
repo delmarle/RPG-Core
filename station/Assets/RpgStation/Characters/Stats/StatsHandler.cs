@@ -11,6 +11,7 @@ namespace Station
     private AttributesDb _attributesDb;
     private StatisticDb _statisticDb;
     private VitalsDb _vitalsDb;
+    private int _movementSpeedId;
     
     private List<RuntimeModifier> _modifierToRecycle = new List<RuntimeModifier>();
     private BaseCharacter _character;
@@ -22,6 +23,8 @@ namespace Station
     private Dictionary<int, Statistic> _statistics = new Dictionary<int, Statistic>();
     
     public Dictionary<int, Statistic> Statistics => _statistics;
+
+    public Statistic MovementSpeed => _statistics[_movementSpeedId];
 
     #region VITALS
     
@@ -81,7 +84,7 @@ namespace Station
       foreach (var staticStat in _statisticDb)
       {
         var stat = new Statistic(source, _statisticDb.GetEntry(staticStat.Id));
-       
+
         _statistics.Add(staticStat.Id, stat);
       }
     }

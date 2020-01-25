@@ -13,11 +13,7 @@ namespace Station
     {
       public string CharacterCreationType;
       public StationMechanics Mechanics;
-
-      //team
       public int MaxTeamSize = 1;
-      
-
     }
 
 
