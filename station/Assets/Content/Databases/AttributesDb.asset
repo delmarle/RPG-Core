@@ -17,7 +17,7 @@ MonoBehaviour:
     - 5c60fbf5-9faa-43f3-8cef-fcc0c89184a9
     m_values:
     - Name: Str
-      Id: 0
+      Id: 5c60fbf5-9faa-43f3-8cef-fcc0c89184a9
       Description: 
       Icon: {fileID: 21300000, guid: 92043f372dc674940bc986b895137bec, type: 3}
       DefaultValue: 9

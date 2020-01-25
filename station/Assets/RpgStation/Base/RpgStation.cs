@@ -18,13 +18,12 @@ namespace Station
         #region Mono
         private void Awake()
         {
-           Init();
-          
+            Init();
         }
 
         private void Start()
         {
-            if (Application.isPlaying || gameObject.activeInHierarchy)
+            if (Application.isPlaying && gameObject.activeInHierarchy)
             {
                 DontDestroyOnLoad(gameObject);
             }

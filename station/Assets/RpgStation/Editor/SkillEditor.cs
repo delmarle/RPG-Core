@@ -331,7 +331,9 @@ namespace Station
         {
           var entry = requirement.AttributeRequirement[index];
           EditorGUILayout.BeginHorizontal("box", GUILayout.ExpandWidth(true));
-          requirement.AttributeRequirement[index].Id = EditorGUILayout.Popup(requirementName + index, entry.Id, _attributesDb.ListEntryNames());
+          int requirementIndex = _attributesDb.GetIndex(entry.Id);
+          requirementIndex = EditorGUILayout.Popup(requirementName + index, requirementIndex, _attributesDb.ListEntryNames());
+          requirement.AttributeRequirement[index].Id = _attributesDb.GetKey(requirementIndex);
           requirement.AttributeRequirement[index].Value = EditorGUILayout.IntField("Minimum value", entry.Value);
           
           if (EditorStatic.SizeableButton(120, 18, "DELETE", ""))
@@ -344,7 +346,7 @@ namespace Station
 
         if (EditorStatic.Button(true, 32, "Add "+requirementName, "plus"))
         {
-          requirement.AttributeRequirement.Add(new IdIntegerValue(0,5));
+          requirement.AttributeRequirement.Add(new IdIntegerValue(_attributesDb.GetKey(0),5));
         }
       }
     }
@@ -374,8 +376,10 @@ namespace Station
         for (var index = 0; index < requirement.VitalRequirement.Count; index++)
         {
           var entry = requirement.VitalRequirement[index];
+          var requirementIndex = _vitalsDb.GetIndex(entry.Id);
           EditorGUILayout.BeginHorizontal("box", GUILayout.ExpandWidth(true));
-          requirement.VitalRequirement[index].Id = EditorGUILayout.Popup(requirementName + index, entry.Id, _vitalsDb.ListEntryNames());
+          requirementIndex = EditorGUILayout.Popup(requirementName + index, requirementIndex, _vitalsDb.ListEntryNames());
+          requirement.VitalRequirement[index].Id = _vitalsDb.GetKey(requirementIndex);
           requirement.VitalRequirement[index].Value = EditorGUILayout.IntField("Minimum value", entry.Value);
           
           if (EditorStatic.SizeableButton(120, 18, "DELETE", ""))
@@ -388,7 +392,7 @@ namespace Station
 
         if (EditorStatic.Button(true, 32, "Add "+requirementName, "plus"))
         {
-          requirement.VitalRequirement.Add(new IdIntegerValue(0,5));
+          requirement.VitalRequirement.Add(new IdIntegerValue(_vitalsDb.GetKey(0),5));
         }
       }
     }
@@ -418,7 +422,10 @@ namespace Station
         {
           var entry = requirement.StatRequirement[index];
           EditorGUILayout.BeginHorizontal("box", GUILayout.ExpandWidth(true));
-          requirement.StatRequirement[index].Id = EditorGUILayout.Popup(requirementName + index, entry.Id, _statisticDb.ListEntryNames());
+          var requirementIndex = _statisticDb.GetIndex(entry.Id);
+          requirementIndex = EditorGUILayout.Popup(requirementName + index, requirementIndex, _statisticDb.ListEntryNames());
+
+          requirement.StatRequirement[index].Id = _statisticDb.GetKey(requirementIndex);
           requirement.StatRequirement[index].Value = EditorGUILayout.FloatField("Minimum value", entry.Value);
           
           if (EditorStatic.SizeableButton(120, 18, "DELETE", ""))
@@ -431,7 +438,7 @@ namespace Station
 
         if (EditorStatic.Button(true, 32, "Add "+requirementName, "plus"))
         {
-          requirement.StatRequirement.Add(new IdFloatValue(0,5));
+          requirement.StatRequirement.Add(new IdFloatValue(_statisticDb.GetKey(0),5));
         }
       }
     }
@@ -460,13 +467,15 @@ namespace Station
       {
         if (EditorStatic.Button(true, 32, "Add "+required, "plus"))
         {
-          requirement.SkillRequirement.Add(new IdIntegerValue(0,0));
+          requirement.SkillRequirement.Add(new IdIntegerValue(_db.GetKey(0),0));
         }
         for (var index = 0; index < requirement.SkillRequirement.Count; index++)
         {
           var entry = requirement.SkillRequirement[index];
           EditorGUILayout.BeginHorizontal("box", GUILayout.ExpandWidth(true));
-          requirement.SkillRequirement[index].Id = EditorGUILayout.Popup(required + index, entry.Id, _db.ListEntryNames());
+          var requirementIndex = _db.GetIndex(entry.Id);
+          requirementIndex =  EditorGUILayout.Popup(required + index, requirementIndex, _db.ListEntryNames());
+          requirement.SkillRequirement[index].Id = _db.GetKey(requirementIndex);
           requirement.SkillRequirement[index].Value = EditorGUILayout.IntField("Minimum level", entry.Value);
           
           if (EditorStatic.SizeableButton(120, 18, "DELETE", ""))
@@ -512,9 +521,9 @@ namespace Station
         if (_levelsState[index])
         {
           level.PointToNext = EditorGUILayout.IntField("Point required ", level.PointToNext);
-          EditorStatic.DrawBonusWidget(level.AttributesBonuses,"Attributes Bonus:", _attributesDb.ListEntryNames());
-          EditorStatic.DrawBonusWidget(level.StatisticBonuses,"Statistic Bonus:", _statisticDb.ListEntryNames());
-          EditorStatic.DrawBonusWidget(level.VitalBonuses,"Vitals Bonus:", _vitalsDb.ListEntryNames());
+          EditorStatic.DrawBonusWidget(level.AttributesBonuses,"Attributes Bonus:", _attributesDb);
+          EditorStatic.DrawBonusWidget(level.StatisticBonuses,"Statistic Bonus:", _statisticDb);
+          EditorStatic.DrawBonusWidget(level.VitalBonuses,"Vitals Bonus:", _vitalsDb);
           EditorStatic.DrawThinLine();
           
           if (EditorStatic.Button(true, 32, "Add active ability granted", "plus"))

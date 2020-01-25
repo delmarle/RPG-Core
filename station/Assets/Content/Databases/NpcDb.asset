@@ -24,13 +24,15 @@ MonoBehaviour:
       PrefabId: chomper
       UseHealth: 1
       HealthVital:
-        Id: 0
+        Id: a8710699-ce84-46b7-8c19-b5c7cc0f361d
         Value: 45
       UseSecondaryHealth: 0
       SecondaryHealthVital:
-        Id: 0
+        Id: a8710699-ce84-46b7-8c19-b5c7cc0f361d
         Value: 0
-      EnergyVitals: []
+      EnergyVitals:
+      - Id: 4cf62f6b-fafb-437f-9ca1-5981aa823211
+        Value: 25
       AttributesBonuses: []
       StatisticsBonuses: []
       OwnedAbilities: []

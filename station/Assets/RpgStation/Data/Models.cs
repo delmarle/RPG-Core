@@ -28,7 +28,7 @@ namespace Station
     public class VitalModel
     {
       public string Name = "new vital";
-      public int Id;
+      public string Id;
       public Color Color = Color.white;
       public string Description;
       public Sprite Icon;
@@ -56,7 +56,7 @@ namespace Station
     public class AttributeModel
     {
       public string Name = "new Attribute";
-      public int Id;
+      public string Id;
       public string Description;
       public Sprite Icon;
       public int DefaultValue = 10;
@@ -79,10 +79,10 @@ namespace Station
       public List<IdIntegerValue> VitalBonuses = new List<IdIntegerValue>();
     
       //TODO clear from editor
-      private Dictionary<int, int> _attributesBonusesMap = new Dictionary<int, int>();
-      private Dictionary<int, int> _vitalsBonusesMap = new Dictionary<int, int>();
+      private Dictionary<string, int> _attributesBonusesMap = new Dictionary<string, int>();
+      private Dictionary<string, int> _vitalsBonusesMap = new Dictionary<string, int>();
     
-      public int GetAttributeRaceBaseValue(int attributeId)
+      public int GetAttributeRaceBaseValue(string attributeId)
       {
         if (_attributesBonusesMap.Count != AttributeBonuses.Count)
         {
@@ -95,7 +95,7 @@ namespace Station
         return _attributesBonusesMap.ContainsKey(attributeId) ? _attributesBonusesMap[attributeId] : 0;
       }
     
-      public int GetVitalsBonus(int vitalId)
+      public int GetVitalsBonus(string vitalId)
       {
         if (_vitalsBonusesMap.Count != VitalBonuses.Count)
         {
@@ -120,9 +120,9 @@ namespace Station
       public Sprite Icon;
       public List<RaceMeta> AllowedRaces = new List<RaceMeta>();
       public bool UseHealth;
-      public IdIntegerValue HealthVital = new IdIntegerValue(0, 0);
+      public IdIntegerValue HealthVital = new IdIntegerValue("", 0);
       public bool UseSecondaryHealth;
-      public IdIntegerValue SecondaryHealthVital = new IdIntegerValue(0, 0);
+      public IdIntegerValue SecondaryHealthVital = new IdIntegerValue("", 0);
       public List<IdIntegerValue> EnergyVitals = new List<IdIntegerValue>();
       public List<IdIntegerValue> AttributesBonuses = new List<IdIntegerValue>();
       public List<IdFloatValue> StatisticsBonuses = new List<IdFloatValue>();
@@ -138,11 +138,11 @@ namespace Station
 
       #region [[ RUNTIME CACHING ]]
 
-      private Dictionary<int, int> _attributesBonusesMap = new Dictionary<int, int>();
-      private Dictionary<int, float> _statisticsBonusesMap = new Dictionary<int, float>();
-      private Dictionary<int, int> _vitalsBonusesMap = new Dictionary<int, int>();
+      private Dictionary<string, int> _attributesBonusesMap = new Dictionary<string, int>();
+      private Dictionary<string, float> _statisticsBonusesMap = new Dictionary<string, float>();
+      private Dictionary<string, int> _vitalsBonusesMap = new Dictionary<string, int>();
 
-      public int GetAttributeBonus(int attributeId)
+      public int GetAttributeBonus(string attributeId)
       {
         if (_attributesBonusesMap.Count != AttributesBonuses.Count)
         {
@@ -156,7 +156,7 @@ namespace Station
         return _attributesBonusesMap.ContainsKey(attributeId) ? _attributesBonusesMap[attributeId] : 0;
       }
 
-      public int GetVitalsBonus(int vitalId)
+      public int GetVitalsBonus(string vitalId)
       {
         if (_vitalsBonusesMap.Count != EnergyVitals.Count)
         {
@@ -170,7 +170,7 @@ namespace Station
         return _vitalsBonusesMap.ContainsKey(vitalId) ? _vitalsBonusesMap[vitalId] : 0;
       }
 
-      public float GetStatsBonus(int statId)
+      public float GetStatsBonus(string statId)
       {
         if (_statisticsBonusesMap.Count != StatisticsBonuses.Count)
         {
@@ -198,9 +198,9 @@ namespace Station
       public string PrefabId;
       
       public bool UseHealth;
-      public IdIntegerValue HealthVital = new IdIntegerValue(0, 0);
+      public IdIntegerValue HealthVital = new IdIntegerValue("health", 0);
       public bool UseSecondaryHealth;
-      public IdIntegerValue SecondaryHealthVital = new IdIntegerValue(0, 0);
+      public IdIntegerValue SecondaryHealthVital = new IdIntegerValue("health", 0);
       public List<IdIntegerValue> EnergyVitals = new List<IdIntegerValue>();
       public List<IdIntegerValue> AttributesBonuses = new List<IdIntegerValue>();
       public List<IdFloatValue> StatisticsBonuses = new List<IdFloatValue>();
@@ -219,11 +219,11 @@ namespace Station
 
       #region [[ RUNTIME CACHING ]]
 
-      private Dictionary<int, int> _attributesBonusesMap = new Dictionary<int, int>();
-      private Dictionary<int, float> _statisticsBonusesMap = new Dictionary<int, float>();
-      private Dictionary<int, int> _vitalsBonusesMap = new Dictionary<int, int>();
+      private Dictionary<string, int> _attributesBonusesMap = new Dictionary<string, int>();
+      private Dictionary<string, float> _statisticsBonusesMap = new Dictionary<string, float>();
+      private Dictionary<string, int> _vitalsBonusesMap = new Dictionary<string, int>();
 
-      public int GetAttributeBonus(int attributeId)
+      public int GetAttributeBonus(string attributeId)
       {
         if (_attributesBonusesMap.Count != AttributesBonuses.Count)
         {
@@ -237,7 +237,7 @@ namespace Station
         return _attributesBonusesMap.ContainsKey(attributeId) ? _attributesBonusesMap[attributeId] : 0;
       }
 
-      public int GetVitalsBonus(int vitalId)
+      public int GetVitalsBonus(string vitalId)
       {
         if (_vitalsBonusesMap.Count != EnergyVitals.Count)
         {
@@ -251,7 +251,7 @@ namespace Station
         return _vitalsBonusesMap.ContainsKey(vitalId) ? _vitalsBonusesMap[vitalId] : 0;
       }
 
-      public float GetStatsBonus(int statId)
+      public float GetStatsBonus(string statId)
       {
         if (_statisticsBonusesMap.Count != StatisticsBonuses.Count)
         {
@@ -284,7 +284,7 @@ namespace Station
     [Serializable]
     public class StatisticModel
     {
-        public int Id;
+        public string Id;
         public string Name = "new statistic";
         public Color Color = Color.white;
         public string Description;
@@ -768,10 +768,10 @@ public enum StatusEffectType
   [Serializable]
   public class IdIntegerValue
   {
-    public int Id;
+    public string Id;
     public int Value;
     
-    public IdIntegerValue(int id, int defaultAmount)
+    public IdIntegerValue(string id, int defaultAmount)
     {
       Id = id;
       Value = defaultAmount;
@@ -809,10 +809,10 @@ public enum StatusEffectType
   [Serializable]
   public class IdFloatValue
   {
-    public int Id;
+    public string Id;
     public float Value;
     
-    public IdFloatValue(int id, float defaultAmount)
+    public IdFloatValue(string id, float defaultAmount)
     {
       Id = id;
       Value = defaultAmount;

@@ -333,18 +333,20 @@ namespace RPG.Editor
     
     #region [[ WIDGETS ]]
     
-    public static void DrawBonusWidget(List<IdFloatValue> current, string bonusName,string[] listEntryNames)
+    public static void DrawBonusWidget<T>(List<IdFloatValue> current, string bonusName, DictGenericDatabase<T> dict) where T : class
     {
       EditorGUILayout.BeginHorizontal();
       DrawSectionTitle(bonusName, 350, 3);
-      if (SizeableButton(100, 22, "Add", "plus")) { current.Add(new IdFloatValue(0, 5)); }
+      if (SizeableButton(100, 22, "Add", "plus")) { current.Add(new IdFloatValue(dict.GetKey(0), 5)); }
       EditorGUILayout.EndHorizontal();
       for (var index = 0; index < current.Count; index++)
       {
         var bonus = current[index];
         GUILayout.BeginHorizontal("box");
         {
-          bonus.Id = EditorGUILayout.Popup(bonus.Id, listEntryNames, GUILayout.Width(100));
+          int bonusIndex = dict.GetIndex(bonus.Id);
+          bonusIndex = EditorGUILayout.Popup(bonusIndex, dict.ListEntryNames(), GUILayout.Width(100));
+          bonus.Id = dict.GetKey(bonusIndex);
           GUILayout.Space(5);
           bonus.Value = EditorGUILayout.FloatField(bonus.Value, GUILayout.Width(125));
           GUILayout.Space(5);
@@ -359,18 +361,26 @@ namespace RPG.Editor
       }
     }
 
-    public static void DrawBonusWidget(List<IdIntegerValue> current, string title,string[] listEntryNames)
+    public static void DrawBonusWidget<T>(List<IdIntegerValue> current, string bonusName, DictGenericDatabase<T> dict) where T : class
     {
       EditorGUILayout.BeginHorizontal();
-      DrawSectionTitle(title, 350, 3);
-      if (SizeableButton(100, 22, "Add", "plus")) { current.Add(new IdIntegerValue(0, 5)); }
+      DrawSectionTitle(bonusName, 350, 3);
+      if (SizeableButton(100, 22, "Add", "plus")) { current.Add(new IdIntegerValue(dict.GetKey(0), 5)); }
       EditorGUILayout.EndHorizontal();
       for (var index = 0; index < current.Count; index++)
       {
         var bonus = current[index];
         GUILayout.BeginHorizontal("box");
         {
-          bonus.Id = EditorGUILayout.Popup(bonus.Id, listEntryNames, GUILayout.Width(100));
+          int bonusIndex = dict.GetIndex(bonus.Id);
+          if (bonusIndex < 0)
+          {
+            bonusIndex = 0;
+          }
+
+          bonusIndex = EditorGUILayout.Popup(bonusIndex, dict.ListEntryNames(), GUILayout.Width(100));
+          Debug.Log(bonusIndex+"  --  "+dict.GetKey(bonusIndex));
+          bonus.Id = dict.GetKey(bonusIndex);
           GUILayout.Space(5);
           bonus.Value = EditorGUILayout.IntField(bonus.Value, GUILayout.Width(125));
           GUILayout.Space(5);

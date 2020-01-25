@@ -15,16 +15,16 @@ MonoBehaviour:
   _db:
     m_keys:
     - e55ea5e7-dcdc-4b87-9825-a03f37b4dd36
-    - 4c861b47-6414-4b0e-a6a7-8493195de7d3
+    - movement_speed
     m_values:
-    - Id: 0
+    - Id: e55ea5e7-dcdc-4b87-9825-a03f37b4dd36
       Name: Armor
       Color: {r: 1, g: 1, b: 1, a: 1}
       Description: 
       Icon: {fileID: 0}
       MinimumValue: 5
       MaximumValue: 99
-    - Id: 1
+    - Id: movement_speed
       Name: Movement speed
       Color: {r: 1, g: 1, b: 1, a: 1}
       Description: 

@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using RPG.Editor;
+﻿using RPG.Editor;
 using UnityEditor;
 using UnityEngine;
 
@@ -73,10 +72,10 @@ namespace Station
 
         private static void AssignIds()
         {
-            for (int i = 0; i < _attributesDb.Count(); i++)
-            {
-              _attributesDb.GetEntry(i).Id = i;
-            }
+          foreach (var attribute in _attributesDb.Db)
+          {
+            attribute.Value.Id = attribute.Key;
+          }
         }
         
         private static void ListView(int selectedEntry)
@@ -157,12 +156,12 @@ namespace Station
       EditorStatic.DrawThinLine(10);
       if (_vitalsDb.Count() > 0)
       {
-        EditorStatic.DrawBonusWidget( attributeStaticData.VitalBonuses,"Vital bonus per point:", _vitalsDb.ListEntryNames());
+        EditorStatic.DrawBonusWidget( attributeStaticData.VitalBonuses,"Vital bonus per point:", _vitalsDb);
       }
       EditorStatic.DrawThinLine(10);
       if (_attributesDb.Count() > 0)
       {
-        EditorStatic.DrawBonusWidget(attributeStaticData.StatisticBonuses, "Statistic bonus per point:", _statisticsDb.ListEntryNames());
+        EditorStatic.DrawBonusWidget(attributeStaticData.StatisticBonuses, "Statistic bonus per point:", _statisticsDb);
       }
 
    

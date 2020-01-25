@@ -11,34 +11,34 @@ namespace Station
     private AttributesDb _attributesDb;
     private StatisticDb _statisticDb;
     private VitalsDb _vitalsDb;
-    private int _movementSpeedId;
+    private string _movementSpeedId;
     
     private List<RuntimeModifier> _modifierToRecycle = new List<RuntimeModifier>();
     private BaseCharacter _character;
    
-    private Dictionary<int, Attribute> _attributes = new Dictionary<int, Attribute>();
+    private Dictionary<string, Attribute> _attributes = new Dictionary<string, Attribute>();
     
-    public Dictionary<int, Attribute> Attributes => _attributes;
+    public Dictionary<string, Attribute> Attributes => _attributes;
 
-    private Dictionary<int, Statistic> _statistics = new Dictionary<int, Statistic>();
+    private Dictionary<string, Statistic> _statistics = new Dictionary<string, Statistic>();
     
-    public Dictionary<int, Statistic> Statistics => _statistics;
+    public Dictionary<string, Statistic> Statistics => _statistics;
 
     public Statistic MovementSpeed => _statistics[_movementSpeedId];
 
     #region VITALS
     
-    private int _healthId;
+    private string _healthId;
 
     public Vital Health => _vitals[_healthId];
 
-    private int _secondaryHealthId;
+    private string _secondaryHealthId;
 
     public Vital SecondaryHealth => _vitals[_secondaryHealthId];
 
-    private Dictionary<int, Vital> _vitals = new Dictionary<int, Vital>();
+    private Dictionary<string, Vital> _vitals = new Dictionary<string, Vital>();
     
-    public Dictionary<int, Vital> Vitals => _vitals;
+    public Dictionary<string, Vital> Vitals => _vitals;
 
     private List<Timer> _regenTimers = new List<Timer>();
     
@@ -112,7 +112,7 @@ namespace Station
       }
     }
 
-    private void SetupVitalEntry(VitalModel.VitalType type,Vital vital, int id)
+    private void SetupVitalEntry(VitalModel.VitalType type,Vital vital, string id)
     {
       switch (type)
       {
@@ -135,7 +135,7 @@ namespace Station
     public void SetVitalsValue(List<IdIntegerValue> vitalsValues)
     {
       if (vitalsValues == null) return;
-      Dictionary<int,int> vitalsMap = new Dictionary<int, int>();
+      Dictionary<string,int> vitalsMap = new Dictionary<string, int>();
       foreach (var vitals in vitalsValues)
       {
         vitalsMap.Add(vitals.Id,vitals.Value);

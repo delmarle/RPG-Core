@@ -23,7 +23,7 @@ namespace Station
     [SerializeField] private UnityEngine.UI.Button _button = null;
     [SerializeField] private Image _icon = null;
 
-    private Dictionary<int, UiVitalBarWidget> _vitalSliders = new Dictionary<int, UiVitalBarWidget>();
+    private Dictionary<string, UiVitalBarWidget> _vitalSliders = new Dictionary<string, UiVitalBarWidget>();
     private BaseCharacter _character;
     private VitalsDb _vitalsDb;
     private TeamSystem _teamSystem;

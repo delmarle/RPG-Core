@@ -239,7 +239,7 @@ namespace Station
       #region [[ Require ]]
       EditorGUILayout.BeginHorizontal( GUILayout.ExpandWidth(true));
       EditorGUILayout.BeginVertical(style2, GUILayout.ExpandWidth(true),  GUILayout.Height(100));
-      EditorStatic.DrawBonusWidget(data.Ranks[_currentRank].VitalsUsed, "Vital Consumed", _vitalsDb.ListEntryNames());
+      EditorStatic.DrawBonusWidget(data.Ranks[_currentRank].VitalsUsed, "Vital Consumed", _vitalsDb);
      
       EditorStatic.DrawThinLine(3);
       var currentRank = data.Ranks[_currentRank];

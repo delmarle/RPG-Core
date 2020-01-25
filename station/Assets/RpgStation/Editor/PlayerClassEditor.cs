@@ -143,6 +143,13 @@ namespace Station
         private static void DrawViewContent()
         {
             var entry = _classDb.GetEntry(_selectedEntryIndex);
+            if (entry == null)
+            {
+
+                EditorGUILayout.HelpBox("Select a Class", MessageType.Info);
+                return;
+            }
+
             entry.Name = EditorGUILayout.TextField("Name: ", entry.Name);
             ClassPanel(entry, _selectedEntryIndex);
         }
@@ -162,15 +169,13 @@ namespace Station
                 GUILayout.Space(5);
                 current.StatsCalculator = (CharacterCalculation) EditorGUILayout.ObjectField("Calculator: ",
                     current.StatsCalculator, typeof(CharacterCalculation), false);
-                EditorStatic.DrawBonusWidget(current.AttributesBonuses, "Attribute Bonus:",
-                    _attributesDb.ListEntryNames());
+                EditorStatic.DrawBonusWidget(current.AttributesBonuses, "Attribute Bonus:", _attributesDb);
                 EditorStatic.DrawThinLine(10);
                 HealthVitalSection(current);
                 EditorStatic.DrawThinLine(10);
                 VitalBonusSection(current);
                 EditorStatic.DrawThinLine(10);
-                EditorStatic.DrawBonusWidget(current.StatisticsBonuses, "Statistic Bonus:",
-                    _statisticsDb.ListEntryNames());
+                EditorStatic.DrawBonusWidget(current.StatisticsBonuses, "Statistic Bonus:", _statisticsDb);
             }
 
             EditorStatic.DrawThinLine(10);
@@ -325,10 +330,15 @@ namespace Station
             {
                 GUILayout.BeginHorizontal("box");
                 {
-                    current.HealthVital.Id = EditorGUILayout.Popup("Primary Health:", current.HealthVital.Id,
-                        vitalNames, GUILayout.Width(250));
-                    current.HealthVital.Value =
-                        EditorGUILayout.IntField("Bonus: ", current.HealthVital.Value, GUILayout.Width(250));
+                    int healthIndex = _vitalsDb.GetIndex(current.HealthVital.Id);
+                    healthIndex = EditorGUILayout.Popup("Primary Health:", healthIndex, vitalNames, GUILayout.Width(250));
+                    if (healthIndex < 0)
+                    {
+                        healthIndex = 0;
+                    }
+
+                    current.HealthVital.Id = _vitalsDb.GetKey(healthIndex);
+                    current.HealthVital.Value = EditorGUILayout.IntField("Bonus: ", current.HealthVital.Value, GUILayout.Width(250));
                 }
                 GUILayout.EndHorizontal();
                 current.UseSecondaryHealth =
@@ -337,10 +347,14 @@ namespace Station
                 {
                     GUILayout.BeginHorizontal("box");
                     {
-                        current.SecondaryHealthVital.Id = EditorGUILayout.Popup("Secondary Health:",
-                            current.SecondaryHealthVital.Id, vitalNames, GUILayout.Width(250));
-                        current.SecondaryHealthVital.Value = EditorGUILayout.IntField("Bonus: ",
-                            current.SecondaryHealthVital.Value, GUILayout.Width(250));
+                        int health2Index = _vitalsDb.GetIndex(current.SecondaryHealthVital.Id);
+                        if (health2Index < 0)
+                        {
+                            health2Index = 0;
+                        }
+                        health2Index =  EditorGUILayout.Popup("Secondary Health:", health2Index, vitalNames, GUILayout.Width(250));
+                        current.SecondaryHealthVital.Id = _vitalsDb.GetKey(health2Index);
+                        current.SecondaryHealthVital.Value = EditorGUILayout.IntField("Bonus: ", current.SecondaryHealthVital.Value, GUILayout.Width(250));
                     }
                     GUILayout.EndHorizontal();
                 }
@@ -358,7 +372,13 @@ namespace Station
                 GUILayout.BeginHorizontal("box");
                 {
                     EditorGUILayout.LabelField("Energy " + index + ":", GUILayout.Width(145));
-                    vtlBonus.Id = EditorGUILayout.Popup(vtlBonus.Id, vitalNames, GUILayout.Width(100));
+                    int vitalIndex = _vitalsDb.GetIndex(vtlBonus.Id);
+                    if (vitalIndex < 0)
+                    {
+                        vitalIndex = 0;
+                    }
+                    vitalIndex = EditorGUILayout.Popup(vitalIndex, vitalNames, GUILayout.Width(100));
+                    vtlBonus.Id = _vitalsDb.GetKey(vitalIndex);
                     GUILayout.Space(5);
                     vtlBonus.Value = EditorGUILayout.IntField("Bonus: ", vtlBonus.Value, GUILayout.Width(250));
                     GUILayout.Space(5);
@@ -376,7 +396,8 @@ namespace Station
 
             if (EditorStatic.SizeableButton(90, 30, "Add", "plus"))
             {
-                current.EnergyVitals.Add(new IdIntegerValue(0, 5));
+                string latestEnergy = _vitalsDb.GetKey(0);
+                current.EnergyVitals.Add(new IdIntegerValue(latestEnergy, 5));
             }
         }
 

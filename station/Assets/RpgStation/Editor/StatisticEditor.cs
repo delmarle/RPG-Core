@@ -88,7 +88,8 @@ namespace Station
 
     private static void StatPanel(StatisticModel stat,int selectedStat)
     {
-      stat.Id = selectedStat;
+      string statId = _statisticsDb.GetKey(selectedStat);
+      stat.Id = statId;
       GUILayout.Label("EDIT Statistic:",GUILayout.Width(90));
       EditorStatic.DrawLargeLine(5);
       GUILayout.BeginHorizontal(GUILayout.ExpandWidth(true));

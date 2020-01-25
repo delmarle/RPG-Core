@@ -22,32 +22,32 @@ MonoBehaviour:
       Description: 
       Icon: {fileID: 21300000, guid: 2ae02f309e37a7b468a607a66bbc4e6d, type: 3}
       AttributeBonuses:
-      - Id: 0
+      - Id: 5c60fbf5-9faa-43f3-8cef-fcc0c89184a9
         Value: 18
       VitalBonuses:
-      - Id: 0
+      - Id: a8710699-ce84-46b7-8c19-b5c7cc0f361d
         Value: 100
-      - Id: 1
+      - Id: 4cf62f6b-fafb-437f-9ca1-5981aa823211
         Value: 100
     - Name: elf
       Description: 
       Icon: {fileID: 0}
       AttributeBonuses:
-      - Id: 0
+      - Id: 5c60fbf5-9faa-43f3-8cef-fcc0c89184a9
         Value: 18
       VitalBonuses:
-      - Id: 0
+      - Id: a8710699-ce84-46b7-8c19-b5c7cc0f361d
         Value: 100
-      - Id: 1
+      - Id: 4cf62f6b-fafb-437f-9ca1-5981aa823211
         Value: 100
     - Name: Alien
       Description: 
       Icon: {fileID: 0}
       AttributeBonuses:
-      - Id: 0
+      - Id: 5c60fbf5-9faa-43f3-8cef-fcc0c89184a9
         Value: 9
       VitalBonuses:
-      - Id: 0
+      - Id: a8710699-ce84-46b7-8c19-b5c7cc0f361d
         Value: 100
-      - Id: 1
+      - Id: 4cf62f6b-fafb-437f-9ca1-5981aa823211
         Value: 100

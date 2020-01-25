@@ -92,7 +92,7 @@ MonoBehaviour:
               ModifierType: 0
               AttributesBuffs: []
               VitalsBuffs:
-              - Id: 0
+              - Id: a8710699-ce84-46b7-8c19-b5c7cc0f361d
                 Value: 80
               StatisticsBuffs: []
               MaxStack: 1
@@ -251,7 +251,7 @@ MonoBehaviour:
                 type: 3}
               ModifierType: 0
               AttributesBuffs:
-              - Id: 0
+              - Id: 5c60fbf5-9faa-43f3-8cef-fcc0c89184a9
                 Value: 55
               VitalsBuffs: []
               StatisticsBuffs: []

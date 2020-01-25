@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 
 namespace Station
@@ -20,14 +21,14 @@ namespace Station
     public override void OnSetup()
     {
       
-      for (int i = 0; i < _attributesDb.Count(); i++)
+      foreach (var attribute in _attributesDb.Db)
       {
-        _cachedBaseAttributes.Add(i, 0);
+        _cachedBaseAttributes.Add(attribute.Key, 0);
       }
-    
-      for (int i = 0; i < _statisticDb.Count(); i++)
+
+      foreach (var stat in _statisticDb.Db)
       {
-        _cachedBaseStatistics.Add(i, 0);
+        _cachedBaseStatistics.Add(stat.Key, 0);
       }
 
       if (_data.UseHealth)
@@ -55,44 +56,47 @@ namespace Station
     {
       for (int i = 0; i < _cachedBaseAttributes.Count; i++)
       {
+        string key = _cachedBaseAttributes.ElementAt(i).Key;
         //DEFAULT VALUE
         int value = 0;
     
         //RACE BONUS
-        value  += _raceDb.GetEntry(_character.GetRace()).GetAttributeRaceBaseValue(i);
+        value  += _raceDb.GetEntry(_character.GetRace()).GetAttributeRaceBaseValue(key);
      
         //CLASS BONUS
-        value += _data.GetAttributeBonus(i);
+        value += _data.GetAttributeBonus(key);
         
-        _cachedBaseAttributes[i] = value;
-      } 
+        _cachedBaseAttributes[key] = value;
+      }
     }
 
     public override void UpdateStatistics()
     {
       for (int i = 0; i < _cachedBaseStatistics.Count; i++)
       {
+        string key = _cachedBaseStatistics.ElementAt(i).Key;
         //DEFAULT VALUE
         float value = 0;
         foreach (var attribute in _character.Stats.Attributes)
         {
           foreach (var statBonus in _attributesDb.GetEntry(attribute.Key).StatisticBonuses)
           {
-            if (statBonus.Id == i)
+            if (statBonus.Id.Equals(key))
             {
               value += statBonus.Value *attribute.Value.MaximumValue;
             }
           }
         }
         //RACE BONUS
-        value  += _raceDb.GetEntry(_character.GetRace()).GetAttributeRaceBaseValue(i);
+        value  += _raceDb.GetEntry(_character.GetRace()).GetAttributeRaceBaseValue(key);
      
         //CLASS BONUS
-        value += _data.GetStatsBonus(i);
+        value += _data.GetStatsBonus(key);
      
-        _cachedBaseStatistics[i] = value;
-      } 
+        _cachedBaseStatistics[key] = value;
+      }
     }
+
 
     public override void UpdateVitals()
     {

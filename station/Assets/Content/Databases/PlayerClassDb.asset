@@ -29,16 +29,16 @@ MonoBehaviour:
         FemaleAddressPrefab: 
       UseHealth: 1
       HealthVital:
-        Id: 0
+        Id: a8710699-ce84-46b7-8c19-b5c7cc0f361d
         Value: 15
       UseSecondaryHealth: 0
       SecondaryHealthVital:
-        Id: 0
+        Id: a8710699-ce84-46b7-8c19-b5c7cc0f361d
         Value: 0
-      EnergyVitals: []
-      AttributesBonuses:
-      - Id: 0
-        Value: 3
+      EnergyVitals:
+      - Id: 4cf62f6b-fafb-437f-9ca1-5981aa823211
+        Value: 49
+      AttributesBonuses: []
       StatisticsBonuses: []
       OwnedAbilities:
       - Id: 9adb7935-3348-4b88-bba7-09733ef865b4
@@ -77,14 +77,14 @@ MonoBehaviour:
         FemaleAddressPrefab: female_elf
       UseHealth: 1
       HealthVital:
-        Id: 0
+        Id: a8710699-ce84-46b7-8c19-b5c7cc0f361d
         Value: 32
       UseSecondaryHealth: 0
       SecondaryHealthVital:
-        Id: 0
+        Id: 
         Value: 0
       EnergyVitals:
-      - Id: 1
+      - Id: 4cf62f6b-fafb-437f-9ca1-5981aa823211
         Value: 55
       AttributesBonuses: []
       StatisticsBonuses: []

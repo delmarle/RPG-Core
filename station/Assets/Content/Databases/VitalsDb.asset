@@ -18,7 +18,7 @@ MonoBehaviour:
     - 4cf62f6b-fafb-437f-9ca1-5981aa823211
     m_values:
     - Name: health
-      Id: 0
+      Id: a8710699-ce84-46b7-8c19-b5c7cc0f361d
       Color: {r: 1, g: 0, b: 0, a: 1}
       Description: 
       Icon: {fileID: 0}
@@ -29,7 +29,7 @@ MonoBehaviour:
       UsageType: 0
       AttributesBonuses: []
     - Name: Mana
-      Id: 1
+      Id: 4cf62f6b-fafb-437f-9ca1-5981aa823211
       Color: {r: 0.06132078, g: 0.16501203, b: 1, a: 1}
       Description: 
       Icon: {fileID: 0}

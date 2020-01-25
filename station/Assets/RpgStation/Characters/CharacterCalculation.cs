@@ -7,10 +7,10 @@ namespace Station
 public class CharacterCalculation : ScriptableObject
 {
   #region [[ FIELDS ]]
-  protected Dictionary<int, int> _cachedBaseAttributes = new Dictionary<int, int>();
-  protected Dictionary<int, float> _cachedBaseStatistics = new Dictionary<int, float>();
-  protected Dictionary<int, int> _cachedBaseVitals = new Dictionary<int, int>();
-  protected Dictionary<int, float> _cachedBaseVitalsRegen = new Dictionary<int, float>();
+  protected Dictionary<string, int> _cachedBaseAttributes = new Dictionary<string, int>();
+  protected Dictionary<string, float> _cachedBaseStatistics = new Dictionary<string, float>();
+  protected Dictionary<string, int> _cachedBaseVitals = new Dictionary<string, int>();
+  protected Dictionary<string, float> _cachedBaseVitalsRegen = new Dictionary<string, float>();
   
   protected BaseCharacter _character;
 
@@ -54,7 +54,7 @@ public class CharacterCalculation : ScriptableObject
    
   }
 
-  protected void BuildVital(int vitalId, int raceBonus, int classBonus)
+  protected void BuildVital(string vitalId, int raceBonus, int classBonus)
   {
     _dbSystem = RpgStation.GetSystemStatic<DbSystem>();
     _vitalDb =  _dbSystem.GetDb<VitalsDb>();
@@ -65,7 +65,7 @@ public class CharacterCalculation : ScriptableObject
     CacheVitalRegen(vitalId);
   }
 
-  private void CacheVitalRegen(int regenId)
+  private void CacheVitalRegen(string regenId)
   {
     float valueRegenBonus = 1;
     var data = _vitalDb.GetEntry(regenId);
@@ -79,28 +79,28 @@ public class CharacterCalculation : ScriptableObject
 
   #region [[ Getters ]] 
 
-  public int GetBaseVitalRegen(int id)
+  public int GetBaseVitalRegen(string id)
   {
     
     return (int) (_cachedBaseVitalsRegen.ContainsKey(id)? _cachedBaseVitalsRegen[id] : 0);
   }
 
-  public int GetBaseAttribute(int id)
+  public int GetBaseAttribute(string id)
   {
     return _cachedBaseAttributes.ContainsKey(id)? _cachedBaseAttributes[id] : 10;
   }
 
-  public float GetBaseStatistic(int id)
+  public float GetBaseStatistic(string id)
   {
     return _cachedBaseStatistics.ContainsKey(id)? _cachedBaseStatistics[id] : 10f;
   }
   
-  public int GetBaseVital(int id)
+  public int GetBaseVital(string id)
   {
     return _cachedBaseVitals.ContainsKey(id)? _cachedBaseVitals[id] : 100;
   }
   
-  public int GetVitalBonusFromAttributes(int vitalId)
+  public int GetVitalBonusFromAttributes(string vitalId)
   {
     int bonus = 0;
 

@@ -1,7 +1,5 @@
-﻿using System.Linq;
-using RPG.Editor;
+﻿using RPG.Editor;
 using UnityEditor;
-using UnityEditor.EditorTools;
 using UnityEngine;
 
 namespace Station
@@ -151,10 +149,10 @@ namespace Station
         foreach (var currentBonus in raceStaticData.AttributeBonuses)
         {
           GUILayout.Space(3);
-          raceStaticData.AttributeBonuses[attributesIndex].Id = attributesIndex;
-          int current = currentBonus.Id;
+          currentBonus.Id = _attributesDb.GetKey(attributesIndex);
+          string current = currentBonus.Id;
           var attribute = _attributesDb.GetEntry(current);
-          raceStaticData.AttributeBonuses[attributesIndex].Value = EditorGUILayout.IntField(attribute.Name+" ",currentBonus.Value);
+          currentBonus.Value = EditorGUILayout.IntField(attribute.Name+" ",currentBonus.Value);
           attributesIndex++;
         }
       }
@@ -170,12 +168,11 @@ namespace Station
         foreach (var currentBonus in raceStaticData.VitalBonuses)
         {
           GUILayout.Space(3);
-          raceStaticData.VitalBonuses[vitalIndex].Id = vitalIndex;
-
-          int current = currentBonus.Id;
+          
+          currentBonus.Id = _vitalsDb.GetKey(vitalIndex);
+          string current = currentBonus.Id;
           var vital = _vitalsDb.GetEntry(current);
-          raceStaticData.VitalBonuses[vitalIndex].Value =
-            EditorGUILayout.IntField(vital.Name + " ", currentBonus.Value);
+          currentBonus.Value = EditorGUILayout.IntField(vital.Name + " ", currentBonus.Value);
           vitalIndex++;
         }
       }
@@ -193,9 +190,11 @@ namespace Station
       
       while (raceStaticData.AttributeBonuses.Count < totalInDb)
       {
+        
         var currentAttributeId = raceStaticData.AttributeBonuses.Count;
+        var attributeKey = _attributesDb.GetKey(currentAttributeId);
         var baseValue = _attributesDb.GetEntry(currentAttributeId).DefaultValue;
-        raceStaticData.AttributeBonuses.Add(new IdIntegerValue(currentAttributeId,baseValue));
+        raceStaticData.AttributeBonuses.Add(new IdIntegerValue(attributeKey,baseValue));
       }
       while (raceStaticData.AttributeBonuses.Count > totalInDb) raceStaticData.AttributeBonuses.RemoveAt(raceStaticData.AttributeBonuses.Count-1);
     }
@@ -208,8 +207,9 @@ namespace Station
       while (raceStaticData.VitalBonuses.Count < totalInDb)
       {
         var currentVitalId = raceStaticData.VitalBonuses.Count;
+        var vitalKey = _vitalsDb.GetKey(currentVitalId);
         var baseValue = _vitalsDb.GetEntry(currentVitalId).DefaultValue;
-        raceStaticData.VitalBonuses.Add(new IdIntegerValue(currentVitalId,baseValue));
+        raceStaticData.VitalBonuses.Add(new IdIntegerValue(vitalKey,baseValue));
       }
       while (raceStaticData.VitalBonuses.Count > totalInDb) raceStaticData.VitalBonuses.RemoveAt(raceStaticData.VitalBonuses.Count-1);
     }

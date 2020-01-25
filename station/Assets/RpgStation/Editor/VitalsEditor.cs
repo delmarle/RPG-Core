@@ -81,14 +81,15 @@ namespace Station
       {
         _scrollPos = EditorGUILayout.BeginScrollView(_scrollPos, GUILayout.ExpandHeight(true),GUILayout.ExpandWidth(true));
         {
-          VitalPanel(vital,selectedVital);
+          string vitalId = _vitalsDb.GetKey(selectedVital);
+          VitalPanel(vital,vitalId);
         }
         EditorGUILayout.EndScrollView();
       }
       GUILayout.EndHorizontal();
     }  
 
-    private static void VitalPanel(VitalModel vitalStaticData,int selectedVital)
+    private static void VitalPanel(VitalModel vitalStaticData,string selectedVital)
     {
       vitalStaticData.Id = selectedVital;
       GUILayout.Label("EDIT Vital:",GUILayout.Width(70));
@@ -153,7 +154,7 @@ namespace Station
       GUILayout.Space(3);
       vitalStaticData.UsageType = (VitalModel.VitalType)EditorGUILayout.EnumPopup("Type",vitalStaticData.UsageType,GUILayout.ExpandWidth(true));
       EditorStatic.DrawThinLine(10);
-      EditorStatic.DrawBonusWidget(vitalStaticData.AttributesBonuses, "Regen bonus per stat point:", _attributesDb.ListEntryNames());
+      EditorStatic.DrawBonusWidget(vitalStaticData.AttributesBonuses, "Regen bonus per stat point:", _attributesDb);
     }
         #endregion
     }
