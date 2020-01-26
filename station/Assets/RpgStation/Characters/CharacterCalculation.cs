@@ -60,8 +60,8 @@ public class CharacterCalculation : ScriptableObject
     _vitalDb =  _dbSystem.GetDb<VitalsDb>();
     _attributesDb = _dbSystem.GetDb<AttributesDb>();
     _statisticDb = _dbSystem.GetDb<StatisticDb>();
+    
     _cachedBaseVitals.Add(vitalId, raceBonus+classBonus);
-    //REGEN
     CacheVitalRegen(vitalId);
   }
 
@@ -92,7 +92,7 @@ public class CharacterCalculation : ScriptableObject
 
   public float GetBaseStatistic(string id)
   {
-    return _cachedBaseStatistics.ContainsKey(id)? _cachedBaseStatistics[id] : 10f;
+    return _cachedBaseStatistics.ContainsKey(id)? _cachedBaseStatistics[id] : 1f;
   }
   
   public int GetBaseVital(string id)
@@ -112,6 +112,26 @@ public class CharacterCalculation : ScriptableObject
         if (vitalBonus.Id == vitalId)
         {
           bonus += attribute.Value.MaximumValue * vitalBonus.Value;
+        }
+      }
+    }
+    
+   
+    return bonus;
+  }
+  
+  public float GetStatBonusFromAttributes(string statId)
+  {
+    float bonus = 0;
+
+    foreach (var attribute in _character.Stats.Attributes)
+    {
+      foreach (var statBonus in  attribute.Value.Model.StatisticBonuses)
+      {
+        
+        if (statBonus.Id == statId)
+        {
+          bonus += attribute.Value.MaximumValue * statBonus.Value;
         }
       }
     }

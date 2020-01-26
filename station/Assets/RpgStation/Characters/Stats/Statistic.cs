@@ -16,7 +16,7 @@ namespace Station
     private BaseCharacter _character;
     private StatisticModel _model;
     private float _modifiedAmount;
-    private float _attributesBonus;
+
     private float _equipmentBonus;
     private float _base;
     
@@ -24,7 +24,8 @@ namespace Station
     {
       get
       {
-        _base = _character.Calculator.GetBaseStatistic(_model.Id);
+        _base = _character.Calculator.GetBaseStatistic(_model.Id) + _character.Calculator.GetVitalBonusFromAttributes(_model.Id);
+        
         return _base;
       }
     }
@@ -38,17 +39,7 @@ namespace Station
         DoChangeEvent();
       }
     }
-    
-    public float AttributesBonusAmount
-    {
-      get => _attributesBonus;
-      set
-      {
-        _attributesBonus = value;
-        DoChangeEvent();
-      }
-    }
-    
+
     public float EquipmentBonusAmount
     {
       get => _equipmentBonus;
@@ -63,7 +54,7 @@ namespace Station
     {
       get
       {
-        var value = BaseValue + _attributesBonus + _equipmentBonus + _modifiedAmount;
+        var value = BaseValue + _equipmentBonus + _modifiedAmount;
         return Mathf.Clamp(value ,_model.MinimumValue, _model.MaximumValue);
       }
     }

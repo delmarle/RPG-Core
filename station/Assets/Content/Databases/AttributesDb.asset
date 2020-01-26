@@ -22,4 +22,6 @@ MonoBehaviour:
       Icon: {fileID: 21300000, guid: 92043f372dc674940bc986b895137bec, type: 3}
       DefaultValue: 9
       VitalBonuses: []
-      StatisticBonuses: []
+      StatisticBonuses:
+      - Id: e55ea5e7-dcdc-4b87-9825-a03f37b4dd36
+        Value: 5

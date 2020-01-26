@@ -20,7 +20,10 @@ namespace Station
 
     public override void OnSetup()
     {
-      
+      var raceData = _raceDb.GetEntry(_character.GetRace());
+      _cachedBaseVitals.Clear();
+      _cachedBaseVitalsRegen.Clear();
+
       foreach (var attribute in _attributesDb.Db)
       {
         _cachedBaseAttributes.Add(attribute.Key, 0);
@@ -33,23 +36,22 @@ namespace Station
 
       if (_data.UseHealth)
       {
-        _cachedBaseVitals.Add(_data.HealthVital.Id, 100);
-        _cachedBaseVitalsRegen.Add(_data.HealthVital.Id, 0f);
+        BuildVital(_data.HealthVital.Id, raceData.GetVitalsBonus(_data.HealthVital.Id),_data.HealthVital.Value);
       }
 
       if (_data.UseSecondaryHealth)
       {
-        _cachedBaseVitals.Add(_data.SecondaryHealthVital.Id, 0);
-        _cachedBaseVitalsRegen.Add(_data.SecondaryHealthVital.Id, 0f);
+        BuildVital(_data.SecondaryHealthVital.Id, raceData.GetVitalsBonus(_data.SecondaryHealthVital.Id),_data.SecondaryHealthVital.Value);
       }
 
       foreach (var energyData in _data.EnergyVitals)
       {
-        _cachedBaseVitals.Add(energyData.Id, 0);
-        _cachedBaseVitalsRegen.Add(energyData.Id, 0f);
+        BuildVital(energyData.Id, raceData.GetVitalsBonus(energyData.Id),energyData.Value);
       }
     }
-
+    
+    
+    
     #region [[ OVERRIDEN FUNCTIONS ]]
 
     public override void UpdateAttributes()
@@ -69,6 +71,8 @@ namespace Station
         _cachedBaseAttributes[key] = value;
       }
     }
+
+
 
     public override void UpdateStatistics()
     {

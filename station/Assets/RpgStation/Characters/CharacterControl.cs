@@ -123,6 +123,12 @@ namespace Station
         break; 
     }
 
+    if (_baseCharacter.Calculator)
+    {
+      _maxHorizontalSpeed *= _baseCharacter.Calculator.GetBaseStatistic(Statistic.MOVEMENT_SPEED_ID);
+    }
+
+    
     if (!_blockedByAbility &&!_blockedByAction && _input.Jump() && IsGrounded ) Jump();
     
     UpdateHorizontalSpeed();
@@ -396,15 +402,15 @@ namespace Station
 
     [SerializeField]
     [Tooltip("In meters/second, [0, Infinity)")]
-    private float _walkSpeed = 2f;
+    private float _walkSpeed = 1f;
 
     [SerializeField]
     [Tooltip("In meters/second, [0, Infinity)")]
-    private float _jogSpeed = 4f;
+    private float _jogSpeed = 1.45f;
 
     [SerializeField]
     [Tooltip("In meters/second, [0, Infinity)")]
-    private float _sprintSpeed = 6f;
+    private float _sprintSpeed = 2f;
 
     [SerializeField]
     [Tooltip("Force impulse, [0, Infinity)")]
