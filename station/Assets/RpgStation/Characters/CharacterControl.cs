@@ -18,7 +18,29 @@ namespace Station
   private CharacterController _controller;
   private BaseCharacter _baseCharacter;
 
-  private float _maxHorizontalSpeed; // In meters/second
+  private float _maxHorizontalSpeed
+  {
+    get
+    {
+      var movementType = _input.MovementType();
+      if (_baseCharacter.Stats == null) return 0;
+      var movementStat = _baseCharacter.Stats.Statistics[Statistic.MOVEMENT_SPEED_ID].MaximumValue;
+      switch (movementType)
+      {
+        case 0:
+          return MovementSettings.WALK_MULTIPLIER * movementStat;
+          break; 
+        case 1:
+          return MovementSettings.JOG_MULTIPLIER * movementStat;
+          break; 
+        case 2:
+          return MovementSettings.SPRINT_MULTIPLIER* movementStat;
+          break; 
+      }
+      
+      return 0;
+    }
+  }
   private float _targetHorizontalSpeed; // In meters/second
   private float _currentHorizontalSpeed; // In meters/second
   private float _currentVerticalSpeed; // In meters/second
@@ -108,26 +130,6 @@ namespace Station
 
  
     if (IsGrounded) ApplyGravity(true);
-
-    var movementType = _input.MovementType();
-    switch (movementType)
-    {
-       case 0:
-         _maxHorizontalSpeed = _movementSettings.WalkSpeed;
-         break; 
-      case 1:
-        _maxHorizontalSpeed = _movementSettings.JogSpeed;
-        break; 
-      case 2:
-        _maxHorizontalSpeed = _movementSettings.SprintSpeed;
-        break; 
-    }
-
-    if (_baseCharacter.Calculator)
-    {
-      _maxHorizontalSpeed *= _baseCharacter.Calculator.GetBaseStatistic(Statistic.MOVEMENT_SPEED_ID);
-    }
-
     
     if (!_blockedByAbility &&!_blockedByAction && _input.Jump() && IsGrounded ) Jump();
     
@@ -216,18 +218,12 @@ namespace Station
         _targetHorizontalSpeed = 0f;
         return;
       }
-      else if (moveSpeed > 0.01f && moveSpeed <= MovementSettings.WalkSpeed)
+      else
       {
-        _targetHorizontalSpeed = MovementSettings.WalkSpeed;
+        _targetHorizontalSpeed = moveSpeed;
       }
-      else if (moveSpeed > MovementSettings.WalkSpeed && moveSpeed <= MovementSettings.JogSpeed)
-      {
-        _targetHorizontalSpeed = MovementSettings.JogSpeed;
-      }
-      else if (moveSpeed > MovementSettings.JogSpeed)
-      {
-        _targetHorizontalSpeed = MovementSettings.SprintSpeed;
-      }
+     
+      
 
       _moveVector = value;
       if (moveSpeed > 0.01f)
@@ -399,18 +395,10 @@ namespace Station
     [SerializeField]
     [Tooltip("In meters/second, [0, Infinity)")]
     private float _acceleration = 10f;
-
-    [SerializeField]
-    [Tooltip("In meters/second, [0, Infinity)")]
-    private float _walkSpeed = 1f;
-
-    [SerializeField]
-    [Tooltip("In meters/second, [0, Infinity)")]
-    private float _jogSpeed = 1.45f;
-
-    [SerializeField]
-    [Tooltip("In meters/second, [0, Infinity)")]
-    private float _sprintSpeed = 2f;
+    
+    public const float WALK_MULTIPLIER = 1f;
+    public const float JOG_MULTIPLIER = 1.6f;
+    public const float SPRINT_MULTIPLIER = 2.6f;
 
     [SerializeField]
     [Tooltip("Force impulse, [0, Infinity)")]
@@ -427,43 +415,7 @@ namespace Station
         _acceleration = value;
       }
     }
-
-    public float WalkSpeed
-    {
-      get
-      {
-        return _walkSpeed;
-      }
-      set
-      {
-        _walkSpeed = value;
-      }
-    }
-
-    public float JogSpeed
-    {
-      get
-      {
-        return _jogSpeed;
-      }
-      set
-      {
-        _jogSpeed = value;
-      }
-    }
-
-    public float SprintSpeed
-    {
-      get
-      {
-        return _sprintSpeed;
-      }
-      set
-      {
-        _sprintSpeed = value;
-      }
-    }
-
+    
     public float JumpForce
     {
       get

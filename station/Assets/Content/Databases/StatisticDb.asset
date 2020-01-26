@@ -29,5 +29,5 @@ MonoBehaviour:
       Color: {r: 1, g: 1, b: 1, a: 1}
       Description: 
       Icon: {fileID: 0}
-      MinimumValue: 0
+      MinimumValue: 1.5
       MaximumValue: 35
