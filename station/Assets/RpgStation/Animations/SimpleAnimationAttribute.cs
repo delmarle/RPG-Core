@@ -6,7 +6,7 @@ namespace Station
     [AttributeUsage((AttributeTargets.Field)), Serializable]
     public class SimpleAnimationAttribute : PropertyAttribute
     {
-        public SimpleAnimation Animation;
+        public CoreAnimation Animation;
     }
 
 }

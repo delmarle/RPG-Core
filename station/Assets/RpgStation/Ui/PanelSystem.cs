@@ -6,9 +6,9 @@ namespace Station
 {
     public class PanelSystem : BaseSystem
     {
-        private UiPanelBase _openedPanel;
-        private UiPanelBase _defaultPanel;
-        private Dictionary<Type, UiPanelBase> _cachedPanels = new Dictionary<Type, UiPanelBase>();
+        private UiElementBase _openedElement;
+        private UiElementBase _defaultElement;
+        private Dictionary<Type, UiPanel> _cachedPanels = new Dictionary<Type, UiPanel>();
         private static PanelSystem _instance;
         
         protected override void OnInit()
@@ -27,32 +27,32 @@ namespace Station
         
         private void ClearCache()
         {
-            _openedPanel = null;
-            _defaultPanel = null;
-            _cachedPanels = new Dictionary<Type, UiPanelBase>();
+            _openedElement = null;
+            _defaultElement = null;
+            _cachedPanels = new Dictionary<Type, UiPanel>();
         }
 
-        private void Register(UiPanelBase panel)
+        private void Register(UiPanel element)
         {
-            if (_cachedPanels.ContainsValue(panel))
+            if (_cachedPanels.ContainsValue(element))
             {
-                Debug.LogError("the panel was already registered: "+panel);
+                Debug.LogError("the panel was already registered: "+element);
             }
             else
             {
-                _cachedPanels.Add(panel.GetType(), panel);
+                _cachedPanels.Add(element.GetType(), element);
             }
         }
         
-        private void UnRegister(UiPanelBase panel)
+        private void UnRegister(UiPanel element)
         {
-            if (_cachedPanels.ContainsValue(panel) == false)
+            if (_cachedPanels.ContainsValue(element) == false)
             {
-                Debug.LogError("the panel was not registered: "+panel);
+                Debug.LogError("the panel was not registered: "+element);
             }
             else
             {
-                _cachedPanels.Remove(panel.GetType());
+                _cachedPanels.Remove(element.GetType());
             }
         }
 
@@ -66,64 +66,68 @@ namespace Station
             if (_cachedPanels.ContainsKey(panelType))
             {
                 var panel = _cachedPanels[panelType];
-                if (panel == _openedPanel)
+                if (panel == _openedElement)
                 {
                     return;
                 }
 
-                if (_openedPanel)
+                if (_openedElement)
                 {
-                    _openedPanel.Hide();
+                    _openedElement.Hide();
                 }
-                _openedPanel = panel;
+                _openedElement = panel;
                 panel.Show();
             }
         }
 
+        private void Show()
+        {
+        }
+
         private void Hide(Type panel, bool showDefault)
         {
-            if (_openedPanel && _openedPanel.GetType() == panel)
+            if (_openedElement && _openedElement.GetType() == panel)
             {
-                _openedPanel.Hide();
+                _openedElement.Hide();
             }
 
-            if (showDefault && _defaultPanel != null)
+            if (showDefault && _defaultElement != null)
             {
-                _defaultPanel.Show();
-                _openedPanel = _defaultPanel;
+                _defaultElement.Show();
+                _openedElement = _defaultElement;
             }
             else
             {
-                _openedPanel = null;
+                _openedElement = null;
             }
 
         }
         
-        private void RegisterDefault(UiPanelBase panel)
+        private void RegisterDefault(UiPanel element)
         {
-            if (_defaultPanel)
+            if (_defaultElement)
             {
-                Debug.LogError("default panel duplicated:" + _defaultPanel);
+                Debug.LogError("default panel duplicated:" + _defaultElement);
             }
 
-            _defaultPanel = panel;
+            _defaultElement = element;
         }
 
         #region STATIC CALLS
 
-        public static void RegisterPanel(UiPanelBase panel)
+        public static void RegisterPanel(UiPanel element)
         {
-            _instance.Register(panel);
+            _instance?.Register(element);
         }
 
-        public static void RegisterDefaultPanel(UiPanelBase panel)
+        public static void RegisterDefaultPanel(UiPanel element)
         {
-            _instance.RegisterDefault(panel);
+            _instance?.RegisterDefault(element);
         }
 
-        public static void UnRegisterPanel(UiPanelBase panel)
+        public static void UnRegisterPanel(UiPanel element)
         {
-            _instance.UnRegister(panel);
+            _instance?.UnRegister(element);
         }
 
         public static void OpenPanel<T>()

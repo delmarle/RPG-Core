@@ -64,7 +64,7 @@ namespace Station
           _statusWidget.Setup(_character);
         }
 
-        characterName.text = _character.GetName();
+        characterName.text = _character.GetMeta("name");
         characterClass.text = _character.GetMeta("class");
         Subscribe();
        

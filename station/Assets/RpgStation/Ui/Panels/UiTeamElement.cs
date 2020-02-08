@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Station
 {
-    public class UiTeamPanel : UiPanelAnim
+    public class UiTeamElement : UiPanel
     {
         [SerializeField] private LayoutGroup _playerRoot = null;
         [SerializeField] private UiCharacterPortraitWidget _portraitPrefab = null;
@@ -17,7 +17,7 @@ namespace Station
         protected override void Start()
         {
             base.Start();
-            PanelSystem.OpenPanel<UiTeamPanel>();
+            PanelSystem.OpenPanel<UiTeamElement>();
         }
 
         protected override void Awake()

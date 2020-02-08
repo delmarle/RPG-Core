@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace Station
 {
-    public class UiPanelBase : MonoBehaviour
+    public class UiElementBase : MonoBehaviour
     {
         #region Variables
         [Header("Show when close previous")] public bool DefaultPanel = false;
@@ -55,15 +55,10 @@ namespace Station
 
         protected virtual void Start()
         {
-            PanelSystem.RegisterPanel(this);
-            if(DefaultPanel) PanelSystem.RegisterDefaultPanel(this);
+         
         }
 
-        private void OnDestroy()
-        {
-            PanelSystem.UnRegisterPanel(this);
-        }
-
+       
         public void OnLevelLoaded(int level)
         {
             OnLevelLoaded();

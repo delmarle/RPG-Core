@@ -21,13 +21,13 @@ MonoBehaviour:
       Name: Armor
       Color: {r: 1, g: 1, b: 1, a: 1}
       Description: 
-      Icon: {fileID: 0}
+      Icon: {fileID: 21300000, guid: 26b86cecd3c6e489da1c352e2e253a7e, type: 3}
       MinimumValue: 5
       MaximumValue: 99
     - Id: movement_speed
       Name: Movement speed
       Color: {r: 1, g: 1, b: 1, a: 1}
       Description: 
-      Icon: {fileID: 0}
+      Icon: {fileID: 21300000, guid: 62417d45f3c9d45c189989a051d9a8d1, type: 3}
       MinimumValue: 1.5
       MaximumValue: 35

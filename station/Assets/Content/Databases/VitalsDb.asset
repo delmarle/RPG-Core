@@ -21,7 +21,7 @@ MonoBehaviour:
       Id: a8710699-ce84-46b7-8c19-b5c7cc0f361d
       Color: {r: 1, g: 0, b: 0, a: 1}
       Description: 
-      Icon: {fileID: 0}
+      Icon: {fileID: 21300000, guid: 22078a48302de49aa92e7927706a9893, type: 3}
       DefaultValue: 100
       RegenCycle: 4
       DefaultRegenValue: 1
@@ -32,7 +32,7 @@ MonoBehaviour:
       Id: 4cf62f6b-fafb-437f-9ca1-5981aa823211
       Color: {r: 0.06132078, g: 0.16501203, b: 1, a: 1}
       Description: 
-      Icon: {fileID: 0}
+      Icon: {fileID: 21300000, guid: aae2b0cbe756043e588ebe59f476f54b, type: 3}
       DefaultValue: 100
       RegenCycle: 4
       DefaultRegenValue: 1

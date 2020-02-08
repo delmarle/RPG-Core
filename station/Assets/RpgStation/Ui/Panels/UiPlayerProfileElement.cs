@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 namespace Station
 {
-    public class UiPlayerProfilePanel : UiPanelAnim
+    public class UiPlayerProfileElement : UiPanel
     {
          #region [[ FIELDS ]]
     private BaseCharacter _character;
-    [SerializeField] private TextMeshProUGUI _playerName = null;
+    [SerializeField] private UiCharacterMeta _playerName = null;
+    [SerializeField] private UiCharacterMeta _playerLevel = null;
     [SerializeField] private LayoutGroup _attributesLayout = null;
     [SerializeField] private UiWidget _attributesPrefab = null;
     [SerializeField] private LayoutGroup _vitalsLayout = null;
@@ -60,7 +61,7 @@ namespace Station
 
     public void ClosePanel()
     {
-      PanelSystem.HidePanel<UiPlayerProfilePanel>(true);
+      PanelSystem.HidePanel<UiPlayerProfileElement>(true);
     }
 
     private void UnFollowCharacter()
@@ -110,7 +111,7 @@ namespace Station
         WidgetData widget = new WidgetData();
         var staticData = _attributesDb.GetEntry(attr.Key);
         widget.VisualInfo = staticData.Name+": ";
-        widget.VisualValue = attr.Value.BaseValue + "+" + attr.Value.ModifiedAmount + " = " + attr.Value.MaximumValue;
+        widget.VisualValue =  attr.Value.MaximumValue.ToString();
         widget.IconColor = Color.white;
         widget.Icon = staticData.Icon;
        
@@ -133,10 +134,8 @@ namespace Station
       {
         WidgetData energyWidget = new WidgetData();
         var staticData = _vitalsDb.GetEntry(energy.Key);
-        energyWidget.VisualInfo = staticData.Name + ": " + energy.Value.Current + "/" + energy.Value.MaximumValue;
-        energyWidget.VisualInfo +="||"+ energy.Value.BaseValue+"+"+energy.Value.AttributesBonusAmount+"+"+energy.Value
-          .ModifiedAmount+"=";
-        energyWidget.VisualInfo += " - regen  "+energy.Value.RegenValue+" per "+ staticData.RegenCycle + " sec ";
+        energyWidget.VisualInfo = staticData.Name + ": ";
+        energyWidget.VisualValue = energy.Value.Current + "/" + energy.Value.MaximumValue;
         energyWidget.Icon = staticData.Icon;
         energyWidget.IconColor = staticData.Color;
         vitalList.Add(energyWidget);
@@ -158,7 +157,8 @@ namespace Station
       {
         WidgetData widget = new WidgetData();
         var staticData = _statisticsDb.GetEntry(attr.Key);
-        widget.VisualInfo = staticData.Name+": "+attr.Value.MaximumValue;
+        widget.VisualInfo = staticData.Name + ": ";
+        widget.VisualValue = attr.Value.MaximumValue.ToString();
         widget.IconColor = Color.white;
         widget.Icon = staticData.Icon;
        
@@ -172,7 +172,8 @@ namespace Station
 
     private void UpdateMeta()
     {
-      _playerName.text = _character.GetName();
+      _playerName.Init(_character);
+      _playerLevel.Init(_character);
     }
 
     public void UpdateUi()

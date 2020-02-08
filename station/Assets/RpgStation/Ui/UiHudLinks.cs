@@ -18,7 +18,7 @@ namespace Station
 
         private void OnClickProfileBtn()
         {
-            PanelSystem.OpenPanel<UiPlayerProfilePanel>();
+            PanelSystem.OpenPanel<UiPlayerProfileElement>();
         }
     }
 }

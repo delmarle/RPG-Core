@@ -100,13 +100,6 @@ namespace Station
             return _factionId;
         }
 
-        private string _name;
-
-        public string GetName()
-        {
-            return _name;
-        }
-        
         private Dictionary<string, string> _meta = new Dictionary<string, string>();
 
         public string GetMeta(string key)
@@ -146,8 +139,8 @@ namespace Station
             _raceId = raceId;
             _factionId = factionId;
             _genderId = genderId;
-            _name = characterName;
-            
+            AddMeta("name", characterName);
+
             _calculatorInstance = instance;
             
             _calculatorInstance.Setup(this);
