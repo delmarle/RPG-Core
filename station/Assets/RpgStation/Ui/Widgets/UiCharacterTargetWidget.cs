@@ -1,13 +1,15 @@
-﻿
-using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Station
 {
     public class UiCharacterTargetWidget : MonoBehaviour
     {
         #region FIELDS
-
+        
+        private const string HIDDEN = "hidden";
+        private const string SHOW = "show";
+        private const string HIDE = "hide";
+        [SerializeField] private CoreAnimation _animation;
         [SerializeField] private UiCharacterPortraitWidget _portraitWidget = null;
         //status effects
         private BaseCharacter _character;
@@ -37,10 +39,21 @@ namespace Station
         {
             if (target != null)
             {
+                if (_animation.CurrentState == HIDDEN || _animation.CurrentState == HIDE)
+                {
+                    _animation.PlayState(SHOW);
+                }
+
                 _portraitWidget.Setup(target);
             }
             else
             {
+                Debug.Log(_animation.CurrentState);
+                if (_animation.CurrentState  == null || _animation.CurrentState == SHOW)
+                {
+                    _animation.PlayState(HIDE);
+                }
+                
                 _portraitWidget.Setup(null);
             }
 
