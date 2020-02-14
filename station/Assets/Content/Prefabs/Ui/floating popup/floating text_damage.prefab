@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 7509132891534329773}
   - component: {fileID: 494423371079238194}
   - component: {fileID: 9075793640472060079}
+  - component: {fileID: 9089724663706896234}
   m_Layer: 5
-  m_Name: floating text
+  m_Name: floating text_damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,8 +66,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 16bd9c090629f4af18f676bab99e9922, type: 2}
@@ -88,6 +87,8 @@ MonoBehaviour:
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: 0
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -102,7 +103,10 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 514
+  m_isAlignmentEnumConverted: 0
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -114,7 +118,7 @@ MonoBehaviour:
   m_overflowMode: 0
   m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
-  m_isLinkedTextComponent: 0
+  parentLinkedComponent: {fileID: 0}
   m_isTextTruncated: 0
   m_enableKerning: 1
   m_enableExtraPadding: 0
@@ -123,12 +127,12 @@ MonoBehaviour:
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
-  m_ignoreRectMaskCulling: 0
   m_ignoreCulling: 1
   m_horizontalMapping: 0
   m_verticalMapping: 0
   m_uvLineOffset: 0
   m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
   m_VertexBufferAutoSizeReduction: 1
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
@@ -148,15 +152,6 @@ MonoBehaviour:
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
   m_hasFontAssetChanged: 1
-  m_subTextObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &494423371079238194
@@ -172,7 +167,118 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animation: {fileID: 9075793640472060079}
-  _damageText: {fileID: 7509132891534329773}
+  _text: {fileID: 7509132891534329773}
+  _animationData:
+    minLength: 3.5
+    maxLength: 4.5
+    Gradient:
+      serializedVersion: 2
+      key0: {r: 0, g: 1, b: 0.2, a: 0}
+      key1: {r: 0.99693394, g: 0.8553642, b: 0.05292277, a: 1}
+      key2: {r: 1, g: 0.2961887, b: 0, a: 1}
+      key3: {r: 0, g: 0.98821115, b: 1, a: 0}
+      key4: {r: 0, g: 0.7590854, b: 1, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 5397
+      ctime2: 36237
+      ctime3: 65535
+      ctime4: 65535
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 4626
+      atime2: 57632
+      atime3: 65535
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 4
+      m_NumAlphaKeys: 4
+    FromPosition: {x: 0, y: 0, z: 0}
+    ToPosition: {x: 0.5, y: -0.5, z: 0}
+    AlphaCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ScaleCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: -0.0040626526
+        value: 0.006511688
+        inSlope: 66.54544
+        outSlope: 66.54544
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.04079922
+      - serializedVersion: 3
+        time: 0.048886478
+        value: 1.4799786
+        inSlope: -0.07120271
+        outSlope: -0.07120271
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.30758905
+      - serializedVersion: 3
+        time: 0.18483385
+        value: 0.99767506
+        inSlope: -0.040209312
+        outSlope: -0.040209312
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.08139316
+      - serializedVersion: 3
+        time: 0.903255
+        value: 0.8694902
+        inSlope: -0.51551425
+        outSlope: -0.51551425
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.07905342
+        outWeight: 0.452021
+      - serializedVersion: 3
+        time: 1.0045166
+        value: 0.010803223
+        inSlope: -8.479886
+        outSlope: -8.479886
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    Length: 0
+  _canvas: {fileID: 9089724663706896234}
 --- !u!111 &9075793640472060079
 Animation:
   m_ObjectHideFlags: 0
@@ -182,10 +288,22 @@ Animation:
   m_GameObject: {fileID: 1155992517828873264}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: a146b463fe207441f9bbc52c6663aff3, type: 2}
+  m_Animation: {fileID: 0}
   m_Animations:
-  - {fileID: 7400000, guid: a146b463fe207441f9bbc52c6663aff3, type: 2}
+  - {fileID: 0}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!225 &9089724663706896234
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155992517828873264}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0

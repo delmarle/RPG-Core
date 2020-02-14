@@ -24,7 +24,7 @@ public class PlayersSave : SaveModule<Dictionary<string, PlayersData>>
         {
             if (Value.Count != teamMembers.Count)
             {
-                Debug.Log("the player count in save is different than players in team");
+                //Debug.Log("the player count in save is different than players in team");
             }
             //we already injected destination
             if (sceneSystem.IsTraveling == false)

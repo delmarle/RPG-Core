@@ -54,6 +54,8 @@ namespace Station
                        Debug.LogError("missing animation clip");
                         continue;
                     }
+
+                    clip.Clip.legacy = true;
                     _animation.AddClip(clip.Clip, clip.Clip.name);
                 }
             }

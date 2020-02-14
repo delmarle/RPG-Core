@@ -24,58 +24,66 @@ MonoBehaviour:
     - 20f6fcb0-12f3-45d9-9f3f-7be19c8988e5
     m_values:
     - Name: damage
-      Prefab: {fileID: 1155992517828873264, guid: c58fadf620c74466a8c02c02b9bd0e5b,
+      Prefab: {fileID: 494423371079238194, guid: c58fadf620c74466a8c02c02b9bd0e5b,
         type: 3}
       PoolSize: 20
       Rule:
         ShowOnlyVisible: 0
         ShowRangeLimit: -1
+      Follow: 0
     - Name: damage_critical
-      Prefab: {fileID: 1155992517828873264, guid: e1569600d80544c4d986672a469fc908,
+      Prefab: {fileID: 494423371079238194, guid: c58fadf620c74466a8c02c02b9bd0e5b,
         type: 3}
       PoolSize: 15
       Rule:
         ShowOnlyVisible: 0
         ShowRangeLimit: -1
+      Follow: 0
     - Name: heal
-      Prefab: {fileID: 1155992517828873264, guid: fc74c417c2bba4678834f34adf802ac1,
+      Prefab: {fileID: 494423371079238194, guid: c58fadf620c74466a8c02c02b9bd0e5b,
         type: 3}
       PoolSize: 10
       Rule:
         ShowOnlyVisible: 0
         ShowRangeLimit: -1
+      Follow: 0
     - Name: heal_critical
-      Prefab: {fileID: 1155992517828873264, guid: fc74c417c2bba4678834f34adf802ac1,
+      Prefab: {fileID: 494423371079238194, guid: c58fadf620c74466a8c02c02b9bd0e5b,
         type: 3}
       PoolSize: 10
       Rule:
         ShowOnlyVisible: 0
         ShowRangeLimit: -1
+      Follow: 0
     - Name: buff
-      Prefab: {fileID: 1155992517828873264, guid: c58fadf620c74466a8c02c02b9bd0e5b,
+      Prefab: {fileID: 494423371079238194, guid: c58fadf620c74466a8c02c02b9bd0e5b,
         type: 3}
       PoolSize: 10
       Rule:
         ShowOnlyVisible: 0
         ShowRangeLimit: -1
+      Follow: 0
     - Name: debuff
-      Prefab: {fileID: 1155992517828873264, guid: c58fadf620c74466a8c02c02b9bd0e5b,
+      Prefab: {fileID: 494423371079238194, guid: c58fadf620c74466a8c02c02b9bd0e5b,
         type: 3}
       PoolSize: 10
       Rule:
         ShowOnlyVisible: 0
         ShowRangeLimit: -1
+      Follow: 0
     - Name: miss
-      Prefab: {fileID: 1155992517828873264, guid: ee55303e8a9354b4f96291770a745b6b,
+      Prefab: {fileID: 494423371079238194, guid: c58fadf620c74466a8c02c02b9bd0e5b,
         type: 3}
       PoolSize: 10
       Rule:
         ShowOnlyVisible: 0
         ShowRangeLimit: -1
+      Follow: 0
     - Name: evade
-      Prefab: {fileID: 1155992517828873264, guid: fb489ebc7779443e59cc2bc71ff2f5c0,
+      Prefab: {fileID: 494423371079238194, guid: c58fadf620c74466a8c02c02b9bd0e5b,
         type: 3}
       PoolSize: 10
       Rule:
         ShowOnlyVisible: 0
         ShowRangeLimit: -1
+      Follow: 0
