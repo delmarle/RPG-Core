@@ -11,8 +11,8 @@ namespace Station
         private DbSystem _dbSystem;
         private GameSettingsDb _gameSettingsDb;
         private StationMechanics _mechanics;
-       
-        
+
+        public FloatingPopupAnchor FloatingPopupAnchor;
         public CharacterUpdate OnCharacterInitialized;
         public CharacterUpdate OnVitalsUpdated;
         public CharacterUpdate OnStatisticUpdated;
@@ -122,6 +122,14 @@ namespace Station
             _gameSettingsDb = _dbSystem.GetDb<GameSettingsDb>();
             _control = GetComponent<CharacterControl>();
             _mechanics = _gameSettingsDb.Get().Mechanics;
+            FloatingPopupAnchor = GetComponentInChildren<FloatingPopupAnchor>();
+            if (FloatingPopupAnchor == null)
+            {
+                GameObject anchor = new GameObject("anchor");
+                FloatingPopupAnchor = anchor.AddComponent<FloatingPopupAnchor>();
+                anchor.transform.SetParent(transform);
+                anchor.transform.position = GetTop();
+            }
         }
 
         public void Init(string raceId, string factionId, string genderId, CharacterCalculation instance, string characterName, Dictionary<string, string> meta = null)

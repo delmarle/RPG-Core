@@ -19,7 +19,43 @@ namespace Station
         {
     
         }
+        
+        #region POOLEDITEM
+        public static void PopulatePool(PooledItem prefab, int size)
+        {
+            Instance._pool.PopulatePool(prefab, size);
+        }
+        
+        public static PooledItem Spawn(PooledItem prefab)
+        {
+            return Instance == null ? null : Instance._pool.SpawnObject(prefab);
+        }
+        
+        public static PooledItem Spawn(PooledItem prefab, Vector3 position, Quaternion rotation)
+        {
+            return Instance == null ? null : Instance._pool.SpawnObject(prefab, position, rotation);
+        }
+        
+        public static PooledItem Spawn(PooledItem prefab, Vector3 position, Quaternion rotation,Transform parent)
+        {
+            if (Instance == null) return null;
+            return  Instance._pool.SpawnObject(prefab, position, rotation, parent);
+        }
 
+        public static void Despawn(PooledItem clone)
+        {
+            if (Instance == null) return;
+            Instance._pool.DespawnObject(clone);
+        }
+
+        public static void Despawn(PooledItem clone,float time)
+        {
+            if (Instance == null) return;
+            Timer.Register(time, () => Instance._pool.DespawnObject(clone));
+        }
+
+        #endregion
+#region GAMEOBJECT
         public static void PopulatePool(GameObject prefab, int size)
         {
             Instance._pool.PopulatePool(prefab, size);
@@ -52,6 +88,8 @@ namespace Station
             if (Instance == null) return;
             Timer.Register(time, () => Instance._pool.DespawnObject(clone));
         }
+        
+        #endregion
     }
 }
 

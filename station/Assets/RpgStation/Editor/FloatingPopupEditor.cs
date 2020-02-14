@@ -92,7 +92,7 @@ namespace Station
           GUILayout.EndHorizontal();
           GUILayout.Space(3);
           
-          staticData.Prefab = (GameObject)EditorGUILayout.ObjectField("Prefab: ", staticData.Prefab, typeof(GameObject), false);
+          staticData.Prefab = (FloatingPopup)EditorGUILayout.ObjectField("Prefab: ", staticData.Prefab, typeof(FloatingPopup), false);
           staticData.PoolSize = EditorGUILayout.IntSlider("Pool size: ", staticData.PoolSize, 1, 64);
 
         }

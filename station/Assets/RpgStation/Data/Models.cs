@@ -394,7 +394,7 @@ namespace Station
 
     public override ApplyEffectResult ApplyEffect(BaseCharacter source, BaseCharacter target)
     {
-      FloatingPopupSystem.SpawnObject(ModifierType.ToString().ToLower(), EffectName,target.GetTop(), source, target, EffectIcon);
+      FloatingPopupSystem.SpawnObject(ModifierType.ToString().ToLower(), EffectName,target.FloatingPopupAnchor, source, target, EffectIcon);
       target.Stats.ReceiveModifier(this, source);
       return ApplyEffectResult.Success;
     }
@@ -459,7 +459,7 @@ namespace Station
     {
       var calculation = source.Calculator;
       float value = Random.Range(MinValue, MaxValue);
-      FloatingPopupSystem.SpawnObject("heal", ((int)value).ToString(),target.GetTop(), source, target);
+      FloatingPopupSystem.SpawnObject("heal", ((int)value).ToString(),target.FloatingPopupAnchor, source, target);
       target.Calculator.Heal(new VitalChangeData((int)value,source));
       return ApplyEffectResult.Success;
     }
@@ -494,14 +494,14 @@ namespace Station
                   
             var damageData = calculation.GetDamageCalculation(MeleeDamageType,  Random.Range(MinValue, MaxValue), CriticalBonus);
             var dmgType = damageData.IsCritical ? FloatingPopupSystem.TYPE_DAMAGE_CRITICAL : FloatingPopupSystem.TYPE_DAMAGE;
-            FloatingPopupSystem.SpawnObject(dmgType, damageData.Amount.ToString(),target.GetTop(), source, target);
+            FloatingPopupSystem.SpawnObject(dmgType, damageData.Amount.ToString(),target.FloatingPopupAnchor, source, target);
             target.Calculator.ReceiveDamage(damageData);
             return ApplyEffectResult.Success;
           }
           else if(hitRoll <= hitPower+targetEvadePower)
           {
             //target evaded
-            FloatingPopupSystem.SpawnObject(FloatingPopupSystem.TYPE_EVADE, string.Empty,target.GetTop(), source, target);
+            FloatingPopupSystem.SpawnObject(FloatingPopupSystem.TYPE_EVADE, "Evade",target.FloatingPopupAnchor, source, target);
             return ApplyEffectResult.Evade;
           }
           else
@@ -513,7 +513,7 @@ namespace Station
         else
         {
           //we miss
-          FloatingPopupSystem.SpawnObject(FloatingPopupSystem.TYPE_MISS, string.Empty,target.GetTop(), source, target);
+          FloatingPopupSystem.SpawnObject(FloatingPopupSystem.TYPE_MISS, "Miss",target.FloatingPopupAnchor, source, target);
           return ApplyEffectResult.Miss;
         }
       }
@@ -828,9 +828,10 @@ public enum StatusEffectType
   public class FloatingPopupModel
   {
     public string Name;
-    public GameObject Prefab;
+    public FloatingPopup Prefab;
     public int PoolSize = 1;
     public ShowPopupRule Rule = new ShowPopupRule();
+    public bool Follow;
   }
 
   public enum IdentityType

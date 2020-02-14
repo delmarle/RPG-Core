@@ -48,7 +48,6 @@ namespace Station
             }
             else
             {
-                Debug.Log(_animation.CurrentState);
                 if (_animation.CurrentState  == null || _animation.CurrentState == SHOW)
                 {
                     _animation.PlayState(HIDE);

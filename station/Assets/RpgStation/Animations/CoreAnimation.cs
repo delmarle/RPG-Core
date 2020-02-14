@@ -19,8 +19,8 @@ namespace Station
         public string CurrentState => _currentState;
         private bool _isFilled = false;
         private string _currentState;
-        
-        void Awake()
+
+        private void Awake()
         {
             Initialize();
         }
@@ -31,7 +31,10 @@ namespace Station
                 SimpleAnimationModels = new List<StateData>();
 
             if (_isFilled)
+            {
                 return;
+            }
+
             _animation = GetComponent<Animation>();
             if (_animation == null)
             {
@@ -70,7 +73,7 @@ namespace Station
 
             for (var index = animationNames.Count - 1; index >= 0; index--)
             {
-                string animationName = animationNames[index];
+                var animationName = animationNames[index];
                 _animation.RemoveClip(animationName);
             }
         }
@@ -79,12 +82,10 @@ namespace Station
         {
             if (_animation)
             {
-                _animation.enabled = false;
                 _animation.enabled = true;
 
                 if (UseDefaultState)
                 {
-                    
                     PlayState(DefaultState);
                 }
             }
@@ -99,7 +100,6 @@ namespace Station
 
             if (_cacheData == null)
             {
-                //Still NULL!!!
                 return;
             }
 
@@ -111,7 +111,7 @@ namespace Station
                 }
             }
            
-            this._currentState = stateName;
+            _currentState = stateName;
             if (!_cacheData.ContainsKey(stateName))
             {
                 Debug.LogError("missing animation state");

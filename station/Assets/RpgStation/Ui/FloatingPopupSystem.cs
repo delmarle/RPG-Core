@@ -57,29 +57,34 @@ namespace Station
 			
 		}
 
-		private void SpawnPopup(string popupType, string text, Vector3 position)
+		private void SpawnPopup(string popupType, string text, FloatingPopupAnchor anchor)
 		{
 			if (_runtimeCache.ContainsKey(popupType) == false) return;
 			if (CheckCameraExist() == false) return;
 			
 			var meta = _runtimeCache[popupType];
 			var instance = PoolSystem.Spawn(meta.Prefab);
-			Vector2 screenPosition = _camera.WorldToScreenPoint(position);
-			screenPosition.x += Random.Range(-1f, 1f);
-
 			instance.transform.SetParent(_canvas.transform, false);
-			instance.transform.position = screenPosition;
-			var floatingParams = new FloatingParams(text);
-			instance.GetComponent<FloatingPopup>().Setup(floatingParams);
+			var floatingParams = new FloatingParams(text, anchor);
+			FloatingPopup popupInstance = (FloatingPopup) instance;
+			if (popupInstance == null)
+			{
+							
+				instance.GetComponent<FloatingPopup>().Setup(floatingParams);
+			}
+			else
+			{
+				popupInstance.Setup(floatingParams);
+			}
 		}
 
-		public static void SpawnObject(string popupType, string text, Vector3 position, BaseCharacter source, BaseCharacter target, Sprite visual = null)
+		public static void SpawnObject(string popupType, string text, FloatingPopupAnchor anchor, BaseCharacter source, BaseCharacter target, Sprite visual = null)
 		{
 			if (_instance)
 			{
 				if (ShouldShowPopup(popupType, source, target))
 				{
-					_instance.SpawnPopup(popupType, text, position);
+					_instance.SpawnPopup(popupType, text, anchor);
 				}
 			}
 		}

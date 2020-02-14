@@ -5,10 +5,15 @@ using UnityEngine;
 
 namespace Station
 {
-	public class Pool : MonoBehaviour
+	public class PooledItem : MonoBehaviour
+	{
+	}
+
+	public class Pool: MonoBehaviour
 	{
 		private Transform _root;
-
+		private Dictionary<PooledItem, ObjectPool<PooledItem>> _componentPools;
+		private Dictionary<PooledItem, ObjectPool<PooledItem>> _instanceComponentPools;
 		private Dictionary<GameObject, ObjectPool<GameObject>> _prefabsPools;
 		private Dictionary<GameObject, ObjectPool<GameObject>> _instancePools;
 		private const string OnSpawn = "OnSpawn";
@@ -18,12 +23,84 @@ namespace Station
 		private void Awake()
 		{
 			_root = transform;
+			
+			_componentPools = new Dictionary<PooledItem, ObjectPool<PooledItem>>();
+			_instanceComponentPools = new Dictionary<PooledItem, ObjectPool<PooledItem>>();
+			
 			_prefabsPools = new Dictionary<GameObject, ObjectPool<GameObject>>();
 			_instancePools = new Dictionary<GameObject, ObjectPool<GameObject>>();
 		}
 
 		#endregion
+		#region POOLEDITEM VERSION
+		private PooledItem InstantiatePrefab(PooledItem prefab)
+		{
+			var go = Instantiate(prefab);
+			if (_root != null) go.transform.SetParent(_root);
+			go.gameObject.SetActive(false);
+			return go;
+		}
+		
+		public void PopulatePool(PooledItem prefab, int size)
+		{
+			if (_componentPools.ContainsKey(prefab))
+			{
+				//already populated
+			}
 
+			var pool = new ObjectPool<PooledItem>(() => InstantiatePrefab(prefab), size);
+			_componentPools[prefab] = pool;
+		}
+
+		
+		public PooledItem SpawnObject(PooledItem prefab)
+		{
+			return SpawnObject(prefab, Vector3.zero, Quaternion.identity);
+		}
+		
+		public PooledItem SpawnObject(PooledItem prefab, Vector3 position, Quaternion rotation, Transform parent = null)
+		{
+			if (!_componentPools.ContainsKey(prefab))
+			{
+				PopulatePool(prefab, 1);
+			}
+
+			var pool = _componentPools[prefab];
+
+			var clone = pool.Create();
+			if (parent != null)
+				clone.transform.SetParent(parent);
+			clone.transform.SetPositionAndRotation(position, rotation);
+
+			clone.gameObject.SetActive(true);
+
+			_instanceComponentPools.Add(clone, pool);
+			clone.SendMessage(OnSpawn, SendMessageOptions.DontRequireReceiver);
+			return clone;
+		}
+
+		public void DespawnObject(PooledItem clone)
+		{
+			if(clone.gameObject.activeSelf)
+				clone.SendMessage(OnDespawn, SendMessageOptions.DontRequireReceiver);
+			
+			clone.gameObject.SetActive(false);
+			if (clone.transform.parent != transform)
+				clone.transform.SetParent(transform);
+
+			if (_instanceComponentPools.ContainsKey(clone))
+			{
+				_instanceComponentPools[clone].Recycle(clone);
+				_instanceComponentPools.Remove(clone);
+			}
+			else
+			{
+				Debug.LogWarning("No pool contains: " + clone.name);
+			}
+		}
+
+		#endregion
+#region GAMEOBJECT VERSION
 		public void PopulatePool(GameObject prefab, int size)
 		{
 			if (_prefabsPools.ContainsKey(prefab))
@@ -89,6 +166,8 @@ namespace Station
 			go.SetActive(false);
 			return go;
 		}
+		
+		#endregion
 	}
 }
 
