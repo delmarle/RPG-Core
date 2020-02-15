@@ -262,7 +262,6 @@ namespace Station
       {
         timer.Pause();
       }
-      Debug.Log("died");
     }
 
   }

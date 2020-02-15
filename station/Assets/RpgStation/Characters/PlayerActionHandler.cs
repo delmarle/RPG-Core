@@ -156,9 +156,6 @@ namespace Station
             });
             return filtered;
         }
-
-        #region TARGETING
         
-        #endregion
     }
 }

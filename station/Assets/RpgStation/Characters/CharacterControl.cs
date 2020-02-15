@@ -354,6 +354,8 @@ namespace Station
     if (RotationSettings.FreeMode && moveVector.magnitude > 0f)
     {
       Quaternion rotation = Quaternion.LookRotation(moveVector, Vector3.up);
+      rotation.x = 0;
+      rotation.z = 0;
       transform.rotation = Quaternion.Slerp(transform.rotation, rotation, RotationSettings.RotationSmoothing * Time.deltaTime);
     }
   }
@@ -370,8 +372,8 @@ namespace Station
     MoveVector = _direction;
     _controlRotation = Quaternion.Euler(_direction);
     var _lookRotation = Quaternion.LookRotation(_direction);
-    
-    transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, RotationSettings.RotationSmoothing * Time.deltaTime);
+    var rotation = Quaternion.Slerp(transform.rotation, _lookRotation, RotationSettings.RotationSmoothing * Time.deltaTime).eulerAngles;
+    transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);;
     _manualRotation = true;
   }
 

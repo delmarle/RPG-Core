@@ -5,20 +5,16 @@ using UnityEngine.UI;
 
 namespace Station
 {
-    
-    public class UiCharacterPortraitWidget : MonoBehaviour
-    {
-#region FIELDS
 
-        [SerializeField] private TextMeshProUGUI characterName = null;
-        [SerializeField] private TextMeshProUGUI characterClass = null;
-        [SerializeField] private UiVitalBarWidget[] _vitals = null;
-        [SerializeField] private UiCharacterStatusWidget _statusWidget = null;
-        
-#endregion
-        
-      #region [[ FIELDS ]]
+  public class UiCharacterPortraitWidget : MonoBehaviour
+  {
+    #region FIELDS
 
+    [SerializeField] private TextMeshProUGUI characterName = null;
+    [SerializeField] private TextMeshProUGUI characterClass = null;
+    [SerializeField] private UiVitalBarWidget[] _vitals = null;
+    [SerializeField] private UiCharacterStatusWidget _statusWidget = null;
+    [SerializeField] private CoreAnimation _animation = null;
     [SerializeField] private UnityEngine.UI.Button _button = null;
     [SerializeField] private Image _icon = null;
 
@@ -26,7 +22,13 @@ namespace Station
     private BaseCharacter _character;
     private VitalsDb _vitalsDb;
     private TeamSystem _teamSystem;
+
+    private const string STATE_ALIVE = "alive";
+    private const string STATE_DEAD = "dead";
+
     #endregion
+
+
 
     #region subscription
 
@@ -38,18 +40,18 @@ namespace Station
       {
         slider.gameObject.SetActive(false);
       }
-      
+
       if (character == null)
       {
         if (_statusWidget != null)
         {
           _statusWidget.Setup(null);
         }
-        
+
         characterName.text = string.Empty;
         characterClass.text = string.Empty;
-       
-        
+
+
         _character = null;
       }
       else
@@ -63,35 +65,37 @@ namespace Station
           _statusWidget.Setup(_character);
         }
 
-        characterName.text = (string)_character.GetMeta("name");
-        characterClass.text = (string)_character.GetMeta("class");
+        characterName.text = (string) _character.GetMeta("name");
+        characterClass.text = (string) _character.GetMeta("class");
         if (_icon)
         {
-          _icon.sprite = (Sprite)_character.GetMeta("icon");
+          _icon.sprite = (Sprite) _character.GetMeta("icon");
         }
 
-        
+
         Subscribe();
-       
-      
+
+
         int sliderIndex = 0;
         if (character.Stats != null && character.Stats.Vitals != null)
         {
           foreach (var vital in character.Stats.Vitals)
           {
             var instance = _vitals[sliderIndex];
-            _vitalSliders.Add(vital.Key,instance);
+            _vitalSliders.Add(vital.Key, instance);
             var dataEnergy = _vitalsDb.GetEntry(vital.Key);
             instance.Setup(dataEnergy);
             instance.gameObject.SetActive(true);
             sliderIndex++;
           }
         }
+
         //_icon.sprite = character.ClassStaticData.Icon;
         OnVitalsUpdated(character);
+        SetStates();
       }
 
-      
+
     }
 
     private void OnDestroy()
@@ -115,7 +119,7 @@ namespace Station
     public void Unsubscribe()
     {
       if (_character == null) return;
-        
+
       _character.OnCharacterInitialized -= OnCharacterInitialized;
       _character.OnVitalsUpdated -= OnVitalsUpdated;
       _character.OnDamaged -= OnReceiveDamage;
@@ -129,7 +133,7 @@ namespace Station
     private void OnLeaderChanged(BaseCharacter character)
     {
       if (_button == null) return;
-      
+
       if (_character == character)
       {
         SetSelected();
@@ -154,13 +158,18 @@ namespace Station
         }
       }
     }
-    
+
     private void OnRespawn(BaseCharacter character)
     {
+      SetStates();
     }
 
     private void OnDie(BaseCharacter character)
     {
+      if (_animation && _character)
+      {
+        _animation.PlayState(STATE_DEAD);
+      }
     }
 
     private void OnHealed(BaseCharacter character, VitalChangeData data)
@@ -173,8 +182,8 @@ namespace Station
 
     private void OnCharacterInitialized(BaseCharacter character)
     {
-    //  var playerClass = Resource.PlayerClassesDatabase.GetEntry(character.CharacterData.GetClass());
-    //  _icon.sprite = playerClass.Icon;
+      //  var playerClass = Resource.PlayerClassesDatabase.GetEntry(character.CharacterData.GetClass());
+      //  _icon.sprite = playerClass.Icon;
     }
 
     public void OnClick()
@@ -194,6 +203,15 @@ namespace Station
     {
       _button.interactable = true;
     }
+
+
+    private void SetStates()
+    {
+      if (_animation && _character)
+      {
+        _animation.PlayState(_character.IsDead? STATE_DEAD : STATE_ALIVE);
+      }
     }
+  }
 }
 
