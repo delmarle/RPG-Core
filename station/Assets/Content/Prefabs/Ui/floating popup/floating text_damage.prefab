@@ -166,11 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c686b59e519b43e8802f0d7917b81dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animation: {fileID: 9075793640472060079}
   _text: {fileID: 7509132891534329773}
   _animationData:
-    minLength: 3.5
-    maxLength: 4.5
+    minLength: 3
+    maxLength: 4
     Gradient:
       serializedVersion: 2
       key0: {r: 0, g: 1, b: 0.2, a: 0}
@@ -200,8 +199,8 @@ MonoBehaviour:
       m_Mode: 0
       m_NumColorKeys: 4
       m_NumAlphaKeys: 4
-    FromPosition: {x: 0, y: 0, z: 0}
-    ToPosition: {x: 0.5, y: -0.5, z: 0}
+    StartOffset: {x: 0, y: 0}
+    EndOffset: {x: 0, y: 150}
     AlphaCurve:
       serializedVersion: 2
       m_Curve:
@@ -239,16 +238,16 @@ MonoBehaviour:
         inWeight: 0
         outWeight: 0.04079922
       - serializedVersion: 3
-        time: 0.048886478
-        value: 1.4799786
-        inSlope: -0.07120271
-        outSlope: -0.07120271
+        time: 0.044332515
+        value: 2.4902828
+        inSlope: -0.07840763
+        outSlope: -0.07840763
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 1
         outWeight: 0.30758905
       - serializedVersion: 3
-        time: 0.18483385
+        time: 0.13159594
         value: 0.99767506
         inSlope: -0.040209312
         outSlope: -0.040209312
@@ -277,7 +276,6 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    Length: 0
   _canvas: {fileID: 9089724663706896234}
 --- !u!111 &9075793640472060079
 Animation:

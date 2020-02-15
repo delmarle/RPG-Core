@@ -15,8 +15,11 @@ MonoBehaviour:
   _db:
     m_keys:
     - 5c60fbf5-9faa-43f3-8cef-fcc0c89184a9
+    - 2e436a4b-cdcd-46bc-bf51-e010ecc69830
+    - 4bc26982-3c4d-4d45-9d1f-68fc3441751f
+    - 28ecca1d-4931-4dcd-a6e9-17991bb96ffa
     m_values:
-    - Name: Str
+    - Name: Strength
       Id: 5c60fbf5-9faa-43f3-8cef-fcc0c89184a9
       Description: 
       Icon: {fileID: 21300000, guid: 72a10be6e5eb9426d916eaaed1b57052, type: 3}
@@ -25,3 +28,24 @@ MonoBehaviour:
       StatisticBonuses:
       - Id: e55ea5e7-dcdc-4b87-9825-a03f37b4dd36
         Value: 5
+    - Name: Endurance
+      Id: 2e436a4b-cdcd-46bc-bf51-e010ecc69830
+      Description: 
+      Icon: {fileID: 21300000, guid: eef5df1d85b3345368b50c0007e4ce06, type: 3}
+      DefaultValue: 10
+      VitalBonuses: []
+      StatisticBonuses: []
+    - Name: Dexterity
+      Id: 4bc26982-3c4d-4d45-9d1f-68fc3441751f
+      Description: 
+      Icon: {fileID: 21300000, guid: 9c12527049b80454b8699c14787b16f2, type: 3}
+      DefaultValue: 10
+      VitalBonuses: []
+      StatisticBonuses: []
+    - Name: Intellect
+      Id: 28ecca1d-4931-4dcd-a6e9-17991bb96ffa
+      Description: 
+      Icon: {fileID: 21300000, guid: 308cb200e365c4e44b279ce728047685, type: 3}
+      DefaultValue: 10
+      VitalBonuses: []
+      StatisticBonuses: []

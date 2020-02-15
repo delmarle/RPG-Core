@@ -8,7 +8,7 @@ namespace Station
     public class FloatingPopup : PooledItem 
     {
         
-        [SerializeField] private Animation _animation = null;
+       // [SerializeField] private Animation _animation = null;
         [SerializeField] private TextMeshProUGUI _text = null;
         [SerializeField] private FloatingAnimation _animationData = null;
         [SerializeField] private CanvasGroup _canvas;
@@ -40,10 +40,9 @@ namespace Station
 
             _canvas.alpha = _animationData.AlphaCurve.Evaluate(_elapsedRatio);
             transform.localScale = Vector3.one *  _animationData.ScaleCurve.Evaluate(_elapsedRatio);
-
-            var worldPos = targetPosition + _animationData.GetOffSet(_elapsedRatio);
-            Vector2 screenPosition = _camera.WorldToScreenPoint(worldPos);
-            transform.position = screenPosition;
+            
+            Vector2 screenPosition = _camera.WorldToScreenPoint(targetPosition);
+            transform.position = screenPosition + _animationData.GetOffSet(_elapsedRatio);
             _text.color =  _animationData.Gradient.Evaluate(_elapsedRatio);
            
             _elapsedRatio += Time.deltaTime / _animationData.Length;
@@ -76,26 +75,25 @@ namespace Station
         
         //position
         public Gradient Gradient;
-        public Vector3 FromPosition;
-        public Vector3 ToPosition;
+        public Vector2 StartOffset;
+        public Vector2 EndOffset;
         public AnimationCurve AlphaCurve;
         public AnimationCurve ScaleCurve;
- 
-
+        
 
         public void Generate()
         {
-            Length = Random.Range(minLength, maxLength);
+            _length = Random.Range(minLength, maxLength);
         }
         
         //GENERATED VALUES
-        public float Length;
+        private float _length;
 
-        public Vector3 GetOffSet(float time)
+        public float Length => _length;
+
+        public Vector2 GetOffSet(float time)
         {
-
-            return Vector3.Lerp(FromPosition, ToPosition, time);
-
+            return Vector2.Lerp(StartOffset, EndOffset, time);
         }
     }
 }

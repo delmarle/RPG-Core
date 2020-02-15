@@ -24,6 +24,12 @@ MonoBehaviour:
       AttributeBonuses:
       - Id: 5c60fbf5-9faa-43f3-8cef-fcc0c89184a9
         Value: 18
+      - Id: 2e436a4b-cdcd-46bc-bf51-e010ecc69830
+        Value: 10
+      - Id: 4bc26982-3c4d-4d45-9d1f-68fc3441751f
+        Value: 10
+      - Id: 28ecca1d-4931-4dcd-a6e9-17991bb96ffa
+        Value: 10
       VitalBonuses:
       - Id: a8710699-ce84-46b7-8c19-b5c7cc0f361d
         Value: 100
@@ -35,6 +41,12 @@ MonoBehaviour:
       AttributeBonuses:
       - Id: 5c60fbf5-9faa-43f3-8cef-fcc0c89184a9
         Value: 18
+      - Id: 2e436a4b-cdcd-46bc-bf51-e010ecc69830
+        Value: 10
+      - Id: 4bc26982-3c4d-4d45-9d1f-68fc3441751f
+        Value: 10
+      - Id: 28ecca1d-4931-4dcd-a6e9-17991bb96ffa
+        Value: 10
       VitalBonuses:
       - Id: a8710699-ce84-46b7-8c19-b5c7cc0f361d
         Value: 100
@@ -46,6 +58,12 @@ MonoBehaviour:
       AttributeBonuses:
       - Id: 5c60fbf5-9faa-43f3-8cef-fcc0c89184a9
         Value: 9
+      - Id: 2e436a4b-cdcd-46bc-bf51-e010ecc69830
+        Value: 10
+      - Id: 4bc26982-3c4d-4d45-9d1f-68fc3441751f
+        Value: 10
+      - Id: 28ecca1d-4931-4dcd-a6e9-17991bb96ffa
+        Value: 10
       VitalBonuses:
       - Id: a8710699-ce84-46b7-8c19-b5c7cc0f361d
         Value: 100

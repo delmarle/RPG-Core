@@ -29,7 +29,7 @@ namespace Station
             _savingSystem = _station.GetSystem<SavingSystem>();
             _dbSystem = _station.GetSystem<DbSystem>();
             GameGlobalEvents.OnSceneStartLoad.AddListener(OnStartLoadScene);
-            GameGlobalEvents.OnSceneReady.AddListener(InitializeTeam);
+            GameGlobalEvents.OnSceneLoadObjects.AddListener(InitializeTeam);
         }
 
        
@@ -37,7 +37,7 @@ namespace Station
         {
             Debug.Log("team dispose");
             GameGlobalEvents.OnSceneStartLoad.RemoveListener(OnStartLoadScene);
-            GameGlobalEvents.OnSceneReady.RemoveListener(InitializeTeam);
+            GameGlobalEvents.OnSceneLoadObjects.RemoveListener(InitializeTeam);
         }
 
         private void InitializeTeam()

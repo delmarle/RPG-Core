@@ -20,8 +20,8 @@ namespace Station
             GameGlobalEvents.OnSceneStartLoad.AddListener(OnStartLoadScene);
             GameGlobalEvents.OnSceneInitialize.RemoveListener(OnSceneInitialize);
             GameGlobalEvents.OnSceneInitialize.AddListener(OnSceneInitialize);
-            GameGlobalEvents.OnSceneReady.RemoveListener(OnSceneReady);
-            GameGlobalEvents.OnSceneReady.AddListener(OnSceneReady);
+            GameGlobalEvents.OnSceneLoadObjects.RemoveListener(OnSceneReady);
+            GameGlobalEvents.OnSceneLoadObjects.AddListener(OnSceneReady);
             _sceneLoader.OnLoadingProgress -= OnLoaderProgress;
             _sceneLoader.OnLoadingProgress += OnLoaderProgress;
     
@@ -33,7 +33,7 @@ namespace Station
         {
             GameGlobalEvents.OnSceneStartLoad.RemoveListener(OnStartLoadScene);
             GameGlobalEvents.OnSceneInitialize.RemoveListener(OnSceneInitialize);
-            GameGlobalEvents.OnSceneReady.RemoveListener(OnSceneReady);
+            GameGlobalEvents.OnSceneLoadObjects.RemoveListener(OnSceneReady);
             _sceneLoader.OnLoadingProgress -= OnLoaderProgress;
         }
 

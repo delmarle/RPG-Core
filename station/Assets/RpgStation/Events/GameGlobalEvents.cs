@@ -7,6 +7,7 @@
         public static StationEvent OnBeforeLeaveScene = new StationEvent();
         public static StationEvent OnSceneStartLoad = new StationEvent();
         public static StationEvent OnSceneInitialize = new StationEvent();
+        public static StationEvent OnSceneLoadObjects = new StationEvent();
         public static StationEvent OnSceneReady = new StationEvent();
         public static StationEvent OnTriggerSceneSave = new StationEvent();
     }

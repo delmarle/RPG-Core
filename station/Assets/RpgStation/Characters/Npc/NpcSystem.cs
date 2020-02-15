@@ -24,18 +24,19 @@ namespace Station
         //save
         protected override void OnInit()
         {
-           GameGlobalEvents.OnSceneInitialize.AddListener(OnEnterScene);
+           GameGlobalEvents.OnSceneLoadObjects.AddListener(OnEnterScene);
            _dbSystem = RpgStation.GetSystemStatic<DbSystem>();
 
         }
 
         protected override void OnDispose()
         {
-            GameGlobalEvents.OnSceneInitialize.RemoveListener(OnEnterScene);
+            GameGlobalEvents.OnSceneLoadObjects.RemoveListener(OnEnterScene);
         }
 
         public void OnEnterScene()
         {
+            Debug.Log("on enter scene");
             _settingsDb = _dbSystem.GetDb<GameSettingsDb>();
             _npcDb = _dbSystem.GetDb<NpcDb>();
             if (_mechanics == null)

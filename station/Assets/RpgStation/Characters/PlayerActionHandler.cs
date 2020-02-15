@@ -147,7 +147,6 @@ namespace Station
             var characterPosition = _character.transform.position;
             RaycastUtils.SphereCastSearchComponentsAroundSource(_character, characterPosition, 4, out var characters);
             
-            Debug.Log(characters.Count);
             var filtered = characters.Where(x => _character.ResolveStance(x) != Stance.Ally).ToList();
             filtered.Sort(delegate(BaseCharacter a, BaseCharacter b)
             {

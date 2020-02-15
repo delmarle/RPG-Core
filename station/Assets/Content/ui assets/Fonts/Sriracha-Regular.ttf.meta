@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 02bba3682f73c4948abc0c82bcbdee27
+guid: 82ae82b71a9f849309da85f32f2e30fa
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Futura
+  fontName: Sriracha
   fontNames:
-  - Futura
+  - Sriracha
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

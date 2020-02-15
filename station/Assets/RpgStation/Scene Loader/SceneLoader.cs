@@ -103,10 +103,10 @@ namespace Station
 				//waiting for initialize event
 				yield return null;
 			}
-			yield return new WaitForSeconds(0.5f);
-			GameGlobalEvents.OnSceneReady?.Invoke();
+			yield return new WaitForSeconds(0.2f);
+			GameGlobalEvents.OnSceneLoadObjects?.Invoke();
 
-			#if DOTWEEN
+#if DOTWEEN
 			_tweener = UiTween.SetCanvasFade(Ease.Linear, _canvas, false, FadeTime, DelayBeforeFadeOut);
 			_tweener.OnComplete(() =>
 				{
@@ -125,6 +125,7 @@ namespace Station
 			#endif
 			
 			_isLoading = false;
+			GameGlobalEvents.OnSceneReady?.Invoke();
 		}
 
 		public void UpdateProgressEvent(float progress)
