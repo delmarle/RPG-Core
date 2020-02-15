@@ -59,6 +59,7 @@ namespace Station
                 character.Init(save.RaceId, save.FactionId, save.GenderId, calculatorInstance, save.Name);
                 character.SetupAction(model.Attack);     
                 character.AddMeta("classId", save.ClassId);
+                character.AddMeta("icon", model.Icon);
                 character.gameObject.name = "[player] "+save.Name;
                 character.SetupStats(model.HealthVital,null,model.EnergyVitals.ToArray());
                 character.GetInputHandler.InitializePlayerInput(PlayerInput.Instance);
@@ -129,6 +130,7 @@ namespace Station
             character.Init(model.RaceId, model.FactionId, "Male", calculatorInstance, model.Name);
             character.SetupAction(model.Attack);     
             character.AddMeta("npc_id", npcId);
+            character.AddMeta("icon", model.Icon);
             character.gameObject.name = "[npc] "+model.Name;
             character.SetupStats(model.HealthVital,null,model.EnergyVitals.ToArray());
                

@@ -9,7 +9,7 @@ namespace Station
         private const string HIDDEN = "hidden";
         private const string SHOW = "show";
         private const string HIDE = "hide";
-        [SerializeField] private CoreAnimation _animation;
+        [SerializeField] private CoreAnimation _animation = null;
         [SerializeField] private UiCharacterPortraitWidget _portraitWidget = null;
         //status effects
         private BaseCharacter _character;

@@ -10,19 +10,20 @@ namespace Station
   {
     [SerializeField] private List<Transform> _points = new List<Transform>();
 
-    private  BaseDb GetDb(Type name)
+    private  BaseDb GetDb(Type currentType)
     {
+      BaseDb dbFound;
       #if UNITY_EDITOR
-      string dbPath = "Assets/Content/Databases/" + name.Name + @".asset";
+      string dbPath = "Assets/Content/Databases/" + currentType.Name + @".asset";
       BaseDb found = AssetDatabase.LoadAssetAtPath<BaseDb>(dbPath);
       if (found == null)
       {
         Debug.LogError("cant find db at: "+dbPath);
       }
 
-      return found;
+      dbFound =  found;
       #endif
-      return null;
+      return dbFound;
     }
     
     public void Initialize()

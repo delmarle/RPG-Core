@@ -193,7 +193,7 @@ namespace Station
         public void AssignMeta(BaseCharacter character)
         {
             var value = character.GetMeta(_metaName);
-            _metaText.text = value;
+            _metaText.text = (string)value;
         }
     }
 }

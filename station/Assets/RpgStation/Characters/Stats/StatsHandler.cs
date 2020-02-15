@@ -11,7 +11,7 @@ namespace Station
     private AttributesDb _attributesDb;
     private StatisticDb _statisticDb;
     private VitalsDb _vitalsDb;
-    private string _movementSpeedId;
+    private string _movementSpeedId = Statistic.MOVEMENT_SPEED_ID;
     
     private List<RuntimeModifier> _modifierToRecycle = new List<RuntimeModifier>();
     private BaseCharacter _character;

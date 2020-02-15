@@ -14,8 +14,7 @@ namespace Station
         [SerializeField] private TextMeshProUGUI characterClass = null;
         [SerializeField] private UiVitalBarWidget[] _vitals = null;
         [SerializeField] private UiCharacterStatusWidget _statusWidget = null;
-
-        private BaseCharacter _cacheCharacter = null;
+        
 #endregion
         
       #region [[ FIELDS ]]
@@ -64,8 +63,14 @@ namespace Station
           _statusWidget.Setup(_character);
         }
 
-        characterName.text = _character.GetMeta("name");
-        characterClass.text = _character.GetMeta("class");
+        characterName.text = (string)_character.GetMeta("name");
+        characterClass.text = (string)_character.GetMeta("class");
+        if (_icon)
+        {
+          _icon.sprite = (Sprite)_character.GetMeta("icon");
+        }
+
+        
         Subscribe();
        
       

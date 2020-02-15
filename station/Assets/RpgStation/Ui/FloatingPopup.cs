@@ -11,7 +11,7 @@ namespace Station
        // [SerializeField] private Animation _animation = null;
         [SerializeField] private TextMeshProUGUI _text = null;
         [SerializeField] private FloatingAnimation _animationData = null;
-        [SerializeField] private CanvasGroup _canvas;
+        [SerializeField] private CanvasGroup _canvas = null;
         private FloatingParams _params;
         private Camera _camera;
         private float _elapsedRatio;

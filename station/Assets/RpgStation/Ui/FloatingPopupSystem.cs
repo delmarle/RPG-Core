@@ -102,8 +102,8 @@ namespace Station
 				return false;
 			}
 
-			var ownerIdentity = owner.GetMeta("identity");
-			var sourceIdentity = source.GetMeta("identity");
+			var ownerIdentity = (string)owner.GetMeta("identity");
+			var sourceIdentity = (string)source.GetMeta("identity");
 	
 			if (ownerIdentity == IdentityType.MainPlayer.ToString())
 			{

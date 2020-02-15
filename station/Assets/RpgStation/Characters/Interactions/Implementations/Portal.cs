@@ -1,20 +1,16 @@
-﻿using UnityEngine;
-
+﻿
 namespace Station
 {
   public class Portal : Interactible
   {
-    [SerializeField] private bool _saveDestination = true;
     [Destination] public DestinationModel Destination;
     private SceneSystem _sceneSystem;
-    private SavingSystem _saveSystem;
     private ScenesDb _sceneDb;
     
     protected override void Setup()
     {
       
       _sceneSystem = RpgStation.GetSystemStatic<SceneSystem>();
-      _saveSystem =  RpgStation.GetSystemStatic<SavingSystem>();
       var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
       if (dbSystem == null)
       {

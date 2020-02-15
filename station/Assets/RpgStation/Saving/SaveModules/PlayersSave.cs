@@ -32,7 +32,7 @@ public class PlayersSave : SaveModule<Dictionary<string, PlayersData>>
                 //save current position
                 foreach (var playerCharacter in teamMembers)
                 {
-                    var key = playerCharacter.GetMeta(PLAYER_KEY);
+                    var key = (string)playerCharacter.GetMeta(PLAYER_KEY);
                     if (Value.ContainsKey(key) == false)
                     {
                         Value.Add(key, new PlayersData());

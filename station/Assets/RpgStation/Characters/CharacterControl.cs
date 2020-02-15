@@ -29,13 +29,10 @@ namespace Station
       {
         case 0:
           return MovementSettings.WALK_MULTIPLIER * movementStat;
-          break; 
         case 1:
           return MovementSettings.JOG_MULTIPLIER * movementStat;
-          break; 
         case 2:
           return MovementSettings.SPRINT_MULTIPLIER* movementStat;
-          break; 
       }
       
       return 0;

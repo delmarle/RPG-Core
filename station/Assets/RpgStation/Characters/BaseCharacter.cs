@@ -100,9 +100,9 @@ namespace Station
             return _factionId;
         }
 
-        private Dictionary<string, string> _meta = new Dictionary<string, string>();
+        private Dictionary<string, object> _meta = new Dictionary<string, object>();
 
-        public string GetMeta(string key)
+        public object GetMeta(string key)
         {
             if (_meta.ContainsKey(key))
             {
@@ -111,7 +111,6 @@ namespace Station
 
             return "";
         }
-
 
         [SerializeField]private Renderer _characterVisual;
         #endregion
@@ -132,7 +131,7 @@ namespace Station
             }
         }
 
-        public void Init(string raceId, string factionId, string genderId, CharacterCalculation instance, string characterName, Dictionary<string, string> meta = null)
+        public void Init(string raceId, string factionId, string genderId, CharacterCalculation instance, string characterName, Dictionary<string, object> meta = null)
         {
            
             
@@ -165,7 +164,7 @@ namespace Station
             _stats.Setup(this,health, secondaryHealth,energies);
         }
         
-        public void AddMeta(string key, string value)
+        public void AddMeta(string key, object value)
         {
             if (_meta.ContainsKey(key))
             {
