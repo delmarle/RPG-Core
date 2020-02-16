@@ -8,6 +8,8 @@ namespace Station
   public class ActionHandler
   {
     #region [[ FIELDS ]]
+
+    private const float COMBAT_EXIT_LENGTH = 10;
     public const int LINKED_AMOUNT = 4;
     private Dictionary<int,BarSlotState> _linkedActivities = new Dictionary<int, BarSlotState>();
     protected List<RuntimeAbility> _abilities = new List<RuntimeAbility>();
@@ -33,6 +35,7 @@ namespace Station
     public RuntimeAbility _castingAbility;
     public CharacterAction _currentAction;
     public Dictionary<string, List<BarSlotState>> ActionBinds;
+    private float _combatTimeLeft = 0;
     #endregion
 
     public void SetupDefaultAttack(AttackData data)
@@ -169,15 +172,34 @@ namespace Station
     #region Combat
     protected void EnterCombat()
     {
+      _combatTimeLeft = COMBAT_EXIT_LENGTH;
       _inCombat = true;
       OnSwitchCombat?.Invoke(true);
     }
 
-    protected void ExitCombat()
+    private void ExitCombat()
     {
       _inCombat = false;
       OnSwitchCombat?.Invoke(false);
     }
+
+    public void RefreshCombat()
+    {
+      _combatTimeLeft = COMBAT_EXIT_LENGTH;
+    }
+
+    public void UpdateCombat()
+    {
+      if (_inCombat)
+      {
+        _combatTimeLeft -= Time.deltaTime;
+        if (_combatTimeLeft <= 0)
+        {
+          ExitCombat();
+        }
+      }
+    }
+
     #endregion
     #region [[ USE ABILITY ]]
   

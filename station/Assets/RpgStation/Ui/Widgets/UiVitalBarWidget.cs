@@ -34,6 +34,7 @@ namespace Station
 
         public void Setup(VitalModel dataEnergyName)
         {
+            _slider.interactable = false;
         }
     } 
 

@@ -17,7 +17,8 @@ namespace Station
   private static readonly int InvokingId = Animator.StringToHash("InvokingId");
   private static readonly int AttackTrigger = Animator.StringToHash("AttackTrigger");
   private static readonly int AttackField = Animator.StringToHash("Combat");
-
+  private bool _inCombat;
+  private float _combat;
   private Animator _animator;
   private CharacterControl _characterControl;
   private BaseCharacter _baseCharacter;
@@ -126,12 +127,16 @@ namespace Station
   
   private void OnSwitchCombat(bool inCombat)
   {
-    _animator.SetFloat(AttackField, inCombat?1:0);
+    _inCombat = inCombat;
+   
   }
 
 
   protected virtual void Update()
   {
+    var changedCombatValue = _inCombat ? _combat  + Time.deltaTime : _combat - Time.deltaTime;
+    _combat = Mathf.Clamp(changedCombatValue, 0, 1);
+    _animator.SetFloat(AttackField, _combat);
     _animator.SetFloat(HorizontalSpeed, _characterControl.HorizontalSpeed);
     _animator.SetFloat(VerticalSpeed, _characterControl.VerticalSpeed);
     _animator.SetBool(IsGrounded, _characterControl.IsGrounded);

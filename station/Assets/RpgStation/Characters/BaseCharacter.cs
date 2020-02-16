@@ -209,6 +209,7 @@ namespace Station
         
         private void Update()
         {
+            _action?.UpdateCombat();
             _action?.UpdateLoop();
         }
         

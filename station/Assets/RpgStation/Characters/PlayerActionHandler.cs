@@ -110,6 +110,7 @@ namespace Station
                         //no action to do but we are ready
                         if (DefaultAttack.CanUse())
                         {
+                            RefreshCombat();
                             var actionLength = DefaultAttack.CalculateActionLength();
                             _timeBeforeNextAction = actionLength+ GLOBAL_COOL_DOWN;
                             DefaultAttack.SetCoolDown(0);
