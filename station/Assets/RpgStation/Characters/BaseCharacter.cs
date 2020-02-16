@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Station
@@ -131,6 +132,11 @@ namespace Station
             }
         }
 
+        private void OnDestroy()
+        {
+            _action.Unsubscribe();
+        }
+
         public void Init(string raceId, string factionId, string genderId, CharacterCalculation instance, string characterName, Dictionary<string, object> meta = null)
         {
            
@@ -178,9 +184,11 @@ namespace Station
 
         public void SetupAction(AttackData defaultAttack)
         {
-           _action = new PlayerActionHandler();
+           _action = new RpgActionHandler();
+          
            _action.SetupDefaultAttack(defaultAttack);
            _action.SetAbilities(new List<RuntimeAbility>(), this);
+           _action.Subscribe();
         }
 
         #region [[ FACTION & TARGETING ]]

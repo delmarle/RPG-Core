@@ -38,6 +38,24 @@ namespace Station
     private float _combatTimeLeft = 0;
     #endregion
 
+    public void Subscribe()
+    {
+      _character.OnDamaged+= OnDamaged;
+    }
+
+    public void Unsubscribe()
+    {
+      _character.OnDamaged-= OnDamaged;
+    }
+
+    private void OnDamaged(BaseCharacter character, VitalChangeData data)
+    {
+      if (_character.IsDead == false)
+      {
+        RefreshCombat();
+      }
+    }
+
     public void SetupDefaultAttack(AttackData data)
     {
       DefaultAttack.SetupData(data);
@@ -185,7 +203,14 @@ namespace Station
 
     public void RefreshCombat()
     {
-      _combatTimeLeft = COMBAT_EXIT_LENGTH;
+      if (_inCombat == false)
+      {
+        EnterCombat();
+      }
+      else
+      {
+        _combatTimeLeft = COMBAT_EXIT_LENGTH;
+      }
     }
 
     public void UpdateCombat()

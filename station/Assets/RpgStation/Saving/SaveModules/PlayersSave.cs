@@ -41,7 +41,7 @@ public class PlayersSave : SaveModule<Dictionary<string, PlayersData>>
                     var transformPlayer = playerCharacter.transform;
                     Value[key].LastPosition = transformPlayer.position;
                     Value[key].LastRotation = transformPlayer.rotation.eulerAngles;
-                    var playerActionHandler = playerCharacter.Action as PlayerActionHandler;
+                    var playerActionHandler = playerCharacter.Action as RpgActionHandler;
                     Value[key].LearnedActiveAbilitiesList = playerActionHandler?.GetAbilitiesState();
                     
                 }

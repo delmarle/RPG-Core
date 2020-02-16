@@ -9,7 +9,7 @@ namespace Station
     {
         private Button _button;
         private BaseCharacter _cachedCharacter;
-        private PlayerActionHandler _action;
+        private RpgActionHandler _action;
 
         private void Awake()
         {
@@ -26,7 +26,7 @@ namespace Station
         private void OnLeaderChanged(BaseCharacter leader)
         {
             _cachedCharacter = leader;
-            _action = leader.Action as PlayerActionHandler;
+            _action = leader.Action as RpgActionHandler;
         }
 
 

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Station
 {
     [Serializable]
-    public class PlayerActionHandler : ActionHandler
+    public class RpgActionHandler : ActionHandler
     {
         #region FIELDS
         public Dictionary<string, RuntimeAbility> _abilitiesMap = new Dictionary<string, RuntimeAbility>();
