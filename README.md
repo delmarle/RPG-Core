@@ -1,10 +1,10 @@
 # RpgStationUnity
 # Next features: 
--Spawning for characters and any objects, use rules and state can be saved [Currently working on this]
--Inventory, Equipment, Crafting
--Status Effects extended
--Hate system
--Npc Basic Ai
+- Spawning for characters and any objects, use rules and state can be saved [Currently working on this]
+- Inventory, Equipment, Crafting
+- Status Effects extended
+- Hate system
+- Npc Basic Ai
 
 # Feature list:
 - Saving system
