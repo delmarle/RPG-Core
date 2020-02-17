@@ -1,19 +1,10 @@
 # RpgStationUnity
-Rpg Station Unity
-![alt text](https://i.gyazo.com/f4625456c7d35ba03a5c93b438253aaa.png)
-![alt text](https://i.gyazo.com/b9b99aa6f4469ff422696f89bcc6c983.png)
-
-https://gyazo.com/5fa3bf2209a5a69a2ade7363c9ecb21b
-
-# What is Rpg Station?
-
-its a framework that want to simplify creation of rpg games but still provide flexibility, so you can make any type of game with included functionality. If the game you want to make is not possible out of the box, it will be very easy to add specific logic.
-
-# How flexible it is?
-
-- none of the stats / skills / names / vitals / Character creation, Ui whatever are hardcoded, they care configured through editor.
-- each character will instantiate a scriptable object "calculator" that will be responsible for calculation, tell other component what to do.
-- hot swappable Mechanics feature, that allow you to change controls, component, inputs of your game in a click of a button. that mean you can use ClassicRpgMechanics to have a team based rpg, then change to FPSRpgMechanics and your game will play like skyrim. this does not need to reconfigure your data or your scenes
+# Next features: 
+-Spawning for characters and any objects, use rules and state can be saved [Currently working on this]
+-Inventory, Equipment, Crafting
+-Status Effects extended
+-Hate system
+-Npc Basic Ai
 
 # Feature list:
 - Saving system
@@ -30,16 +21,27 @@ its a framework that want to simplify creation of rpg games but still provide fl
 - World, Scenes Data, Spawners, Portals
 - Interaction: Button, harvestNode, portal
 
-# Todo: 
--Npc Basic Ai
+# Later features: 
 -Pets 
--Inventory, Equipment, Crafting
--StatusEffects
 -Difficulty
 -Localization
 
+![alt text](https://i.gyazo.com/f4625456c7d35ba03a5c93b438253aaa.png)
+![alt text](https://i.gyazo.com/b9b99aa6f4469ff422696f89bcc6c983.png)
 
-I will update this again, its incomplete
+https://gyazo.com/5fa3bf2209a5a69a2ade7363c9ecb21b
+
+# What is Rpg Station?
+
+its a framework that want to simplify creation of rpg games but still provide flexibility, so you can make any type of game with included functionality. If the game you want to make is not possible out of the box, it will be very easy to add specific logic.
+
+# How flexible it is?
+
+- none of the stats / skills / names / vitals / Character creation, Ui whatever are hardcoded, they care configured through editor.
+- each character will instantiate a scriptable object "calculator" that will be responsible for calculation, tell other component what to do.
+- hot swappable Mechanics feature, that allow you to change controls, component, inputs of your game in a click of a button. that mean you can use ClassicRpgMechanics to have a team based rpg, then change to FPSRpgMechanics and your game will play like skyrim. this does not need to reconfigure your data or your scenes
+
+
 
 How to:
 How to create my Own mechanics:
