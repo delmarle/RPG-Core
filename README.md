@@ -211,3 +211,5 @@ namespace Station
 }
 
 ```
+
+You are free to use this in any comercial game but do not resell the framework
