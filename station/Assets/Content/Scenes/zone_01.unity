@@ -133,11 +133,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1318844784}
     m_Modifications:
-    - target: {fileID: 7990258495338362492, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas_worldspace_objects
-      objectReference: {fileID: 0}
     - target: {fileID: 2814665920819592516, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -288,6 +283,11 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 7990258495338362492, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas_worldspace_objects
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2125932376534874696, guid: 537d9b2fd8e3b4fe59fbc2a194092756, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 537d9b2fd8e3b4fe59fbc2a194092756, type: 3}
@@ -367,11 +367,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1864929835}
     m_Modifications:
-    - target: {fileID: 7990258495338362492, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas_worldspace_objects
-      objectReference: {fileID: 0}
     - target: {fileID: 2814665920819592516, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -526,6 +521,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: PRESS
+      objectReference: {fileID: 0}
+    - target: {fileID: 7990258495338362492, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas_worldspace_objects
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2125932376534874696, guid: 537d9b2fd8e3b4fe59fbc2a194092756, type: 3}
@@ -1493,6 +1493,49 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 985151901}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1015793864
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1015793866}
+  - component: {fileID: 1015793865}
+  m_Layer: 0
+  m_Name: spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1015793865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015793864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f35badd28c074fc0bc4f4f2a39afb27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1015793866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015793864}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -17.3, y: 22.027, z: -58.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1370599730}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1064546975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1686,7 +1729,6 @@ MonoBehaviour:
       Length: 1
       AnimationId: 0
       StartSound: {fileID: 0}
-  _saveDestination: 1
   Destination:
     SceneId: e77d2c4e-05f5-455f-86f5-922c4a61d9d7
     SpawnId: 0
@@ -2162,7 +2204,7 @@ GameObject:
   - component: {fileID: 1370599730}
   - component: {fileID: 1370599729}
   m_Layer: 0
-  m_Name: NPC DATA
+  m_Name: '[Spawner data]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2180,12 +2222,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5877b8e15ba745e6bd9e1a453d06c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnAmount: 2
-  Entries:
-  - Id: 184a36ca-bca9-4b32-a711-93fe55440ae1
-    position: {x: -28.23787, y: 21.99231, z: -60.84401}
-    Unique: 0
-    Weight: 1
+  InitMode: 0
+  SpawnId: zone_01_spawner_enemies
+  SpawnAmount: 38
+  entitiesSelectionMode: 0
+  ReSpawnMode: 1
+  DataList:
+    array:
+    - Id: ffsdfsfsdf
+      SpawnType: 2
+      Prefab: {fileID: 100018, guid: 7d3c05bccd7388942bcf8215cf4481c2, type: 3}
+      Position: {fileID: 1015793865}
+      Unique: 0
+      Weight: 12
+      SaveId: 
+    - Id: 184a36ca-bca9-4b32-a711-93fe55440ae1
+      SpawnType: 0
+      Prefab: {fileID: 0}
+      Position: {fileID: 0}
+      Unique: 0
+      Weight: 5
+      SaveId: 
+    - Id: 184a36ca-bca9-4b32-a711-93fe55440ae1
+      SpawnType: 0
+      Prefab: {fileID: 0}
+      Position: {fileID: 0}
+      Unique: 0
+      Weight: 0
+      SaveId: 
 --- !u!4 &1370599730
 Transform:
   m_ObjectHideFlags: 0
@@ -2196,7 +2260,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1015793866}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2934,7 +2999,6 @@ MonoBehaviour:
       Length: 1
       AnimationId: 0
       StartSound: {fileID: 0}
-  _saveDestination: 1
   Destination:
     SceneId: e77d2c4e-05f5-455f-86f5-922c4a61d9d7
     SpawnId: 0
@@ -3124,11 +3188,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1665960027}
     m_Modifications:
-    - target: {fileID: 7990258495338362492, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas_worldspace_objects (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 2814665920819592516, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3233,6 +3292,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7990258495338362492, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas_worldspace_objects (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 537d9b2fd8e3b4fe59fbc2a194092756, type: 3}

@@ -8,25 +8,23 @@ using Debug = UnityEngine.Debug;
 
 namespace Station
 {
-    public class NpcSystem : BaseSystem
+    public class SpawningSystem : BaseSystem
     {
         #region FIELDS
         private GameSettingsDb _settingsDb;
         private DbSystem _dbSystem;
+        private SavingSystem _savingSystem;
         private NpcDb _npcDb;
         private StationMechanics _mechanics;
         
-        private Dictionary<string, List<BaseCharacter>> npcMap = new Dictionary<string, List<BaseCharacter>>();
-        private NpcSpawns _cacheSpawns;
+        private SceneSpawner[] _cacheSpawnsData;
         #endregion
-        //find reference all npc that can spawn
-        //spawn and respawn
-        //save
+
         protected override void OnInit()
         {
            GameGlobalEvents.OnSceneLoadObjects.AddListener(OnEnterScene);
            _dbSystem = RpgStation.GetSystemStatic<DbSystem>();
-
+           _savingSystem = RpgStation.GetSystemStatic<SavingSystem>();
         }
 
         protected override void OnDispose()
@@ -46,20 +44,23 @@ namespace Station
             }
 
             
-            _cacheSpawns = FindObjectOfType<NpcSpawns>();
-            if (_cacheSpawns == null) return;
-
-            var spawnList = _cacheSpawns.Entries;
-            for (int i = 0; i < _cacheSpawns.SpawnAmount; i++)
+            _cacheSpawnsData = FindObjectsOfType<SceneSpawner>();
+            if (_cacheSpawnsData == null) return;
+            var spawnerSave = _savingSystem.GetModule<SpawnerSave>();
+            foreach (var spawnData in _cacheSpawnsData)
             {
-                var randomNpc = GetRandom(spawnList);
-                StartCoroutine("SpawnNpc", randomNpc.Id);
+                var spawnStateMap = spawnerSave.Value[spawnData.SpawnId].SpawnsStateMap;
+                foreach (var spawnedEntries in spawnStateMap)
+                {
+                    
+                }
             }
+           
         }
 
         public IEnumerator SpawnNpc(string npcId)
         {
-            var data = _cacheSpawns.GetDataById(npcId);
+            //var data = _cacheSpawns.GetDataById(npcId);
             var npcModel = _npcDb.GetEntry(npcId);
             var characterData = new List<object>
             {
@@ -84,7 +85,7 @@ namespace Station
                     _mechanics.OnBuildNpc(component, npcModel, npcId);
 
                     
-                    component.transform.position = data.position;
+                 //   component.transform.position = data.position;
                     component.Control.SetRotation(Quaternion.identity.eulerAngles);
                     component.AddMeta("identity", IdentityType.Npc.ToString());
                   
@@ -117,9 +118,9 @@ namespace Station
             return vitalStatus;
         }
 
-        public NpcSpawnData GetRandom(List<NpcSpawnData> source)
+        public SpawnData GetRandom(List<SpawnData> source)
         {
-            IWeightedRandomizer<NpcSpawnData> randomizer = new DynamicWeightedRandomizer<NpcSpawnData>();
+            IWeightedRandomizer<SpawnData> randomizer = new DynamicWeightedRandomizer<SpawnData>();
             foreach (var npcSpawnData in source)
             {
                 //check if not blacklisted from save later

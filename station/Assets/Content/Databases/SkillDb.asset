@@ -32,7 +32,32 @@ MonoBehaviour:
         VitalRequirement: []
         StatRequirement: []
         SkillRequirement: []
-      Levels: []
+      Levels:
+      - PointToNext: 0
+        AttributesBonuses: []
+        StatisticBonuses: []
+        VitalBonuses: []
+        AbilitiesGranted: 
+      - PointToNext: 0
+        AttributesBonuses: []
+        StatisticBonuses: []
+        VitalBonuses: []
+        AbilitiesGranted: 
+      - PointToNext: 0
+        AttributesBonuses: []
+        StatisticBonuses: []
+        VitalBonuses: []
+        AbilitiesGranted: 
+      - PointToNext: 0
+        AttributesBonuses: []
+        StatisticBonuses: []
+        VitalBonuses: []
+        AbilitiesGranted: 
+      - PointToNext: 0
+        AttributesBonuses: []
+        StatisticBonuses: []
+        VitalBonuses: []
+        AbilitiesGranted: 
     - Name: Piercing Initiate
       Description: 
       Icon: {fileID: 21300000, guid: 2d8876de92aeb4fbbbda4db6f1570809, type: 3}
