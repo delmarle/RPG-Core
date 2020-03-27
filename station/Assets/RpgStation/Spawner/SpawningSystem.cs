@@ -47,13 +47,23 @@ namespace Station
             _cacheSpawnsData = FindObjectsOfType<SceneSpawner>();
             if (_cacheSpawnsData == null) return;
             var spawnerSave = _savingSystem.GetModule<SpawnerSave>();
+      
             foreach (var spawnData in _cacheSpawnsData)
             {
-                var spawnStateMap = spawnerSave.Value[spawnData.SpawnId].SpawnsStateMap;
-                foreach (var spawnedEntries in spawnStateMap)
+                var spawnStateMap = spawnerSave.GetSpawnerDataById(spawnData.SpawnId)?.SpawnsStateMap;
+                if (spawnStateMap == null)
                 {
-                    
+                    //init it
                 }
+                else
+                {
+                    foreach (var spawnedEntries in spawnStateMap)
+                    {
+                    
+                    }
+                }
+
+                
             }
            
         }

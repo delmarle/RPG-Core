@@ -7,6 +7,17 @@ using UnityEngine;
 
 public static class ReflectionUtils
 {
+    public static List<Type> FindSaveModuleTypes()
+    {
+
+        var lookupDictionary = typeof(SaveModule<>);
+
+        var foundsDict = FindDerivedClassesFromAbstract(lookupDictionary);
+        var foundTypes = foundsDict.ToList();
+
+        return foundTypes; 
+    }
+
     public static List<Type> FindAllDbTypes()
     {
         var lookupSingle = typeof(SingleFieldDb<>);

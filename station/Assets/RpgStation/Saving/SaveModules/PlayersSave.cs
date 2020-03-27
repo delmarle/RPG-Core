@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Station;
 using UnityEngine;
 
+namespace Station
+{
+    
 public class PlayersSave : SaveModule<Dictionary<string, PlayersData>>
 {
     public const string PLAYER_KEY = "player_key";
@@ -110,6 +112,8 @@ public enum LinkType
     Ability,
     Inventory,
     Empty
+}
+
 }
 
 

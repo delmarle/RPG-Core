@@ -5,7 +5,24 @@ namespace Station
 {
     public class SpawnerSave :  SaveModule<Dictionary<string, SpawnerData>>
     {
+        protected override void FetchData()
+        {
+            var sceneSystem = RpgStation.GetSystemStatic<SceneSystem>();
+            if (Value == null)
+            {
+                Value = new Dictionary<string, SpawnerData>();
+            }
+        }
 
+        public SpawnerData GetSpawnerDataById(string id)
+        {
+            if (Value != null && Value.ContainsKey(id))
+            {
+                return Value[id];
+            }
+
+            return null;
+        }
     }
 
     [Serializable]

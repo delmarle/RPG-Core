@@ -12,11 +12,12 @@ namespace Station
 
         protected override void OnInit()
         {
+
             AddModule<PlayersSave>(new PlayersSave());
+            GetModule<PlayersSave>().Initialize();
             
-            var module = GetModule<PlayersSave>();
-            
-            module.Initialize();
+            AddModule<SpawnerSave>(new SpawnerSave());
+            GetModule<SpawnerSave>().Initialize();
         }
 
         protected override void OnDispose()
@@ -41,6 +42,7 @@ namespace Station
         {
             var module = (T)ModuleToAdd;
             map.Add(module.GetType(), module);
+            
         }
     }
 
