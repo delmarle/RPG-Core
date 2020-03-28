@@ -41,7 +41,7 @@ namespace Station
                     {
                     }
 
-                   
+                    spawnerSave.Save();
                 }
                 else
                 {
@@ -148,7 +148,7 @@ namespace Station
             {
                 return null;
             }
-
+Debug.Log("spawn obj:"+obj);
             Position.Generate();
             obj.transform.position = Position.GetPosition();
             obj.transform.Rotate(Position.GetRotation());

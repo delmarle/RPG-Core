@@ -2,6 +2,7 @@
 using RPG.Editor;
 using Station;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -20,6 +21,8 @@ public class SceneSpawnerEditor : Editor
     public override void OnInspectorGUI()
     {
         Cache();
+        EditorGUI.BeginChangeCheck ();
+
         var spawner = (SceneSpawner)target;
         SetStatesSizes(spawner);
       //  base.DrawDefaultInspector();
@@ -51,6 +54,12 @@ public class SceneSpawnerEditor : Editor
         for (var index = 0; index < spawner.DataList.Count; index++)
         {
             DrawEntry(index, spawner);
+        }
+        
+        if(EditorGUI.EndChangeCheck ()) {
+            // This code will unsave the current scene if there's any change in the editor GUI.
+            // Hence user would forcefully need to save the scene before changing scene
+            EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
         }
     }
 

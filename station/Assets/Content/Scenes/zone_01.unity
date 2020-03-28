@@ -2222,7 +2222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5877b8e15ba745e6bd9e1a453d06c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitMode: 0
+  InitMode: 1
   SpawnId: zone_01_spawner_enemies
   SpawnAmount: 38
   entitiesSelectionMode: 0

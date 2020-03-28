@@ -36,8 +36,6 @@ namespace Station
             {
                 Value[spawnerId].SpawnsStateMap[entryId] = state;
             }
-Debug.Log("save");
-            Save();
         }
 
         public SpawnerData GetDataById(string id)
