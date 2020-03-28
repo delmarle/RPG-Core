@@ -25,6 +25,8 @@ namespace Station
            GameGlobalEvents.OnSceneLoadObjects.AddListener(OnEnterScene);
            _dbSystem = RpgStation.GetSystemStatic<DbSystem>();
            _savingSystem = RpgStation.GetSystemStatic<SavingSystem>();
+           var spawnerSave = _savingSystem.GetModule<SpawnerSave>();
+
         }
 
         protected override void OnDispose()
@@ -46,26 +48,11 @@ namespace Station
             
             _cacheSpawnsData = FindObjectsOfType<SceneSpawner>();
             if (_cacheSpawnsData == null) return;
-            var spawnerSave = _savingSystem.GetModule<SpawnerSave>();
-      
-            foreach (var spawnData in _cacheSpawnsData)
+            foreach (var spawner in _cacheSpawnsData)
             {
-                var spawnStateMap = spawnerSave.GetSpawnerDataById(spawnData.SpawnId)?.SpawnsStateMap;
-                if (spawnStateMap == null)
-                {
-                    //init it
-                }
-                else
-                {
-                    foreach (var spawnedEntries in spawnStateMap)
-                    {
-                    
-                    }
-                }
-
-                
+                spawner.Init();
             }
-           
+
         }
 
         public IEnumerator SpawnNpc(string npcId)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Station
 {
@@ -14,7 +15,32 @@ namespace Station
             }
         }
 
-        public SpawnerData GetSpawnerDataById(string id)
+        public void AddEntry(string spawnerId, string entryId, object state)
+        {
+            
+            if (Value.ContainsKey(spawnerId) == false)
+            {
+                Value.Add(spawnerId, new SpawnerData());
+            }
+
+            if (Value[spawnerId].SpawnsStateMap == null)
+            {
+                Value[spawnerId].SpawnsStateMap = new Dictionary<string, object>();
+            }
+
+            if (Value[spawnerId].SpawnsStateMap.ContainsKey(entryId) == false)
+            {
+                Value[spawnerId].SpawnsStateMap.Add(entryId, state);
+            }
+            else
+            {
+                Value[spawnerId].SpawnsStateMap[entryId] = state;
+            }
+Debug.Log("save");
+            Save();
+        }
+
+        public SpawnerData GetDataById(string id)
         {
             if (Value != null && Value.ContainsKey(id))
             {
@@ -33,7 +59,7 @@ namespace Station
             //npc: position, rotation, vitals
             //prefab: position, rotation, exist
             //container: position, rotation, content
-        public Dictionary<string, string> SpawnsStateMap = new Dictionary<string, string>();
+        public Dictionary<string, object> SpawnsStateMap = new Dictionary<string, object>();
     }
 
 }
