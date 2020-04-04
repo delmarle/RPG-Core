@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Malee;
 using UnityEngine;
@@ -18,12 +19,14 @@ namespace Station
 
         //cached
         private SavingSystem _savingSystem;
-        
+
         public void Init()
         {
+            
             if (InitMode == InitMode.SAVED)
             {
                 _savingSystem = RpgStation.GetSystemStatic<SavingSystem>();
+               
                 var spawnerSave = _savingSystem.GetModule<SpawnerSave>();
                 var spawnStateMap = spawnerSave.GetDataById(SpawnId)?.SpawnsStateMap;
                 if (spawnStateMap == null || spawnStateMap.Count == 0)
@@ -118,6 +121,7 @@ namespace Station
     {
         public string Id;
         public SpawnObjectType SpawnType;
+        public string ObjectId;
         public GameObject Prefab;
         public PositionProvider Position;
         public bool Unique;
@@ -128,31 +132,40 @@ namespace Station
             return string.Compare(Id, other.Id, StringComparison.Ordinal);
         }
 
-        public GameObject SpawnEntity()
+        public void SpawnEntity()
         {
-            GameObject obj = null;
+            if (Position == null)
+            {
+                Debug.LogError("missing position provider: "+Id);
+                return;
+            }
+
+            Position.Generate();
+
             switch (SpawnType)
             {
                 case SpawnObjectType.NPC:
-                    obj = null;
+                    var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
+                    var npcDb = dbSystem.GetDb<NpcDb>();
+                    var npcMeta = npcDb.GetEntry(ObjectId);
+                    if (npcMeta == null)
+                    {
+                        return;
+                    }
+
+                    CreateNpcTask loadTask = new CreateNpcTask(ObjectId, Position.GetPosition(), Position.GetRotation());
+                    loadTask.Execute();
                     break;
                 case SpawnObjectType.ITEM:
-                    obj = null;
+
                     break;
                 case SpawnObjectType.PREFAB:
-                    obj = Object.Instantiate(Prefab);
+                    Object.Instantiate(Prefab, Position.GetPosition(), Quaternion.Euler(Position.GetRotation()));
                     break;
             }
+            
+Debug.Log("spawn obj:");
 
-            if (obj == null)
-            {
-                return null;
-            }
-Debug.Log("spawn obj:"+obj);
-            Position.Generate();
-            obj.transform.position = Position.GetPosition();
-            obj.transform.Rotate(Position.GetRotation());
-            return obj;
         }
     }
 

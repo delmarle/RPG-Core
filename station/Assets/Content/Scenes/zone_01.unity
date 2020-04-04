@@ -2231,6 +2231,7 @@ MonoBehaviour:
     array:
     - Id: ffsdfsfsdf
       SpawnType: 2
+      ObjectId: 
       Prefab: {fileID: 100018, guid: 7d3c05bccd7388942bcf8215cf4481c2, type: 3}
       Position: {fileID: 1015793865}
       Unique: 0
@@ -2238,15 +2239,17 @@ MonoBehaviour:
       SaveId: 
     - Id: 184a36ca-bca9-4b32-a711-93fe55440ae1
       SpawnType: 0
+      ObjectId: 184a36ca-bca9-4b32-a711-93fe55440ae1
       Prefab: {fileID: 0}
-      Position: {fileID: 0}
+      Position: {fileID: 1015793865}
       Unique: 0
       Weight: 5
       SaveId: 
     - Id: 184a36ca-bca9-4b32-a711-93fe55440ae1
       SpawnType: 0
+      ObjectId: 184a36ca-bca9-4b32-a711-93fe55440ae1
       Prefab: {fileID: 0}
-      Position: {fileID: 0}
+      Position: {fileID: 1015793865}
       Unique: 0
       Weight: 0
       SaveId: 

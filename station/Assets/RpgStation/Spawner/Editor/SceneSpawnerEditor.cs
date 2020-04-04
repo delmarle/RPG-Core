@@ -127,14 +127,14 @@ public class SceneSpawnerEditor : Editor
                 }
                 else
                 {
-                    var foundId = _npcDb.GetIndex(entry.Id);
+                    var foundId = _npcDb.GetIndex(entry.ObjectId);
                     if (foundId < 0)
                     {
                         foundId = 0;
                     }
 
                     foundId = EditorGUILayout.Popup("Selected: ", foundId, _npcDb.ListEntryNames());
-                    entry.Id = _npcDb.GetKey(foundId);
+                    entry.ObjectId = _npcDb.GetKey(foundId);
                 }
             }
 
