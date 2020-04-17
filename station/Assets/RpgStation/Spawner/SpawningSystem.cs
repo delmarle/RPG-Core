@@ -14,8 +14,7 @@ namespace Station
         private GameSettingsDb _settingsDb;
         private DbSystem _dbSystem;
         private SavingSystem _savingSystem;
-        private NpcDb _npcDb;
-        private StationMechanics _mechanics;
+
         
         private SceneSpawner[] _cacheSpawnsData;
         #endregion
@@ -38,63 +37,15 @@ namespace Station
         {
             Debug.Log("on enter scene");
             _settingsDb = _dbSystem.GetDb<GameSettingsDb>();
-            _npcDb = _dbSystem.GetDb<NpcDb>();
-            if (_mechanics == null)
-            {
-                _mechanics = _settingsDb.Get().Mechanics;
-                _mechanics.Init(_station);
-            }
 
-            
+
             _cacheSpawnsData = FindObjectsOfType<SceneSpawner>();
             if (_cacheSpawnsData == null) return;
             foreach (var spawner in _cacheSpawnsData)
             {
-                spawner.Init();
+                spawner.Init(_settingsDb.Get().Mechanics);
             }
 
-        }
-
-        public IEnumerator SpawnNpc(string npcId)
-        {
-            //var data = _cacheSpawns.GetDataById(npcId);
-            var npcModel = _npcDb.GetEntry(npcId);
-            var characterData = new List<object>
-            {
-                npcModel.RaceId, npcId, "male"
-            };
-            string prefabId = npcModel.PrefabId;
-            var op = _mechanics.OnCreateCharacter(new PlayerCharacterType(), characterData.ToArray(), OnPlayerInstanced, prefabId);
-
-            if (op != null)
-            {
-
-                while (op.Value.IsDone == false)
-                {
-                    yield return null;
-                }
-
-                var instance = op.Value.Result;
-                var component = instance.GetComponent<BaseCharacter>();
-                
-                if (component != null)
-                {
-                    _mechanics.OnBuildNpc(component, npcModel, npcId);
-
-                    
-                 //   component.transform.position = data.position;
-                    component.Control.SetRotation(Quaternion.identity.eulerAngles);
-                    component.AddMeta("identity", IdentityType.Npc.ToString());
-                  
-                    component.Stats.SetVitalsValue(GetVitalsValues(npcModel));
-                    var t =RpgStation.GetSystemStatic<TeamSystem>().GetCurrentLeader();
-                    component.GetInputHandler.SetAiInput(t?.transform);
-                }
-                else
-                {
-                    Debug.LogError("no component found for on player prefab");
-                }
-            }
         }
 
         public List<IdIntegerValue> GetVitalsValues(NpcModel npc)

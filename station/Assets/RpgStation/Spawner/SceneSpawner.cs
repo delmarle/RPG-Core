@@ -19,10 +19,11 @@ namespace Station
 
         //cached
         private SavingSystem _savingSystem;
+        private StationMechanics _mechanics;
 
-        public void Init()
+        public void Init(StationMechanics stationMechanics)
         {
-            
+            _mechanics = stationMechanics;
             if (InitMode == InitMode.SAVED)
             {
                 _savingSystem = RpgStation.GetSystemStatic<SavingSystem>();
@@ -36,7 +37,7 @@ namespace Station
                     {
                         foreach (var spawnableData in DataList)
                         {
-                            spawnableData.SpawnEntity();
+                            spawnableData.SpawnEntity(_mechanics);
                             spawnerSave.AddEntry(SpawnId, spawnableData.Id, "todo_data");
                         }
                     }
@@ -62,7 +63,7 @@ namespace Station
                 {
                     foreach (var spawnableData in DataList)
                     {
-                        spawnableData.SpawnEntity();
+                        spawnableData.SpawnEntity(_mechanics);
                     }
                 }
                 else if (entitiesSelectionMode == EntitiesSelectionMode.RANDOM_FROM_AMOUNT)
@@ -72,7 +73,7 @@ namespace Station
                     for (int i = 0; i < SpawnAmount; i++)
                     {
                         var data = randomizer.NextWithReplacement();
-                        data.SpawnEntity();
+                        data.SpawnEntity(_mechanics);
                     }
                 }
 
@@ -132,7 +133,7 @@ namespace Station
             return string.Compare(Id, other.Id, StringComparison.Ordinal);
         }
 
-        public void SpawnEntity()
+        public void SpawnEntity(StationMechanics mechanics)
         {
             if (Position == null)
             {
@@ -152,9 +153,17 @@ namespace Station
                     {
                         return;
                     }
-
-                    CreateNpcTask loadTask = new CreateNpcTask(ObjectId, Position.GetPosition(), Position.GetRotation());
-                    loadTask.Execute();
+                    BaseCharacterData baseData = new BaseCharacterData();
+                    baseData.Gender = "male";
+                    baseData.Identifier = ObjectId;
+                    baseData.Position = Position.GetPosition();
+                    baseData.Rotation = Position.GetRotation();
+                    baseData.RaceId = npcMeta.RaceId;
+                    baseData.CharacterType = new NpcCharacterType();
+                    List<object> data = new List<object>();
+                    data.Add(npcMeta);
+                    InstantiateCharacterTask npcTask = new InstantiateCharacterTask(npcMeta.PrefabId, baseData, data.ToArray(), mechanics);
+                    npcTask.Execute();
                     break;
                 case SpawnObjectType.ITEM:
 
@@ -163,9 +172,6 @@ namespace Station
                     Object.Instantiate(Prefab, Position.GetPosition(), Quaternion.Euler(Position.GetRotation()));
                     break;
             }
-            
-Debug.Log("spawn obj:");
-
         }
     }
 

@@ -151,6 +151,14 @@ namespace Station
       }
     }
 
+    public void SetVitalsFull()
+    {
+      foreach (var v in _vitals)
+      {
+        v.Value.SetFull();
+      }
+    }
+
     #endregion
 
     private void OnDestroy()

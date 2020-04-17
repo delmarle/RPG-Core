@@ -25,7 +25,7 @@ namespace Station
                 OnMemberAdded(member);
             }
 
-            OnLeaderChanged(_teamsystem.GetTeamMembers().First());
+            OnLeaderChanged(_teamsystem.GetTeamMembers().FirstOrDefault());
             
             TeamSystem.OnCharacterAdded.AddListener(OnMemberAdded);
             TeamSystem.OnCharacterRemoved.AddListener(OnMemberRemoved);

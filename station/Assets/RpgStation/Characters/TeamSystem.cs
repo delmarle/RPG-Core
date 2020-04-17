@@ -52,13 +52,12 @@ namespace Station
         }
 
 
-        IEnumerator InitializeTeamSequence()
+        private IEnumerator InitializeTeamSequence()
         {
             _settingsDb = _dbSystem.GetDb<GameSettingsDb>();
             var playerClassDb = _dbSystem.GetDb<PlayerClassDb>();
             var mechanics = _settingsDb.Get().Mechanics;
             var playersModule = _savingSystem.GetModule<PlayersSave>();
-            mechanics.Init(_station);
 
             foreach (var playerPair in playersModule.Value)
             {
@@ -67,7 +66,7 @@ namespace Station
                 var classData = playerClassDb.GetEntry(player.ClassId);
                 var characterData = new List<object>
                 {
-                    player.RaceId, player.ClassId, player.GenderId
+                    classData, player
                 };
                 string prefabId = null;
                 foreach (var entry in classData.AllowedRaces)
@@ -78,42 +77,26 @@ namespace Station
                     }
                 }
 
-                var op = mechanics.OnCreateCharacter(new PlayerCharacterType(), characterData.ToArray(), OnPlayerInstanced, prefabId);
-
-                if (op != null)
+                BaseCharacterData baseData = new BaseCharacterData
                 {
-
-                    while (op.Value.IsDone == false)
-                    {
-                        yield return null;
-                    }
-
-                    var instance = op.Value.Result;
-                    var component = instance.GetComponent<BaseCharacter>();
-                    
-                    if (component != null)
-                    {
-                        mechanics.OnBuildPlayer(component, player, classData);
-                 
-
-                        component.transform.position = player.LastPosition;
-                        component.Control.SetRotation(player.LastRotation);
-                        component.transform.rotation = Quaternion.Euler(player.LastRotation);
-                        component.AddMeta(PlayersSave.PLAYER_KEY, playerPair.Key);
-                        component.AddMeta("identity", IdentityType.TeamMember.ToString());
-                        component.Stats.SetVitalsValue(player.VitalStatus);
-                        AddTeamMember(component);
-                    }
-                    else
-                    {
-                        Debug.LogError("no component found for on player prefab");
-                    }
+                    Gender = player.GenderId,
+                    Identifier = player.ClassId,
+                    RaceId = player.RaceId,
+                    Position = player.LastPosition,
+                    Rotation = player.LastRotation,
+                    CharacterType = new PlayerCharacterType()
+                };
+                var task = mechanics.InstantiateCharacter(baseData, characterData.ToArray(), null, prefabId);
+                while (task.GetResult() == null)
+                {
+                    yield return null;
                 }
+                AddTeamMember(task.GetResult());
             }
 
             yield return null;
 
-            var first = _characters.First();
+            var first = _characters.FirstOrDefault();
          
             _mechanics = _settingsDb.Get().Mechanics;
             InitializeCamera();
@@ -139,11 +122,7 @@ namespace Station
         {
             _mechanics.CreateUi();
         }
-
-        private void OnPlayerInstanced(GameObject instance)
-        {
-
-        }
+        
 
         private void AddTeamMember(BaseCharacter character)
         {
@@ -169,7 +148,6 @@ namespace Station
             _cameraController.SetTarget(character.transform);
             _leader = character;
             OnLeaderChanged?.Invoke(character);
-
         }
 
         public void RequestLeaderChange(BaseCharacter character)

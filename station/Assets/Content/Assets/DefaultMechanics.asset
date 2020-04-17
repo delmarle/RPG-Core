@@ -18,3 +18,6 @@ MonoBehaviour:
     m_SubObjectName: 
   UiPrefab: {fileID: 7496396962417799805, guid: 170845c02f2314fb5956a5549c219b40,
     type: 3}
+  _charactersBuilders:
+  - {fileID: 11400000, guid: 2b360d5c281314b458de10e177c9b800, type: 2}
+  - {fileID: 11400000, guid: fb8c7d1f001e440268f213ae07abcb72, type: 2}

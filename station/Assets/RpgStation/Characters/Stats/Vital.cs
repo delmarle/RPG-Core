@@ -122,5 +122,15 @@ namespace Station
     {
       Increase(RegenValue);
     }
+
+    public void SetFull()
+    {
+      var maxVal = MaximumValue;
+      if (_current != maxVal)
+      {
+        _current = Mathf.Clamp(MaximumValue, 0, maxVal);
+        DoChangeEvent();
+      }
+    }
   }
 }

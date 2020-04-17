@@ -14,6 +14,7 @@ namespace Station
     
         private readonly Dictionary<Type, Component> _systemsMap = new Dictionary<Type, Component>();
         private static RpgStation _instance;
+        
         #endregion
         #region Mono
         private void Awake()
@@ -59,7 +60,6 @@ namespace Station
                 system.Init(this);
             }
             Aqm = GetSystem<ThreadQueueSystem>();
-
         }
 
         public T GetSystem<T>() where T : BaseSystem
