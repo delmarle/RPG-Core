@@ -32,6 +32,7 @@ namespace Station
                 character.Init(save.RaceId, save.FactionId, save.GenderId, calculatorInstance, save.Name);
                 character.SetupAction(model.Attack);     
                 character.AddMeta("classId", save.ClassId);
+                character.AddMeta(PlayersSave.PLAYER_KEY, data[2]);
                 character.AddMeta("icon", model.Icon);
                 character.gameObject.name = "[player] "+save.Name;
                 

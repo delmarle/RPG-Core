@@ -66,7 +66,7 @@ namespace Station
                 var classData = playerClassDb.GetEntry(player.ClassId);
                 var characterData = new List<object>
                 {
-                    classData, player
+                    classData, player, playerPair.Key
                 };
                 string prefabId = null;
                 foreach (var entry in classData.AllowedRaces)
