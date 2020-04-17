@@ -35,7 +35,6 @@ namespace Station
        
         protected override void OnDispose()
         {
-            Debug.Log("team dispose");
             GameGlobalEvents.OnSceneStartLoad.RemoveListener(OnStartLoadScene);
             GameGlobalEvents.OnSceneLoadObjects.RemoveListener(InitializeTeam);
         }

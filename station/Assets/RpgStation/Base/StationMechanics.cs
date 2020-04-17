@@ -54,7 +54,7 @@ namespace Station
 
         public void OnBuildCharacter(BaseCharacter character,BaseCharacterData baseData, object[] data)
         {
-            var characterType = character.GetMeta("characterType");
+            var characterType = character.GetMeta(StationConst.CHARACTER_TYPE);
             if (_builderMap.ContainsKey(characterType.GetType()))
             {
                 var MatchingCharacter = _builderMap[characterType.GetType()];

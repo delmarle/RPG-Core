@@ -7,8 +7,7 @@ namespace Station
     
 public class PlayersSave : SaveModule<Dictionary<string, PlayersData>>
 {
-    public const string PLAYER_KEY = "player_key";
-
+    
     public void AddPlayer(string key, PlayersData data)
     {
     Debug.Log(key);
@@ -36,8 +35,7 @@ public class PlayersSave : SaveModule<Dictionary<string, PlayersData>>
                 foreach (var playerCharacter in teamMembers)
                 {
                    
-                    var key = (string)playerCharacter.GetMeta(PLAYER_KEY);
-                    Debug.Log(key);
+                    var key = (string)playerCharacter.GetMeta(StationConst.PLAYER_KEY);
                     if (Value.ContainsKey(key) == false)
                     {
                         Value.Add(key, new PlayersData());
