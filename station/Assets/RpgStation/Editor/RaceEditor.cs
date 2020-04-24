@@ -63,7 +63,7 @@ namespace Station
     {
       _selectedEntryIndex = EditorStatic.DrawGenericSelectionList(_raceDb, _selectedEntryIndex, _propertyScrollPos,out _propertyScrollPos,"user",false);
     }
-        private static void ListView(int selectedRace)
+    private static void ListView(int selectedRace)
     {
       var raceCount = _raceDb.Count();
       if (selectedRace == -1) return;

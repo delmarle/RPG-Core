@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Station;
+using Object = UnityEngine.Object;
 
 
 namespace RPG.Editor
@@ -179,10 +180,34 @@ namespace RPG.Editor
           var  toolbarOptions = new GUIContent[database.Count()];
           for (int i = 0; i < database.Count(); i++)
           {
-            toolbarOptions[i] = new GUIContent(entries[i],intern?EditorGUIUtility.FindTexture(iconName):GetEditorTexture(iconName), "");
-          }
+            IStationIcon foundIcon = database.GetEntry(i) as IStationIcon;
+            Texture2D icon = null;
+            if (foundIcon != null)
+            {
+              if (foundIcon.GetIcon() != null)
+              {
+                Object txture = foundIcon?.GetIcon()?.texture;
+                if (txture)
+                {
+                  string nameIcon = AssetDatabase.GetAssetPath(txture);
+                  icon = EditorGUIUtility.FindTexture(nameIcon);
+                }
+              }
+            
 
+            }
+
+            if (icon == null)
+            {
+              icon = intern ? EditorGUIUtility.FindTexture(iconName) : GetEditorTexture(iconName);
+            }
+
+            toolbarOptions[i] = new GUIContent(entries[i],icon, "");
+          }
+         
           var previousIndex = selectedIndex;
+
+          float lElemH2 = toolbarOptions.Length * 40;
           selectedIndex = GUILayout.SelectionGrid(selectedIndex, toolbarOptions,1,VerticalBarStyle);
           if(previousIndex != selectedIndex)ResetFocus();
         }
@@ -236,7 +261,7 @@ namespace RPG.Editor
       GUILayout.EndVertical();
       return selectedIndex;
     }
-
+    
     #endregion
     #region [[ CONTROLS ]]
     private static int DrawControls<T>(DictGenericDatabase<T> database,int selectedIndex) where T : class

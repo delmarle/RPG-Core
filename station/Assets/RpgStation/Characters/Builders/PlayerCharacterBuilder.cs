@@ -27,6 +27,12 @@ namespace Station
             if (model.StatsCalculator)
             {
                 var calculatorInstance = Instantiate(model.StatsCalculator, character.transform) as PlayerCalculations;
+                if (calculatorInstance == null)
+                {
+                    Debug.LogError("missing calculator");
+                    return;
+                }
+
                 calculatorInstance.PreSetup(classData);
                 
                 character.Init(save.RaceId, save.FactionId, save.GenderId, calculatorInstance, save.Name);

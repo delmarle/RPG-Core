@@ -55,6 +55,22 @@
     
     // [[ SOUND CATEGORIES ]]
     public const string ABILITIES_CATEGORY = "Abilities";
+    
+    //[[ITEMS TAB]]
+    public const string ITEMS_TAB_SETTINGS = "<size=11><b> Settings</b></size>";
+    public const string ITEMS_TAB_ITEMS = "<size=11><b> Items</b></size>";
+    public const string ITEMS_TAB_LOOT_TABLES = "<size=11><b> Loot tables</b></size>";
+    public const string ITEMS_TAB_CURRENCIES = "<size=11><b> Currencies</b></size>";
+    public const string ITEMS_TAB_SHOPS = "<size=11><b> Shops</b></size>";
+    public const string ITEMS_TAB_CRAFT = "<size=11><b> Craft</b></size>";
+    public const string ITEMS_TAB_RESOURCES_NODES = "<size=11><b> Resources Nodes</b></size>";
+    //-Settings
+    public const string ITEMS_TAB_SETTINGS_TAGS = "<size=11><b> Tags</b></size>";
+    public const string ITEMS_TAB_SETTINGS_RARITIES = "<size=11><b> Item rarities</b></size>";
+    public const string ITEMS_TAB_SETTINGS_ITEMS_TYPES = "<size=11><b> Item types</b></size>";
+    public const string ITEMS_TAB_SETTINGS_EQUIPMENT_SLOTS = "<size=11><b> Equipment slots</b></size>";
+    public const string ITEMS_TAB_SETTINGS_CONTAINERS = "<size=11><b> Containers</b></size>";
+    public const string ITEMS_TAB_SETTINGS_CRAFTING = "<size=11><b> Crafting</b></size>";
     #endregion
 
   }

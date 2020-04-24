@@ -67,7 +67,7 @@ namespace Station
           SkillTab.DrawTab();
           break;
         case 6:
-          
+          ItemsEditor.DrawTab();
           break;
         case 7:
           WorldTab.DrawTab();

@@ -112,6 +112,7 @@ namespace Station
       #endregion
     }
 
+    #region CHARACTERS
     [Serializable]
     public class PlayerClassModel
     {
@@ -280,7 +281,7 @@ namespace Station
             RaceId = raceId;
         }
     }
-    
+    #endregion
     [Serializable]
     public class StatisticModel
     {
@@ -844,5 +845,84 @@ public enum StatusEffectType
 
   #endregion
   
+  #region ITEMS
+  [Serializable] public class ItemRarityDictionary : SerializableDictionary<string, ItemRarity> {}
+  [Serializable] public class EquipmentSlotDictionary : SerializableDictionary<string, EquipmentSlot> {}
+  [Serializable] public class ItemModelsDictionary : SerializableDictionary<string, ItemModel> {}
   
+  [Serializable]
+  public class ItemsSettingsModel
+  {
+    public ItemRarityDictionary ItemsRarities = new ItemRarityDictionary();
+    public List<string> ItemsTags = new List<string>();
+    public List<ItemType> ItemsType = new List<ItemType>();
+    public EquipmentSlotDictionary EquipmentSlots = new EquipmentSlotDictionary();
+    public ContainerSettings ContainerSettings = new ContainerSettings();
+    public CraftSettings CraftSettings = new CraftSettings();
+  }
+  [Serializable]
+  public class ItemRarity
+  {
+    public string Name = "grey";
+    public Color32 Color = UnityEngine.Color.gray;
+  }
+  [Serializable]
+  public class ItemType
+  {
+  }
+  
+  [Serializable]
+  public class EquipmentSlot
+  {
+    public string Name = "slot";
+    public string Description = "description";
+    public Sprite Icon;
+  }
+
+  [Serializable]
+  public class ContainerSettings
+  {
+  }
+  
+  [Serializable]
+  public class CraftSettings
+  {
+  }
+
+  [Serializable]
+  public class ItemModel: IStationIcon
+  {
+    public LocalizedText Name = new LocalizedText();
+    public LocalizedText Description = new LocalizedText();
+    public Sprite Icon;
+    
+    public Sprite GetIcon()
+    {
+      return Icon;
+    }
+  }
+
+  #endregion
+  
+  #region LOCALIZATION
+  [Serializable]
+  public class LocalizedText
+  {
+    public string Key = "object";
+
+    public string GetValue()
+    {
+      return Key;
+    }
+  }
+
+  #endregion
+  #region GENERIC INTERFACE
+
+  public interface IStationIcon
+  {
+    Sprite GetIcon();
+  }
+
+  #endregion
 }

@@ -45,6 +45,6 @@ MonoBehaviour:
         Description: when you arrive from zone_01
         Icon: {fileID: 0}
         Positions:
-        - {x: 18.668678, y: 0.61, z: 30.358315}
-        - {x: 18.797358, y: 0.61, z: 29.366627}
-        Direction: {x: -0, y: 172.60681, z: -0}
+        - {x: 7.7414217, y: 2.1925, z: -6.259375}
+        - {x: 7.7414217, y: 2.1925, z: -5.259375}
+        Direction: {x: -0, y: 0, z: 0}
