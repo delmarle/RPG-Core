@@ -11,6 +11,7 @@ namespace Station
         private static Vector2 _propertyScrollPos;
 
         //DBS
+        private static ItemsRaritiesDb _itemsRaritiesDb;
         private static ItemsSettingsDb _itemsSettingsDb;
         private static ItemsDb _itemsDb;
         #endregion
@@ -19,12 +20,34 @@ namespace Station
             if (_itemsSettingsDb == null)
             {
                 _itemsSettingsDb = (ItemsSettingsDb) EditorStatic.GetDb(typeof(ItemsSettingsDb));
+                if (_itemsSettingsDb == null)
+                {
+                    EditorGUILayout.HelpBox("MISSING DB: ItemsSettings", MessageType.Error);
+                    GUIUtility.ExitGUI();
+                }
             }
             if (_itemsDb == null)
             {
                 _itemsDb = (ItemsDb) EditorStatic.GetDb(typeof(ItemsDb));
+                if (_itemsDb == null)
+                {
+                    EditorGUILayout.HelpBox("MISSING DB: ItemsDb", MessageType.Error);
+                    GUIUtility.ExitGUI();
+                }
+            }
+            
+            if (_itemsRaritiesDb == null)
+            {
+                _itemsRaritiesDb = (ItemsRaritiesDb) EditorStatic.GetDb(typeof(ItemsRaritiesDb));
+                if (_itemsRaritiesDb == null)
+                {
+                    EditorGUILayout.HelpBox("MISSING DB: ItemsRaritiesDb", MessageType.Error);
+                    GUIUtility.ExitGUI();
+                }
+                
             }
         }
+        
 
         public static void DrawTab()
         {

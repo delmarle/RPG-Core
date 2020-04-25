@@ -846,7 +846,7 @@ public enum StatusEffectType
   #endregion
   
   #region ITEMS
-  [Serializable] public class ItemRarityDictionary : SerializableDictionary<string, ItemRarity> {}
+ 
   [Serializable] public class EquipmentSlotDictionary : SerializableDictionary<string, EquipmentSlot> {}
   [Serializable] public class ItemModelsDictionary : SerializableDictionary<string, ItemModel> {}
   [Serializable] public class ItemCategoryDictionary : SerializableDictionary<string, ItemCategory> {}
@@ -854,7 +854,6 @@ public enum StatusEffectType
   [Serializable]
   public class ItemsSettingsModel
   {
-    public ItemRarityDictionary ItemsRarities = new ItemRarityDictionary();
     public List<string> ItemsTags = new List<string>();
     public ItemCategoryDictionary ItemsCategories = new ItemCategoryDictionary();
     public EquipmentSlotDictionary EquipmentSlots = new EquipmentSlotDictionary();
@@ -864,7 +863,7 @@ public enum StatusEffectType
   [Serializable]
   public class ItemRarity
   {
-    public string Name = "grey";
+    public LocalizedText Name = new LocalizedText("Common");
     public Color32 Color = UnityEngine.Color.gray;
   }
   [Serializable]
@@ -897,13 +896,9 @@ public enum StatusEffectType
     public LocalizedText Name = new LocalizedText("item");
     public LocalizedText Description = new LocalizedText("description");
     public Sprite Icon;
-    
-    public Sprite GetIcon()
-    {
-      return Icon;
-    }
-
-    public ItemRarity Rarity = new ItemRarity();
+    public Sprite GetIcon() { return Icon; }
+    public string RarityKey;
+    public string CategoryKey;
   }
 
   #endregion

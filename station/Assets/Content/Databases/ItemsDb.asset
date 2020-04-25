@@ -17,210 +17,57 @@ MonoBehaviour:
     - 27279da4-7bd2-48b0-92bf-ce5e3e25a6b6
     - 34922246-dd24-4022-8eb9-86865595aeae
     - 8d3fff54-7e4b-4610-ac71-6dd63a163534
-    - 91fab1e6-3de8-4e67-9e1c-e0af11314aba
     - 7cf88465-8075-4245-b793-24aff6e00c3a
     - f2470955-bcef-49e8-8ea1-aff1f347d963
     - 67e2bc1b-7aed-47bc-af51-0413a304659e
     - d02e9e23-7f55-4fcc-a221-c187caa86f8a
-    - a1a95c23-58f3-480f-be66-7898dee7775d
-    - 7a0a6d98-9d9a-4d9d-8164-ce3f28a58a18
-    - 8b7f838f-b912-49a0-8393-82b261fd4bf2
-    - fab004da-cb42-4f58-bcd4-e42dc759a6a5
-    - f7a568e0-b0c6-4c50-afce-2e169ba92fa3
-    - 7a241ce8-3372-42ec-89cd-e129324ac0d8
-    - 22814531-4930-4b01-93f4-bb1f5b791f07
-    - 37961bfc-8448-4f6f-8c1f-39c6b8e54a8a
-    - f5edb5aa-fc4e-4d90-a630-f688841c0dd3
-    - d74368e6-ae20-4d4c-8060-0df3863a6d39
-    - e65eaf76-aeed-4910-a0a8-6d1d9da41874
     m_values:
     - Name:
-        Key: object
+        Key: book
       Description:
         Key: object
-      Icon: {fileID: 0}
-      Rarity:
-        Name: grey
-        Color:
-          serializedVersion: 2
-          rgba: 4286545791
+      Icon: {fileID: 21300000, guid: 68305a92594e04079a0c1363532c1c11, type: 3}
+      RarityKey: 
+      CategoryKey: 
     - Name:
-        Key: objecter
+        Key: chest
       Description:
         Key: object
-      Icon: {fileID: 0}
-      Rarity:
-        Name: grey
-        Color:
-          serializedVersion: 2
-          rgba: 4286545791
+      Icon: {fileID: 21300000, guid: f3f1ad241b20540bfb0f2288cb7af91a, type: 3}
+      RarityKey: 
+      CategoryKey: 
     - Name:
-        Key: object
+        Key: gloves
       Description:
         Key: object
-      Icon: {fileID: 0}
-      Rarity:
-        Name: grey
-        Color:
-          serializedVersion: 2
-          rgba: 4286545791
+      Icon: {fileID: 21300000, guid: 65a2d109d0c054c0fb434c8cc01eb5ee, type: 3}
+      RarityKey: 
+      CategoryKey: 
     - Name:
-        Key: object
+        Key: blue sword
       Description:
         Key: object
-      Icon: {fileID: 0}
-      Rarity:
-        Name: grey
-        Color:
-          serializedVersion: 2
-          rgba: 4286545791
+      Icon: {fileID: 21300000, guid: bbe66970ad0684898a7599780fb4eebd, type: 3}
+      RarityKey: 
+      CategoryKey: 
     - Name:
-        Key: object
+        Key: book 2
       Description:
         Key: object
-      Icon: {fileID: 0}
-      Rarity:
-        Name: grey
-        Color:
-          serializedVersion: 2
-          rgba: 4286545791
+      Icon: {fileID: 21300000, guid: 6e72118e1a06249b0904126afc4491a7, type: 3}
+      RarityKey: 
+      CategoryKey: 
     - Name:
-        Key: object
+        Key: dagger
       Description:
         Key: object
-      Icon: {fileID: 0}
-      Rarity:
-        Name: grey
-        Color:
-          serializedVersion: 2
-          rgba: 4286545791
+      Icon: {fileID: 21300000, guid: 2d8876de92aeb4fbbbda4db6f1570809, type: 3}
+      RarityKey: 
+      CategoryKey: 
     - Name:
-        Key: object
+        Key: claws
       Description:
         Key: object
-      Icon: {fileID: 0}
-      Rarity:
-        Name: grey
-        Color:
-          serializedVersion: 2
-          rgba: 4286545791
-    - Name:
-        Key: object
-      Description:
-        Key: object
-      Icon: {fileID: 0}
-      Rarity:
-        Name: grey
-        Color:
-          serializedVersion: 2
-          rgba: 4286545791
-    - Name:
-        Key: object
-      Description:
-        Key: object
-      Icon: {fileID: 0}
-      Rarity:
-        Name: grey
-        Color:
-          serializedVersion: 2
-          rgba: 4286545791
-    - Name:
-        Key: object
-      Description:
-        Key: object
-      Icon: {fileID: 0}
-      Rarity:
-        Name: grey
-        Color:
-          serializedVersion: 2
-          rgba: 4286545791
-    - Name:
-        Key: object
-      Description:
-        Key: object
-      Icon: {fileID: 0}
-      Rarity:
-        Name: grey
-        Color:
-          serializedVersion: 2
-          rgba: 4286545791
-    - Name:
-        Key: object
-      Description:
-        Key: object
-      Icon: {fileID: 0}
-      Rarity:
-        Name: grey
-        Color:
-          serializedVersion: 2
-          rgba: 4286545791
-    - Name:
-        Key: object
-      Description:
-        Key: object
-      Icon: {fileID: 0}
-      Rarity:
-        Name: grey
-        Color:
-          serializedVersion: 2
-          rgba: 4286545791
-    - Name:
-        Key: object
-      Description:
-        Key: object
-      Icon: {fileID: 0}
-      Rarity:
-        Name: grey
-        Color:
-          serializedVersion: 2
-          rgba: 4286545791
-    - Name:
-        Key: object
-      Description:
-        Key: object
-      Icon: {fileID: 0}
-      Rarity:
-        Name: grey
-        Color:
-          serializedVersion: 2
-          rgba: 4286545791
-    - Name:
-        Key: object
-      Description:
-        Key: object
-      Icon: {fileID: 0}
-      Rarity:
-        Name: grey
-        Color:
-          serializedVersion: 2
-          rgba: 4286545791
-    - Name:
-        Key: object
-      Description:
-        Key: object
-      Icon: {fileID: 0}
-      Rarity:
-        Name: grey
-        Color:
-          serializedVersion: 2
-          rgba: 4286545791
-    - Name:
-        Key: object
-      Description:
-        Key: object
-      Icon: {fileID: 0}
-      Rarity:
-        Name: grey
-        Color:
-          serializedVersion: 2
-          rgba: 4286545791
-    - Name:
-        Key: object
-      Description:
-        Key: object
-      Icon: {fileID: 0}
-      Rarity:
-        Name: grey
-        Color:
-          serializedVersion: 2
-          rgba: 4286545791
+      Icon: {fileID: 21300000, guid: efd0f0d1c4d674efea638f63d9077c05, type: 3}
+      RarityKey: 
+      CategoryKey: 

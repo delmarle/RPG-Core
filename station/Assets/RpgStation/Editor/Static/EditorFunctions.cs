@@ -208,7 +208,7 @@ namespace RPG.Editor
           var previousIndex = selectedIndex;
 
           float lElemH2 = toolbarOptions.Length * 40;
-          selectedIndex = GUILayout.SelectionGrid(selectedIndex, toolbarOptions,1,VerticalBarStyle);
+          selectedIndex = GUILayout.SelectionGrid(selectedIndex, toolbarOptions,1,VerticalBarStyle, GUILayout.Height(lElemH2), GUILayout.Width(170));
           if(previousIndex != selectedIndex)ResetFocus();
         }
         GUILayout.EndScrollView();
@@ -673,6 +673,16 @@ namespace RPG.Editor
 
       }
     }
+    
+    #region LOCALIZATION
+
+    public static void DrawLocalization(LocalizedText localization)
+    {
+      //TODO
+      localization.Key = EditorGUILayout.TextField(localization.Key);
+    }
+
+    #endregion
   }
 }
 

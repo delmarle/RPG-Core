@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using RPG.Editor;
 using UnityEditor;
 using UnityEngine;
@@ -8,6 +9,8 @@ namespace Station
     public static partial class ItemsEditor
     {
         #region FIELDS
+
+        
         private static List<string> _itemsFilterTags = new List<string>();
         private static int _selectedItemEntry;
         private static Vector2 _itemScrollPos;
@@ -115,9 +118,29 @@ namespace Station
       }
       GUILayout.EndHorizontal();
       EditorStatic.DrawThinLine(10);
-     
-      
-      EditorStatic.DrawThinLine(10);
+     //RARITY:
+     var raritiesDict = _itemsRaritiesDb.Db;
+     if (raritiesDict.Any())
+     {
+         ItemRarity currentRarity = null;
+         if (raritiesDict.ContainsKey(itemModel.RarityKey))
+         {
+             currentRarity = raritiesDict[itemModel.RarityKey];
+         }
+         else
+         {
+             currentRarity = raritiesDict.GetEnumerator().Current.Value;
+         }
+
+
+
+     }
+     else
+     {
+         EditorGUILayout.HelpBox("No Rarities found in settings", MessageType.Warning);
+     }
+
+     EditorStatic.DrawThinLine(10);
     }
     }
 

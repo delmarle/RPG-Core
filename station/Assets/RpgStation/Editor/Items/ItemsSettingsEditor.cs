@@ -99,18 +99,19 @@ namespace Station
             EditorStatic.DrawSectionTitle(55, "Items Rarities");
             if (EditorStatic.SizeableButton(100, 32, "Add", "plus"))
             {
-                _itemsSettingsDb.Get().ItemsRarities.Add(Guid.NewGuid().ToString() ,new ItemRarity());
+                
+                _itemsRaritiesDb.Add(new ItemRarity());
             }
             EditorStatic.DrawLargeLine();
-            var list = _itemsSettingsDb.Get().ItemsRarities;
+            var list = _itemsRaritiesDb.Db;
             foreach (var entry in list)
             {
                 EditorGUILayout.BeginHorizontal();
-                entry.Value.Name = EditorGUILayout.TextField(entry.Value.Name);
+                EditorStatic.DrawLocalization(entry.Value.Name);
                 entry.Value.Color= EditorGUILayout.ColorField(entry.Value.Color);
                 if (EditorStatic.SizeableButton(64, 18, "delete", "cross"))
                 {
-                    _itemsSettingsDb.Get().ItemsRarities.Remove(entry);
+                    _itemsRaritiesDb.Remove(entry.Value);
                     return;
                 }
 
@@ -130,8 +131,8 @@ namespace Station
             foreach (var entry in list)
             {
                 EditorGUILayout.BeginHorizontal();
-                entry.Value.Name.Key = EditorGUILayout.TextField(entry.Value.Name.Key);
-            //    entry.Value= EditorGUILayout.ColorField(entry.Value.Color);
+                EditorStatic.DrawLocalization(entry.Value.Name);
+                //    entry.Value= EditorGUILayout.ColorField(entry.Value.Color);
                 if (EditorStatic.SizeableButton(64, 18, "delete", "cross"))
                 {
                     _itemsSettingsDb.Get().ItemsCategories.Remove(entry);
@@ -155,12 +156,12 @@ namespace Station
             foreach (var entry in list)
             {
                 EditorGUILayout.BeginHorizontal();
-                entry.Value.Name.Key = EditorGUILayout.TextField(entry.Value.Name.Key);
+                EditorStatic.DrawLocalization(entry.Value.Name);
                 entry.Value.Description.Key = EditorGUILayout.TextField(entry.Value.Description.Key);
                // entry.Value.Icon = (Sprite)EditorGUILayout.ObjectField(entry.Value.Icon);
                 if (EditorStatic.SizeableButton(64, 18, "delete", "cross"))
                 {
-                    _itemsSettingsDb.Get().ItemsRarities.Remove(entry);
+                    _itemsSettingsDb.Get().EquipmentSlots.Remove(entry);
                     return;
                 }
 

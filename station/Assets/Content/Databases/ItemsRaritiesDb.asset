@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ee172b1b7d340c69a723a7cd039d6d, type: 3}
+  m_Name: ItemsRaritiesDb
+  m_EditorClassIdentifier: 
+  _db:
+    m_keys:
+    - 03c5a6c1-49e4-4af4-8662-d10e1286a77e
+    - 87232d47-d561-4845-ae75-1f2c40a9f3b9
+    - 4d7cf063-3cb6-4736-8812-6ab0154f9c11
+    - 1882723b-b5be-41a2-a224-1db38254e106
+    - a73a4855-01ff-4da1-bdc3-590b947c144d
+    m_values:
+    - Name:
+        Key: Common
+      Color:
+        serializedVersion: 2
+        rgba: 4286545791
+    - Name:
+        Key: Uncommon
+      Color:
+        serializedVersion: 2
+        rgba: 4278238727
+    - Name:
+        Key: Rare
+      Color:
+        serializedVersion: 2
+        rgba: 4293613337
+    - Name:
+        Key: Epic
+      Color:
+        serializedVersion: 2
+        rgba: 4292220867
+    - Name:
+        Key: Legendary
+      Color:
+        serializedVersion: 2
+        rgba: 4278227938
