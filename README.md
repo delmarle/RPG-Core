@@ -1,13 +1,20 @@
 # RpgStationUnity
+# What is in progress: 
+- Items with different types and functionalities.
+- Container, for players inventories or chests..
+- Equipment
 # Next features: 
-- Spawning for characters and any objects, use rules and state can be saved [Currently working on this]
-- Inventory, Equipment, Crafting
 - Status Effects extended
 - Hate system
 - Npc Basic Ai
+- Counters system
+- Quest system
+- integrations with other assets
+- Crafting
 
 # Feature list:
 - Saving system
+
 - hotswappable Mechanics:
   - Swappable character creation
   - Swappable Ui
@@ -20,6 +27,7 @@
 - Skills
 - World, Scenes Data, Spawners, Portals
 - Interaction: Button, harvestNode, portal
+- Spawning for characters and any objects, use rules and state can be saved 
 
 # Later features: 
 -Pets 
