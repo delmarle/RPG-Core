@@ -683,6 +683,31 @@ namespace RPG.Editor
     }
 
     #endregion
+
+    public static string DrawDbIdReference<T>(BaseDb db, string current) where T : class
+    {
+      var dictDb = (DictGenericDatabase<T>) db;
+      var raritiesDict = dictDb.Db;
+      if (raritiesDict.Any())
+      {
+        if (string.IsNullOrEmpty(current))
+        {
+          current = dictDb.GetKey(0);
+        }
+
+        string prefix = dictDb.ObjectName() + ":";
+        int currentIndex = dictDb.GetIndex(current);
+        currentIndex = EditorGUILayout.Popup(prefix, currentIndex, dictDb.ListEntryNames());
+        current = dictDb.GetKey(currentIndex);
+      }
+      else
+      {
+        EditorGUILayout.HelpBox("Missing entries in the db: "+dictDb.name, MessageType.Warning);
+      }
+      
+
+      return current;
+    }
   }
 }
 

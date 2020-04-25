@@ -11,12 +11,22 @@ namespace Station
         private static Vector2 _propertyScrollPos;
 
         //DBS
+        private static ItemsCategoriesDb _itemsCategoriesDb;
         private static ItemsRaritiesDb _itemsRaritiesDb;
         private static ItemsSettingsDb _itemsSettingsDb;
         private static ItemsDb _itemsDb;
         #endregion
         private static void CacheDbs()
         {
+            if (_itemsCategoriesDb == null)
+            {
+                _itemsCategoriesDb = (ItemsCategoriesDb) EditorStatic.GetDb(typeof(ItemsCategoriesDb));
+                if (_itemsCategoriesDb == null)
+                {
+                    EditorGUILayout.HelpBox("MISSING DB: ItemsCategoriesDb", MessageType.Error);
+                    GUIUtility.ExitGUI();
+                }
+            }
             if (_itemsSettingsDb == null)
             {
                 _itemsSettingsDb = (ItemsSettingsDb) EditorStatic.GetDb(typeof(ItemsSettingsDb));

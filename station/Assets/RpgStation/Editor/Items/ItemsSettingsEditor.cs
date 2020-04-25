@@ -124,10 +124,10 @@ namespace Station
             EditorStatic.DrawSectionTitle(55, "Items Categories");
             if (EditorStatic.SizeableButton(100, 32, "Add", "plus"))
             {
-                _itemsSettingsDb.Get().ItemsCategories.Add(Guid.NewGuid().ToString() ,new ItemCategory());
+                _itemsCategoriesDb.Add(new ItemCategory());
             }
             EditorStatic.DrawLargeLine();
-            var list = _itemsSettingsDb.Get().ItemsCategories;
+            var list = _itemsCategoriesDb.Db;
             foreach (var entry in list)
             {
                 EditorGUILayout.BeginHorizontal();
@@ -135,7 +135,7 @@ namespace Station
                 //    entry.Value= EditorGUILayout.ColorField(entry.Value.Color);
                 if (EditorStatic.SizeableButton(64, 18, "delete", "cross"))
                 {
-                    _itemsSettingsDb.Get().ItemsCategories.Remove(entry);
+                    _itemsCategoriesDb.Remove(entry.Value);
                     return;
                 }
 

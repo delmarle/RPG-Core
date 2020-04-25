@@ -855,7 +855,6 @@ public enum StatusEffectType
   public class ItemsSettingsModel
   {
     public List<string> ItemsTags = new List<string>();
-    public ItemCategoryDictionary ItemsCategories = new ItemCategoryDictionary();
     public EquipmentSlotDictionary EquipmentSlots = new EquipmentSlotDictionary();
     public ContainerSettings ContainerSettings = new ContainerSettings();
     public CraftSettings CraftSettings = new CraftSettings();

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c171d462f1db4908800f419359bf84c, type: 3}
+  m_Name: ItemsCategoriesDb
+  m_EditorClassIdentifier: 
+  _db:
+    m_keys:
+    - 077c6187-a4f2-4f99-a116-562e0bc7da43
+    - c0889d13-428d-4efa-93f1-ef1d385f4c98
+    - 14ed2e7d-18fb-40d4-86a0-1ab9689dd8fa
+    m_values:
+    - Name:
+        Key: Equipment
+    - Name:
+        Key: Resources
+    - Name:
+        Key: General

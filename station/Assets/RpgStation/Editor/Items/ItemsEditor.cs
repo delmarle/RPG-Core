@@ -119,27 +119,8 @@ namespace Station
       GUILayout.EndHorizontal();
       EditorStatic.DrawThinLine(10);
      //RARITY:
-     var raritiesDict = _itemsRaritiesDb.Db;
-     if (raritiesDict.Any())
-     {
-         ItemRarity currentRarity = null;
-         if (raritiesDict.ContainsKey(itemModel.RarityKey))
-         {
-             currentRarity = raritiesDict[itemModel.RarityKey];
-         }
-         else
-         {
-             currentRarity = raritiesDict.GetEnumerator().Current.Value;
-         }
-
-
-
-     }
-     else
-     {
-         EditorGUILayout.HelpBox("No Rarities found in settings", MessageType.Warning);
-     }
-
+     itemModel.RarityKey = EditorStatic.DrawDbIdReference<ItemRarity>(_itemsRaritiesDb, itemModel.RarityKey);
+     itemModel.CategoryKey = EditorStatic.DrawDbIdReference<ItemCategory>(_itemsCategoriesDb, itemModel.CategoryKey);
      EditorStatic.DrawThinLine(10);
     }
     }
