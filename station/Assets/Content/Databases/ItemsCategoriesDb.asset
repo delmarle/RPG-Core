@@ -17,6 +17,7 @@ MonoBehaviour:
     - 077c6187-a4f2-4f99-a116-562e0bc7da43
     - c0889d13-428d-4efa-93f1-ef1d385f4c98
     - 14ed2e7d-18fb-40d4-86a0-1ab9689dd8fa
+    - be209fa3-f2d3-4efa-975c-bba00b0eb491
     m_values:
     - Name:
         Key: Equipment
@@ -24,3 +25,5 @@ MonoBehaviour:
         Key: Resources
     - Name:
         Key: General
+    - Name:
+        Key: Quest

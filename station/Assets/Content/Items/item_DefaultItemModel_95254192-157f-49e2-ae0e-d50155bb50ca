@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 693462f5702674d5287bcd7d29acc1c5, type: 3}
-  m_Name: ItemsDb
+  m_Script: {fileID: 11500000, guid: 46ab6562cf4834ab288230cf04b22f3a, type: 3}
+  m_Name: item_DefaultItemModel_95254192-157f-49e2-ae0e-d50155bb50ca
   m_EditorClassIdentifier: 
-  _db:
-    m_keys:
-    - e392d6c5-92e0-471a-888d-298ebe0e40da
-    m_values:
-    - {fileID: 11400000, guid: 8f3e53e4f16aa4a3e950e5eaf1187c85, type: 2}
+  Name:
+    Key: item
+  Description:
+    Key: description
+  Icon: {fileID: 0}
+  RarityKey: 
+  CategoryKey: 
+  MaxStackSize: 1

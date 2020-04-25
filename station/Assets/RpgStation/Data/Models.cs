@@ -848,7 +848,7 @@ public enum StatusEffectType
   #region ITEMS
  
   [Serializable] public class EquipmentSlotDictionary : SerializableDictionary<string, EquipmentSlot> {}
-  [Serializable] public class ItemModelsDictionary : SerializableDictionary<string, ItemModel> {}
+  [Serializable] public class ItemModelsDictionary : SerializableDictionary<string, BaseItemModel> {}
   [Serializable] public class ItemCategoryDictionary : SerializableDictionary<string, ItemCategory> {}
   
   [Serializable]
@@ -890,7 +890,7 @@ public enum StatusEffectType
   }
 
   [Serializable]
-  public class ItemModel: IStationIcon
+  public class BaseItemModel: ScriptableObject,IStationIcon
   {
     public LocalizedText Name = new LocalizedText("item");
     public LocalizedText Description = new LocalizedText("description");
@@ -898,6 +898,21 @@ public enum StatusEffectType
     public Sprite GetIcon() { return Icon; }
     public string RarityKey;
     public string CategoryKey;
+    public int MaxStackSize = 1;
+
+    #region IMPLEMENTATION
+    
+    public virtual void OnUse(BaseCharacter user)
+    {
+      
+    }
+
+#if UNITY_EDITOR
+    public virtual void DrawSpecificEditor()
+    {
+    }
+    #endif
+    #endregion
   }
 
   #endregion

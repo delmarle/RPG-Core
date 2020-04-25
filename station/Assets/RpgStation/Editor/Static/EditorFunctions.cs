@@ -169,7 +169,13 @@ namespace RPG.Editor
 
     #region [[ GENERIC LISTS ]]
     
-    public static int DrawGenericSelectionList<T>(DictGenericDatabase<T> database,int selectedIndex,Vector2 currentScrollPos,out Vector2 propertyScrollPos,string iconName, bool intern) where T : class, new()
+    public static int DrawGenericSelectionList<T>(
+      DictGenericDatabase<T> database,
+      int selectedIndex,
+      Vector2 currentScrollPos,
+      out Vector2 propertyScrollPos,
+      string iconName,
+      bool intern, Action addAction = null) where T : class, new()
     {
       var entries = database.ListEntryNames();
       GUILayout.BeginVertical("box",GUILayout.Width(LIST_VIEW_WIDTH),GUILayout.ExpandHeight(true));
@@ -216,14 +222,22 @@ namespace RPG.Editor
         GUILayout.BeginHorizontal(GUILayout.ExpandWidth(true));
         {
           string secondLine = "\n Total "+database.ObjectName()+" "+ + database.Count();
-          
-          if(ButtonPressed("Add "+database.ObjectName()+secondLine,Color.white,"plus"))
+          if (addAction == null)
           {
-            database.Add(new T());
-            selectedIndex = database.Count() - 1;
-            ResetFocus();
-            return selectedIndex;
+            if(ButtonPressed("Add "+database.ObjectName()+secondLine,Color.white,"plus"))
+            {
+              database.Add(new T());
+              selectedIndex = database.Count() - 1;
+              ResetFocus();
+              return selectedIndex;
+            }
           }
+          else
+          {
+            addAction.Invoke();
+          }
+
+         
         }
         GUILayout.EndHorizontal();
         if (database.Count()>0)

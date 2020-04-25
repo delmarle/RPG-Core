@@ -3,6 +3,7 @@
 public static class PathUtils
 {
     private const string EDITOR_SOUNDS_PATH = "Assets/Content/Sounds/";
+    private const string EDITOR_ITEMS_PATH = "Assets/Content/Items/";
     
     public static string GetStreamingAssetsPath()
     {
@@ -28,5 +29,10 @@ public static class PathUtils
     public static string BuildSoundPath(string category)
     {
         return EDITOR_SOUNDS_PATH + "/" + category+"/"; 
+    }
+
+    public static string BuildItemPath()
+    {
+        return EDITOR_ITEMS_PATH;
     }
 }

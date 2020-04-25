@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 namespace Station
 {
     [CreateAssetMenu]
-    public class ItemsDb : DictGenericDatabase<ItemModel>
+    public class ItemsDb : DictGenericDatabase<BaseItemModel>
     {
-        [Serializable] public class LocalDictionary : SerializableDictionary<string, ItemModel> {}
+        [Serializable] public class LocalDictionary : SerializableDictionary<string, BaseItemModel> {}
         [SerializeField] private LocalDictionary _db = new LocalDictionary();
         
-        public override IDictionary<string, ItemModel> Db
+        public override IDictionary<string, BaseItemModel> Db
         {
             get => _db;
             set => _db.CopyFrom (value);
@@ -22,10 +23,13 @@ namespace Station
         {
             return _db.Select(entry => entry.Value?.Name?.GetValue()).ToArray();
         }
-        
-        public override string ObjectName()
+
+        protected override void OnBeforeDelete(string key)
         {
-            return "Items";
+            base.OnBeforeDelete(key);
+            var objToDelete = GetEntry(key);
+            string pathToDelete = AssetDatabase.GetAssetPath(objToDelete);      
+            AssetDatabase.DeleteAsset(pathToDelete);
         }
     }
 }
