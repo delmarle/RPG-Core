@@ -849,13 +849,14 @@ public enum StatusEffectType
   [Serializable] public class ItemRarityDictionary : SerializableDictionary<string, ItemRarity> {}
   [Serializable] public class EquipmentSlotDictionary : SerializableDictionary<string, EquipmentSlot> {}
   [Serializable] public class ItemModelsDictionary : SerializableDictionary<string, ItemModel> {}
+  [Serializable] public class ItemCategoryDictionary : SerializableDictionary<string, ItemCategory> {}
   
   [Serializable]
   public class ItemsSettingsModel
   {
     public ItemRarityDictionary ItemsRarities = new ItemRarityDictionary();
     public List<string> ItemsTags = new List<string>();
-    public List<ItemType> ItemsType = new List<ItemType>();
+    public ItemCategoryDictionary ItemsCategories = new ItemCategoryDictionary();
     public EquipmentSlotDictionary EquipmentSlots = new EquipmentSlotDictionary();
     public ContainerSettings ContainerSettings = new ContainerSettings();
     public CraftSettings CraftSettings = new CraftSettings();
@@ -867,15 +868,16 @@ public enum StatusEffectType
     public Color32 Color = UnityEngine.Color.gray;
   }
   [Serializable]
-  public class ItemType
+  public class ItemCategory
   {
+    public LocalizedText Name = new LocalizedText("category");
   }
   
   [Serializable]
   public class EquipmentSlot
   {
-    public string Name = "slot";
-    public string Description = "description";
+    public LocalizedText Name = new LocalizedText("slot");
+    public LocalizedText Description = new LocalizedText("description");
     public Sprite Icon;
   }
 
@@ -892,14 +894,16 @@ public enum StatusEffectType
   [Serializable]
   public class ItemModel: IStationIcon
   {
-    public LocalizedText Name = new LocalizedText();
-    public LocalizedText Description = new LocalizedText();
+    public LocalizedText Name = new LocalizedText("item");
+    public LocalizedText Description = new LocalizedText("description");
     public Sprite Icon;
     
     public Sprite GetIcon()
     {
       return Icon;
     }
+
+    public ItemRarity Rarity = new ItemRarity();
   }
 
   #endregion
@@ -908,7 +912,12 @@ public enum StatusEffectType
   [Serializable]
   public class LocalizedText
   {
-    public string Key = "object";
+    public LocalizedText(string defaultName)
+    {
+      Key = defaultName;
+    }
+
+    public string Key;
 
     public string GetValue()
     {

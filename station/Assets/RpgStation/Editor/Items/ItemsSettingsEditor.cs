@@ -35,7 +35,7 @@ namespace Station
                 var  toolbarOptions = new GUIContent[6];
                 toolbarOptions[0] = new GUIContent(EditorStatic.ITEMS_TAB_SETTINGS_TAGS,null, "");
                 toolbarOptions[1] = new GUIContent(EditorStatic.ITEMS_TAB_SETTINGS_RARITIES,null, "");
-                toolbarOptions[2] = new GUIContent(EditorStatic.ITEMS_TAB_SETTINGS_ITEMS_TYPES,null, "");
+                toolbarOptions[2] = new GUIContent(EditorStatic.ITEMS_TAB_SETTINGS_ITEMS_CATEGORIES,null, "");
                 toolbarOptions[3] = new GUIContent(EditorStatic.ITEMS_TAB_SETTINGS_EQUIPMENT_SLOTS, null, "");
                 toolbarOptions[4] = new GUIContent(EditorStatic.ITEMS_TAB_SETTINGS_CONTAINERS, null, "");
                 toolbarOptions[5] = new GUIContent(EditorStatic.ITEMS_TAB_SETTINGS_CRAFTING, null, "");
@@ -60,7 +60,7 @@ namespace Station
                         DrawRarities();
                         break;
                     case 2:
-                        DrawItemsTypes();
+                        DrawItemsCategories();
                         break;
                     case 3:
                         DrawEquipmentSlots();
@@ -118,8 +118,28 @@ namespace Station
             }
         }
 
-        private static void DrawItemsTypes()
+        private static void DrawItemsCategories()
         {
+            EditorStatic.DrawSectionTitle(55, "Items Categories");
+            if (EditorStatic.SizeableButton(100, 32, "Add", "plus"))
+            {
+                _itemsSettingsDb.Get().ItemsCategories.Add(Guid.NewGuid().ToString() ,new ItemCategory());
+            }
+            EditorStatic.DrawLargeLine();
+            var list = _itemsSettingsDb.Get().ItemsCategories;
+            foreach (var entry in list)
+            {
+                EditorGUILayout.BeginHorizontal();
+                entry.Value.Name.Key = EditorGUILayout.TextField(entry.Value.Name.Key);
+            //    entry.Value= EditorGUILayout.ColorField(entry.Value.Color);
+                if (EditorStatic.SizeableButton(64, 18, "delete", "cross"))
+                {
+                    _itemsSettingsDb.Get().ItemsCategories.Remove(entry);
+                    return;
+                }
+
+                EditorGUILayout.EndHorizontal();
+            }
         }
 
         private static void DrawEquipmentSlots()
@@ -135,8 +155,8 @@ namespace Station
             foreach (var entry in list)
             {
                 EditorGUILayout.BeginHorizontal();
-                entry.Value.Name = EditorGUILayout.TextField(entry.Value.Name);
-                entry.Value.Description = EditorGUILayout.TextField(entry.Value.Description);
+                entry.Value.Name.Key = EditorGUILayout.TextField(entry.Value.Name.Key);
+                entry.Value.Description.Key = EditorGUILayout.TextField(entry.Value.Description.Key);
                // entry.Value.Icon = (Sprite)EditorGUILayout.ObjectField(entry.Value.Icon);
                 if (EditorStatic.SizeableButton(64, 18, "delete", "cross"))
                 {

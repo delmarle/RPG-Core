@@ -18,21 +18,62 @@ MonoBehaviour:
       - 08defaa4-86fe-4466-babe-6ba14d311be1
       - 3d31a389-334d-4f89-9183-ec8fe02e5974
       - 0bea1226-bd7d-4469-8240-deccc94bd068
+      - 8a6684cc-e13a-4580-9e06-89b44f40d94b
+      - 3d1a331b-d124-4bec-bf8b-29fa267f199f
       m_values:
-      - Name: common
+      - Name: Common
         Color:
           serializedVersion: 2
           rgba: 4286545791
-      - Name: uncommon
+      - Name: Uncommon
         Color:
           serializedVersion: 2
           rgba: 4280921404
-      - Name: rare
+      - Name: Rare
         Color:
           serializedVersion: 2
           rgba: 4293147193
+      - Name: Epic
+        Color:
+          serializedVersion: 2
+          rgba: 4288096151
+      - Name: Legendary
+        Color:
+          serializedVersion: 2
+          rgba: 4282031576
     ItemsTags:
     - low level
     - useless
-    ItemsType: []
-    EquipmentSlots: []
+    ItemsCategories:
+      m_keys:
+      - aa1bd42a-c47f-47f1-8818-c05295bd62af
+      - 3c1af00c-f568-4058-81f0-d06459b8a4fe
+      - 958ab94b-aedf-41c3-802a-8716e7a67b22
+      - 63f57f5b-25e3-40c5-a2f3-3ea2659811a2
+      - 2af256e4-22d7-4458-9565-a11f31d3f6f3
+      m_values:
+      - Name:
+          Key: Junk
+      - Name:
+          Key: Resources
+      - Name:
+          Key: Equipment
+      - Name:
+          Key: Useful
+      - Name:
+          Key: Quest
+    EquipmentSlots:
+      m_keys:
+      - d2e1d52d-6042-4ec7-bc7d-0fd55c43c38e
+      - bd5892f8-9ba7-4e98-9c4a-50a617d44fbe
+      m_values:
+      - Name:
+          Key: slot
+        Description:
+          Key: description
+        Icon: {fileID: 0}
+      - Name:
+          Key: slot
+        Description:
+          Key: description
+        Icon: {fileID: 0}
