@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace Station
 {
-	public class DataContainer : IContainer
+	public class DataDataContainer : IDataContainer
 	{
         private string _storagePath;
         private readonly ISerializer _serializer;
 		private readonly IStorageAccess _storageAccess;
 
-		public DataContainer(ISerializer serializer, IStorageAccess storageAccess)
+		public DataDataContainer(ISerializer serializer, IStorageAccess storageAccess)
 		{
 			_serializer = serializer;
 			_storageAccess = storageAccess;

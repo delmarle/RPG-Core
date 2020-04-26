@@ -49,7 +49,7 @@ namespace Station
     public class SaveModule<T>
     {
         private bool _isLoaded = false;
-        protected IContainer _dataContainer;
+        protected IDataContainer DataDataContainer;
         protected string fullPath;
         public T Value { get; set; }
         
@@ -58,10 +58,10 @@ namespace Station
             string fileName = GetType().Name;
             fullPath = PathUtils.SavePath() + fileName;
             BuildDefaultData();
-            IContainer container = DataStorageGenerator.GenerateDataStorage();
+            IDataContainer dataContainer = DataStorageGenerator.GenerateDataStorage();
                        
-            container.SetPath(fullPath);           
-            _dataContainer = container;
+            dataContainer.SetPath(fullPath);           
+            DataDataContainer = dataContainer;
             if (!System.IO.File.Exists(fullPath))
             {
                 Save();
@@ -77,7 +77,7 @@ namespace Station
 
         public void Write()
         {
-            _dataContainer.Save(Value);
+            DataDataContainer.Save(Value);
         }
 
         public void Load()
@@ -85,7 +85,7 @@ namespace Station
             if (!_isLoaded)
             {
                 _isLoaded = true;
-                var tempData = _dataContainer.Load<T>();
+                var tempData = DataDataContainer.Load<T>();
                 if (tempData != null)
                 {
                     Value = tempData;

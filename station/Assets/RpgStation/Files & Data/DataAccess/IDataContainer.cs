@@ -1,6 +1,6 @@
 ﻿namespace Station
 {
-    public interface IContainer
+    public interface IDataContainer
     {
         void SetPath(string path);
         T Load<T>();
