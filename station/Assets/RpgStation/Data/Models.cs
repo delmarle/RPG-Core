@@ -882,8 +882,17 @@ public enum StatusEffectType
   [Serializable]
   public class ContainerSettings
   {
+    //player related
+    public PlayerInventoryType PlayerInventoryType;
+    public int InitialPlayerInventorySize = 4;
   }
-  
+
+  public enum PlayerInventoryType
+  {
+    Shared,
+    PerCharacter
+  }
+
   [Serializable]
   public class CraftSettings
   {

@@ -54,7 +54,7 @@ namespace Station
             //go to zone
             TravelModel model = new TravelModel();
             model.SceneName = "zone_01";
-           
+            GameGlobalEvents.OnEnterGame.Invoke();
             _sceneSystem.TravelToZone(model);
         }
         

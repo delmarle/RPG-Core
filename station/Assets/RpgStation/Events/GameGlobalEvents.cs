@@ -10,6 +10,7 @@
         public static StationEvent OnSceneLoadObjects = new StationEvent();
         public static StationEvent OnSceneReady = new StationEvent();
         public static StationEvent OnTriggerSceneSave = new StationEvent();
+        public static StationEvent OnEnterGame = new StationEvent();
     }
 }
 

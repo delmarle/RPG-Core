@@ -51,7 +51,7 @@ namespace Station
             else
             {
                 //resume from save
-               
+               GameGlobalEvents.OnEnterGame.Invoke();
                 TravelToZone(null);
             }
         }
