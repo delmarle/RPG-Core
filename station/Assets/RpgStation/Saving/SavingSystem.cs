@@ -16,6 +16,9 @@ namespace Station
             AddModule<PlayersSave>(new PlayersSave());
             GetModule<PlayersSave>().Initialize();
             
+            AddModule<PlayerInventorySave>(new PlayerInventorySave());
+            GetModule<PlayerInventorySave>().Initialize();
+            
             AddModule<SpawnerSave>(new SpawnerSave());
             GetModule<SpawnerSave>().Initialize();
         }

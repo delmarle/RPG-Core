@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: GameSettingsDb
   m_EditorClassIdentifier: 
   Database:
-    CharacterCreationType: 
     Mechanics: {fileID: 11400000, guid: 4d3c998167c7d45be907e8845f7a59b9, type: 2}
+    CharacterCreation: {fileID: 11400000, guid: ce9cecb5b332341d1843268870a4494b,
+      type: 2}
     MaxTeamSize: 1

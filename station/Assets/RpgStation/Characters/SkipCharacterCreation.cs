@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace Station
 {
-    public class SkipCharacterCreation : ICharacterCreation
+    [CreateAssetMenu]
+    public class SkipCharacterCreation : BaseCharacterCreation
     {
         private RpgStation _station;
         private SavingSystem _savingSystem;
@@ -12,21 +13,21 @@ namespace Station
 
         private const string CLASS_ID_1 = "a59e40c4-25f1-4d10-8446-609a31b7856d";
         private const string CLASS_ID_2 = "0e2d0377-2d6e-4bb0-ba06-fe452f782d57";
-        public void Init(RpgStation station)
+        public override void Init(RpgStation station)
         {
             _station = station;
             _savingSystem = _station.GetSystem<SavingSystem>();
             _sceneSystem = _station.GetSystem<SceneSystem>();
         }
 
-        public bool HasData()
+        public override bool HasData()
         {
             var module = _savingSystem.GetModule<PlayersSave>();
             int playerSaveCount = module.Value?.Count ?? 0;
             return playerSaveCount > 0;
         }
 
-        public void StartSequence()
+        public override void StartSequence()
         {
             var module = _savingSystem.GetModule<PlayersSave>();
             var dbSystem = _station.GetSystem<DbSystem>();
@@ -54,13 +55,25 @@ namespace Station
             //go to zone
             TravelModel model = new TravelModel();
             model.SceneName = "zone_01";
+
+            CreatePlayerInventory();
+            
             GameGlobalEvents.OnEnterGame.Invoke();
             _sceneSystem.TravelToZone(model);
         }
         
-        public void DrawEditor()
+        public override void DrawEditor()
         {
             
+        }
+
+        private void CreatePlayerInventory()
+        {
+            var module = _savingSystem.GetModule<PlayerInventorySave>();
+            var inventory = new ContainersListSave();
+            inventory.Containers.Add(PlayerInventorySystem.PLAYER_INVENTORY_KEY, new ContainerState());
+            module.Value = inventory;
+            module.Save();
         }
 
         private PlayersData CreateCharacter(PlayerClassModel classModel, string playerName, string classId, string factionId, Vector3 position)

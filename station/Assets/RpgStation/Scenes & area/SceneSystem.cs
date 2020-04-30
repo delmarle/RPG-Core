@@ -36,8 +36,8 @@ namespace Station
             _scenesDb = _dbSystem.GetDb<ScenesDb>();
             _settingsDb = _dbSystem.GetDb<GameSettingsDb>();
             //get character creation
-           
-            ICharacterCreation creation = new SkipCharacterCreation();
+
+            BaseCharacterCreation creation = _settingsDb.Get().CharacterCreation;
             creation.Init(_station);
 
             var module = _savingSystem.GetModule<PlayersSave>();

@@ -11,8 +11,8 @@ namespace Station
     [Serializable]
     public class GameSettingsModel
     {
-      public string CharacterCreationType;
       public StationMechanics Mechanics;
+      public BaseCharacterCreation CharacterCreation;
       public int MaxTeamSize = 1;
     }
 

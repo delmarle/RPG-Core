@@ -53,7 +53,7 @@ namespace RPG.Editor
             GamePlayEditor.Draw();
             break;
           case 1:
-          //  CharacterCreationEditor.DrawContent();
+            CharacterCreationEditor.Draw();
             break;
           case 2:
 
