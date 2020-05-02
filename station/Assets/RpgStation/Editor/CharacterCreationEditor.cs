@@ -46,7 +46,7 @@ namespace Station
                 _settingsDb.Get().CharacterCreation = instanceFound[selectedObjectId];
                 if (_settingsDb.Get().Mechanics)
                 {
-                    EditorGUILayout.HelpBox(_settingsDb.Get().Mechanics.Description(), MessageType.Info);
+                    EditorGUILayout.HelpBox(_settingsDb.Get().CharacterCreation.Description(), MessageType.Info);
                 }
 
               

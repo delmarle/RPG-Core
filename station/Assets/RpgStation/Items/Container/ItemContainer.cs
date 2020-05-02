@@ -1,6 +1,5 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Station
 {
@@ -39,6 +38,7 @@ namespace Station
 
     }
 
+    [Serializable]
     public class ItemStack
     {
         public string ItemId;

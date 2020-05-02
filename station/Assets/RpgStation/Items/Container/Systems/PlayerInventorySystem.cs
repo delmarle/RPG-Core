@@ -11,19 +11,20 @@ namespace Station
         private ItemsDb _itemsDb;
         private ItemsSettingsDb _itemsSettingsDb;
         private PlayerInventorySave _playerItemsSave;
-
-        private ItemContainer _sharedContainer;
+        
         private Dictionary<string, ItemContainer> _containers;
         #endregion
         #region initialization
         protected override void OnInit()
         {
             GameGlobalEvents.OnEnterGame.AddListener(OnEnterGame);
+            GameGlobalEvents.OnTriggerSceneSave.AddListener(OnTriggerSave);
         }
 
         protected override void OnDispose()
         {
            GameGlobalEvents.OnEnterGame.RemoveListener(OnEnterGame);
+           GameGlobalEvents.OnTriggerSceneSave.RemoveListener(OnTriggerSave);
         }
 
         private void CacheDatabases()
@@ -31,8 +32,6 @@ namespace Station
             var dbSystem = _station.GetSystem<DbSystem>();
             _itemsDb = dbSystem.GetDb<ItemsDb>();
             _itemsSettingsDb = dbSystem.GetDb<ItemsSettingsDb>();
-           
-          
         }
 
         private void OnEnterGame()
@@ -42,6 +41,7 @@ namespace Station
             var itemsSettingsModel = _itemsSettingsDb.Get();
             var saveSystem = _station.GetSystem<SavingSystem>();
             _playerItemsSave = saveSystem.GetModule<PlayerInventorySave>();
+            _containers = new Dictionary<string, ItemContainer>();
             if (itemsSettingsModel.ContainerSettings.PlayerInventoryType == PlayerInventoryType.Shared)
             {
                 var save = _playerItemsSave.Value;
@@ -51,12 +51,19 @@ namespace Station
                 }
 
                 var state = save.GetContainerById(PLAYER_INVENTORY_KEY);
-                _sharedContainer = new ItemContainer(PLAYER_INVENTORY_KEY, state);
+                var sharedContainer = new ItemContainer(PLAYER_INVENTORY_KEY, state);
+                _containers.Add(PLAYER_INVENTORY_KEY, sharedContainer);
             }
             else
             {
-                _containers = new Dictionary<string, ItemContainer>();
+               //TODO add one for each player
             }
+        }
+        
+        private void OnTriggerSave()
+        {
+           // _playerItemsSave.Value.Containers = _containers;
+            _playerItemsSave.Save();
         }
         #endregion
 

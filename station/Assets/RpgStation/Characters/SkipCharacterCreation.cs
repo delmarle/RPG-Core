@@ -7,6 +7,9 @@ namespace Station
     [CreateAssetMenu]
     public class SkipCharacterCreation : BaseCharacterCreation
     {
+        [SerializeField] private List<ItemStack> _defaultItems = new List<ItemStack>();
+        
+        //cache
         private RpgStation _station;
         private SavingSystem _savingSystem;
         private SceneSystem _sceneSystem;
@@ -61,18 +64,20 @@ namespace Station
             GameGlobalEvents.OnEnterGame.Invoke();
             _sceneSystem.TravelToZone(model);
         }
-        
-        public override void DrawEditor()
+
+        public override string Description()
         {
-            
+            return "this will skip character creation and build a default save";
         }
 
         private void CreatePlayerInventory()
         {
             var module = _savingSystem.GetModule<PlayerInventorySave>();
-            var inventory = new ContainersListSave();
-            inventory.Containers.Add(PlayerInventorySystem.PLAYER_INVENTORY_KEY, new ContainerState());
-            module.Value = inventory;
+            var inventoryList = new ContainersListSave();
+            var inventory = new ContainerState(10, _defaultItems);
+            
+            inventoryList.Containers.Add(PlayerInventorySystem.PLAYER_INVENTORY_KEY, inventory);
+            module.Value = inventoryList;
             module.Save();
         }
 
@@ -100,13 +105,13 @@ namespace Station
                 LastPosition = position,
                 LastRotation = Vector3.zero,
                 FactionId = factionId,
-                LearnedActiveAbilitiesList =  classModel.OwnedAbilities,
+                LearnedActiveAbilitiesList = classModel.OwnedAbilities,
                 LearnedPassiveAbilitiesList = classModel.OwnedPassiveAbilities,
                 LearnedSkillList = classModel.OwnedSkills,
-                BarStates = linkBar
+                BarStates = linkBar,
+                VitalStatus = new List<IdIntegerValue>()
             };
             //set vitals
-            player.VitalStatus = new List<IdIntegerValue>();
             if (classModel.UseHealth)
             {
                 var healthStatus = new IdIntegerValue(classModel.HealthVital.Id,-1);
