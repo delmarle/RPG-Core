@@ -153,9 +153,10 @@ namespace Station
                     {
                         return;
                     }
-                    BaseCharacterData baseData = new BaseCharacterData();
+                    var baseData = new BaseCharacterData();
+                    baseData.CharacterId = Guid.NewGuid().ToString();
                     baseData.Gender = "male";
-                    baseData.Identifier = ObjectId;
+                    baseData.Identifier = ObjectId;//npc id
                     baseData.Position = Position.GetPosition();
                     baseData.Rotation = Position.GetRotation();
                     baseData.RaceId = npcMeta.RaceId;

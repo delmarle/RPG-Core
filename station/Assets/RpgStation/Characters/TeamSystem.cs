@@ -78,6 +78,7 @@ namespace Station
 
                 BaseCharacterData baseData = new BaseCharacterData
                 {
+                    CharacterId =  playerPair.Key,
                     Gender = player.GenderId,
                     Identifier = player.ClassId,
                     RaceId = player.RaceId,

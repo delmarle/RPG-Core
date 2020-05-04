@@ -43,6 +43,7 @@ namespace Station
     
     public class BaseCharacterData
     {
+        public string CharacterId;
         public BaseCharacterType CharacterType;
         public Vector3 Position;
         public Vector3 Rotation;

@@ -100,6 +100,13 @@ namespace Station
         {
             return _factionId;
         }
+        
+        private string _characterId;
+
+        public string GetCharacterId()
+        {
+            return _characterId;
+        }
 
         private Dictionary<string, object> _meta = new Dictionary<string, object>();
 
@@ -137,7 +144,7 @@ namespace Station
             _action.Unsubscribe();
         }
 
-        public void Init(string raceId, string factionId, string genderId, CharacterCalculation instance, string characterName, Dictionary<string, object> meta = null)
+        public void Init(string characterId, string raceId, string factionId, string genderId, CharacterCalculation instance, string characterName, Dictionary<string, object> meta = null)
         {
            
             
@@ -149,6 +156,7 @@ namespace Station
                 }
             }
 
+            _characterId = characterId;
             _raceId = raceId;
             _factionId = factionId;
             _genderId = genderId;

@@ -31,8 +31,7 @@ namespace Station
             }
 
             calculatorInstance.PreSetup(model);
-                            
-            character.Init(model.RaceId, model.FactionId, "Male", calculatorInstance, model.Name);
+            character.Init(baseData.CharacterId, model.RaceId, model.FactionId, "Male", calculatorInstance, model.Name);
             character.SetupAction(model.Attack);     
             character.AddMeta(StationConst.NPC_KEY, baseData.Identifier);
             character.AddMeta(StationConst.ICON_ID, model.Icon);

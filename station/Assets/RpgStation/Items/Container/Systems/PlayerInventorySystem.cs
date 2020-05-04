@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Station
@@ -13,6 +14,7 @@ namespace Station
         private PlayerInventorySave _playerItemsSave;
         
         private Dictionary<string, ItemContainer> _containers;
+        private PlayerInventoryType _inventoryType;
         #endregion
         #region initialization
         protected override void OnInit()
@@ -42,13 +44,11 @@ namespace Station
             var saveSystem = _station.GetSystem<SavingSystem>();
             _playerItemsSave = saveSystem.GetModule<PlayerInventorySave>();
             _containers = new Dictionary<string, ItemContainer>();
-            if (itemsSettingsModel.ContainerSettings.PlayerInventoryType == PlayerInventoryType.Shared)
+            _inventoryType = itemsSettingsModel.ContainerSettings.PlayerInventoryType;
+            
+            if (_inventoryType == PlayerInventoryType.Shared)
             {
-                var save = _playerItemsSave.Value;
-                if (save == null)
-                {
-                    save = new ContainersListSave();
-                }
+                var save = _playerItemsSave.Value ?? new ContainersListSave();
 
                 var state = save.GetContainerById(PLAYER_INVENTORY_KEY);
                 var sharedContainer = new ItemContainer(PLAYER_INVENTORY_KEY, state);
@@ -62,22 +62,23 @@ namespace Station
         
         private void OnTriggerSave()
         {
-           // _playerItemsSave.Value.Containers = _containers;
+            var tempSave = _containers.ToDictionary(container => container.Key, container => container.Value.GetState());
+            _playerItemsSave.Value.Containers = tempSave;
             _playerItemsSave.Save();
         }
         #endregion
 
-        public void AddItems(BaseCharacter owner, ItemStack[] itemsAdded)
+        public void AddItems(string containerId, ItemStack[] itemsAdded)
         {
             
         }
 
-        public void RemoveItems(BaseCharacter owner, ItemStack[] itemsRemoved)
+        public void RemoveItems(string containerId, ItemStack[] itemsRemoved)
         {
             
         }
 
-        public ItemStack[] GetItems(BaseCharacter owner)
+        public ItemContainer GetContainer(string containerId)
         {
             return null;
         }
