@@ -18,9 +18,9 @@ namespace Station
     [SerializeField] private LayoutGroup _statisticsLayout = null;
     [SerializeField] private UiWidget _statisticsPrefab = null;
 
-    private GenericUiList<WidgetData> _attributes;
-    private GenericUiList<WidgetData> _vitals;
-    private GenericUiList<WidgetData> _statistics;
+    private GenericUiList<WidgetData, UiWidget> _attributes;
+    private GenericUiList<WidgetData, UiWidget> _vitals;
+    private GenericUiList<WidgetData, UiWidget> _statistics;
     private AttributesDb _attributesDb;
     private StatisticDb _statisticsDb;
     private VitalsDb _vitalsDb;
@@ -38,17 +38,17 @@ namespace Station
       TeamSystem.OnLeaderChanged.AddListener(FollowCharacter);
       if (_attributes == null)
       {
-        _attributes = new GenericUiList<WidgetData>(_attributesPrefab.gameObject, _attributesLayout);
+        _attributes = new GenericUiList<WidgetData, UiWidget>(_attributesPrefab.gameObject, _attributesLayout);
       }
 
       if (_vitals == null)
       {
-        _vitals = new GenericUiList<WidgetData>(_vitalsPrefab.gameObject, _vitalsLayout);
+        _vitals = new GenericUiList<WidgetData, UiWidget>(_vitalsPrefab.gameObject, _vitalsLayout);
       }
       
       if (_statistics == null)
       {
-        _statistics = new GenericUiList<WidgetData>(_statisticsPrefab.gameObject, _statisticsLayout);
+        _statistics = new GenericUiList<WidgetData, UiWidget>(_statisticsPrefab.gameObject, _statisticsLayout);
       }
     }
     
@@ -117,7 +117,7 @@ namespace Station
        
         attrList.Add(widget);
       }
-      _attributes.Generate<UiWidget>(attrList, (entry, price) =>
+      _attributes.Generate(attrList, (entry, price) =>
       {
         price.Setup(entry);
       });
@@ -141,7 +141,7 @@ namespace Station
         vitalList.Add(energyWidget);
       }
       
-      _vitals.Generate<UiWidget>(vitalList, (entry, price) =>
+      _vitals.Generate(vitalList, (entry, price) =>
       {
         price.Setup(entry);
       });
@@ -164,7 +164,7 @@ namespace Station
        
         statsList.Add(widget);
       }
-      _statistics.Generate<UiWidget>(statsList, (entry, uiWidget) =>
+      _statistics.Generate(statsList, (entry, uiWidget) =>
       {
         uiWidget.Setup(entry);
       });

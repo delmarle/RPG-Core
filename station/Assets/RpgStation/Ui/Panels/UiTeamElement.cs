@@ -10,7 +10,7 @@ namespace Station
         [SerializeField] private UiCharacterPortraitWidget _portraitPrefab = null;
         [SerializeField] private UiCharacterTargetWidget _targetWidget = null;
         [SerializeField] private UiCharacterHotBarSwitcher _uiHotBarSwitcher = null;
-        private GenericUiList<BaseCharacter> _PlayerWidgets = null;
+        private GenericUiList<BaseCharacter, UiCharacterPortraitWidget> _PlayerWidgets = null;
         private TeamSystem _teamSystem = null;
 
         
@@ -25,7 +25,7 @@ namespace Station
             base.Awake();
           
             _teamSystem = RpgStation.GetSystemStatic<TeamSystem>();
-            _PlayerWidgets = new GenericUiList<BaseCharacter>(_portraitPrefab.gameObject, _playerRoot);
+            _PlayerWidgets = new GenericUiList<BaseCharacter, UiCharacterPortraitWidget>(_portraitPrefab.gameObject, _playerRoot);
             Subscribe();
             SetList(_teamSystem.GetTeamMembers());
         }
@@ -38,7 +38,7 @@ namespace Station
 
         private void SetList(IEnumerable<BaseCharacter> data)
         {
-            _PlayerWidgets.Generate<UiCharacterPortraitWidget>(data, (entry, item) => { item.Setup(entry); });
+            _PlayerWidgets.Generate(data, (entry, item) => { item.Setup(entry); });
         }
 
         private void Subscribe()

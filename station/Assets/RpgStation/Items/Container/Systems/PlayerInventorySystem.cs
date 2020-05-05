@@ -8,6 +8,7 @@ namespace Station
     {
         #region FIELDS
 
+        public StationEvent<string> OnContainerChanged = new StationEvent<string>();
         public const string PLAYER_INVENTORY_KEY = "player_inventory";
         private ItemsDb _itemsDb;
         private ItemsSettingsDb _itemsSettingsDb;
@@ -80,7 +81,7 @@ namespace Station
 
         public ItemContainer GetContainer(string containerId)
         {
-            return null;
+            return _containers.ContainsKey(containerId) ? _containers[containerId] : null;
         }
     }
 }

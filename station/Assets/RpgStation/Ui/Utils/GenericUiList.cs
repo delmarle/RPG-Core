@@ -15,15 +15,15 @@ namespace Station
     {
         private readonly LayoutGroup _list;
         private readonly GameObject _prefab;
-
         private readonly List<GameObject> _items;
+        private readonly List<T2> _components;
 
         public GenericUiList(GameObject prefab, LayoutGroup list)
         {
             _prefab = prefab;
             _list = list;
             _items = new List<GameObject> {prefab};
-
+            _components = new List<T2>{prefab.GetComponent<T2>()};
             // Disable a prefab
             prefab.SetActive(false);
         }
@@ -34,14 +34,14 @@ namespace Station
         /// <param name="expression"></param>
         public void Iterate(Action<T2> expression)
         {
-            foreach (var item in _items)
-                expression.Invoke(item.GetComponent<T2>());
+            foreach (var component in _components)
+                expression.Invoke(component);
         }
 
         public T2 FindComponent(Func<T2, bool> condition)
         {
-            return _items
-                .Select(item => item.GetComponent<T2>())
+            return _components
+                .Select(item => item)
                 .FirstOrDefault(condition);
         }
 
@@ -52,24 +52,27 @@ namespace Station
             foreach (var item in items)
             {
                 GameObject listItem;
-
+                T2 listComponent;
                 if (_items.Count > index)
                 {
                     // We can use an item from pool
                     listItem = _items[index];
+                    listComponent = _components[index];
                 }
                 else
                 {
                     // We need to create a new item and add it to the pool
-                    listItem = Object.Instantiate(_prefab);
-                    listItem.transform.SetParent(_list.transform, false);
+                    listItem = Object.Instantiate(_prefab, _list.transform, false);
+                    listComponent = listItem.GetComponent<T2>();
+                    _components.Add(listComponent);
                     _items.Add(listItem);
+                    _components.Add(listComponent);
                 }
 
                 if (typeof(T2) == typeof(GameObject))
                     transformer.Invoke(item, listItem as T2);
                 else
-                    transformer.Invoke(item, listItem.GetComponent<T2>());
+                    transformer.Invoke(item, listComponent);
                 listItem.SetActive(true);
                 index++;
             }
@@ -94,9 +97,17 @@ namespace Station
 
             return _items.ElementAt(index);
         }
+
+        public T2 GetComponentAt(int index)
+        {
+            if (_components.Count <= index)
+                return null;
+
+            return _components.ElementAt(index);
+        }
     }
 
-
+/*
     /// <summary>
     /// </summary>
     /// <typeparam name="T">Data type</typeparam>
@@ -184,4 +195,5 @@ namespace Station
             return _items.ElementAt(index);
         }
     }
+    */
 }

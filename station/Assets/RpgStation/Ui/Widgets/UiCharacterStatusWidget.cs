@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Station
@@ -9,7 +10,7 @@ namespace Station
         [SerializeField] private LayoutGroup _listRoot = null;
         
         private BaseCharacter _target;
-        private GenericUiList<RuntimeModifier> _widgetList;
+        private GenericUiList<RuntimeModifier, UiCharacterEffectIconWidget> _widgetList;
 
         public void Setup(BaseCharacter character)
         {
@@ -25,7 +26,7 @@ namespace Station
 
         private void Awake()
         {
-            _widgetList = new GenericUiList<RuntimeModifier>(_statusPrefab.gameObject, _listRoot);
+            _widgetList = new GenericUiList<RuntimeModifier, UiCharacterEffectIconWidget>(_statusPrefab.gameObject, _listRoot);
         }
 
         private void OnDestroy()
@@ -53,7 +54,7 @@ namespace Station
         private void SetList(BaseCharacter character)
         {
             var list = character ? character.Stats.Modifiers.Values : null;
-            _widgetList.Generate<UiCharacterEffectIconWidget>(list, (entry, item) => { item.Setup(entry); });
+            _widgetList.Generate(list, (entry, item) => { item.Setup(entry); });
         }
         
         private void OnModifierRemoved(RuntimeModifier modifier, BaseCharacter source)
