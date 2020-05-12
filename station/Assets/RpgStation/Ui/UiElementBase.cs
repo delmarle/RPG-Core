@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
 namespace Station
 {
-    public class UiElementBase : MonoBehaviour
+    public class UiElementBase : PooledItem
     {
         #region Variables
-        [Header("Show when close previous")] public bool DefaultPanel = false;
+
         [Header("State On Start")] public bool ForceHide = true;
         public bool ForceResetPosition = true;
 

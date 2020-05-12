@@ -3,7 +3,7 @@ using Station;
 
 public class RocketLauncher : MonoBehaviour
 {
-	public GameObject RocketPrefab;
+	public PooledItem RocketPrefab;
 
 
 	private void Start()
@@ -24,6 +24,8 @@ public class RocketLauncher : MonoBehaviour
 	private void SpawnBullet(Vector3 position, Quaternion rotation)
 	{
 		//Rocket rocket = PoolManager.Spawn(RocketPrefab, position, rotation).GetComponent<Rocket>();
-		PoolSystem.Spawn(RocketPrefab, position, rotation);
+		var item = PoolSystem.Spawn(RocketPrefab, position, rotation);
+		var component = item.GetComponent(typeof(UiPopup));
+		var casted = (UiPanel) component;
 	}
 }

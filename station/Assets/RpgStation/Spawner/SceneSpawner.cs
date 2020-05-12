@@ -172,6 +172,14 @@ namespace Station
                 case SpawnObjectType.PREFAB:
                     Object.Instantiate(Prefab, Position.GetPosition(), Quaternion.Euler(Position.GetRotation()));
                     break;
+                case SpawnObjectType.CONTAINER:
+
+                    //if saved
+                        //have save
+                        
+                    
+                    //create loot table from loot table id
+                    break;
             }
         }
     }
@@ -180,7 +188,8 @@ namespace Station
     {
         NPC,
         ITEM,
-        PREFAB
+        PREFAB, 
+        CONTAINER
     }
 
     public enum InitMode

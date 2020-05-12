@@ -42,7 +42,7 @@ namespace Station
         public static void Draw(TeleportEffect effect)
         {
             BaseEffectEditor.Draw(effect);
-            EditorStatic.DrawDestination(effect.Destination);
+            EditorStatic.DrawDestination(effect.destination);
         }
     }
 

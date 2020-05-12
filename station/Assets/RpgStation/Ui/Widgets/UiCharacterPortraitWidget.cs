@@ -14,7 +14,7 @@ namespace Station
     [SerializeField] private TextMeshProUGUI characterClass = null;
     [SerializeField] private UiVitalBarWidget[] _vitals = null;
     [SerializeField] private UiCharacterStatusWidget _statusWidget = null;
-    [SerializeField] private CoreAnimation _animation = null;
+    [SerializeField] private ClipsAnimation _animation = null;
     [SerializeField] private UnityEngine.UI.Button _button = null;
     [SerializeField] private Image _icon = null;
 

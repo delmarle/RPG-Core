@@ -72,10 +72,20 @@ namespace Station
 
         private void CreatePlayerInventory()
         {
+            var dbSystem = _station.GetSystem<DbSystem>();
+            var settingsDb = dbSystem.GetDb<ItemsSettingsDb>();
+            var containerSettings = settingsDb.Get().ContainerSettings;
             var module = _savingSystem.GetModule<PlayerInventorySave>();
             var inventoryList = new ContainersListSave();
-            var inventory = new ContainerState(10, _defaultItems);
-            
+            var inventory = new ContainerState(containerSettings.InitialPlayerInventorySize, _defaultItems);
+            if (containerSettings.PlayerInventoryType == PlayerInventoryType.Shared)
+            {
+                
+            }
+            else if (containerSettings.PlayerInventoryType == PlayerInventoryType.PerCharacter)
+            {
+            }
+
             inventoryList.Containers.Add(PlayerInventorySystem.PLAYER_INVENTORY_KEY, inventory);
             module.Value = inventoryList;
             module.Save();

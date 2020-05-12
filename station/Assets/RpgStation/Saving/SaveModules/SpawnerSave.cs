@@ -4,20 +4,10 @@ using UnityEngine;
 
 namespace Station
 {
-    public class SpawnerSave :  SaveModule<Dictionary<string, SpawnerData>>
+    public class SpawnerSave :  AreaSaveModule<Dictionary<string, SpawnerData>>
     {
-        protected override void FetchData()
-        {
-            var sceneSystem = RpgStation.GetSystemStatic<SceneSystem>();
-            if (Value == null)
-            {
-                Value = new Dictionary<string, SpawnerData>();
-            }
-        }
-
         public void AddEntry(string spawnerId, string entryId, object state)
         {
-            
             if (Value.ContainsKey(spawnerId) == false)
             {
                 Value.Add(spawnerId, new SpawnerData());

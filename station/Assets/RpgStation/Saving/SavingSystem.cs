@@ -8,11 +8,12 @@ namespace Station
     public class SavingSystem : BaseSystem
     {
         
-        private readonly Dictionary<Type, object> map = new Dictionary<Type,object>();
+        private readonly Dictionary<Type, object> _modules = new Dictionary<Type,object>();
+        private readonly  Dictionary<Type, IAreaSave> _modulesArea = new Dictionary<Type,IAreaSave>();
 
         protected override void OnInit()
         {
-
+            RegisterSceneRelatedCallback();
             AddModule<PlayersSave>(new PlayersSave());
             GetModule<PlayersSave>().Initialize();
             
@@ -21,98 +22,190 @@ namespace Station
             
             AddModule<SpawnerSave>(new SpawnerSave());
             GetModule<SpawnerSave>().Initialize();
+            
+            AddModule<AreaContainersSave>(new AreaContainersSave());
+            GetModule<AreaContainersSave>().Initialize();
         }
 
         protected override void OnDispose()
         {
-            
+            UnRegisterSceneRelatedCallback();
         }
 
 
         public T GetModule<T>()
         {
-            if (!map.ContainsKey(typeof(T)))
+            if (_modules.ContainsKey(typeof(T)))
             {
-                Debug.LogError("could not initialize this save module: "+typeof(T));
+                var d = _modules[typeof(T)];
+                return (T) d;
             }
 
-            var d = map[typeof(T)];
-     
-            return (T) d;
+            if (_modulesArea.ContainsKey(typeof(T)))
+            {
+                var d = _modulesArea[typeof(T)];
+                return (T) d;
+            }
+
+            Debug.LogError($"The save module {typeof(T)} was not initialized");
+            return default;
         }
 
         public void AddModule<T>(object ModuleToAdd)
         {
-            var module = (T)ModuleToAdd;
-            map.Add(module.GetType(), module);
+            var module = (T) ModuleToAdd;
+            if (module is IAreaSave)
+            {
+                _modulesArea.Add(module.GetType(), (IAreaSave)module);
+            }
+            else
+            {
+                _modules.Add(module.GetType(), module);
+            }
+        }
+        
+        #region SCENE PART RELATED
+        private void RegisterSceneRelatedCallback()
+        {
+            GameGlobalEvents.OnSceneInitialize.RemoveListener(OnSceneInitialize);
+            GameGlobalEvents.OnTriggerSceneSave.RemoveListener(OnSceneSave);
+            GameGlobalEvents.OnSceneInitialize.AddListener(OnSceneInitialize);
+            GameGlobalEvents.OnTriggerSceneSave.AddListener(OnSceneSave);
+        }
+
+   
+
+        private void UnRegisterSceneRelatedCallback()
+        {
+            GameGlobalEvents.OnSceneInitialize.RemoveListener(OnSceneInitialize);
+            GameGlobalEvents.OnTriggerSceneSave.RemoveListener(OnSceneSave);
+        }
+        
+
+        private void OnSceneInitialize()
+        {
+           // Debug.Log($" the scene is INIT {GetType()} Path: ");
             
         }
-    }
+        
+        private void OnSceneSave()
+        {
+           // Debug.Log($" the scene is SAVED {GetType()} Path: ");
+        }
 
-    public class SaveModule<T>
+        #endregion
+    }
+    
+
+    public class SaveModule<T> 
     {
         private bool _isLoaded = false;
-        protected IDataContainer DataDataContainer;
-        protected string fullPath;
+        private IDataContainer _dataContainer;
+        private string _fullPath =>  PathUtils.SavePath()+ GetType().Name;
         public T Value { get; set; }
         
         public void Initialize()
         {
-            string fileName = GetType().Name;
-            fullPath = PathUtils.SavePath() + fileName;
             BuildDefaultData();
-            IDataContainer dataContainer = DataStorageGenerator.GenerateDataStorage();
-                       
-            dataContainer.SetPath(fullPath);           
-            DataDataContainer = dataContainer;
-            if (!System.IO.File.Exists(fullPath))
+            _dataContainer = DataStorageGenerator.GenerateDataStorage();
+            _dataContainer.SetPath(_fullPath);
+            if (!System.IO.File.Exists(_fullPath))
             {
                 Save();
             }
             Load();
         }
-        
+
+        protected virtual void FetchData()
+        {
+        }
+
         public void Save()
         {
             FetchData();
+            Debug.Log($"SAVING: {GetType()} -- {_fullPath}");
             Write();
         }
 
-        public void Write()
+        private void Write()
         {
-            DataDataContainer.Save(Value);
+            _dataContainer.Save(Value);
         }
 
-        public void Load()
+        public void Load(bool force = false)
         {
-            if (!_isLoaded)
+            if (!_isLoaded || force)
             {
+                _dataContainer.SetPath(_fullPath);       
                 _isLoaded = true;
-                var tempData = DataDataContainer.Load<T>();
+                var tempData = _dataContainer.Load<T>();
                 if (tempData != null)
                 {
                     Value = tempData;
                 }
             }
-
-            ApplyData();
         }
+        
 
-        protected virtual void FetchData()
-        {
-            Debug.Log("FetchData:"+GetType());
-        }
-
-        protected virtual void ApplyData()
-        {
-        }
-
-        protected void BuildDefaultData()
+        private void BuildDefaultData()
         {
             Value = default;
-
         }
 
+    }
+
+    public interface IAreaSave
+    {
+        void Save();
+        void Load(string areaName);
+    }
+
+    public class AreaSaveModule<T> : IAreaSave
+    {
+        private IDataContainer DataDataContainer;
+        private string fullPath;
+        public T Value { get; set; }
+        
+        public void Initialize()
+        {
+            BuildDefaultData();
+            IDataContainer dataContainer = DataStorageGenerator.GenerateDataStorage();
+            DataDataContainer = dataContainer;
+        }
+
+        public void Save()
+        {
+            Debug.Log($"SAVING: {GetType()} -- {fullPath}");
+            Write();
+        }
+
+        private void Write()
+        {
+            DataDataContainer.Save(Value);
+        }
+
+        public void Load(string areaName)
+        {
+            fullPath = $"{PathUtils.SavePath()+areaName}/{GetType().Name}";
+            DataDataContainer.SetPath(fullPath);           
+
+            if (!System.IO.File.Exists(fullPath))
+            {
+                Save();
+            }
+            
+            var tempData = DataDataContainer.Load<T>();
+            if (tempData != null)
+            {
+                Value = tempData;
+            }
+        }
+        
+
+        private void BuildDefaultData()
+        {
+            Value = default;
+        }
     }
 
 

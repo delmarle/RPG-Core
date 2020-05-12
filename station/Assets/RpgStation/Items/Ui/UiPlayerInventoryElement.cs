@@ -4,6 +4,7 @@ namespace Station
 {
     public class UiPlayerInventoryElement : UiPanel
     {
+        [SerializeField] private CharacterInventoryTabs _characterInventoryTabs;
         private PlayerInventorySystem _inventorySystem;
         private TeamSystem _teamSystem;
         private GenericUiList<string, UiContainerWidget> _containerUiList;
@@ -15,12 +16,19 @@ namespace Station
             base.Awake();
             CacheComponents();
         }
-        
+
+        protected override void Start()
+        {
+            base.Start();
+            _characterInventoryTabs.Initialize();
+        }
+
+
         void CacheComponents()
         {
             _inventorySystem = RpgStation.GetSystemStatic<PlayerInventorySystem>();
             _teamSystem = RpgStation.GetSystemStatic<TeamSystem>();
-            _containerUiList = new GenericUiList<string, UiContainerWidget>(null, null);//new GenericUiList<UiContainerWidget>(null, null);
+      //      _containerUiList = new GenericUiList<string, UiContainerWidget>(null, null);//new GenericUiList<UiContainerWidget>(null, null);
             
             //prewarm container widget
         }
@@ -30,14 +38,21 @@ namespace Station
         {
             base.Show();
             _inventorySystem.OnContainerChanged.AddListener(OnContainerChanged);
+            _characterInventoryTabs.RegisterAllEvents();
         }
         
         public override void Hide()
         {
             _inventorySystem.OnContainerChanged.RemoveListener(OnContainerChanged);
+            _characterInventoryTabs.UnRegisterAllEvents();
             base.Hide();
         }
 
+        public void ClosePanel()
+        {
+            UiSystem.HidePanel<UiPlayerInventoryElement>(true);
+        }
+        
         private void OnContainerChanged(string containerId)
         {
             

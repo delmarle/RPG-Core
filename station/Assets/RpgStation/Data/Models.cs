@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Station
@@ -358,7 +359,7 @@ namespace Station
     [Serializable]
     public class TeleportEffect : BaseEffect
     {
-      public DestinationModel Destination;
+      [FormerlySerializedAs("scene")] [FormerlySerializedAs("Destination")] public DestinationModel destination;
       public override ApplyEffectResult ApplyEffect(BaseCharacter source, BaseCharacter target)
       {
         GameGlobalEvents.OnBeforeLeaveScene?.Invoke();
@@ -374,9 +375,9 @@ namespace Station
           return ApplyEffectResult.Blocked;
         }
         
-        var sceneData = sceneDb.GetEntry(Destination.SceneId);
+        var sceneData = sceneDb.GetEntry(destination.SceneId);
         var model = new TravelModel {SceneName = sceneData.VisualName};
-        sceneSystem.InjectDestinationInSave(Destination);
+        sceneSystem.InjectDestinationInSave(destination);
         sceneSystem.TravelToZone(model);
         return ApplyEffectResult.Success;
       }
@@ -544,7 +545,7 @@ public enum StatusEffectType
     public int Layer;
     public ClassTypeReference InteractibleType;
     public ShowHintType ShowHintMode;
-    public HideHintOptions HideHintOptions;
+    public HideHintOptions HideHintOptions = new HideHintOptions();
     public InteractType TryInteractMode;
     public HoverMode HoverMode;
     public float InteractionTime;
@@ -885,6 +886,9 @@ public enum StatusEffectType
     //player related
     public PlayerInventoryType PlayerInventoryType;
     public int InitialPlayerInventorySize = 4;
+    //ui prefabs
+    public UiPopup ContainerPopup;
+    public UiPopup CharacterLootPopup;
   }
 
   public enum PlayerInventoryType
@@ -909,6 +913,7 @@ public enum StatusEffectType
     public string CategoryKey;
     public int MaxStackSize = 1;
 
+    public bool Stackable => MaxStackSize > 1;
     #region IMPLEMENTATION
     
     public virtual void OnUse(BaseCharacter user)

@@ -16,6 +16,8 @@ namespace Station
         private PlayersSave _playersSave;
         private bool _isTraveling = false;
         public bool IsTraveling => _isTraveling;
+        private TravelModel _currentDestination;
+        public TravelModel GetCurrentDestination() => _currentDestination;
         
         protected override void OnInit()
         {
@@ -108,6 +110,7 @@ namespace Station
                 return;
             }
 
+            _currentDestination = model;
             LoadingSceneTask task = new LoadingSceneTask(model, _settingsDb.Get().Mechanics.LoadingScreen);
             task.SetEndCallback(OnZoneLoadingDone);
             task.Execute();
@@ -115,8 +118,16 @@ namespace Station
 
         private void OnZoneLoadingDone(ITemplateTask<bool> arg1, bool arg2, Exception arg3, object arg4)
         {
+            
             _isTraveling = false;
         }
+
+        public void SetCurrentSceneType(SceneType sceneType)
+        {
+            _currentSceneType = sceneType;
+        }
+
+        public SceneType GetCurrentSceneType() => _currentSceneType;
     }
 
     public class TravelModel

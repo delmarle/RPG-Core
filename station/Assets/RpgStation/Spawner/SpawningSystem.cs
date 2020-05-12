@@ -35,7 +35,6 @@ namespace Station
 
         public void OnEnterScene()
         {
-            Debug.Log("on enter scene");
             _settingsDb = _dbSystem.GetDb<GameSettingsDb>();
 
 

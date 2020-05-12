@@ -53,7 +53,7 @@ namespace Station
         
         private void SetList(BaseCharacter character)
         {
-            var list = character ? character.Stats.Modifiers.Values : null;
+            Dictionary<string, RuntimeModifier>.ValueCollection list = character ? character.Stats.Modifiers.Values : null;
             _widgetList.Generate(list, (entry, item) => { item.Setup(entry); });
         }
         

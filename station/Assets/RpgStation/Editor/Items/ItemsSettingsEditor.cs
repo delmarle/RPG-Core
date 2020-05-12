@@ -65,6 +65,9 @@ namespace Station
                     case 3:
                         DrawEquipmentSlots();
                         break;
+                    case 4:
+                        DrawContainersSettings();
+                        break;
                 }
             }
             GUILayout.EndScrollView();
@@ -167,6 +170,24 @@ namespace Station
 
                 EditorGUILayout.EndHorizontal();
             }
+        }
+
+        private static void DrawContainersSettings()
+        {
+            EditorStatic.DrawSectionTitle(55, "Container settings");
+            EditorStatic.DrawLargeLine();
+            _itemsSettingsDb.Get().ContainerSettings.PlayerInventoryType = (PlayerInventoryType)EditorGUILayout.EnumPopup(
+                "player inventory mode:",
+                _itemsSettingsDb.Get().ContainerSettings.PlayerInventoryType);
+
+            _itemsSettingsDb.Get().ContainerSettings.InitialPlayerInventorySize = EditorGUILayout.IntField(
+                "Initial player inventory size:", _itemsSettingsDb.Get().ContainerSettings.InitialPlayerInventorySize);
+            
+            EditorStatic.DrawThinLine();
+            _itemsSettingsDb.Get().ContainerSettings.ContainerPopup = 
+                (UiPopup) EditorGUILayout.ObjectField("Container popup: ", _itemsSettingsDb.Get().ContainerSettings.ContainerPopup, typeof(UiPopup), true);
+            _itemsSettingsDb.Get().ContainerSettings.CharacterLootPopup = 
+                (UiPopup) EditorGUILayout.ObjectField("Character loot popup: ", _itemsSettingsDb.Get().ContainerSettings.CharacterLootPopup, typeof(UiPopup), true);
         }
     }
 

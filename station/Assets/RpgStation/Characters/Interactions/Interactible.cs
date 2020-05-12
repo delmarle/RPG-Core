@@ -7,7 +7,7 @@ namespace Station
   {
     #region [[FIELDS]]
     [SerializeField] protected GameObject _hint = null;
-    public InteractionConfig Config;
+    [HideInInspector] public InteractionConfig Config;
     protected DbSystem DbSystem;
     protected InteractionConfigsDb _interactionConfigsDb;
     
@@ -18,6 +18,11 @@ namespace Station
       Initialize();
       
       Setup();
+    }
+
+    private void Destroy()
+    {
+      Dispose();
     }
 
     private void Initialize()
@@ -59,6 +64,10 @@ namespace Station
     }
 
     protected virtual void Setup()
+    {
+    }
+
+    protected virtual void Dispose()
     {
     }
 

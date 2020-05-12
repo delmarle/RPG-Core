@@ -1,9 +1,11 @@
 ﻿
+using UnityEngine.Serialization;
+
 namespace Station
 {
   public class Portal : Interactible
   {
-    [Destination] public DestinationModel Destination;
+    [FormerlySerializedAs("scene")] [FormerlySerializedAs("Destination")] [Destination] public DestinationModel destination;
     private SceneSystem _sceneSystem;
     private ScenesDb _sceneDb;
     
@@ -24,11 +26,9 @@ namespace Station
     public override void TryInteract(BaseCharacter user)
     {
       GameGlobalEvents.OnBeforeLeaveScene?.Invoke();
-      var sceneData = _sceneDb.GetEntry(Destination.SceneId);
+      var sceneData = _sceneDb.GetEntry(destination.SceneId);
       var model = new TravelModel {SceneName = sceneData.VisualName};
-      
-      GameGlobalEvents.OnTriggerSceneSave?.Invoke();
-      _sceneSystem.InjectDestinationInSave(Destination);
+      _sceneSystem.InjectDestinationInSave(destination);
  
       _sceneSystem.TravelToZone(model);
      

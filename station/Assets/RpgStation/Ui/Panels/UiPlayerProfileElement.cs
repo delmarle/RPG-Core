@@ -52,16 +52,18 @@ namespace Station
       }
     }
     
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
+     
       TeamSystem.OnLeaderChanged.RemoveListener(FollowCharacter);
       UnFollowCharacter();
+      base.OnDestroy();
     }
     #endregion
 
     public void ClosePanel()
     {
-      PanelSystem.HidePanel<UiPlayerProfileElement>(true);
+      UiSystem.HidePanel<UiPlayerProfileElement>(true);
     }
 
     private void UnFollowCharacter()

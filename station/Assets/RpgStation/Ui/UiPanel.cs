@@ -1,18 +1,20 @@
-﻿namespace Station
+﻿using UnityEngine;
+
+namespace Station
 {
     public class UiPanel : UiElementAnim
     {
+        [Header("Show when close previous")] public bool DefaultPanel = false;
         protected override void Start()
         {
             base.Start();
-
-            PanelSystem.RegisterPanel(this);
-            if(DefaultPanel) PanelSystem.RegisterDefaultPanel(this);
+            UiSystem.RegisterPanel(this);
+            if(DefaultPanel) UiSystem.RegisterDefaultPanel(this);
         }
         
-        private void OnDestroy()
+        protected virtual void OnDestroy()
         {
-            PanelSystem.UnRegisterPanel(this);
+            UiSystem.UnRegisterPanel(this);
         }
 
       

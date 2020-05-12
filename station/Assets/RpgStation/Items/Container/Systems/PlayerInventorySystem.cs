@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace Station
 {
-    public class PlayerInventorySystem : BaseSystem, ICharacterInventoryHandler
+    public class PlayerInventorySystem : BaseSystem, IContainersHandler
     {
         #region FIELDS
 
@@ -13,7 +13,7 @@ namespace Station
         private ItemsDb _itemsDb;
         private ItemsSettingsDb _itemsSettingsDb;
         private PlayerInventorySave _playerItemsSave;
-        
+       
         private Dictionary<string, ItemContainer> _containers;
         private PlayerInventoryType _inventoryType;
         #endregion
@@ -30,6 +30,11 @@ namespace Station
            GameGlobalEvents.OnTriggerSceneSave.RemoveListener(OnTriggerSave);
         }
 
+        private void OnApplicationQuit()
+        {
+            OnTriggerSave();
+        }
+
         private void CacheDatabases()
         {
             var dbSystem = _station.GetSystem<DbSystem>();
@@ -39,7 +44,6 @@ namespace Station
 
         private void OnEnterGame()
         {
-            Debug.Log("entering game and initializing inventory");
             CacheDatabases();
             var itemsSettingsModel = _itemsSettingsDb.Get();
             var saveSystem = _station.GetSystem<SavingSystem>();
@@ -52,7 +56,7 @@ namespace Station
                 var save = _playerItemsSave.Value ?? new ContainersListSave();
 
                 var state = save.GetContainerById(PLAYER_INVENTORY_KEY);
-                var sharedContainer = new ItemContainer(PLAYER_INVENTORY_KEY, state);
+                var sharedContainer = new ItemContainer(PLAYER_INVENTORY_KEY, state, _itemsDb);
                 _containers.Add(PLAYER_INVENTORY_KEY, sharedContainer);
             }
             else
@@ -68,19 +72,16 @@ namespace Station
             _playerItemsSave.Save();
         }
         #endregion
-
-        public void AddItems(string containerId, ItemStack[] itemsAdded)
-        {
-            
-        }
-
-        public void RemoveItems(string containerId, ItemStack[] itemsRemoved)
-        {
-            
-        }
+        
 
         public ItemContainer GetContainer(string containerId)
         {
+            if (_inventoryType == PlayerInventoryType.Shared)
+            {
+                return _containers[PLAYER_INVENTORY_KEY];
+            }
+
+
             return _containers.ContainsKey(containerId) ? _containers[containerId] : null;
         }
     }

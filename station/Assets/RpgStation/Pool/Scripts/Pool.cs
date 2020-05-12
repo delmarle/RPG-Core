@@ -1,5 +1,6 @@
 
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,26 @@ namespace Station
 {
 	public class PooledItem : MonoBehaviour
 	{
+		private Dictionary<Type, object> _cachedComponent = new Dictionary<Type, object>();
+
+		public object FindComponent(Type componentType)
+		{
+			if (_cachedComponent.ContainsKey(componentType))
+			{
+				return _cachedComponent[componentType];
+			}
+			else
+			{
+				var component = GetComponent(componentType);
+				if (component != null)
+				{
+					_cachedComponent.Add(componentType, component);
+					return component;
+				}
+
+				return null;
+			}
+		}
 	}
 
 	public class Pool: MonoBehaviour
@@ -16,6 +37,7 @@ namespace Station
 		private Dictionary<PooledItem, ObjectPool<PooledItem>> _instanceComponentPools;
 		private Dictionary<GameObject, ObjectPool<GameObject>> _prefabsPools;
 		private Dictionary<GameObject, ObjectPool<GameObject>> _instancePools;
+	
 		private const string OnSpawn = "OnSpawn";
 		private const string OnDespawn = "OnDespawn";
 		#region Mono

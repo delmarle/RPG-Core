@@ -4,6 +4,7 @@
 	#endif
 using System;
 using System.Collections;
+using Station.Data;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -62,7 +63,12 @@ namespace Station
 			if (_isLoading) return;
 			_currentScene = sceneName;
 			_isLoading = true;
-			GameGlobalEvents.OnTriggerSceneSave?.Invoke();
+			var sceneSystem  = RpgStation.GetSystemStatic<SceneSystem>();
+			if (sceneSystem.GetCurrentSceneType() == SceneType.Area)
+			{
+				GameGlobalEvents.OnTriggerSceneSave?.Invoke();
+			}
+
 			GameGlobalEvents.OnSceneStartLoad?.Invoke();
 			UpdateProgressEvent(0);
 			_canvas.gameObject.SetActive(true);

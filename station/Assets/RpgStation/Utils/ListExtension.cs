@@ -1,7 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
 using UnityEngine;
 using Random = System.Random;
 
@@ -56,28 +56,50 @@ namespace Station
       list.RemoveAt(index);
       return item;
     }
-    public static void ForceResize(this List<int> list, int size) 
+
+    public static void ForceResize(this List<int> list, int size)
     {
-      if(size == 0)list.Clear();
-      while (list.Count>size)list.RemoveAt(list.Count-1);
-      while (list.Count<size)list.Add(list.Count);
+      if (size == 0) list.Clear();
+      while (list.Count > size) list.RemoveAt(list.Count - 1);
+      while (list.Count < size) list.Add(list.Count);
     }
-    
-    public static void ForceResize(this List<string> list, int size) 
+
+    public static void ForceResize(this List<string> list, int size)
     {
-      if(size == 0)list.Clear();
-      while (list.Count>size)list.RemoveAt(list.Count-1);
-      while (list.Count<size)list.Add(String.Empty);
+      if (size == 0) list.Clear();
+      while (list.Count > size) list.RemoveAt(list.Count - 1);
+      while (list.Count < size) list.Add(String.Empty);
     }
-    
-   
-    public static void ForceResize(this List<GameObject> list, int size) 
+
+
+    public static void ForceResize(this List<GameObject> list, int size)
     {
-      if(size == 0)list.Clear();
-      while (list.Count>size)list.RemoveAt(list.Count-1);
-      while (list.Count<size)list.Add(null);
+      if (size == 0) list.Clear();
+      while (list.Count > size) list.RemoveAt(list.Count - 1);
+      while (list.Count < size) list.Add(null);
     }
-    
+
+    public static bool IsEmptyOrNull<T>(this IList<T> list)
+    {
+      if (list == null)
+      {
+        return true;
+      }
+
+      if (list.Count == 0)
+      {
+        return true;
+      }
+
+      return false;
+    }
+
+    public static int FindIndex<T>(this IList<T> list, Func<T, bool> predicate)
+    {
+      var foundItems = list.Select((value, index) => new {value, index}).Where(x => predicate(x.value)).Select(x => x.index);
+      var idx = foundItems.Any() ? foundItems.FirstOrDefault() : -1;
+      return idx;
+    }
   }
 }
 

@@ -51,13 +51,6 @@ public class PlayersSave : SaveModule<Dictionary<string, PlayersData>>
             }
         }
     }
-
-
-
-    protected override void ApplyData()
-    {
-        //nothing special to do
-    }
 }
 
 [Serializable]

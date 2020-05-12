@@ -9,7 +9,7 @@ namespace Station
     {
         #region Variables
 
-        [SerializeField] protected CoreAnimation _animation;
+        [SerializeField] protected BaseAnimation _animation;
         [Header("Animation ( Optional )")] 
         [SerializeField] private string _showAnimation = "Open";
         [SerializeField] private string _hideAnimation = "Hide";

@@ -4,6 +4,7 @@ namespace Station
 {
     public class UiHudLinks : MonoBehaviour
     {
+        [HideInInspector]public string PopupType;
         [SerializeField] private UnityEngine.UI.Button _playerProfileBtn = null;
 
         private void Awake()
@@ -18,7 +19,7 @@ namespace Station
 
         private void OnClickProfileBtn()
         {
-            PanelSystem.OpenPanel<UiPlayerProfileElement>();
+            UiSystem.OpenPanel(PopupType);
         }
     }
 }

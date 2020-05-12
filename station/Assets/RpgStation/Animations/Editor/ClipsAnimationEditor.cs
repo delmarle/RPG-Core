@@ -7,22 +7,22 @@ using UnityEngine;
 
 namespace Station
 {
-    [CustomEditor(typeof(CoreAnimation))]
+    [CustomEditor(typeof(ClipsAnimation))]
     [CanEditMultipleObjects]
-    public class SimpleAnimationEditor : UnityEditor.Editor
+    public class ClipsAnimationEditor : UnityEditor.Editor
     {
         private ReorderableList reorderableList;
         
         private void OnEnable()
         {
-            reorderableList = new ReorderableList(serializedObject.FindProperty("SimpleAnimationModels"));
+            reorderableList = new ReorderableList(serializedObject.FindProperty("AnimationModels"));
         }
 
 
 
         public override void OnInspectorGUI()
         {
-            var anim = target as CoreAnimation;
+            var anim = target as ClipsAnimation;
             if (anim == null) return;
             
         
@@ -50,11 +50,11 @@ namespace Station
 
         private void SetClipLegacy()
         {
-            var anim = target as CoreAnimation;
+            var anim = target as ClipsAnimation;
 
-            if (anim || anim.SimpleAnimationModels!= null)
+            if (anim || anim.AnimationModels!= null)
             {
-                foreach (var animation in anim.SimpleAnimationModels)
+                foreach (var animation in anim.AnimationModels)
                 {
                     if (animation.AnimationClipModels != null)
                     {
@@ -76,7 +76,7 @@ namespace Station
 
         private void SetAnimation()
         {
-            var anim = target as CoreAnimation;
+            var anim = target as ClipsAnimation;
             var animation = anim.GetComponent<Animation>();
             if (animation)
             {

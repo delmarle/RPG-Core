@@ -25,7 +25,22 @@ namespace Station
         {
             Instance._pool.PopulatePool(prefab, size);
         }
-        
+
+        public static T Spawn<T>(PooledItem prefab)
+        {
+            var item = Spawn(prefab);
+            var component = item.FindComponent(typeof(T));
+            var casted = (T) component;
+            return casted;
+        }
+        public static T Spawn<T>(PooledItem prefab, Vector3 position, Quaternion rotation)
+        {
+            var item = Spawn(prefab, position, rotation);
+            var component = item.FindComponent(typeof(T));
+            var casted = (T) component;
+            return casted;
+        }
+
         public static PooledItem Spawn(PooledItem prefab)
         {
             return Instance == null ? null : Instance._pool.SpawnObject(prefab);

@@ -1,11 +1,12 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Station
 {
     [AttributeUsage(AttributeTargets.Field), Serializable]
     public class DestinationAttribute : PropertyAttribute
     {
-        public DestinationModel Destination;
+        [FormerlySerializedAs("scene")] [FormerlySerializedAs("Destination")] public DestinationModel destination;
     }
 }

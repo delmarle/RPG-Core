@@ -6,10 +6,9 @@ using UnityEngine;
 namespace Station
 {
     [Serializable]
-    public class CoreAnimation: MonoBehaviour
+    public class ClipsAnimation: BaseAnimation
     {
-        [SerializeField]
-        public List<StateData> SimpleAnimationModels = new List<StateData>();
+        [SerializeField] public List<StateData> AnimationModels = new List<StateData>();
 
         public bool UseDefaultState;
         public string DefaultState;
@@ -24,11 +23,11 @@ namespace Station
         {
             Initialize();
         }
-        
-        private void Initialize()
+
+        protected override void Initialize()
         {
-            if(SimpleAnimationModels == null)
-                SimpleAnimationModels = new List<StateData>();
+            if(AnimationModels == null)
+                AnimationModels = new List<StateData>();
 
             if (_isFilled)
             {
@@ -44,7 +43,7 @@ namespace Station
             _cacheData = new Dictionary<string, List<ClipData>>();
             _layerStatus = new Dictionary<int, AnimationClip>();
             ClearAllAnim();
-            foreach (var animationModel in SimpleAnimationModels)
+            foreach (var animationModel in AnimationModels)
             {
                 _cacheData[animationModel.State] = animationModel.AnimationClipModels;
                 foreach (var clip in animationModel.AnimationClipModels)
@@ -93,7 +92,7 @@ namespace Station
             }
         }
 
-        public void PlayState(string stateName, bool checkIsActiveInHierarchy = false)
+        public override void PlayState(string stateName, bool checkIsActiveInHierarchy = false, bool forcePlay = false)
         {
             if (_cacheData == null)
             {
@@ -162,7 +161,7 @@ namespace Station
             }
         }
 
-        public float GetStateDuration(string stateName)
+        public override float GetStateDuration(string stateName)
         {
             float duration = 0;
             if (_cacheData == null || !_cacheData.ContainsKey(stateName))
@@ -187,7 +186,7 @@ namespace Station
             return duration;
         }
 
-        public void StopAllAnimations()
+        public override void StopAllAnimations()
         {
             if (_animation)
             {

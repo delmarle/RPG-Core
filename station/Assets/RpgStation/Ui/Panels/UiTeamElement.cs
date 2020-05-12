@@ -17,7 +17,7 @@ namespace Station
         protected override void Start()
         {
             base.Start();
-            PanelSystem.OpenPanel<UiTeamElement>();
+            UiSystem.OpenPanel<UiTeamElement>();
         }
 
         protected override void Awake()

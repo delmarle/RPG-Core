@@ -4,9 +4,9 @@ using UnityEngine;
 namespace Station
 {
     [AttributeUsage((AttributeTargets.Field)), Serializable]
-    public class SimpleAnimationAttribute : PropertyAttribute
+    public class BaseAnimationAttribute : PropertyAttribute
     {
-        public CoreAnimation Animation;
+        public BaseAnimation Animation;
     }
 
 }
