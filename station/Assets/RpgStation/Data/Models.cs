@@ -547,6 +547,7 @@ public enum StatusEffectType
     public ShowHintType ShowHintMode;
     public HideHintOptions HideHintOptions = new HideHintOptions();
     public InteractType TryInteractMode;
+    public float InteractionRange = 2;
     public HoverMode HoverMode;
     public float InteractionTime;
     public CastingData _CastingData;
@@ -561,6 +562,15 @@ public enum StatusEffectType
     public float Distance = 10;
     public bool UseCameraAngle;
     public float CameraAngle = 90;
+  }
+
+  public enum BreakInteractionMode
+  {
+    ByDistance,
+    ByMoving
+    //by distance
+    //by moving
+    //freeze player movement
   }
 
   public enum HoverMode

@@ -231,6 +231,16 @@ namespace Station
         
         #region effect related
 
+        public Vector3 GetFeet()
+        {
+            if (_characterVisual == null)
+            {
+                return transform.position;
+            }
+            
+            return _characterVisual.bounds.min;
+        }
+
         public Vector3 GetCenter()
         {
             if (_characterVisual == null)

@@ -53,8 +53,19 @@ namespace Station
       HideVisual();
     }
 
-    public virtual bool CanUse()
+    public virtual bool CanUse(BaseCharacter character)
     {
+      if (Config.TryInteractMode == InteractType.Tap || 
+          Config.TryInteractMode == InteractType.EnterDistance || 
+          Config.TryInteractMode == InteractType.HoverAndInput||
+          Config.TryInteractMode == InteractType.UiInput)
+      {
+        if (Vector3.Distance(transform.position, character.GetFeet()) > Config.InteractionRange)
+          return false;
+
+      }
+
+     
       return true;
     }
 
@@ -93,6 +104,14 @@ namespace Station
     {
       
     }
+    
+    #region CANCEL INTERACTION
+
+    public virtual void OnCancelInteraction(BaseCharacter user)
+    {
+    }
+
+    #endregion
 
     #region [[ TriggersTypes ]]
 

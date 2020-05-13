@@ -49,14 +49,14 @@ namespace Station
       }
     }
 
-    public override bool CanUse()
+    public override bool CanUse(BaseCharacter character)
     {
       if (_sceneSystem.IsTraveling)
       {
         return false;
       }
 
-      return base.CanUse();
+      return base.CanUse(character);
     }
     
   }

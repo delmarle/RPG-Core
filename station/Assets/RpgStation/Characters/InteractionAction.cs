@@ -36,7 +36,7 @@ namespace Station
                 return false;
             }
 
-            if (_interactible.CanUse() == false)
+            if (_interactible.CanUse(_user) == false)
             {
                 return false;
             }

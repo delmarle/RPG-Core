@@ -142,6 +142,14 @@ namespace Station
           GUILayout.EndVertical();
          
           current.TryInteractMode = (InteractType)EditorGUILayout.EnumPopup("Try Interact: ", current.TryInteractMode);
+          if (current.TryInteractMode == InteractType.Tap ||
+              current.TryInteractMode == InteractType.EnterDistance ||
+              current.TryInteractMode == InteractType.HoverAndInput ||
+              current.TryInteractMode == InteractType.UiInput)
+          {
+            current.InteractionRange = EditorGUILayout.FloatField("Max distance: ", current.InteractionRange);
+          }
+          
           switch (current.TryInteractMode)
           {
             case InteractType.None:
@@ -162,8 +170,9 @@ namespace Station
         }
         EditorStatic.DrawCastingData(ref current._CastingData, ref _showCastingData, ref _showCastingSound);
         GUILayout.EndVertical();
-       
-        
+
+     
+
       }
       GUILayout.EndHorizontal();
     }

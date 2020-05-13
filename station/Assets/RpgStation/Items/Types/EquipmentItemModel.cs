@@ -35,9 +35,6 @@ namespace Station
                 currentIndex = EditorGUILayout.Popup(currentIndex, listNames);
                 EquipmentType = listKeys[currentIndex];
             }
-
-
-
         }
 #endif
     }
