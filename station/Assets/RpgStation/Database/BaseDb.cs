@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -18,6 +19,19 @@ namespace Station
 #if UNITY_EDITOR
             EditorUtility.SetDirty(this);
 #endif
+        }
+
+        public static BaseDb GetDbFromEditor(Type typeDb)
+        {
+           
+            string dbPath = "Assets/Content/Databases/" +  typeDb.Name + @".asset";
+            BaseDb found = AssetDatabase.LoadAssetAtPath<BaseDb>(dbPath);
+            if (found == null)
+            {
+                Debug.LogError("cant find db at: "+dbPath);
+            }
+
+            return found;
         }
     }
 }
