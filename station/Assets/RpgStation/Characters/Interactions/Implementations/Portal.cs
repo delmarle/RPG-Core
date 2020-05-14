@@ -25,11 +25,12 @@ namespace Station
 
     public override void Interact(BaseCharacter user)
     {
+      base.Interact(user);
       GameGlobalEvents.OnBeforeLeaveScene?.Invoke();
       var sceneData = _sceneDb.GetEntry(destination.SceneId);
       var model = new TravelModel {SceneName = sceneData.VisualName};
       _sceneSystem.InjectDestinationInSave(destination);
- 
+
       _sceneSystem.TravelToZone(model);
      
       switch (Config.TryInteractMode)
@@ -37,8 +38,6 @@ namespace Station
         case InteractType.None:
           break;
         case InteractType.Tap:
-          break;
-        case InteractType.EnterDistance:
           break;
         case InteractType.Collide:
           break;

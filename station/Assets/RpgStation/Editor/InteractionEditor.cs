@@ -144,7 +144,6 @@ namespace Station
          
           current.TryInteractMode = (InteractType)EditorGUILayout.EnumPopup("Try Interact: ", current.TryInteractMode);
           if (current.TryInteractMode == InteractType.Tap ||
-              current.TryInteractMode == InteractType.EnterDistance ||
               current.TryInteractMode == InteractType.HoverAndInput ||
               current.TryInteractMode == InteractType.UiInput)
           {
@@ -156,8 +155,6 @@ namespace Station
             case InteractType.None:
               break;
             case InteractType.Tap:
-              break;
-            case InteractType.EnterDistance:
               break;
             case InteractType.Collide:
               break;
@@ -178,8 +175,6 @@ namespace Station
             current.CancelInteractionDistance = EditorGUILayout.FloatField("cancel distance: ", current.CancelInteractionDistance);
             break;
           case CancelInteractionMode.ByMoving:
-            break;
-          case CancelInteractionMode.CloseUi:
             break;
         }
         GUILayout.EndVertical();

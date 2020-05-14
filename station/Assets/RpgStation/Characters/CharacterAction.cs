@@ -230,12 +230,12 @@ namespace Station
 
     private void ListenMovement()
     {
-      _user.Calculator.OnMoving += OnMoving;
+      _user.Action.OnMove += OnMoving;
     }
     
     private void UnlistenMovement()
     {
-      _user.Calculator.OnMoving -= OnMoving;
+      _user.Action.OnMove -= OnMoving;
     }
 
     private void OnMoving()

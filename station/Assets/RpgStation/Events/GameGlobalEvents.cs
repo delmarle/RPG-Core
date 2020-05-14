@@ -42,6 +42,13 @@
         /// we are leaving this area, use this to cancel all pending actions, animation...
         /// </summary>
         public static readonly StationEvent OnBeforeLeaveScene = new StationEvent();
+        
+        
+        #region TEAM
+        public static StationEvent<BaseCharacter> OnCharacterAdded = new StationEvent<BaseCharacter>();
+        public static StationEvent<BaseCharacter> OnCharacterRemoved = new StationEvent<BaseCharacter>();
+        public static StationEvent<BaseCharacter> OnLeaderChanged = new StationEvent<BaseCharacter>();
+        #endregion
     }
 }
 

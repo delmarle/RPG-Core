@@ -570,8 +570,7 @@ public enum StatusEffectType
   {
     None,
     ByDistance,
-    ByMoving,
-    CloseUi
+    ByMoving
   }
 
   public enum HoverMode
@@ -593,7 +592,6 @@ public enum StatusEffectType
   {
     None,
     Tap,
-    EnterDistance,
     Collide,
     HoverAndInput,
     UiInput

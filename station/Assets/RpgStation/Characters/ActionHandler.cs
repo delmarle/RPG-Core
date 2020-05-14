@@ -31,6 +31,7 @@ namespace Station
     public Action<CharacterAction> OnStartAction;
     public Action OnFinishAction;
     public Action<bool> OnSwitchCombat;
+    public Action OnMove;
   
     public RuntimeAbility _castingAbility;
     public CharacterAction _currentAction;
@@ -260,6 +261,11 @@ namespace Station
   
     
     #endregion
+
+    public void InvokeMove()
+    {
+      OnMove?.Invoke();
+    }
 
     public virtual void UpdateLoop()
     {

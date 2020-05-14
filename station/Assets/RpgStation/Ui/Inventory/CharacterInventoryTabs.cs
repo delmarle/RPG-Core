@@ -72,12 +72,12 @@ namespace Station
 
         private void OnEnable()
         {
-            TeamSystem.OnCharacterAdded.AddListener(OnCharacterAdded);
+            GameGlobalEvents.OnCharacterAdded.AddListener(OnCharacterAdded);
         }
 
         private void OnDisable()
         {
-            TeamSystem.OnCharacterAdded.RemoveListener(OnCharacterAdded);
+            GameGlobalEvents.OnCharacterAdded.RemoveListener(OnCharacterAdded);
         }
 
         #endregion

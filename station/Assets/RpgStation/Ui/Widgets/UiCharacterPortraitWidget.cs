@@ -112,7 +112,7 @@ namespace Station
       _character.OnDie += OnDie;
       _character.OnRevived += OnRespawn;
 
-      TeamSystem.OnLeaderChanged.AddListener(OnLeaderChanged);
+      GameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderChanged);
 
     }
 
@@ -126,7 +126,7 @@ namespace Station
       _character.OnHealed -= OnHealed;
       _character.OnDie -= OnDie;
       _character.OnRevived -= OnRespawn;
-      TeamSystem.OnLeaderChanged.RemoveListener(OnLeaderChanged);
+      GameGlobalEvents.OnLeaderChanged.RemoveListener(OnLeaderChanged);
     }
 
 

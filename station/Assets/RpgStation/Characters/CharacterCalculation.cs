@@ -13,10 +13,7 @@ public class CharacterCalculation : ScriptableObject
   protected Dictionary<string, float> _cachedBaseVitalsRegen = new Dictionary<string, float>();
   
   protected BaseCharacter _character;
-
-  public delegate void CharacterEvent();
-
-  public CharacterEvent OnMoving;
+  
   private DbSystem _dbSystem;
   protected VitalsDb _vitalDb;
   protected AttributesDb _attributesDb;
@@ -227,10 +224,7 @@ public class CharacterCalculation : ScriptableObject
   }
 
   #endregion
-  public void InvokeMove()
-  {
-    OnMoving?.Invoke();
-  }
+
 
   private void InvokeDie()
   {

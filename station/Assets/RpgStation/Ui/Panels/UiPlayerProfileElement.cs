@@ -35,7 +35,7 @@ namespace Station
       _attributesDb = dbSystem.GetDb<AttributesDb>();
       _statisticsDb = dbSystem.GetDb<StatisticDb>();
       _vitalsDb = dbSystem.GetDb<VitalsDb>();
-      TeamSystem.OnLeaderChanged.AddListener(FollowCharacter);
+      GameGlobalEvents.OnLeaderChanged.AddListener(FollowCharacter);
       if (_attributes == null)
       {
         _attributes = new GenericUiList<WidgetData, UiWidget>(_attributesPrefab.gameObject, _attributesLayout);
@@ -55,7 +55,7 @@ namespace Station
     protected override void OnDestroy()
     {
      
-      TeamSystem.OnLeaderChanged.RemoveListener(FollowCharacter);
+      GameGlobalEvents.OnLeaderChanged.RemoveListener(FollowCharacter);
       UnFollowCharacter();
       base.OnDestroy();
     }

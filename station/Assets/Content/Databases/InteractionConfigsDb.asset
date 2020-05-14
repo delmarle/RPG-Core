@@ -30,14 +30,17 @@ MonoBehaviour:
         Distance: 10
         UseCameraAngle: 0
         CameraAngle: 90
-      TryInteractMode: 1
+      TryInteractMode: 4
+      InteractionRange: 3
       HoverMode: 0
       InteractionTime: 0
       _CastingData:
         Option: 0
-        Length: 2
+        Length: 1
         AnimationId: 0
         StartSound: {fileID: 0}
+      CancelInteractionMode: 0
+      CancelInteractionDistance: 3
     - Layer: 0
       InteractibleType:
         _classRef: Station.HarvestNode, Assembly-CSharp
@@ -50,6 +53,7 @@ MonoBehaviour:
         UseCameraAngle: 0
         CameraAngle: 90
       TryInteractMode: 1
+      InteractionRange: 2
       HoverMode: 0
       InteractionTime: 0
       _CastingData:
@@ -57,6 +61,8 @@ MonoBehaviour:
         Length: 1
         AnimationId: 0
         StartSound: {fileID: 0}
+      CancelInteractionMode: 1
+      CancelInteractionDistance: 3
     - Layer: 8
       InteractibleType:
         _classRef: Station.Portal, Assembly-CSharp
@@ -69,6 +75,7 @@ MonoBehaviour:
         UseCameraAngle: 0
         CameraAngle: 90
       TryInteractMode: 1
+      InteractionRange: 3
       HoverMode: 0
       InteractionTime: 0
       _CastingData:
@@ -76,6 +83,8 @@ MonoBehaviour:
         Length: 1
         AnimationId: 0
         StartSound: {fileID: 0}
+      CancelInteractionMode: 0
+      CancelInteractionDistance: 3
     - Layer: 8
       InteractibleType:
         _classRef: Station.AreaContainer, Assembly-CSharp
@@ -88,6 +97,7 @@ MonoBehaviour:
         UseCameraAngle: 0
         CameraAngle: 90
       TryInteractMode: 1
+      InteractionRange: 3
       HoverMode: 0
       InteractionTime: 0
       _CastingData:
@@ -95,3 +105,5 @@ MonoBehaviour:
         Length: 1
         AnimationId: 0
         StartSound: {fileID: 0}
+      CancelInteractionMode: 2
+      CancelInteractionDistance: 3

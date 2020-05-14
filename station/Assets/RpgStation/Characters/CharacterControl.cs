@@ -122,7 +122,7 @@ namespace Station
 
     if (_currentHorizontalSpeed > MIN_MOVEMENT)
     {
-      _baseCharacter.Calculator.InvokeMove();
+      _baseCharacter.Action.InvokeMove();
     }
 
  

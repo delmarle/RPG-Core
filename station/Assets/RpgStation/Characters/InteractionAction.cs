@@ -1,6 +1,4 @@
 ﻿
-using UnityEngine;
-
 namespace Station
 {
     public class InteractionAction : CharacterAction

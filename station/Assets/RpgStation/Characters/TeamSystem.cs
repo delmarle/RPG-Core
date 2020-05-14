@@ -9,9 +9,7 @@ namespace Station
     {
         #region FIELDS
 
-        public static StationEvent<BaseCharacter> OnCharacterAdded = new StationEvent<BaseCharacter>();
-        public static StationEvent<BaseCharacter> OnCharacterRemoved = new StationEvent<BaseCharacter>();
-        public static StationEvent<BaseCharacter> OnLeaderChanged = new StationEvent<BaseCharacter>();
+    
 
         private List<BaseCharacter> _characters = new List<BaseCharacter>();
 
@@ -127,13 +125,13 @@ namespace Station
         private void AddTeamMember(BaseCharacter character)
         {
             _characters.Add(character);
-            OnCharacterAdded?.Invoke(character);
+            GameGlobalEvents.OnCharacterAdded?.Invoke(character);
         }
 
         private void RemoveTeamMember(BaseCharacter character)
         {
             _characters.Add(character);
-            OnCharacterRemoved?.Invoke(character);
+            GameGlobalEvents.OnCharacterRemoved?.Invoke(character);
         }
 
         private void SetLeader(BaseCharacter character)
@@ -147,7 +145,7 @@ namespace Station
             SetCharacterControllable(character);
             _cameraController.SetTarget(character.transform);
             _leader = character;
-            OnLeaderChanged?.Invoke(character);
+            GameGlobalEvents.OnLeaderChanged?.Invoke(character);
         }
 
         public void RequestLeaderChange(BaseCharacter character)

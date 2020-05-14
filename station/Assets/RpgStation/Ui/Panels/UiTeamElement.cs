@@ -43,13 +43,13 @@ namespace Station
 
         private void Subscribe()
         {
-            TeamSystem.OnLeaderChanged.AddListener(OnLeaderChanged);
+            GameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderChanged);
         }
         
         
         private void UnSubscribe()
         {
-            TeamSystem.OnLeaderChanged.RemoveListener(OnLeaderChanged);
+            GameGlobalEvents.OnLeaderChanged.RemoveListener(OnLeaderChanged);
         }
 
 

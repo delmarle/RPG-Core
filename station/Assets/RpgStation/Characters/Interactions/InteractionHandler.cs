@@ -23,7 +23,7 @@ namespace Station
     private void Awake()
     {
       _instance = this;
-      TeamSystem.OnLeaderChanged.AddListener(OnLeaderChanged);
+      GameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderChanged);
       GameGlobalEvents.OnBeforeLeaveScene.AddListener(OnBeforeLeaveScene);
     }
 
@@ -44,7 +44,7 @@ namespace Station
     private void OnDestroy()
     {
       _instance = null;
-      TeamSystem.OnLeaderChanged.RemoveListener(OnLeaderChanged);
+      GameGlobalEvents.OnLeaderChanged.RemoveListener(OnLeaderChanged);
     }
 
     private void EnableInteractions()

@@ -11,7 +11,8 @@ namespace Station
     [HideInInspector] public InteractionConfig Config;
     protected DbSystem DbSystem;
     protected InteractionConfigsDb _interactionConfigsDb;
-    
+    protected UiPopup _cachedPopup;
+    protected BaseCharacter _currentUser;
     #endregion
 
     private void Start()
@@ -21,8 +22,9 @@ namespace Station
       Setup();
     }
 
-    private void Destroy()
+    private void OnDestroy()
     {
+      GameGlobalEvents.OnLeaderChanged.RemoveListener(OnLeaderChanged);
       Dispose();
     }
 
@@ -33,7 +35,7 @@ namespace Station
       {
         return;
       }
-
+      GameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderChanged);
       _interactionConfigsDb = DbSystem.GetDb<InteractionConfigsDb>();
       foreach (var conf in _interactionConfigsDb.Db)
       {
@@ -43,7 +45,7 @@ namespace Station
         }
       }
       
-      if (Config.ShowHintMode == ShowHintType.WhileInRange || Config.TryInteractMode == InteractType.EnterDistance)
+      if (Config.ShowHintMode == ShowHintType.WhileInRange)
       {
         var trackable = gameObject.AddComponent<Trackable>();
         trackable.AddOnDetected(OnEnterRange);
@@ -54,8 +56,25 @@ namespace Station
       HideVisual();
     }
 
-    public virtual CastingData GetCastingData()
+    private void OnLeaderChanged(BaseCharacter newPlayer)
     {
+      if (_currentUser)
+      {
+        UnregisterCachedPopup();
+        OnCancelInteraction(_currentUser);
+      }
+    }
+
+    public CastingData GetCastingData()
+    {
+      foreach (var conf in _interactionConfigsDb.Db)
+      {
+        if (GetType() == conf.Value.InteractibleType.Type)
+        {
+          return conf.Value._CastingData;
+        }
+      }
+
       return null;
     }
 
@@ -88,8 +107,8 @@ namespace Station
     
     public virtual bool CanUse(BaseCharacter character)
     {
-      if (Config.TryInteractMode == InteractType.Tap || 
-          Config.TryInteractMode == InteractType.EnterDistance || 
+     
+      if (Config.TryInteractMode == InteractType.Tap ||
           Config.TryInteractMode == InteractType.HoverAndInput||
           Config.TryInteractMode == InteractType.UiInput)
       {
@@ -99,30 +118,78 @@ namespace Station
 
       }
 
-     
+      if (_currentUser == character)
+      {
+        Debug.Log("you are already using this interaction");
+        return false;
+      }
+
       return true;
     }
 
     public virtual void Interact(BaseCharacter user)
     {
-    
+      _currentUser = user;
       switch (Config.CancelInteractionMode)
       {
         case CancelInteractionMode.None:
+          _currentUser = null;
           break;
         case CancelInteractionMode.ByDistance:
           break;
         case CancelInteractionMode.ByMoving:
-          break;
-        case CancelInteractionMode.CloseUi:
+          user.Action.OnMove += OnCharacterMove; 
           break;
       }
+    }
+
+    private void OnCharacterMove()
+    {
+      UnregisterCachedPopup();
+      OnCancelInteraction(_currentUser);
+    }
+
+    protected void CachePopup(UiPopup popup)
+    {
+      if (_cachedPopup)
+      {
+        Debug.LogError("already have a popup cached");
+        
+      }
+
+      _cachedPopup = popup;
+      RegisterCachedPopup();
+
+    }
+
+    private void RegisterCachedPopup()
+    {
+      if (_cachedPopup)
+      {
+        _cachedPopup.OnHide.AddListener(OnCachedPopupClose);
+      }
+    }
+    private void UnregisterCachedPopup()
+    {
+      if (_cachedPopup)
+      {
+        _cachedPopup.OnHide.RemoveListener(OnCachedPopupClose);
+        _cachedPopup = null;
+      }
+    }
+
+    private void OnCachedPopupClose()
+    {
+      OnCancelInteraction(_currentUser);
     }
 
     #region CANCEL INTERACTION
 
     public virtual void OnCancelInteraction(BaseCharacter user)
     {
+      _currentUser.Action.OnMove -= OnCharacterMove; 
+      UnregisterCachedPopup();
+      _currentUser = null;
     }
 
     #endregion
