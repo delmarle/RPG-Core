@@ -244,10 +244,8 @@ namespace Station
       EditorStatic.DrawThinLine(3);
       var currentRank = data.Ranks[_currentRank];
   
-     
-      DrawCastingData(ref currentRank.Casting, ref _displayCasting);
+      currentRank.Casting = EditorStatic.DrawCastingData(currentRank.Casting, ref _displayCasting, ref displayCastingSound);
 
-     
       EditorStatic.DrawThinLine(3);
       _displayInvoking = EditorStatic.LevelFoldout("Invoking", _displayInvoking, 32, Color.white);
 
@@ -367,34 +365,7 @@ namespace Station
       }
     }
 
-    public static void DrawCastingData(ref CastingData casting, ref bool displayCasting)
-    {
-      EditorGUILayout.BeginHorizontal();
-      displayCasting = EditorStatic.LevelFoldout("Casting", displayCasting, 32, Color.white);
-      bool useCasting = casting != null;
-      string buttonName = useCasting ? "ON" : "OFF";
-      string iconName = useCasting ? "bullet_green" : "bullet_red";
-      if (EditorStatic.SizeableButton(80, 28, buttonName, iconName)) 
-      {
-        casting = useCasting? null: new CastingData();
-      }
-      EditorGUILayout.EndHorizontal();
-      if (displayCasting)
-      {
-   
-        if (casting != null)
-        { 
-          casting.Length = EditorGUILayout.FloatField("Casting time: ", casting.Length);
-          casting.AnimationId = EditorGUILayout.IntField("Casting animation ID: ", casting.AnimationId);
-          displayCastingSound = EditorStatic.SoundFoldout("Casting sound: ", ref casting.StartSound, displayCastingSound, 28, Color.cyan);
-          if (displayCastingSound)
-          {
-            EditorStatic.DrawSoundWidget(ref casting.StartSound, EditorStatic.ABILITIES_CATEGORY);
-          }
-          casting.Option = (ExitMode)EditorGUILayout.EnumPopup("Mode: ", casting.Option);
-        }
-      }
-    }
+
     }
 }
 

@@ -628,22 +628,22 @@ namespace RPG.Editor
     #endregion
     
     #region ACTIONS
-    public static void DrawCastingData(ref CastingData casting, ref bool displayCasting, ref bool displayCastingSound)
+    public static CastingData DrawCastingData(CastingData casting, ref bool displayCasting, ref bool displayCastingSound)
     {
       EditorGUILayout.BeginHorizontal();
-      displayCasting = EditorStatic.LevelFoldout("Casting", displayCasting, 32, Color.white);
-      bool useCasting = casting != null;
+      displayCasting = LevelFoldout("Casting", displayCasting, 32, Color.white);
+      bool useCasting = casting.HasData;
       string buttonName = useCasting ? "ON" : "OFF";
       string iconName = useCasting ? "bullet_green" : "bullet_red";
-      if (EditorStatic.SizeableButton(80, 28, buttonName, iconName)) 
+      if (SizeableButton(80, 28, buttonName, iconName))
       {
-        casting = useCasting? null: new CastingData();
+        casting.HasData = !casting.HasData;
       }
       EditorGUILayout.EndHorizontal();
       if (displayCasting)
       {
    
-        if (casting != null)
+        if (casting.HasData)
         { 
           casting.Length = EditorGUILayout.FloatField("Casting time: ", casting.Length);
           casting.AnimationId = EditorGUILayout.IntField("Casting animation ID: ", casting.AnimationId);
@@ -655,6 +655,8 @@ namespace RPG.Editor
           casting.Option = (ExitMode)EditorGUILayout.EnumPopup("Mode: ", casting.Option);
         }
       }
+
+      return casting;
     }
     #endregion
 

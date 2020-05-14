@@ -166,7 +166,7 @@ namespace Station
           }
           GUILayout.Space(3);
         }
-        EditorStatic.DrawCastingData(ref current._CastingData, ref _showCastingData, ref _showCastingSound);
+        current.CastingData = EditorStatic.DrawCastingData(current.CastingData, ref _showCastingData, ref _showCastingSound);
         
         current.CancelInteractionMode = (CancelInteractionMode)EditorGUILayout.EnumPopup("Cancel interaction mode:", current.CancelInteractionMode);
         switch (current.CancelInteractionMode)

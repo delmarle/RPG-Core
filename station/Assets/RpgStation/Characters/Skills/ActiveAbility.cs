@@ -88,7 +88,7 @@ namespace Station
     public float CastDistance;
     public float CoolDown;
 
-    public CastingData Casting;
+    public CastingData Casting = new CastingData();
 
     public InvokingData Invoking = new InvokingData();
     //CAST REQUIREMENT:
@@ -102,6 +102,7 @@ namespace Station
   [Serializable]
   public class CastingData
   {
+    public bool HasData;
     public ExitMode Option;
     public float Length = 1;
     public int AnimationId;

@@ -65,19 +65,6 @@ namespace Station
       }
     }
 
-    public CastingData GetCastingData()
-    {
-      foreach (var conf in _interactionConfigsDb.Db)
-      {
-        if (GetType() == conf.Value.InteractibleType.Type)
-        {
-          return conf.Value._CastingData;
-        }
-      }
-
-      return null;
-    }
-
     protected virtual void Setup()
     {
     }

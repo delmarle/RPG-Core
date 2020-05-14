@@ -124,7 +124,7 @@ namespace Station
       }
       _user.Action.DoAction(this);
       var casting = CastingData;
-      if (casting != null)
+      if (casting != null && casting.HasData)
       {
         if (_user.Action.OnStartCasting != null)
         {

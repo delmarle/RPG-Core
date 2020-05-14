@@ -56,7 +56,7 @@ namespace Station
                     return null;
                 }
 
-                return _interactible.Config._CastingData;
+                return _interactible.Config.CastingData;
             }
         }
         #endregion
