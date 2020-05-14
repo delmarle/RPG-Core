@@ -89,6 +89,10 @@ namespace Station
         }
 
         //check distance
+        float distanceFromTarget = Vector3.Distance(_user.GetFeet(), _user.Target.GetFeet());
+        bool outOfRange = distanceFromTarget > CurrentRank.CastDistance;
+ 
+
         switch (_data.Targeting.UsedAbilityTargeting)
         {
           case AbilityTargeting.Self:
@@ -106,6 +110,12 @@ namespace Station
               return false;
             }
 
+            if (_user.Target != _user && outOfRange)
+            {
+              return false;
+            }
+
+
             break;
           case AbilityTargeting.Friendly:
             if (_user.ResolveStance(target) != Stance.Ally)
@@ -114,6 +124,10 @@ namespace Station
               return false;
             }
 
+            if (_user.Target != _user && outOfRange)
+            {
+              return false;
+            }
             break;
           case AbilityTargeting.Enemy:
             if (_user.ResolveStance(target) != Stance.Enemy)
@@ -122,6 +136,10 @@ namespace Station
               return false;
             }
 
+            if (outOfRange)
+            {
+              return false;
+            }
             break;
           case AbilityTargeting.NotSelf:
             if (_user.Target == _user)
@@ -129,6 +147,10 @@ namespace Station
               return false;
             }
 
+            if (outOfRange)
+            {
+              return false;
+            }
             break;
         }
 
