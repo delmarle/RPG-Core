@@ -29,7 +29,7 @@ namespace Station
       _text.gameObject.SetActive(false);
     }
 
-    public override void TryInteract(BaseCharacter user)
+    public override void Interact(BaseCharacter user)
     {
       
       Debug.Log("harvesting");

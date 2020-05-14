@@ -12,10 +12,9 @@ namespace Station
     }
     
 
-    public override void TryInteract(BaseCharacter user)
+    public override void Interact(BaseCharacter user)
     {
-      
-      Debug.Log("harvesting");
+      Debug.Log("use button");
     }
   }
 }

@@ -1,4 +1,5 @@
-﻿using RPG.Editor;
+﻿using System;
+using RPG.Editor;
 using UnityEditor;
 using UnityEngine;
 
@@ -169,6 +170,18 @@ namespace Station
           GUILayout.Space(3);
         }
         EditorStatic.DrawCastingData(ref current._CastingData, ref _showCastingData, ref _showCastingSound);
+        
+        current.CancelInteractionMode = (CancelInteractionMode)EditorGUILayout.EnumPopup("Cancel interaction mode:", current.CancelInteractionMode);
+        switch (current.CancelInteractionMode)
+        {
+          case CancelInteractionMode.ByDistance:
+            current.CancelInteractionDistance = EditorGUILayout.FloatField("cancel distance: ", current.CancelInteractionDistance);
+            break;
+          case CancelInteractionMode.ByMoving:
+            break;
+          case CancelInteractionMode.CloseUi:
+            break;
+        }
         GUILayout.EndVertical();
 
      

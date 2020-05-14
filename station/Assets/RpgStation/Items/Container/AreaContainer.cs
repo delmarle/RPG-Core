@@ -12,6 +12,7 @@ namespace Station
         private ItemsDb _itemDb;
         private ItemsSettingsDb _itemsSettingsDb;
         public string _id;
+        private UiContainerPopup _cachedPopup;
         
         protected override void Setup()
         {
@@ -45,22 +46,31 @@ namespace Station
             _containerSystem.AddContainer(container, saved);
         }
 
-        
-        
 
-        public override void TryInteract(BaseCharacter user)
+        public override void Interact(BaseCharacter user)
         {
-            var prefab = _itemsSettingsDb.Get().ContainerSettings.ContainerPopup;
-            if (prefab == null)
+            if (_cachedPopup == null)
             {
-                Debug.LogError($" missing prefab container popup");
+                var prefab = _itemsSettingsDb.Get().ContainerSettings.ContainerPopup;
+                if (prefab == null)
+                {
+                    Debug.LogError($" missing prefab container popup");
+                    return;
+                }
+                
+                _cachedPopup = UiSystem.GetUniquePopup<UiContainerPopup>(UiContainerPopup.POPUP_KEY, prefab);
             }
-            else
-            {
-                var popup = UiSystem.GetUniquePopup<UiContainerPopup>(UiContainerPopup.POPUP_KEY, prefab);
-                popup.Setup(new ContainerReference(_id, RpgStation.GetSystemStatic<AreaContainerSystem>()), user);
-                popup.Show();
-            }
+        
+            
+            _cachedPopup.Setup(new ContainerReference(_id, RpgStation.GetSystemStatic<AreaContainerSystem>()), user);
+            _cachedPopup.Show();
+        }
+        
+        public override void OnCancelInteraction(BaseCharacter user)
+        {
+            UiSystem.HideUniquePopup<UiContainerPopup>(UiContainerPopup.POPUP_KEY);
+            _cachedPopup.Hide();
+            base.OnCancelInteraction(user);
         }
     }
 

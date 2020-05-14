@@ -23,7 +23,7 @@ namespace Station
       name += Config.ShowHintMode.ToString();
     }
 
-    public override void TryInteract(BaseCharacter user)
+    public override void Interact(BaseCharacter user)
     {
       GameGlobalEvents.OnBeforeLeaveScene?.Invoke();
       var sceneData = _sceneDb.GetEntry(destination.SceneId);

@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 
 namespace Station
@@ -53,22 +54,6 @@ namespace Station
       HideVisual();
     }
 
-    public virtual bool CanUse(BaseCharacter character)
-    {
-      if (Config.TryInteractMode == InteractType.Tap || 
-          Config.TryInteractMode == InteractType.EnterDistance || 
-          Config.TryInteractMode == InteractType.HoverAndInput||
-          Config.TryInteractMode == InteractType.UiInput)
-      {
-        if (Vector3.Distance(transform.position, character.GetFeet()) > Config.InteractionRange)
-          return false;
-
-      }
-
-     
-      return true;
-    }
-
     public virtual CastingData GetCastingData()
     {
       return null;
@@ -99,12 +84,41 @@ namespace Station
         _hint.SetActive(false);
       }
     }
-
-    public virtual void TryInteract(BaseCharacter user)
-    {
-      
-    }
     
+    
+    public virtual bool CanUse(BaseCharacter character)
+    {
+      if (Config.TryInteractMode == InteractType.Tap || 
+          Config.TryInteractMode == InteractType.EnterDistance || 
+          Config.TryInteractMode == InteractType.HoverAndInput||
+          Config.TryInteractMode == InteractType.UiInput)
+      {
+        var distanceFromCharacter = Vector3.Distance(transform.position, character.GetFeet());
+        if (distanceFromCharacter > Config.InteractionRange)
+          return false;
+
+      }
+
+     
+      return true;
+    }
+
+    public virtual void Interact(BaseCharacter user)
+    {
+    
+      switch (Config.CancelInteractionMode)
+      {
+        case CancelInteractionMode.None:
+          break;
+        case CancelInteractionMode.ByDistance:
+          break;
+        case CancelInteractionMode.ByMoving:
+          break;
+        case CancelInteractionMode.CloseUi:
+          break;
+      }
+    }
+
     #region CANCEL INTERACTION
 
     public virtual void OnCancelInteraction(BaseCharacter user)

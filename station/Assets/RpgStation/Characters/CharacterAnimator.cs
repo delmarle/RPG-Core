@@ -85,7 +85,7 @@ namespace Station
 
   #region CASTING
   private void OnStartCasting(CharacterAction action)
-  {print("start casting");
+  {
     _animator.SetInteger(CastingId, action.CastingData.AnimationId);
     if(action.InvokingData != null)_animator.SetInteger(InvokingId, action.InvokingData.AnimationId);
     _animator.SetBool(CastingState, true);
@@ -94,13 +94,13 @@ namespace Station
   }
   
   private void OnCancelCasting(CharacterAction ability)
-  {print("cancel casting");
+  {
     _animator.SetBool(CastingState, false);
     _animator.SetBool(InvokingState, false);
   }
   
   private void OnCompleteCasting(CharacterAction ability)
-  {print("complete casting");
+  {
     _animator.SetBool(CastingState, false); 
   }
   

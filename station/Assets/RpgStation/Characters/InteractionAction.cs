@@ -35,7 +35,7 @@ namespace Station
             {
                 return false;
             }
-
+            
             if (_interactible.CanUse(_user) == false)
             {
                 return false;
@@ -46,7 +46,7 @@ namespace Station
 
         protected override void OnInvokeEffect()
         {
-            _interactible.TryInteract(_user);
+            _interactible.Interact(_user);
         }
 
         public override CastingData CastingData

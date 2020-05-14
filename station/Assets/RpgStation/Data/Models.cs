@@ -551,6 +551,8 @@ public enum StatusEffectType
     public HoverMode HoverMode;
     public float InteractionTime;
     public CastingData _CastingData;
+    public CancelInteractionMode CancelInteractionMode;
+    public float CancelInteractionDistance = 2.5f;
   }
 
   [Serializable]
@@ -564,13 +566,12 @@ public enum StatusEffectType
     public float CameraAngle = 90;
   }
 
-  public enum BreakInteractionMode
+  public enum CancelInteractionMode
   {
+    None,
     ByDistance,
-    ByMoving
-    //by distance
-    //by moving
-    //freeze player movement
+    ByMoving,
+    CloseUi
   }
 
   public enum HoverMode
