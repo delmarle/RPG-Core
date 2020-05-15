@@ -6,12 +6,12 @@ using UnityEngine;
 namespace Station
 {
     [CreateAssetMenu]
-    public class EquipmentTypesDb : DictGenericDatabase<EquipmentSlotModel>
+    public class EquipmentTypesDb : DictGenericDatabase<EquipmentTypesModel>
     {
-        [Serializable] public class LocalDictionary : SerializableDictionary<string, EquipmentSlotModel> {}
+        [Serializable] public class LocalDictionary : SerializableDictionary<string, EquipmentTypesModel> {}
         [SerializeField] private LocalDictionary _db = new LocalDictionary();
   
-        public override IDictionary<string, EquipmentSlotModel> Db
+        public override IDictionary<string, EquipmentTypesModel> Db
         {
             get => _db;
             set => _db.CopyFrom (value);
@@ -25,7 +25,7 @@ namespace Station
         
         public override string ObjectName()
         {
-            return "Equipment slot";
+            return "Equipment Types";
         }
     }
 }

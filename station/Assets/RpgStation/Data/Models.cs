@@ -885,6 +885,13 @@ public enum StatusEffectType
     public LocalizedText Description = new LocalizedText("description");
     public Sprite Icon;
   }
+  
+  [Serializable]
+  public class EquipmentTypesModel
+  {
+    public LocalizedText Name = new LocalizedText("slot");
+    public LocalizedText Description = new LocalizedText("description");
+  }
 
   [Serializable]
   public class ContainerSettings

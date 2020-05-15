@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Station
 {
@@ -15,10 +16,17 @@ namespace Station
             loadTask.Execute();
         }
 
-        private void OnDatabaseLoaded(ITemplateTask<Dictionary<Type, object>> arg1, Dictionary<Type, object> loaded, Exception arg3, object arg4)
+        private void OnDatabaseLoaded(ITemplateTask<Dictionary<Type, object>> arg1, Dictionary<Type, object> loaded, Exception error, object arg4)
         {
-            _dbMap = loaded;
-            GameGlobalEvents.OnDataBaseLoaded?.Invoke();
+            if (error != null)
+            {
+                Debug.LogError($" failed to load data base: {error.Message}");
+            }
+            else
+            {
+                _dbMap = loaded;
+                GameGlobalEvents.OnDataBaseLoaded?.Invoke();
+            }
         }
 
         protected override void OnDispose()
@@ -28,10 +36,15 @@ namespace Station
 
         public T GetDb<T>()
         {
-            if (_dbMap.ContainsKey(typeof(T)))
+            if (_dbMap != null)
             {
-                return (T)_dbMap[typeof(T)];
+                if (_dbMap.ContainsKey(typeof(T)))
+                {
+                    return (T)_dbMap[typeof(T)];
+                }
             }
+
+         
 
             return default;
         }

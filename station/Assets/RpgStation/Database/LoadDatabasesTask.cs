@@ -24,11 +24,29 @@ namespace Station
         protected override IEnumerator HandleExecute()
         {
             Debug.Log(TypesToLoad.Count+ " Dbs will be loaded");
+         
             foreach (var typeToLoad in TypesToLoad)
             {
-                AsyncOperationHandle<ScriptableObject> handle = Addressables.LoadAssetAsync<ScriptableObject>(typeToLoad.Name);
-                handle.Completed += HandleOnCompleted;
-               
+                AsyncOperationHandle<ScriptableObject> handle;
+                try
+                {
+                    handle = Addressables.LoadAssetAsync<ScriptableObject>(typeToLoad.Name);
+                    if (handle.Status == AsyncOperationStatus.Failed)
+                    {
+                        Debug.LogError("could not instantiate a DB "+typeToLoad);
+                    }
+                    else
+                    {
+                        
+                        handle.Completed += HandleOnCompleted;
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError(e.Message);
+                    throw;
+                }
                 yield return handle;
             }
         }
