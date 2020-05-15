@@ -18,7 +18,7 @@ namespace Station
         private void OnDatabaseLoaded(ITemplateTask<Dictionary<Type, object>> arg1, Dictionary<Type, object> loaded, Exception arg3, object arg4)
         {
             _dbMap = loaded;
-            GameGlobalEvents.OnDataBaseLoaded.Invoke();
+            GameGlobalEvents.OnDataBaseLoaded?.Invoke();
         }
 
         protected override void OnDispose()

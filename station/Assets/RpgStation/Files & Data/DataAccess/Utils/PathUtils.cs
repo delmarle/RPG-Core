@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+#pragma warning disable 0162
 public static class PathUtils
 {
     private const string EDITOR_SOUNDS_PATH = "Assets/Content/Sounds/";

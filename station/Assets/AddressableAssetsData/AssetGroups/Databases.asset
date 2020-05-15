@@ -107,6 +107,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_mainAssetType: Station.RaceDb, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  - m_GUID: c856730079aee4178bb2968f34b53e94
+    m_Address: EquipmentSlotsDb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: Station.EquipmentSlotsDb, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   - m_GUID: cd5bde4a051df43a38d1803dbca539cf
     m_Address: ScenesDb
     m_ReadOnly: 0
