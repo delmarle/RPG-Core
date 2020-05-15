@@ -14,7 +14,7 @@ namespace Station
             return string.Empty;
         }
 
-        public virtual void ForceRefresh()
+        public void ForceRefresh()
         {
 #if UNITY_EDITOR
             EditorUtility.SetDirty(this);
@@ -23,15 +23,17 @@ namespace Station
 
         public static BaseDb GetDbFromEditor(Type typeDb)
         {
-           
+#if UNITY_EDITOR
             string dbPath = "Assets/Content/Databases/" +  typeDb.Name + @".asset";
             BaseDb found = AssetDatabase.LoadAssetAtPath<BaseDb>(dbPath);
             if (found == null)
             {
-                Debug.LogError("cant find db at: "+dbPath);
+                Debug.LogError("cant find db at: " + dbPath);
             }
 
             return found;
+#endif
+            return null;
         }
     }
 }

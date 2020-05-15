@@ -12,8 +12,9 @@ namespace Station
 
     private  BaseDb GetDb(Type currentType)
     {
+#if UNITY_EDITOR
       BaseDb dbFound;
-      #if UNITY_EDITOR
+
       string dbPath = "Assets/Content/Databases/" + currentType.Name + @".asset";
       BaseDb found = AssetDatabase.LoadAssetAtPath<BaseDb>(dbPath);
       if (found == null)
@@ -22,8 +23,10 @@ namespace Station
       }
 
       dbFound =  found;
-      #endif
+      
       return dbFound;
+#endif
+        return null;
     }
     
     public void Initialize()
