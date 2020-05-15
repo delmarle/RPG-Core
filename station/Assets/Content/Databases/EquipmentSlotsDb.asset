@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46541d3c6032d42258a1c81ff9c92838, type: 3}
+  m_Name: EquipmentSlotsDb
+  m_EditorClassIdentifier: 
+  _db:
+    m_keys:
+    - c338125e-f525-48e7-b277-c462afaa8ed8
+    - d4c510f1-efac-4730-aba5-99d91fbdb4f9
+    - 20a94783-f97b-478d-a104-42bd824dc681
+    - b125cc62-f58f-497a-a1c4-217beebf9853
+    m_values:
+    - Name:
+        Key: head
+      Description:
+        Key: description
+      Icon: {fileID: 0}
+    - Name:
+        Key: left hand
+      Description:
+        Key: description
+      Icon: {fileID: 0}
+    - Name:
+        Key: ring 1
+      Description:
+        Key: description
+      Icon: {fileID: 0}
+    - Name:
+        Key: feet
+      Description:
+        Key: description
+      Icon: {fileID: 0}

@@ -8,6 +8,10 @@ namespace Station
     public static partial class ItemsEditor
     {
         #region fields 
+
+        private static int _selectedEquipmentSlot;
+        private static Vector2 _equipmentSlotsScrollPos;
+        
         private static int _itemSettingsBarIndex;
         private static Vector2 _itemSettingsScrollPos;
         #endregion
@@ -22,7 +26,9 @@ namespace Station
             {
                 EditorGUILayout.BeginHorizontal();
                 DrawSettingsBar();
+         
                 DrawItemSettingsProperties();
+
                 EditorGUILayout.EndHorizontal();
             }
 
@@ -63,7 +69,7 @@ namespace Station
                         DrawItemsCategories();
                         break;
                     case 3:
-                        DrawEquipmentSlots();
+                        DrawEquipmentSettings();
                         break;
                     case 4:
                         DrawContainersSettings();
@@ -146,31 +152,42 @@ namespace Station
             }
         }
 
-        private static void DrawEquipmentSlots()
+        private static void DrawEquipmentSettings()
         {
-            
-            EditorStatic.DrawSectionTitle(55, "Items Rarities");
-            if (EditorStatic.SizeableButton(100, 32, "Add", "plus"))
-            {
-                _itemsSettingsDb.Get().EquipmentSlots.Add(Guid.NewGuid().ToString() ,new EquipmentSlot());
-            }
+            EditorGUILayout.BeginHorizontal();
+            _selectedEquipmentSlot = EditorStatic.DrawGenericSelectionList(_equipmentSlotsDb, _selectedEquipmentSlot,
+                _equipmentSlotsScrollPos, out _equipmentSlotsScrollPos, "bullet_yellow", true);
+            EditorGUILayout.BeginVertical("box");
+            EditorStatic.DrawSectionTitle(55, "Equipment slots");
             EditorStatic.DrawLargeLine();
-            var list = _itemsSettingsDb.Get().EquipmentSlots;
-            foreach (var entry in list)
+ 
+            var entry = _equipmentSlotsDb.GetEntry(_selectedEquipmentSlot);
+            if (entry != null)
             {
-                EditorGUILayout.BeginHorizontal();
-                EditorStatic.DrawLocalization(entry.Value.Name);
-                entry.Value.Description.Key = EditorGUILayout.TextField(entry.Value.Description.Key);
-               // entry.Value.Icon = (Sprite)EditorGUILayout.ObjectField(entry.Value.Icon);
-                if (EditorStatic.SizeableButton(64, 18, "delete", "cross"))
+                EditorGUILayout.BeginHorizontal("box");
+                entry.Icon = (Sprite)EditorGUILayout.ObjectField(entry.Icon, typeof(Sprite), false, GUILayout.Width(64), GUILayout.Height(64));
+                
+                EditorGUILayout.BeginVertical();
+                EditorStatic.DrawLocalization(entry.Name, "Slot name: ");
+                EditorStatic.DrawLocalization(entry.Description, "Description: ");
+                EditorGUILayout.EndVertical();
+               
+                if (EditorStatic.SizeableButton(90, 64, "delete", "cross"))
                 {
-                    _itemsSettingsDb.Get().EquipmentSlots.Remove(entry);
+                    _equipmentSlotsDb.Remove(entry);
                     return;
                 }
 
                 EditorGUILayout.EndHorizontal();
             }
+            else
+            {
+                EditorGUILayout.HelpBox("cannot find entries", MessageType.Info);
+            }
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.EndHorizontal();
         }
+        
 
         private static void DrawContainersSettings()
         {

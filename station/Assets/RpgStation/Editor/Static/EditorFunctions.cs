@@ -692,10 +692,10 @@ namespace RPG.Editor
     
     #region LOCALIZATION
 
-    public static void DrawLocalization(LocalizedText localization)
+    public static void DrawLocalization(LocalizedText localization, string fieldName = null)
     {
       //TODO
-      localization.Key = EditorGUILayout.TextField(localization.Key);
+      localization.Key = EditorGUILayout.TextField(fieldName, localization.Key);
     }
 
     #endregion

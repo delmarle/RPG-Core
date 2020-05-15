@@ -1,4 +1,5 @@
-﻿using RPG.Editor;
+﻿using System;
+using RPG.Editor;
 using Station.Editor;
 using UnityEditor;
 using UnityEngine;
@@ -18,6 +19,12 @@ namespace Station
       myWindow.maxSize = myWindow.minSize*2;
       myWindow.titleContent = new GUIContent("Framework");
       myWindow.Show();
+    }
+
+    private void OnDestroy()
+    {
+      Debug.Log("saving all items entries");
+      ItemsEditor.SaveAllItems();
     }
 
     private void OnGUI()

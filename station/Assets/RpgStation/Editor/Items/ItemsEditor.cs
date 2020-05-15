@@ -10,6 +10,11 @@ namespace Station
     {
         #region FIELDS
 
+        private const float SAVE_DELAY = 30;
+        private static bool _itemsDirty = false;
+        private static float _timeToSave = 0;
+        
+        private static HashSet<ScriptableObject> ItemsToSave = new HashSet<ScriptableObject>();
         
         private static List<string> _itemsFilterTags = new List<string>();
         private static int _selectedItemEntry;
@@ -32,6 +37,8 @@ namespace Station
                 DrawItemView();
                 EditorGUILayout.EndHorizontal();
             }
+
+            ComputeSaving();
         }
 
         private static void DrawItemsTagFilter()
@@ -58,7 +65,16 @@ namespace Station
             {
                 _itemScrollPos = EditorGUILayout.BeginScrollView(_itemScrollPos, GUILayout.ExpandHeight(true),GUILayout.ExpandWidth(true));
                 {
-                    ItemPanel(item,_selectedItemEntry);
+                    EditorGUI.BeginChangeCheck();
+                    {
+                        ItemPanel(item,_selectedItemEntry);
+                    }
+                    if (EditorGUI.EndChangeCheck())
+                    {
+                        SaveCurrentItem();
+                        _itemsDirty = true;
+                    }
+                   
                 }
                 EditorGUILayout.EndScrollView();
             }
@@ -151,9 +167,45 @@ namespace Station
             var assembly = typeof(BaseItemModel).Assembly;
             Type t = assembly.GetType(itemType.ToString());
             var path = PathUtils.BuildItemPath();
-            var instance = ScriptableHelper.CreateScriptableObject(t, path, "item_"+t.Name+"_"+Guid.NewGuid());
+            var instance = ScriptableHelper.CreateScriptableObject(t, path, "item_"+t.Name+"_"+Guid.NewGuid()+".asset");
             _itemsDb.Add((BaseItemModel)instance);
             Selection.activeObject = instance;
+        }
+
+
+        private static void SaveCurrentItem()
+        {
+            var so = _itemsDb.GetEntry(_selectedItemEntry);
+            if (so)
+            {
+                ItemsToSave.Add(so);
+            }
+        }
+        
+        public static void SaveAllItems()
+        {
+            foreach (var so in ItemsToSave)
+            {
+                EditorUtility.SetDirty(so);
+            }
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+            _itemsDirty = false;
+            _timeToSave = 0;
+            ItemsToSave.Clear();
+            
+        }
+
+        private static void ComputeSaving()
+        {
+            if (_itemsDirty)
+            {
+                _timeToSave += Time.deltaTime;
+                if (_timeToSave > SAVE_DELAY)
+                {
+                    SaveAllItems();
+                }
+            }
         }
     }
 

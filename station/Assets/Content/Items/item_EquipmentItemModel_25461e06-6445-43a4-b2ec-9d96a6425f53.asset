@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57fb72bcd1adc4a998d7ea5f7fb7a199, type: 3}
-  m_Name: item_EquipmentItemModel_b19a9392-064e-4c9c-b235-1d93b9fff9f7
+  m_Name: item_EquipmentItemModel_25461e06-6445-43a4-b2ec-9d96a6425f53
   m_EditorClassIdentifier: 
   Name:
-    Key: item
+    Key: equipment
   Description:
-    Key: description
-  Icon: {fileID: 0}
-  RarityKey: 
-  CategoryKey: 
+    Key: descriptionf
+  Icon: {fileID: 21300000, guid: f68a36e978efb434cb6835a6f42ed7be, type: 3}
+  RarityKey: 03c5a6c1-49e4-4af4-8662-d10e1286a77e
+  CategoryKey: 077c6187-a4f2-4f99-a116-562e0bc7da43
   MaxStackSize: 1
-  EquipmentType: 
+  EquipmentType: d4c510f1-efac-4730-aba5-99d91fbdb4f9

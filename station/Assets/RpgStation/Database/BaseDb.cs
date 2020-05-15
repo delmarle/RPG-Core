@@ -14,7 +14,7 @@ namespace Station
             return string.Empty;
         }
 
-        public void ForceRefresh()
+        public virtual void ForceRefresh()
         {
 #if UNITY_EDITOR
             EditorUtility.SetDirty(this);

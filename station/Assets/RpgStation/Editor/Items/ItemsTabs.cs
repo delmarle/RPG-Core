@@ -14,10 +14,21 @@ namespace Station
         private static ItemsCategoriesDb _itemsCategoriesDb;
         private static ItemsRaritiesDb _itemsRaritiesDb;
         private static ItemsSettingsDb _itemsSettingsDb;
+        private static EquipmentSlotsDb _equipmentSlotsDb;
         private static ItemsDb _itemsDb;
         #endregion
         private static void CacheDbs()
         {
+            if (_equipmentSlotsDb == null)
+            {
+                _equipmentSlotsDb = (EquipmentSlotsDb) EditorStatic.GetDb(typeof(EquipmentSlotsDb));
+                if (_equipmentSlotsDb == null)
+                {
+                    EditorGUILayout.HelpBox("MISSING DB: _equipmentSlotsDb", MessageType.Error);
+                    GUIUtility.ExitGUI();
+                }
+            }
+            
             if (_itemsCategoriesDb == null)
             {
                 _itemsCategoriesDb = (ItemsCategoriesDb) EditorStatic.GetDb(typeof(ItemsCategoriesDb));
@@ -71,7 +82,11 @@ namespace Station
             }
             if (EditorGUI.EndChangeCheck())
             {
-                _itemsSettingsDb?.ForceRefresh(); 
+            _itemsCategoriesDb?.ForceRefresh();
+            _itemsRaritiesDb?.ForceRefresh();
+            _itemsSettingsDb?.ForceRefresh();
+            _equipmentSlotsDb?.ForceRefresh();
+            _itemsDb?.ForceRefresh();
             }
         }
         

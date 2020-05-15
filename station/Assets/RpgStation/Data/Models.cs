@@ -856,8 +856,6 @@ public enum StatusEffectType
   #endregion
   
   #region ITEMS
- 
-  [Serializable] public class EquipmentSlotDictionary : SerializableDictionary<string, EquipmentSlot> {}
   [Serializable] public class ItemModelsDictionary : SerializableDictionary<string, BaseItemModel> {}
   [Serializable] public class ItemCategoryDictionary : SerializableDictionary<string, ItemCategory> {}
   
@@ -865,7 +863,6 @@ public enum StatusEffectType
   public class ItemsSettingsModel
   {
     public List<string> ItemsTags = new List<string>();
-    public EquipmentSlotDictionary EquipmentSlots = new EquipmentSlotDictionary();
     public ContainerSettings ContainerSettings = new ContainerSettings();
     public CraftSettings CraftSettings = new CraftSettings();
   }
@@ -882,7 +879,7 @@ public enum StatusEffectType
   }
   
   [Serializable]
-  public class EquipmentSlot
+  public class EquipmentSlotModel
   {
     public LocalizedText Name = new LocalizedText("slot");
     public LocalizedText Description = new LocalizedText("description");

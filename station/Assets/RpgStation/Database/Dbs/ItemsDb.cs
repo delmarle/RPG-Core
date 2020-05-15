@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Station
@@ -27,9 +29,11 @@ namespace Station
         protected override void OnBeforeDelete(string key)
         {
             base.OnBeforeDelete(key);
+#if UNITY_EDITOR
             var objToDelete = GetEntry(key);
             string pathToDelete = AssetDatabase.GetAssetPath(objToDelete);      
             AssetDatabase.DeleteAsset(pathToDelete);
+#endif
         }
     }
 }

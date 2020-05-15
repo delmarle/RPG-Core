@@ -16,21 +16,6 @@ MonoBehaviour:
     ItemsTags:
     - low level
     - useless
-    EquipmentSlots:
-      m_keys:
-      - d2e1d52d-6042-4ec7-bc7d-0fd55c43c38e
-      - bd5892f8-9ba7-4e98-9c4a-50a617d44fbe
-      m_values:
-      - Name:
-          Key: head
-        Description:
-          Key: description
-        Icon: {fileID: 0}
-      - Name:
-          Key: torso
-        Description:
-          Key: description
-        Icon: {fileID: 0}
     ContainerSettings:
       PlayerInventoryType: 0
       InitialPlayerInventorySize: 50

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f15de5139d3f481daa8fb66336589c3, type: 3}
-  m_Name: item_ConsumableItemModel_474a43da-cacd-4686-8991-b136dc93ee14
+  m_Name: item_ConsumableItemModel_5e97cd33-4556-4dec-915b-5d1fdd5c570f
   m_EditorClassIdentifier: 
   Name:
-    Key: item
+    Key: consumable
   Description:
     Key: description
-  Icon: {fileID: 0}
-  RarityKey: 
-  CategoryKey: 
+  Icon: {fileID: 21300000, guid: 4e17e66d124d44f5a8d7e4da04bae6b2, type: 3}
+  RarityKey: 87232d47-d561-4845-ae75-1f2c40a9f3b9
+  CategoryKey: c0889d13-428d-4efa-93f1-ef1d385f4c98
   MaxStackSize: 1
