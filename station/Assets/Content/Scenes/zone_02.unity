@@ -1784,13 +1784,17 @@ MonoBehaviour:
       UseCameraAngle: 0
       CameraAngle: 90
     TryInteractMode: 0
+    InteractionRange: 2
     HoverMode: 0
     InteractionTime: 0
-    _CastingData:
+    CastingData:
+      HasData: 0
       Option: 0
       Length: 1
       AnimationId: 0
       StartSound: {fileID: 0}
+    CancelInteractionMode: 0
+    CancelInteractionDistance: 2.5
   destination:
     SceneId: 93436f6d-41e9-441a-a2a3-58e5cc7b4e4b
     SpawnId: 0
@@ -2468,13 +2472,17 @@ MonoBehaviour:
       UseCameraAngle: 0
       CameraAngle: 90
     TryInteractMode: 0
+    InteractionRange: 2
     HoverMode: 0
     InteractionTime: 0
-    _CastingData:
+    CastingData:
+      HasData: 0
       Option: 0
       Length: 1
       AnimationId: 0
       StartSound: {fileID: 0}
+    CancelInteractionMode: 0
+    CancelInteractionDistance: 2.5
 --- !u!65 &1902056574
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2534,16 +2542,21 @@ MonoBehaviour:
       UseCameraAngle: 0
       CameraAngle: 90
     TryInteractMode: 0
+    InteractionRange: 2
     HoverMode: 0
     InteractionTime: 0
-    _CastingData:
+    CastingData:
+      HasData: 0
       Option: 0
       Length: 1
       AnimationId: 0
       StartSound: {fileID: 0}
+    CancelInteractionMode: 0
+    CancelInteractionDistance: 2.5
   _defaultItems:
-  - ItemId: e6bd96d4-e539-4795-9a77-100dc486471f
+  - ItemId: 1f2ed9d5-57bf-46ec-a6cc-9adfaca3f45c
     ItemCount: 2
+  _id: 
 --- !u!65 &1958986999
 BoxCollider:
   m_ObjectHideFlags: 0
