@@ -21,18 +21,18 @@ namespace Station
         public override void DrawSpecificEditor()
         {
             EditorGUILayout.HelpBox("Equipment", MessageType.Info);
-            var equipmentSlotsDb = (EquipmentSlotsDb) BaseDb.GetDbFromEditor(typeof(EquipmentSlotsDb));
+            var equipmentType = (EquipmentTypesDb) BaseDb.GetDbFromEditor(typeof(EquipmentTypesDb));
 
             if (string.IsNullOrEmpty(EquipmentType))
             {
-                EquipmentType = equipmentSlotsDb.GetEntry(0)?.Name?.Key;
+                EquipmentType = equipmentType.GetEntry(0)?.Name?.Key;
             }
             else
             {
-                var listNames = equipmentSlotsDb.ListEntryNames();
-                var listKeys = equipmentSlotsDb.Db.Keys.ToArray();
+                var listNames = equipmentType.ListEntryNames();
+                var listKeys = equipmentType.Db.Keys.ToArray();
                 var currentIndex = listKeys.FindIndex(x => x == EquipmentType);
-                currentIndex = EditorGUILayout.Popup("Equipment slot used: ", currentIndex, listNames);
+                currentIndex = EditorGUILayout.Popup("Equipment type: ", currentIndex, listNames);
                 if (listNames.Length > 0)
                 {
                     if (currentIndex == -1)
@@ -44,7 +44,7 @@ namespace Station
                 }
                 else
                 {
-                    EditorGUILayout.HelpBox("missing equipments slots", MessageType.Info);
+                    EditorGUILayout.HelpBox("missing equipments types", MessageType.Info);
                 }
 
               

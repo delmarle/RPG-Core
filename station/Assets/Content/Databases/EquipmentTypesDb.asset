@@ -13,5 +13,25 @@ MonoBehaviour:
   m_Name: EquipmentTypesDb
   m_EditorClassIdentifier: 
   _db:
-    m_keys: []
-    m_values: []
+    m_keys:
+    - 53d9dfbf-1ff4-4c39-b796-524981016f8f
+    - ed08abb0-513d-4b93-aa5c-1a95c14bb433
+    - be07d218-a62b-4c6c-b918-f4bf9b291100
+    - 30067018-4935-4d64-8942-1c9398fd2eed
+    m_values:
+    - Name:
+        Key: Helmet
+      Description:
+        Key: description
+    - Name:
+        Key: Torso
+      Description:
+        Key: description
+    - Name:
+        Key: Ring
+      Description:
+        Key: description
+    - Name:
+        Key: Shoes
+      Description:
+        Key: description

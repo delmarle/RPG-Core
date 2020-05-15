@@ -12,6 +12,9 @@ namespace Station
         private static int _selectedEquipmentSlot;
         private static Vector2 _equipmentSlotsScrollPos;
         
+        private static int _selectedEquipmentTypes;
+        private static Vector2 _equipmentSlotsScrollTypes;
+        
         private static int _itemSettingsBarIndex;
         private static Vector2 _itemSettingsScrollPos;
         #endregion
@@ -38,13 +41,14 @@ namespace Station
         {
             GUILayout.BeginVertical("box",GUILayout.Width(EditorStatic.LIST_VIEW_WIDTH),GUILayout.ExpandHeight(true));
             {
-                var  toolbarOptions = new GUIContent[6];
+                var  toolbarOptions = new GUIContent[7];
                 toolbarOptions[0] = new GUIContent(EditorStatic.ITEMS_TAB_SETTINGS_TAGS,null, "");
                 toolbarOptions[1] = new GUIContent(EditorStatic.ITEMS_TAB_SETTINGS_RARITIES,null, "");
                 toolbarOptions[2] = new GUIContent(EditorStatic.ITEMS_TAB_SETTINGS_ITEMS_CATEGORIES,null, "");
                 toolbarOptions[3] = new GUIContent(EditorStatic.ITEMS_TAB_SETTINGS_EQUIPMENT_SLOTS, null, "");
-                toolbarOptions[4] = new GUIContent(EditorStatic.ITEMS_TAB_SETTINGS_CONTAINERS, null, "");
-                toolbarOptions[5] = new GUIContent(EditorStatic.ITEMS_TAB_SETTINGS_CRAFTING, null, "");
+                toolbarOptions[4] = new GUIContent(EditorStatic.ITEMS_TAB_SETTINGS_EQUIPMENT_TYPES, null, "");
+                toolbarOptions[5] = new GUIContent(EditorStatic.ITEMS_TAB_SETTINGS_CONTAINERS, null, "");
+                toolbarOptions[6] = new GUIContent(EditorStatic.ITEMS_TAB_SETTINGS_CRAFTING, null, "");
 
                 var height = 40 * toolbarOptions.Length;
                 _itemSettingsBarIndex = GUILayout.SelectionGrid(_itemSettingsBarIndex, toolbarOptions,1,EditorStatic.ToolBarStyle,GUILayout.Height(height));
@@ -72,6 +76,9 @@ namespace Station
                         DrawEquipmentSettings();
                         break;
                     case 4:
+                        DrawEquipmentTypes();
+                        break;
+                    case 5:
                         DrawContainersSettings();
                         break;
                 }
@@ -164,7 +171,7 @@ namespace Station
             var entry = _equipmentSlotsDb.GetEntry(_selectedEquipmentSlot);
             if (entry != null)
             {
-                EditorGUILayout.BeginHorizontal("box");
+                EditorGUILayout.BeginHorizontal();
                 entry.Icon = (Sprite)EditorGUILayout.ObjectField(entry.Icon, typeof(Sprite), false, GUILayout.Width(64), GUILayout.Height(64));
                 
                 EditorGUILayout.BeginVertical();
@@ -175,6 +182,69 @@ namespace Station
                 if (EditorStatic.SizeableButton(90, 64, "delete", "cross"))
                 {
                     _equipmentSlotsDb.Remove(entry);
+                    return;
+                }
+
+                EditorGUILayout.EndHorizontal();
+               EditorStatic.DrawThinLine();
+
+               EditorGUILayout.BeginHorizontal();
+               var equipmentTypesList = _equipmentTypesDb.ListEntryNames();
+             
+               if (EditorStatic.SizeableButton(80, 32, "Add type", "plus"))
+               {
+                   string keyToAdd = _equipmentTypesDb.GetKey(_selectedEquipmentTypes);
+                   if (entry.EquipmentTypeMatching.Contains(keyToAdd) == false)
+                   {
+                       entry.EquipmentTypeMatching.Add(keyToAdd);
+                   }
+               }
+               _selectedEquipmentTypes = EditorGUILayout.Popup("Matching type to add: ", _selectedEquipmentTypes, equipmentTypesList);
+               EditorGUILayout.EndHorizontal();
+               EditorStatic.DrawThinLine();
+               foreach (var equipType in  entry.EquipmentTypeMatching)
+               {
+                   EditorGUILayout.BeginHorizontal("box");
+                   var entryEqType = _equipmentTypesDb.GetEntry(equipType);
+                   EditorGUILayout.LabelField(entryEqType.Name.GetValue());
+                   if (EditorStatic.SizeableButton(40, 20, "delete", "cross"))
+                   {
+                       entry.EquipmentTypeMatching.Remove(equipType);
+                       return;
+                   }
+
+                   EditorGUILayout.EndHorizontal();
+               }
+            }
+            else
+            {
+                EditorGUILayout.HelpBox("cannot find entries", MessageType.Info);
+            }
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.EndHorizontal();
+        }
+        
+        private static void DrawEquipmentTypes()
+        {
+            EditorGUILayout.BeginHorizontal();
+            _selectedEquipmentTypes = EditorStatic.DrawGenericSelectionList(_equipmentTypesDb, _selectedEquipmentTypes,
+                _equipmentSlotsScrollTypes, out _equipmentSlotsScrollTypes, "bullet_yellow", true);
+            EditorGUILayout.BeginVertical("box");
+            EditorStatic.DrawSectionTitle(55, "Equipment Types");
+            EditorStatic.DrawLargeLine();
+ 
+            var entry = _equipmentTypesDb.GetEntry(_selectedEquipmentTypes);
+            if (entry != null)
+            {
+                EditorGUILayout.BeginHorizontal("box");
+                EditorGUILayout.BeginVertical();
+                EditorStatic.DrawLocalization(entry.Name, "Equipment type name: ");
+                EditorStatic.DrawLocalization(entry.Description, "Description: ");
+                EditorGUILayout.EndVertical();
+               
+                if (EditorStatic.SizeableButton(90, 64, "delete", "cross"))
+                {
+                    _equipmentTypesDb.Remove(entry);
                     return;
                 }
 

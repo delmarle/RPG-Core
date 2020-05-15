@@ -69,6 +69,7 @@
     public const string ITEMS_TAB_SETTINGS_RARITIES = "<size=11><b> Item rarities</b></size>";
     public const string ITEMS_TAB_SETTINGS_ITEMS_CATEGORIES = "<size=11><b> Item categories</b></size>";
     public const string ITEMS_TAB_SETTINGS_EQUIPMENT_SLOTS = "<size=11><b> Equipment slots</b></size>";
+    public const string ITEMS_TAB_SETTINGS_EQUIPMENT_TYPES = "<size=11><b> Equipment Types</b></size>";
     public const string ITEMS_TAB_SETTINGS_CONTAINERS = "<size=11><b> Containers</b></size>";
     public const string ITEMS_TAB_SETTINGS_CRAFTING = "<size=11><b> Crafting</b></size>";
     #endregion

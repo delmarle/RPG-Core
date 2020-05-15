@@ -24,18 +24,26 @@ MonoBehaviour:
       Description:
         Key: description
       Icon: {fileID: 0}
+      EquipmentTypeMatching:
+      - 53d9dfbf-1ff4-4c39-b796-524981016f8f
     - Name:
-        Key: left hand
+        Key: Chest
       Description:
         Key: description
       Icon: {fileID: 0}
+      EquipmentTypeMatching:
+      - ed08abb0-513d-4b93-aa5c-1a95c14bb433
     - Name:
-        Key: ring 1
+        Key: Finger
       Description:
         Key: description
       Icon: {fileID: 0}
+      EquipmentTypeMatching:
+      - be07d218-a62b-4c6c-b918-f4bf9b291100
     - Name:
-        Key: feet
+        Key: Feet
       Description:
         Key: description
       Icon: {fileID: 0}
+      EquipmentTypeMatching:
+      - 30067018-4935-4d64-8942-1c9398fd2eed

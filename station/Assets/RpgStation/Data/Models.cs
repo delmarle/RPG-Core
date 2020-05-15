@@ -884,12 +884,13 @@ public enum StatusEffectType
     public LocalizedText Name = new LocalizedText("slot");
     public LocalizedText Description = new LocalizedText("description");
     public Sprite Icon;
+    public List<string> EquipmentTypeMatching = new List<string>();
   }
   
   [Serializable]
   public class EquipmentTypesModel
   {
-    public LocalizedText Name = new LocalizedText("slot");
+    public LocalizedText Name = new LocalizedText("equipment type");
     public LocalizedText Description = new LocalizedText("description");
   }
 
