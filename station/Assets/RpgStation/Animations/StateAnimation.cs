@@ -8,18 +8,18 @@ namespace Station
 {
     public class StateAnimation : BaseAnimation
     {
-        private bool _initialized;
-
+        
         [SerializeField] public List<StateModel> SimpleStateModels = new List<StateModel>();
         [SerializeField] public bool UseDefaultState;
         [SerializeField] public string DefaultState;
 
         private Dictionary<string, StateModel> _cacheData;
         private Dictionary<string, List<string>> _cacheAnims;
-        private Animation _animation;
         private Dictionary<int, string> _layerStatus;
         private string _currentState = String.Empty;
-
+        private Animation _animation;
+        private bool _initialized;
+        
         protected override void Initialize()
         {
             CacheData();
@@ -32,18 +32,23 @@ namespace Station
         private void CacheData()
         {
             if (_initialized)
+            {
                 return;
-            if (SimpleStateModels == null)
-                SimpleStateModels = new List<StateModel>();
+            }
+            _cacheData = new Dictionary<string, StateModel>();
+            _cacheAnims = new Dictionary<string, List<string>>();
+            _layerStatus = new Dictionary<int, string>();
             _animation = GetComponent<Animation>();
             if (_animation != null)
             {
                 _animation.playAutomatically = false;
             }
 
-            _cacheData = new Dictionary<string, StateModel>();
-            _cacheAnims = new Dictionary<string, List<string>>();
-            _layerStatus = new Dictionary<int, string>();
+            if (SimpleStateModels == null)
+            {
+                SimpleStateModels = new List<StateModel>();
+            }
+
             foreach (StateModel stateModel in SimpleStateModels)
             {
                 if (stateModel.StateActionModels.IsEmptyOrNull())
@@ -52,28 +57,28 @@ namespace Station
                 _cacheData[stateModel.State] = stateModel;
                 foreach (StateActionModel actionModel in stateModel.StateActionModels)
                 {
-                    switch (actionModel.ActionType)
+                    switch (actionModel.uiAction)
                     {
-                        case ActionType.PlayAnimation:
+                        case UiAction.PlayAnimation:
                         if (_animation == null)
                             continue;
-                        AnimationClip animationClip = _animation.GetClip(actionModel.AnimationActionModel.Clip);
+                        AnimationClip animationClip = _animation.GetClip(actionModel.animationActionData.Clip);
                         if (animationClip == null)
                         {
                             //Throw error
                             continue;
                         }
-                        actionModel.AnimationActionModel.Length = animationClip.length;
-                        if (actionModel.AnimationActionModel.Length > stateModel.Duration)
+                        actionModel.animationActionData.Length = animationClip.length;
+                        if (actionModel.animationActionData.Length > stateModel.Duration)
                         {
-                            stateModel.Duration = actionModel.AnimationActionModel.Length;
+                            stateModel.Duration = actionModel.animationActionData.Length;
                         }
 
                         if (!_cacheAnims.ContainsKey(stateModel.State))
                         {
                             _cacheAnims[stateModel.State] = new List<string>();
                         }
-                        _cacheAnims[stateModel.State].Add(actionModel.AnimationActionModel.Clip);
+                        _cacheAnims[stateModel.State].Add(actionModel.animationActionData.Clip);
                         break;
                     }
                 }
@@ -132,7 +137,7 @@ namespace Station
                     string previousState = _layerStatus[stateModel.LayerIndex];
                     if (_cacheAnims.ContainsKey(previousState))
                     {
-                        List<string> previousAnims = _cacheAnims[previousState];
+                        var previousAnims = _cacheAnims[previousState];
                         foreach (string previousClip in previousAnims)
                         {
                             AnimationState animationState = _animation[previousClip];
@@ -144,7 +149,7 @@ namespace Station
                     }
                     _layerStatus.Remove(stateModel.LayerIndex);
                 }
-                foreach (StateActionModel actionModel in stateModel.StateActionModels)
+                foreach (var actionModel in stateModel.StateActionModels)
                 {
                     ExecuteEachStateAction(actionModel, stateModel.LayerIndex);
                 }
@@ -159,122 +164,106 @@ namespace Station
         #region ACTIONS
         private void ExecuteEachStateAction(StateActionModel actionModel , int layerIndex)
         {
-            switch (actionModel.ActionType)
+            switch (actionModel.uiAction)
             {
-                case ActionType.PlayAnimation:
+                case UiAction.PlayAnimation:
                     ExecutePlayAnimation(actionModel);
                     break;
-                case ActionType.SetSprite:
+                case UiAction.SetSprite:
                     ExecuteSetSpriteAction(actionModel);
                     break;
-                case ActionType.UpdateCanvasGroup:
+                case UiAction.UpdateCanvasGroup:
                     ExecuteUpdateCanvasGroup(actionModel);
                     break;
-                case ActionType.UpdateMeshRenderer:
+                case UiAction.UpdateMeshRenderer:
                     ExecuteUpdateMeshRenderer(actionModel);
                     break;
-                case ActionType.UpdateCollider:
+                case UiAction.UpdateCollider:
                     ExecuteUpdateCollider(actionModel);
                     break;
-                case ActionType.SwapMaterial:
+                case UiAction.SwapMaterial:
                     ExecuteSwapMaterial(actionModel);
                     break;
-                case ActionType.SwapMaterialList:
+                case UiAction.SwapMaterialList:
                     ExecuteSwapMaterialList(actionModel);
                     break;
-                case ActionType.SetActive:
+                case UiAction.SetActive:
                     ExecuteSetActive(actionModel);
                     break;
-                case ActionType.SetTransform:
+                case UiAction.SetTransform:
                     ExecuteSetTransformAction(actionModel);
                     break;
-                case ActionType.AnimateColor:
+                case UiAction.AnimateColor:
                     ExecuteAnimateColor(actionModel);
                     break;
-                case ActionType.AnimateSharedColor:
+                case UiAction.TweenSharedColor:
 #if !UNITY_EDITOR
                     ExecuteSharedAnimateColor(actionModel);
 #else
                     ExecuteAnimateColor(actionModel);
 #endif
                     break;
-                case ActionType.SetTransformProperty:
+                case UiAction.SetTransformProperty:
                     ExecuteSetPropertyAction(actionModel);
                     break;
-                case ActionType.SetGameCamera:
-                    ExecuteSetGameCameraAction(actionModel);
-                    break;
-                case ActionType.UpdateMultiCanvasGroup:
+                case UiAction.UpdateMultiCanvasGroup:
                     ExecuteUpdateMultiCanvasGroup(actionModel);
                     break;
-                case ActionType.UpdateCanvasGroupInteraction:
+                case UiAction.UpdateCanvasGroupInteraction:
                     ExecuteCanvasGroupInteraction(actionModel);
                     break;
-                case ActionType.StopAnimation:
+                case UiAction.StopAnimation:
                     ExecuteStopAnimation(actionModel);
                     break;
-                //UI
-                case ActionType.SetText:
+                case UiAction.SetText:
                     ExecuteSetText(actionModel);
                     break;
-                case ActionType.SetLocalizedKey:
+                case UiAction.SetLocalizedKey:
                     ExecuteSetLocalizedKey(actionModel);
                     break;
-                case ActionType.SetTextColor:
+                case UiAction.SetTextColor:
                     ExecuteSetTextColor(actionModel);
                     break;
-                case ActionType.SetImageColor:
+                case UiAction.SetImageColor:
                     ExecuteSetImageColor(actionModel);
                     break;
-                case ActionType.SetGraphicsRaycasters:
+                case UiAction.SetGraphicsRayCasters:
                     ExecuteSetGraphicsRaycaster(actionModel);
                     break;
-                case ActionType.SetRectProperty:
+                case UiAction.SetRectProperty:
                     ExecuteSetRectPropertyAction(actionModel);
                     break;
 
             }
         }
 
-        private void ExecuteSetGameCameraAction(StateActionModel actionModel)
-        {
-            if (actionModel.SetGameCameraActionModel == null)
-                return;
-            if (string.IsNullOrEmpty(actionModel.SetGameCameraActionModel.CameraId))
-                return;
-            //if(actionModel.SetGameCameraActionModel.IsActive)
-             //   FalconCore.FCameraSystem.ActivateCamera(actionModel.SetGameCameraActionModel.CameraId);
-           // else
-               // FalconCore.FCameraSystem.DeActivateCamera(actionModel.SetGameCameraActionModel.CameraId);
-        }
-
         private void ExecuteSwapMaterial(StateActionModel actionModel)
         {
-            if (actionModel.SwapMaterialActionModel == null)
+            if (actionModel.changeMaterialActionData == null)
                 return;
-            if (actionModel.SwapMaterialActionModel.Renderer == null || actionModel.SwapMaterialActionModel.Material == null)
+            if (actionModel.changeMaterialActionData.Renderer == null || actionModel.changeMaterialActionData.Material == null)
                 return;
-            Material[] materials = new Material[actionModel.SwapMaterialActionModel.Renderer.materials.Length];
+            Material[] materials = new Material[actionModel.changeMaterialActionData.Renderer.materials.Length];
             for (int i = 0; i < materials.Length; i++)
             {
-                if (i == actionModel.SwapMaterialActionModel.Index)
+                if (i == actionModel.changeMaterialActionData.Index)
                 {
-                    materials[i] = actionModel.SwapMaterialActionModel.Material;
+                    materials[i] = actionModel.changeMaterialActionData.Material;
                 }
                 else
                 {
-                    materials[i] = actionModel.SwapMaterialActionModel.Renderer.materials[i];
+                    materials[i] = actionModel.changeMaterialActionData.Renderer.materials[i];
                 }
             }
-            actionModel.SwapMaterialActionModel.Renderer.materials = materials;
+            actionModel.changeMaterialActionData.Renderer.materials = materials;
         }
         private void ExecuteSwapMaterialList(StateActionModel actionModel)
         {
-            if (actionModel.SwapMaterialListActionModel == null)
+            if (actionModel.changeMaterialsActionData == null)
                 return;
-            if (actionModel.SwapMaterialListActionModel.Renderers == null || actionModel.SwapMaterialListActionModel.Material == null)
+            if (actionModel.changeMaterialsActionData.Renderers == null || actionModel.changeMaterialsActionData.Material == null)
                 return;
-            foreach (Renderer rndr in actionModel.SwapMaterialListActionModel.Renderers)
+            foreach (Renderer rndr in actionModel.changeMaterialsActionData.Renderers)
             {
                 if (rndr == null)
                 {
@@ -283,9 +272,9 @@ namespace Station
                 Material[] materials = new Material[rndr.materials.Length];
                 for (int i = 0; i < materials.Length; i++)
                 {
-                    if (i == actionModel.SwapMaterialListActionModel.Index)
+                    if (i == actionModel.changeMaterialsActionData.Index)
                     {
-                        materials[i] = actionModel.SwapMaterialListActionModel.Material;
+                        materials[i] = actionModel.changeMaterialsActionData.Material;
                     }
                     else
                     {
@@ -299,55 +288,55 @@ namespace Station
 
         private static void ExecuteUpdateCollider(StateActionModel actionModel)
         {
-            if (actionModel.ColliderActionModel == null)
+            if (actionModel.colliderActionData == null)
                 return;
-            if (actionModel.ColliderActionModel.Collider == null)
+            if (actionModel.colliderActionData.Collider == null)
                 return;
-            actionModel.ColliderActionModel.Collider.enabled =
-                actionModel.ColliderActionModel.Enabled;
+            actionModel.colliderActionData.Collider.enabled =
+                actionModel.colliderActionData.Enabled;
         }
 
         private static void ExecuteUpdateMeshRenderer(StateActionModel actionModel)
         {
-            if (actionModel.MeshRendererActionModel == null)
+            if (actionModel.enableMeshActionData == null)
                 return;
-            if (actionModel.MeshRendererActionModel.MeshRenderer == null)
+            if (actionModel.enableMeshActionData.MeshRenderer == null)
                 return;
-            actionModel.MeshRendererActionModel.MeshRenderer.enabled =
-                actionModel.MeshRendererActionModel.Enabled;
+            actionModel.enableMeshActionData.MeshRenderer.enabled =
+                actionModel.enableMeshActionData.Enabled;
         }
 
         private static void ExecuteUpdateCanvasGroup(StateActionModel actionModel)
         {
-            if (actionModel.UpdateCanvasGroupActionModel == null)
+            if (actionModel.updateCanvasGroupActionData == null)
                 return;
-            if (actionModel.UpdateCanvasGroupActionModel.CanvasGroup == null)
+            if (actionModel.updateCanvasGroupActionData.CanvasGroup == null)
                 return;
-            actionModel.UpdateCanvasGroupActionModel.CanvasGroup.alpha = actionModel.UpdateCanvasGroupActionModel.Alpha;
-            actionModel.UpdateCanvasGroupActionModel.CanvasGroup.interactable = actionModel.UpdateCanvasGroupActionModel.IsInteractible;
-            actionModel.UpdateCanvasGroupActionModel.CanvasGroup.blocksRaycasts = actionModel.UpdateCanvasGroupActionModel.BlockRaycasts;
+            actionModel.updateCanvasGroupActionData.CanvasGroup.alpha = actionModel.updateCanvasGroupActionData.Alpha;
+            actionModel.updateCanvasGroupActionData.CanvasGroup.interactable = actionModel.updateCanvasGroupActionData.Interact;
+            actionModel.updateCanvasGroupActionData.CanvasGroup.blocksRaycasts = actionModel.updateCanvasGroupActionData.BlockRayCasts;
         }
 
         private static void ExecuteSetSpriteAction(StateActionModel actionModel)
         {
-            if (actionModel.SetSpriteActionModel == null)
+            if (actionModel.updateSpriteActionData == null)
                 return;
-            if (actionModel.SetSpriteActionModel.Sprite == null ||
-                actionModel.SetSpriteActionModel.Image == null)
+            if (actionModel.updateSpriteActionData.Sprite == null ||
+                actionModel.updateSpriteActionData.Image == null)
                 return;
-            actionModel.SetSpriteActionModel.Image.sprite = actionModel.SetSpriteActionModel.Sprite;
+            actionModel.updateSpriteActionData.Image.sprite = actionModel.updateSpriteActionData.Sprite;
         }
 
         private void ExecutePlayAnimation(StateActionModel actionModel)
         {
-            if (actionModel.AnimationActionModel?.Clip == null)
+            if (actionModel.animationActionData?.Clip == null)
                 return;
             if (_animation == null)
                 return;
 
-            _animation[actionModel.AnimationActionModel.Clip].layer = actionModel.AnimationActionModel.Layer;
-            _animation[actionModel.AnimationActionModel.Clip].weight = actionModel.AnimationActionModel.Weight;
-            _animation.Play(actionModel.AnimationActionModel.Clip);
+            _animation[actionModel.animationActionData.Clip].layer = actionModel.animationActionData.Layer;
+            _animation[actionModel.animationActionData.Clip].weight = actionModel.animationActionData.Weight;
+            _animation.Play(actionModel.animationActionData.Clip);
         }
 
         public void AnimationSample()
@@ -358,19 +347,19 @@ namespace Station
 
         private void ExecuteSetTransformAction(StateActionModel actionModel)
         {
-            GameObject target = actionModel.SetTransformActionModel.Target;
+            GameObject target = actionModel.setTransformActionData.Target;
             if (target == null)
             {
                 Debug.LogWarning("Target gameObject not assigned in Simple State component in "+gameObject);
                 return;
             }
-            target.transform.SetPositionAndRotation(actionModel.SetTransformActionModel.Position, Quaternion.Euler(actionModel.SetTransformActionModel.Rotation));
-            target.transform.localScale = actionModel.SetTransformActionModel.Scale;
+            target.transform.SetPositionAndRotation(actionModel.setTransformActionData.Position, Quaternion.Euler(actionModel.setTransformActionData.Rotation));
+            target.transform.localScale = actionModel.setTransformActionData.Scale;
         }
 
         private void ExecuteSetPropertyAction(StateActionModel actionModel)
         {
-            List<Transform> targets = actionModel.SetPropertyActionModel.Targets;
+            List<Transform> targets = actionModel.setPropertyActionData.Targets;
             if (targets == null)
             {
                 Debug.LogWarning("Target transforms are null in Simple State component in {0}", gameObject);
@@ -380,51 +369,51 @@ namespace Station
             foreach (Transform target in targets)
             {
                 Vector3 vector = Vector3.zero;
-                switch (actionModel.SetPropertyActionModel.TransformType)
+                switch (actionModel.setPropertyActionData.TransformType)
                 {
                     case PropertyType.PositionX:
                         vector = target.position;
-                        vector.x = actionModel.SetPropertyActionModel.Value;
+                        vector.x = actionModel.setPropertyActionData.Value;
                         target.position = vector;
                         break;
                     case PropertyType.PositionY:
                         vector = target.position;
-                        vector.y = actionModel.SetPropertyActionModel.Value;
+                        vector.y = actionModel.setPropertyActionData.Value;
                         target.position = vector;
                         break;
                     case PropertyType.PositionZ:
                         vector = target.position;
-                        vector.z = actionModel.SetPropertyActionModel.Value;
+                        vector.z = actionModel.setPropertyActionData.Value;
                         target.position = vector;
                         break;
                     case PropertyType.RotationX:
                         vector = target.rotation.eulerAngles;
-                        vector.x = actionModel.SetPropertyActionModel.Value;
+                        vector.x = actionModel.setPropertyActionData.Value;
                         target.rotation = Quaternion.Euler(vector);
                         break;
                     case PropertyType.RotationY:
                         vector = target.rotation.eulerAngles;
-                        vector.y = actionModel.SetPropertyActionModel.Value;
+                        vector.y = actionModel.setPropertyActionData.Value;
                         target.rotation = Quaternion.Euler(vector);
                         break;
                     case PropertyType.RotationZ:
                         vector = target.rotation.eulerAngles;
-                        vector.z = actionModel.SetPropertyActionModel.Value;
+                        vector.z = actionModel.setPropertyActionData.Value;
                         target.rotation = Quaternion.Euler(vector);
                         break;
                     case PropertyType.ScaleX:
                         vector = target.localScale;
-                        vector.x = actionModel.SetPropertyActionModel.Value;
+                        vector.x = actionModel.setPropertyActionData.Value;
                         target.localScale = vector;
                         break;
                     case PropertyType.ScaleY:
                         vector = target.localScale;
-                        vector.y = actionModel.SetPropertyActionModel.Value;
+                        vector.y = actionModel.setPropertyActionData.Value;
                         target.localScale = vector;
                         break;
                     case PropertyType.ScaleZ:
                         vector = target.localScale;
-                        vector.z = actionModel.SetPropertyActionModel.Value;
+                        vector.z = actionModel.setPropertyActionData.Value;
                         target.localScale = vector;
                         break;
                 }
@@ -434,7 +423,7 @@ namespace Station
 
         private void ExecuteSetRectPropertyAction(StateActionModel actionModel)
         {
-            List<RectTransform> targets = actionModel.SetRectPropertyActionModel.Targets;
+            List<RectTransform> targets = actionModel.setRectPropertyActionData.Targets;
             if (targets == null)
             {
                 Debug.LogWarning("Target transforms are null in Simple State component in {0}", gameObject);
@@ -444,51 +433,51 @@ namespace Station
             foreach (RectTransform target in targets)
             {
                 Vector3 vector = Vector3.zero;
-                switch (actionModel.SetRectPropertyActionModel.TransformType)
+                switch (actionModel.setRectPropertyActionData.TransformType)
                 {
                     case PropertyType.PositionX:
                         vector = target.anchoredPosition;
-                        vector.x = actionModel.SetRectPropertyActionModel.Value;
+                        vector.x = actionModel.setRectPropertyActionData.Value;
                         target.anchoredPosition = vector;
                         break;
                     case PropertyType.PositionY:
                         vector = target.anchoredPosition;
-                        vector.y = actionModel.SetRectPropertyActionModel.Value;
+                        vector.y = actionModel.setRectPropertyActionData.Value;
                         target.anchoredPosition = vector;
                         break;
                     case PropertyType.PositionZ:
                         vector = target.anchoredPosition;
-                        vector.z = actionModel.SetRectPropertyActionModel.Value;
+                        vector.z = actionModel.setRectPropertyActionData.Value;
                         target.anchoredPosition = vector;
                         break;
                     case PropertyType.RotationX:
                         vector = target.rotation.eulerAngles;
-                        vector.x = actionModel.SetRectPropertyActionModel.Value;
+                        vector.x = actionModel.setRectPropertyActionData.Value;
                         target.rotation = Quaternion.Euler(vector);
                         break;
                     case PropertyType.RotationY:
                         vector = target.rotation.eulerAngles;
-                        vector.y = actionModel.SetRectPropertyActionModel.Value;
+                        vector.y = actionModel.setRectPropertyActionData.Value;
                         target.rotation = Quaternion.Euler(vector);
                         break;
                     case PropertyType.RotationZ:
                         vector = target.rotation.eulerAngles;
-                        vector.z = actionModel.SetRectPropertyActionModel.Value;
+                        vector.z = actionModel.setRectPropertyActionData.Value;
                         target.rotation = Quaternion.Euler(vector);
                         break;
                     case PropertyType.ScaleX:
                         vector = target.localScale;
-                        vector.x = actionModel.SetRectPropertyActionModel.Value;
+                        vector.x = actionModel.setRectPropertyActionData.Value;
                         target.localScale = vector;
                         break;
                     case PropertyType.ScaleY:
                         vector = target.localScale;
-                        vector.y = actionModel.SetRectPropertyActionModel.Value;
+                        vector.y = actionModel.setRectPropertyActionData.Value;
                         target.localScale = vector;
                         break;
                     case PropertyType.ScaleZ:
                         vector = target.localScale;
-                        vector.z = actionModel.SetRectPropertyActionModel.Value;
+                        vector.z = actionModel.setRectPropertyActionData.Value;
                         target.localScale = vector;
                         break;
                 }
@@ -497,22 +486,22 @@ namespace Station
         }
         private void ExecuteSetActive(StateActionModel actionModel)
         {
-            GameObject target = actionModel.SetActiveActionModel.Target;
+            GameObject target = actionModel.setActiveActionData.Target;
             if (target == null)
             {
                 Debug.LogWarning("Your Target game object is missing in Simple State Component in {0}", gameObject);
                 return;
             }
 
-            target.SetActive(actionModel.SetActiveActionModel.State);
+            target.SetActive(actionModel.setActiveActionData.Active);
         }
 
         private void ExecuteAnimateColor(StateActionModel actionModel)
         {
-            List<Renderer> target = actionModel.AnimateColorActionModel.Target;
-            Color targetColor = actionModel.AnimateColorActionModel.TargetColor;
-            float duration = actionModel.AnimateColorActionModel.Duration;
-            int id = actionModel.AnimateColorActionModel.MaterialId;
+            List<Renderer> target = actionModel.tweenColorActionData.Target;
+            Color targetColor = actionModel.tweenColorActionData.TargetColor;
+            float duration = actionModel.tweenColorActionData.Duration;
+            int id = actionModel.tweenColorActionData.MaterialId;
             foreach (Renderer rndr in target)
             {
                 if (rndr == null)
@@ -532,10 +521,10 @@ namespace Station
         }
         private void ExecuteSharedAnimateColor(StateActionModel actionModel)
         {
-            List<Renderer> target = actionModel.AnimateSharedColorActionModel.Target;
-            Color targetColor = actionModel.AnimateSharedColorActionModel.TargetColor;
-            float duration = actionModel.AnimateSharedColorActionModel.Duration;
-            int id = actionModel.AnimateSharedColorActionModel.MaterialId;
+            List<Renderer> target = actionModel.tweenSharedColorActionData.Target;
+            Color targetColor = actionModel.tweenSharedColorActionData.TargetColor;
+            float duration = actionModel.tweenSharedColorActionData.Duration;
+            int id = actionModel.tweenSharedColorActionData.MaterialId;
             foreach (Renderer rndr in target)
             {
                 if (rndr == null)
@@ -563,60 +552,60 @@ namespace Station
 
         private static void ExecuteUpdateMultiCanvasGroup(StateActionModel actionModel)
         {
-            if (actionModel.UpdateMultiCanvasGroupActionModel == null)
+            if (actionModel.setCanvasGroupStateActionData == null)
                 return;
-            if (actionModel.UpdateMultiCanvasGroupActionModel.CanvasGroups.IsEmptyOrNull())
+            if (actionModel.setCanvasGroupStateActionData.CanvasGroups.IsEmptyOrNull())
                 return;
-            foreach (CanvasGroup canvasGroup in actionModel.UpdateMultiCanvasGroupActionModel.CanvasGroups)
+            foreach (CanvasGroup canvasGroup in actionModel.setCanvasGroupStateActionData.CanvasGroups)
             {
                 if (canvasGroup == null)
                     continue;
-                canvasGroup.alpha = actionModel.UpdateMultiCanvasGroupActionModel.Alpha;
-                canvasGroup.interactable = actionModel.UpdateMultiCanvasGroupActionModel.IsInteractible;
-                canvasGroup.blocksRaycasts = actionModel.UpdateMultiCanvasGroupActionModel.BlockRaycasts;
+                canvasGroup.alpha = actionModel.setCanvasGroupStateActionData.Alpha;
+                canvasGroup.interactable = actionModel.setCanvasGroupStateActionData.Interact;
+                canvasGroup.blocksRaycasts = actionModel.setCanvasGroupStateActionData.BlockRayCasts;
             }
         }
         
         private static void ExecuteCanvasGroupInteraction(StateActionModel actionModel)
         {
-            if (actionModel.UpdateCanvasGroupInteractionActionModel == null)
+            if (actionModel.setCanvasInteractionActionData == null)
                 return;
-            if (actionModel.UpdateCanvasGroupInteractionActionModel.CanvasGroup == null)
+            if (actionModel.setCanvasInteractionActionData.CanvasGroup == null)
                 return;
-            actionModel.UpdateCanvasGroupInteractionActionModel.CanvasGroup.interactable =
-                actionModel.UpdateCanvasGroupInteractionActionModel.IsInteractible;
+            actionModel.setCanvasInteractionActionData.CanvasGroup.interactable =
+                actionModel.setCanvasInteractionActionData.Interact;
         }
 
 
         private void ExecuteStopAnimation(StateActionModel actionModel)
         {
-            _animation.Stop(actionModel.StopAnimationActionModel.Clip);
+            _animation.Stop(actionModel.stopAnimationActionData.Clip);
         }
         
         private void ExecuteSetText(StateActionModel actionModel)
         {
-            UiText textComponent = actionModel.SetTextActionModel.TextComponent;
+            UiText textComponent = actionModel.setTextActionData.TextComponent;
             if (textComponent != null)
             {
-                textComponent.SetText(actionModel.SetTextActionModel.Text);
+                textComponent.SetText(actionModel.setTextActionData.Text);
             }
         }
 
         private void ExecuteSetTextColor(StateActionModel actionModel)
         {
-            UiText textComponent = actionModel.SetTextColorActionModel.TextComponent;
+            UiText textComponent = actionModel.updateTextColorActionData.TextComponent;
             if (textComponent != null)
             {
-                textComponent.color = actionModel.SetTextColorActionModel.Color;
+                textComponent.color = actionModel.updateTextColorActionData.Color;
             }
         }
 
         private void ExecuteSetLocalizedKey(StateActionModel actionModel)
         {
-            UiText textComponent = actionModel.SetLocalizedKeyActionModel.TextComponent;
+            UiText textComponent = actionModel.updateLocalizationActionData.TextComponent;
             if (textComponent != null)
             {
-                textComponent.LocalizedKey = actionModel.SetLocalizedKeyActionModel.Key;
+                textComponent.LocalizedKey = actionModel.updateLocalizationActionData.Key;
             }
         }
 
@@ -631,14 +620,14 @@ namespace Station
 
         private void ExecuteSetGraphicsRaycaster(StateActionModel actionModel)
         {
-            if (actionModel.SetGraphicsRaycasterActionModel == null)
+            if (actionModel.setGraphicsRayCasterActionData == null)
                 return;
-            if (actionModel.SetGraphicsRaycasterActionModel.Raycasters.IsEmptyOrNull())
+            if (actionModel.setGraphicsRayCasterActionData.RayCasters.IsEmptyOrNull())
                 return;
 
-            foreach (GraphicRaycaster graphicRaycaster in actionModel.SetGraphicsRaycasterActionModel.Raycasters)
+            foreach (GraphicRaycaster graphicRaycaster in actionModel.setGraphicsRayCasterActionData.RayCasters)
             {
-                graphicRaycaster.enabled = actionModel.SetGraphicsRaycasterActionModel.IsEnabled;
+                graphicRaycaster.enabled = actionModel.setGraphicsRayCasterActionData.IsEnabled;
             }
         }
 #endregion
@@ -679,33 +668,32 @@ namespace Station
     [Serializable]
     public class StateActionModel
     {
-        public ActionType ActionType;
-        public AnimationActionModel AnimationActionModel;
-        public SetSpriteActionModel SetSpriteActionModel;
-        public UpdateCanvasGroupActionModel UpdateCanvasGroupActionModel;
-        public MeshRendererActionModel MeshRendererActionModel;
-        public ColliderActionModel ColliderActionModel;
-        public SwapMaterialActionModel SwapMaterialActionModel;
-        public SwapMaterialListActionModel SwapMaterialListActionModel;
-        public SetActiveActionModel SetActiveActionModel;
-        public SetTransformActionModel SetTransformActionModel;
-        public AnimateColorActionModel AnimateColorActionModel;
-        public AnimateSharedColorActionModel AnimateSharedColorActionModel;
-        public SetPropertyActionModel SetPropertyActionModel;
-        public SetGameCameraActionModel SetGameCameraActionModel;
-        public UpdateMultiCanvasGroupActionModel UpdateMultiCanvasGroupActionModel;
-        public UpdateCanvasGroupInteractionActionModel UpdateCanvasGroupInteractionActionModel;
-        public StopAnimationActionModel StopAnimationActionModel;
-        public SetTextActionModel SetTextActionModel;
-        public SetLocalizedKeyActionModel SetLocalizedKeyActionModel;
-        public SetTextColorActionModel SetTextColorActionModel;
+        public UiAction uiAction;
+        public AnimationActionData animationActionData;
+        public UpdateSpriteActionData updateSpriteActionData;
+        public UpdateCanvasGroupActionData updateCanvasGroupActionData;
+        public EnableMeshActionData enableMeshActionData;
+        public ColliderActionData colliderActionData;
+        public ChangeMaterialActionData changeMaterialActionData;
+        public ChangeMaterialsActionData changeMaterialsActionData;
+        public SetActiveActionData setActiveActionData;
+        public SetTransformActionData setTransformActionData;
+        public TweenColorActionData tweenColorActionData;
+        public TweenSharedColorActionData tweenSharedColorActionData;
+        public SetPropertyActionData setPropertyActionData;
+        public SetCanvasGroupStateActionData setCanvasGroupStateActionData;
+        public SetCanvasInteractionActionData setCanvasInteractionActionData;
+        public StopAnimationActionData stopAnimationActionData;
+        public SetTextActionData setTextActionData;
+        public UpdateLocalizationActionData updateLocalizationActionData;
+        public UpdateTextColorActionData updateTextColorActionData;
         public SetImageColorActionModel SetImageColorActionModel;
-        public SetGraphicsRaycasterActionModel SetGraphicsRaycasterActionModel;
-        public SetRectPropertyActionModel SetRectPropertyActionModel;
+        public SetGraphicsRayCasterActionData setGraphicsRayCasterActionData;
+        public SetRectPropertyActionData setRectPropertyActionData;
     }
 
     [Serializable]
-    public class AnimationActionModel
+    public class AnimationActionData
     {
         public string Clip;
         public float Weight = 0.5f;
@@ -715,37 +703,37 @@ namespace Station
     }
 
     [Serializable]
-    public class SetSpriteActionModel
+    public class UpdateSpriteActionData
     {
         public Image Image;
         public Sprite Sprite;
     }
 
     [Serializable]
-    public class UpdateCanvasGroupActionModel
+    public class UpdateCanvasGroupActionData
     {
         public CanvasGroup CanvasGroup;
         public float Alpha;
-        public bool IsInteractible;
-        public bool BlockRaycasts;
+        public bool Interact;
+        public bool BlockRayCasts;
     }
 
     [Serializable]
-    public class MeshRendererActionModel
+    public class EnableMeshActionData
     {
         public MeshRenderer MeshRenderer;
         public bool Enabled;
     }
 
     [Serializable]
-    public class ColliderActionModel
+    public class ColliderActionData
     {
         public Collider Collider;
         public bool Enabled;
     }
 
     [Serializable]
-    public class SwapMaterialActionModel
+    public class ChangeMaterialActionData
     {
         public Renderer Renderer;
         public int Index;
@@ -753,7 +741,7 @@ namespace Station
     }
     
     [Serializable] 
-    public class SwapMaterialListActionModel
+    public class ChangeMaterialsActionData
     {
         public List<Renderer> Renderers;
         public int Index;
@@ -761,14 +749,14 @@ namespace Station
     }
 
     [Serializable]
-    public class SetActiveActionModel
+    public class SetActiveActionData
     {
         public GameObject Target;
-        public bool State;
+        public bool Active;
     }
 
     [Serializable]
-    public class AnimateColorActionModel
+    public class TweenColorActionData
     {
         public List<Renderer> Target;
         public Color TargetColor;
@@ -776,7 +764,7 @@ namespace Station
         public float Duration;
     }
     [Serializable]
-    public class AnimateSharedColorActionModel
+    public class TweenSharedColorActionData
     {
         public List<Renderer> Target;
         public Color TargetColor;
@@ -785,7 +773,7 @@ namespace Station
     }
 
     [Serializable]
-    public class SetTransformActionModel
+    public class SetTransformActionData
     {
         public GameObject Target;
         public Vector3 Position;
@@ -795,7 +783,7 @@ namespace Station
 
 
     [Serializable]
-    public class SetPropertyActionModel
+    public class SetPropertyActionData
     {
         public List<Transform> Targets;
         public PropertyType TransformType;
@@ -803,7 +791,7 @@ namespace Station
     }
 
     [Serializable]
-    public class SetRectPropertyActionModel
+    public class SetRectPropertyActionData
     {
         public List<RectTransform> Targets;
         public PropertyType TransformType;
@@ -811,58 +799,51 @@ namespace Station
     }
 
     [Serializable]
-    public class SetGameCameraActionModel
-    {
-        public string CameraId;
-        public bool IsActive;
-    }
-
-    [Serializable]
-    public class UpdateMultiCanvasGroupActionModel
+    public class SetCanvasGroupStateActionData
     {
         public List<CanvasGroup> CanvasGroups;
         public float Alpha;
-        public bool IsInteractible;
-        public bool BlockRaycasts;
+        public bool Interact;
+        public bool BlockRayCasts;
     }
     
     [Serializable]
-    public class UpdateCanvasGroupInteractionActionModel
+    public class SetCanvasInteractionActionData
     {
         public CanvasGroup CanvasGroup;
-        public bool IsInteractible;
+        public bool Interact;
     }
 
     [Serializable]
-    public class StopAnimationActionModel
+    public class StopAnimationActionData
     {
         public string Clip;
     }
 
     [Serializable]
-    public class SetGraphicsRaycasterActionModel
+    public class SetGraphicsRayCasterActionData
     {
-        public List<GraphicRaycaster> Raycasters;
+        public List<GraphicRaycaster> RayCasters;
         public bool IsEnabled;
     }
 
     // UI ACTIONS
     [Serializable]
-    public class SetTextActionModel
+    public class SetTextActionData
     {
         public UiText TextComponent;
         public string Text;
     }
 
     [Serializable]
-    public class SetLocalizedKeyActionModel
+    public class UpdateLocalizationActionData
     {
         public UiText TextComponent;
         public string Key;
     }
 
     [Serializable]
-    public class SetTextColorActionModel
+    public class UpdateTextColorActionData
     {
         public UiText TextComponent;
         public Color Color;
@@ -876,7 +857,7 @@ namespace Station
     }
 
     [Serializable]
-    public enum ActionType
+    public enum UiAction
     {
         NoAction,
         PlayAnimation,
@@ -889,19 +870,17 @@ namespace Station
         SetTransform,
         AnimateColor,
         SetTransformProperty,
-        SetGameCamera,
         UpdateMultiCanvasGroup,
         StopAnimation,
         SetText,
         SetLocalizedKey,
         SetTextColor,
         SetImageColor,
-        SetGraphicsRaycasters,
+        SetGraphicsRayCasters,
         SetRectProperty,
         SwapMaterialList,
-        AnimateSharedColor,
+        TweenSharedColor,
         UpdateCanvasGroupInteraction
-        // ALWAYS ADD NEW ACTIONS AT THE BOTTOM
     }
 
     [Serializable]

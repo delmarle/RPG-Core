@@ -110,6 +110,21 @@ namespace RPG.Editor
       return buttonValue;
     }
     
+    public static bool SimpleButton(string text,string icon)
+    {
+      bool buttonValue = false;
+      
+      GUI.backgroundColor = Color.white;
+      var buttonContent = new GUIContent(text,GetEditorTexture(icon));
+      GUI.backgroundColor = Color.white;
+      if( GUILayout.Button(buttonContent))
+      {
+        ResetFocus();
+        buttonValue = true;
+      } 
+      return buttonValue;
+    }
+    
     public static bool Button(bool expandWidth,int height,string text,string icon)
     {
       bool buttonValue = false;

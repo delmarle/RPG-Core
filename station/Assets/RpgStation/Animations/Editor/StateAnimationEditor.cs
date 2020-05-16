@@ -22,7 +22,7 @@ public class StateAnimationEditor : UnityEditor.Editor
 
     public override void OnInspectorGUI()
     {
-        EditorGUILayout.LabelField("Default", EditorStyles.boldLabel);
+        EditorStatic.DrawSectionTitle(28,"Default");
         StateAnimation stateComponent = (StateAnimation)target;
         _animationClips = new List<string>();
         if (_foldoutCache == null)
@@ -53,9 +53,14 @@ public class StateAnimationEditor : UnityEditor.Editor
         {
             stateComponent.DefaultState = null;
         }
+        
+        EditorStatic.DrawSectionTitle(28,"States");
+        if (EditorStatic.SizeableButton(250, 40, "New State", "plus"))
+        {
+            simpleStateModels.Add(new StateModel());
+        }
+        
 
-
-        EditorGUILayout.LabelField("States", EditorStyles.boldLabel);
         int itemToRemoveFromIndex = -1;
         for (var index = 0; index < simpleStateModels.Count; index++)
         {
@@ -66,22 +71,28 @@ public class StateAnimationEditor : UnityEditor.Editor
             }
 
             EditorGUILayout.BeginHorizontal();
-            _foldoutCache[stateModel] = GUILayout.Toggle(_foldoutCache[stateModel], "State : " + (string.IsNullOrEmpty(stateModel.State) ? "[ state ]" : stateModel.State), "Foldout", GUILayout.ExpandWidth(false));
-            if (GUILayout.Button("Play State", GUILayout.Width(100)))
+            if (EditorStatic.SizeableButton(100, 20, "Play state", "resultset_next"))
             {
                 stateComponent.PlayState(stateModel.State,false,true);
             }
+
+      
+            _foldoutCache[stateModel] =       EditorStatic.LevelFoldout("State : " + (string.IsNullOrEmpty(stateModel.State) ? "[ state ]" : stateModel.State), _foldoutCache[stateModel], 24, Color.white);
+           
+        
             EditorGUILayout.EndHorizontal();
             if (_foldoutCache[stateModel])
             {
-                Rect stateRect = EditorGUILayout.BeginVertical("window");
+                EditorGUILayout.BeginVertical("box");
                 DrawEachElement(stateModel);
+                EditorStatic.DrawLargeLine(2);
                 if (GUILayout.Button("Remove State"))
                 {
                     itemToRemoveFromIndex = index;
                 }
                 EditorGUILayout.EndVertical();
             }
+            EditorStatic.DrawThinLine(2);
         }
 
         if (itemToRemoveFromIndex != -1)
@@ -92,29 +103,24 @@ public class StateAnimationEditor : UnityEditor.Editor
                 _foldoutCache.Remove(simpleStateModelToRemove);
         }
 
-
-        if (GUILayout.Button("Add New State"))
-        {
-            simpleStateModels.Add(new StateModel());
-        }
-
         serializedObject.ApplyModifiedProperties();
         if (GUI.changed)
         {
             EditorUtility.SetDirty(stateComponent);
         }
+        
     }
 
     private void DrawEachElement(StateModel stateModel)
     {
         EditorGUILayout.BeginHorizontal();
-        stateModel.State = EditorGUILayout.TextField(stateModel.State, GUILayout.Width(Screen.width * 0.3f));
-        if (GUILayout.Button("Play State"))
+       
+        if (EditorStatic.SizeableButton(170, 18, "Play state >>", "resultset_next"))
         {
             StateAnimation fSimpleStateComponent = (StateAnimation)target;
             fSimpleStateComponent.PlayState(stateModel.State,false,true);
         }
-
+        stateModel.State = EditorGUILayout.TextField(stateModel.State, GUILayout.Width(Screen.width * 0.3f));
         EditorGUILayout.EndHorizontal();
 
         int itemToAddAfterIndex = -1;
@@ -132,22 +138,25 @@ public class StateAnimationEditor : UnityEditor.Editor
 
         for (var index = 0; index < stateModel.StateActionModels.Count; index++)
         {
+            EditorStatic.DrawLargeLine(2);
             EditorGUILayout.BeginHorizontal();
             StateActionModel stateActionModel = stateModel.StateActionModels[index];
-            stateActionModel.ActionType = (ActionType)EditorGUILayout.EnumPopup(stateActionModel.ActionType);
-            GUI.backgroundColor = Color.green;
-            if (GUILayout.Button("+"))
+            stateActionModel.uiAction = (UiAction)EditorGUILayout.EnumPopup(stateActionModel.uiAction, GUILayout.Height(22));
+
+            
+            if (EditorStatic.SizeableButton(80, 22, "", "plus"))
             {
                 itemToAddAfterIndex = index;
             }
-            GUI.backgroundColor = Color.red;
-            if (GUILayout.Button("X"))
+
+            if (EditorStatic.SizeableButton(80, 22, "", "cross"))
             {
                 itemToRemoveFromIndex = index;
             }
 
             GUI.backgroundColor = Color.white;
             EditorGUILayout.EndHorizontal();
+            EditorGUILayout.Space();
             DrawEachStateAction(stateActionModel);
         }
 
@@ -168,83 +177,83 @@ public class StateAnimationEditor : UnityEditor.Editor
     {
         
         EditorGUILayout.BeginHorizontal("Box");
-        switch (stateActionModel.ActionType)
+        switch (stateActionModel.uiAction)
         {
-            case ActionType.NoAction:
+            case UiAction.NoAction:
                 EditorGUILayout.LabelField("no action");
                 break;
-            case ActionType.PlayAnimation:
-                AnimationActionModel animationActionModel = stateActionModel.AnimationActionModel;
-                int clipIndex = string.IsNullOrEmpty(animationActionModel.Clip) ? 0 : _animationClips.IndexOf(animationActionModel.Clip);
+            case UiAction.PlayAnimation:
+                AnimationActionData animationActionData = stateActionModel.animationActionData;
+                int clipIndex = string.IsNullOrEmpty(animationActionData.Clip) ? 0 : _animationClips.IndexOf(animationActionData.Clip);
                 clipIndex = EditorGUILayout.Popup(clipIndex, _animationClips.ToArray());
                 clipIndex = clipIndex.Clamp(0, _animationClips.Count);
                 if (clipIndex < _animationClips.Count)
-                    animationActionModel.Clip = _animationClips[clipIndex];
-                animationActionModel.Layer = EditorGUILayout.IntField("Layer", animationActionModel.Layer);
-                animationActionModel.Weight = EditorGUILayout.Slider(animationActionModel.Weight, 0.0f, 1.0f);
+                    animationActionData.Clip = _animationClips[clipIndex];
+                animationActionData.Layer = EditorGUILayout.IntField("Layer", animationActionData.Layer);
+                animationActionData.Weight = EditorGUILayout.Slider(animationActionData.Weight, 0.0f, 1.0f);
                 break;
 
-            case ActionType.StopAnimation:
-                StopAnimationActionModel stopAnimationActionModel = stateActionModel.StopAnimationActionModel;
-                int stopClipIndex = string.IsNullOrEmpty(stopAnimationActionModel.Clip) ? 0 : _animationClips.IndexOf(stopAnimationActionModel.Clip);
+            case UiAction.StopAnimation:
+                StopAnimationActionData stopAnimationActionData = stateActionModel.stopAnimationActionData;
+                int stopClipIndex = string.IsNullOrEmpty(stopAnimationActionData.Clip) ? 0 : _animationClips.IndexOf(stopAnimationActionData.Clip);
                 stopClipIndex = EditorGUILayout.Popup(stopClipIndex, _animationClips.ToArray());
                 stopClipIndex = stopClipIndex.Clamp(0, _animationClips.Count);
                 if (stopClipIndex < _animationClips.Count)
-                    stopAnimationActionModel.Clip = _animationClips[stopClipIndex];
+                    stopAnimationActionData.Clip = _animationClips[stopClipIndex];
                 break;
-            case ActionType.SetSprite:
-                SetSpriteActionModel setSpriteActionModel = stateActionModel.SetSpriteActionModel;
-                setSpriteActionModel.Image = (Image)EditorGUILayout.ObjectField(setSpriteActionModel.Image, typeof(Image), true);
-                setSpriteActionModel.Sprite = (Sprite)EditorGUILayout.ObjectField(setSpriteActionModel.Sprite, typeof(Sprite), true);
+            case UiAction.SetSprite:
+                UpdateSpriteActionData updateSpriteActionData = stateActionModel.updateSpriteActionData;
+                updateSpriteActionData.Image = (Image)EditorGUILayout.ObjectField(updateSpriteActionData.Image, typeof(Image), true);
+                updateSpriteActionData.Sprite = (Sprite)EditorGUILayout.ObjectField(updateSpriteActionData.Sprite, typeof(Sprite), true);
                 break;
-            case ActionType.UpdateCanvasGroup:
+            case UiAction.UpdateCanvasGroup:
                 EditorGUILayout.BeginVertical();
                 EditorGUILayout.BeginHorizontal();
-                UpdateCanvasGroupActionModel updateCanvasGroupActionModel = stateActionModel.UpdateCanvasGroupActionModel;
-                updateCanvasGroupActionModel.CanvasGroup = (CanvasGroup)EditorGUILayout.ObjectField(updateCanvasGroupActionModel.CanvasGroup, typeof(CanvasGroup), true);
-                updateCanvasGroupActionModel.Alpha = EditorGUILayout.Slider("Alpha", updateCanvasGroupActionModel.Alpha, 0.0f, 1.0f);
+                UpdateCanvasGroupActionData updateCanvasGroupActionData = stateActionModel.updateCanvasGroupActionData;
+                updateCanvasGroupActionData.CanvasGroup = (CanvasGroup)EditorGUILayout.ObjectField(updateCanvasGroupActionData.CanvasGroup, typeof(CanvasGroup), true);
+                updateCanvasGroupActionData.Alpha = EditorGUILayout.Slider("Alpha", updateCanvasGroupActionData.Alpha, 0.0f, 1.0f);
                 EditorGUILayout.EndHorizontal();
                 EditorGUILayout.BeginHorizontal();
-                updateCanvasGroupActionModel.IsInteractible =
-                    EditorGUILayout.Toggle("Interactible", updateCanvasGroupActionModel.IsInteractible);
-                updateCanvasGroupActionModel.BlockRaycasts = EditorGUILayout.Toggle("BlockRaycasts", updateCanvasGroupActionModel.BlockRaycasts);
+                updateCanvasGroupActionData.Interact =
+                    EditorGUILayout.Toggle("Interactible", updateCanvasGroupActionData.Interact);
+                updateCanvasGroupActionData.BlockRayCasts = EditorGUILayout.Toggle("BlockRaycasts", updateCanvasGroupActionData.BlockRayCasts);
                 EditorGUILayout.EndHorizontal();
                 EditorGUILayout.EndVertical();
                 break;
-            case ActionType.UpdateMeshRenderer:
-                MeshRendererActionModel meshRendererActionModel = stateActionModel.MeshRendererActionModel;
-                meshRendererActionModel.MeshRenderer = (MeshRenderer)EditorGUILayout.ObjectField(meshRendererActionModel.MeshRenderer, typeof(MeshRenderer), true);
-                meshRendererActionModel.Enabled = EditorGUILayout.Toggle("Enabled", meshRendererActionModel.Enabled);
+            case UiAction.UpdateMeshRenderer:
+                EnableMeshActionData enableMeshActionData = stateActionModel.enableMeshActionData;
+                enableMeshActionData.MeshRenderer = (MeshRenderer)EditorGUILayout.ObjectField(enableMeshActionData.MeshRenderer, typeof(MeshRenderer), true);
+                enableMeshActionData.Enabled = EditorGUILayout.Toggle("Enabled", enableMeshActionData.Enabled);
                 break;
-            case ActionType.UpdateCollider:
-                ColliderActionModel colliderActionModel = stateActionModel.ColliderActionModel;
-                colliderActionModel.Collider = (Collider)EditorGUILayout.ObjectField(colliderActionModel.Collider, typeof(Collider), true);
-                colliderActionModel.Enabled = EditorGUILayout.Toggle("Enabled", colliderActionModel.Enabled);
+            case UiAction.UpdateCollider:
+                ColliderActionData colliderActionData = stateActionModel.colliderActionData;
+                colliderActionData.Collider = (Collider)EditorGUILayout.ObjectField(colliderActionData.Collider, typeof(Collider), true);
+                colliderActionData.Enabled = EditorGUILayout.Toggle("Enabled", colliderActionData.Enabled);
                 break;
-            case ActionType.SwapMaterial:
-                SwapMaterialActionModel swapMaterialActionModel = stateActionModel.SwapMaterialActionModel;
-                swapMaterialActionModel.Renderer = (Renderer)EditorGUILayout.ObjectField(swapMaterialActionModel.Renderer, typeof(Renderer), true);
+            case UiAction.SwapMaterial:
+                ChangeMaterialActionData changeMaterialActionData = stateActionModel.changeMaterialActionData;
+                changeMaterialActionData.Renderer = (Renderer)EditorGUILayout.ObjectField(changeMaterialActionData.Renderer, typeof(Renderer), true);
                 List<string> materialIndexes = new List<string> { "0" };
-                if (swapMaterialActionModel.Renderer != null)
+                if (changeMaterialActionData.Renderer != null)
                 {
                     materialIndexes = new List<string>();
-                    for (int i = 0; i < swapMaterialActionModel.Renderer.sharedMaterials.Length; i++)
+                    for (int i = 0; i < changeMaterialActionData.Renderer.sharedMaterials.Length; i++)
                     {
                         materialIndexes.Add(i.ToString());
                     }
                 }
-                swapMaterialActionModel.Index = EditorGUILayout.Popup(swapMaterialActionModel.Index, materialIndexes.ToArray());
-                swapMaterialActionModel.Material = (Material)EditorGUILayout.ObjectField(swapMaterialActionModel.Material, typeof(Material), true);
+                changeMaterialActionData.Index = EditorGUILayout.Popup(changeMaterialActionData.Index, materialIndexes.ToArray());
+                changeMaterialActionData.Material = (Material)EditorGUILayout.ObjectField(changeMaterialActionData.Material, typeof(Material), true);
                 break;
-            case ActionType.SwapMaterialList:
-                SwapMaterialListActionModel swapMaterialListActionModel = stateActionModel.SwapMaterialListActionModel;
+            case UiAction.SwapMaterialList:
+                ChangeMaterialsActionData changeMaterialsActionData = stateActionModel.changeMaterialsActionData;
                 EditorGUILayout.BeginVertical();
                 var materialDropZone = DropZone("Drop elements here: ", 100, 50);
-                if (swapMaterialListActionModel.Renderers == null)
+                if (changeMaterialsActionData.Renderers == null)
                 {
-                    swapMaterialListActionModel.Renderers = new List<Renderer>();
+                    changeMaterialsActionData.Renderers = new List<Renderer>();
                 }
-                var mList = swapMaterialListActionModel.Renderers;
+                var mList = changeMaterialsActionData.Renderers;
                 int mNewCount = Mathf.Max(0, EditorGUILayout.DelayedIntField("Renderers size", mList.Count));
                 while (mNewCount < mList.Count)
                     mList.RemoveAt(mList.Count - 1);
@@ -265,36 +274,36 @@ public class StateAnimationEditor : UnityEditor.Editor
                 {
                     mList[i] = (Renderer)EditorGUILayout.ObjectField("Renderers", mList[i], typeof(Renderer), true);
                 }
-                swapMaterialListActionModel.Index = EditorGUILayout.IntField("Index: ", swapMaterialListActionModel.Index);
-                swapMaterialListActionModel.Material = (Material)EditorGUILayout.ObjectField(swapMaterialListActionModel.Material, typeof(Material), true);
+                changeMaterialsActionData.Index = EditorGUILayout.IntField("Index: ", changeMaterialsActionData.Index);
+                changeMaterialsActionData.Material = (Material)EditorGUILayout.ObjectField(changeMaterialsActionData.Material, typeof(Material), true);
                 EditorGUILayout.EndVertical();
                 break;
-            case ActionType.SetActive:
-                SetActiveActionModel setActiveActionModel = stateActionModel.SetActiveActionModel;
-                setActiveActionModel.Target = (GameObject)EditorGUILayout.ObjectField(setActiveActionModel.Target, typeof(GameObject), true);
-                setActiveActionModel.State = EditorGUILayout.Toggle("Enabled", setActiveActionModel.State);
+            case UiAction.SetActive:
+                SetActiveActionData setActiveActionData = stateActionModel.setActiveActionData;
+                setActiveActionData.Target = (GameObject)EditorGUILayout.ObjectField(setActiveActionData.Target, typeof(GameObject), true);
+                setActiveActionData.Active = EditorGUILayout.Toggle("Enabled", setActiveActionData.Active);
                 EditorGUILayout.BeginVertical();
                 EditorGUILayout.HelpBox("Please use this action with moderation !", MessageType.Warning);
                 EditorGUILayout.EndVertical();
                 break;
-            case ActionType.SetTransform:
-                SetTransformActionModel setTransformActionModel = stateActionModel.SetTransformActionModel;
+            case UiAction.SetTransform:
+                SetTransformActionData setTransformActionData = stateActionModel.setTransformActionData;
                 EditorGUILayout.BeginVertical();
-                setTransformActionModel.Target = (GameObject)EditorGUILayout.ObjectField(setTransformActionModel.Target, typeof(GameObject), true);
-                setTransformActionModel.Position = (Vector3)EditorGUILayout.Vector3Field("Position",setTransformActionModel.Position);
-                setTransformActionModel.Rotation = (Vector3)EditorGUILayout.Vector3Field("Rotation",setTransformActionModel.Rotation);
-                setTransformActionModel.Scale = (Vector3)EditorGUILayout.Vector3Field("Scale",setTransformActionModel.Scale);
+                setTransformActionData.Target = (GameObject)EditorGUILayout.ObjectField(setTransformActionData.Target, typeof(GameObject), true);
+                setTransformActionData.Position = (Vector3)EditorGUILayout.Vector3Field("Position",setTransformActionData.Position);
+                setTransformActionData.Rotation = (Vector3)EditorGUILayout.Vector3Field("Rotation",setTransformActionData.Rotation);
+                setTransformActionData.Scale = (Vector3)EditorGUILayout.Vector3Field("Scale",setTransformActionData.Scale);
                 EditorGUILayout.EndVertical();
                 break;
-            case ActionType.AnimateColor:
-                AnimateColorActionModel animateColorActionModel = stateActionModel.AnimateColorActionModel;
+            case UiAction.AnimateColor:
+                TweenColorActionData tweenColorActionData = stateActionModel.tweenColorActionData;
                 EditorGUILayout.BeginVertical();
                 var dropZone =  DropZone("Drop elements here: ", 100, 50);
-                if (animateColorActionModel.Target == null)
+                if (tweenColorActionData.Target == null)
                 {
-                    animateColorActionModel.Target = new List<Renderer>();
+                    tweenColorActionData.Target = new List<Renderer>();
                 }
-                var list = animateColorActionModel.Target;
+                var list = tweenColorActionData.Target;
                 int newCount = Mathf.Max(0, EditorGUILayout.DelayedIntField("Renderers size", list.Count));
                 while (newCount < list.Count)
                     list.RemoveAt(list.Count - 1);
@@ -316,20 +325,20 @@ public class StateAnimationEditor : UnityEditor.Editor
                     list[i] = (Renderer)EditorGUILayout.ObjectField("Renderers", list[i], typeof(Renderer), true);
                 }
 
-                animateColorActionModel.TargetColor = (Color)EditorGUILayout.ColorField("Color:",animateColorActionModel.TargetColor);
-                animateColorActionModel.MaterialId = EditorGUILayout.IntField("Material Id:",animateColorActionModel.MaterialId);
-                animateColorActionModel.Duration = EditorGUILayout.FloatField("Duration:",animateColorActionModel.Duration);
+                tweenColorActionData.TargetColor = (Color)EditorGUILayout.ColorField("Color:",tweenColorActionData.TargetColor);
+                tweenColorActionData.MaterialId = EditorGUILayout.IntField("Material Id:",tweenColorActionData.MaterialId);
+                tweenColorActionData.Duration = EditorGUILayout.FloatField("Duration:",tweenColorActionData.Duration);
                 EditorGUILayout.EndVertical();
                 break;  
-            case ActionType.AnimateSharedColor:
-                AnimateSharedColorActionModel animateSharedColorActionModel = stateActionModel.AnimateSharedColorActionModel;
+            case UiAction.TweenSharedColor:
+                TweenSharedColorActionData tweenSharedColorActionData = stateActionModel.tweenSharedColorActionData;
                 EditorGUILayout.BeginVertical();
                 var sharedDropZone =  DropZone("Drop elements here: ", 100, 50);
-                if (animateSharedColorActionModel.Target == null)
+                if (tweenSharedColorActionData.Target == null)
                 {
-                    animateSharedColorActionModel.Target = new List<Renderer>();
+                    tweenSharedColorActionData.Target = new List<Renderer>();
                 }
-                var sList = animateSharedColorActionModel.Target;
+                var sList = tweenSharedColorActionData.Target;
                 int sNewCount = Mathf.Max(0, EditorGUILayout.DelayedIntField("Renderers size", sList.Count));
                 while (sNewCount < sList.Count)
                     sList.RemoveAt(sList.Count - 1);
@@ -351,19 +360,19 @@ public class StateAnimationEditor : UnityEditor.Editor
                     sList[i] = (Renderer)EditorGUILayout.ObjectField("Renderers", sList[i], typeof(Renderer), true);
                 }
 
-                animateSharedColorActionModel.TargetColor = (Color)EditorGUILayout.ColorField("Color:", animateSharedColorActionModel.TargetColor);
-                animateSharedColorActionModel.MaterialId = EditorGUILayout.IntField("Material Id:", animateSharedColorActionModel.MaterialId);
-                animateSharedColorActionModel.Duration = EditorGUILayout.FloatField("Duration:", animateSharedColorActionModel.Duration);
+                tweenSharedColorActionData.TargetColor = (Color)EditorGUILayout.ColorField("Color:", tweenSharedColorActionData.TargetColor);
+                tweenSharedColorActionData.MaterialId = EditorGUILayout.IntField("Material Id:", tweenSharedColorActionData.MaterialId);
+                tweenSharedColorActionData.Duration = EditorGUILayout.FloatField("Duration:", tweenSharedColorActionData.Duration);
                 EditorGUILayout.EndVertical();
                 break;
-            case ActionType.SetTransformProperty:
-                SetPropertyActionModel propertyActionModel = stateActionModel.SetPropertyActionModel;
+            case UiAction.SetTransformProperty:
+                SetPropertyActionData propertyActionData = stateActionModel.setPropertyActionData;
                 EditorGUILayout.BeginVertical();
-                if (propertyActionModel.Targets == null)
+                if (propertyActionData.Targets == null)
                 {
-                    propertyActionModel.Targets = new List<Transform>();
+                    propertyActionData.Targets = new List<Transform>();
                 }
-                var tList = propertyActionModel.Targets;
+                var tList = propertyActionData.Targets;
                 int tCount = Mathf.Max(0, EditorGUILayout.DelayedIntField("Renderers size", tList.Count));
                 while (tCount < tList.Count)
                     tList.RemoveAt(tList.Count - 1);
@@ -375,19 +384,19 @@ public class StateAnimationEditor : UnityEditor.Editor
                     tList[i] = (Transform)EditorGUILayout.ObjectField("Renderers", tList[i], typeof(Transform), true);
                 }
 
-                propertyActionModel.TransformType =
-                    (PropertyType) EditorGUILayout.EnumPopup(propertyActionModel.TransformType);
-                propertyActionModel.Value = EditorGUILayout.FloatField("Value:", propertyActionModel.Value);
+                propertyActionData.TransformType =
+                    (PropertyType) EditorGUILayout.EnumPopup(propertyActionData.TransformType);
+                propertyActionData.Value = EditorGUILayout.FloatField("Value:", propertyActionData.Value);
                 EditorGUILayout.EndVertical();
                 break;
-            case ActionType.SetRectProperty:
-                SetRectPropertyActionModel rectPropertyActionModel = stateActionModel.SetRectPropertyActionModel;
+            case UiAction.SetRectProperty:
+                SetRectPropertyActionData rectPropertyActionData = stateActionModel.setRectPropertyActionData;
                 EditorGUILayout.BeginVertical();
-                if (rectPropertyActionModel.Targets == null)
+                if (rectPropertyActionData.Targets == null)
                 {
-                    rectPropertyActionModel.Targets = new List<RectTransform>();
+                    rectPropertyActionData.Targets = new List<RectTransform>();
                 }
-                var rList = rectPropertyActionModel.Targets;
+                var rList = rectPropertyActionData.Targets;
                 int rCount = Mathf.Max(0, EditorGUILayout.DelayedIntField("Renderers size", rList.Count));
                 while (rCount < rList.Count)
                     rList.RemoveAt(rList.Count - 1);
@@ -399,62 +408,54 @@ public class StateAnimationEditor : UnityEditor.Editor
                     rList[i] = (RectTransform)EditorGUILayout.ObjectField("Rect", rList[i], typeof(RectTransform), true);
                 }
 
-                rectPropertyActionModel.TransformType =
-                    (PropertyType)EditorGUILayout.EnumPopup(rectPropertyActionModel.TransformType);
-                rectPropertyActionModel.Value = EditorGUILayout.FloatField("Value:", rectPropertyActionModel.Value);
+                rectPropertyActionData.TransformType =
+                    (PropertyType)EditorGUILayout.EnumPopup(rectPropertyActionData.TransformType);
+                rectPropertyActionData.Value = EditorGUILayout.FloatField("Value:", rectPropertyActionData.Value);
                 EditorGUILayout.EndVertical();
                 break;
-            case ActionType.SetGameCamera:
-                SetGameCameraActionModel setGameCameraActionModel = stateActionModel.SetGameCameraActionModel;
-                EditorGUIUtility.labelWidth = Screen.width * 0.2f;
-                setGameCameraActionModel.CameraId = EditorGUILayout.TextField("CameraId", setGameCameraActionModel.CameraId);
-                setGameCameraActionModel.IsActive =
-                    EditorGUILayout.Toggle("IsActive", setGameCameraActionModel.IsActive);
-                break;
-            // UI related Actions
-            case ActionType.SetText:
+            case UiAction.SetText:
                 EditorGUILayout.BeginVertical();
-                SetTextActionModel setTextModel = stateActionModel.SetTextActionModel;
-                setTextModel.TextComponent = (UiText)EditorGUILayout.ObjectField("Text Component", setTextModel.TextComponent, typeof(UiText), true);
-                setTextModel.Text = EditorGUILayout.TextArea(setTextModel.Text);
+                SetTextActionData setTextData = stateActionModel.setTextActionData;
+                setTextData.TextComponent = (UiText)EditorGUILayout.ObjectField("Text Component", setTextData.TextComponent, typeof(UiText), true);
+                setTextData.Text = EditorGUILayout.TextArea(setTextData.Text);
                 EditorGUILayout.EndVertical();
                 break;
-            case ActionType.SetLocalizedKey:
+            case UiAction.SetLocalizedKey:
                 EditorGUILayout.BeginVertical();
-                SetLocalizedKeyActionModel setLocalizedKey = stateActionModel.SetLocalizedKeyActionModel;
-                setLocalizedKey.TextComponent = (UiText)EditorGUILayout.ObjectField("Text Component", setLocalizedKey.TextComponent, typeof(UiText), true);
-                setLocalizedKey.Key = EditorGUILayout.TextField(setLocalizedKey.Key);
+                UpdateLocalizationActionData updateLocalization = stateActionModel.updateLocalizationActionData;
+                updateLocalization.TextComponent = (UiText)EditorGUILayout.ObjectField("Text Component", updateLocalization.TextComponent, typeof(UiText), true);
+                updateLocalization.Key = EditorGUILayout.TextField(updateLocalization.Key);
                 EditorGUILayout.EndVertical();
                 break;
-            case ActionType.SetTextColor:
+            case UiAction.SetTextColor:
                 EditorGUILayout.BeginVertical();
-                SetTextColorActionModel setTextColor = stateActionModel.SetTextColorActionModel;
-                setTextColor.TextComponent = (UiText)EditorGUILayout.ObjectField("Text Component", setTextColor.TextComponent, typeof(UiText), true);
-                setTextColor.Color = EditorGUILayout.ColorField(setTextColor.Color);
+                UpdateTextColorActionData updateTextColor = stateActionModel.updateTextColorActionData;
+                updateTextColor.TextComponent = (UiText)EditorGUILayout.ObjectField("Text Component", updateTextColor.TextComponent, typeof(UiText), true);
+                updateTextColor.Color = EditorGUILayout.ColorField(updateTextColor.Color);
                 EditorGUILayout.EndVertical();
                 break;
-            case ActionType.SetImageColor:
+            case UiAction.SetImageColor:
                 EditorGUILayout.BeginVertical();
                 SetImageColorActionModel setImageColor = stateActionModel.SetImageColorActionModel;
                 setImageColor.Image = (Image)EditorGUILayout.ObjectField("Image Component", setImageColor.Image, typeof(Image), true);
                 setImageColor.Color = EditorGUILayout.ColorField(setImageColor.Color);
                 EditorGUILayout.EndVertical();
                 break;
-            case ActionType.SetGraphicsRaycasters:
+            case UiAction.SetGraphicsRayCasters:
                 DrawSetGraphicsRaycasters(stateActionModel);
                 break;
-            case ActionType.UpdateMultiCanvasGroup:
-                UpdateMultiCanvasGroupActionModel updateMultiCanvasGroupActionModel = stateActionModel.UpdateMultiCanvasGroupActionModel;
-                if (updateMultiCanvasGroupActionModel.CanvasGroups.IsEmptyOrNull())
+            case UiAction.UpdateMultiCanvasGroup:
+                SetCanvasGroupStateActionData setCanvasGroupStateActionData = stateActionModel.setCanvasGroupStateActionData;
+                if (setCanvasGroupStateActionData.CanvasGroups.IsEmptyOrNull())
                 {
-                    updateMultiCanvasGroupActionModel.CanvasGroups = new List<CanvasGroup>(){null};
+                    setCanvasGroupStateActionData.CanvasGroups = new List<CanvasGroup>(){null};
                 }
                 EditorGUILayout.BeginVertical();
 
                 EditorGUILayout.BeginHorizontal();
                 if (GUILayout.Button("F|All"))
                 {
-                    updateMultiCanvasGroupActionModel.CanvasGroups = ((StateAnimation) target)
+                    setCanvasGroupStateActionData.CanvasGroups = ((StateAnimation) target)
                         .GetComponentsInChildren<CanvasGroup>().ToList();
                 }
                 if (GUILayout.Button("F|W|Canvas Only"))
@@ -473,24 +474,24 @@ public class StateAnimationEditor : UnityEditor.Editor
                         }
 
                         if (canvasGroups.Count > 0)
-                            updateMultiCanvasGroupActionModel.CanvasGroups = canvasGroups;
+                            setCanvasGroupStateActionData.CanvasGroups = canvasGroups;
                         else
-                            updateMultiCanvasGroupActionModel.CanvasGroups = new List<CanvasGroup>(){null};
+                            setCanvasGroupStateActionData.CanvasGroups = new List<CanvasGroup>(){null};
                     }
                 }
 
                 if (GUILayout.Button("Clear All"))
                 {
-                    updateMultiCanvasGroupActionModel.CanvasGroups = new List<CanvasGroup>(){null};
+                    setCanvasGroupStateActionData.CanvasGroups = new List<CanvasGroup>(){null};
                 }
 
                 EditorGUILayout.EndHorizontal();
 
                 int itemToAddAfterIndex = -1;
                 int itemToRemoveFromIndex = -1;
-                for (var index = 0; index < updateMultiCanvasGroupActionModel.CanvasGroups.Count; index++)
+                for (var index = 0; index < setCanvasGroupStateActionData.CanvasGroups.Count; index++)
                 {
-                    CanvasGroup canvasGroup = updateMultiCanvasGroupActionModel.CanvasGroups[index];
+                    CanvasGroup canvasGroup = setCanvasGroupStateActionData.CanvasGroups[index];
                     EditorGUILayout.BeginHorizontal();
                     canvasGroup = (CanvasGroup)EditorGUILayout.ObjectField(canvasGroup, typeof(CanvasGroup),true);
                     if (GUILayout.Button("+"))
@@ -506,29 +507,29 @@ public class StateAnimationEditor : UnityEditor.Editor
 
                 if (itemToAddAfterIndex != -1)
                 {
-                    updateMultiCanvasGroupActionModel.CanvasGroups.Insert(itemToAddAfterIndex + 1, null);
+                    setCanvasGroupStateActionData.CanvasGroups.Insert(itemToAddAfterIndex + 1, null);
                 }
-                else if (itemToRemoveFromIndex != -1 && updateMultiCanvasGroupActionModel.CanvasGroups.Count > 0)
+                else if (itemToRemoveFromIndex != -1 && setCanvasGroupStateActionData.CanvasGroups.Count > 0)
                 {
-                    updateMultiCanvasGroupActionModel.CanvasGroups.RemoveAt(itemToRemoveFromIndex);
+                    setCanvasGroupStateActionData.CanvasGroups.RemoveAt(itemToRemoveFromIndex);
                 }
 
-                updateMultiCanvasGroupActionModel.Alpha = EditorGUILayout.Slider("Alpha", updateMultiCanvasGroupActionModel.Alpha, 0.0f, 1.0f);
-                updateMultiCanvasGroupActionModel.IsInteractible =
-                    EditorGUILayout.Toggle("Interactible", updateMultiCanvasGroupActionModel.IsInteractible);
-                updateMultiCanvasGroupActionModel.BlockRaycasts = EditorGUILayout.Toggle("BlockRaycasts", updateMultiCanvasGroupActionModel.BlockRaycasts);
+                setCanvasGroupStateActionData.Alpha = EditorGUILayout.Slider("Alpha", setCanvasGroupStateActionData.Alpha, 0.0f, 1.0f);
+                setCanvasGroupStateActionData.Interact =
+                    EditorGUILayout.Toggle("Interactible", setCanvasGroupStateActionData.Interact);
+                setCanvasGroupStateActionData.BlockRayCasts = EditorGUILayout.Toggle("BlockRaycasts", setCanvasGroupStateActionData.BlockRayCasts);
                 EditorGUILayout.EndVertical();
                 break;     
                 
-            case ActionType.UpdateCanvasGroupInteraction:
+            case UiAction.UpdateCanvasGroupInteraction:
                 EditorGUILayout.BeginVertical();
                 EditorGUILayout.BeginHorizontal();
-                UpdateCanvasGroupInteractionActionModel updateCanvasGroupInteractionActionModel = stateActionModel.UpdateCanvasGroupInteractionActionModel;
-                updateCanvasGroupInteractionActionModel.CanvasGroup = (CanvasGroup)EditorGUILayout.ObjectField(updateCanvasGroupInteractionActionModel.CanvasGroup, typeof(CanvasGroup), true);
+                SetCanvasInteractionActionData setCanvasInteractionActionData = stateActionModel.setCanvasInteractionActionData;
+                setCanvasInteractionActionData.CanvasGroup = (CanvasGroup)EditorGUILayout.ObjectField(setCanvasInteractionActionData.CanvasGroup, typeof(CanvasGroup), true);
                 EditorGUILayout.EndHorizontal();
                 EditorGUILayout.BeginHorizontal();
-                updateCanvasGroupInteractionActionModel.IsInteractible =
-                    EditorGUILayout.Toggle("Interactible", updateCanvasGroupInteractionActionModel.IsInteractible);
+                setCanvasInteractionActionData.Interact =
+                    EditorGUILayout.Toggle("Interactible", setCanvasInteractionActionData.Interact);
                 EditorGUILayout.EndHorizontal();
                 EditorGUILayout.EndVertical();
                 break;
@@ -538,17 +539,17 @@ public class StateAnimationEditor : UnityEditor.Editor
 
     private void DrawSetGraphicsRaycasters(StateActionModel model)
     {
-        SetGraphicsRaycasterActionModel setGraphicsRaycasterActionModel = model.SetGraphicsRaycasterActionModel;
-        if (setGraphicsRaycasterActionModel.Raycasters.IsEmptyOrNull())
+        SetGraphicsRayCasterActionData setGraphicsRayCasterActionData = model.setGraphicsRayCasterActionData;
+        if (setGraphicsRayCasterActionData.RayCasters.IsEmptyOrNull())
         {
-            setGraphicsRaycasterActionModel.Raycasters = new List<GraphicRaycaster>() { null };
+            setGraphicsRayCasterActionData.RayCasters = new List<GraphicRaycaster>() { null };
         }
         EditorGUILayout.BeginVertical();
 
         EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("F|All"))
         {
-            setGraphicsRaycasterActionModel.Raycasters = ((StateAnimation)target)
+            setGraphicsRayCasterActionData.RayCasters = ((StateAnimation)target)
                 .GetComponentsInChildren<GraphicRaycaster>().ToList();
         }
         if (GUILayout.Button("F|W|Canvas Only"))
@@ -567,23 +568,23 @@ public class StateAnimationEditor : UnityEditor.Editor
                 }
 
                 if (raycastersGroups.Count > 0)
-                    setGraphicsRaycasterActionModel.Raycasters = raycastersGroups;
+                    setGraphicsRayCasterActionData.RayCasters = raycastersGroups;
                 else
-                    setGraphicsRaycasterActionModel.Raycasters = new List<GraphicRaycaster>() { null };
+                    setGraphicsRayCasterActionData.RayCasters = new List<GraphicRaycaster>() { null };
             }
         }
 
         if (GUILayout.Button("Clear All"))
         {
-            setGraphicsRaycasterActionModel.Raycasters = new List<GraphicRaycaster>() { null };
+            setGraphicsRayCasterActionData.RayCasters = new List<GraphicRaycaster>() { null };
         }
 
         EditorGUILayout.EndHorizontal();
         int itemToAddAfterIndex = -1;
         int itemToRemoveFromIndex = -1;
-        for (var index = 0; index < setGraphicsRaycasterActionModel.Raycasters.Count; index++)
+        for (var index = 0; index < setGraphicsRayCasterActionData.RayCasters.Count; index++)
         {
-            GraphicRaycaster raycaster = setGraphicsRaycasterActionModel.Raycasters[index];
+            GraphicRaycaster raycaster = setGraphicsRayCasterActionData.RayCasters[index];
             EditorGUILayout.BeginHorizontal();
             raycaster = (GraphicRaycaster)EditorGUILayout.ObjectField(raycaster, typeof(GraphicRaycaster), true);
             if (GUILayout.Button("+"))
@@ -599,14 +600,14 @@ public class StateAnimationEditor : UnityEditor.Editor
 
         if (itemToAddAfterIndex != -1)
         {
-            setGraphicsRaycasterActionModel.Raycasters.Insert(itemToAddAfterIndex + 1, null);
+            setGraphicsRayCasterActionData.RayCasters.Insert(itemToAddAfterIndex + 1, null);
         }
-        else if (itemToRemoveFromIndex != -1 && setGraphicsRaycasterActionModel.Raycasters.Count > 0)
+        else if (itemToRemoveFromIndex != -1 && setGraphicsRayCasterActionData.RayCasters.Count > 0)
         {
-            setGraphicsRaycasterActionModel.Raycasters.RemoveAt(itemToRemoveFromIndex);
+            setGraphicsRayCasterActionData.RayCasters.RemoveAt(itemToRemoveFromIndex);
         }
 
-        setGraphicsRaycasterActionModel.IsEnabled = EditorGUILayout.Toggle("Enabled: ", setGraphicsRaycasterActionModel.IsEnabled);
+        setGraphicsRayCasterActionData.IsEnabled = EditorGUILayout.Toggle("Enabled: ", setGraphicsRayCasterActionData.IsEnabled);
         EditorGUILayout.EndVertical();
     }
     public object[] DropZone(string title, int w, int h)

@@ -33,11 +33,11 @@ RectTransform:
   - {fileID: 3702811341778238207}
   - {fileID: 4998886382281797931}
   m_Father: {fileID: 7202580663765507375}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -412.03998, y: -344.20108}
+  m_AnchoredPosition: {x: -263, y: -344.20108}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8739331769464878032
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 0.30588236}
+  m_Color: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -691,498 +691,480 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SimpleStateModels:
   - StateActionModels:
-    - ActionType: 7
-      AnimationActionModel:
+    - uiAction: 7
+      animationActionData:
         Clip: 
         Weight: 0.5
         Layer: 0
-      SetSpriteActionModel:
+      updateSpriteActionData:
         Image: {fileID: 0}
         Sprite: {fileID: 0}
-      UpdateCanvasGroupActionModel:
+      updateCanvasGroupActionData:
         CanvasGroup: {fileID: 0}
         Alpha: 0
-        IsInteractible: 0
-        BlockRaycasts: 0
-      MeshRendererActionModel:
+        Interact: 0
+        BlockRayCasts: 0
+      enableMeshActionData:
         MeshRenderer: {fileID: 0}
         Enabled: 0
-      ColliderActionModel:
+      colliderActionData:
         Collider: {fileID: 0}
         Enabled: 0
-      SwapMaterialActionModel:
+      changeMaterialActionData:
         Renderer: {fileID: 0}
         Index: 0
         Material: {fileID: 0}
-      SwapMaterialListActionModel:
+      changeMaterialsActionData:
         Renderers: []
         Index: 0
         Material: {fileID: 0}
-      SetActiveActionModel:
+      setActiveActionData:
         Target: {fileID: 2510603376898292471}
-        State: 1
-      SetTransformActionModel:
+        Active: 1
+      setTransformActionData:
         Target: {fileID: 0}
         Position: {x: 0, y: 0, z: 0}
         Rotation: {x: 0, y: 0, z: 0}
         Scale: {x: 1, y: 1, z: 1}
-      AnimateColorActionModel:
+      tweenColorActionData:
         Target: []
         TargetColor: {r: 0, g: 0, b: 0, a: 0}
         MaterialId: 0
         Duration: 0
-      AnimateSharedColorActionModel:
+      tweenSharedColorActionData:
         Target: []
         TargetColor: {r: 0, g: 0, b: 0, a: 0}
         MaterialId: 0
         Duration: 0
-      SetPropertyActionModel:
+      setPropertyActionData:
         Targets: []
         TransformType: 0
         Value: 0
-      SetGameCameraActionModel:
-        CameraId: 
-        IsActive: 0
-      UpdateMultiCanvasGroupActionModel:
+      setCanvasGroupStateActionData:
         CanvasGroups: []
         Alpha: 0
-        IsInteractible: 0
-        BlockRaycasts: 0
-      UpdateCanvasGroupInteractionActionModel:
+        Interact: 0
+        BlockRayCasts: 0
+      setCanvasInteractionActionData:
         CanvasGroup: {fileID: 0}
-        IsInteractible: 0
-      StopAnimationActionModel:
+        Interact: 0
+      stopAnimationActionData:
         Clip: 
-      SetTextActionModel:
+      setTextActionData:
         TextComponent: {fileID: 0}
         Text: 
-      SetLocalizedKeyActionModel:
+      updateLocalizationActionData:
         TextComponent: {fileID: 0}
         Key: 
-      SetTextColorActionModel:
+      updateTextColorActionData:
         TextComponent: {fileID: 0}
         Color: {r: 0, g: 0, b: 0, a: 0}
       SetImageColorActionModel:
         Image: {fileID: 2782372954967457180}
         Color: {r: 0, g: 0, b: 0, a: 0}
-      SetGraphicsRaycasterActionModel:
-        Raycasters: []
+      setGraphicsRayCasterActionData:
+        RayCasters: []
         IsEnabled: 0
-      SetRectPropertyActionModel:
+      setRectPropertyActionData:
         Targets: []
         TransformType: 0
         Value: 0
-    - ActionType: 17
-      AnimationActionModel:
+    - uiAction: 16
+      animationActionData:
         Clip: 
         Weight: 0.5
         Layer: 0
-      SetSpriteActionModel:
+      updateSpriteActionData:
         Image: {fileID: 0}
         Sprite: {fileID: 0}
-      UpdateCanvasGroupActionModel:
+      updateCanvasGroupActionData:
         CanvasGroup: {fileID: 0}
         Alpha: 0
-        IsInteractible: 0
-        BlockRaycasts: 0
-      MeshRendererActionModel:
+        Interact: 0
+        BlockRayCasts: 0
+      enableMeshActionData:
         MeshRenderer: {fileID: 0}
         Enabled: 0
-      ColliderActionModel:
+      colliderActionData:
         Collider: {fileID: 0}
         Enabled: 0
-      SwapMaterialActionModel:
+      changeMaterialActionData:
         Renderer: {fileID: 0}
         Index: 0
         Material: {fileID: 0}
-      SwapMaterialListActionModel:
+      changeMaterialsActionData:
         Renderers: []
         Index: 0
         Material: {fileID: 0}
-      SetActiveActionModel:
+      setActiveActionData:
         Target: {fileID: 0}
-        State: 0
-      SetTransformActionModel:
+        Active: 0
+      setTransformActionData:
         Target: {fileID: 0}
         Position: {x: 0, y: 0, z: 0}
         Rotation: {x: 0, y: 0, z: 0}
         Scale: {x: 1, y: 1, z: 1}
-      AnimateColorActionModel:
+      tweenColorActionData:
         Target: []
         TargetColor: {r: 0, g: 0, b: 0, a: 0}
         MaterialId: 0
         Duration: 0
-      AnimateSharedColorActionModel:
+      tweenSharedColorActionData:
         Target: []
         TargetColor: {r: 0, g: 0, b: 0, a: 0}
         MaterialId: 0
         Duration: 0
-      SetPropertyActionModel:
+      setPropertyActionData:
         Targets: []
         TransformType: 0
         Value: 0
-      SetGameCameraActionModel:
-        CameraId: 
-        IsActive: 0
-      UpdateMultiCanvasGroupActionModel:
+      setCanvasGroupStateActionData:
         CanvasGroups: []
         Alpha: 0
-        IsInteractible: 0
-        BlockRaycasts: 0
-      UpdateCanvasGroupInteractionActionModel:
+        Interact: 0
+        BlockRayCasts: 0
+      setCanvasInteractionActionData:
         CanvasGroup: {fileID: 0}
-        IsInteractible: 0
-      StopAnimationActionModel:
+        Interact: 0
+      stopAnimationActionData:
         Clip: 
-      SetTextActionModel:
+      setTextActionData:
         TextComponent: {fileID: 0}
         Text: 
-      SetLocalizedKeyActionModel:
+      updateLocalizationActionData:
         TextComponent: {fileID: 0}
         Key: 
-      SetTextColorActionModel:
+      updateTextColorActionData:
         TextComponent: {fileID: 0}
         Color: {r: 0, g: 0, b: 0, a: 0}
       SetImageColorActionModel:
         Image: {fileID: 5840188988128681954}
         Color: {r: 1, g: 1, b: 1, a: 0.50980395}
-      SetGraphicsRaycasterActionModel:
-        Raycasters: []
+      setGraphicsRayCasterActionData:
+        RayCasters: []
         IsEnabled: 0
-      SetRectPropertyActionModel:
+      setRectPropertyActionData:
         Targets: []
         TransformType: 0
         Value: 0
     State: locked
     LayerIndex: 0
   - StateActionModels:
-    - ActionType: 7
-      AnimationActionModel:
+    - uiAction: 7
+      animationActionData:
         Clip: 
         Weight: 0.5
         Layer: 0
-      SetSpriteActionModel:
+      updateSpriteActionData:
         Image: {fileID: 0}
         Sprite: {fileID: 0}
-      UpdateCanvasGroupActionModel:
+      updateCanvasGroupActionData:
         CanvasGroup: {fileID: 0}
         Alpha: 0
-        IsInteractible: 0
-        BlockRaycasts: 0
-      MeshRendererActionModel:
+        Interact: 0
+        BlockRayCasts: 0
+      enableMeshActionData:
         MeshRenderer: {fileID: 0}
         Enabled: 0
-      ColliderActionModel:
+      colliderActionData:
         Collider: {fileID: 0}
         Enabled: 0
-      SwapMaterialActionModel:
+      changeMaterialActionData:
         Renderer: {fileID: 0}
         Index: 0
         Material: {fileID: 0}
-      SwapMaterialListActionModel:
+      changeMaterialsActionData:
         Renderers: []
         Index: 0
         Material: {fileID: 0}
-      SetActiveActionModel:
+      setActiveActionData:
         Target: {fileID: 2510603376898292471}
-        State: 0
-      SetTransformActionModel:
+        Active: 0
+      setTransformActionData:
         Target: {fileID: 0}
         Position: {x: 0, y: 0, z: 0}
         Rotation: {x: 0, y: 0, z: 0}
         Scale: {x: 1, y: 1, z: 1}
-      AnimateColorActionModel:
+      tweenColorActionData:
         Target: []
         TargetColor: {r: 0, g: 0, b: 0, a: 0}
         MaterialId: 0
         Duration: 0
-      AnimateSharedColorActionModel:
+      tweenSharedColorActionData:
         Target: []
         TargetColor: {r: 0, g: 0, b: 0, a: 0}
         MaterialId: 0
         Duration: 0
-      SetPropertyActionModel:
+      setPropertyActionData:
         Targets: []
         TransformType: 0
         Value: 0
-      SetGameCameraActionModel:
-        CameraId: 
-        IsActive: 0
-      UpdateMultiCanvasGroupActionModel:
+      setCanvasGroupStateActionData:
         CanvasGroups: []
         Alpha: 0
-        IsInteractible: 0
-        BlockRaycasts: 0
-      UpdateCanvasGroupInteractionActionModel:
+        Interact: 0
+        BlockRayCasts: 0
+      setCanvasInteractionActionData:
         CanvasGroup: {fileID: 0}
-        IsInteractible: 0
-      StopAnimationActionModel:
+        Interact: 0
+      stopAnimationActionData:
         Clip: 
-      SetTextActionModel:
+      setTextActionData:
         TextComponent: {fileID: 0}
         Text: 
-      SetLocalizedKeyActionModel:
+      updateLocalizationActionData:
         TextComponent: {fileID: 0}
         Key: 
-      SetTextColorActionModel:
+      updateTextColorActionData:
         TextComponent: {fileID: 0}
         Color: {r: 0, g: 0, b: 0, a: 0}
       SetImageColorActionModel:
         Image: {fileID: 0}
         Color: {r: 0, g: 0, b: 0, a: 0}
-      SetGraphicsRaycasterActionModel:
-        Raycasters: []
+      setGraphicsRayCasterActionData:
+        RayCasters: []
         IsEnabled: 0
-      SetRectPropertyActionModel:
+      setRectPropertyActionData:
         Targets: []
         TransformType: 0
         Value: 0
-    - ActionType: 17
-      AnimationActionModel:
+    - uiAction: 16
+      animationActionData:
         Clip: 
         Weight: 0.5
         Layer: 0
-      SetSpriteActionModel:
+      updateSpriteActionData:
         Image: {fileID: 0}
         Sprite: {fileID: 0}
-      UpdateCanvasGroupActionModel:
+      updateCanvasGroupActionData:
         CanvasGroup: {fileID: 0}
         Alpha: 0
-        IsInteractible: 0
-        BlockRaycasts: 0
-      MeshRendererActionModel:
+        Interact: 0
+        BlockRayCasts: 0
+      enableMeshActionData:
         MeshRenderer: {fileID: 0}
         Enabled: 0
-      ColliderActionModel:
+      colliderActionData:
         Collider: {fileID: 0}
         Enabled: 0
-      SwapMaterialActionModel:
+      changeMaterialActionData:
         Renderer: {fileID: 0}
         Index: 0
         Material: {fileID: 0}
-      SwapMaterialListActionModel:
+      changeMaterialsActionData:
         Renderers: []
         Index: 0
         Material: {fileID: 0}
-      SetActiveActionModel:
+      setActiveActionData:
         Target: {fileID: 0}
-        State: 0
-      SetTransformActionModel:
+        Active: 0
+      setTransformActionData:
         Target: {fileID: 0}
         Position: {x: 0, y: 0, z: 0}
         Rotation: {x: 0, y: 0, z: 0}
         Scale: {x: 1, y: 1, z: 1}
-      AnimateColorActionModel:
+      tweenColorActionData:
         Target: []
         TargetColor: {r: 0, g: 0, b: 0, a: 0}
         MaterialId: 0
         Duration: 0
-      AnimateSharedColorActionModel:
+      tweenSharedColorActionData:
         Target: []
         TargetColor: {r: 0, g: 0, b: 0, a: 0}
         MaterialId: 0
         Duration: 0
-      SetPropertyActionModel:
+      setPropertyActionData:
         Targets: []
         TransformType: 0
         Value: 0
-      SetGameCameraActionModel:
-        CameraId: 
-        IsActive: 0
-      UpdateMultiCanvasGroupActionModel:
+      setCanvasGroupStateActionData:
         CanvasGroups: []
         Alpha: 0
-        IsInteractible: 0
-        BlockRaycasts: 0
-      UpdateCanvasGroupInteractionActionModel:
+        Interact: 0
+        BlockRayCasts: 0
+      setCanvasInteractionActionData:
         CanvasGroup: {fileID: 0}
-        IsInteractible: 0
-      StopAnimationActionModel:
+        Interact: 0
+      stopAnimationActionData:
         Clip: 
-      SetTextActionModel:
+      setTextActionData:
         TextComponent: {fileID: 0}
         Text: 
-      SetLocalizedKeyActionModel:
+      updateLocalizationActionData:
         TextComponent: {fileID: 0}
         Key: 
-      SetTextColorActionModel:
+      updateTextColorActionData:
         TextComponent: {fileID: 0}
         Color: {r: 0, g: 0, b: 0, a: 0}
       SetImageColorActionModel:
         Image: {fileID: 5840188988128681954}
         Color: {r: 1, g: 1, b: 1, a: 1}
-      SetGraphicsRaycasterActionModel:
-        Raycasters: []
+      setGraphicsRayCasterActionData:
+        RayCasters: []
         IsEnabled: 0
-      SetRectPropertyActionModel:
+      setRectPropertyActionData:
         Targets: []
         TransformType: 0
         Value: 0
     State: unlocked
     LayerIndex: 0
   - StateActionModels:
-    - ActionType: 17
-      AnimationActionModel:
+    - uiAction: 7
+      animationActionData:
         Clip: 
         Weight: 0.5
         Layer: 0
-      SetSpriteActionModel:
+      updateSpriteActionData:
         Image: {fileID: 0}
         Sprite: {fileID: 0}
-      UpdateCanvasGroupActionModel:
+      updateCanvasGroupActionData:
         CanvasGroup: {fileID: 0}
         Alpha: 0
-        IsInteractible: 0
-        BlockRaycasts: 0
-      MeshRendererActionModel:
+        Interact: 0
+        BlockRayCasts: 0
+      enableMeshActionData:
         MeshRenderer: {fileID: 0}
         Enabled: 0
-      ColliderActionModel:
+      colliderActionData:
         Collider: {fileID: 0}
         Enabled: 0
-      SwapMaterialActionModel:
+      changeMaterialActionData:
         Renderer: {fileID: 0}
         Index: 0
         Material: {fileID: 0}
-      SwapMaterialListActionModel:
+      changeMaterialsActionData:
         Renderers: []
         Index: 0
         Material: {fileID: 0}
-      SetActiveActionModel:
-        Target: {fileID: 0}
-        State: 0
-      SetTransformActionModel:
+      setActiveActionData:
+        Target: {fileID: 3782799870946087259}
+        Active: 1
+      setTransformActionData:
         Target: {fileID: 0}
         Position: {x: 0, y: 0, z: 0}
         Rotation: {x: 0, y: 0, z: 0}
         Scale: {x: 1, y: 1, z: 1}
-      AnimateColorActionModel:
+      tweenColorActionData:
         Target: []
         TargetColor: {r: 0, g: 0, b: 0, a: 0}
         MaterialId: 0
         Duration: 0
-      AnimateSharedColorActionModel:
+      tweenSharedColorActionData:
         Target: []
         TargetColor: {r: 0, g: 0, b: 0, a: 0}
         MaterialId: 0
         Duration: 0
-      SetPropertyActionModel:
+      setPropertyActionData:
         Targets: []
         TransformType: 0
         Value: 0
-      SetGameCameraActionModel:
-        CameraId: 
-        IsActive: 0
-      UpdateMultiCanvasGroupActionModel:
+      setCanvasGroupStateActionData:
         CanvasGroups: []
         Alpha: 0
-        IsInteractible: 0
-        BlockRaycasts: 0
-      UpdateCanvasGroupInteractionActionModel:
+        Interact: 0
+        BlockRayCasts: 0
+      setCanvasInteractionActionData:
         CanvasGroup: {fileID: 0}
-        IsInteractible: 0
-      StopAnimationActionModel:
+        Interact: 0
+      stopAnimationActionData:
         Clip: 
-      SetTextActionModel:
+      setTextActionData:
         TextComponent: {fileID: 0}
         Text: 
-      SetLocalizedKeyActionModel:
+      updateLocalizationActionData:
         TextComponent: {fileID: 0}
         Key: 
-      SetTextColorActionModel:
+      updateTextColorActionData:
         TextComponent: {fileID: 0}
         Color: {r: 0, g: 0, b: 0, a: 0}
       SetImageColorActionModel:
         Image: {fileID: 5840188988128681954}
         Color: {r: 1, g: 1, b: 1, a: 1}
-      SetGraphicsRaycasterActionModel:
-        Raycasters: []
+      setGraphicsRayCasterActionData:
+        RayCasters: []
         IsEnabled: 0
-      SetRectPropertyActionModel:
+      setRectPropertyActionData:
         Targets: []
         TransformType: 0
         Value: 0
     State: has_item
     LayerIndex: 0
   - StateActionModels:
-    - ActionType: 17
-      AnimationActionModel:
+    - uiAction: 7
+      animationActionData:
         Clip: 
         Weight: 0.5
         Layer: 0
-      SetSpriteActionModel:
+      updateSpriteActionData:
         Image: {fileID: 0}
         Sprite: {fileID: 0}
-      UpdateCanvasGroupActionModel:
+      updateCanvasGroupActionData:
         CanvasGroup: {fileID: 0}
         Alpha: 0
-        IsInteractible: 0
-        BlockRaycasts: 0
-      MeshRendererActionModel:
+        Interact: 0
+        BlockRayCasts: 0
+      enableMeshActionData:
         MeshRenderer: {fileID: 0}
         Enabled: 0
-      ColliderActionModel:
+      colliderActionData:
         Collider: {fileID: 0}
         Enabled: 0
-      SwapMaterialActionModel:
+      changeMaterialActionData:
         Renderer: {fileID: 0}
         Index: 0
         Material: {fileID: 0}
-      SwapMaterialListActionModel:
+      changeMaterialsActionData:
         Renderers: []
         Index: 0
         Material: {fileID: 0}
-      SetActiveActionModel:
-        Target: {fileID: 0}
-        State: 0
-      SetTransformActionModel:
+      setActiveActionData:
+        Target: {fileID: 3782799870946087259}
+        Active: 0
+      setTransformActionData:
         Target: {fileID: 0}
         Position: {x: 0, y: 0, z: 0}
         Rotation: {x: 0, y: 0, z: 0}
         Scale: {x: 1, y: 1, z: 1}
-      AnimateColorActionModel:
+      tweenColorActionData:
         Target: []
         TargetColor: {r: 0, g: 0, b: 0, a: 0}
         MaterialId: 0
         Duration: 0
-      AnimateSharedColorActionModel:
+      tweenSharedColorActionData:
         Target: []
         TargetColor: {r: 0, g: 0, b: 0, a: 0}
         MaterialId: 0
         Duration: 0
-      SetPropertyActionModel:
+      setPropertyActionData:
         Targets: []
         TransformType: 0
         Value: 0
-      SetGameCameraActionModel:
-        CameraId: 
-        IsActive: 0
-      UpdateMultiCanvasGroupActionModel:
+      setCanvasGroupStateActionData:
         CanvasGroups: []
         Alpha: 0
-        IsInteractible: 0
-        BlockRaycasts: 0
-      UpdateCanvasGroupInteractionActionModel:
+        Interact: 0
+        BlockRayCasts: 0
+      setCanvasInteractionActionData:
         CanvasGroup: {fileID: 0}
-        IsInteractible: 0
-      StopAnimationActionModel:
+        Interact: 0
+      stopAnimationActionData:
         Clip: 
-      SetTextActionModel:
+      setTextActionData:
         TextComponent: {fileID: 0}
         Text: 
-      SetLocalizedKeyActionModel:
+      updateLocalizationActionData:
         TextComponent: {fileID: 0}
         Key: 
-      SetTextColorActionModel:
+      updateTextColorActionData:
         TextComponent: {fileID: 0}
         Color: {r: 0, g: 0, b: 0, a: 0}
       SetImageColorActionModel:
         Image: {fileID: 5840188988128681954}
         Color: {r: 0, g: 0, b: 0, a: 0}
-      SetGraphicsRaycasterActionModel:
-        Raycasters: []
+      setGraphicsRayCasterActionData:
+        RayCasters: []
         IsEnabled: 0
-      SetRectPropertyActionModel:
+      setRectPropertyActionData:
         Targets: []
         TransformType: 0
         Value: 0
@@ -1360,7 +1342,7 @@ RectTransform:
   - {fileID: 3357334548784104329}
   - {fileID: 609059807221904942}
   m_Father: {fileID: 7202580663765507375}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1433,7 +1415,7 @@ RectTransform:
   m_Children:
   - {fileID: 2748473523208938668}
   m_Father: {fileID: 7202580663765507375}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1596,168 +1578,162 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SimpleStateModels:
   - StateActionModels:
-    - ActionType: 7
-      AnimationActionModel:
+    - uiAction: 0
+      animationActionData:
         Clip: 
         Weight: 0.5
         Layer: 0
-      SetSpriteActionModel:
+      updateSpriteActionData:
         Image: {fileID: 0}
         Sprite: {fileID: 0}
-      UpdateCanvasGroupActionModel:
+      updateCanvasGroupActionData:
         CanvasGroup: {fileID: 0}
         Alpha: 0
-        IsInteractible: 0
-        BlockRaycasts: 0
-      MeshRendererActionModel:
+        Interact: 0
+        BlockRayCasts: 0
+      enableMeshActionData:
         MeshRenderer: {fileID: 0}
         Enabled: 0
-      ColliderActionModel:
+      colliderActionData:
         Collider: {fileID: 0}
         Enabled: 0
-      SwapMaterialActionModel:
+      changeMaterialActionData:
         Renderer: {fileID: 0}
         Index: 0
         Material: {fileID: 0}
-      SwapMaterialListActionModel:
+      changeMaterialsActionData:
         Renderers: []
         Index: 0
         Material: {fileID: 0}
-      SetActiveActionModel:
-        Target: {fileID: 8640494075459086148}
-        State: 1
-      SetTransformActionModel:
+      setActiveActionData:
+        Target: {fileID: 0}
+        Active: 0
+      setTransformActionData:
         Target: {fileID: 0}
         Position: {x: 0, y: 0, z: 0}
         Rotation: {x: 0, y: 0, z: 0}
         Scale: {x: 1, y: 1, z: 1}
-      AnimateColorActionModel:
+      tweenColorActionData:
         Target: []
         TargetColor: {r: 0, g: 0, b: 0, a: 0}
         MaterialId: 0
         Duration: 0
-      AnimateSharedColorActionModel:
+      tweenSharedColorActionData:
         Target: []
         TargetColor: {r: 0, g: 0, b: 0, a: 0}
         MaterialId: 0
         Duration: 0
-      SetPropertyActionModel:
+      setPropertyActionData:
         Targets: []
         TransformType: 0
         Value: 0
-      SetGameCameraActionModel:
-        CameraId: 
-        IsActive: 0
-      UpdateMultiCanvasGroupActionModel:
+      setCanvasGroupStateActionData:
         CanvasGroups: []
         Alpha: 0
-        IsInteractible: 0
-        BlockRaycasts: 0
-      UpdateCanvasGroupInteractionActionModel:
+        Interact: 0
+        BlockRayCasts: 0
+      setCanvasInteractionActionData:
         CanvasGroup: {fileID: 0}
-        IsInteractible: 0
-      StopAnimationActionModel:
+        Interact: 0
+      stopAnimationActionData:
         Clip: 
-      SetTextActionModel:
+      setTextActionData:
         TextComponent: {fileID: 0}
         Text: 
-      SetLocalizedKeyActionModel:
+      updateLocalizationActionData:
         TextComponent: {fileID: 0}
         Key: 
-      SetTextColorActionModel:
+      updateTextColorActionData:
         TextComponent: {fileID: 0}
         Color: {r: 0, g: 0, b: 0, a: 0}
       SetImageColorActionModel:
         Image: {fileID: 0}
         Color: {r: 0, g: 0, b: 0, a: 0}
-      SetGraphicsRaycasterActionModel:
-        Raycasters: []
+      setGraphicsRayCasterActionData:
+        RayCasters: []
         IsEnabled: 0
-      SetRectPropertyActionModel:
+      setRectPropertyActionData:
         Targets: []
         TransformType: 0
         Value: 0
     State: Open
     LayerIndex: 0
   - StateActionModels:
-    - ActionType: 7
-      AnimationActionModel:
+    - uiAction: 0
+      animationActionData:
         Clip: 
         Weight: 0.5
         Layer: 0
-      SetSpriteActionModel:
+      updateSpriteActionData:
         Image: {fileID: 0}
         Sprite: {fileID: 0}
-      UpdateCanvasGroupActionModel:
+      updateCanvasGroupActionData:
         CanvasGroup: {fileID: 0}
         Alpha: 0
-        IsInteractible: 0
-        BlockRaycasts: 0
-      MeshRendererActionModel:
+        Interact: 0
+        BlockRayCasts: 0
+      enableMeshActionData:
         MeshRenderer: {fileID: 0}
         Enabled: 0
-      ColliderActionModel:
+      colliderActionData:
         Collider: {fileID: 0}
         Enabled: 0
-      SwapMaterialActionModel:
+      changeMaterialActionData:
         Renderer: {fileID: 0}
         Index: 0
         Material: {fileID: 0}
-      SwapMaterialListActionModel:
+      changeMaterialsActionData:
         Renderers: []
         Index: 0
         Material: {fileID: 0}
-      SetActiveActionModel:
-        Target: {fileID: 8640494075459086148}
-        State: 0
-      SetTransformActionModel:
+      setActiveActionData:
+        Target: {fileID: 0}
+        Active: 0
+      setTransformActionData:
         Target: {fileID: 0}
         Position: {x: 0, y: 0, z: 0}
         Rotation: {x: 0, y: 0, z: 0}
         Scale: {x: 1, y: 1, z: 1}
-      AnimateColorActionModel:
+      tweenColorActionData:
         Target: []
         TargetColor: {r: 0, g: 0, b: 0, a: 0}
         MaterialId: 0
         Duration: 0
-      AnimateSharedColorActionModel:
+      tweenSharedColorActionData:
         Target: []
         TargetColor: {r: 0, g: 0, b: 0, a: 0}
         MaterialId: 0
         Duration: 0
-      SetPropertyActionModel:
+      setPropertyActionData:
         Targets: []
         TransformType: 0
         Value: 0
-      SetGameCameraActionModel:
-        CameraId: 
-        IsActive: 0
-      UpdateMultiCanvasGroupActionModel:
+      setCanvasGroupStateActionData:
         CanvasGroups: []
         Alpha: 0
-        IsInteractible: 0
-        BlockRaycasts: 0
-      UpdateCanvasGroupInteractionActionModel:
+        Interact: 0
+        BlockRayCasts: 0
+      setCanvasInteractionActionData:
         CanvasGroup: {fileID: 0}
-        IsInteractible: 0
-      StopAnimationActionModel:
+        Interact: 0
+      stopAnimationActionData:
         Clip: 
-      SetTextActionModel:
+      setTextActionData:
         TextComponent: {fileID: 0}
         Text: 
-      SetLocalizedKeyActionModel:
+      updateLocalizationActionData:
         TextComponent: {fileID: 0}
         Key: 
-      SetTextColorActionModel:
+      updateTextColorActionData:
         TextComponent: {fileID: 0}
         Color: {r: 0, g: 0, b: 0, a: 0}
       SetImageColorActionModel:
         Image: {fileID: 0}
         Color: {r: 0, g: 0, b: 0, a: 0}
-      SetGraphicsRaycasterActionModel:
-        Raycasters: []
+      setGraphicsRayCasterActionData:
+        RayCasters: []
         IsEnabled: 0
-      SetRectPropertyActionModel:
+      setRectPropertyActionData:
         Targets: []
         TransformType: 0
         Value: 0
@@ -2224,10 +2200,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6620905847483367164}
-  - {fileID: 4050102934065028020}
   - {fileID: 8236452618914980045}
   - {fileID: 7139344741657824276}
   - {fileID: 5433469001213340515}
+  - {fileID: 4050102934065028020}
   m_Father: {fileID: 7728566260612933793}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2268,7 +2244,7 @@ RectTransform:
   m_Children:
   - {fileID: 3577472813585422425}
   m_Father: {fileID: 7202580663765507375}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
