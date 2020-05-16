@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace Station
 {
     public class UiDragSlotDummy : MonoBehaviour
     {
-        [SerializeField] private Image _icon;
+        [SerializeField] private Image _icon = null;
 
         private void Awake()
         {

@@ -30,9 +30,10 @@ namespace Station
             SetList(_teamSystem.GetTeamMembers());
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
             UnSubscribe();
+            base.OnDestroy();
         }
 
 

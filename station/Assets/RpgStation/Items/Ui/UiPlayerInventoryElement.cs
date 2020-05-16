@@ -4,7 +4,7 @@ namespace Station
 {
     public class UiPlayerInventoryElement : UiPanel
     {
-        [SerializeField] private CharacterInventoryTabs _characterInventoryTabs;
+        [SerializeField] private CharacterInventoryTabs _characterInventoryTabs = null;
         private PlayerInventorySystem _inventorySystem;
         private TeamSystem _teamSystem;
         private GenericUiList<string, UiContainerWidget> _containerUiList;

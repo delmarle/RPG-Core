@@ -6,9 +6,9 @@ namespace Station
 {
     public class UiContainerWidget : MonoBehaviour
     {
-        [SerializeField] private UiDragSlotDummy _dragDummy;
-        [SerializeField] private LayoutGroup _slotsLayoutGroup;
-        [SerializeField] private Transform _slotUiPrefab;
+        [SerializeField] private UiDragSlotDummy _dragDummy = null;
+        [SerializeField] private LayoutGroup _slotsLayoutGroup = null;
+        [SerializeField] private Transform _slotUiPrefab = null;
 
         private GenericUiList<ItemStack, UiContainerSlot> _slotsList;//data, widget
         private ContainerReference _containerReference;

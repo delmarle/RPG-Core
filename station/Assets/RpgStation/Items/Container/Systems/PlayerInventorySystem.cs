@@ -10,6 +10,7 @@ namespace Station
 
         public StationEvent<string> OnContainerChanged = new StationEvent<string>();
         public const string PLAYER_INVENTORY_KEY = "player_inventory";
+        public const string PLAYER_EQUIPMENT_KEY = "player_equipment_";
         private ItemsDb _itemsDb;
         private ItemsSettingsDb _itemsSettingsDb;
         private PlayerInventorySave _playerItemsSave;
@@ -50,7 +51,13 @@ namespace Station
             _playerItemsSave = saveSystem.GetModule<PlayerInventorySave>();
             _containers = new Dictionary<string, ItemContainer>();
             _inventoryType = itemsSettingsModel.ContainerSettings.PlayerInventoryType;
-            
+
+            LoadPlayerInventories();
+            LoadPlayersEquipment();
+        }
+
+        private void LoadPlayerInventories()
+        {
             if (_inventoryType == PlayerInventoryType.Shared)
             {
                 var save = _playerItemsSave.Value ?? new ContainersListSave();
@@ -61,10 +68,24 @@ namespace Station
             }
             else
             {
-               //TODO add one for each player
+                //TODO add one for each player
             }
         }
-        
+
+        private void LoadPlayersEquipment()
+        {
+            var teamSystem = _station.GetSystem<TeamSystem>();
+            var save = _playerItemsSave.Value ?? new ContainersListSave();
+            foreach (var member in teamSystem.GetTeamMembers())
+            {
+                string id = PLAYER_EQUIPMENT_KEY + member.GetCharacterId();
+                var equipmentState = save.GetContainerById(id);
+                var playerEquipmentContainer = new EquipmentContainer(id, equipmentState, _itemsDb);
+                _containers.Add(id, playerEquipmentContainer);
+            }
+           
+        }
+
         private void OnTriggerSave()
         {
             var tempSave = _containers.ToDictionary(container => container.Key, container => container.Value.GetState());
@@ -72,7 +93,6 @@ namespace Station
             _playerItemsSave.Save();
         }
         #endregion
-        
 
         public ItemContainer GetContainer(string containerId)
         {

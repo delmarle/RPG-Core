@@ -26,11 +26,3 @@ namespace Station
 //equipment type use extra slot when equiped ? (2H)
 
 
-//equipment slots:
-//main hand / off hand/ finger1 / legs / body/ head
-//can receive
-    //main hand: mh weapon
-    //off hand: secondhand weapon, shields, trinkets
-
-//equipment items type
-//main hand weapon/rings/

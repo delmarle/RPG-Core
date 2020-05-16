@@ -12,9 +12,9 @@ namespace Station
         private const string HAS_ITEM = "has_item";
         private const string EMPTY = "empty";
         
-        [SerializeField] private Image _icon;
-        [SerializeField] private UiText _text;
-        [SerializeField] private BaseAnimation _animation;
+        [SerializeField] private Image _icon = null;
+        [SerializeField] private UiText _text = null;
+        [SerializeField] private BaseAnimation _animation = null;
 
         private int _slotIndex;
         private BaseItemModel GetItemModel => _itemDb.GetEntry(_item?.ItemId);

@@ -11,11 +11,10 @@ namespace Station
         private const string INVENTORIES_SHARED = "inventory_shared";
         private const string INVENTORIES_MULTIPLE = "inventory_multiple";
 
-        [SerializeField] private BaseAnimation _animation;
-        [SerializeField] private UiContainerWidget _commonInventoryWidget;
-        [SerializeField] private Transform _inventoriesRoot;
+        [SerializeField] private BaseAnimation _animation = null;
+        [SerializeField] private UiContainerWidget _commonInventoryWidget = null;
+        [SerializeField] private Transform _inventoriesRoot = null;
         
-
         private Dictionary<string, UiContainerWidget> _containerWidgets = new Dictionary<string, UiContainerWidget>();
         private TeamSystem _teamSystem;
         private PlayerInventorySystem _inventorySystem;

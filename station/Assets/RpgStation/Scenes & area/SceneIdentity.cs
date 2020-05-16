@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SceneIdentity : MonoBehaviour
 {
-    [SerializeField] private SceneType _sceneType;
+    [SerializeField] private SceneType _sceneType = SceneType.Area;
 
     private void Awake()
     {

@@ -5,7 +5,7 @@ namespace Station
     public class UiContainerPopup : UiPopup
     {
         public const string POPUP_KEY = "container_popup";
-        [SerializeField] private UiContainerWidget _containerWidget;
+        [SerializeField] private UiContainerWidget _containerWidget = null;
         private ContainerReference _containerReference;
         private BaseCharacter _user;
         

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-
 namespace Station
 {
   public class SpawnPlacer : MonoBehaviour
@@ -12,8 +11,9 @@ namespace Station
 
     private  BaseDb GetDb(Type currentType)
     {
+        BaseDb dbFound = null;
 #if UNITY_EDITOR
-      BaseDb dbFound;
+
 
       string dbPath = "Assets/Content/Databases/" + currentType.Name + @".asset";
       BaseDb found = AssetDatabase.LoadAssetAtPath<BaseDb>(dbPath);
@@ -24,9 +24,9 @@ namespace Station
 
       dbFound =  found;
       
-      return dbFound;
+  
 #endif
-        return null;
+        return dbFound;
     }
     
     public void Initialize()

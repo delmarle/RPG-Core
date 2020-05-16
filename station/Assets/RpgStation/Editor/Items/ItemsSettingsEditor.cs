@@ -1,5 +1,4 @@
-﻿using System;
-using RPG.Editor;
+﻿using RPG.Editor;
 using UnityEditor;
 using UnityEngine;
 
@@ -73,7 +72,7 @@ namespace Station
                         DrawItemsCategories();
                         break;
                     case 3:
-                        DrawEquipmentSettings();
+                        DrawEquipmentSlots();
                         break;
                     case 4:
                         DrawEquipmentTypes();
@@ -159,7 +158,7 @@ namespace Station
             }
         }
 
-        private static void DrawEquipmentSettings()
+        private static void DrawEquipmentSlots()
         {
             EditorGUILayout.BeginHorizontal();
             _selectedEquipmentSlot = EditorStatic.DrawGenericSelectionList(_equipmentSlotsDb, _selectedEquipmentSlot,
@@ -188,7 +187,7 @@ namespace Station
                 EditorGUILayout.EndHorizontal();
                EditorStatic.DrawThinLine();
 
-               EditorGUILayout.BeginHorizontal();
+               EditorGUILayout.BeginHorizontal(EditorStatic.SectionHeader, GUILayout.ExpandWidth(true), GUILayout.Height(40));
                var equipmentTypesList = _equipmentTypesDb.ListEntryNames();
              
                if (EditorStatic.SizeableButton(80, 32, "Add type", "plus"))
@@ -201,7 +200,7 @@ namespace Station
                }
                _selectedEquipmentTypes = EditorGUILayout.Popup("Matching type to add: ", _selectedEquipmentTypes, equipmentTypesList);
                EditorGUILayout.EndHorizontal();
-               EditorStatic.DrawThinLine();
+     
                foreach (var equipType in  entry.EquipmentTypeMatching)
                {
                    EditorGUILayout.BeginHorizontal("box");
