@@ -283,7 +283,6 @@ public class StateAnimationEditor : UnityEditor.Editor
                 setActiveActionData.Target = (GameObject)EditorGUILayout.ObjectField(setActiveActionData.Target, typeof(GameObject), true);
                 setActiveActionData.Active = EditorGUILayout.Toggle("Enabled", setActiveActionData.Active);
                 EditorGUILayout.BeginVertical();
-                EditorGUILayout.HelpBox("Please use this action with moderation !", MessageType.Warning);
                 EditorGUILayout.EndVertical();
                 break;
             case UiAction.SetTransform:

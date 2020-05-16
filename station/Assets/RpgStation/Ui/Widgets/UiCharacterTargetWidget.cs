@@ -44,7 +44,7 @@ namespace Station
                     _animation.PlayState(SHOW);
                 }
 
-                _portraitWidget.Setup(target);
+                _portraitWidget.Setup(target, null);
             }
             else
             {
@@ -53,7 +53,7 @@ namespace Station
                     _animation.PlayState(HIDE);
                 }
                 
-                _portraitWidget.Setup(null);
+                _portraitWidget.Setup(null, null);
             }
 
         }

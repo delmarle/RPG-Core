@@ -39,8 +39,14 @@ namespace Station
 
         private void SetList(IEnumerable<BaseCharacter> data)
         {
-            _PlayerWidgets.Generate(data, (entry, item) => { item.Setup(entry); });
+            _PlayerWidgets.Generate(data,
+                (entry, item) =>
+                {
+                    item.Setup(entry, character => { _teamSystem.RequestLeaderChange(character); });
+                });
         }
+
+
 
         private void Subscribe()
         {

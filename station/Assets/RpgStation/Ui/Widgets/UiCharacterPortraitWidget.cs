@@ -22,7 +22,7 @@ namespace Station
     private BaseCharacter _character;
     private VitalsDb _vitalsDb;
     private TeamSystem _teamSystem;
-
+    private StationAction<BaseCharacter> _buttonCallback;
     private const string STATE_ALIVE = "alive";
     private const string STATE_DEAD = "dead";
 
@@ -32,10 +32,12 @@ namespace Station
 
     #region subscription
 
-    public void Setup(BaseCharacter character)
+    public void Setup(BaseCharacter character, StationAction<BaseCharacter> buttonCallback)
     {
       _vitalSliders.Clear();
       Unsubscribe();
+
+      _buttonCallback = buttonCallback;
       foreach (var slider in _vitals)
       {
         slider.gameObject.SetActive(false);
@@ -120,6 +122,7 @@ namespace Station
     {
       if (_character == null) return;
 
+     // _buttonCallback = null;
       _character.OnCharacterInitialized -= OnCharacterInitialized;
       _character.OnVitalsUpdated -= OnVitalsUpdated;
       _character.OnDamaged -= OnReceiveDamage;
@@ -190,7 +193,7 @@ namespace Station
     {
       if (_character)
       {
-        _teamSystem.RequestLeaderChange(_character);
+        _buttonCallback?.Invoke(_character);
       }
     }
 

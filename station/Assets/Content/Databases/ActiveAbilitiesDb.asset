@@ -30,6 +30,7 @@ MonoBehaviour:
       - CastDistance: 0
         CoolDown: 0
         Casting:
+          HasData: 0
           Option: 0
           Length: 1
           AnimationId: 0
@@ -68,6 +69,7 @@ MonoBehaviour:
       - CastDistance: 12
         CoolDown: 5
         Casting:
+          HasData: 0
           Option: 0
           Length: 1
           AnimationId: 0
@@ -113,6 +115,7 @@ MonoBehaviour:
       - CastDistance: 0
         CoolDown: 0
         Casting:
+          HasData: 0
           Option: 0
           Length: 1
           AnimationId: 0
@@ -151,6 +154,7 @@ MonoBehaviour:
       - CastDistance: 0
         CoolDown: 0
         Casting:
+          HasData: 0
           Option: 1
           Length: 1
           AnimationId: 0
@@ -173,7 +177,7 @@ MonoBehaviour:
             - EffectName: 
               EffectIcon: {fileID: 21300000, guid: 3bb8f67ff13d340439a0f48c543b035a,
                 type: 3}
-              Destination:
+              destination:
                 SceneId: 93436f6d-41e9-441a-a2a3-58e5cc7b4e4b
                 SpawnId: 0
             Resurects: []
@@ -187,9 +191,10 @@ MonoBehaviour:
       ParentSkillId: 2
       UseRank: 0
       Ranks:
-      - CastDistance: 0
+      - CastDistance: 4.94
         CoolDown: 0
         Casting:
+          HasData: 1
           Option: 0
           Length: 1
           AnimationId: 0
@@ -228,6 +233,7 @@ MonoBehaviour:
       - CastDistance: 12
         CoolDown: 5
         Casting:
+          HasData: 0
           Option: 0
           Length: 1
           AnimationId: 0
