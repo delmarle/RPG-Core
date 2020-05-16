@@ -25,7 +25,7 @@ namespace Station
         }
     
         //add remove extra slots
-        public  virtual bool ItemAllowed(BaseItemModel itemModel)
+        public  virtual bool ItemAllowed(int slot, BaseItemModel itemModel)
         {
             
             return true;
@@ -95,8 +95,8 @@ namespace Station
                 else
                 {
                     //Check: Can item be swapped
-                    if (to.ItemAllowed(resolvedItemToMove)
-                        && ItemAllowed(resolvedDestinationItem))
+                    if (to.ItemAllowed(toId, resolvedItemToMove)
+                        && ItemAllowed(fromId, resolvedDestinationItem))
                     {
                         //can slot contain this item 
                         SwapSlots(fromId, to, toId);
@@ -111,7 +111,7 @@ namespace Station
             else
             {
                 //Check: Can item be moved
-                if (to.ItemAllowed(resolvedItemToMove))
+                if (to.ItemAllowed(toId, resolvedItemToMove))
                 {
                     //TODO
                     //can slot contain this item 
