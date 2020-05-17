@@ -1,19 +1,18 @@
-﻿using System.Collections;
+﻿
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace Station
 {
-   public class UiPlayersBarSelectionWidget : MonoBehaviour
+   public class UiCharacterSelectionListWidget : MonoBehaviour
 {
      #region [[ FIELDS ]]
 
-        [SerializeField] private UiCharacterHotBar _memberPrefab = null;
+        [SerializeField] private UiCharacterPortraitWidget _memberPrefab = null;
         [SerializeField] private Transform _root = null;
-
-        private List<UiCharacterHotBar> _member = new List<UiCharacterHotBar>();
-        private Dictionary<BaseCharacter, UiCharacterHotBar> _map = new Dictionary<BaseCharacter, UiCharacterHotBar>();
+        
+        private Dictionary<BaseCharacter, UiCharacterPortraitWidget> _map = new Dictionary<BaseCharacter, UiCharacterPortraitWidget>();
         private TeamSystem _teamsystem;
         #endregion
 
@@ -29,14 +28,12 @@ namespace Station
             
             GameGlobalEvents.OnCharacterAdded.AddListener(OnMemberAdded);
             GameGlobalEvents.OnCharacterRemoved.AddListener(OnMemberRemoved);
-            GameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderChanged);
         }
 
         private void OnDestroy()
         {
             GameGlobalEvents.OnCharacterAdded.RemoveListener(OnMemberAdded);
             GameGlobalEvents.OnCharacterRemoved.RemoveListener(OnMemberRemoved);
-            GameGlobalEvents.OnLeaderChanged.RemoveListener(OnLeaderChanged);
         }
 
         #region DELEGATES
@@ -44,16 +41,13 @@ namespace Station
         private void OnMemberAdded(BaseCharacter member)
         {
             var instance = Instantiate(_memberPrefab, _root);
-            _member.Add(instance);
-            instance.OnCreate(member);
+            instance.Setup(member, null);
             _map.Add(member, instance);
         }
 
         private void OnMemberRemoved(BaseCharacter member)
         {
             var uiObject = _map[member];
-            uiObject.OnCancel();
-            _member.Remove(uiObject);
             _map.Remove(member);
             Destroy(uiObject.gameObject);
         }
@@ -64,11 +58,11 @@ namespace Station
             {
                 if (entry.Key == leader)
                 {
-                    entry.Value.Select();
+                    entry.Value.SetSelected();
                 }
                 else
                 {
-                    entry.Value.Unselect();
+                    entry.Value.SetNotSelected();
                 }
             }
         }

@@ -1176,17 +1176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cea1f122be2f4ca58fdae85d4bdab5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SimpleAnimationModels:
-  - State: alive
-    AnimationClipModels:
-    - Clip: {fileID: 7400000, guid: 78f5034ce476a45358aa796324097f9a, type: 2}
-      Weight: 1
-      LayerIndex: 0
-  - State: dead
-    AnimationClipModels:
-    - Clip: {fileID: 7400000, guid: 6a68448bb148547199974cbc43fa2b31, type: 2}
-      Weight: 1
-      LayerIndex: 0
+  AnimationModels: []
   UseDefaultState: 0
   DefaultState: 
 --- !u!111 &2800660740833538975

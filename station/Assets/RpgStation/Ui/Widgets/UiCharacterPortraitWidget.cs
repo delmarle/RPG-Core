@@ -14,14 +14,13 @@ namespace Station
     [SerializeField] private TextMeshProUGUI characterClass = null;
     [SerializeField] private UiVitalBarWidget[] _vitals = null;
     [SerializeField] private UiCharacterStatusWidget _statusWidget = null;
-    [SerializeField] private ClipsAnimation _animation = null;
+    [SerializeField] private BaseAnimation _animation = null;
     [SerializeField] private UnityEngine.UI.Button _button = null;
     [SerializeField] private Image _icon = null;
 
     private Dictionary<string, UiVitalBarWidget> _vitalSliders = new Dictionary<string, UiVitalBarWidget>();
     private BaseCharacter _character;
     private VitalsDb _vitalsDb;
-    private TeamSystem _teamSystem;
     private StationAction<BaseCharacter> _buttonCallback;
     private const string STATE_ALIVE = "alive";
     private const string STATE_DEAD = "dead";
@@ -38,10 +37,15 @@ namespace Station
       Unsubscribe();
 
       _buttonCallback = buttonCallback;
-      foreach (var slider in _vitals)
+      if (_vitals?.Length != 0)
       {
-        slider.gameObject.SetActive(false);
+        foreach (var slider in _vitals)
+        {
+          slider.gameObject.SetActive(false);
+        }
       }
+
+
 
       if (character == null)
       {
@@ -60,7 +64,6 @@ namespace Station
       {
         var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
         _vitalsDb = dbSystem.GetDb<VitalsDb>();
-        _teamSystem = RpgStation.GetSystemStatic<TeamSystem>();
         _character = character;
         if (_statusWidget != null)
         {
@@ -79,20 +82,30 @@ namespace Station
 
 
         int sliderIndex = 0;
-        if (character.Stats != null && character.Stats.Vitals != null)
+        if (_vitals.Length != 0)
         {
-          foreach (var vital in character.Stats.Vitals)
+          if (character.Stats != null && character.Stats.Vitals != null)
           {
-            var instance = _vitals[sliderIndex];
-            _vitalSliders.Add(vital.Key, instance);
-            var dataEnergy = _vitalsDb.GetEntry(vital.Key);
-            instance.Setup(dataEnergy);
-            instance.gameObject.SetActive(true);
-            sliderIndex++;
+            foreach (var vital in character.Stats.Vitals)
+            {
+              var instance = _vitals[sliderIndex];
+              _vitalSliders.Add(vital.Key, instance);
+              var dataEnergy = _vitalsDb.GetEntry(vital.Key);
+              instance.Setup(dataEnergy);
+              instance.gameObject.SetActive(true);
+              sliderIndex++;
+            }
           }
         }
 
-        //_icon.sprite = character.ClassStaticData.Icon;
+     
+
+        if (_icon != null)
+        {
+          _icon.sprite = (Sprite)character.GetMeta(StationConst.ICON_ID);
+        }
+
+      
         OnVitalsUpdated(character);
         SetStates();
       }
@@ -118,11 +131,11 @@ namespace Station
 
     }
 
-    public void Unsubscribe()
+    private void Unsubscribe()
     {
       if (_character == null) return;
 
-     // _buttonCallback = null;
+      _buttonCallback = null;
       _character.OnCharacterInitialized -= OnCharacterInitialized;
       _character.OnVitalsUpdated -= OnVitalsUpdated;
       _character.OnDamaged -= OnReceiveDamage;

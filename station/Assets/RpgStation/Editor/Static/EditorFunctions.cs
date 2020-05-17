@@ -352,6 +352,7 @@ namespace RPG.Editor
     
     public static void DrawSectionTitle(int height, string title)
     {
+      LoadStyles();
       GUILayout.Label(string.Format("<b>{0}</b>",title),ReviewBanner,GUILayout.ExpandWidth(true), GUILayout.Height(height));
     }
     
