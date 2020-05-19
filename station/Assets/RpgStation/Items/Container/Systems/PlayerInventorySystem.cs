@@ -14,8 +14,9 @@ namespace Station
         private ItemsDb _itemsDb;
         private ItemsSettingsDb _itemsSettingsDb;
         private PlayerInventorySave _playerItemsSave;
+        private PlayersSave _playersSave;
        
-        private Dictionary<string, ItemContainer> _containers;
+        private Dictionary<string, BaseItemContainer> _containers;
         private PlayerInventoryType _inventoryType;
         #endregion
         #region initialization
@@ -49,7 +50,8 @@ namespace Station
             var itemsSettingsModel = _itemsSettingsDb.Get();
             var saveSystem = _station.GetSystem<SavingSystem>();
             _playerItemsSave = saveSystem.GetModule<PlayerInventorySave>();
-            _containers = new Dictionary<string, ItemContainer>();
+            _playersSave = saveSystem.GetModule<PlayersSave>();
+            _containers = new Dictionary<string, BaseItemContainer>();
             _inventoryType = itemsSettingsModel.ContainerSettings.PlayerInventoryType;
 
             LoadPlayerInventories();
@@ -76,14 +78,17 @@ namespace Station
         {
             var teamSystem = _station.GetSystem<TeamSystem>();
             var save = _playerItemsSave.Value ?? new ContainersListSave();
-            foreach (var member in teamSystem.GetTeamMembers())
+
+
+            foreach (var playerPair in _playersSave.Value)
             {
-                string id = PLAYER_EQUIPMENT_KEY + member.GetCharacterId();
+
+                string id = PLAYER_EQUIPMENT_KEY + playerPair.Key;
                 var equipmentState = save.GetContainerById(id);
                 var playerEquipmentContainer = new EquipmentContainer(id, equipmentState, _itemsDb);
                 _containers.Add(id, playerEquipmentContainer);
             }
-           
+            
         }
 
         private void OnTriggerSave()
@@ -94,7 +99,7 @@ namespace Station
         }
         #endregion
 
-        public ItemContainer GetContainer(string containerId)
+        public BaseItemContainer GetContainer(string containerId)
         {
             if (_inventoryType == PlayerInventoryType.Shared)
             {

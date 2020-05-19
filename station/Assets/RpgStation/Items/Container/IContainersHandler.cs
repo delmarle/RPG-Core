@@ -4,7 +4,7 @@ using Station;
 
 public interface IContainersHandler
 {
-    ItemContainer GetContainer(string containerId);
+    BaseItemContainer GetContainer(string containerId);
 }
 
 public class ContainerReference
@@ -18,7 +18,7 @@ public class ContainerReference
         _handler = handler;
     }
 
-    public ItemContainer GetContainer()
+    public BaseItemContainer GetContainer()
     {
         return _handler.GetContainer(_containerId);
     }

@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Station;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 namespace Station
 {
     
-    public class EquipmentContainer : ItemContainer
+    public class EquipmentContainer : BaseItemContainer
     {
         #region FIELDS
         Dictionary<int, EquipmentSlotModel> _slotMaping = new Dictionary<int, EquipmentSlotModel>();
@@ -15,8 +12,21 @@ namespace Station
         
         #endregion
         //mapping layer for each slot
-        public EquipmentContainer(string id, ContainerState state, ItemsDb itemsDb) : base(id, state, itemsDb)
+        public EquipmentContainer(string id, ContainerState state, ItemsDb itemsDb)
         {
+            _id = id;
+            if (state == null)
+            {
+                _container = new ContainerState();
+                _container.Slots = new Dictionary<int, ItemStack>();
+            }
+            else
+            {
+                _container = state;
+            }
+            
+            itemDb = itemsDb;
+            
             var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
             _equipmentSlotsDb = dbSystem.GetDb<EquipmentSlotsDb>();
             _equipmentTypesDb = dbSystem.GetDb<EquipmentTypesDb>();
@@ -25,9 +35,14 @@ namespace Station
             for (int i = 0; i < _equipmentSlotsDb.Db.Count; i++)
             {
                 _slotMaping.Add(i, _equipmentSlotsDb.GetEntry(i));
-                GetState().Slots.Add(i, new ItemStack());
+                //new slots added
+                if (GetState().Slots.ContainsKey(i) == false)
+                {
+                    GetState().Slots.Add(i, new ItemStack());
+                }
             }
         }
+
 
         public override bool ItemAllowed(int slot, BaseItemModel itemModel)
         {
@@ -46,7 +61,12 @@ namespace Station
       
 
             //maybe
-            return base.ItemAllowed(slot, itemModel);
+            return true;
+        }
+
+        public override bool CanAddItem(string itemName)
+        {
+            return true;
         }
 
         int PreferedEquipmentSlot(object item)

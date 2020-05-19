@@ -13,7 +13,7 @@ namespace Station
         private GenericUiList<ItemStack, UiContainerSlot> _slotsList;//data, widget
         private ContainerReference _containerReference;
         
-        private ItemContainer _container;
+        private BaseItemContainer _container;
         private ItemsDb _itemDb;
 
         private void Awake()

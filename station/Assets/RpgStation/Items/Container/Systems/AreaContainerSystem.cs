@@ -6,8 +6,8 @@ namespace Station
     
     public class AreaContainerSystem : BaseSystem, IContainersHandler
     {
-        private Dictionary<string, ItemContainer> _tempContainer;
-        private Dictionary<string, ItemContainer> _savedContainer;
+        private Dictionary<string, BaseItemContainer> _tempContainer;
+        private Dictionary<string, BaseItemContainer> _savedContainer;
         private AreaContainersSave _areaContainersSave;
         private SceneSystem _sceneSystem;
         #region OVERRIDES
@@ -39,7 +39,7 @@ namespace Station
 
         }
 
-        public ItemContainer GetContainer(string containerId)
+        public BaseItemContainer GetContainer(string containerId)
         {
             if (_savedContainer.ContainsKey(containerId))
             {
@@ -76,7 +76,7 @@ namespace Station
             var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
             var itemDb = dbSystem.GetDb<ItemsDb>();
             _areaContainersSave.Load(_sceneSystem.GetCurrentDestination().SceneName);
-            _savedContainer = new Dictionary<string, ItemContainer>();
+            _savedContainer = new Dictionary<string, BaseItemContainer>();
             if (_areaContainersSave.Value == null)
             {
                 _areaContainersSave.Value =  new ContainersListSave();
