@@ -4601,6 +4601,7 @@ MonoBehaviour:
   _memberPrefab: {fileID: 3890334242330216417, guid: 63376a876296442c1b68f69a512d5acf,
     type: 3}
   _root: {fileID: 4918705677661631578}
+  _tabSwitcher: {fileID: 2873681195645069151}
 --- !u!1 &5147821672826268405
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ namespace Station
 
         [SerializeField] private UiCharacterPortraitWidget _memberPrefab = null;
         [SerializeField] private Transform _root = null;
+        [SerializeField] private CharacterTabSwitcher _tabSwitcher;
         
         private Dictionary<BaseCharacter, UiCharacterPortraitWidget> _map = new Dictionary<BaseCharacter, UiCharacterPortraitWidget>();
         private TeamSystem _teamsystem;
@@ -24,7 +25,7 @@ namespace Station
                 OnMemberAdded(member);
             }
 
-            OnLeaderChanged(_teamsystem.GetTeamMembers().FirstOrDefault());
+            OnCharacterSelected(_teamsystem.GetTeamMembers().FirstOrDefault());
             
             GameGlobalEvents.OnCharacterAdded.AddListener(OnMemberAdded);
             GameGlobalEvents.OnCharacterRemoved.AddListener(OnMemberRemoved);
@@ -41,7 +42,7 @@ namespace Station
         private void OnMemberAdded(BaseCharacter member)
         {
             var instance = Instantiate(_memberPrefab, _root);
-            instance.Setup(member, null);
+            instance.Setup(member, OnCharacterSelected);
             _map.Add(member, instance);
         }
 
@@ -52,11 +53,11 @@ namespace Station
             Destroy(uiObject.gameObject);
         }
 
-        private void OnLeaderChanged(BaseCharacter leader)
+        private void OnCharacterSelected(BaseCharacter focusCharacter)
         {
             foreach (var entry in _map)
             {
-                if (entry.Key == leader)
+                if (entry.Key == focusCharacter)
                 {
                     entry.Value.SetSelected();
                 }
@@ -65,8 +66,19 @@ namespace Station
                     entry.Value.SetNotSelected();
                 }
             }
+
+            if (_tabSwitcher != null)
+            {
+                _tabSwitcher.SwitchCharacter(focusCharacter);
+            }
         }
         #endregion
 }
+
+   public abstract class CharacterTabSwitcher: MonoBehaviour
+   { 
+       public abstract void SwitchCharacter(BaseCharacter character);
+   }
 }
+
 

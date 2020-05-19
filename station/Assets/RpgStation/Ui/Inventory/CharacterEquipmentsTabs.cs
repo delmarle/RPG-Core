@@ -4,10 +4,13 @@ using UnityEngine;
 
 namespace Station
 {
-    public class CharacterEquipmentsTabs : MonoBehaviour
+    public class CharacterEquipmentsTabs : CharacterTabSwitcher
     {
-
-
+        
+        public override void SwitchCharacter(BaseCharacter character)
+        {
+            
+        }
     }
 
 }
