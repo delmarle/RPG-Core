@@ -1,5 +1,5 @@
 # RpgStationUnity
-![alt text](https://i.gyazo.com/58a1e8de923d7346e66d01e3ec17767d.jpg)
+![alt text](https://i.gyazo.com/21052d9f3a8924f7860a42f41d5868a2.jpg)
 
 # What is in progress: 
 - Items with different types and functionalities.
