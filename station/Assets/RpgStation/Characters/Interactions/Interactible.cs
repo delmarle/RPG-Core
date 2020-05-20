@@ -1,12 +1,16 @@
 ﻿
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Station
 {
   public class Interactible : MonoBehaviour
   {
     #region [[FIELDS]]
+
+    public UnityEvent OnStartInteracting;
+    public UnityEvent OnStopInteracting;
     [SerializeField] protected GameObject _hint = null;
     [HideInInspector] public InteractionConfig Config;
     protected DbSystem DbSystem;
@@ -116,6 +120,7 @@ namespace Station
 
     public virtual void Interact(BaseCharacter user)
     {
+      OnStartInteracting.Invoke();
       _currentUser = user;
       switch (Config.CancelInteractionMode)
       {
@@ -177,6 +182,7 @@ namespace Station
       _currentUser.Action.OnMove -= OnCharacterMove; 
       UnregisterCachedPopup();
       _currentUser = null;
+      OnStopInteracting.Invoke();
     }
 
     #endregion

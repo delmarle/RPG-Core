@@ -103,6 +103,11 @@ namespace Station
             return result;
         }
 
+        public void PlayState(string stateName)
+        {
+            PlayState(stateName, false,false);
+        }
+
         public override void PlayState(string stateName, bool checkIsActiveInHierarchy = false, bool forcePlay = false)
         {
             try

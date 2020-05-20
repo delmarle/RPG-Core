@@ -15,17 +15,8 @@ namespace Station
         public EquipmentContainer(string id, ContainerState state, ItemsDb itemsDb)
         {
             _id = id;
-            if (state == null)
-            {
-                _container = new ContainerState();
-                _container.Slots = new Dictionary<int, ItemStack>();
-            }
-            else
-            {
-                _container = state;
-            }
-            
             itemDb = itemsDb;
+            _container = state ?? new ContainerState {Slots = new Dictionary<int, ItemStack>()};
             
             var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
             _equipmentSlotsDb = dbSystem.GetDb<EquipmentSlotsDb>();

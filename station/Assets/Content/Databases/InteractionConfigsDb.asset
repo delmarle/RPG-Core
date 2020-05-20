@@ -42,15 +42,15 @@ MonoBehaviour:
         StartSound: {fileID: 0}
       CancelInteractionMode: 0
       CancelInteractionDistance: 3
-    - Layer: 0
+    - Layer: 8
       InteractibleType:
         _classRef: Station.HarvestNode, Assembly-CSharp
-      ShowHintMode: 0
+      ShowHintMode: 3
       HideHintOptions:
         UseDelay: 0
         Delay: 5
-        UseDistance: 0
-        Distance: 10
+        UseDistance: 1
+        Distance: 15
         UseCameraAngle: 0
         CameraAngle: 90
       TryInteractMode: 1
