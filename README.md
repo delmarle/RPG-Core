@@ -54,64 +54,56 @@ its a framework that want to simplify creation of rpg games but still provide fl
 How to:
 How to create my Own mechanics:
 
+Simply override CharacterBuilder to create you specific builder for players, npcs, pets. Then assign it to you any of your mechanics:
+![alt text](https://i.gyazo.com/7221583c6d778216523c5c28bd0b4125.png)
+
 ``` csharp
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
 namespace Station
 {
     [CreateAssetMenu]
-    public class DefaultMechanics : StationMechanics
+    public class PlayerCharacterBuilder : CharacterBuilder
     {
-        private DefaultFactionHandler _factionHandler;
-     
+        
 
-        public override AsyncOperationHandle<GameObject>? OnCreateCharacter(PlayerCharacterType typeHandler, object[] data, Action<GameObject> onPlayerInstanced, string PrefabId)
+        public override Type GetMatchingType()
         {
-            _factionHandler = new DefaultFactionHandler();
-            string raceId = (string) data[0];
-            string secondId = (string) data[1];
-            string genderId = (string) data[2];
-            
-            var dbSystem = _station.GetSystem<DbSystem>();
-            var raceDb = dbSystem.GetDb<RaceDb>();
-   
-            if (typeHandler.GetType() == typeof(PlayerCharacterType))
-            {
-                if (data.Length != 3)
-                {
-                    Debug.Log("need update");
-                }
-
-                if (string.IsNullOrEmpty(PrefabId))
-                {
-                    Debug.Log("MISSING CHARACTER address");
-               
-                }
-                else
-                {
-                    var op = Addressables.InstantiateAsync(PrefabId);
-                    return op;
-                }
-            }
-
-            return null;
+            return typeof(PlayerCharacterType);
         }
 
-        public override void OnBuildPlayer(BaseCharacter character, PlayersData save, PlayerClassModel classData)
+        public override void Build(BaseCharacter character, BaseCharacterData baseData, object[] data)
         {
-            var dbSystem = _station.GetSystem<DbSystem>();
+           var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
             var classDb = dbSystem.GetDb<PlayerClassDb>();
             var ActiveAbilityDb = dbSystem.GetDb<ActiveAbilitiesDb>();
             var PassiveAbilityDb = dbSystem.GetDb<PassiveAbilitiesDb>();
+            PlayerClassModel classData = (PlayerClassModel)data[0];
+            PlayersData save = (PlayersData)data[1];
             var model = classDb.GetEntry(save.ClassId);
+         
             if (model.StatsCalculator)
             {
-                var calculatorInstance = Instantiate(model.StatsCalculator) as PlayerCalculations;
+                var calculatorInstance = Instantiate(model.StatsCalculator, character.transform) as PlayerCalculations;
+                if (calculatorInstance == null)
+                {
+                    Debug.LogError("missing calculator");
+                    return;
+                }
+
                 calculatorInstance.PreSetup(classData);
-                            
-                character.Init(save.RaceId, save.FactionId, save.GenderId, calculatorInstance, save.Name);
+                
+                character.Init(baseData.CharacterId,save.RaceId, save.FactionId, save.GenderId, calculatorInstance, save.Name);
                 character.SetupAction(model.Attack);     
-                character.AddMeta("classId", save.ClassId);
+                character.AddMeta(StationConst.CLASS_ID, save.ClassId);
+                character.AddMeta(StationConst.CHARACTER_ID, data[2]);
+                character.AddMeta(StationConst.ICON_ID, model.Icon);
                 character.gameObject.name = "[player] "+save.Name;
+                
                 character.SetupStats(model.HealthVital,null,model.EnergyVitals.ToArray());
+                character.Stats.SetVitalsValue(save.VitalStatus);
                 character.GetInputHandler.InitializePlayerInput(PlayerInput.Instance);
                 
                 #region ABILITIES
@@ -159,63 +151,8 @@ namespace Station
             }
 
         }
-
-        public override void OnBuildNpc(BaseCharacter character, NpcModel model, string npcId)
-        {
-            if (model.StatsCalculator == null)
-            {
-                Debug.LogError("MISSING CHARACTER CALCULATOR");
-                return;
-            }
-
-            var calculatorInstance = Instantiate(model.StatsCalculator) as NpcCalculation;
-            if (calculatorInstance == null)
-            {
-                Debug.LogError("MISSING CHARACTER CALCULATOR INSTANCE");
-                return;
-            }
-
-            calculatorInstance.PreSetup(model);
-                            
-            character.Init(model.RaceId, model.FactionId, "Male", calculatorInstance, model.Name);
-            character.SetupAction(model.Attack);     
-            character.AddMeta("npc_id", npcId);
-            character.gameObject.name = "[npc] "+model.Name;
-            character.SetupStats(model.HealthVital,null,model.EnergyVitals.ToArray());
-               
-            #region ABILITIES
-            //load from save
-            List<RuntimeAbility> tempList = new List<RuntimeAbility>();
-            foreach (var ab in model.OwnedAbilities)
-            {
-                var ability = new RuntimeAbility();
-                ability.Initialize(ab,0 ,0, character, "");
-                tempList.Add(ability);
-            }
-            character.Action.SetAbilities(tempList, character);
-               
-            //skills
-                
-                
-            #endregion
-        }
-
-        public override void OnReceiveEvent(string eventName, object[] localParams)
-        {
-            
-        }
-
-        public override IFactionHandler FactionHandler()
-        {
-            return _factionHandler;
-        }
-        
-        public override string Description()
-        {
-            return "this is the default mechanics used as demo";
-
-        }
     }
+
 }
 
 ```
