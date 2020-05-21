@@ -1,11 +1,15 @@
 ﻿
+using TMPro;
+using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Station
 {
   public class Portal : Interactible
   {
-    [FormerlySerializedAs("scene")] [FormerlySerializedAs("Destination")] [Destination] public DestinationModel destination;
+    [Destination] public DestinationModel destination;
+  
     private SceneSystem _sceneSystem;
     private ScenesDb _sceneDb;
     
@@ -20,6 +24,12 @@ namespace Station
       }
 
       _sceneDb = dbSystem.GetDb<ScenesDb>();
+      var sceneData = _sceneDb.GetEntry(destination.SceneId);
+      var spawnsData = sceneData.SpawnPoints[destination.SpawnId];
+ 
+      SetUiName(spawnsData.VisualName.GetValue());
+      SetUiDescription( spawnsData.Description.GetValue());
+      SetUiIcon( spawnsData.Icon);
       name += Config.ShowHintMode.ToString();
     }
 

@@ -36,6 +36,7 @@ namespace Station
             var dbSystems = RpgStation.GetSystemStatic<DbSystem>();
             _itemDb = dbSystems.GetDb<ItemsDb>();
             _itemsSettingsDb = dbSystems.GetDb<ItemsSettingsDb>();
+            SetUiName("Container");
         }
 
         private void InitializeWithDefaultItems(string id, List<ItemStack> items, bool saved)

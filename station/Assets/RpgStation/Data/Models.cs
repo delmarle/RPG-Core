@@ -618,7 +618,7 @@ public enum StatusEffectType
       List<string> names = new List<string>();
       foreach (var spawn in SpawnPoints)
       {
-        names.Add(spawn.VisualName);
+        names.Add(spawn.VisualName.GetValue());
       }
       return names.ToArray();
     }
@@ -627,15 +627,15 @@ public enum StatusEffectType
   [Serializable]
   public class SpawnPoint
   {
-    public string VisualName;
-    public string Description;
+    public LocalizedText VisualName;
+    public LocalizedText Description = new LocalizedText("description");
     public Sprite Icon;
     public Vector3[] Positions;
     public Vector3 Direction;
 
-    public SpawnPoint(string spawnName)
+    public SpawnPoint(string name)
     {
-      VisualName = spawnName;
+      VisualName = new LocalizedText(name);
     }
   }
   #endregion

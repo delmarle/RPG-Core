@@ -1,12 +1,16 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Station
 {
   public class Interactible : MonoBehaviour
   {
     #region [[FIELDS]]
-
+    [SerializeField] private TextMeshProUGUI _interactionName;
+    [SerializeField] private TextMeshProUGUI _description;
+    [SerializeField] private Image _icon;
     public UnityEvent OnStartInteracting;
     public UnityEvent OnStopInteracting;
     [SerializeField] protected BaseAnimation _hint = null;
@@ -253,6 +257,34 @@ namespace Station
       }
     }
     #endregion
+
+    #endregion
+    
+    #region UI
+
+    protected void SetUiName(string interactionName)
+    {
+      if (_interactionName)
+      {
+        _interactionName.text = interactionName;
+      }
+    }
+    
+    protected void SetUiDescription(string interactionDesc)
+    {
+      if (_description)
+      {
+        _description.text = interactionDesc;
+      }
+    }
+    
+    protected void SetUiIcon(Sprite icon)
+    {
+      if (_icon)
+      {
+        _icon.sprite = icon;
+      }
+    }
 
     #endregion
   }

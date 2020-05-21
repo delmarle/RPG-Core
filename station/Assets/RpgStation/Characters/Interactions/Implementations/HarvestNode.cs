@@ -7,9 +7,7 @@ namespace Station
   public class HarvestNode : Interactible
   {
     public string NodeId;
-    [SerializeField] private TextMeshProUGUI _hintText;
 
-    [SerializeField] private Image _icon;
     //Cache
     private ResourcesNodeDb _nodeDb;
 
@@ -18,9 +16,9 @@ namespace Station
     {
       var _nodeDb = DbSystem.GetDb<ResourcesNodeDb>();
       var model = _nodeDb.GetEntry(NodeId);
-      _hintText.text = model.Name.GetValue();
-      _icon.sprite = model.Icon;
-      name += Config.ShowHintMode.ToString();
+      SetUiName(model.Name.GetValue());
+      SetUiIcon( model.Icon);
+name += $" | {model.Name.GetValue()}";
     }
 
     public override void Interact(BaseCharacter user)

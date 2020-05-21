@@ -103,7 +103,7 @@ namespace Station
           List<string> spawnNames = new List<string>();
           foreach (var spawn in currentScene.SpawnPoints)
           {
-            spawnNames.Add(spawn.VisualName);
+            spawnNames.Add(spawn.VisualName.GetValue());
           }
           _selectedSpawn = EditorGUILayout.Popup(_selectedSpawn, spawnNames.ToArray());
         }
@@ -189,11 +189,13 @@ namespace Station
    
     EditorGUILayout.HelpBox("Scene Opened: "+scene.path,MessageType.Info);
     EditorStatic.DrawThinLine(10); 
-
-    spawnPoint.VisualName = EditorGUILayout.TextField("Visual name ", spawnPoint.VisualName);
-    spawnPoint.Description = EditorGUILayout.TextArea(spawnPoint.Description,GUILayout.Height(64));
-   
-   // spawnPoint.Icon = (Sprite)EditorGUILayout.ObjectField("Icon ", spawnPoint.Icon, typeof(Sprite),false);
+EditorStatic.DrawLocalization(spawnPoint.VisualName, "Visual name");
+EditorStatic.DrawLocalization(spawnPoint.Description, "Description");
+EditorStatic.DrawThinLine();
+spawnPoint.Icon =
+  (Sprite)EditorGUILayout.ObjectField(spawnPoint.Icon,typeof(Sprite), false, GUILayout.Width(EditorStatic.EDITOR_BUTTON_SIZE *2),
+    GUILayout.Height(EditorStatic.EDITOR_BUTTON_SIZE*2));
+EditorStatic.DrawThinLine();
     if (IsCorrectScene(scenePath))
     {
       GUILayout.Space(5);

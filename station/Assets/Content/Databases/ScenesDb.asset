@@ -23,15 +23,19 @@ MonoBehaviour:
       Icon: {fileID: 21300000, guid: 27f889dcba1d16e4382107e471321a38, type: 3}
       VisualName: zone_01
       SpawnPoints:
-      - VisualName: Entrance
-        Description: near the gate
-        Icon: {fileID: 0}
+      - VisualName:
+          Key: entrance
+        Description:
+          Key: to an other dimension
+        Icon: {fileID: 21300000, guid: 308cb200e365c4e44b279ce728047685, type: 3}
         Positions:
         - {x: -26.62, y: 22.34, z: -56.6}
         - {x: -26.62, y: 22.34, z: -55.6}
         Direction: {x: -0, y: 0, z: 0}
-      - VisualName: spawn_1
-        Description: 
+      - VisualName:
+          Key: 
+        Description:
+          Key: 
         Icon: {fileID: 0}
         Positions: []
         Direction: {x: 0, y: 0, z: 0}
@@ -41,9 +45,11 @@ MonoBehaviour:
       Icon: {fileID: 21300000, guid: b7414fdd0411d364ab74c963a05b62d3, type: 3}
       VisualName: zone_02
       SpawnPoints:
-      - VisualName: arrival from 01
-        Description: when you arrive from zone_01
-        Icon: {fileID: 0}
+      - VisualName:
+          Key: To the crash site
+        Description:
+          Key: In the west
+        Icon: {fileID: 21300000, guid: dd439e5420d6e41e3a7f3843fb0b8c35, type: 3}
         Positions:
         - {x: 7.7414217, y: 2.1925, z: -6.259375}
         - {x: 7.7414217, y: 2.1925, z: -5.259375}
