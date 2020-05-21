@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 925e1284b7c9a44fda3821f2c46a014b, type: 3}
+  m_Name: ResourcesNodeDb
+  m_EditorClassIdentifier: 
+  _db:
+    m_keys:
+    - 0e640d8d-2eb8-4796-a2c9-e5818b4d5338
+    - 62710e80-e9e4-4f29-9892-ecae74649744
+    - 0b3b28f0-c9eb-4bd2-9486-75fcd1c92cca
+    m_values:
+    - Name:
+        Key: resource node
+      Description:
+        Key: contain some resources
+      Icon: {fileID: 21300000, guid: 6e9b5f195d18246728b21755a2cb6810, type: 3}
+      Loots:
+      - ItemId: 1f2ed9d5-57bf-46ec-a6cc-9adfaca3f45c
+        QuantityMin: 1
+        QuantityMax: 1
+        Chance: 100
+      - ItemId: 1f2ed9d5-57bf-46ec-a6cc-9adfaca3f45c
+        QuantityMin: 1
+        QuantityMax: 1
+        Chance: 100
+      CycleLength: 1
+      StartSound: {fileID: 0}
+      CollectSound: {fileID: 0}
+      StopSound: {fileID: 0}
+    - Name:
+        Key: resource node
+      Description:
+        Key: contain some resources
+      Icon: {fileID: 21300000, guid: 8a7aa68b354f84390a5a0e9c4df0f237, type: 3}
+      Loots: []
+      CycleLength: 1
+      StartSound: {fileID: 0}
+      CollectSound: {fileID: 0}
+      StopSound: {fileID: 0}
+    - Name:
+        Key: resource node
+      Description:
+        Key: contain some resources
+      Icon: {fileID: 21300000, guid: 8a7aa68b354f84390a5a0e9c4df0f237, type: 3}
+      Loots:
+      - ItemId: 1f2ed9d5-57bf-46ec-a6cc-9adfaca3f45c
+        QuantityMin: 1
+        QuantityMax: 1
+        Chance: 100
+      - ItemId: 1f2ed9d5-57bf-46ec-a6cc-9adfaca3f45c
+        QuantityMin: 1
+        QuantityMax: 1
+        Chance: 100
+      - ItemId: 1f2ed9d5-57bf-46ec-a6cc-9adfaca3f45c
+        QuantityMin: 1
+        QuantityMax: 1
+        Chance: 100
+      - ItemId: 1f2ed9d5-57bf-46ec-a6cc-9adfaca3f45c
+        QuantityMin: 1
+        QuantityMax: 1
+        Chance: 100
+      - ItemId: 1f2ed9d5-57bf-46ec-a6cc-9adfaca3f45c
+        QuantityMin: 1
+        QuantityMax: 1
+        Chance: 100
+      CycleLength: 1
+      StartSound: {fileID: 0}
+      CollectSound: {fileID: 0}
+      StopSound: {fileID: 0}

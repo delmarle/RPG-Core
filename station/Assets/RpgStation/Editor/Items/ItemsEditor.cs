@@ -55,10 +55,10 @@ namespace Station
         
         private static void DrawItemView()
         {
-            var raceCount = _itemsDb.Count();
+            var itemCount = _itemsDb.Count();
             if (_selectedItemEntry == -1) return;
-            if (raceCount == 0) return;
-            if (raceCount < _selectedItemEntry+1) _selectedItemEntry = 0;
+            if (itemCount == 0) return;
+            if (itemCount < _selectedItemEntry+1) _selectedItemEntry = 0;
       
             var item = _itemsDb.GetEntry(_selectedItemEntry);
             GUILayout.BeginHorizontal("box");

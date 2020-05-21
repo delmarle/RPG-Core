@@ -81,8 +81,8 @@ MonoBehaviour:
     m_Address: PlayerClassDb
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 11400000, guid: 79198aef42dbf4af7acbb2f62931c2ee, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 79198aef42dbf4af7acbb2f62931c2ee, type: 2}
   - m_GUID: 9162eed3384b9484a86bb68971484aa4
     m_Address: ItemsDb
     m_ReadOnly: 0
@@ -113,12 +113,18 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 11400000, guid: a981a15e0cf6a4ec5849cdfe9459da09, type: 2}
     m_TargetAsset: {fileID: 11400000, guid: a981a15e0cf6a4ec5849cdfe9459da09, type: 2}
+  - m_GUID: b4e8659ddabe7419fac91f183b1fd745
+    m_Address: ResourcesNodeDb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 11400000, guid: b4e8659ddabe7419fac91f183b1fd745, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: b4e8659ddabe7419fac91f183b1fd745, type: 2}
   - m_GUID: c856730079aee4178bb2968f34b53e94
     m_Address: EquipmentSlotsDb
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 11400000, guid: c856730079aee4178bb2968f34b53e94, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: c856730079aee4178bb2968f34b53e94, type: 2}
   - m_GUID: cd5bde4a051df43a38d1803dbca539cf
     m_Address: ScenesDb
     m_ReadOnly: 0
@@ -141,8 +147,8 @@ MonoBehaviour:
     m_Address: VitalsDb
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 11400000, guid: e8fe627bd668e4f01aac823da9a30464, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: e8fe627bd668e4f01aac823da9a30464, type: 2}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 74ddb1c5c6fe849afaba132576175fc1, type: 2}
   m_SchemaSet:

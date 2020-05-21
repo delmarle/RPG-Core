@@ -17,9 +17,20 @@ namespace Station
         private static EquipmentSlotsDb _equipmentSlotsDb;
         private static EquipmentTypesDb _equipmentTypesDb;
         private static ItemsDb _itemsDb;
+        private static ResourcesNodeDb _resourcesNodeDb;
         #endregion
         private static void CacheDbs()
         {
+            if (_resourcesNodeDb == null)
+            {
+                _resourcesNodeDb = (ResourcesNodeDb) EditorStatic.GetDb(typeof(ResourcesNodeDb));
+                if (_resourcesNodeDb == null)
+                {
+                    EditorGUILayout.HelpBox("MISSING DB: _equipmentTypesDb", MessageType.Error);
+                    GUIUtility.ExitGUI();
+                }
+            }
+            
             if (_equipmentTypesDb == null)
             {
                 _equipmentTypesDb = (EquipmentTypesDb) EditorStatic.GetDb(typeof(EquipmentTypesDb));
@@ -134,10 +145,13 @@ namespace Station
                         DrawItems();
                         break;
                     case 2:
-                        NpcEditor.Draw();
+                        
                         break;
                     case 3:
 
+                        break;
+                    case 6:
+                        DrawResourceNodeEditor();
                         break;
                 }
             }

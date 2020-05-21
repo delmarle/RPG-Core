@@ -1,6 +1,4 @@
-﻿
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 namespace Station
@@ -11,7 +9,7 @@ namespace Station
 
     public UnityEvent OnStartInteracting;
     public UnityEvent OnStopInteracting;
-    [SerializeField] protected GameObject _hint = null;
+    [SerializeField] protected BaseAnimation _hint = null;
     [HideInInspector] public InteractionConfig Config;
     protected DbSystem DbSystem;
     protected InteractionConfigsDb _interactionConfigsDb;
@@ -39,6 +37,7 @@ namespace Station
       {
         return;
       }
+      
       GameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderChanged);
       _interactionConfigsDb = DbSystem.GetDb<InteractionConfigsDb>();
       foreach (var conf in _interactionConfigsDb.Db)
@@ -81,8 +80,8 @@ namespace Station
     {
       if (_hint != null)
       {
-        BillboardSystem.AddBillBoard(_hint.transform);
-        _hint.SetActive(true);
+        BillboardSystem.AddBillBoard(_hint.transform, true);
+        _hint.PlayState("Show");
       }
     }
 
@@ -91,7 +90,7 @@ namespace Station
       if (_hint != null)
       {
         BillboardSystem.RemoveBillBoard(_hint.transform);
-        _hint.SetActive(false);
+        _hint.PlayState("Hide");
       }
     }
     

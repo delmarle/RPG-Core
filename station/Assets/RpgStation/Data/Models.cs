@@ -943,6 +943,31 @@ public enum StatusEffectType
     #endregion
   }
 
+  [Serializable]
+  public class ResourceNodeModel
+  {
+    public LocalizedText Name = new LocalizedText("resource node");
+    public LocalizedText Description = new LocalizedText("contain some resources");
+    public Sprite Icon;
+    
+    //requirement to collect
+    public List<LootModel> Loots = new List<LootModel>();
+    //mode
+    public float CycleLength = 1;
+    public SoundConfig StartSound;
+    public SoundConfig CollectSound;
+    public SoundConfig StopSound;
+  }
+
+  [Serializable]
+  public class LootModel
+  {
+    public string ItemId;
+    public int QuantityMin = 1;
+    public int QuantityMax = 1;
+    public float Chance = 100;
+  }
+
   #endregion
   
   #region LOCALIZATION
