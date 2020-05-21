@@ -19,10 +19,10 @@ MonoBehaviour:
     - 0b3b28f0-c9eb-4bd2-9486-75fcd1c92cca
     m_values:
     - Name:
-        Key: resource node
+        Key: Mithril vein
       Description:
         Key: contain some resources
-      Icon: {fileID: 21300000, guid: 6e9b5f195d18246728b21755a2cb6810, type: 3}
+      Icon: {fileID: 21300000, guid: 80095a4d869244b4187d4ff292c2cb08, type: 3}
       Loots:
       - ItemId: 1f2ed9d5-57bf-46ec-a6cc-9adfaca3f45c
         QuantityMin: 1
@@ -37,17 +37,17 @@ MonoBehaviour:
       CollectSound: {fileID: 0}
       StopSound: {fileID: 0}
     - Name:
-        Key: resource node
+        Key: Blue stone vein
       Description:
         Key: contain some resources
-      Icon: {fileID: 21300000, guid: 8a7aa68b354f84390a5a0e9c4df0f237, type: 3}
+      Icon: {fileID: 21300000, guid: aae2b0cbe756043e588ebe59f476f54b, type: 3}
       Loots: []
       CycleLength: 1
       StartSound: {fileID: 0}
       CollectSound: {fileID: 0}
       StopSound: {fileID: 0}
     - Name:
-        Key: resource node
+        Key: Branch
       Description:
         Key: contain some resources
       Icon: {fileID: 21300000, guid: 8a7aa68b354f84390a5a0e9c4df0f237, type: 3}

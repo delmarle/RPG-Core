@@ -110,6 +110,7 @@ namespace Station
                 _equipmentSlotsDb?.ForceRefresh();
                 _itemsDb?.ForceRefresh();
                 _equipmentTypesDb?.ForceRefresh();
+                _resourcesNodeDb?.ForceRefresh();
             }
         }
         
