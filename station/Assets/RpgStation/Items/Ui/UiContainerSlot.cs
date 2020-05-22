@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -11,7 +12,7 @@ namespace Station
         private const string UNLOCKED = "unlocked";
         private const string HAS_ITEM = "has_item";
         private const string EMPTY = "empty";
-        
+        [SerializeField] private TextMeshProUGUI _slotName = null;
         [SerializeField] private Image _bg = null;
         [SerializeField] private Image _icon = null;
         [SerializeField] private UiText _text = null;
@@ -125,6 +126,16 @@ namespace Station
                _bg.sprite = sprite;
            }
        }
+       
+       public void SetSlotName(string slotName)
+       {
+           if (_slotName)
+           {
+               _slotName.text = slotName;
+           }
+       }
+
+       
 
        #endregion
     }

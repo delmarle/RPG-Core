@@ -26,6 +26,7 @@ namespace Station
             {
                 var entry = equipSlotDb.GetEntry(i);
                 slots[i].SetBg(entry.Icon);
+                slots[i].SetSlotName(entry.Name.GetValue());
                 slots[i].SetId(i);
             }
         }
