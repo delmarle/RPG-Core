@@ -20,135 +20,164 @@ MonoBehaviour:
   - m_GUID: 106734c5c7d86433aa9060651149368e
     m_Address: SkillDb
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 11400000, guid: 106734c5c7d86433aa9060651149368e, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: 106734c5c7d86433aa9060651149368e, type: 2}
+    m_SerializedLabels:
+    - Databases
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 1d1b69a46a41b433bb5d25dd0612c30a
     m_Address: ItemsSettingsDb
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Databases
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 2621992d5554c42cf8682741204d2c73
     m_Address: NpcDb
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Databases
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 31c12955b23ed40da8f357537c19baf3
     m_Address: InteractionConfigsDb
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Databases
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 37ace511571e94249a1cc705202cb244
     m_Address: FactionSettingsDb
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_SerializedLabels:
+    - Databases
+    m_MainAsset: {fileID: 11400000, guid: 37ace511571e94249a1cc705202cb244, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 37ace511571e94249a1cc705202cb244, type: 2}
   - m_GUID: 3f61d8f46248944468ba8f8cec1848d4
     m_Address: FactionDb
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Databases
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 47388dcf78bfd4254b9fffd4e57f4732
     m_Address: AttributesDb
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Databases
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 55f19c0240f854066be0e6d6451a6e4f
     m_Address: PassiveAbilitiesDb
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 11400000, guid: 55f19c0240f854066be0e6d6451a6e4f, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: 55f19c0240f854066be0e6d6451a6e4f, type: 2}
+    m_SerializedLabels:
+    - Databases
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 5c9ed5b8209f64d14ac9bbb2b79cdcfc
     m_Address: StatisticDb
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Databases
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 7102ac8ea59114415b1c7973cbf0c0f9
+    m_Address: ChestNodesDb
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Databases
+    m_MainAsset: {fileID: 11400000, guid: 7102ac8ea59114415b1c7973cbf0c0f9, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 7102ac8ea59114415b1c7973cbf0c0f9, type: 2}
   - m_GUID: 766895e4e75b04de68e0778c9f83de90
     m_Address: FloatingPopupDb
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_SerializedLabels:
+    - Databases
+    m_MainAsset: {fileID: 11400000, guid: 766895e4e75b04de68e0778c9f83de90, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 766895e4e75b04de68e0778c9f83de90, type: 2}
   - m_GUID: 79198aef42dbf4af7acbb2f62931c2ee
     m_Address: PlayerClassDb
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 11400000, guid: 79198aef42dbf4af7acbb2f62931c2ee, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: 79198aef42dbf4af7acbb2f62931c2ee, type: 2}
+    m_SerializedLabels:
+    - Databases
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 9162eed3384b9484a86bb68971484aa4
     m_Address: ItemsDb
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Databases
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 91bb43d0eca7b44c4a1905de2ba632c8
     m_Address: GameSettingsDb
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Databases
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 97b168cf5bee24799976978989766ea7
     m_Address: ItemsCategoriesDb
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Databases
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: a09cd99e65e4540eda7e3dec73b26ede
     m_Address: RaceDb
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Databases
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: a981a15e0cf6a4ec5849cdfe9459da09
     m_Address: EquipmentTypesDb
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 11400000, guid: a981a15e0cf6a4ec5849cdfe9459da09, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: a981a15e0cf6a4ec5849cdfe9459da09, type: 2}
+    m_SerializedLabels:
+    - Databases
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: b4e8659ddabe7419fac91f183b1fd745
     m_Address: ResourcesNodeDb
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Databases
     m_MainAsset: {fileID: 11400000, guid: b4e8659ddabe7419fac91f183b1fd745, type: 2}
     m_TargetAsset: {fileID: 11400000, guid: b4e8659ddabe7419fac91f183b1fd745, type: 2}
   - m_GUID: c856730079aee4178bb2968f34b53e94
     m_Address: EquipmentSlotsDb
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 11400000, guid: c856730079aee4178bb2968f34b53e94, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: c856730079aee4178bb2968f34b53e94, type: 2}
+    m_SerializedLabels:
+    - Databases
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: cd5bde4a051df43a38d1803dbca539cf
     m_Address: ScenesDb
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 11400000, guid: cd5bde4a051df43a38d1803dbca539cf, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: cd5bde4a051df43a38d1803dbca539cf, type: 2}
+    m_SerializedLabels:
+    - Databases
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: d9c5ac7d52e1d40f387bbc17d7393f4b
     m_Address: ActiveAbilitiesDb
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Databases
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: dc33f533f0e3d47168149dc24f966954
     m_Address: ItemsRaritiesDb
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 11400000, guid: dc33f533f0e3d47168149dc24f966954, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: dc33f533f0e3d47168149dc24f966954, type: 2}
+    m_SerializedLabels:
+    - Databases
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: e8fe627bd668e4f01aac823da9a30464
     m_Address: VitalsDb
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 11400000, guid: e8fe627bd668e4f01aac823da9a30464, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: e8fe627bd668e4f01aac823da9a30464, type: 2}
+    m_SerializedLabels:
+    - Databases
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 74ddb1c5c6fe849afaba132576175fc1, type: 2}
   m_SchemaSet:

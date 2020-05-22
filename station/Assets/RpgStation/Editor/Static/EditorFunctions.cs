@@ -197,7 +197,7 @@ namespace RPG.Editor
       {
         propertyScrollPos = GUILayout.BeginScrollView(currentScrollPos,GUILayout.ExpandWidth(true),GUILayout.ExpandHeight(true));
         {
-          GUILayout.Label("SELECT "+database.ObjectName()+": " ,GUILayout.Width(150));
+          GUILayout.Label("SELECT "+database.ObjectName()+": " ,GUILayout.Width(LIST_VIEW_WIDTH -30));
           var  toolbarOptions = new GUIContent[database.Count()];
           for (int i = 0; i < database.Count(); i++)
           {
@@ -229,7 +229,7 @@ namespace RPG.Editor
           var previousIndex = selectedIndex;
 
           float lElemH2 = toolbarOptions.Length * 40;
-          selectedIndex = GUILayout.SelectionGrid(selectedIndex, toolbarOptions,1,VerticalBarStyle, GUILayout.Height(lElemH2), GUILayout.Width(170));
+          selectedIndex = GUILayout.SelectionGrid(selectedIndex, toolbarOptions,1,VerticalBarStyle, GUILayout.Height(lElemH2), GUILayout.Width(LIST_VIEW_WIDTH - 10));
           if(previousIndex != selectedIndex)ResetFocus();
         }
         GUILayout.EndScrollView();

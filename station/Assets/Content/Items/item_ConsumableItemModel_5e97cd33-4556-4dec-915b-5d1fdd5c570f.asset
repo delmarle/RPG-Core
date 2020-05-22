@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: item_ConsumableItemModel_5e97cd33-4556-4dec-915b-5d1fdd5c570f
   m_EditorClassIdentifier: 
   Name:
-    Key: consumable
+    Key: Health potion
   Description:
     Key: description
-  Icon: {fileID: 21300000, guid: 4e17e66d124d44f5a8d7e4da04bae6b2, type: 3}
+  Icon: {fileID: 21300000, guid: 7c14a8981cb194074acf4526a454d842, type: 3}
   RarityKey: 87232d47-d561-4845-ae75-1f2c40a9f3b9
   CategoryKey: c0889d13-428d-4efa-93f1-ef1d385f4c98
   MaxStackSize: 1

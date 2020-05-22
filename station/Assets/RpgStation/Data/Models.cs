@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
@@ -944,12 +945,12 @@ public enum StatusEffectType
   }
 
   [Serializable]
-  public class ResourceNodeModel
+  public class ResourceNodeModel: IStationIcon
   {
     public LocalizedText Name = new LocalizedText("resource node");
     public LocalizedText Description = new LocalizedText("contain some resources");
     public Sprite Icon;
-    
+    public Sprite GetIcon() => Icon;
     //requirement to collect
     public List<LootModel> Loots = new List<LootModel>();
     //mode
@@ -957,6 +958,7 @@ public enum StatusEffectType
     public SoundConfig StartSound;
     public SoundConfig CollectSound;
     public SoundConfig StopSound;
+    
   }
 
   [Serializable]
@@ -967,7 +969,22 @@ public enum StatusEffectType
     public int QuantityMax = 1;
     public float Chance = 100;
   }
-
+  
+  [Serializable]
+  public class ChestNodeModel: IStationIcon
+  {
+    public LocalizedText Name = new LocalizedText("Chest");
+    public LocalizedText Description = new LocalizedText("contain some items");
+    public Sprite Icon;
+    public Sprite GetIcon() => Icon;
+    //requirement to collect
+    public List<LootModel> Loots = new List<LootModel>();
+    public AssetReference ReferencePrefab;
+    public GameObject Prefab;
+    public SoundConfig OpenSound;
+    public SoundConfig CloseSound;
+    
+  }
   #endregion
   
   #region LOCALIZATION

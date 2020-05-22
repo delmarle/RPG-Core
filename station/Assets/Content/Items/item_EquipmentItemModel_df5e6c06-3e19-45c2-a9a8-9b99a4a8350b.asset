@@ -9,14 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46ab6562cf4834ab288230cf04b22f3a, type: 3}
-  m_Name: item_DefaultItemModel_e1514b53-b121-4ee4-85d2-2825a3342412
+  m_Script: {fileID: 11500000, guid: 57fb72bcd1adc4a998d7ea5f7fb7a199, type: 3}
+  m_Name: item_EquipmentItemModel_df5e6c06-3e19-45c2-a9a8-9b99a4a8350b
   m_EditorClassIdentifier: 
   Name:
-    Key: Iron Ore
+    Key: Reinforced leather patns
   Description:
     Key: description
-  Icon: {fileID: 21300000, guid: 80095a4d869244b4187d4ff292c2cb08, type: 3}
+  Icon: {fileID: 21300000, guid: 76e89577cf4634b31a28d0f8ea32bff3, type: 3}
   RarityKey: 03c5a6c1-49e4-4af4-8662-d10e1286a77e
-  CategoryKey: 14ed2e7d-18fb-40d4-86a0-1ab9689dd8fa
+  CategoryKey: 077c6187-a4f2-4f99-a116-562e0bc7da43
   MaxStackSize: 1
+  EquipmentType: be07d218-a62b-4c6c-b918-f4bf9b291100

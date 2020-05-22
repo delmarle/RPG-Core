@@ -68,6 +68,7 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - Databases
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 6178d1483fefa48179e875e6107d7b4f, type: 2}

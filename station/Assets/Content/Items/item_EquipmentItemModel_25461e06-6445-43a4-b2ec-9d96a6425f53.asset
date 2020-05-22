@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: item_EquipmentItemModel_25461e06-6445-43a4-b2ec-9d96a6425f53
   m_EditorClassIdentifier: 
   Name:
-    Key: equipment
+    Key: Pristine leather Chest
   Description:
-    Key: descriptionf
-  Icon: {fileID: 21300000, guid: f68a36e978efb434cb6835a6f42ed7be, type: 3}
-  RarityKey: 03c5a6c1-49e4-4af4-8662-d10e1286a77e
+    Key: description
+  Icon: {fileID: 21300000, guid: 682a23d1abc394668b85f36d0d5087d4, type: 3}
+  RarityKey: 4d7cf063-3cb6-4736-8812-6ab0154f9c11
   CategoryKey: 077c6187-a4f2-4f99-a116-562e0bc7da43
   MaxStackSize: 1
-  EquipmentType: d4c510f1-efac-4730-aba5-99d91fbdb4f9
+  EquipmentType: ed08abb0-513d-4b93-aa5c-1a95c14bb433

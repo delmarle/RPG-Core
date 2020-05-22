@@ -18,9 +18,20 @@ namespace Station
         private static EquipmentTypesDb _equipmentTypesDb;
         private static ItemsDb _itemsDb;
         private static ResourcesNodeDb _resourcesNodeDb;
+        private static ChestNodesDb _chestNodesDb;
         #endregion
         private static void CacheDbs()
         {
+            if (_chestNodesDb == null)
+            {
+                _chestNodesDb = (ChestNodesDb) EditorStatic.GetDb(typeof(ChestNodesDb));
+                if (_chestNodesDb == null)
+                {
+                    EditorGUILayout.HelpBox("MISSING DB: _chestNodesDb", MessageType.Error);
+                    GUIUtility.ExitGUI();
+                }
+            }
+            
             if (_resourcesNodeDb == null)
             {
                 _resourcesNodeDb = (ResourcesNodeDb) EditorStatic.GetDb(typeof(ResourcesNodeDb));
@@ -111,6 +122,7 @@ namespace Station
                 _itemsDb?.ForceRefresh();
                 _equipmentTypesDb?.ForceRefresh();
                 _resourcesNodeDb?.ForceRefresh();
+                _chestNodesDb?.ForceRefresh();
             }
         }
         
@@ -118,7 +130,7 @@ namespace Station
         {
             GUILayout.BeginVertical("box",GUILayout.Width(EditorStatic.LIST_VIEW_WIDTH),GUILayout.ExpandHeight(true));
             {
-                var  toolbarOptions = new GUIContent[7];
+                var  toolbarOptions = new GUIContent[8];
                 toolbarOptions[0] = new GUIContent(EditorStatic.ITEMS_TAB_SETTINGS,null, "");
                 toolbarOptions[1] = new GUIContent(EditorStatic.ITEMS_TAB_ITEMS,null, "");
                 toolbarOptions[2] = new GUIContent(EditorStatic.ITEMS_TAB_LOOT_TABLES, null, "");
@@ -126,6 +138,7 @@ namespace Station
                 toolbarOptions[4] = new GUIContent(EditorStatic.ITEMS_TAB_SHOPS, null, "");
                 toolbarOptions[5] = new GUIContent(EditorStatic.ITEMS_TAB_CRAFT, null, "");
                 toolbarOptions[6] = new GUIContent(EditorStatic.ITEMS_TAB_RESOURCES_NODES, null, "");
+                toolbarOptions[7] = new GUIContent(EditorStatic.ITEMS_TAB_CHEST_NODES, null, "");
                 var height = 40 * toolbarOptions.Length;
                 _toolBarIndex = GUILayout.SelectionGrid(_toolBarIndex, toolbarOptions,1,EditorStatic.ToolBarStyle,GUILayout.Height(height));
             }
@@ -153,6 +166,9 @@ namespace Station
                         break;
                     case 6:
                         DrawResourceNodeEditor();
+                        break;
+                    case 7:
+                        DrawChestNodeEditor();
                         break;
                 }
             }

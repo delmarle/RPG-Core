@@ -11,7 +11,7 @@
     public const string WINDOW_TITLE = "<size=20><b><color=#666666>RPG FRAMEWORK</color></b></size>";
     
     public const int EDITOR_BUTTON_SIZE = 64;
-    public const int LIST_VIEW_WIDTH = 180;
+    public const int LIST_VIEW_WIDTH = 220;
     
     //[[GAME CONFIG TAB]]
     public const string CONFIG_TAB_GAMEPLAY = "<size=11><b> Gameplay</b></size>";
@@ -64,6 +64,7 @@
     public const string ITEMS_TAB_SHOPS = "<size=11><b> Shops</b></size>";
     public const string ITEMS_TAB_CRAFT = "<size=11><b> Craft</b></size>";
     public const string ITEMS_TAB_RESOURCES_NODES = "<size=11><b> Resources Nodes</b></size>";
+    public const string ITEMS_TAB_CHEST_NODES = "<size=11><b> Chest Nodes</b></size>";
     //-Settings
     public const string ITEMS_TAB_SETTINGS_TAGS = "<size=11><b> Tags</b></size>";
     public const string ITEMS_TAB_SETTINGS_RARITIES = "<size=11><b> Item rarities</b></size>";

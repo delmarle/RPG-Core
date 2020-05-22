@@ -16,6 +16,8 @@ MonoBehaviour:
     ItemsTags:
     - low level
     - useless
+    - Warrior class
+    - Mage class
     ContainerSettings:
       PlayerInventoryType: 0
       InitialPlayerInventorySize: 50
