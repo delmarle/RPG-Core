@@ -23,27 +23,27 @@ MonoBehaviour:
         Key: head
       Description:
         Key: description
-      Icon: {fileID: 0}
+      Icon: {fileID: 21300000, guid: 00747f711b0194976bb1cd6673da0db3, type: 3}
       EquipmentTypeMatching:
       - 53d9dfbf-1ff4-4c39-b796-524981016f8f
     - Name:
         Key: Chest
       Description:
         Key: description
-      Icon: {fileID: 0}
+      Icon: {fileID: 21300000, guid: 83d44561e0cd549b3a5295c8010a8b10, type: 3}
       EquipmentTypeMatching:
       - ed08abb0-513d-4b93-aa5c-1a95c14bb433
     - Name:
-        Key: Finger
+        Key: Legs
       Description:
         Key: description
-      Icon: {fileID: 0}
+      Icon: {fileID: 21300000, guid: 7660b8215baf14f0d8fb2d56ae295591, type: 3}
       EquipmentTypeMatching:
       - be07d218-a62b-4c6c-b918-f4bf9b291100
     - Name:
         Key: Feet
       Description:
         Key: description
-      Icon: {fileID: 0}
+      Icon: {fileID: 21300000, guid: 539ec58f94cfb4bd8996247b1d1478af, type: 3}
       EquipmentTypeMatching:
       - 30067018-4935-4d64-8942-1c9398fd2eed

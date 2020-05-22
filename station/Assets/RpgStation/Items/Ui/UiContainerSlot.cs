@@ -12,6 +12,7 @@ namespace Station
         private const string HAS_ITEM = "has_item";
         private const string EMPTY = "empty";
         
+        [SerializeField] private Image _bg = null;
         [SerializeField] private Image _icon = null;
         [SerializeField] private UiText _text = null;
         [SerializeField] private BaseAnimation _animation = null;
@@ -21,13 +22,13 @@ namespace Station
         private bool HasItem => string.IsNullOrEmpty(_item?.ItemId) == false;
         private ItemStack _item;
         private ItemsDb _itemDb;
-        private UiContainerWidget _uiContainer;
+        private UiBaseContainer _uiContainer;
         
         //CONTAINER IDENTIFICATION
         private ContainerReference _containerReference;
         #endregion
         
-        public void Setup(UiContainerWidget uiContainer, ItemsDb itemDb, ContainerReference containerReference)
+        public void Setup(UiBaseContainer uiContainer, ItemsDb itemDb, ContainerReference containerReference)
         {
             _uiContainer = uiContainer;
             _itemDb = itemDb;
@@ -116,6 +117,15 @@ namespace Station
            _uiContainer.GetDragDummy().Reset();
          
        }
+
+       public void SetBg(Sprite sprite)
+       {
+           if (_bg)
+           {
+               _bg.sprite = sprite;
+           }
+       }
+
        #endregion
     }
 }

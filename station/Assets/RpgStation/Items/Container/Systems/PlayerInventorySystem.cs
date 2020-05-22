@@ -101,13 +101,19 @@ namespace Station
 
         public BaseItemContainer GetContainer(string containerId)
         {
+
+            if (_containers.ContainsKey(containerId))
+            {
+                return _containers[containerId];
+            }
+
             if (_inventoryType == PlayerInventoryType.Shared)
             {
                 return _containers[PLAYER_INVENTORY_KEY];
             }
 
 
-            return _containers.ContainsKey(containerId) ? _containers[containerId] : null;
+            return null;
         }
     }
 }

@@ -37,6 +37,11 @@ namespace Station
 
         public override bool ItemAllowed(int slot, BaseItemModel itemModel)
         {
+            if (itemModel is EquipmentItemModel == false)
+            {
+                return false;
+            }
+
             EquipmentItemModel equipment = (EquipmentItemModel) itemModel;
             if (equipment == null)
             {
