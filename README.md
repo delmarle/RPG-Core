@@ -1,4 +1,4 @@
-# RpgStationUnity
+# RPG Station for Unity
 ![alt text](https://i.gyazo.com/21052d9f3a8924f7860a42f41d5868a2.jpg)
 
 # What is in progress: 
