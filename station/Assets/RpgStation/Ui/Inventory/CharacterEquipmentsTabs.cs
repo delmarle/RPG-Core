@@ -7,7 +7,7 @@ namespace Station
 {
     public class CharacterEquipmentsTabs : CharacterTabSwitcher
     {
-        [SerializeField] private UiEquipmentContainerWidget _equipmentContainer;
+        [SerializeField] private UiEquipmentContainerWidget _equipmentContainer = null;
         private PlayerInventorySystem inventorySystem;
         
         private void Awake()

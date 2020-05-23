@@ -11,7 +11,7 @@ namespace Station
 
         [SerializeField] private UiCharacterPortraitWidget _memberPrefab = null;
         [SerializeField] private Transform _root = null;
-        [SerializeField] private CharacterTabSwitcher _tabSwitcher;
+        [SerializeField] private CharacterTabSwitcher _tabSwitcher = null;
         
         private Dictionary<BaseCharacter, UiCharacterPortraitWidget> _map = new Dictionary<BaseCharacter, UiCharacterPortraitWidget>();
         private TeamSystem _teamsystem;

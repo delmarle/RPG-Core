@@ -8,9 +8,9 @@ namespace Station
   public class Interactible : MonoBehaviour
   {
     #region [[FIELDS]]
-    [SerializeField] private TextMeshProUGUI _interactionName;
-    [SerializeField] private TextMeshProUGUI _description;
-    [SerializeField] private Image _icon;
+    [SerializeField] private TextMeshProUGUI _interactionName = null;
+    [SerializeField] private TextMeshProUGUI _description = null;
+    [SerializeField] private Image _icon = null;
     public UnityEvent OnStartInteracting;
     public UnityEvent OnStopInteracting;
     [SerializeField] protected BaseAnimation _hint = null;

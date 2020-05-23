@@ -2228,7 +2228,6 @@ GameObject:
   - component: {fileID: 896109309}
   - component: {fileID: 896109311}
   - component: {fileID: 896109310}
-  - component: {fileID: 896109312}
   m_Layer: 8
   m_Name: container
   m_TagString: Untagged
@@ -2269,32 +2268,10 @@ MonoBehaviour:
   _icon: {fileID: 1962027785}
   OnStartInteracting:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 896109312}
-        m_MethodName: PlayState
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Open
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnStopInteracting:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 896109312}
-        m_MethodName: PlayState
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Close
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _hint: {fileID: 1962027786}
   Config:
     Layer: 0
@@ -2323,7 +2300,9 @@ MonoBehaviour:
   _defaultItems:
   - ItemId: 1f2ed9d5-57bf-46ec-a6cc-9adfaca3f45c
     ItemCount: 2
-  _id: 
+  StateSaved: 1
+  _id: chest_id_9f191ec0-bdea-4d78-9abc-0644793da357
+  ChestNodeId: 58a13d1a-80ff-4140-b101-60860e5a2d54
 --- !u!65 &896109311
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2337,183 +2316,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.25, y: 1, z: 1.49}
   m_Center: {x: 0, y: 0.57, z: 0}
---- !u!114 &896109312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 896109308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1932590b7a2f748bc841a2fc9a4d4210, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SimpleStateModels:
-  - StateActionModels:
-    - uiAction: 7
-      animationActionData:
-        Clip: 
-        Weight: 0.5
-        Layer: 0
-      updateSpriteActionData:
-        Image: {fileID: 0}
-        Sprite: {fileID: 0}
-      updateCanvasGroupActionData:
-        CanvasGroup: {fileID: 0}
-        Alpha: 0
-        Interact: 0
-        BlockRayCasts: 0
-      enableMeshActionData:
-        MeshRenderer: {fileID: 0}
-        Enabled: 0
-      colliderActionData:
-        Collider: {fileID: 0}
-        Enabled: 0
-      changeMaterialActionData:
-        Renderer: {fileID: 0}
-        Index: 0
-        Material: {fileID: 0}
-      changeMaterialsActionData:
-        Renderers: []
-        Index: 0
-        Material: {fileID: 0}
-      setActiveActionData:
-        Target: {fileID: 1753409923}
-        Active: 0
-      setTransformActionData:
-        Target: {fileID: 0}
-        Position: {x: 0, y: 0, z: 0}
-        Rotation: {x: 0, y: 0, z: 0}
-        Scale: {x: 1, y: 1, z: 1}
-      tweenColorActionData:
-        Target: []
-        TargetColor: {r: 0, g: 0, b: 0, a: 0}
-        MaterialId: 0
-        Duration: 0
-      tweenSharedColorActionData:
-        Target: []
-        TargetColor: {r: 0, g: 0, b: 0, a: 0}
-        MaterialId: 0
-        Duration: 0
-      setPropertyActionData:
-        Targets: []
-        TransformType: 0
-        Value: 0
-      setCanvasGroupStateActionData:
-        CanvasGroups: []
-        Alpha: 0
-        Interact: 0
-        BlockRayCasts: 0
-      setCanvasInteractionActionData:
-        CanvasGroup: {fileID: 0}
-        Interact: 0
-      stopAnimationActionData:
-        Clip: 
-      setTextActionData:
-        TextComponent: {fileID: 0}
-        Text: 
-      updateLocalizationActionData:
-        TextComponent: {fileID: 0}
-        Key: 
-      updateTextColorActionData:
-        TextComponent: {fileID: 0}
-        Color: {r: 0, g: 0, b: 0, a: 0}
-      SetImageColorActionModel:
-        Image: {fileID: 0}
-        Color: {r: 0, g: 0, b: 0, a: 0}
-      setGraphicsRayCasterActionData:
-        RayCasters: []
-        IsEnabled: 0
-      setRectPropertyActionData:
-        Targets: []
-        TransformType: 0
-        Value: 0
-    State: Open
-    LayerIndex: 0
-  - StateActionModels:
-    - uiAction: 7
-      animationActionData:
-        Clip: 
-        Weight: 0.5
-        Layer: 0
-      updateSpriteActionData:
-        Image: {fileID: 0}
-        Sprite: {fileID: 0}
-      updateCanvasGroupActionData:
-        CanvasGroup: {fileID: 0}
-        Alpha: 0
-        Interact: 0
-        BlockRayCasts: 0
-      enableMeshActionData:
-        MeshRenderer: {fileID: 0}
-        Enabled: 0
-      colliderActionData:
-        Collider: {fileID: 0}
-        Enabled: 0
-      changeMaterialActionData:
-        Renderer: {fileID: 0}
-        Index: 0
-        Material: {fileID: 0}
-      changeMaterialsActionData:
-        Renderers: []
-        Index: 0
-        Material: {fileID: 0}
-      setActiveActionData:
-        Target: {fileID: 1753409923}
-        Active: 1
-      setTransformActionData:
-        Target: {fileID: 0}
-        Position: {x: 0, y: 0, z: 0}
-        Rotation: {x: 0, y: 0, z: 0}
-        Scale: {x: 1, y: 1, z: 1}
-      tweenColorActionData:
-        Target: []
-        TargetColor: {r: 0, g: 0, b: 0, a: 0}
-        MaterialId: 0
-        Duration: 0
-      tweenSharedColorActionData:
-        Target: []
-        TargetColor: {r: 0, g: 0, b: 0, a: 0}
-        MaterialId: 0
-        Duration: 0
-      setPropertyActionData:
-        Targets: []
-        TransformType: 0
-        Value: 0
-      setCanvasGroupStateActionData:
-        CanvasGroups: []
-        Alpha: 0
-        Interact: 0
-        BlockRayCasts: 0
-      setCanvasInteractionActionData:
-        CanvasGroup: {fileID: 0}
-        Interact: 0
-      stopAnimationActionData:
-        Clip: 
-      setTextActionData:
-        TextComponent: {fileID: 0}
-        Text: 
-      updateLocalizationActionData:
-        TextComponent: {fileID: 0}
-        Key: 
-      updateTextColorActionData:
-        TextComponent: {fileID: 0}
-        Color: {r: 0, g: 0, b: 0, a: 0}
-      SetImageColorActionModel:
-        Image: {fileID: 0}
-        Color: {r: 0, g: 0, b: 0, a: 0}
-      setGraphicsRayCasterActionData:
-        RayCasters: []
-        IsEnabled: 0
-      setRectPropertyActionData:
-        Targets: []
-        TransformType: 0
-        Value: 0
-    State: Close
-    LayerIndex: 0
-  UseDefaultState: 1
-  DefaultState: Close
 --- !u!1 &898106184
 GameObject:
   m_ObjectHideFlags: 0
@@ -9291,7 +9093,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 792345487fc70ac46a72b1a691b87c4f, type: 3}
       propertyPath: m_Name
-      value: HealthBox
+      value: chest_render
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 792345487fc70ac46a72b1a691b87c4f, type: 3}
       propertyPath: m_IsActive
@@ -9359,6 +9161,189 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1753409921}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1753409924 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 792345487fc70ac46a72b1a691b87c4f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1753409921}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1753409925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753409924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1932590b7a2f748bc841a2fc9a4d4210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SimpleStateModels:
+  - StateActionModels:
+    - uiAction: 7
+      animationActionData:
+        Clip: 
+        Weight: 0.5
+        Layer: 0
+      updateSpriteActionData:
+        Image: {fileID: 0}
+        Sprite: {fileID: 0}
+      updateCanvasGroupActionData:
+        CanvasGroup: {fileID: 0}
+        Alpha: 0
+        Interact: 0
+        BlockRayCasts: 0
+      enableMeshActionData:
+        MeshRenderer: {fileID: 0}
+        Enabled: 0
+      colliderActionData:
+        Collider: {fileID: 0}
+        Enabled: 0
+      changeMaterialActionData:
+        Renderer: {fileID: 0}
+        Index: 0
+        Material: {fileID: 0}
+      changeMaterialsActionData:
+        Renderers: []
+        Index: 0
+        Material: {fileID: 0}
+      setActiveActionData:
+        Target: {fileID: 1753409923}
+        Active: 0
+      setTransformActionData:
+        Target: {fileID: 0}
+        Position: {x: 0, y: 0, z: 0}
+        Rotation: {x: 0, y: 0, z: 0}
+        Scale: {x: 1, y: 1, z: 1}
+      tweenColorActionData:
+        Target: []
+        TargetColor: {r: 0, g: 0, b: 0, a: 0}
+        MaterialId: 0
+        Duration: 0
+      tweenSharedColorActionData:
+        Target: []
+        TargetColor: {r: 0, g: 0, b: 0, a: 0}
+        MaterialId: 0
+        Duration: 0
+      setPropertyActionData:
+        Targets: []
+        TransformType: 0
+        Value: 0
+      setCanvasGroupStateActionData:
+        CanvasGroups: []
+        Alpha: 0
+        Interact: 0
+        BlockRayCasts: 0
+      setCanvasInteractionActionData:
+        CanvasGroup: {fileID: 0}
+        Interact: 0
+      stopAnimationActionData:
+        Clip: 
+      setTextActionData:
+        TextComponent: {fileID: 0}
+        Text: 
+      updateLocalizationActionData:
+        TextComponent: {fileID: 0}
+        Key: 
+      updateTextColorActionData:
+        TextComponent: {fileID: 0}
+        Color: {r: 0, g: 0, b: 0, a: 0}
+      SetImageColorActionModel:
+        Image: {fileID: 0}
+        Color: {r: 0, g: 0, b: 0, a: 0}
+      setGraphicsRayCasterActionData:
+        RayCasters: []
+        IsEnabled: 0
+      setRectPropertyActionData:
+        Targets: []
+        TransformType: 0
+        Value: 0
+    State: Open
+    LayerIndex: 0
+  - StateActionModels:
+    - uiAction: 7
+      animationActionData:
+        Clip: 
+        Weight: 0.5
+        Layer: 0
+      updateSpriteActionData:
+        Image: {fileID: 0}
+        Sprite: {fileID: 0}
+      updateCanvasGroupActionData:
+        CanvasGroup: {fileID: 0}
+        Alpha: 0
+        Interact: 0
+        BlockRayCasts: 0
+      enableMeshActionData:
+        MeshRenderer: {fileID: 0}
+        Enabled: 0
+      colliderActionData:
+        Collider: {fileID: 0}
+        Enabled: 0
+      changeMaterialActionData:
+        Renderer: {fileID: 0}
+        Index: 0
+        Material: {fileID: 0}
+      changeMaterialsActionData:
+        Renderers: []
+        Index: 0
+        Material: {fileID: 0}
+      setActiveActionData:
+        Target: {fileID: 1753409923}
+        Active: 1
+      setTransformActionData:
+        Target: {fileID: 0}
+        Position: {x: 0, y: 0, z: 0}
+        Rotation: {x: 0, y: 0, z: 0}
+        Scale: {x: 1, y: 1, z: 1}
+      tweenColorActionData:
+        Target: []
+        TargetColor: {r: 0, g: 0, b: 0, a: 0}
+        MaterialId: 0
+        Duration: 0
+      tweenSharedColorActionData:
+        Target: []
+        TargetColor: {r: 0, g: 0, b: 0, a: 0}
+        MaterialId: 0
+        Duration: 0
+      setPropertyActionData:
+        Targets: []
+        TransformType: 0
+        Value: 0
+      setCanvasGroupStateActionData:
+        CanvasGroups: []
+        Alpha: 0
+        Interact: 0
+        BlockRayCasts: 0
+      setCanvasInteractionActionData:
+        CanvasGroup: {fileID: 0}
+        Interact: 0
+      stopAnimationActionData:
+        Clip: 
+      setTextActionData:
+        TextComponent: {fileID: 0}
+        Text: 
+      updateLocalizationActionData:
+        TextComponent: {fileID: 0}
+        Key: 
+      updateTextColorActionData:
+        TextComponent: {fileID: 0}
+        Color: {r: 0, g: 0, b: 0, a: 0}
+      SetImageColorActionModel:
+        Image: {fileID: 0}
+        Color: {r: 0, g: 0, b: 0, a: 0}
+      setGraphicsRayCasterActionData:
+        RayCasters: []
+        IsEnabled: 0
+      setRectPropertyActionData:
+        Targets: []
+        TransformType: 0
+        Value: 0
+    State: Close
+    LayerIndex: 0
+  UseDefaultState: 1
+  DefaultState: Close
 --- !u!1 &1874708673
 GameObject:
   m_ObjectHideFlags: 0

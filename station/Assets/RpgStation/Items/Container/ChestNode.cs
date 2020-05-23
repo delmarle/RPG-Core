@@ -4,14 +4,16 @@ using UnityEngine;
 
 namespace Station
 {
-    public class AreaContainer : Interactible
+    public class ChestNode : Interactible
     {
         [SerializeField] private  List<ItemStack> _defaultItems = new List<ItemStack>();
         
         private AreaContainerSystem _containerSystem;
         private ItemsDb _itemDb;
         private ItemsSettingsDb _itemsSettingsDb;
-        public string _id;
+        [HideInInspector]public bool StateSaved;
+        [HideInInspector]public string _id;
+        [HideInInspector]public string ChestNodeId;
         private UiContainerPopup _cachedContainerPopup;
         
         protected override void Setup()

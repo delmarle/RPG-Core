@@ -15,7 +15,7 @@ namespace Station
         [SerializeField] private GameObject _cameraReference = null;
         public AssetReference LoadingScreen;
         public GameObject UiPrefab;
-        [SerializeField] private CharacterBuilder[] _charactersBuilders;
+        [SerializeField] private CharacterBuilder[] _charactersBuilders = null;
         private Dictionary<Type, CharacterBuilder> _builderMap = new Dictionary<Type,CharacterBuilder>();
         
         #endregion

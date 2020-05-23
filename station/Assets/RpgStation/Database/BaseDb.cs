@@ -1,4 +1,4 @@
-﻿
+﻿#pragma warning disable 0162
 using System;
 using UnityEngine;
 #if UNITY_EDITOR
@@ -23,9 +23,10 @@ namespace Station
 
         public static BaseDb GetDbFromEditor(Type typeDb)
         {
+            BaseDb found = null;
 #if UNITY_EDITOR
             string dbPath = "Assets/Content/Databases/" +  typeDb.Name + @".asset";
-            BaseDb found = AssetDatabase.LoadAssetAtPath<BaseDb>(dbPath);
+            found = AssetDatabase.LoadAssetAtPath<BaseDb>(dbPath);
             if (found == null)
             {
                 Debug.LogError("cant find db at: " + dbPath);
@@ -33,7 +34,7 @@ namespace Station
 
             return found;
 #endif
-            return null;
+            return found;
         }
     }
 }

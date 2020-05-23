@@ -6,7 +6,7 @@ namespace Station
     
     public class AreaContainerSystem : BaseSystem, IContainersHandler
     {
-        private Dictionary<string, BaseItemContainer> _tempContainer;
+        private Dictionary<string, BaseItemContainer> _tempContainer = new Dictionary<string, BaseItemContainer>();
         private Dictionary<string, BaseItemContainer> _savedContainer;
         private AreaContainersSave _areaContainersSave;
         private SceneSystem _sceneSystem;

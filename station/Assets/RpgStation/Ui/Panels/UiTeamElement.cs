@@ -9,7 +9,7 @@ namespace Station
         [SerializeField] private LayoutGroup _playerRoot = null;
         [SerializeField] private UiCharacterPortraitWidget _portraitPrefab = null;
         [SerializeField] private UiCharacterTargetWidget _targetWidget = null;
-        [SerializeField] private UiCharacterHotBarSwitcher _uiHotBarSwitcher = null;
+
         private GenericUiList<BaseCharacter, UiCharacterPortraitWidget> _PlayerWidgets = null;
         private TeamSystem _teamSystem = null;
 
