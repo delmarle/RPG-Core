@@ -184,6 +184,12 @@ namespace Station
         
         public static void SaveAllItems()
         {
+            if (Application.isPlaying)
+            {
+                Debug.LogWarning("Editor cant save item DB while playing");
+                return;
+            }
+
             foreach (var so in ItemsToSave)
             {
                 EditorUtility.SetDirty(so);

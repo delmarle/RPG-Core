@@ -90,7 +90,7 @@ MonoBehaviour:
       CancelInteractionDistance: 3
     - Layer: 8
       InteractibleType:
-        _classRef: Station.AreaContainer, Assembly-CSharp
+        _classRef: Station.ChestNode, Assembly-CSharp
       ShowHintMode: 3
       HideHintOptions:
         UseDelay: 0

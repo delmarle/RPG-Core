@@ -6,10 +6,10 @@ namespace Station
 {
     public class ChestNode : Interactible
     {
-        [SerializeField] private  List<ItemStack> _defaultItems = new List<ItemStack>();
         
         private AreaContainerSystem _containerSystem;
         private ItemsDb _itemDb;
+        private ChestNodesDb _chestNodeDb;
         private ItemsSettingsDb _itemsSettingsDb;
         [HideInInspector]public bool StateSaved;
         [HideInInspector]public string _id;
@@ -28,7 +28,11 @@ namespace Station
 
         private void OnLoadContainer()
         {
-            InitializeWithDefaultItems(Guid.NewGuid().ToString(), _defaultItems, true);
+            var dbSystems = RpgStation.GetSystemStatic<DbSystem>();
+            _chestNodeDb = dbSystems.GetDb<ChestNodesDb>();
+            var nodeModel = _chestNodeDb.GetEntry(ChestNodeId);
+            var defaultItems = LootUtils.GenerateLootStack(nodeModel.Loots);
+            InitializeWithDefaultItems(Guid.NewGuid().ToString(), defaultItems, true);
         }
 
         private void Initialize(string id)
@@ -37,6 +41,7 @@ namespace Station
             _containerSystem = RpgStation.GetSystemStatic<AreaContainerSystem>();
             var dbSystems = RpgStation.GetSystemStatic<DbSystem>();
             _itemDb = dbSystems.GetDb<ItemsDb>();
+            _chestNodeDb = dbSystems.GetDb<ChestNodesDb>();
             _itemsSettingsDb = dbSystems.GetDb<ItemsSettingsDb>();
             SetUiName("Container");
         }
