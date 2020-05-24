@@ -18,6 +18,7 @@ namespace Station
         
         public void Setup(Dictionary<string, object> data)
         {
+            transform.localScale = Vector3.one;
             if (data.ContainsKey(UiConstants.TEXT_TITLE) && _title)
             {
                 _title.text = (string)data[UiConstants.TEXT_TITLE];
