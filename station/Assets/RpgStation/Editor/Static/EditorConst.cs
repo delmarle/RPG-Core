@@ -20,7 +20,8 @@
     public const string CONFIG_TAB_OPTIONS = "<size=11><b> Options</b></size>";
     public const string CONFIG_TAB_PLATFORMS = "<size=11><b> Platforms</b></size>";
     public const string CONFIG_TAB_INPUT_EVENTS = "<size=11><b> Input Events</b></size>";
-    public const string CONFIG_TAB_FLOATING_POPUPS= "<size=11><b> Floating Popups</b></size>";
+    public const string CONFIG_TAB_FLOATING_POPUPS = "<size=11><b> Floating Popups</b></size>";
+    public const string CONFIG_TAB_UI_CHANNELS = "<size=11><b> Ui Notification Channels</b></size>";
     
     //[[STATS TAB]]
     public const string STATS_TAB_ATTRIBUTES = "<size=11><b> Attributes</b></size>";

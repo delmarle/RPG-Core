@@ -29,8 +29,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Databases
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 11400000, guid: 1d1b69a46a41b433bb5d25dd0612c30a, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 1d1b69a46a41b433bb5d25dd0612c30a, type: 2}
   - m_GUID: 2621992d5554c42cf8682741204d2c73
     m_Address: NpcDb
     m_ReadOnly: 0
@@ -50,8 +50,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Databases
-    m_MainAsset: {fileID: 11400000, guid: 37ace511571e94249a1cc705202cb244, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: 37ace511571e94249a1cc705202cb244, type: 2}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 3f61d8f46248944468ba8f8cec1848d4
     m_Address: FactionDb
     m_ReadOnly: 0
@@ -85,15 +85,15 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Databases
-    m_MainAsset: {fileID: 11400000, guid: 7102ac8ea59114415b1c7973cbf0c0f9, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: 7102ac8ea59114415b1c7973cbf0c0f9, type: 2}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 766895e4e75b04de68e0778c9f83de90
     m_Address: FloatingPopupDb
     m_ReadOnly: 0
     m_SerializedLabels:
     - Databases
-    m_MainAsset: {fileID: 11400000, guid: 766895e4e75b04de68e0778c9f83de90, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: 766895e4e75b04de68e0778c9f83de90, type: 2}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 79198aef42dbf4af7acbb2f62931c2ee
     m_Address: PlayerClassDb
     m_ReadOnly: 0
@@ -106,8 +106,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Databases
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 11400000, guid: 9162eed3384b9484a86bb68971484aa4, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 9162eed3384b9484a86bb68971484aa4, type: 2}
   - m_GUID: 91bb43d0eca7b44c4a1905de2ba632c8
     m_Address: GameSettingsDb
     m_ReadOnly: 0
@@ -115,6 +115,13 @@ MonoBehaviour:
     - Databases
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 979d83d3006c24da29546a183da3163a
+    m_Address: UiNotificationChannelsDb
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Databases
+    m_MainAsset: {fileID: 11400000, guid: 979d83d3006c24da29546a183da3163a, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 979d83d3006c24da29546a183da3163a, type: 2}
   - m_GUID: 97b168cf5bee24799976978989766ea7
     m_Address: ItemsCategoriesDb
     m_ReadOnly: 0
@@ -141,8 +148,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Databases
-    m_MainAsset: {fileID: 11400000, guid: b4e8659ddabe7419fac91f183b1fd745, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: b4e8659ddabe7419fac91f183b1fd745, type: 2}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: c856730079aee4178bb2968f34b53e94
     m_Address: EquipmentSlotsDb
     m_ReadOnly: 0

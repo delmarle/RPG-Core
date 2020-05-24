@@ -150,7 +150,8 @@ namespace Station
 
 			var clone = pool.Create();
 			if (parent != null)
-				clone.transform.SetParent(parent);
+				clone.transform.SetParent(parent, false);
+			
 			clone.transform.SetPositionAndRotation(position, rotation);
 
 			clone.SetActive(true);

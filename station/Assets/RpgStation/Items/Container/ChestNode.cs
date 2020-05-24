@@ -30,6 +30,11 @@ namespace Station
         {
             var dbSystems = RpgStation.GetSystemStatic<DbSystem>();
             _chestNodeDb = dbSystems.GetDb<ChestNodesDb>();
+            if (string.IsNullOrEmpty(ChestNodeId))
+            {
+                return;
+            }
+
             var nodeModel = _chestNodeDb.GetEntry(ChestNodeId);
             var defaultItems = LootUtils.GenerateLootStack(nodeModel.Loots);
             InitializeWithDefaultItems(Guid.NewGuid().ToString(), defaultItems, true);

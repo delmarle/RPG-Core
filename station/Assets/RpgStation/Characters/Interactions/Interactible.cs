@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -108,7 +109,11 @@ namespace Station
       {
         var distanceFromCharacter = Vector3.Distance(transform.position, character.GetFeet());
         if (distanceFromCharacter > Config.InteractionRange)
+        {
+          var dict = new Dictionary<string, object> {{UiConstants.TEXT_MESSAGE, $"Too far to interact with {gameObject.name}"}};
+          UiNotificationSystem.ShowNotification(UiConstants.FEED_WIDGET, dict);
           return false;
+        }
 
       }
 

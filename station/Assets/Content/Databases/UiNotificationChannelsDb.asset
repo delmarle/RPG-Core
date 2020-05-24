@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 427a77f81b92a4d2aacbeaea893e29ac, type: 3}
+  m_Name: UiNotificationChannelsDb
+  m_EditorClassIdentifier: 
+  _db:
+    m_keys:
+    - ea153205-5dca-4c53-8a87-24a07e8251ee
+    - b92e2e15-0784-4981-916b-3a920c8fd004
+    m_values:
+    - Name: feed_widget
+      Elements:
+      - {fileID: 0}
+    - Name: confirmation_popup
+      Elements:
+      - {fileID: 0}
