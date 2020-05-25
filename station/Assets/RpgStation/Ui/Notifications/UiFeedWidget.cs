@@ -17,12 +17,12 @@ namespace Station
         [SerializeField] private CanvasGroup _canvasGroup = null;
         private float _timeLeft;
         private readonly List<Dictionary<string, object>> _queue = new List<Dictionary<string, object>> ();
-        private const int MaxConcurentEntries = 32;
+        private const int MaxConcurrentEntries = 32;
 
         protected override void Start()
         {
             base.Start();
-            PoolSystem.PopulatePool(_objectPrefab.gameObject, MaxConcurentEntries);
+            PoolSystem.PopulatePool(_objectPrefab.gameObject, MaxConcurrentEntries);
             _visibleState = false;
         }
 
@@ -39,7 +39,7 @@ namespace Station
             if(_queue.Count>0 && _timeLeft <= 0)
             {
                
-                if (_layout.transform.childCount > MaxConcurentEntries)
+                if (_layout.transform.childCount > MaxConcurrentEntries)
                 {
                     DeSpawnLast();
                 }
