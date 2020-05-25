@@ -980,7 +980,7 @@ public enum StatusEffectType
     //requirement to collect
     public List<LootModel> Loots = new List<LootModel>();
     public AssetReference ReferencePrefab;
-    public GameObject Prefab;
+    public ChestNode Prefab;
     public SoundConfig OpenSound;
     public SoundConfig CloseSound;
     

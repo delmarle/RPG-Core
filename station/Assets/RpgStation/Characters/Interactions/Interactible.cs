@@ -110,7 +110,7 @@ namespace Station
         var distanceFromCharacter = Vector3.Distance(transform.position, character.GetFeet());
         if (distanceFromCharacter > Config.InteractionRange)
         {
-          var dict = new Dictionary<string, object> {{UiConstants.TEXT_MESSAGE, $"Too far to interact with {gameObject.name}"}};
+          var dict = new Dictionary<string, object> {{UiConstants.TEXT_MESSAGE, $"Too far to interact with {GetObjectName()}"}};
           UiNotificationSystem.ShowNotification(UiConstants.FEED_WIDGET, dict);
           return false;
         }
@@ -290,6 +290,11 @@ namespace Station
       {
         _icon.sprite = icon;
       }
+    }
+
+    public virtual string GetObjectName()
+    {
+      return "object";
     }
 
     #endregion

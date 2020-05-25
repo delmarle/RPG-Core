@@ -136,7 +136,7 @@ namespace Station
             EditorStatic.DrawSectionTitle("Node base data", 0);
          
             EditorStatic.DrawThinLine(5);
-            nodeModel.Prefab = (GameObject) EditorGUILayout.ObjectField("Prefab: ", nodeModel.Prefab, typeof(GameObject), false);
+            nodeModel.Prefab = (ChestNode) EditorGUILayout.ObjectField("Prefab: ", nodeModel.Prefab, typeof(ChestNode), false);
             displayOpenChestSound = EditorStatic.SoundFoldout("Open sound: ", ref nodeModel.OpenSound, displayOpenChestSound, 28, Color.cyan);
             if (displayOpenChestSound)
             {

@@ -67,7 +67,12 @@ namespace Station
 
       return base.CanUse(character);
     }
-    
+
+
+    public override string GetObjectName()
+    {
+      return "Portal";
+    }
   }
 }
 

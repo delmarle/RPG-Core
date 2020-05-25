@@ -141,11 +141,11 @@ namespace Station
             }
 
             Position.Generate();
-
+            var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
             switch (SpawnType)
             {
                 case SpawnObjectType.NPC:
-                    var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
+                  
                     var npcDb = dbSystem.GetDb<NpcDb>();
                     var npcMeta = npcDb.GetEntry(ObjectId);
                     if (npcMeta == null)
@@ -172,14 +172,62 @@ namespace Station
                     Object.Instantiate(Prefab, Position.GetPosition(), Quaternion.Euler(Position.GetRotation()));
                     break;
                 case SpawnObjectType.CONTAINER:
-
+                    var chestDb = dbSystem.GetDb<ChestNodesDb>();
+                    var chestModel = chestDb.GetEntry(ObjectId);
+                    if (chestModel == null || chestModel.Prefab == null)
+                    {
+                        Debug.LogError("chest prefab is missing from Database");
+                        return;
+                    }
+                    
+                    ChestNode instance = Object.Instantiate(chestModel.Prefab, Position.GetPosition(), Quaternion.Euler(Position.GetRotation()));
                     //if saved
                         //have save
-                        
-                    
+              
+                    instance.OnLoadContainer();
                     //create loot table from loot table id
                     break;
             }
+        }
+
+        public string EntityName()
+        {
+            switch (SpawnType)
+            {
+                case SpawnObjectType.NPC:
+                    NpcDb npcDb = null;
+                    if (Application.isPlaying)
+                    {
+                        var db = RpgStation.GetSystemStatic<DbSystem>();
+                    }
+                    else
+                    {
+                        npcDb = (NpcDb)BaseDb.GetDbFromEditor(typeof(NpcDb));
+                        
+                    }
+                    var npcEntry = npcDb?.GetEntry(ObjectId);
+                    return $"NPC - {npcEntry?.Name} - ";;
+                case SpawnObjectType.ITEM:
+                    break;
+                case SpawnObjectType.PREFAB:
+                    return $"prefab - {Prefab.name} - ";
+                   
+                case SpawnObjectType.CONTAINER:
+               
+                    ChestNodesDb chestDb = null;
+                    if (Application.isPlaying)
+                    {
+                        var db = RpgStation.GetSystemStatic<DbSystem>();
+                    }
+                    else
+                    {
+                        chestDb = (ChestNodesDb)BaseDb.GetDbFromEditor(typeof(ChestNodesDb));
+                        
+                    }
+                    var chestEntry = chestDb?.GetEntry(ObjectId);
+                    return $"CONTAINER - {chestEntry?.Name.GetValue()} - ";;
+            }
+            return "";
         }
     }
 

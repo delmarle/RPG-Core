@@ -43,7 +43,7 @@ namespace Station
             else
             {
                 
-                string chestId = component.ChestNodeId;
+                string chestId = component.ChestNodeModelId;
                 int entryIndex = 0;
                 if (string.IsNullOrEmpty(chestId))
                 {
@@ -53,28 +53,28 @@ namespace Station
                 entryIndex = _chestDb.GetIndex(chestId);
                 entryIndex = EditorGUILayout.Popup("ChestNode: ", entryIndex, _chestDb.ListEntryNames());
                 
-                component.ChestNodeId = _chestDb.GetKey(entryIndex);
+                component.ChestNodeModelId = _chestDb.GetKey(entryIndex);
             }
 
-            if (string.IsNullOrEmpty(component._id))
+            if (string.IsNullOrEmpty(component.SaveId))
             {
-                component._id = $"chest_id_{Guid.NewGuid().ToString()}";
+                component.SaveId = $"chest_id_{Guid.NewGuid().ToString()}";
             }
 
             component.StateSaved = EditorGUILayout.Toggle("State saved:", component.StateSaved);
             if (component.StateSaved)
             {
              
-                EditorGUILayout.HelpBox(component._id, MessageType.None);
+                EditorGUILayout.HelpBox(component.SaveId, MessageType.None);
                 if (EditorStatic.Button(true, 32, "Refresh save id", "arrow_refresh"))
                 {
-                    component._id = $"chest_id_{Guid.NewGuid().ToString()}";
+                    component.SaveId = $"chest_id_{Guid.NewGuid().ToString()}";
                 }
             }
             
             EditorStatic.DrawThinLine();
             EditorGUILayout.BeginVertical("box");
-            var chestData = _chestDb.GetEntry(component.ChestNodeId);
+            var chestData = _chestDb.GetEntry(component.ChestNodeModelId);
             foreach (var loot in chestData.Loots)
             {
                

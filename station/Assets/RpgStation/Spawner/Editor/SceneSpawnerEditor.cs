@@ -12,10 +12,14 @@ public class SceneSpawnerEditor : Editor
 {
     public List<bool> _entriesStates = new List<bool>();
     private NpcDb _npcDb;
+    private ItemsDb _itemDb;
+    private ChestNodesDb _chestNodesDb;
 
     private void Cache()
     {
         _npcDb = (NpcDb) EditorStatic.GetDb(typeof(NpcDb));
+        _itemDb = (ItemsDb) EditorStatic.GetDb(typeof(ItemsDb));
+        _chestNodesDb = (ChestNodesDb) EditorStatic.GetDb(typeof(ChestNodesDb));
     }
 
     public override void OnInspectorGUI()
@@ -104,7 +108,12 @@ public class SceneSpawnerEditor : Editor
         EditorGUILayout.Space();
 
         EditorGUILayout.BeginHorizontal();
-        string description = entry.SpawnType+": "+entry.Weight+"/"+ highestWeight;
+        string description = entry.EntityName();
+        if (spawner.entitiesSelectionMode == EntitiesSelectionMode.RANDOM_FROM_AMOUNT)
+        {
+            description += entry.Weight + "/" + highestWeight;
+        }
+
         _entriesStates[index] = LevelFoldout(description, _entriesStates[index]);
         if (EditorStatic.SizeableButton(20, 16, "X", ""))
         {
@@ -121,26 +130,12 @@ public class SceneSpawnerEditor : Editor
         
             if (entry.SpawnType == SpawnObjectType.NPC)
             {
-                if (_npcDb.Count() == 0)
-                {
-                    EditorGUILayout.HelpBox("No npc found in the DB", MessageType.Warning);
-                }
-                else
-                {
-                    var foundId = _npcDb.GetIndex(entry.ObjectId);
-                    if (foundId < 0)
-                    {
-                        foundId = 0;
-                    }
-
-                    foundId = EditorGUILayout.Popup("Selected: ", foundId, _npcDb.ListEntryNames());
-                    entry.ObjectId = _npcDb.GetKey(foundId);
-                }
+                entry.ObjectId = EditorStatic.DrawDbIdReference<NpcModel>(_npcDb, entry.ObjectId);
             }
 
             if (entry.SpawnType == SpawnObjectType.ITEM)
             {
-                // EditorGUILayout.LabelField("ITEM");
+                entry.ObjectId = EditorStatic.DrawDbIdReference<BaseItemModel>(_itemDb, entry.ObjectId);
             }
 
             if (entry.SpawnType == SpawnObjectType.PREFAB)
@@ -149,7 +144,17 @@ public class SceneSpawnerEditor : Editor
 
             }
 
-            entry.Weight = EditorGUILayout.IntSlider("Weight: ", entry.Weight, 0, 999);
+            if (entry.SpawnType == SpawnObjectType.CONTAINER)
+            {
+                entry.ObjectId = EditorStatic.DrawDbIdReference<ChestNodeModel>(_chestNodesDb, entry.ObjectId);
+            }
+
+            if (spawner.entitiesSelectionMode == EntitiesSelectionMode.RANDOM_FROM_AMOUNT)
+            {
+                entry.Weight = EditorGUILayout.IntSlider("Weight: ", entry.Weight, 0, 999);
+            }
+
+          
             entry.Position = (PositionProvider)EditorGUILayout.ObjectField("Position: ", entry.Position, typeof(PositionProvider), true);
         }
 

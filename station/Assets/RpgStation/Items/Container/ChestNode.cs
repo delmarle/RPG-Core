@@ -12,8 +12,8 @@ namespace Station
         private ChestNodesDb _chestNodeDb;
         private ItemsSettingsDb _itemsSettingsDb;
         [HideInInspector]public bool StateSaved;
-        [HideInInspector]public string _id;
-        [HideInInspector]public string ChestNodeId;
+        [HideInInspector]public string SaveId;
+        [HideInInspector]public string ChestNodeModelId;
         private UiContainerPopup _cachedContainerPopup;
         
         protected override void Setup()
@@ -26,29 +26,30 @@ namespace Station
             GameGlobalEvents.OnSceneLoadObjects.RemoveListener(OnLoadContainer); 
         }
 
-        private void OnLoadContainer()
+        public void OnLoadContainer()
         {
             var dbSystems = RpgStation.GetSystemStatic<DbSystem>();
             _chestNodeDb = dbSystems.GetDb<ChestNodesDb>();
-            if (string.IsNullOrEmpty(ChestNodeId))
+            if (string.IsNullOrEmpty(ChestNodeModelId))
             {
                 return;
             }
 
-            var nodeModel = _chestNodeDb.GetEntry(ChestNodeId);
+            var nodeModel = _chestNodeDb.GetEntry(ChestNodeModelId);
             var defaultItems = LootUtils.GenerateLootStack(nodeModel.Loots);
             InitializeWithDefaultItems(Guid.NewGuid().ToString(), defaultItems, true);
         }
 
-        private void Initialize(string id)
+        private void Initialize(string saveId)
         {
-            _id = id;
+            SaveId = saveId;
             _containerSystem = RpgStation.GetSystemStatic<AreaContainerSystem>();
             var dbSystems = RpgStation.GetSystemStatic<DbSystem>();
             _itemDb = dbSystems.GetDb<ItemsDb>();
             _chestNodeDb = dbSystems.GetDb<ChestNodesDb>();
             _itemsSettingsDb = dbSystems.GetDb<ItemsSettingsDb>();
-            SetUiName("Container");
+
+            SetUiName(GetObjectName());
         }
 
         private void InitializeWithDefaultItems(string id, List<ItemStack> items, bool saved)
@@ -76,7 +77,7 @@ namespace Station
             }
         
             CachePopup(_cachedContainerPopup);
-            _cachedContainerPopup.Setup(new ContainerReference(_id, RpgStation.GetSystemStatic<AreaContainerSystem>()), user);
+            _cachedContainerPopup.Setup(new ContainerReference(SaveId, RpgStation.GetSystemStatic<AreaContainerSystem>()), user);
             _cachedContainerPopup.Show();
             
         }
@@ -87,6 +88,12 @@ namespace Station
             UiSystem.HideUniquePopup<UiContainerPopup>(UiContainerPopup.POPUP_KEY);
             _cachedContainerPopup.Hide();
             base.OnCancelInteraction(user);
+        }
+
+        public override string GetObjectName()
+        {
+            var chestModel = _chestNodeDb.GetEntry(ChestNodeModelId);
+            return chestModel.Name.GetValue();
         }
     }
 
