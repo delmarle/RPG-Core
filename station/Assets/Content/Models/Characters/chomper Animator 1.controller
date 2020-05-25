@@ -183,7 +183,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Movement
-  m_Speed: 1
+  m_Speed: 0.79
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101847163651963896}
@@ -238,12 +238,12 @@ AnimatorStateMachine:
   m_StateMachineTransitions:
   - first: {fileID: 0}
     second: []
-  - first: {fileID: 1107028022676562070}
-    second:
-    - {fileID: 1109613813695043098}
   - first: {fileID: 1107530582311938272}
     second:
     - {fileID: 1109640829378691438}
+  - first: {fileID: 1107028022676562070}
+    second:
+    - {fileID: 1109613813695043098}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 480, y: 228, z: 0}
   m_EntryPosition: {x: -108, y: 36, z: 0}

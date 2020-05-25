@@ -121,9 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa63ce5033c824652bef12ea8153ffa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _distanceToTarget: 6
+  _distanceToTarget: 5
   _nearClipPlaneExtentMultiplier: 1.2
-  _occlusionMoveTime: 0.058
+  _occlusionMoveTime: 0.001
   _ignoreLayerMask:
     serializedVersion: 2
     m_Bits: 512

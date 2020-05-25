@@ -67,7 +67,10 @@ character.Action.SetPassiveAbilities(passiveList, character);
     
     
 #endregion
-}
+
+            var ai = character.gameObject.AddComponent<SimpleNpcStateMachine>();
+            ai.Setup(character);
+        }
 } 
 
 }

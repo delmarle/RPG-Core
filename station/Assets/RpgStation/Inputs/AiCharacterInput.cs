@@ -6,9 +6,10 @@ namespace Station
     [RequireComponent(typeof (NavMeshAgent))]
     public class AiCharacterInput : BaseInput
     {
+        public NavMeshAgent Agent => _agent;
         [SerializeField] private NavMeshAgent _agent = null;
         [SerializeField] private Transform _target = null;
-
+        private Vector3 _destination;
         protected override void OnActive(BaseCharacter character)
         {
             NavMeshHit closestHit;
@@ -36,6 +37,16 @@ namespace Station
             _target = target;
         }
 
+        public void SetDestination(Vector3 destination)
+        {
+            _destination = destination;
+        }
+
+        public void Stop()
+        {
+            _destination = transform.position;
+        }
+
         public override Vector3 Movement()
         {
             _agent.updateRotation = false;
@@ -45,7 +56,8 @@ namespace Station
                 {
                     return Vector3.zero;
                 }
-      
+
+                _destination = _target.position;
                 var distance = _agent.remainingDistance;
                 _agent.SetDestination(_target.position);
 
@@ -54,6 +66,16 @@ namespace Station
                     return _agent.desiredVelocity;
                 }
             }
+            else
+            {
+                _agent.SetDestination(_destination);
+                var distance = _agent.remainingDistance;
+                if (distance > _agent.stoppingDistance)
+                {
+                    return _agent.desiredVelocity;
+                }
+            }
+
             return base.Movement();
         }
 
@@ -75,5 +97,20 @@ namespace Station
             _agent.speed = 1.8f;
             return 2;
         }
+
+        public void SetStoppingDistance(float distance)
+        {
+            _agent.stoppingDistance = distance;
+        }
+
+        public Vector3 GetNearestPositionOnNavMesh(Vector3 direction, float maxDistance)
+        {
+            NavMeshHit hit;
+            NavMesh.SamplePosition(direction, out hit, Random.Range(0f, maxDistance), 1);
+          
+            return hit.position;
+        }
+        
+       
     }
 }
