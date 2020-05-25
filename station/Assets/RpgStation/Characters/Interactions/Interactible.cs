@@ -128,6 +128,7 @@ namespace Station
 
     public virtual void Interact(BaseCharacter user)
     {
+    
       OnStartInteracting.Invoke();
       _currentUser = user;
       switch (Config.CancelInteractionMode)

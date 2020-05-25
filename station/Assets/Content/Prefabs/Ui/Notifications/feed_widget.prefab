@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3686308971443798608}
   - component: {fileID: 3686308971443798615}
   - component: {fileID: 3686308971443798614}
+  - component: {fileID: 6929337795039400122}
   m_Layer: 5
   m_Name: Scroll Rect
   m_TagString: Untagged
@@ -118,6 +119,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &6929337795039400122
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3686308971443798612}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3686308971919549563
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,3 +309,4 @@ MonoBehaviour:
   _objectPrefab: {fileID: 1355692752996388402, guid: 7eb6e605c036b450e85abf22f4b656e0,
     type: 3}
   _layout: {fileID: 3686308971919549542}
+  _canvasGroup: {fileID: 6929337795039400122}

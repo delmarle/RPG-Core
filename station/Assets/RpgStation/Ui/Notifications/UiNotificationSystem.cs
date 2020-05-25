@@ -33,6 +33,24 @@ namespace Station
         {
             var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
             _channelsDb = dbSystem.GetDb<UiNotificationChannelsDb>();
+            foreach (var dbEntry in _channelsDb.Db)
+            {
+                string channel = dbEntry.Value.Name;
+                foreach (var element in dbEntry.Value.Elements)
+                {
+                    
+                    if (element == null)
+                    {
+                        Debug.LogError($"one element in the channel ${channel} is missing");
+                    }
+                    else
+                    {
+                        var instance = Instantiate(element);
+                        DontDestroyOnLoad(instance);
+                        RegisterElement(channel, instance);
+                    }
+                }
+            }
         }
         
         public void RegisterElement(string channel, UiNotificationElement element)

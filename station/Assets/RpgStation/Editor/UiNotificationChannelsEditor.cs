@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Malee.Editor;
-using RPG.Editor;
+﻿using RPG.Editor;
 using UnityEditor;
 using UnityEngine;
 
@@ -110,8 +107,11 @@ namespace Station
       
       GUILayout.Space(3);
       EditorStatic.DrawSectionTitle(28, "Elements");
+      EditorGUILayout.HelpBox("Elements sets as widget require the channel to be set on the prefab", MessageType.Info);
+      EditorStatic.DrawThinLine(4);
       EditorGUILayout.BeginHorizontal();
-      EditorGUILayout.HelpBox("All the elements in the list will be created\n and receive notification from this channel", MessageType.Info);
+      EditorGUILayout.HelpBox("Elements in this list will be instanced and persisted between scenes" +
+                              "\n make sure they are unique. ", MessageType.Info);
       if (EditorStatic.SizeableButton(250, 32, "Add new element", "plus"))
       {
           staticData.Elements.Add(null);

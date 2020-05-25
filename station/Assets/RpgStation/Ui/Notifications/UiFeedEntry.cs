@@ -6,8 +6,8 @@ namespace Station
 {
     public class UiFeedEntry : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI _title;
-        [SerializeField ]private TextMeshProUGUI _message;
+        [SerializeField] private TextMeshProUGUI _title = null;
+        [SerializeField ]private TextMeshProUGUI _message = null;
         
         private void OnEnable()
         {

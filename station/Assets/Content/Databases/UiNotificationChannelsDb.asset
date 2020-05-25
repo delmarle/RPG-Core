@@ -18,8 +18,7 @@ MonoBehaviour:
     - b92e2e15-0784-4981-916b-3a920c8fd004
     m_values:
     - Name: feed_widget
-      Elements:
-      - {fileID: 0}
+      Elements: []
     - Name: confirmation_popup
       Elements:
-      - {fileID: 0}
+      - {fileID: 8524901454652808687, guid: a66828ddc021e4649b1053ddf81b32b8, type: 3}

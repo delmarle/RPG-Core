@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 
 namespace Station
@@ -7,7 +7,7 @@ namespace Station
     public class UiNotificationElement : UiElementBase
     {
         public List<string> Channels = new List<string>();
-        protected UiNotificationSystem _notificationSystem;
+        private UiNotificationSystem _notificationSystem;
         
         protected override void Awake()
         {
