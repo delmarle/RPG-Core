@@ -6,18 +6,27 @@ namespace Station
     [RequireComponent(typeof (NavMeshAgent))]
     public class AiCharacterInput : BaseInput
     {
+        private MovementType _movementType = Station.MovementType.Auto;
         public NavMeshAgent Agent => _agent;
         [SerializeField] private NavMeshAgent _agent = null;
         [SerializeField] private Transform _target = null;
         private Vector3 _destination;
+        private BaseCharacter _owner;
+        
         protected override void OnActive(BaseCharacter character)
         {
+            _owner = character;
             NavMeshHit closestHit;
- 
+
             if (NavMesh.SamplePosition(gameObject.transform.position, out closestHit, 500f, NavMesh.AllAreas))
+            {
                 gameObject.transform.position = closestHit.position;
+            }
             else
+            {
                 Debug.LogError("Could not find position on NavMesh!");
+            }
+
             _agent.enabled = true;
         }
 
@@ -45,10 +54,12 @@ namespace Station
         public void Stop()
         {
             _destination = transform.position;
+            _target = null;
         }
 
         public override Vector3 Movement()
         {
+            _agent.speed = _owner.Control.MaxHorizontalSpeed;
             _agent.updateRotation = false;
             if (_target != null)
             {
@@ -58,22 +69,13 @@ namespace Station
                 }
 
                 _destination = _target.position;
-                var distance = _agent.remainingDistance;
-                _agent.SetDestination(_target.position);
-
-                if (distance > _agent.stoppingDistance)
-                {
-                    return _agent.desiredVelocity;
-                }
             }
-            else
+
+            _agent.SetDestination(_destination);
+            var distance = _agent.remainingDistance;
+            if (distance > _agent.stoppingDistance)
             {
-                _agent.SetDestination(_destination);
-                var distance = _agent.remainingDistance;
-                if (distance > _agent.stoppingDistance)
-                {
-                    return _agent.desiredVelocity;
-                }
+                return _agent.desiredVelocity;
             }
 
             return base.Movement();
@@ -81,21 +83,27 @@ namespace Station
 
         public override int MovementType()
         {
-  
+            
+            if (_movementType == Station.MovementType.Auto)
+            {
+            }
+
             var distance = _agent.isOnNavMesh?_agent.remainingDistance:0;
             if (distance < 10)
             {
-                _agent.speed = 0.5f;
                 return 0;
             }
 
             if (distance < 25)
             {
-                _agent.speed = 1;
                 return 1;
             }
-            _agent.speed = 1.8f;
             return 2;
+        }
+
+        public void SetMovementType(MovementType moveType)
+        {
+            _movementType = moveType;
         }
 
         public void SetStoppingDistance(float distance)
@@ -112,5 +120,10 @@ namespace Station
         }
         
        
+    }
+
+    public enum MovementType
+    {
+        Auto, Walk, Run, Sprint
     }
 }

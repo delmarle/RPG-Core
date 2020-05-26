@@ -18,7 +18,7 @@ namespace Station
   private CharacterController _controller;
   private BaseCharacter _baseCharacter;
 
-  private float _maxHorizontalSpeed
+  public float MaxHorizontalSpeed
   {
     get
     {
@@ -209,7 +209,7 @@ namespace Station
     }
     set
     {
-      float moveSpeed = value.magnitude * _maxHorizontalSpeed;
+      float moveSpeed = Mathf.Clamp(value.magnitude * MaxHorizontalSpeed,0,MaxHorizontalSpeed);
       if (moveSpeed < Mathf.Epsilon)
       {
         _targetHorizontalSpeed = 0f;
