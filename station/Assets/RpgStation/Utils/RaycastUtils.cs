@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Station
 {
+ 
   public static class RaycastUtils 
   {
     public static void RaycastTargets<T>(Vector3 origin,int distance, int mask, out List<T> found)
@@ -19,26 +20,27 @@ namespace Station
         }
       }
     }
-    public static void RaycastTarget<T>(Vector3 origin,int distance, int mask, out T found)
+    public static void RaycastTarget<T>(Vector3 origin,int distance, int mask, RaycastHit[] hits, out T found)
     {
       found = default(T);
       if (Camera.main == null) return;
       Ray ray = Camera.main.ScreenPointToRay(origin);
-      RaycastHit[] hits = Physics.RaycastAll(ray,distance,mask);
-    //  Physics.SphereCastAll(ray,1,distance,mask) TODO
-      foreach(RaycastHit hit in hits )
+      if (Physics.RaycastNonAlloc(ray, hits, distance, mask)>0)
       {
-        T target;
-        if (typeof(T) == typeof(GameObject))
+        foreach(RaycastHit hit in hits )
         {
-          Debug.LogError("Cannot return gameobject;");
-        }
-        target =  hit.collider.GetComponent<T>();
+          T target;
+          if (typeof(T) == typeof(GameObject))
+          {
+            Debug.LogError("Cannot return gameobject;");
+          }
+          target =  hit.collider.GetComponent<T>();
        
-        if (target != null)
-        {
-          found = target;
-          return;
+          if (target != null)
+          {
+            found = target;
+            return;
+          }
         }
       }
     }

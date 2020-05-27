@@ -18,6 +18,7 @@ namespace Station
     private Dictionary<Interactible,float> _hideDelay = new Dictionary<Interactible, float>();
     private List<Interactible> _hideByDistance = new List<Interactible>();
     private List<Interactible> _removeFromChecks = new List<Interactible>();
+    private RaycastHit[] _hits = new RaycastHit[5];
     #endregion
 
     private void Awake()
@@ -64,7 +65,7 @@ namespace Station
     private void OnTap(Finger obj)
     {
       Interactible tapped;
-      RaycastUtils.RaycastTarget(obj.PreviousScreenPosition ,100, _interactibleLayers, out tapped);
+      RaycastUtils.RaycastTarget(obj.PreviousScreenPosition ,100, _interactibleLayers, _hits,out tapped);
       if (obj.StartedOverGui)
       {
         return;
@@ -79,7 +80,7 @@ namespace Station
         return;
       
       Interactible hovered;
-      RaycastUtils.RaycastTarget(Input.mousePosition , 50,_interactibleLayers, out hovered);
+      RaycastUtils.RaycastTarget(Input.mousePosition , 50,_interactibleLayers, _hits,out hovered);
 
       if (_lastHovered != hovered)
       {

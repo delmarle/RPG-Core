@@ -12,7 +12,9 @@ namespace Station
 
   public abstract class Tracker : MonoBehaviour, ITracker
   {
+    
     [SerializeField] private float _sortingCycle = 0.1f;
+    private WaitForSeconds _sortingCyclesWait = new WaitForSeconds(0.1f);
     public int NumberOfTargets = 1;
     public LayerMask TargetLayers;
     [SerializeField] private SortingStyles _sortingStyle = SortingStyles.Nearest;
@@ -121,7 +123,7 @@ namespace Station
         if (Math.Abs(_sortingCycle) < 0.001f)
           yield return null;
         else
-          yield return new WaitForSeconds(_sortingCycle);
+          yield return _sortingCyclesWait;
 
         Dirty = true;
       }
@@ -134,6 +136,10 @@ namespace Station
       protected set { }
     }
 
+    private void Awake()
+    {
+      _sortingCyclesWait = new WaitForSeconds(_sortingCycle);
+    }
 
     protected virtual void OnEnable()
     {
