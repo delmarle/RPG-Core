@@ -1,9 +1,9 @@
 # RPG Station for Unity [![Unity Version: 2019.3.0f6](https://img.shields.io/badge/Unity-2019.3.0f6-333333.svg?logo=unity)](https://unity3d.com/get-unity/download/archive) 
 ![alt text](https://i.gyazo.com/21052d9f3a8924f7860a42f41d5868a2.jpg)
 # Requirement:
--Unity 2019+
--Adressables
--Dotween is optional
+- Unity 2019+
+- Adressables
+- Dotween is optional
 # What is in progress: 
 - Items with different types and functionalities.
 - Container, for players inventories or chests..
@@ -33,11 +33,6 @@
 - World, Scenes Data, Spawners, Portals
 - Interaction: Button, harvestNode, portal
 - Spawning for characters and any objects, use rules and state can be saved 
-
-# Later features: 
--Pets 
--Difficulty
--Localization
 
 ![alt text](https://i.gyazo.com/f4625456c7d35ba03a5c93b438253aaa.png)
 ![alt text](https://i.gyazo.com/b9b99aa6f4469ff422696f89bcc6c983.png)
