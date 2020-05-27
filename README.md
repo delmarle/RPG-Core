@@ -5,21 +5,16 @@
 - Adressables
 - Dotween is optional
 # What is in progress: 
-- Items with different types and functionalities.
-- Container, for players inventories or chests..
 - Equipment
+- Character AI
 # Next features: 
 - Status Effects extended
 - Hate system
-- Npc Basic Ai
 - Counters system
 - Quest system
-- integrations with other assets
 - Crafting
-
 # Feature list:
 - Saving system
-
 - hotswappable Mechanics:
   - Swappable character creation
   - Swappable Ui
@@ -31,8 +26,10 @@
 - Abilities
 - Skills
 - World, Scenes Data, Spawners, Portals
-- Interaction: Button, harvestNode, portal
+- Interaction: Button, harvestNode, portal, chest
 - Spawning for characters and any objects, use rules and state can be saved 
+- Items with different types and functionalities.
+- Container, for players inventories or chests..
 
 ![alt text](https://i.gyazo.com/f4625456c7d35ba03a5c93b438253aaa.png)
 ![alt text](https://i.gyazo.com/b9b99aa6f4469ff422696f89bcc6c983.png)
@@ -48,8 +45,6 @@ its a framework that want to simplify creation of rpg games but still provide fl
 - none of the stats / skills / names / vitals / Character creation, Ui whatever are hardcoded, they care configured through editor.
 - each character will instantiate a scriptable object "calculator" that will be responsible for calculation, tell other component what to do.
 - hot swappable Mechanics feature, that allow you to change controls, component, inputs of your game in a click of a button. that mean you can use ClassicRpgMechanics to have a team based rpg, then change to FPSRpgMechanics and your game will play like skyrim. this does not need to reconfigure your data or your scenes
-
-
 
 How to:
 How to create my Own mechanics:
