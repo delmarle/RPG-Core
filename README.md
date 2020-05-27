@@ -153,5 +153,5 @@ namespace Station
 }
 
 ```
-
+Documentation: WIP https://delmarle-damien.gitbook.io/core-rpg/
 You are free to use this in any comercial game but do not resell or redistribute the framework
