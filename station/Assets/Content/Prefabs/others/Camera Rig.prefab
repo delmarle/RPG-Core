@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8154942}
   - component: {fileID: 11403334}
   - component: {fileID: 11473368}
+  - component: {fileID: 5479764695861384479}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -128,6 +129,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   _visualizeInScene: 1
+--- !u!92 &5479764695861384479
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101362}
+  m_Enabled: 1
 --- !u!1 &178034
 GameObject:
   m_ObjectHideFlags: 0
