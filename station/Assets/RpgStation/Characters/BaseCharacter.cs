@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Station
@@ -43,6 +42,8 @@ namespace Station
 
         private ActionHandler _action = null;
         public ActionHandler Action => _action;
+
+        private CharacterBrain _brain;
 
         private bool _isDead;
 
@@ -144,17 +145,15 @@ namespace Station
             _action.Unsubscribe();
         }
 
-        public void Init(string characterId, string raceId, string factionId, string genderId, CharacterCalculation instance, string characterName, Dictionary<string, object> meta = null)
+        public void Init(
+            string characterId, 
+            string raceId,
+            string factionId, 
+            string genderId, 
+            CharacterCalculation instance, 
+            string characterName, 
+            CharacterBrain brain)
         {
-           
-            
-            if (meta != null)
-            {
-                foreach (var entry in meta)
-                {
-                    AddMeta(entry.Key, entry.Value);
-                }
-            }
 
             _characterId = characterId;
             _raceId = raceId;
@@ -165,6 +164,10 @@ namespace Station
             _calculatorInstance = instance;
             
             _calculatorInstance.Setup(this);
+            if (_brain)
+            {
+                brain.Setup(this);
+            }
         }
 
         public void SetRenderer(Renderer cache)
@@ -225,6 +228,10 @@ namespace Station
         
         private void Update()
         {
+            if (_brain)
+            {
+                _brain.TickBrain();
+            }
             _action?.UpdateCombat();
             _action?.UpdateLoop();
         }

@@ -35,7 +35,7 @@ namespace Station
 
                 calculatorInstance.PreSetup(classData);
                 
-                character.Init(baseData.CharacterId,save.RaceId, save.FactionId, save.GenderId, calculatorInstance, save.Name);
+                character.Init(baseData.CharacterId,save.RaceId, save.FactionId, save.GenderId, calculatorInstance, save.Name, null);
                 character.SetupAction(model.Attack);     
                 character.AddMeta(StationConst.CLASS_ID, save.ClassId);
                 character.AddMeta(StationConst.CHARACTER_ID, data[2]);

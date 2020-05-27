@@ -2952,7 +2952,6 @@ GameObject:
   - component: {fileID: 3128725688212506763}
   - component: {fileID: 5268744292986777152}
   - component: {fileID: 3232383768615095540}
-  - component: {fileID: 6076973911399063055}
   m_Layer: 9
   m_Name: Chomper
   m_TagString: Player
@@ -3027,6 +3026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 526cdf1baba6241abb563dd121e21c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FloatingPopupAnchor: {fileID: 0}
   _inputHandler: {fileID: 3128725688212506763}
   _characterVisual: {fileID: 807293061399403082}
 --- !u!114 &9074964469764159522
@@ -3043,9 +3043,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movementSettings:
     _acceleration: 10
-    _walkSpeed: 2
-    _jogSpeed: 4
-    _sprintSpeed: 6
     _jumpForce: 10
   _gravitySettings:
     gravityStrength: 27
@@ -3095,19 +3092,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fc9d87f2260d47b895850fac9514cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6076973911399063055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8007653114716165723}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4667d50ea7b424dd9b885b60a08dab95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input: {fileID: 5268744292986777152}
 --- !u!1 &8083002350899495092
 GameObject:
   m_ObjectHideFlags: 0
