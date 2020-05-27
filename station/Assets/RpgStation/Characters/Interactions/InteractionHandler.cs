@@ -79,7 +79,7 @@ namespace Station
         return;
       
       Interactible hovered;
-      RaycastUtils.RaycastTarget(Input.mousePosition , 100,_interactibleLayers, out hovered);
+      RaycastUtils.RaycastTarget(Input.mousePosition , 50,_interactibleLayers, out hovered);
 
       if (_lastHovered != hovered)
       {
@@ -163,8 +163,9 @@ namespace Station
     private void CheckDistances()
     {
       if (_leader == null) return;
-      foreach (var interactible in _hideByDistance)
+      for (int i = 0; i < _hideByDistance.Count; i++)
       {
+        var interactible = _hideByDistance[i];
         float distanceMax = interactible.Config.HideHintOptions.Distance;
         if (Vector3.Distance(_leader.transform.position, interactible.transform.position) > distanceMax)
         {
@@ -174,19 +175,21 @@ namespace Station
           }
         }
       }
+     
     }
 
     private void ProcessRemoved()
     {
-      foreach (var interactible in _removeFromChecks)
+      for (int i = 0; i < _removeFromChecks.Count; i++)
       {
+        var interactible = _hideByDistance[i];
         if (_hideByDistance.Contains(interactible)) _hideByDistance.Remove(interactible);
           
         if (_hideDelay.ContainsKey(interactible))  _hideDelay.Remove(interactible);
         
         interactible.HideVisual();
       }
-      
+
       _removeFromChecks.Clear();
     }
 
