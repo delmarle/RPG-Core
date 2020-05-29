@@ -1,0 +1,2 @@
+This software as an RPG framework may not be resold, redistributed or otherwise conveyed to a third party.
+it can be used in you comercial game without restriction.
