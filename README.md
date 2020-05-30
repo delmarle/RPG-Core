@@ -1,6 +1,6 @@
 
 ![](images/rpg_core_icon.png)  [![Documentation Status](https://readthedocs.org/projects/ansicolortags/badge/?version=latest)](https://delmarle-damien.gitbook.io/core-rpg/) [![Discord](https://img.shields.io/discord/715220834683191344.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/9GRnNM)  [![Unity Version: 2019.3.0f6](https://img.shields.io/badge/Unity-2019.3.0f6-333333.svg?logo=unity)](https://unity3d.com/get-unity/download/archive) 
-![alt text](https://i.gyazo.com/21052d9f3a8924f7860a42f41d5868a2.jpg)
+![](images/editor_showcase.png)
 # Requirement:
 - Unity 2019+
 - Adressables
