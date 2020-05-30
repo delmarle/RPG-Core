@@ -4,8 +4,7 @@
 </p> 
 
 # What is Rpg Station?
-its a framework that want to simplify creation of RPG games but still provide flexibility, so you can make any type of game with included functionality. If the game you want to make is not possible out of the box, it will be very easy to add specific logic.
-
+A framework that want to simplify creation of RPG games but still provide flexibility, making it easy make any type of game with included functionality. If the game you want to make is not possible out of the box, it will be very easy to extend.
 ![](images/editor_showcase.png)
 # Requirement:
 - Unity 2019+
