@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using RPG.Editor;
 using UnityEditor;
+using UnityEngine;
 
 namespace Station
 {
@@ -27,6 +28,8 @@ namespace Station
 
         public static void DrawContent()
         {
+            GUILayout.Label(new GUIContent(EditorStatic.GetEditorTexture("core_full")), EditorStatic.PublisherNameStyle);
+            GUILayout.Space(5);
             var mechanicsFound = EditorStatic.GetAllScriptables<StationMechanics>();
             if (mechanicsFound.Length > 0)
             {
@@ -54,7 +57,7 @@ namespace Station
                 {
                     EditorStatic.ClearSaveFolder();
                 }
-
+                
 
             }
             else

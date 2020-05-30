@@ -8,7 +8,7 @@
     private const string EDITOR_ASSETS_PATH = "Assets/RpgStation/Editor/Assets/";
     private const string EDITOR_DB_PATH = "Assets/Content/Databases/";
     
-    public const string WINDOW_TITLE = "<size=20><b><color=#666666>RPG FRAMEWORK</color></b></size>";
+    public const string WINDOW_TITLE = "<size=20><b><color=#666666>Core RPG</color></b></size>";
     
     public const int EDITOR_BUTTON_SIZE = 64;
     public const int LIST_VIEW_WIDTH = 220;

@@ -1,5 +1,4 @@
-﻿using System;
-using RPG.Editor;
+﻿using RPG.Editor;
 using Station.Editor;
 using UnityEditor;
 using UnityEngine;
@@ -10,14 +9,14 @@ namespace Station
   {
     int _toolBarIndex;
     
-    [MenuItem("Tools/RPG FRAMEWORK")]
+    [MenuItem("Tools/Core RPG")]
     private static void ShowWindow()
     {
       EditorStatic.LoadStyles();
-      MainEditorWindow myWindow = GetWindow<MainEditorWindow>("Framework");
+      MainEditorWindow myWindow = GetWindow<MainEditorWindow>("Core RPG");
       myWindow.minSize = new Vector2(1024, 600);
       myWindow.maxSize = myWindow.minSize*2;
-      myWindow.titleContent = new GUIContent("Framework");
+      myWindow.titleContent = new GUIContent("Core RPG");
       myWindow.Show();
     }
 
@@ -45,7 +44,8 @@ namespace Station
     private void DrawHeader()
     { 
       EditorStatic.Space();
-      GUILayout.Label(new GUIContent(EditorStatic.WINDOW_TITLE), EditorStatic.PublisherNameStyle);
+      
+      GUILayout.Label(new GUIContent(EditorStatic.WINDOW_TITLE, EditorStatic.GetEditorTexture("core_small")), EditorStatic.PublisherNameStyle);
       EditorStatic.Space();
       _toolBarIndex = GUILayout.Toolbar(_toolBarIndex, EditorStatic.ToolbarOptions, EditorStatic.ToolBarStyle,
         EditorStatic.ToolbarHeight);
@@ -87,7 +87,7 @@ namespace Station
 
     private void DrawFooter()
     {
-      EditorGUILayout.LabelField(new GUIContent("version 1.0"), EditorStatic.CenteredVersionLabel);
+      EditorGUILayout.LabelField(new GUIContent("version 0.6"), EditorStatic.CenteredVersionLabel);
     }
   }
 }
