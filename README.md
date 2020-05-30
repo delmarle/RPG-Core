@@ -1,19 +1,12 @@
 
 ![](images/rpg_core_icon.png)  [![Documentation Status](https://readthedocs.org/projects/ansicolortags/badge/?version=latest)](https://delmarle-damien.gitbook.io/core-rpg/) [![Discord](https://img.shields.io/discord/715220834683191344.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/9GRnNM)  [![Unity Version: 2019.3.0f6](https://img.shields.io/badge/Unity-2019.3.0f6-333333.svg?logo=unity)](https://unity3d.com/get-unity/download/archive) 
 ![](images/editor_showcase.png)
+# What is Rpg Station?
+its a framework that want to simplify creation of RPG games but still provide flexibility, so you can make any type of game with included functionality. If the game you want to make is not possible out of the box, it will be very easy to add specific logic.
 # Requirement:
 - Unity 2019+
 - Adressables
 - Dotween is optional
-# What is in progress: 
-- Equipment
-- Character AI
-# Next features: 
-- Status Effects extended
-- Hate system
-- Counters system
-- Quest system
-- Crafting
 # Feature list:
 - Saving system
 - hotswappable Mechanics:
@@ -31,23 +24,21 @@
 - Spawning for characters and any objects, use rules and state can be saved 
 - Items with different types and functionalities.
 - Container, for players inventories or chests..
-
-![alt text](https://i.gyazo.com/f4625456c7d35ba03a5c93b438253aaa.png)
-![alt text](https://i.gyazo.com/b9b99aa6f4469ff422696f89bcc6c983.png)
-
-https://gyazo.com/5fa3bf2209a5a69a2ade7363c9ecb21b
-
-# What is Rpg Station?
-
-its a framework that want to simplify creation of rpg games but still provide flexibility, so you can make any type of game with included functionality. If the game you want to make is not possible out of the box, it will be very easy to add specific logic.
-
+# What is in progress: 
+- Equipment
+- Character AI
+# Next features: 
+- Status Effects extended
+- Hate system
+- Counters system
+- Quest system
+- Crafting
 # How flexible it is?
-
 - none of the stats / skills / names / vitals / Character creation, Ui whatever are hardcoded, they care configured through editor.
 - each character will instantiate a scriptable object "calculator" that will be responsible for calculation, tell other component what to do.
 - hot swappable Mechanics feature, that allow you to change controls, component, inputs of your game in a click of a button. that mean you can use ClassicRpgMechanics to have a team based rpg, then change to FPSRpgMechanics and your game will play like skyrim. this does not need to reconfigure your data or your scenes
 
-How to:
+# How to:
 How to create my Own mechanics:
 
 Simply override CharacterBuilder to create you specific builder for players, npcs, pets. Then assign it to you any of your mechanics:
