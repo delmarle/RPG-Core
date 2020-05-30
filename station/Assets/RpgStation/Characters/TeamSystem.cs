@@ -168,6 +168,7 @@ namespace Station
                 }
                 else
                 {
+                    //TODO change without target
                     teamMember.GetInputHandler.SetAiInput(character.transform);
                 }
             }

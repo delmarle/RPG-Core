@@ -199,6 +199,7 @@ namespace Station
       public string RaceId;
       public string FactionId;
       public string PrefabId;
+      public CharacterBrain Brain;
       
       public bool UseHealth;
       public IdIntegerValue HealthVital = new IdIntegerValue("health", 0);

@@ -164,8 +164,9 @@ namespace Station
             _calculatorInstance = instance;
             
             _calculatorInstance.Setup(this);
-            if (_brain)
+            if (brain)
             {
+                _brain = brain;
                 brain.Setup(this);
             }
         }
@@ -228,7 +229,7 @@ namespace Station
         
         private void Update()
         {
-            if (_brain)
+            if (_brain && _inputHandler.UseAi)
             {
                 _brain.TickBrain();
             }

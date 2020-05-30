@@ -10,7 +10,7 @@ namespace Station
   
     private PlayerInput _playerInput;
     //private BaseInput _previousInput;
-  
+    public bool UseAi = false;
     #endregion
   
     public void InitializePlayerInput(PlayerInput player)
@@ -30,12 +30,13 @@ namespace Station
     {
       _aiInput.SetTarget(target);
       SwitchInput(_aiInput);
+      UseAi = true;
     }
   
     public void SetPlayerInput()
     {
       SwitchInput(_playerInput);
-      
+      UseAi = false;
     }
   
     private void SwitchInput(BaseInput input)

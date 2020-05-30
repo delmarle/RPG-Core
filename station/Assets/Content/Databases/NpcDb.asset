@@ -22,6 +22,8 @@ MonoBehaviour:
       RaceId: bd81baa9-becb-4179-bbef-147611432d15
       FactionId: 58aa1065-2f7d-4587-a660-5ed255f5e27a
       PrefabId: chomper
+      Brain: {fileID: 467510766731680619, guid: 4abe315f67f4e4ff4947a0039f0cccb6,
+        type: 3}
       UseHealth: 1
       HealthVital:
         Id: a8710699-ce84-46b7-8c19-b5c7cc0f361d

@@ -154,6 +154,7 @@ namespace Station
             EditorStatic.DrawLargeLine(5);
             FirstSection(current, selectedId);
             current.PrefabId = EditorGUILayout.TextField("Prefab id: ", current.PrefabId);
+            current.Brain = (CharacterBrain)EditorGUILayout.ObjectField("Brain Prefab: ", current.Brain, typeof(CharacterBrain), false);
             EditorStatic.DrawThinLine(10);
             RaceSection(current);
             EditorStatic.DrawThinLine(10);

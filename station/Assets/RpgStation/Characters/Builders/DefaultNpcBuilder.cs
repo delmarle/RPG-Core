@@ -31,13 +31,15 @@ namespace Station
             }
 
             calculatorInstance.PreSetup(model);
-            character.Init(baseData.CharacterId, model.RaceId, model.FactionId, "Male", calculatorInstance,model.Name,null);
+            var brainInstance = model.Brain? Instantiate(model.Brain, character.transform) : null;
+            character.Init(baseData.CharacterId, model.RaceId, model.FactionId, "Male", calculatorInstance,model.Name, brainInstance);
             character.SetupAction(model.Attack);     
             character.AddMeta(StationConst.NPC_KEY, baseData.Identifier);
             character.AddMeta(StationConst.ICON_ID, model.Icon);
             character.gameObject.name = "[npc] "+model.Name;
             character.SetupStats(model.HealthVital,null,model.EnergyVitals.ToArray());
             character.Stats.SetVitalsFull();
+            character.GetInputHandler.SetAiInput(null);
             #region ABILITIES
             //load from save
             List<RuntimeAbility> tempList = new List<RuntimeAbility>();
@@ -67,9 +69,6 @@ character.Action.SetPassiveAbilities(passiveList, character);
     
     
 #endregion
-
-            var ai = character.gameObject.AddComponent<SimpleNpcStateMachine>();
-            ai.Setup(character);
         }
 } 
 

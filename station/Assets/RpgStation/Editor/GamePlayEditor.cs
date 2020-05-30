@@ -29,10 +29,12 @@ namespace Station
         public static void DrawContent()
         {
             GUILayout.Label(new GUIContent(EditorStatic.GetEditorTexture("core_full")), EditorStatic.PublisherNameStyle);
-            GUILayout.Space(5);
+            GUILayout.Space(15);
             var mechanicsFound = EditorStatic.GetAllScriptables<StationMechanics>();
             if (mechanicsFound.Length > 0)
             {
+                EditorGUILayout.BeginHorizontal();
+                
                 List<string> objectsNames = new List<string>();
                 int selectedObjectId = 0;
                 for (var index = 0; index < mechanicsFound.Length; index++)
@@ -41,14 +43,17 @@ namespace Station
                     objectsNames.Add(scriptable.name);
                     if (_settingsDb.Get().Mechanics == scriptable) selectedObjectId = index;
                 }
-
+                EditorGUILayout.Space();
+                EditorGUILayout.BeginVertical();
                 selectedObjectId = EditorGUILayout.Popup("Runtime mechanics used: ",selectedObjectId,objectsNames.ToArray());
                 _settingsDb.Get().Mechanics = mechanicsFound[selectedObjectId];
                 if (_settingsDb.Get().Mechanics)
                 {
                     EditorGUILayout.HelpBox(_settingsDb.Get().Mechanics.Description(), MessageType.Info);
                 }
-
+                EditorGUILayout.EndVertical();
+                EditorGUILayout.Space();
+                EditorGUILayout.BeginVertical();
                 if (EditorStatic.SizeableButton(200, 32, "open save folder", ""))
                 {
                     EditorStatic.OpenDataFolder();
@@ -57,8 +62,8 @@ namespace Station
                 {
                     EditorStatic.ClearSaveFolder();
                 }
-                
-
+                EditorGUILayout.EndVertical();
+                EditorGUILayout.EndHorizontal();
             }
             else
             {
