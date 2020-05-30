@@ -53,6 +53,7 @@ namespace Station
 
         public void Stop()
         {
+            _agent.ResetPath();
             _destination = transform.position;
             _target = null;
         }
