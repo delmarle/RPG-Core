@@ -3,7 +3,7 @@
   <img width="420" height="146" src="images/rpg_core_icon.png">
 </p> 
 
-# What is Rpg Station?
+# What is Core RPG?
 A framework that want to simplify creation of RPG games but still provide flexibility, making it easy make any type of game with included functionality. If the game you want to make is not possible out of the box, it will be very easy to extend.
 ![](images/editor_showcase.png)
 # Requirement:
