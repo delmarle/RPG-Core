@@ -4,7 +4,7 @@ using Station;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace MyNamespace
+namespace Station
 {
     public class RoamState : FSMState
     {

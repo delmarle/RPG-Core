@@ -3049,7 +3049,7 @@ MonoBehaviour:
     maxFallSpeed: 38
     groundedGravityForce: 9
   _rotationSettings:
-    _rotationSmoothing: 15
+    _rotationSmoothing: 6
     _freeMode: 1
   _input: {fileID: 5268744292986777152}
 --- !u!114 &3128725688212506763
@@ -3066,6 +3066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterControl: {fileID: 9074964469764159522}
   _aiInput: {fileID: 5268744292986777152}
+  UseAi: 0
 --- !u!114 &5268744292986777152
 MonoBehaviour:
   m_ObjectHideFlags: 0

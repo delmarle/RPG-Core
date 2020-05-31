@@ -68,6 +68,7 @@ namespace Station
 
         public void Init(FSM root)
         {
+            name = $"{GetType().Name}";
             _root = root;
             foreach (var transition in Transitions)
             {
@@ -92,11 +93,29 @@ namespace Station
 
         public void Enter()
         {
+            name = $"{GetType().Name} [current state]";
             OnEnter();
+            for (int i = 0; i < Transitions.Count; i++)
+            {
+                var transition = Transitions[i];
+                for (int j = 0; j < transition.Conditions.Count; j++)
+                {
+                    transition.Conditions[j].OnEnter();
+                }
+            }
         }
 
         public void Exit()
         {
+            name = $"{GetType().Name}";
+            for (int i = 0; i < Transitions.Count; i++)
+            {
+                var transition = Transitions[i];
+                for (int j = 0; j < transition.Conditions.Count; j++)
+                {
+                    transition.Conditions[j].OnExit();
+                }
+            }
             OnExit();
         }
 
