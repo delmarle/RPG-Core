@@ -44,6 +44,7 @@ namespace Station
         public ActionHandler Action => _action;
 
         private CharacterBrain _brain;
+        protected CharacterMemoryHandler _memoryHandler;
 
         private bool _isDead;
 
@@ -152,9 +153,10 @@ namespace Station
             string genderId, 
             CharacterCalculation instance, 
             string characterName, 
-            CharacterBrain brain)
+            CharacterBrain brain,
+            CharacterMemoryHandler memory)
         {
-
+            SetTracked();
             _characterId = characterId;
             _raceId = raceId;
             _factionId = factionId;
@@ -169,6 +171,25 @@ namespace Station
                 _brain = brain;
                 brain.Setup(this);
             }
+
+            if (memory)
+            {
+                _memoryHandler = memory;
+                _memoryHandler.Activate(this);
+            }
+        }
+
+        private void SetTracked()
+        {
+            Rigidbody rigidBody = gameObject.GetComponent<Rigidbody>();
+            if (rigidBody == null)
+            {
+                rigidBody = gameObject.AddComponent<Rigidbody>();
+                rigidBody.isKinematic = true;
+                rigidBody.useGravity = false;
+            }
+
+            Trackable component = gameObject.AddComponent<Trackable>();
         }
 
         public void SetRenderer(Renderer cache)
@@ -205,11 +226,11 @@ namespace Station
 
         #region [[ FACTION & TARGETING ]]
 
-        public Stance ResolveStance(BaseCharacter requester)
+        public Stance ResolveStance(BaseCharacter target)
         {
             var factionHandler = _mechanics.FactionHandler();
   
-            var stance = factionHandler.ResolveStance(requester._factionId, _factionId);
+            var stance = factionHandler.ResolveStance(target._factionId, _factionId);
 
             if (stance < 2)
             {

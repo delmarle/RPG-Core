@@ -93,6 +93,11 @@ namespace Station
         private void OnTriggerSave()
         {
             var areaState = _savedContainer?.ToDictionary(container => container.Key, container => container.Value.GetState());
+            if (_areaContainersSave?.Value == null)
+            {
+                return;
+            }
+
             _areaContainersSave.Value.Containers = areaState;
             _areaContainersSave.Save();
         }

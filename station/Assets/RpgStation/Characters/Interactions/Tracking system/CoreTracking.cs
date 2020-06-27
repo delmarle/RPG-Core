@@ -11,6 +11,8 @@ namespace Station
     public Tracker Tracker;
     public Collider Collider;
     public Collider2D Collider2D;
+    public BaseCharacter Character;
+    public Interactible Interactible;
 
     public static Target Null { get { return _null; } }
     private static Target _null = new Target();
@@ -20,6 +22,8 @@ namespace Station
       GameObject = transform.gameObject;
       Transform = transform;
       Trackable = transform.GetComponent<Trackable>();
+      Character = transform.GetComponent<BaseCharacter>();
+      Interactible = transform.GetComponent<Interactible>();
       Tracker = tracker;
       Collider = null;
       Collider2D = null;
@@ -29,6 +33,8 @@ namespace Station
     {
       GameObject = trackable.gameObject;
       Transform = trackable.transform;
+      Character = Transform.GetComponent<BaseCharacter>();
+      Interactible = Transform.GetComponent<Interactible>();
       Trackable = trackable;
       Tracker = tracker;
       Collider = null;
@@ -40,6 +46,8 @@ namespace Station
       GameObject = otherTarget.GameObject;
       Transform = otherTarget.Transform;
       Trackable = otherTarget.Trackable;
+      Character = Transform.GetComponent<BaseCharacter>();
+      Interactible = Transform.GetComponent<Interactible>();
       Tracker = otherTarget.Tracker;
       Collider = otherTarget.Collider;
       Collider2D = otherTarget.Collider2D;

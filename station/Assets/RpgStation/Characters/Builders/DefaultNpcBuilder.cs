@@ -7,6 +7,7 @@ namespace Station
     [CreateAssetMenu]
     public class DefaultNpcBuilder : CharacterBuilder
     {
+        public CharacterMemoryHandler MemoryHandlerPrefab;
         public override Type GetMatchingType()
         {
             return typeof(NpcCharacterType);
@@ -32,7 +33,13 @@ namespace Station
 
             calculatorInstance.PreSetup(model);
             var brainInstance = model.Brain? Instantiate(model.Brain, character.transform) : null;
-            character.Init(baseData.CharacterId, model.RaceId, model.FactionId, "Male", calculatorInstance,model.Name, brainInstance);
+            CharacterMemoryHandler instanceMemory = null;
+            if (MemoryHandlerPrefab)
+            {
+                instanceMemory = Instantiate(MemoryHandlerPrefab);
+            }
+
+            character.Init(baseData.CharacterId, model.RaceId, model.FactionId, "Male", calculatorInstance,model.Name, brainInstance, instanceMemory);
             character.SetupAction(model.Attack);     
             character.AddMeta(StationConst.NPC_KEY, baseData.Identifier);
             character.AddMeta(StationConst.ICON_ID, model.Icon);

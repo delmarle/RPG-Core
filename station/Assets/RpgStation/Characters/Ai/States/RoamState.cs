@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Station;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 namespace Station
@@ -9,7 +6,7 @@ namespace Station
     public class RoamState : FSMState
     {
         #region FIELDS
-
+        private const int  MAX_ATTEMPTS = 10;
         [SerializeField] private float _minDistance = 3;
         [SerializeField] private float _maxDistance = 12;
         [SerializeField] private bool _debugPath = false;
@@ -70,9 +67,11 @@ namespace Station
                  
             min = Mathf.Clamp(min, 0.01f, max);
             max = Mathf.Clamp(max, min, max);
-            while ( ( destination - _root.Owner.GetFeet() ).sqrMagnitude < min  || _path.status == NavMeshPathStatus.PathInvalid) {
+            int attempts = 0;
+            while ( attempts<= MAX_ATTEMPTS &&(( destination - _root.Owner.GetFeet() ).sqrMagnitude < min  || _path.status == NavMeshPathStatus.PathInvalid )) {
                 destination = ( Random.insideUnitSphere * max ) + _root.Owner.GetFeet();
                 var val = NavMesh.CalculatePath(_root.Owner.GetFeet(),destination,NavMesh.AllAreas, _path);
+                attempts++;
             }
        
             if ( NavMesh.SamplePosition(destination, out hit, 900, NavMesh.AllAreas) )

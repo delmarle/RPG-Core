@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 348bbfb583e2948fe980295b823f00c7, type: 3}
   m_Name: Default Npc Builder
   m_EditorClassIdentifier: 
+  MemoryHandlerPrefab: {fileID: 3511914810864174415, guid: fa9258df87b364c1c9a597a98b7cc634,
+    type: 3}
