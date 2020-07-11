@@ -98,4 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b60832fc7e9745ae9b9c0d813bd425e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _visionRange: 30
   _interactionTracker: {fileID: 4213876045345735479}
+  _raycastMask:
+    serializedVersion: 2
+    m_Bits: 1

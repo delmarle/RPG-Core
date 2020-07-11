@@ -22,13 +22,13 @@ namespace Station
         return false;
       }
       
-      if (!Physics.Raycast(source, dirToTarget, dstToTarget, obstacleMask))
+      if (Physics.Raycast(source, dirToTarget, dstToTarget, obstacleMask))
       {
-        return true;
+        return false;
 
       }
 
-      return false;
+      return true;
     }
 
     public static void RaycastTargets<T>(Vector3 origin,int distance, int mask, out List<T> found)

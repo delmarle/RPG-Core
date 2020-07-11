@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Station
@@ -11,6 +9,7 @@ namespace Station
         public delegate void CharacterTargetUpdated(BaseCharacter target);
         public CharacterTargetUpdated OnTargetChanged;
         private const float CYCLE_BEFORE_CLEAR = 15;
+        [SerializeField] private float _fov = 120;
         [SerializeField] private float _visionRange = 30;
         [SerializeField] private AreaTracker _interactionTracker = null;
         [SerializeField] private LayerMask _raycastMask;
@@ -64,8 +63,7 @@ namespace Station
             {
                 _targetsInRange.Add(characterComponent);
             }
-
-            Debug.Log($"found character: {characterComponent} stance: {stance.ToString()}");
+            
             return true;
         }
 
@@ -186,7 +184,7 @@ namespace Station
                 entry.Value.IncreaseCycle();
                 float distance = Vector3.Distance(_owner.GetFeet(), target.GetFeet());
                 entry.Value.SetDistance(distance);
-                if (distance > _visionRange)
+                if (distance > _visionRange )
                 {
                     entry.Value.DecreaseHate(1);
                     if (entry.Value.CyclesSinceUpdate > CYCLE_BEFORE_CLEAR)
@@ -207,7 +205,6 @@ namespace Station
 
                 if (entry.Value.GetHate <= 0)
                 {
-                    Debug.Log($"no hate:{entry.Key}");
                     _enemiesToForget.Add(entry.Key);
          
                 }
@@ -216,7 +213,6 @@ namespace Station
             ChangeTarget(foundCharacter);
             foreach (var delete in _enemiesToForget)
             {
-                Debug.Log($"forgeting:{delete}");
                 ForgetTarget(delete);
             }
             _enemiesToForget.Clear();
@@ -225,16 +221,11 @@ namespace Station
         private bool DetectEnemy(BaseCharacter target)
         {
 
-            if (RaycastUtils.IsVisible(_owner.transform, _owner.GetTop(), target.GetCenter(), 120, _raycastMask))
+            if (RaycastUtils.IsVisible(_owner.transform, _owner.GetTop(), target.GetCenter(), _fov, _raycastMask))
             {
                 return true;
             }
-
-            //TODO
-            //utils
-            //raycast
-            //angle
-            //distance
+            
             return false;
         }
 
@@ -248,12 +239,6 @@ namespace Station
             _currentEnemy = newTarget;
             OnTargetChanged?.Invoke(newTarget);
         }
-
-        //scan for enemy
-        //set target priority
-        //list of targets
-        //on target detected
-        //on target forgoten
     }
 
     public class HateState
