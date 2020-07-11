@@ -6,6 +6,31 @@ namespace Station
  
   public static class RaycastUtils 
   {
+    public static bool IsVisible(Transform sourceTransform,Vector3 source, Vector3 target, float fov, int obstacleMask)
+    {
+      Vector3 dirToTarget = (target - source).normalized;
+      float dstToTarget = Vector3.Distance(source, target);
+      
+      Vector3 sightView  = (sourceTransform.forward );
+      float dot = Vector3.Dot(sightView, dirToTarget);
+ 
+      //angle difference between looking direction and direction to item (radians)
+      float angle = Mathf.Acos(dot);
+ 
+      if(angle > fov)
+      {
+        return false;
+      }
+      
+      if (!Physics.Raycast(source, dirToTarget, dstToTarget, obstacleMask))
+      {
+        return true;
+
+      }
+
+      return false;
+    }
+
     public static void RaycastTargets<T>(Vector3 origin,int distance, int mask, out List<T> found)
     {
       found = new List<T>();

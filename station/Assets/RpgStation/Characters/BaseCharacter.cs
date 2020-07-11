@@ -144,6 +144,7 @@ namespace Station
         private void OnDestroy()
         {
             _action.Unsubscribe();
+            _memoryHandler?.DesActivate();
         }
 
         public void Init(
