@@ -19,6 +19,7 @@ namespace Station
         
         private Dictionary<BaseCharacter, HateState> _hateMap = new Dictionary<BaseCharacter, HateState>();
         private BaseCharacter _currentEnemy;
+        public BaseCharacter GetCurrentEnemy => _currentEnemy;
         private List<BaseCharacter> _enemiesToForget = new List<BaseCharacter>();
 
         private ObjectPool<HateState> _statePool = new ObjectPool<HateState>(()=> new HateState(), 10);
@@ -235,7 +236,7 @@ namespace Station
             {
                 return;
             }
-
+            
             _currentEnemy = newTarget;
             OnTargetChanged?.Invoke(newTarget);
         }

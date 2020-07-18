@@ -48,5 +48,5 @@ MonoBehaviour:
           MaxValue: 22
           CriticalBonus: 0
         CriticalChance: 0
-        Range: 2
+        Range: 4
         Speed: 1.4

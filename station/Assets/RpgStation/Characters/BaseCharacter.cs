@@ -45,7 +45,8 @@ namespace Station
 
         private CharacterBrain _brain;
         protected CharacterMemoryHandler _memoryHandler;
-
+        public CharacterMemoryHandler Memory => _memoryHandler;
+        
         private bool _isDead;
 
         public bool IsDead

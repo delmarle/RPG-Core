@@ -36,6 +36,8 @@ namespace Station
 
         public void Update()
         {
+            if (_camera == null) return;
+            
             Vector3 targetPosition = _params.FollowTarget ? _params.Target.transform.position : _params.Origin;
 
             _canvas.alpha = _animationData.AlphaCurve.Evaluate(_elapsedRatio);
