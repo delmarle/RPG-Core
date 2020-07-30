@@ -7,6 +7,7 @@
     
     private const string EDITOR_ASSETS_PATH = "Assets/RpgStation/Editor/Assets/";
     private const string EDITOR_DB_PATH = "Assets/Content/Databases/";
+    public const string EDITOR_ADDRESSABLE_PATH = "Assets/AddressableAssetsData/AddressableAssetSettings.asset";
     
     public const string WINDOW_TITLE = "<size=20><b><color=#666666>Core RPG</color></b></size>";
     
@@ -22,6 +23,7 @@
     public const string CONFIG_TAB_INPUT_EVENTS = "<size=11><b> Input Events</b></size>";
     public const string CONFIG_TAB_FLOATING_POPUPS = "<size=11><b> Floating Popups</b></size>";
     public const string CONFIG_TAB_UI_CHANNELS = "<size=11><b> Ui Notification Channels</b></size>";
+    public const string CONFIG_TAB_SOUNDS = "<size=11><b> Sounds</b></size>";
     
     //[[STATS TAB]]
     public const string STATS_TAB_ATTRIBUTES = "<size=11><b> Attributes</b></size>";

@@ -1014,4 +1014,23 @@ public enum StatusEffectType
   }
 
   #endregion
+  
+  #region SOUNDS
+  [Serializable]
+  public class SoundCategory
+  {
+    public string CategoryName;
+    
+  }
+
+  [Serializable]
+  public class SoundAddress
+  {
+    public string SoundCategoryId;
+    public string SoundKey;
+
+  }
+
+  #endregion
+  
 }

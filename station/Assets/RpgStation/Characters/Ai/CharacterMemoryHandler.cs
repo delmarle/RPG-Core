@@ -149,6 +149,12 @@ namespace Station
                 _statePool.Recycle(data);
                 _hateMap.Remove(target);
             }
+
+            if (_hateMap.Count == 0 &&  _currentEnemy != null)
+            {
+               
+                ChangeTarget(null);
+            }
         }
 
         #endregion
@@ -178,6 +184,7 @@ namespace Station
                 if (target.IsDead)
                 {
                     //remove
+                    _enemiesToForget.Add(entry.Key);
                     continue;
                 }
 

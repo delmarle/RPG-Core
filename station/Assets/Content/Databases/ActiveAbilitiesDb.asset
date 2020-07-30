@@ -30,7 +30,7 @@ MonoBehaviour:
       - CastDistance: 0
         CoolDown: 0
         Casting:
-          HasData: 0
+          HasData: 1
           Option: 0
           Length: 1
           AnimationId: 0

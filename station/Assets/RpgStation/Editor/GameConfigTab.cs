@@ -28,7 +28,7 @@ namespace RPG.Editor
     {
       GUILayout.BeginVertical("box",GUILayout.Width(EditorStatic.LIST_VIEW_WIDTH),GUILayout.ExpandHeight(true));
       {
-        var  toolbarOptions = new GUIContent[8];
+        var  toolbarOptions = new GUIContent[9];
         toolbarOptions[0] = new GUIContent(EditorStatic.CONFIG_TAB_GAMEPLAY,null, "");
         toolbarOptions[1] = new GUIContent(EditorStatic.CONFIG_TAB_CHARACTER_CREATION,null, "");
         toolbarOptions[2] = new GUIContent(EditorStatic.CONFIG_TAB_DIFFICULTY, null, "");
@@ -37,6 +37,8 @@ namespace RPG.Editor
         toolbarOptions[5] = new GUIContent(EditorStatic.CONFIG_TAB_INPUT_EVENTS, null, "");
         toolbarOptions[6] = new GUIContent(EditorStatic.CONFIG_TAB_FLOATING_POPUPS, null, "");
         toolbarOptions[7] = new GUIContent(EditorStatic.CONFIG_TAB_UI_CHANNELS, null, "");
+        toolbarOptions[8] = new GUIContent(EditorStatic.CONFIG_TAB_SOUNDS, null, "");
+        
         var height = 40 * toolbarOptions.Length;
         _toolBarIndex = GUILayout.SelectionGrid(_toolBarIndex, toolbarOptions,1,EditorStatic.ToolBarStyle,GUILayout.Height(height));
       }
@@ -73,6 +75,9 @@ namespace RPG.Editor
             break;
           case 7:
             UiNotificationChannelsEditor.DrawContent();
+            break;
+          case 8:
+            SoundTabEditor.DrawContent();
             break;
         }
         

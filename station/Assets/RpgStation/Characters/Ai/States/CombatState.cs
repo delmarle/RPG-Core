@@ -29,7 +29,16 @@ namespace Station
         protected override void OnExecute()
         {
             _root.Owner.Target = _root.Owner.Memory.GetCurrentEnemy;
-            _input.SetTarget(_root.Owner.Memory.GetCurrentEnemy.transform);
+            if (_root?.Owner?.Memory?.GetCurrentEnemy?.transform != null)
+            {
+                _input.SetTarget(_root.Owner.Memory.GetCurrentEnemy.transform);
+            }
+            else
+            {
+                OnExit();
+            }
+
+           
         }
 
         protected override void OnExit()
