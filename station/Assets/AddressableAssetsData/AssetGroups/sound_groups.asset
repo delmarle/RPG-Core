@@ -10,13 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: test2
+  m_Name: sound_groups
   m_EditorClassIdentifier: 
-  m_GroupName: test2
+  m_GroupName: sound_groups
   m_Data:
     m_SerializedData: []
-  m_GUID: 861d4a6abcb454c9b96e1c2da9a1b6fb
-  m_SerializeEntries: []
+  m_GUID: 728449086d6fe4e47b6bf9cf70fb6b79
+  m_SerializeEntries:
+  - m_GUID: 3134950785e334f8d8bba6521b43bbd2
+    m_Address: player_sounds
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - player_sounds
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: c80c88895764348509e100b4fc6cd9f9
+    m_Address: sfx
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - sfx
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 74ddb1c5c6fe849afaba132576175fc1, type: 2}
   m_SchemaSet:

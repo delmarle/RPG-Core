@@ -30,6 +30,11 @@ public static class PathUtils
     {
         return EDITOR_SOUNDS_PATH + "/" + category+"/"; 
     }
+    
+    public static string BuildSoundPath2(string category)
+    {
+        return EDITOR_SOUNDS_PATH + "/" + category; 
+    }
 
     public static string BuildItemPath()
     {

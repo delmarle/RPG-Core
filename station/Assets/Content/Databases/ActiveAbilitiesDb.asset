@@ -34,7 +34,7 @@ MonoBehaviour:
           Option: 0
           Length: 1
           AnimationId: 0
-          StartSound: {fileID: 0}
+          StartSound: {fileID: 11400000, guid: 13a70802a59ef4f768e9dc92067ea08b, type: 2}
         Invoking:
           Option: 0
           Length: 1

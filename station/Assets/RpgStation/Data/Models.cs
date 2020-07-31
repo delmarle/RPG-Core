@@ -1020,15 +1020,19 @@ public enum StatusEffectType
   public class SoundCategory
   {
     public string CategoryName;
-    
+    public string SoundContainerName;
   }
 
   [Serializable]
   public class SoundAddress
   {
-    public string SoundCategoryId;
-    public string SoundKey;
+    public string SoundContainerName;
+  }
 
+  [Serializable]
+  public class SoundContainer: ScriptableObject
+  {
+    public List<SoundConfig> List = new List<SoundConfig>();
   }
 
   #endregion

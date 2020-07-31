@@ -605,6 +605,8 @@ namespace RPG.Editor
       }
       EditorGUILayout.EndVertical();
     }
+    
+ 
     #endregion
 
     public static void ResetFocus()

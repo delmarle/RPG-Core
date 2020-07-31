@@ -7,6 +7,8 @@
     
     private const string EDITOR_ASSETS_PATH = "Assets/RpgStation/Editor/Assets/";
     private const string EDITOR_DB_PATH = "Assets/Content/Databases/";
+    public const string EDITOR_SOUND_GROUP_PATH = "Assets/Content/SoundsGroups/";
+    public const string EDITOR_SOUND_GROUP_NAME = "sound_groups";
     public const string EDITOR_ADDRESSABLE_PATH = "Assets/AddressableAssetsData/AddressableAssetSettings.asset";
     
     public const string WINDOW_TITLE = "<size=20><b><color=#666666>Core RPG</color></b></size>";
