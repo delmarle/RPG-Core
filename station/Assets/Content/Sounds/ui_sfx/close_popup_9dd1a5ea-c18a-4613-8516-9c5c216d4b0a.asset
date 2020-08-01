@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db5bdd94179ff41b18deb406e630d345, type: 3}
-  m_Name: hit_0cd9f654-d8b7-4530-bdc5-abfd84345b4d
+  m_Name: close_popup_9dd1a5ea-c18a-4613-8516-9c5c216d4b0a
   m_EditorClassIdentifier: 
   Volume: 1
   MinPitch: 1

@@ -14,10 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _db:
     m_keys:
-    - 1d35558d-3552-4eb7-923c-d211e9d6ad39
-    - f354f1d6-5610-43d8-975b-4ee21e7cb5ba
+    - 80e8af9b-f50d-4fed-90d1-0818f01f1f5c
     m_values:
-    - CategoryName: sfx
-      SoundContainerName: 
-    - CategoryName: player_sounds
+    - CategoryName: ui_sfx
       SoundContainerName: 

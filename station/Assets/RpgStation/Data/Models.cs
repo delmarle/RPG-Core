@@ -1029,11 +1029,6 @@ public enum StatusEffectType
     public string SoundContainerName;
   }
 
-  [Serializable]
-  public class SoundContainer: ScriptableObject
-  {
-    public List<SoundConfig> List = new List<SoundConfig>();
-  }
 
   #endregion
   

@@ -15,20 +15,13 @@ MonoBehaviour:
   m_GroupName: sound_groups
   m_Data:
     m_SerializedData: []
-  m_GUID: 728449086d6fe4e47b6bf9cf70fb6b79
+  m_GUID: fbeaf557a3d4f4145ab5db8cc0f9131e
   m_SerializeEntries:
-  - m_GUID: 3134950785e334f8d8bba6521b43bbd2
-    m_Address: player_sounds
+  - m_GUID: ce716fd0d838b4257bd1fc4ce87e1d12
+    m_Address: ui_sfx
     m_ReadOnly: 0
     m_SerializedLabels:
-    - player_sounds
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: c80c88895764348509e100b4fc6cd9f9
-    m_Address: sfx
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - sfx
+    - ui_sfx
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0

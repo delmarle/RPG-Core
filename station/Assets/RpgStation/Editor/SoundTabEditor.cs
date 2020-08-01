@@ -150,36 +150,59 @@ namespace Station
 
                     string assetPath = EditorStatic.EDITOR_SOUND_GROUP_PATH + currentGroup.CategoryName + ".asset";
                     var groupAsset = AssetDatabase.LoadAssetAtPath<SoundContainer>(assetPath);
-              
-                    EditorGUILayout.LabelField($"Sounds: {groupAsset?.List?.Count}");
-                    NewSoundName = EditorGUILayout.TextField("Sound name to add: ", NewSoundName);
-                    if (EditorStatic.SizeableButton(200, 45, $"ADD: ", "plus"))
+                    EditorStatic.DrawSectionTitle(32,$"Add a new Sound to {currentGroup.CategoryName}: ");
+                    EditorGUILayout.BeginHorizontal("box");
+                    NewSoundName = EditorGUILayout.TextField(NewSoundName);
+                    if (EditorStatic.SizeableButton(200, 32, $"ADD SOUND TO GROUP: ", "plus") && string.IsNullOrEmpty(NewSoundName) == false)
                     {
                         string fileName = $"{NewSoundName}_{Guid.NewGuid()}.asset";
                         var path = $"Assets/Content/Sounds/{currentGroup.CategoryName}/";
                         var sound = ScriptableHelper.CreateScriptableObject<SoundConfig>(path, fileName);
-                        groupAsset.List.Add(sound);
+         
+                        groupAsset.AddSound(sound);
+                        EditorUtility.SetDirty(groupAsset);
                         AssetDatabase.SaveAssets();
                     }
-
-                    foreach (var entry in groupAsset.List)
+                    EditorGUILayout.EndHorizontal();
+                  
+                    foreach (var entry in groupAsset.Dict)
                     {
-                        if (state[currentGroup.CategoryName].ContainsKey(entry.name) == false)
+                        if (state[currentGroup.CategoryName].ContainsKey(entry.Key) == false)
                         {
-                            state[currentGroup.CategoryName].Add(entry.name, false);
+                            state[currentGroup.CategoryName].Add(entry.Key, false);
                         }
 
-                        var displayBool = state[currentGroup.CategoryName][entry.name];
+                        var displayBool = state[currentGroup.CategoryName][entry.Key];
 
-                        var soundConfig = entry;
+                        var soundConfig = entry.Value.Config;
                         displayBool = EditorStatic.SoundFoldout("Open sound: ", ref soundConfig, displayBool, 28, Color.cyan);
                         if (displayBool)
                         {
-                            DrawSoundWidget(entry, currentGroup.CategoryName);
+                            EditorGUILayout.BeginHorizontal();
+                            if (EditorStatic.SizeableButton(200, 32, $"DELETE", "cross"))
+                            {
+                                groupAsset.Dict.Remove(entry.Key);
+                                EditorUtility.SetDirty(groupAsset);
+                                GUIUtility.ExitGUI();
+                            }
+                            if (EditorStatic.SizeableButton(250, 32, $"DELETE WITH SOUND ASSET", "cross"))
+                            {
+                                var path = AssetDatabase.GetAssetPath(entry.Value.Config);
+                                AssetDatabase.DeleteAsset(path);
+                                groupAsset.Dict.Remove(entry.Key);
+                                EditorUtility.SetDirty(groupAsset);
+                                AssetDatabase.SaveAssets();
+                               
+                                GUIUtility.ExitGUI();
+                            }
+                            EditorGUILayout.EndHorizontal();
+
+                            DrawSoundWidget(ref soundConfig, currentGroup.CategoryName);
                         }
 
+                        groupAsset.Dict[entry.Key].Config = soundConfig;
+                        state[currentGroup.CategoryName][entry.Key] = displayBool;
                    
-                        state[currentGroup.CategoryName][entry.name] = displayBool;
                     }
                 }
 
@@ -217,9 +240,9 @@ namespace Station
             GUILayout.EndVertical();
         }
 
-        public static void DrawSoundWidget(SoundConfig sound, string category)
+        public static void DrawSoundWidget(ref SoundConfig sound, string category)
         {
-            var styleSubContent = new GUIStyle("SelectionRect");
+            GUIStyle styleSubContent = new GUIStyle("SelectionRect");
 
             styleSubContent.padding = new RectOffset(3, 3, 6, 5);
             EditorGUILayout.BeginVertical(styleSubContent);
