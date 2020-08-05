@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Station
 {
@@ -11,7 +12,8 @@ namespace Station
 		
 		protected delegate void SoundPlayerHandler (bool mute);
 
-		[SerializeField] private SoundGroup[] _soundGroups = null;
+		[SerializeField] private SoundGroup _persistentSoundGroup = null;
+		[SerializeField] private SoundGroup _temporarySoundGroup = null;
 		[SerializeField] private int _soundEventPoolSize = 10;
         [SerializeField] private bool _autoInitialize = true;
 
@@ -272,6 +274,12 @@ namespace Station
 		}
 
 		#endregion
+
+		public void InjectSounds(HashSet<SoundConfig> sounds)
+		{
+			_persistentSoundGroup.Sounds = sounds.ToArray();
+		}
+
 		public virtual void Initialize()
 		{
 			if(!Initialized)
@@ -283,16 +291,13 @@ namespace Station
 
 				_soundEventPool = new SoundEventPool(_soundEventPoolSize);
 
-				for (var i = 0; i < _soundGroups.Length; i++) 
+				if(_persistentSoundGroup.transform.parent != transform)
 				{
-					if(_soundGroups[i].transform.parent != transform)
-					{
-						_soundGroups[i] = Instantiate(_soundGroups[i], Vector3.zero, Quaternion.identity);
-						_soundGroups[i].transform.parent = transform;
-					}
-
-					_soundGroups[i].Initialize(_soundEventPoolSize);
+					_persistentSoundGroup = Instantiate(_persistentSoundGroup, Vector3.zero, Quaternion.identity);
+					_persistentSoundGroup.transform.parent = transform;
 				}
+
+				_persistentSoundGroup.Initialize(_soundEventPoolSize);
 
 				_curPlayingTraceableSoundIds = new List<int>(_soundEventPoolSize);
 				_curPlayingTraceableSounds = new List<SoundEvent>(_soundEventPoolSize);
@@ -398,14 +403,11 @@ namespace Station
 			var soundEventId = -1;
 			Sound sound = null;
 
-            for (var i = 0; i < _soundGroups.Length; i++)
-            {
-                sound = _soundGroups[i].GetSound(soundname);
-                if (sound != null)
-                {
-                    break;
-                }
-            }
+			sound = _persistentSoundGroup.GetSound(soundname);
+			if (sound == null)
+			{
+		
+			}
 
 			if(sound != null)
 			{

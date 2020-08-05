@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db5bdd94179ff41b18deb406e630d345, type: 3}
-  m_Name: Abilitiesd4983d10-d2c5-4902-b721-76b63ad130cd
+  m_Name: error_notification_a033c7c0-6ff7-423f-aa4d-ca5a1f32c62e
   m_EditorClassIdentifier: 
   Volume: 1
   MinPitch: 1
@@ -19,6 +19,5 @@ MonoBehaviour:
   FadeInTime: 0
   FadeOutTime: 0
   Looping: 0
-  PoolSize: 0
   Clips: []
-  Source: {fileID: 0}
+  SourceConfig: {fileID: 0}

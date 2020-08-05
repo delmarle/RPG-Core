@@ -8,7 +8,7 @@ namespace Station
     [CreateAssetMenu]
     public class SoundsDb : DictGenericDatabase<SoundCategory>
     {
-
+        public List<SoundContainer> PersistentContainers = new List<SoundContainer>();
         [Serializable] public class ElementDictionary : SerializableDictionary<string, SoundCategory> {}
         [SerializeField] private ElementDictionary _db = new ElementDictionary();
     

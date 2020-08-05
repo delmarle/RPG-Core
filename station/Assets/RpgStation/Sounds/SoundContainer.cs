@@ -9,7 +9,6 @@ namespace Station
         [Serializable] public class soundsDictionary : SerializableDictionary<string, SoundHolder> {}
         public soundsDictionary Dict = new soundsDictionary();
 
-
         public SoundHolder AddSound(SoundConfig cfg)
         {
             var guid = Guid.NewGuid().ToString();

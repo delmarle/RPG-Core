@@ -14,10 +14,10 @@ namespace Station
 		public float FadeInTime;
 		public float FadeOutTime;
 		public bool Looping;
-		public int PoolSize; 
+	 
 		[Header("Components:")]
 		public List<AudioClip> Clips = new List<AudioClip>();
-		public AudioSource Source;
+		public SourcePoolConfig SourceConfig;
 		public AudioClip RandomizedClip(){ return Clips.RandomItem(); }
 	    public float RandomizedPitch(){ return Random.Range(MinPitch, MaxPitch); }
 	}

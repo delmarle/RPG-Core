@@ -1020,7 +1020,7 @@ public enum StatusEffectType
   public class SoundCategory
   {
     public string CategoryName;
-    public string SoundContainerName;
+   // public string SoundContainerName;
   }
 
   [Serializable]
@@ -1029,6 +1029,13 @@ public enum StatusEffectType
     public string SoundContainerName;
   }
 
+  [Serializable]
+  public class SoundReferenceDrawer
+  {
+    public bool Enabled = false;
+    public string GroupId;
+    public string SoundId;
+  }
 
   #endregion
   

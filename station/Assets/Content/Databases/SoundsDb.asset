@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c675fb0de5e8b4848a2ce3d5719fb0f5, type: 3}
   m_Name: SoundsDb
   m_EditorClassIdentifier: 
+  PersistentContainers:
+  - {fileID: 11400000, guid: 64c8788f4751743d681428378aaa998a, type: 2}
   _db:
     m_keys:
-    - 80e8af9b-f50d-4fed-90d1-0818f01f1f5c
+    - b68aa657-133a-46ad-bee5-8de58cab7395
     m_values:
-    - CategoryName: ui_sfx
-      SoundContainerName: 
+    - CategoryName: ui_group

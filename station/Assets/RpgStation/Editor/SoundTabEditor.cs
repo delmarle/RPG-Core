@@ -62,9 +62,9 @@ namespace Station
                 GUILayout.EndVertical();
                 EditorGUILayout.BeginVertical();
                 EditorStatic.DrawSectionTitle(32,"Add a new group: ");
-                NewGroupName = EditorGUILayout.TextField(NewGroupName);
+                NewGroupName = EditorGUILayout.TextField("new group name: ", NewGroupName);
                 EditorGUILayout.BeginHorizontal();
-                if (EditorStatic.SizeableButton(120,45, "Add", "plus"))
+                if (EditorStatic.SizeableButton(280,45, "Add", "plus"))
                 {
                     if (string.IsNullOrEmpty(NewGroupName))
                     {
@@ -118,13 +118,15 @@ namespace Station
                 }
                 
                 var entryDb = _db.GetEntry(_selectedIndexGroup);
+                string assetPath = EditorStatic.EDITOR_SOUND_GROUP_PATH + entryDb?.CategoryName + ".asset";
+                var groupAsset = AssetDatabase.LoadAssetAtPath<SoundContainer>(assetPath);
                 if (entryDb == null)
                 {
                     EditorGUILayout.HelpBox("no group found", MessageType.Info);
                 }
                 else
                 {
-                    if (EditorStatic.SizeableButton(200,45, $"DELETE: [{entryDb.CategoryName}]", "cross"))
+                    if (EditorStatic.SizeableButton(280,45, $"DELETE: [{entryDb.CategoryName}]", "cross"))
                     {
                         var template = settings.FindGroup(EditorStatic.EDITOR_SOUND_GROUP_NAME);
                         if (template)
@@ -137,26 +139,41 @@ namespace Station
                         _db.Remove(entryDb);
                         _selectedIndexGroup = 0;
                     }
+                    
+                    if (_db.PersistentContainers.Contains(groupAsset) == false)
+                    {
+                        if (EditorStatic.SizeableButton(280, 45, "Set Persistent", "plus_circle_frame"))
+                        {
+                            _db.PersistentContainers.Add(groupAsset);
+                        }
+                    }
+                    else
+                    {
+                        if (EditorStatic.SizeableButton(280, 45, "Remove Persistent", "delete"))
+                        {
+                            _db.PersistentContainers.Remove(groupAsset);
+                        }
+                    }
                 }
                 EditorGUILayout.EndHorizontal();
                 EditorStatic.DrawLargeLine(5);
-                var currentGroup = _db.GetEntry(_selectedIndexGroup);
-                if (currentGroup != null)
+               
+                if (entryDb != null)
                 {
-                    if (state.ContainsKey(currentGroup.CategoryName) == false)
+                    
+                    if (state.ContainsKey(entryDb.CategoryName) == false)
                     {
-                        state.Add(currentGroup.CategoryName, new Dictionary<string, bool>());
+                        state.Add(entryDb.CategoryName, new Dictionary<string, bool>());
                     }
-
-                    string assetPath = EditorStatic.EDITOR_SOUND_GROUP_PATH + currentGroup.CategoryName + ".asset";
-                    var groupAsset = AssetDatabase.LoadAssetAtPath<SoundContainer>(assetPath);
-                    EditorStatic.DrawSectionTitle(32,$"Add a new Sound to {currentGroup.CategoryName}: ");
+                    
+                  
+                    EditorStatic.DrawSectionTitle(32,$"Add a new Sound to {entryDb.CategoryName}: ");
                     EditorGUILayout.BeginHorizontal("box");
                     NewSoundName = EditorGUILayout.TextField(NewSoundName);
                     if (EditorStatic.SizeableButton(200, 32, $"ADD SOUND TO GROUP: ", "plus") && string.IsNullOrEmpty(NewSoundName) == false)
                     {
                         string fileName = $"{NewSoundName}_{Guid.NewGuid()}.asset";
-                        var path = $"Assets/Content/Sounds/{currentGroup.CategoryName}/";
+                        var path = $"Assets/Content/Sounds/{entryDb.CategoryName}/";
                         var sound = ScriptableHelper.CreateScriptableObject<SoundConfig>(path, fileName);
          
                         groupAsset.AddSound(sound);
@@ -167,12 +184,12 @@ namespace Station
                   
                     foreach (var entry in groupAsset.Dict)
                     {
-                        if (state[currentGroup.CategoryName].ContainsKey(entry.Key) == false)
+                        if (state[entryDb.CategoryName].ContainsKey(entry.Key) == false)
                         {
-                            state[currentGroup.CategoryName].Add(entry.Key, false);
+                            state[entryDb.CategoryName].Add(entry.Key, false);
                         }
 
-                        var displayBool = state[currentGroup.CategoryName][entry.Key];
+                        var displayBool = state[entryDb.CategoryName][entry.Key];
 
                         var soundConfig = entry.Value.Config;
                         displayBool = EditorStatic.SoundFoldout("Open sound: ", ref soundConfig, displayBool, 28, Color.cyan);
@@ -197,11 +214,11 @@ namespace Station
                             }
                             EditorGUILayout.EndHorizontal();
 
-                            DrawSoundWidget(ref soundConfig, currentGroup.CategoryName);
+                            DrawSoundWidget(ref soundConfig, entryDb.CategoryName);
                         }
 
                         groupAsset.Dict[entry.Key].Config = soundConfig;
-                        state[currentGroup.CategoryName][entry.Key] = displayBool;
+                        state[entryDb.CategoryName][entry.Key] = displayBool;
                    
                     }
                 }
@@ -266,7 +283,9 @@ namespace Station
                 EditorGUILayout.EndHorizontal();
                 EditorGUILayout.BeginHorizontal();
                 sound.Looping = EditorGUILayout.Toggle("Looping : ", sound.Looping);
-                sound.PoolSize = EditorGUILayout.IntField("Pool size : ", sound.PoolSize);
+                sound.SourceConfig = (SourcePoolConfig)EditorGUILayout.ObjectField("Pool config:", sound.SourceConfig, typeof(SourcePoolConfig));
+
+
                 EditorGUILayout.EndHorizontal();
                 EditorGUILayout.BeginVertical("box");
                 //HEADER

@@ -482,7 +482,48 @@ namespace RPG.Editor
       GUI.backgroundColor = Color.white;
       return display;
     }
-    
+
+    public static void DrawSoundReference(SoundReferenceDrawer drawer)
+    {
+      if (drawer.Enabled == false)
+      {
+        if (SizeableButton(200, 32, "Enable Sound", "red"))
+        {
+          drawer.Enabled = true;
+        }
+      }
+      else
+      {
+        if (SizeableButton(200, 32, "Disable Sound", "green"))
+        {
+          drawer.Enabled = false;
+        }
+        var soundsDb = (SoundsDb)GetDb(typeof(SoundsDb));
+        var groupsNames = soundsDb.ListEntryNames();
+        if (soundsDb.Db.Count == 0)
+        {
+          EditorGUILayout.HelpBox("there is no group in the sound DB", MessageType.Warning);
+          GUIUtility.ExitGUI();
+        }
+
+        if (string.IsNullOrEmpty(drawer.GroupId))
+        {
+          drawer.GroupId = soundsDb.GetKey(0);
+        }
+
+        var groupFound = soundsDb.GetEntry(drawer.GroupId);
+        int index = soundsDb.GetIndex(drawer.GroupId);
+        if (soundsDb == null)
+        {
+          groupFound = soundsDb.GetEntry(0);
+        }
+
+        index = EditorGUILayout.Popup(index, groupsNames);
+        drawer.GroupId = soundsDb.GetKey(index);
+      }
+      
+    }
+
     public static bool SoundFoldout(string title,ref SoundConfig sound, bool display, int height, Color bgColor)
     {
       var style = new GUIStyle("ShurikenModuleTitle");
@@ -551,7 +592,7 @@ namespace RPG.Editor
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
         sound.Looping = EditorGUILayout.Toggle("Looping : ", sound.Looping);
-        sound.PoolSize = EditorGUILayout.IntField("Pool size : ", sound.PoolSize);
+        sound.SourceConfig.PoolSize = EditorGUILayout.IntField("Pool size : ", sound.SourceConfig.PoolSize);
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginVertical("box");
         //HEADER
@@ -665,11 +706,14 @@ namespace RPG.Editor
         { 
           casting.Length = EditorGUILayout.FloatField("Casting time: ", casting.Length);
           casting.AnimationId = EditorGUILayout.IntField("Casting animation ID: ", casting.AnimationId);
-          displayCastingSound = SoundFoldout("Casting sound: ", ref casting.StartSound, displayCastingSound, 28, Color.cyan);
+          
+          /*displayCastingSound = SoundFoldout("Casting sound: ", ref casting.StartSound, displayCastingSound, 28, Color.cyan);
           if (displayCastingSound)
           {
             DrawSoundWidget(ref casting.StartSound, ABILITIES_CATEGORY);
-          }
+          }*/
+
+          DrawSoundReference(casting.StartSound);
           casting.Option = (ExitMode)EditorGUILayout.EnumPopup("Mode: ", casting.Option);
         }
       }

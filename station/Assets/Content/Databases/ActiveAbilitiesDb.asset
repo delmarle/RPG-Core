@@ -34,7 +34,10 @@ MonoBehaviour:
           Option: 0
           Length: 1
           AnimationId: 0
-          StartSound: {fileID: 11400000, guid: 13a70802a59ef4f768e9dc92067ea08b, type: 2}
+          StartSound:
+            Enabled: 1
+            GroupId: 80e8af9b-f50d-4fed-90d1-0818f01f1f5c
+            SoundId: 
         Invoking:
           Option: 0
           Length: 1
@@ -73,7 +76,10 @@ MonoBehaviour:
           Option: 0
           Length: 1
           AnimationId: 0
-          StartSound: {fileID: 0}
+          StartSound:
+            Enabled: 0
+            GroupId: 
+            SoundId: 
         Invoking:
           Option: 0
           Length: 1
@@ -119,7 +125,10 @@ MonoBehaviour:
           Option: 0
           Length: 1
           AnimationId: 0
-          StartSound: {fileID: 0}
+          StartSound:
+            Enabled: 0
+            GroupId: 
+            SoundId: 
         Invoking:
           Option: 0
           Length: 1
@@ -158,7 +167,10 @@ MonoBehaviour:
           Option: 1
           Length: 1
           AnimationId: 0
-          StartSound: {fileID: 0}
+          StartSound:
+            Enabled: 0
+            GroupId: 
+            SoundId: 
         Invoking:
           Option: 0
           Length: 1
@@ -198,7 +210,10 @@ MonoBehaviour:
           Option: 0
           Length: 1
           AnimationId: 0
-          StartSound: {fileID: 0}
+          StartSound:
+            Enabled: 0
+            GroupId: 
+            SoundId: 
         Invoking:
           Option: 0
           Length: 1
@@ -237,7 +252,10 @@ MonoBehaviour:
           Option: 0
           Length: 1
           AnimationId: 0
-          StartSound: {fileID: 0}
+          StartSound:
+            Enabled: 0
+            GroupId: 
+            SoundId: 
         Invoking:
           Option: 0
           Length: 1

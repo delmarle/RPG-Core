@@ -1,22 +1,26 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections.Generic;
+using Object = UnityEngine.Object;
 
 
 namespace Station
 {
+
+
 	public class SoundGroup : MonoBehaviour 
 	{
 		#region FIELDS
 
-		[SerializeField] private AudioSource _fallbackAudioSource = null;
-		[Range(-1,100)]public int PoolSize = -1;
+		[SerializeField] private SourcePoolConfig _fallbackAudioSource = null;
+
 		public SoundConfig[] Sounds;
-		private Dictionary<SoundConfig, AudioSourcePool> _soundPoolDic = null;
+		private Dictionary<AudioSource, AudioSourcePool> _soundPoolDic = null;
 		#endregion
 		
 		public void Initialize(int standardPoolSize)
 		{
-			if (PoolSize == -1) PoolSize = standardPoolSize;
+			if (_fallbackAudioSource.PoolSize == -1) _fallbackAudioSource.PoolSize = standardPoolSize;
 
 			InitializeAudioSourcePools ();
 		}
@@ -28,21 +32,22 @@ namespace Station
 				Debug.LogError("The sound group prefab "+name+" is missing a fall back audio source");
 				return;
 			}
-            _soundPoolDic = new Dictionary<SoundConfig, AudioSourcePool> (Sounds.Length);
-
-			var standardAudioSourcePool = new AudioSourcePool (_fallbackAudioSource, PoolSize, transform);
-
+            _soundPoolDic = new Dictionary<AudioSource, AudioSourcePool> (Sounds.Length);
+			var standardAudioSourcePool = new AudioSourcePool (_fallbackAudioSource, transform);
+			_soundPoolDic.Add(_fallbackAudioSource.FallbackSource, standardAudioSourcePool);
+			
             for (var i = 0; i < Sounds.Length; i++)
             {
-                var sound = Sounds[i];
-                if (sound.Source != null)
-                {
-                    _soundPoolDic.Add(sound, new AudioSourcePool(sound.Source, sound.PoolSize, transform));
-                }
-                else
-                {
-                    _soundPoolDic.Add(sound, standardAudioSourcePool);
-                }
+	            var sound = Sounds[i];
+	            if (_soundPoolDic.ContainsKey(sound.SourceConfig.FallbackSource) == false)
+	            {
+		            if (sound.SourceConfig?.FallbackSource != null)
+		            {
+			            _soundPoolDic.Add(sound.SourceConfig.FallbackSource, new AudioSourcePool(sound.SourceConfig, transform));
+		            }
+	            }
+
+	            
             }
 		}
 
@@ -52,10 +57,17 @@ namespace Station
 
 			var soundData = GetSoundInfo(soundName);
 
-			if (soundData != null) 
+			if (soundData != null)
 			{
-				var audioSource = _soundPoolDic [soundData].Spawn ();
-				result = new Sound(soundData, audioSource, _soundPoolDic [soundData]);
+
+				var audioSourceKey = soundData.SourceConfig.FallbackSource;
+				if (audioSourceKey == null)
+				{
+					audioSourceKey = _fallbackAudioSource.FallbackSource;
+				}
+
+				var audioSource = _soundPoolDic [soundData.SourceConfig.FallbackSource].Spawn ();
+				result = new Sound(soundData, audioSource, _soundPoolDic [audioSourceKey]);
 			}
 
 			return result;
@@ -81,17 +93,15 @@ namespace Station
 	{
 		private readonly AudioSource _prefab;
 		private readonly List<AudioSource> _pool;
-		private readonly int _size;
 		private readonly Transform _parent;
 		
-		public AudioSourcePool (AudioSource targetPrefab, int poolSize, Transform parent)
+		public AudioSourcePool (SourcePoolConfig data, Transform parent)
 		{
-			_prefab = targetPrefab;
-			_size = poolSize;
+			_prefab = data.FallbackSource;
 			_parent = parent;
 			
 			_pool = new List<AudioSource> ();
-			for (var i = 0; i < _size; ++i) 
+			for (var i = 0; i < data.PoolSize; ++i) 
 			{
 				var audioSource = Object.Instantiate(_prefab);
 				audioSource.transform.parent = parent;

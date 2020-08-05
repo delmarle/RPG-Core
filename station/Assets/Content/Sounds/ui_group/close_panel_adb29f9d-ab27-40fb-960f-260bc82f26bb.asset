@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db5bdd94179ff41b18deb406e630d345, type: 3}
+  m_Name: close_panel_adb29f9d-ab27-40fb-960f-260bc82f26bb
+  m_EditorClassIdentifier: 
+  Volume: 1
+  MinPitch: 1
+  MaxPitch: 1
+  DelayAtStart: 0
+  FadeInTime: 0
+  FadeOutTime: 0
+  Looping: 0
+  Clips: []
+  SourceConfig: {fileID: 0}

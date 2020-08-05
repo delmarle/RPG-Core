@@ -106,7 +106,7 @@ namespace Station
     public ExitMode Option;
     public float Length = 1;
     public int AnimationId;
-    public SoundConfig StartSound;
+    public SoundReferenceDrawer StartSound;
   }
   
   [Serializable]
