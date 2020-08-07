@@ -13,10 +13,12 @@ namespace Station
 		public const string TYPE_EVADE = "evade";
 		
 		private Dictionary<string, FloatingPopupModel> _runtimeCache;
+		private List<FloatingPopup> _activePopups = new List<FloatingPopup>();
 		private Camera _camera;
 		private GameObject _canvas;
 		private static FloatingPopupSystem _instance;
 		private static FloatingPopupDb _db;
+		private SceneSystem _sceneSystem;
 
 		private bool CheckCameraExist()
 		{
@@ -32,17 +34,20 @@ namespace Station
 		protected override void OnInit()
 		{
 			GameGlobalEvents.OnDataBaseLoaded.AddListener(OnDbReady);
+			GameGlobalEvents.OnBeforeLeaveScene.AddListener(OnBeforeLeaveScene);
 		}
 
 		protected override void OnDispose()
 		{
 			GameGlobalEvents.OnDataBaseLoaded.RemoveListener(OnDbReady);
+			GameGlobalEvents.OnBeforeLeaveScene.RemoveListener(OnBeforeLeaveScene);
 		}
 
 		private void OnDbReady()
 		{
 			_instance = this;
 			var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
+			_sceneSystem = RpgStation.GetSystemStatic<SceneSystem>();
 			_db = dbSystem.GetDb<FloatingPopupDb>();
 			_runtimeCache = new Dictionary<string, FloatingPopupModel>();
 			foreach (var entry in _db.Db.Values)
@@ -56,9 +61,19 @@ namespace Station
 			_canvas = GameObject.Find("canvas_floating_text");
 			
 		}
+		
+		private void OnBeforeLeaveScene()
+		{
+			var popups = _activePopups.ToArray();
+			foreach (var popup in popups)
+			{
+				DeSpawnFloatingPopup(popup, 0);
+			}
+		}
 
 		private void SpawnPopup(string popupType, string text, FloatingPopupAnchor anchor)
 		{
+			if (_sceneSystem.IsTraveling) return;
 			if (_runtimeCache.ContainsKey(popupType) == false) return;
 			if (CheckCameraExist() == false) return;
 			
@@ -76,6 +91,7 @@ namespace Station
 			{
 				popupInstance.Setup(floatingParams);
 			}
+			_activePopups.Add(popupInstance);
 		}
 
 		public static void SpawnObject(string popupType, string text, FloatingPopupAnchor anchor, BaseCharacter source, BaseCharacter target, Sprite visual = null)
@@ -87,6 +103,12 @@ namespace Station
 					_instance.SpawnPopup(popupType, text, anchor);
 				}
 			}
+		}
+
+		public void DeSpawnFloatingPopup(FloatingPopup instance, float despawnTime)
+		{
+			_activePopups.Remove(instance);
+			PoolSystem.Despawn(instance, despawnTime);
 		}
 
 		public static bool ShouldShowPopup(string popupType, BaseCharacter source, BaseCharacter owner)

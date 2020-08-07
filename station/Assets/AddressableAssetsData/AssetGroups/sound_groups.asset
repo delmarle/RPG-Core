@@ -17,6 +17,13 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 4e192e06bd33145da80d6406157ac52b
   m_SerializeEntries:
+  - m_GUID: 0349ae5eb95ad49d5af28f30b163d2ad
+    m_Address: player_skills
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - player_skills
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 64c8788f4751743d681428378aaa998a
     m_Address: ui_group
     m_ReadOnly: 0

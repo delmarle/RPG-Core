@@ -15,6 +15,7 @@ namespace Station
         private FloatingParams _params;
         private Camera _camera;
         private float _elapsedRatio;
+        private FloatingPopupSystem _system;
         
       
 
@@ -31,7 +32,11 @@ namespace Station
                 _text.color =  _animationData.Gradient.Evaluate(0);
             }
 
-            PoolSystem.Despawn(this, _animationData.Length);
+            if (_system == null)
+            {
+                _system = RpgStation.GetSystemStatic<FloatingPopupSystem>();
+            }
+            _system.DeSpawnFloatingPopup(this, _animationData.Length);
         }
 
         public void Update()

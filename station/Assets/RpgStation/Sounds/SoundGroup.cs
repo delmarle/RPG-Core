@@ -60,13 +60,13 @@ namespace Station
 			if (soundData != null)
 			{
 
-				var audioSourceKey = soundData.SourceConfig.FallbackSource;
+				var audioSourceKey = soundData.SourceConfig?.FallbackSource;
 				if (audioSourceKey == null)
 				{
 					audioSourceKey = _fallbackAudioSource.FallbackSource;
 				}
 
-				var audioSource = _soundPoolDic [soundData.SourceConfig.FallbackSource].Spawn ();
+				var audioSource = _soundPoolDic [audioSourceKey].Spawn ();
 				result = new Sound(soundData, audioSource, _soundPoolDic [audioSourceKey]);
 			}
 

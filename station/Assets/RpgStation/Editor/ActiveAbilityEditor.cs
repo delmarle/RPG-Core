@@ -25,6 +25,7 @@ namespace Station
         private static bool _displayCasting;
         private static bool displayCastingSound;
         private static bool _displayInvoking;
+        private static bool displayInvokingSound;
 
     
         private static bool CacheDbs()
@@ -51,7 +52,7 @@ namespace Station
         
         public static void DrawContent()
         {
-            if (CacheDbs() == true)
+            if (CacheDbs())
             {
                 return;;
             }
@@ -254,7 +255,11 @@ namespace Station
       {
         invoking.Length = EditorGUILayout.FloatField("Invoke time: ", invoking.Length);
         invoking.AnimationId = EditorGUILayout.IntField("Invoke animation ID: ", invoking.AnimationId);
-        invoking.InvokeSound = EditorGUILayout.TextField("Invoking sound: ", invoking.InvokeSound);
+        displayInvokingSound = EditorStatic.SoundFoldout("Casting sound: ", ref invoking.InvokeSound, displayInvokingSound, 28, Color.cyan);
+        if (displayInvokingSound)
+        {
+          EditorStatic.DrawSoundWidget(ref invoking.InvokeSound, "Invoking sound");
+        }
         invoking.Option = (ExitMode)EditorGUILayout.EnumPopup("Mode: ", invoking.Option);
       }
       EditorStatic.DrawThinLine(3);

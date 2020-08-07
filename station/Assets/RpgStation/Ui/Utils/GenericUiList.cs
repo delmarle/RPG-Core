@@ -63,41 +63,45 @@ namespace Station
         public void Generate(IEnumerable<T> items, Action<T, T2> transformer)
         {
             var index = 0;
-
-            foreach (var item in items)
+            if (items != null)
             {
-                GameObject listItem;
-                T2 listComponent;
-                if (_items.Count > index)
+                foreach (var item in items)
                 {
-                    // We can use an item from pool
-                    listItem = _items[index];
-                    listComponent = _components[index];
-                }
-                else
-                {
-                    // We need to create a new item and add it to the pool
-                    listItem = Object.Instantiate(_prefab, _list.transform, false);
-                    listComponent = listItem.GetComponent<T2>();
-                    _components.Add(listComponent);
-                    _items.Add(listItem);
-                    _components.Add(listComponent);
+                    GameObject listItem;
+                    T2 listComponent;
+                    if (_items.Count > index)
+                    {
+                        // We can use an item from pool
+                        listItem = _items[index];
+                        listComponent = _components[index];
+                    }
+                    else
+                    {
+                        // We need to create a new item and add it to the pool
+                        listItem = Object.Instantiate(_prefab, _list.transform, false);
+                        listComponent = listItem.GetComponent<T2>();
+                        _components.Add(listComponent);
+                        _items.Add(listItem);
+                        _components.Add(listComponent);
+                    }
+
+                    if (typeof(T2) == typeof(GameObject))
+                        transformer.Invoke(item, listItem as T2);
+                    else
+                        transformer.Invoke(item, listComponent);
+                    listItem.SetActive(true);
+                    index++;
                 }
 
-                if (typeof(T2) == typeof(GameObject))
-                    transformer.Invoke(item, listItem as T2);
-                else
-                    transformer.Invoke(item, listComponent);
-                listItem.SetActive(true);
-                index++;
+                while (_items.Count > index)
+                {
+                    // Disable any unnecessary objects from pool
+                    _items[index].gameObject.SetActive(false);
+                    index++;
+                }
             }
 
-            while (_items.Count > index)
-            {
-                // Disable any unnecessary objects from pool
-                _items[index].gameObject.SetActive(false);
-                index++;
-            }
+           
         }
 
         public GameObject GetObjectAt(int index)

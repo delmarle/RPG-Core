@@ -18,7 +18,11 @@ namespace Station
 		[Header("Components:")]
 		public List<AudioClip> Clips = new List<AudioClip>();
 		public SourcePoolConfig SourceConfig;
-		public AudioClip RandomizedClip(){ return Clips.RandomItem(); }
+
+		public AudioClip RandomizedClip()
+		{
+			return Clips.Count == 0 ? null : Clips.RandomItem();
+		}
 	    public float RandomizedPitch(){ return Random.Range(MinPitch, MaxPitch); }
 	}
 }

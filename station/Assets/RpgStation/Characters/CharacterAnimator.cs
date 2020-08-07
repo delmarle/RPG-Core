@@ -22,6 +22,7 @@ namespace Station
   private Animator _animator;
   private CharacterControl _characterControl;
   private BaseCharacter _baseCharacter;
+  private SoundSystem _soundSystem;
 
   protected virtual void Awake()
   {
@@ -32,7 +33,8 @@ namespace Station
       _animator = GetComponentInChildren<Animator>();
     }
     _characterControl = GetComponent<CharacterControl>();
-    
+    _soundSystem = RpgStation.GetSystemStatic<SoundSystem>();
+
   }
 
   private IEnumerator Start()
@@ -87,6 +89,11 @@ namespace Station
   private void OnStartCasting(CharacterAction action)
   {
     _animator.SetInteger(CastingId, action.CastingData.AnimationId);
+    if (action.CastingData.StartSound)
+    {
+      _soundSystem.PlaySound(action.CastingData.StartSound.name);
+    }
+
     if(action.InvokingData != null)_animator.SetInteger(InvokingId, action.InvokingData.AnimationId);
     _animator.SetBool(CastingState, true);
     _animator.SetBool(InvokingState, false);

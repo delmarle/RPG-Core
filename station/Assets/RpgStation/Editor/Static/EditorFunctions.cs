@@ -592,7 +592,7 @@ namespace RPG.Editor
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
         sound.Looping = EditorGUILayout.Toggle("Looping : ", sound.Looping);
-        sound.SourceConfig.PoolSize = EditorGUILayout.IntField("Pool size : ", sound.SourceConfig.PoolSize);
+        sound.SourceConfig = (SourcePoolConfig)EditorGUILayout.ObjectField("Pool config:", sound.SourceConfig, typeof(SourcePoolConfig));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginVertical("box");
         //HEADER
@@ -707,13 +707,13 @@ namespace RPG.Editor
           casting.Length = EditorGUILayout.FloatField("Casting time: ", casting.Length);
           casting.AnimationId = EditorGUILayout.IntField("Casting animation ID: ", casting.AnimationId);
           
-          /*displayCastingSound = SoundFoldout("Casting sound: ", ref casting.StartSound, displayCastingSound, 28, Color.cyan);
+          displayCastingSound = SoundFoldout("Casting sound: ", ref casting.StartSound, displayCastingSound, 28, Color.cyan);
           if (displayCastingSound)
           {
             DrawSoundWidget(ref casting.StartSound, ABILITIES_CATEGORY);
-          }*/
+          }
 
-          DrawSoundReference(casting.StartSound);
+         // DrawSoundReference(casting.StartSound);
           casting.Option = (ExitMode)EditorGUILayout.EnumPopup("Mode: ", casting.Option);
         }
       }

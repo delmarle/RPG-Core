@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Station
 {
     public class SoundSystem : BaseSystem
     {
-        //cached components
+        #region FIELDS
         
         private SoundPlayer _soundPlayer;
         private SoundsDb _soundsDb;
-        
+        #endregion
         
         protected override void OnInit()
         {
@@ -40,9 +41,12 @@ namespace Station
         }
 
         #region CONTOLS
-        public void PlaySound(string soundId)
+        public int PlaySound(string soundId)
         {
+            Debug.Log(soundId);
+            return _soundPlayer.Play(soundId);
         }
+        
         #endregion
     }
 }

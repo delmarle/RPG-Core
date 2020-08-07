@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PersistentContainers:
   - {fileID: 11400000, guid: 64c8788f4751743d681428378aaa998a, type: 2}
+  - {fileID: 11400000, guid: 0349ae5eb95ad49d5af28f30b163d2ad, type: 2}
   _db:
     m_keys:
     - b68aa657-133a-46ad-bee5-8de58cab7395
+    - 4adc6de2-d0e3-45b5-97bc-5c890ac00fff
     m_values:
     - CategoryName: ui_group
+    - CategoryName: player_skills

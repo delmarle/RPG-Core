@@ -34,15 +34,12 @@ MonoBehaviour:
           Option: 0
           Length: 1
           AnimationId: 0
-          StartSound:
-            Enabled: 1
-            GroupId: 80e8af9b-f50d-4fed-90d1-0818f01f1f5c
-            SoundId: 
+          StartSound: {fileID: 11400000, guid: dbc4645349417470f9e4f4d30712a103, type: 2}
         Invoking:
           Option: 0
           Length: 1
           AnimationId: 0
-          InvokeSound: 
+          InvokeSound: {fileID: 0}
         VitalsUsed: []
         ProjectileDrivers: []
         DirectDrivers:
@@ -72,19 +69,16 @@ MonoBehaviour:
       - CastDistance: 12
         CoolDown: 5
         Casting:
-          HasData: 0
+          HasData: 1
           Option: 0
           Length: 1
           AnimationId: 0
-          StartSound:
-            Enabled: 0
-            GroupId: 
-            SoundId: 
+          StartSound: {fileID: 11400000, guid: dbc4645349417470f9e4f4d30712a103, type: 2}
         Invoking:
           Option: 0
           Length: 1
           AnimationId: 0
-          InvokeSound: 
+          InvokeSound: {fileID: 0}
         VitalsUsed: []
         ProjectileDrivers: []
         DirectDrivers:
@@ -125,15 +119,12 @@ MonoBehaviour:
           Option: 0
           Length: 1
           AnimationId: 0
-          StartSound:
-            Enabled: 0
-            GroupId: 
-            SoundId: 
+          StartSound: {fileID: 0}
         Invoking:
           Option: 0
           Length: 1
           AnimationId: 0
-          InvokeSound: 
+          InvokeSound: {fileID: 0}
         VitalsUsed: []
         ProjectileDrivers: []
         DirectDrivers:
@@ -167,15 +158,12 @@ MonoBehaviour:
           Option: 1
           Length: 1
           AnimationId: 0
-          StartSound:
-            Enabled: 0
-            GroupId: 
-            SoundId: 
+          StartSound: {fileID: 0}
         Invoking:
           Option: 0
           Length: 1
           AnimationId: 0
-          InvokeSound: 
+          InvokeSound: {fileID: 0}
         VitalsUsed: []
         ProjectileDrivers: []
         DirectDrivers:
@@ -210,15 +198,12 @@ MonoBehaviour:
           Option: 0
           Length: 1
           AnimationId: 0
-          StartSound:
-            Enabled: 0
-            GroupId: 
-            SoundId: 
+          StartSound: {fileID: 0}
         Invoking:
           Option: 0
           Length: 1
           AnimationId: 0
-          InvokeSound: 
+          InvokeSound: {fileID: 0}
         VitalsUsed: []
         ProjectileDrivers: []
         DirectDrivers:
@@ -252,15 +237,12 @@ MonoBehaviour:
           Option: 0
           Length: 1
           AnimationId: 0
-          StartSound:
-            Enabled: 0
-            GroupId: 
-            SoundId: 
+          StartSound: {fileID: 0}
         Invoking:
           Option: 0
           Length: 1
           AnimationId: 0
-          InvokeSound: 
+          InvokeSound: {fileID: 0}
         VitalsUsed: []
         ProjectileDrivers: []
         DirectDrivers:

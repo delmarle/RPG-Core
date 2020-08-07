@@ -1020,7 +1020,6 @@ public enum StatusEffectType
   public class SoundCategory
   {
     public string CategoryName;
-   // public string SoundContainerName;
   }
 
   [Serializable]
