@@ -124,7 +124,8 @@ MonoBehaviour:
           Option: 0
           Length: 1
           AnimationId: 0
-          InvokeSound: {fileID: 0}
+          InvokeSound: {fileID: 11400000, guid: 70cc776b7fefd439ca6139a77420b8fa,
+            type: 2}
         VitalsUsed: []
         ProjectileDrivers: []
         DirectDrivers:

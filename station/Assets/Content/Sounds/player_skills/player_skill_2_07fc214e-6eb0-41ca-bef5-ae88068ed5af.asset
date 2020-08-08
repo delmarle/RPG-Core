@@ -19,5 +19,6 @@ MonoBehaviour:
   FadeInTime: 0
   FadeOutTime: 0
   Looping: 0
-  Clips: []
-  SourceConfig: {fileID: 0}
+  Clips:
+  - {fileID: 8300000, guid: d6b9d8a217d1f4fe5b5ce2a44bef70a0, type: 3}
+  SourceConfig: {fileID: 11400000, guid: 2972ae45fee2241fb958486e3865b758, type: 2}

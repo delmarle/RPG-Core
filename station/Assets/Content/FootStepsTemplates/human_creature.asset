@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 998d4a32d2ea64b16921afb416e5f949, type: 3}
+  m_Name: human_creature
+  m_EditorClassIdentifier: 
+  Entries:
+  - SurfaceName: wood
+    Sounds: {fileID: 11400000, guid: 7c188d468d90b49d2a5b650a0e8ae4aa, type: 2}
+  - SurfaceName: grass
+    Sounds: {fileID: 11400000, guid: 396e67ffec22046ebb7bd0fa8c1577a4, type: 2}
+  - SurfaceName: concrete
+    Sounds: {fileID: 11400000, guid: 7ae718e282dfa4f20bf32da6a190da84, type: 2}
+  - SurfaceName: dirt
+    Sounds: {fileID: 11400000, guid: 7fde1a6a146b44b5eaa8bf5e91879b84, type: 2}
+  DefaultSurface:
+    SurfaceName: default
+    Sounds: {fileID: 11400000, guid: 7fde1a6a146b44b5eaa8bf5e91879b84, type: 2}

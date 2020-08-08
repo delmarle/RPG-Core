@@ -84,6 +84,18 @@ namespace Station
                 
                 
                 #endregion
+                
+                #region FOOTSTEPS
+
+                var footsteps = character.GetComponentInChildren<FootstepsBehaviour>();
+                if (footsteps == null)
+                {
+                    var animator = character.gameObject.GetComponentInChildren<Animator>();
+                    footsteps = animator.gameObject.AddComponent<FootstepsBehaviour>();
+                }
+
+                footsteps.Setup(null);
+                #endregion
             }
             else
             {

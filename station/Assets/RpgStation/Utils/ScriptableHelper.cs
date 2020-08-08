@@ -40,5 +40,14 @@ public class ScriptableHelper
         return db;
     }
 
+    public static void RenameScriptAbleAsset(ScriptableObject so, string newPath)
+    {
+#if UNITY_EDITOR
+        string assetPath =  AssetDatabase.GetAssetPath(so.GetInstanceID());
+        AssetDatabase.RenameAsset(assetPath, newPath);
+        AssetDatabase.SaveAssets();
+#endif
+    }
+
 
 }

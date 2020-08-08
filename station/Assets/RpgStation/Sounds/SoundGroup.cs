@@ -14,41 +14,51 @@ namespace Station
 
 		[SerializeField] private SourcePoolConfig _fallbackAudioSource = null;
 
-		public SoundConfig[] Sounds;
+		private SoundConfig[] Sounds;
 		private Dictionary<AudioSource, AudioSourcePool> _soundPoolDic = null;
 		#endregion
 		
 		public void Initialize(int standardPoolSize)
 		{
 			if (_fallbackAudioSource.PoolSize == -1) _fallbackAudioSource.PoolSize = standardPoolSize;
-
+			
 			InitializeAudioSourcePools ();
 		}
 
 		private void InitializeAudioSourcePools()
 		{
+		
+		}
+
+		public void InjectSounds(SoundConfig[] sounds)
+		{
+			Sounds = sounds;
 			if (_fallbackAudioSource == null)
 			{
 				Debug.LogError("The sound group prefab "+name+" is missing a fall back audio source");
 				return;
 			}
-            _soundPoolDic = new Dictionary<AudioSource, AudioSourcePool> (Sounds.Length);
+			_soundPoolDic = new Dictionary<AudioSource, AudioSourcePool> (Sounds.Length);
 			var standardAudioSourcePool = new AudioSourcePool (_fallbackAudioSource, transform);
 			_soundPoolDic.Add(_fallbackAudioSource.FallbackSource, standardAudioSourcePool);
-			
-            for (var i = 0; i < Sounds.Length; i++)
-            {
-	            var sound = Sounds[i];
-	            if (_soundPoolDic.ContainsKey(sound.SourceConfig.FallbackSource) == false)
-	            {
-		            if (sound.SourceConfig?.FallbackSource != null)
-		            {
-			            _soundPoolDic.Add(sound.SourceConfig.FallbackSource, new AudioSourcePool(sound.SourceConfig, transform));
-		            }
-	            }
+			for (var i = 0; i < Sounds.Length; i++)
+			{
+				var sound = Sounds[i];
+				var source = sound?.SourceConfig?.FallbackSource;
+				if (source == null)
+				{
+					source = _fallbackAudioSource.FallbackSource;
+				}
 
-	            
-            }
+				if (source != null)
+				{
+					if ( _soundPoolDic.ContainsKey(source) == false)
+					{
+						_soundPoolDic.Add(source, new AudioSourcePool(sound.SourceConfig, transform));
+					}
+				}
+			}
+			
 		}
 
 		public Sound GetSound(string soundName)

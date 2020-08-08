@@ -6,13 +6,15 @@ namespace Station
     public class SoundSystem : BaseSystem
     {
         #region FIELDS
-        
+        private static SoundSystem _instance;
         private SoundPlayer _soundPlayer;
         private SoundsDb _soundsDb;
+        private FootstepsDb _footStepsDb;
         #endregion
         
         protected override void OnInit()
         {
+            _instance = this;
             GameGlobalEvents.OnDataBaseLoaded.AddListener(OnDbReady);
         }
 
@@ -27,6 +29,7 @@ namespace Station
         {
             var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
             _soundsDb = dbSystem.GetDb<SoundsDb>();
+            _footStepsDb = dbSystem.GetDb<FootstepsDb>();
             _soundPlayer = gameObject.GetComponentInChildren<SoundPlayer>();
             _soundPlayer.Initialize();
             HashSet<SoundConfig> sounds = new HashSet<SoundConfig>();
@@ -37,6 +40,14 @@ namespace Station
                     sounds.Add(sound.Config);
                 }
             }
+
+            foreach (var template in _footStepsDb)
+            {
+                foreach (var entry in template.Entries)
+                {
+                    sounds.Add(entry.Sounds);
+                }
+            }
             _soundPlayer.InjectSounds(sounds);
         }
 
@@ -45,6 +56,18 @@ namespace Station
         {
             Debug.Log(soundId);
             return _soundPlayer.Play(soundId);
+        }
+        
+        public static void PlayFootStep(string name,Transform character)
+        {
+            if (_instance)
+            {
+                _instance._soundPlayer.Play(name, character);
+            }
+            else
+            {
+                Debug.LogWarning("FootStepsPlayer is missing !");
+            }
         }
         
         #endregion

@@ -20,7 +20,7 @@ namespace Station
         
         public override string ObjectName()
         {
-            return "Npc";
+            return "Sounds";
         }
         
         public override string[] ListEntryNames()

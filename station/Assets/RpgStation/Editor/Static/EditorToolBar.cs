@@ -7,6 +7,8 @@ namespace RPG.Editor
     #region FIELDS
     public static GUIContent[] ToolbarOptions;  
     public static GUILayoutOption ToolbarHeight;
+    
+    public static GUIContent[] FootStepsToolbarOptions;  
 
     #endregion
 
@@ -24,6 +26,11 @@ namespace RPG.Editor
       ToolbarOptions[6] = new GUIContent("<size=11><b> Items</b></size>", GetEditorTexture("package"), "");
       ToolbarOptions[7] = new GUIContent("<size=11><b> World</b></size>", GetEditorTexture("map"), "");
       ToolbarOptions[8] = new GUIContent("<size=11><b> Interactions</b></size>", GetEditorTexture("hand_property"), "");
+      
+      FootStepsToolbarOptions = new GUIContent[3];
+      FootStepsToolbarOptions[0] = new GUIContent("<size=11><b> Settings</b></size>", GetEditorTexture("zone"), "");
+      FootStepsToolbarOptions[1] = new GUIContent("<size=11><b>  Surfaces</b></size>",GetEditorTexture("legend"),"");
+      FootStepsToolbarOptions[2] = new GUIContent("<size=11><b> Templates</b></size>", GetEditorTexture("zone"), "");
     }
   }
 }

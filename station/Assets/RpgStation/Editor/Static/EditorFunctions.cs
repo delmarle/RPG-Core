@@ -566,7 +566,7 @@ namespace RPG.Editor
     
     #region SOUNDS && EFFECTS
 
-    public static void DrawSoundWidget(ref SoundConfig sound, string category)
+    public static void DrawSoundWidget(ref SoundConfig sound, string category, string optionalFileName = "")
     {
       var styleSubContent = new GUIStyle("SelectionRect");
   
@@ -637,6 +637,11 @@ namespace RPG.Editor
         if (SizeableButton(200, 36, "Create sound asset", "plus"))
         {
           string fileName = category+Guid.NewGuid()+".asset";
+          if (optionalFileName != "")
+          {
+             fileName = optionalFileName+".asset";
+          }
+
           var path = PathUtils.BuildSoundPath(category);
           sound = ScriptableHelper.CreateScriptableObject<SoundConfig>(path, fileName);
         }

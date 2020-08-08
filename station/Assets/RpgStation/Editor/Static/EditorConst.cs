@@ -8,6 +8,7 @@
     private const string EDITOR_ASSETS_PATH = "Assets/RpgStation/Editor/Assets/";
     private const string EDITOR_DB_PATH = "Assets/Content/Databases/";
     public const string EDITOR_SOUND_GROUP_PATH = "Assets/Content/SoundsGroups/";
+    public const string EDITOR_FOOTSTEPS_TEMPLATES_PATH = "Assets/Content/FootStepsTemplates/";
     public const string EDITOR_SOUND_GROUP_NAME = "sound_groups";
     public const string EDITOR_ADDRESSABLE_PATH = "Assets/AddressableAssetsData/AddressableAssetSettings.asset";
     
@@ -26,6 +27,7 @@
     public const string CONFIG_TAB_FLOATING_POPUPS = "<size=11><b> Floating Popups</b></size>";
     public const string CONFIG_TAB_UI_CHANNELS = "<size=11><b> Ui Notification Channels</b></size>";
     public const string CONFIG_TAB_SOUNDS = "<size=11><b> Sounds</b></size>";
+    public const string CONFIG_TAB_FOOTSTEPS = "<size=11><b> Footsteps</b></size>";
     
     //[[STATS TAB]]
     public const string STATS_TAB_ATTRIBUTES = "<size=11><b> Attributes</b></size>";

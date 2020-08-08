@@ -277,7 +277,7 @@ namespace Station
 
 		public void InjectSounds(HashSet<SoundConfig> sounds)
 		{
-			_persistentSoundGroup.Sounds = sounds.ToArray();
+			_persistentSoundGroup.InjectSounds(sounds.ToArray());
 		}
 
 		public virtual void Initialize()
@@ -408,7 +408,7 @@ namespace Station
 			{
 		
 			}
-
+Debug.Log($"playing {sound.SoundConfig.name} - source: {sound.AudioSource}");
 			if(sound != null)
 			{
 				soundEventId = StartSoundEvent(sound, targetParent, targetPosition);

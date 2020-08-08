@@ -36,8 +36,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Databases
-    m_MainAsset: {fileID: 11400000, guid: 2621992d5554c42cf8682741204d2c73, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: 2621992d5554c42cf8682741204d2c73, type: 2}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 31c12955b23ed40da8f357537c19baf3
     m_Address: InteractionConfigsDb
     m_ReadOnly: 0
@@ -71,8 +71,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Databases
-    m_MainAsset: {fileID: 11400000, guid: 4d8b3f02c0b084abe8dfb1df7590efdb, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: 4d8b3f02c0b084abe8dfb1df7590efdb, type: 2}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 55f19c0240f854066be0e6d6451a6e4f
     m_Address: PassiveAbilitiesDb
     m_ReadOnly: 0
@@ -87,20 +87,26 @@ MonoBehaviour:
     - Databases
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 61855eb46213242b7a624b793200ee95
+    m_Address: FootstepsDb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 11400000, guid: 61855eb46213242b7a624b793200ee95, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 61855eb46213242b7a624b793200ee95, type: 2}
   - m_GUID: 7102ac8ea59114415b1c7973cbf0c0f9
     m_Address: ChestNodesDb
     m_ReadOnly: 0
     m_SerializedLabels:
     - Databases
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 11400000, guid: 7102ac8ea59114415b1c7973cbf0c0f9, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 7102ac8ea59114415b1c7973cbf0c0f9, type: 2}
   - m_GUID: 766895e4e75b04de68e0778c9f83de90
     m_Address: FloatingPopupDb
     m_ReadOnly: 0
     m_SerializedLabels:
     - Databases
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 11400000, guid: 766895e4e75b04de68e0778c9f83de90, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 766895e4e75b04de68e0778c9f83de90, type: 2}
   - m_GUID: 79198aef42dbf4af7acbb2f62931c2ee
     m_Address: PlayerClassDb
     m_ReadOnly: 0

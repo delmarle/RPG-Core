@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245d76fc1f0984a219b1903fd6becf75, type: 3}
+  m_Name: FootstepsDb
+  m_EditorClassIdentifier: 
+  Surfaces:
+  - wood
+  - grass
+  - concrete
+  - dirt
+  DefaultFootstepConfig: {fileID: 11400000, guid: 9be7fbd109e9f48e2a6900bb96a3b57c,
+    type: 2}
+  PersistentContainers: []
+  _db:
+    m_keys:
+    - a6df7a02-78dc-4854-86f8-183804c07619
+    - ed12b284-6589-4940-acce-612d6b65b310
+    - 98278a27-ab55-406b-8172-e18950bed4eb
+    - 627bb1c4-3483-4b15-93b0-ce040d6ab4c5
+    - 7ee67b88-4cd6-42e2-9a18-f10f939c9b49
+    m_values:
+    - {fileID: 11400000, guid: c383c57e2c95342e7a8c1196b716e930, type: 2}
+    - {fileID: 11400000, guid: de50cbc5cbea54503b2f8230a2ac5ebf, type: 2}
+    - {fileID: 11400000, guid: 6c70a5c46470547a7a9bda1c7c6662ca, type: 2}
+    - {fileID: 11400000, guid: 95e1c4f77a1a04c21a8e961448df6d6e, type: 2}
+    - {fileID: 11400000, guid: bb2129ff23e3847ee8520cbbf9b4516b, type: 2}
