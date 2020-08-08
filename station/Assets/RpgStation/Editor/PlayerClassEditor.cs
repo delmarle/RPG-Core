@@ -254,6 +254,8 @@ namespace Station
                 }
             }
             GUILayout.EndHorizontal();
+            current.FootSoundTemplate = (FootSoundTemplate) EditorGUILayout.ObjectField("Footsteps: ",
+                current.FootSoundTemplate, typeof(FootSoundTemplate), false);
         }
 
         private static void RaceAllowedSection(PlayerClassModel current)

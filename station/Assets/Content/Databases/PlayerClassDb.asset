@@ -68,6 +68,8 @@ MonoBehaviour:
         CriticalChance: 0
         Range: 2
         Speed: 1.4
+      FootSoundTemplate: {fileID: 11400000, guid: c383c57e2c95342e7a8c1196b716e930,
+        type: 2}
     - Name: Mage
       Description: 
       Icon: {fileID: 21300000, guid: d174066fc123c4f1ea80954ba8dc0599, type: 3}
@@ -113,3 +115,5 @@ MonoBehaviour:
         CriticalChance: 0
         Range: 2
         Speed: 2
+      FootSoundTemplate: {fileID: 11400000, guid: c383c57e2c95342e7a8c1196b716e930,
+        type: 2}

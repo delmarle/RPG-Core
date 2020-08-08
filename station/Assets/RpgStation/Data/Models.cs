@@ -138,7 +138,7 @@ namespace Station
       public List<string> UpgradeClasses = new List<string>();
       public CharacterCalculation StatsCalculator;
       public AttackData Attack = new AttackData();
-
+      public FootSoundTemplate FootSoundTemplate;
       #region [[ RUNTIME CACHING ]]
 
       private Dictionary<string, int> _attributesBonusesMap = new Dictionary<string, int>();

@@ -94,7 +94,7 @@ namespace Station
                     footsteps = animator.gameObject.AddComponent<FootstepsBehaviour>();
                 }
 
-                footsteps.Setup(null);
+                footsteps.Setup(classData.FootSoundTemplate);
                 #endregion
             }
             else
