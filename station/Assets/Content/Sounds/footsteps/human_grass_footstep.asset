@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db5bdd94179ff41b18deb406e630d345, type: 3}
   m_Name: human_grass_footstep
   m_EditorClassIdentifier: 
-  Volume: 1
-  MinPitch: 1
-  MaxPitch: 1
+  Volume: 0.096
+  MinPitch: 0.82
+  MaxPitch: 1.31
   DelayAtStart: 0
   FadeInTime: 0
-  FadeOutTime: 0
+  FadeOutTime: 0.48
   Looping: 0
-  Clips: []
-  SourceConfig: {fileID: 0}
+  Clips:
+  - {fileID: 8300000, guid: a5287fc9aa5a24595b8927379ab0e247, type: 3}
+  - {fileID: 8300000, guid: 63e7f9b90f47d4715b0aa8a4f7c1c0c8, type: 3}
+  - {fileID: 8300000, guid: 760e4f1305edf4b14b6fefd43a5adeb2, type: 3}
+  SourceConfig: {fileID: 11400000, guid: 9be7fbd109e9f48e2a6900bb96a3b57c, type: 2}
