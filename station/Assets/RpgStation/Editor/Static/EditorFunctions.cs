@@ -692,6 +692,13 @@ namespace RPG.Editor
     #endregion
     
     #region ACTIONS
+
+    public static VfxData DrawVfxData(VfxData data)
+    {
+      data.EffectPrefab = (BaseVfxPlayer)EditorGUILayout.ObjectField("Effect prefab:",data.EffectPrefab, typeof(BaseVfxPlayer), false);
+      return data;
+    }
+
     public static CastingData DrawCastingData(CastingData casting, ref bool displayCasting, ref bool displayCastingSound)
     {
       EditorGUILayout.BeginHorizontal();
@@ -720,9 +727,11 @@ namespace RPG.Editor
 
          // DrawSoundReference(casting.StartSound);
           casting.Option = (ExitMode)EditorGUILayout.EnumPopup("Mode: ", casting.Option);
+          casting.Effect = DrawVfxData((casting.Effect));
         }
       }
 
+     
       return casting;
     }
     #endregion

@@ -18,7 +18,7 @@ namespace Station
     protected ActionHandler _action;
     private Timer _castingTimer;
     private Timer _invokingTimer;
-    
+    private BaseVfxPlayer _castingEffectInstance;
 
     #endregion
 
@@ -131,6 +131,12 @@ namespace Station
           _user.Action.OnStartCasting.Invoke(this);
         }
         _castingTimer = Timer.Register(casting.Length, CompleteCasting);
+        _castingEffectInstance?.Despawn();
+        if (casting.Effect.EffectPrefab != null)
+        {
+          _castingEffectInstance = PoolSystem.Spawn<BaseVfxPlayer>(casting.Effect.EffectPrefab);
+          _castingEffectInstance.PlayEffect(_user, _user.Target, null);
+        }
       }
       else
       {
@@ -141,7 +147,7 @@ namespace Station
     public void CompleteCasting()
     {
       var casting = CastingData;
-
+      _castingEffectInstance?.Despawn();
       if (casting.Option == ExitMode.CanceledByMovement)
       {
         UnlistenMovement();
@@ -157,7 +163,7 @@ namespace Station
     public void CancelCasting()
     {
       _user.Action.DoFinishAction();
-
+      _castingEffectInstance?.Despawn();
       var casting = CastingData;
       _user.Action.StopCasting();
       if (casting.Option == ExitMode.CanceledByMovement)

@@ -35,11 +35,16 @@ MonoBehaviour:
           Length: 1
           AnimationId: 0
           StartSound: {fileID: 11400000, guid: dbc4645349417470f9e4f4d30712a103, type: 2}
+          Effect:
+            EffectPrefab: {fileID: 2349360774553193454, guid: 3228a22491941734bb83ad691d17fcb9,
+              type: 3}
         Invoking:
           Option: 0
           Length: 1
           AnimationId: 0
           InvokeSound: {fileID: 0}
+          Effect:
+            EffectPrefab: {fileID: 0}
         VitalsUsed: []
         ProjectileDrivers: []
         DirectDrivers:
@@ -74,11 +79,15 @@ MonoBehaviour:
           Length: 1
           AnimationId: 0
           StartSound: {fileID: 11400000, guid: dbc4645349417470f9e4f4d30712a103, type: 2}
+          Effect:
+            EffectPrefab: {fileID: 0}
         Invoking:
           Option: 0
           Length: 1
           AnimationId: 0
           InvokeSound: {fileID: 0}
+          Effect:
+            EffectPrefab: {fileID: 0}
         VitalsUsed: []
         ProjectileDrivers: []
         DirectDrivers:
@@ -115,17 +124,22 @@ MonoBehaviour:
       - CastDistance: 0
         CoolDown: 0
         Casting:
-          HasData: 0
+          HasData: 1
           Option: 0
           Length: 1
-          AnimationId: 0
-          StartSound: {fileID: 0}
+          AnimationId: 1
+          StartSound: {fileID: 11400000, guid: dbc4645349417470f9e4f4d30712a103, type: 2}
+          Effect:
+            EffectPrefab: {fileID: 2349360774553193454, guid: 3228a22491941734bb83ad691d17fcb9,
+              type: 3}
         Invoking:
           Option: 0
           Length: 1
           AnimationId: 0
           InvokeSound: {fileID: 11400000, guid: 70cc776b7fefd439ca6139a77420b8fa,
             type: 2}
+          Effect:
+            EffectPrefab: {fileID: 0}
         VitalsUsed: []
         ProjectileDrivers: []
         DirectDrivers:
@@ -160,11 +174,15 @@ MonoBehaviour:
           Length: 1
           AnimationId: 0
           StartSound: {fileID: 0}
+          Effect:
+            EffectPrefab: {fileID: 0}
         Invoking:
           Option: 0
           Length: 1
           AnimationId: 0
           InvokeSound: {fileID: 0}
+          Effect:
+            EffectPrefab: {fileID: 0}
         VitalsUsed: []
         ProjectileDrivers: []
         DirectDrivers:
@@ -200,11 +218,15 @@ MonoBehaviour:
           Length: 1
           AnimationId: 0
           StartSound: {fileID: 0}
+          Effect:
+            EffectPrefab: {fileID: 0}
         Invoking:
           Option: 0
           Length: 1
           AnimationId: 0
           InvokeSound: {fileID: 0}
+          Effect:
+            EffectPrefab: {fileID: 0}
         VitalsUsed: []
         ProjectileDrivers: []
         DirectDrivers:
@@ -239,11 +261,15 @@ MonoBehaviour:
           Length: 1
           AnimationId: 0
           StartSound: {fileID: 0}
+          Effect:
+            EffectPrefab: {fileID: 0}
         Invoking:
           Option: 0
           Length: 1
           AnimationId: 0
           InvokeSound: {fileID: 0}
+          Effect:
+            EffectPrefab: {fileID: 0}
         VitalsUsed: []
         ProjectileDrivers: []
         DirectDrivers:

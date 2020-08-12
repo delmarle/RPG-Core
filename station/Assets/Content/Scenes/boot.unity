@@ -662,7 +662,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fallbackAudioSource: {fileID: 11400000, guid: 2972ae45fee2241fb958486e3865b758,
     type: 2}
-  Sounds: []
 --- !u!1 &1847029648
 GameObject:
   m_ObjectHideFlags: 0

@@ -107,6 +107,7 @@ namespace Station
     public float Length = 1;
     public int AnimationId;
     public SoundConfig StartSound;
+    public VfxData Effect = new VfxData();
   }
   
   [Serializable]
@@ -116,6 +117,13 @@ namespace Station
     public float Length = 1;
     public int AnimationId;
     public SoundConfig InvokeSound;
+    public VfxData Effect;
+  }
+
+  [Serializable]
+  public class VfxData
+  {
+    public BaseVfxPlayer EffectPrefab;
   }
 
   public enum ExitMode

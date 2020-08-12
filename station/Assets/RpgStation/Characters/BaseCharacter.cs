@@ -46,7 +46,19 @@ namespace Station
         private CharacterBrain _brain;
         protected CharacterMemoryHandler _memoryHandler;
         public CharacterMemoryHandler Memory => _memoryHandler;
-        
+
+        private LimbsReference _limbs;
+
+        public Transform GetLimbs(string limbName)
+        {
+            if (_limbs == null)
+            {
+                return transform;
+            }
+
+            return _limbs.GetLimb(limbName);
+        }
+
         private bool _isDead;
 
         public bool IsDead
@@ -133,6 +145,7 @@ namespace Station
             _control = GetComponent<CharacterControl>();
             _mechanics = _gameSettingsDb.Get().Mechanics;
             FloatingPopupAnchor = GetComponentInChildren<FloatingPopupAnchor>();
+            _limbs = GetComponentInChildren<LimbsReference>();
             if (FloatingPopupAnchor == null)
             {
                 GameObject anchor = new GameObject("anchor");
