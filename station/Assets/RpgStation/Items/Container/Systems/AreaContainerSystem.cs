@@ -75,6 +75,7 @@ namespace Station
         {
             var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
             var itemDb = dbSystem.GetDb<ItemsDb>();
+            
             _areaContainersSave.Load(_sceneSystem.GetCurrentDestination().SceneName);
             _savedContainer = new Dictionary<string, BaseItemContainer>();
             if (_areaContainersSave.Value == null)

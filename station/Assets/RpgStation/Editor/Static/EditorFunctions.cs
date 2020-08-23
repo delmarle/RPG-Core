@@ -782,7 +782,7 @@ namespace RPG.Editor
       var raritiesDict = dictDb.Db;
       if (raritiesDict.Any())
       {
-        if (string.IsNullOrEmpty(current))
+        if (string.IsNullOrEmpty(current) || dictDb.HasKey(current) == false)
         {
           current = dictDb.GetKey(0);
         }

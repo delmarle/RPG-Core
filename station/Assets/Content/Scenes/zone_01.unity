@@ -2712,6 +2712,8 @@ MonoBehaviour:
       Length: 1
       AnimationId: 0
       StartSound: {fileID: 0}
+      Effect:
+        EffectPrefab: {fileID: 0}
     CancelInteractionMode: 0
     CancelInteractionDistance: 2.5
   NodeId: 0e640d8d-2eb8-4796-a2c9-e5818b4d5338
@@ -3110,6 +3112,8 @@ MonoBehaviour:
       Length: 1
       AnimationId: 0
       StartSound: {fileID: 0}
+      Effect:
+        EffectPrefab: {fileID: 0}
     CancelInteractionMode: 0
     CancelInteractionDistance: 2.5
   NodeId: 62710e80-e9e4-4f29-9892-ecae74649744
@@ -3785,36 +3789,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5877b8e15ba745e6bd9e1a453d06c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitMode: 1
-  SpawnId: zone_01_spawner_enemies
-  SpawnAmount: 38
+  InitMode: 0
+  SpawnId: zone_01sss
+  SpawnAmount: 0
   entitiesSelectionMode: 0
   ReSpawnMode: 0
   DataList:
     array:
-    - Id: ffsdfsfsdf
-      SpawnType: 2
-      ObjectId: 
-      Prefab: {fileID: 100018, guid: 7d3c05bccd7388942bcf8215cf4481c2, type: 3}
-      Position: {fileID: 1015793865}
-      Unique: 0
-      Weight: 12
-      SaveId: 
-    - Id: 184a36ca-bca9-4b32-a711-93fe55440ae1
+    - Id: 
       SpawnType: 0
       ObjectId: 184a36ca-bca9-4b32-a711-93fe55440ae1
       Prefab: {fileID: 0}
       Position: {fileID: 75971426}
       Unique: 0
-      Weight: 5
-      SaveId: 
-    - Id: 184a36ca-bca9-4b32-a711-93fe55440ae1
-      SpawnType: 3
-      ObjectId: 58a13d1a-80ff-4140-b101-60860e5a2d54
-      Prefab: {fileID: 0}
-      Position: {fileID: 1321275152}
-      Unique: 0
-      Weight: 4
+      Weight: 0
       SaveId: 
 --- !u!4 &1370599730
 Transform:
@@ -9639,6 +9627,8 @@ MonoBehaviour:
       Length: 1
       AnimationId: 0
       StartSound: {fileID: 0}
+      Effect:
+        EffectPrefab: {fileID: 0}
     CancelInteractionMode: 0
     CancelInteractionDistance: 2.5
   destination:

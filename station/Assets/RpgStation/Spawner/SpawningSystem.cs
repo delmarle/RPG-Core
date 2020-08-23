@@ -14,7 +14,7 @@ namespace Station
         private GameSettingsDb _settingsDb;
         private DbSystem _dbSystem;
         private SavingSystem _savingSystem;
-
+        private SceneSystem _sceneSystem;
         
         private SceneSpawner[] _cacheSpawnsData;
         #endregion
@@ -24,7 +24,7 @@ namespace Station
            GameGlobalEvents.OnSceneLoadObjects.AddListener(OnEnterScene);
            _dbSystem = RpgStation.GetSystemStatic<DbSystem>();
            _savingSystem = RpgStation.GetSystemStatic<SavingSystem>();
-           var spawnerSave = _savingSystem.GetModule<SpawnerSave>();
+           _sceneSystem = RpgStation.GetSystemStatic<SceneSystem>();
 
         }
 
@@ -37,12 +37,15 @@ namespace Station
         {
             _settingsDb = _dbSystem.GetDb<GameSettingsDb>();
 
-
+            var spawnerSave = _savingSystem.GetModule<SpawnerSave>();
+            spawnerSave.Load(_sceneSystem.GetCurrentDestination().SceneName);
             _cacheSpawnsData = FindObjectsOfType<SceneSpawner>();
             if (_cacheSpawnsData == null) return;
+            
             foreach (var spawner in _cacheSpawnsData)
             {
                 spawner.Init(_settingsDb.Get().Mechanics);
+                
             }
 
         }

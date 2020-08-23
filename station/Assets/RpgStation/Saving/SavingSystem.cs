@@ -175,7 +175,6 @@ namespace Station
 
         public void Save()
         {
-            Debug.Log($"SAVING: {GetType()} -- {fullPath}");
             Write();
         }
 
@@ -186,6 +185,7 @@ namespace Station
 
         public void Load(string areaName)
         {
+           
             fullPath = $"{PathUtils.SavePath()+areaName}/{GetType().Name}";
             DataDataContainer.SetPath(fullPath);           
 

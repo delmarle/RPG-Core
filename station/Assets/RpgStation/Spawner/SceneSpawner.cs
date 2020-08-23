@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Malee;
 using UnityEngine;
 using Weighted_Randomizer;
@@ -44,7 +45,7 @@ namespace Station
                     {
                     }
 
-                    spawnerSave.Save();
+                  //  spawnerSave.Save();
                 }
                 else
                 {
@@ -120,7 +121,7 @@ namespace Station
     public class SpawnData : IComparable<SpawnData>
     {
         public string Id;
-        public SpawnObjectType SpawnType;
+        public SpawnObjectType SpawnType = SpawnObjectType.PREFAB;
         public string ObjectId;
         public GameObject Prefab;
         public PositionProvider Position;
@@ -205,12 +206,35 @@ namespace Station
                         npcDb = (NpcDb)BaseDb.GetDbFromEditor(typeof(NpcDb));
                         
                     }
+
+                    if (npcDb == null || npcDb.HasKey(ObjectId) == false) return "";
                     var npcEntry = npcDb?.GetEntry(ObjectId);
                     return $"NPC - {npcEntry?.Name} - ";;
                 case SpawnObjectType.ITEM:
+                    ItemsDb itemDb = null;
+                    if (Application.isPlaying)
+                    {
+                        var db = RpgStation.GetSystemStatic<DbSystem>();
+                    }
+                    else
+                    {
+                        itemDb = (ItemsDb)BaseDb.GetDbFromEditor(typeof(ItemsDb));
+                        
+                    }
+
+                    if (itemDb == null || itemDb.HasKey(ObjectId) == false) return "";
+                    var itemEntry = itemDb?.GetEntry(ObjectId);
+                    return $"Item - {itemEntry?.Name.GetValue()} - ";;
                     break;
                 case SpawnObjectType.PREFAB:
-                    return $"prefab - {Prefab.name} - ";
+                    
+                    if (Prefab == null)
+                    {
+                        return "no prefab Set";
+                    }
+                
+
+                    return $"prefab - {Prefab?.name} - ";
                    
                 case SpawnObjectType.CONTAINER:
                
@@ -224,6 +248,7 @@ namespace Station
                         chestDb = (ChestNodesDb)BaseDb.GetDbFromEditor(typeof(ChestNodesDb));
                         
                     }
+                    if (chestDb.HasKey(ObjectId) == false) return "";
                     var chestEntry = chestDb?.GetEntry(ObjectId);
                     return $"CONTAINER - {chestEntry?.Name.GetValue()} - ";;
             }

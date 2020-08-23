@@ -38,6 +38,12 @@ namespace Station
       ForceRefresh();
     }
 
+    public bool HasKey(string key)
+    {
+      if (string.IsNullOrEmpty(key)) return false;
+      return Db.ContainsKey(key);
+    }
+
     public T GetEntry(string key)
     {
       return Db.ContainsKey(key)? Db[key] : null;

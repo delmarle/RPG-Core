@@ -8,6 +8,11 @@ namespace Station
     {
         public void AddEntry(string spawnerId, string entryId, object state)
         {
+            if (Value == null)
+            {
+                Value = new Dictionary<string, SpawnerData>();
+            }
+
             if (Value.ContainsKey(spawnerId) == false)
             {
                 Value.Add(spawnerId, new SpawnerData());

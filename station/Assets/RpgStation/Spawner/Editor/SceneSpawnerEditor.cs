@@ -51,6 +51,7 @@ namespace Station
             if (EditorStatic.Button(true, 32, "Add", "plus"))
             {
                 spawner.DataList.Add(new SpawnData());
+                GUIUtility.ExitGUI();
             }
 
             if (EditorStatic.Button(true, 32, "Reset", "cog"))
@@ -111,6 +112,7 @@ namespace Station
         {
             var entry = spawner.DataList[index];
             var highestWeight = HighestWeight(spawner);
+            if (entry == null) return;
             EditorGUILayout.Space();
 
             EditorGUILayout.BeginHorizontal();
