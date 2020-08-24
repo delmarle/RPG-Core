@@ -37,14 +37,9 @@ namespace Station
 
     private void Initialize()
     {
-      DbSystem = RpgStation.GetSystemStatic<DbSystem>();
-      if (DbSystem == null)
-      {
-        return;
-      }
-      
+
       GameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderChanged);
-      _interactionConfigsDb = DbSystem.GetDb<InteractionConfigsDb>();
+      _interactionConfigsDb = RpgStation.GetDb<InteractionConfigsDb>();
       foreach (var conf in _interactionConfigsDb.Db)
       {
         if (GetType() == conf.Value.InteractibleType.Type)

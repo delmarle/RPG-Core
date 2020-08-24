@@ -24,7 +24,7 @@ namespace Station
         {
             base.Awake();
           
-            _teamSystem = RpgStation.GetSystemStatic<TeamSystem>();
+            _teamSystem = RpgStation.GetSystem<TeamSystem>();
             _PlayerWidgets = new GenericUiList<BaseCharacter, UiCharacterPortraitWidget>(_portraitPrefab.gameObject, _playerRoot);
             Subscribe();
             SetList(_teamSystem.GetTeamMembers());

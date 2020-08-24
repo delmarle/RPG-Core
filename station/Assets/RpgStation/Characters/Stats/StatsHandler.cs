@@ -6,8 +6,6 @@ namespace Station
   public class StatsHandler : MonoBehaviour 
   {
     #region [[ FIELDS ]
-
-    private DbSystem _dbSystem;
     private AttributesDb _attributesDb;
     private StatisticDb _statisticDb;
     private VitalsDb _vitalsDb;
@@ -55,10 +53,10 @@ namespace Station
 
     public void Setup(BaseCharacter source, IdIntegerValue health, IdIntegerValue secondaryHealth, IdIntegerValue[] energies)
     {
-      _dbSystem = RpgStation.GetSystemStatic<DbSystem>();
-      _attributesDb = _dbSystem.GetDb<AttributesDb>();
-      _statisticDb = _dbSystem.GetDb<StatisticDb>();
-      _vitalsDb = _dbSystem.GetDb<VitalsDb>();
+ 
+      _attributesDb = RpgStation.GetDb<AttributesDb>();
+      _statisticDb = RpgStation.GetDb<StatisticDb>();
+      _vitalsDb = RpgStation.GetDb<VitalsDb>();
       _character = source;
       BuildAttributes(source);
       BuildStatistics(source);

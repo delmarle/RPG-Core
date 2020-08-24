@@ -65,17 +65,15 @@ namespace Station
 
         private void OnEnterGame()
         {
-            var saveSystem = _station.GetSystem<SavingSystem>();
-            _sceneSystem =  _station.GetSystem<SceneSystem>();
+            var saveSystem = RpgStation.GetSystem<SavingSystem>();
+            _sceneSystem =  RpgStation.GetSystem<SceneSystem>();
             _areaContainersSave = saveSystem.GetModule<AreaContainersSave>();
             _areaContainersSave.Initialize();
         }
         
         private void OnSceneInitialize()
         {
-            var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
-            var itemDb = dbSystem.GetDb<ItemsDb>();
-            
+            var itemDb = RpgStation.GetDb<ItemsDb>();
             _areaContainersSave.Load(_sceneSystem.GetCurrentDestination().SceneName);
             _savedContainer = new Dictionary<string, BaseItemContainer>();
             if (_areaContainersSave.Value == null)

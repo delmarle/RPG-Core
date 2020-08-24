@@ -140,8 +140,8 @@ namespace Station
 
         private void Awake()
         {
-            _dbSystem = RpgStation.GetSystemStatic<DbSystem>();
-            _gameSettingsDb = _dbSystem.GetDb<GameSettingsDb>();
+            _dbSystem = RpgStation.GetSystem<DbSystem>();
+            _gameSettingsDb = RpgStation.GetDb<GameSettingsDb>();
             _control = GetComponent<CharacterControl>();
             _mechanics = _gameSettingsDb.Get().Mechanics;
             FloatingPopupAnchor = GetComponentInChildren<FloatingPopupAnchor>();

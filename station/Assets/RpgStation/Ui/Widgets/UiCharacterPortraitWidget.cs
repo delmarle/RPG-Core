@@ -62,8 +62,7 @@ namespace Station
       }
       else
       {
-        var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
-        _vitalsDb = dbSystem.GetDb<VitalsDb>();
+        _vitalsDb = RpgStation.GetDb<VitalsDb>();
         _character = character;
         if (_statusWidget != null)
         {

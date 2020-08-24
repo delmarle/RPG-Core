@@ -31,10 +31,9 @@ namespace Station
     protected override void Awake()
     {
       base.Awake();
-      var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
-      _attributesDb = dbSystem.GetDb<AttributesDb>();
-      _statisticsDb = dbSystem.GetDb<StatisticDb>();
-      _vitalsDb = dbSystem.GetDb<VitalsDb>();
+      _attributesDb = RpgStation.GetDb<AttributesDb>();
+      _statisticsDb = RpgStation.GetDb<StatisticDb>();
+      _vitalsDb = RpgStation.GetDb<VitalsDb>();
       GameGlobalEvents.OnLeaderChanged.AddListener(FollowCharacter);
       if (_attributes == null)
       {

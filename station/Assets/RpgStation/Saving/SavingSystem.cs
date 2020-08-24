@@ -123,7 +123,6 @@ namespace Station
         public void Save()
         {
             FetchData();
-            Debug.Log($"SAVING: {GetType()} -- {_fullPath}");
             Write();
         }
 

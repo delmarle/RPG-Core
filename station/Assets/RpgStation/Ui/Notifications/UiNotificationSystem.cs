@@ -31,8 +31,7 @@ namespace Station
 
         private void OnDataBaseReady()
         {
-            var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
-            _channelsDb = dbSystem.GetDb<UiNotificationChannelsDb>();
+            _channelsDb = RpgStation.GetDb<UiNotificationChannelsDb>();
             foreach (var dbEntry in _channelsDb.Db)
             {
                 string channel = dbEntry.Value.Name;

@@ -34,7 +34,7 @@ namespace Station
 
             if (_system == null)
             {
-                _system = RpgStation.GetSystemStatic<FloatingPopupSystem>();
+                _system = RpgStation.GetSystem<FloatingPopupSystem>();
             }
             _system.DeSpawnFloatingPopup(this, _animationData.Length);
         }

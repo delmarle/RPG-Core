@@ -16,10 +16,9 @@ namespace Station
 
         public override void Build(BaseCharacter character, BaseCharacterData baseData, object[] data)
         {
-           var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
-            var classDb = dbSystem.GetDb<PlayerClassDb>();
-            var ActiveAbilityDb = dbSystem.GetDb<ActiveAbilitiesDb>();
-            var PassiveAbilityDb = dbSystem.GetDb<PassiveAbilitiesDb>();
+            var classDb = RpgStation.GetDb<PlayerClassDb>();
+            var ActiveAbilityDb = RpgStation.GetDb<ActiveAbilitiesDb>();
+            var PassiveAbilityDb = RpgStation.GetDb<PassiveAbilitiesDb>();
             PlayerClassModel classData = (PlayerClassModel)data[0];
             PlayersData save = (PlayersData)data[1];
             var model = classDb.GetEntry(save.ClassId);

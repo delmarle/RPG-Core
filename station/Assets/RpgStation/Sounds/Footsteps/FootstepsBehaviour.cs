@@ -48,7 +48,6 @@ namespace Station
 		// loop through the surfaces
 		string surfaceKey = _sceneReference.ResolveTextureAsSurface(TextureUnderFeat);
 		var surface = _soundTemplates.ResolveSurface(surfaceKey);
-		Debug.Log(surfaceKey);
 		PlaySound(surface);
 	}
 

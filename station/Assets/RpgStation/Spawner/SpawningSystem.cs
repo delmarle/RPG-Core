@@ -12,7 +12,7 @@ namespace Station
     {
         #region FIELDS
         private GameSettingsDb _settingsDb;
-        private DbSystem _dbSystem;
+ 
         private SavingSystem _savingSystem;
         private SceneSystem _sceneSystem;
         
@@ -22,9 +22,8 @@ namespace Station
         protected override void OnInit()
         {
            GameGlobalEvents.OnSceneLoadObjects.AddListener(OnEnterScene);
-           _dbSystem = RpgStation.GetSystemStatic<DbSystem>();
-           _savingSystem = RpgStation.GetSystemStatic<SavingSystem>();
-           _sceneSystem = RpgStation.GetSystemStatic<SceneSystem>();
+           _savingSystem = RpgStation.GetSystem<SavingSystem>();
+           _sceneSystem = RpgStation.GetSystem<SceneSystem>();
 
         }
 
@@ -35,7 +34,7 @@ namespace Station
 
         public void OnEnterScene()
         {
-            _settingsDb = _dbSystem.GetDb<GameSettingsDb>();
+            _settingsDb = RpgStation.GetDb<GameSettingsDb>();
 
             var spawnerSave = _savingSystem.GetModule<SpawnerSave>();
             spawnerSave.Load(_sceneSystem.GetCurrentDestination().SceneName);

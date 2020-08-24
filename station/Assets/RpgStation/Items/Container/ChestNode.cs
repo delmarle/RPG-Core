@@ -28,8 +28,7 @@ namespace Station
 
         public void OnLoadContainer()
         {
-            var dbSystems = RpgStation.GetSystemStatic<DbSystem>();
-            _chestNodeDb = dbSystems.GetDb<ChestNodesDb>();
+            _chestNodeDb = RpgStation.GetDb<ChestNodesDb>();
             if (string.IsNullOrEmpty(ChestNodeModelId))
             {
                 return;
@@ -43,11 +42,11 @@ namespace Station
         private void Initialize(string saveId)
         {
             SaveId = saveId;
-            _containerSystem = RpgStation.GetSystemStatic<AreaContainerSystem>();
-            var dbSystems = RpgStation.GetSystemStatic<DbSystem>();
-            _itemDb = dbSystems.GetDb<ItemsDb>();
-            _chestNodeDb = dbSystems.GetDb<ChestNodesDb>();
-            _itemsSettingsDb = dbSystems.GetDb<ItemsSettingsDb>();
+            _containerSystem = RpgStation.GetSystem<AreaContainerSystem>();
+;
+            _itemDb = RpgStation.GetDb<ItemsDb>();
+            _chestNodeDb = RpgStation.GetDb<ChestNodesDb>();
+            _itemsSettingsDb = RpgStation.GetDb<ItemsSettingsDb>();
 
             SetUiName(GetObjectName());
         }
@@ -77,7 +76,7 @@ namespace Station
             }
         
             CachePopup(_cachedContainerPopup);
-            _cachedContainerPopup.Setup(new ContainerReference(SaveId, RpgStation.GetSystemStatic<AreaContainerSystem>()), user);
+            _cachedContainerPopup.Setup(new ContainerReference(SaveId, RpgStation.GetSystem<AreaContainerSystem>()), user);
             _cachedContainerPopup.Show();
             
         }

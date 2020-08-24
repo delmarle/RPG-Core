@@ -10,7 +10,6 @@ namespace Station
     {
         private SceneType _currentSceneType;
         private SavingSystem _savingSystem;
-        private DbSystem _dbSystem;
         private ScenesDb _scenesDb;
         private GameSettingsDb _settingsDb;
         private PlayersSave _playersSave;
@@ -22,9 +21,7 @@ namespace Station
         protected override void OnInit()
         {
             GameGlobalEvents.OnDataBaseLoaded.AddListener(OnDatabaseReady);
-            _savingSystem = _station.GetSystem<SavingSystem>();
-            _dbSystem = _station.GetSystem<DbSystem>();
-          
+            _savingSystem = RpgStation.GetSystem<SavingSystem>();
             _playersSave = _savingSystem.GetModule<PlayersSave>();
         }
         
@@ -35,8 +32,8 @@ namespace Station
         
         private void OnDatabaseReady()
         {
-            _scenesDb = _dbSystem.GetDb<ScenesDb>();
-            _settingsDb = _dbSystem.GetDb<GameSettingsDb>();
+            _scenesDb = RpgStation.GetDb<ScenesDb>();
+            _settingsDb = RpgStation.GetDb<GameSettingsDb>();
             //get character creation
 
             BaseCharacterCreation creation = _settingsDb.Get().CharacterCreation;

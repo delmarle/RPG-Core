@@ -19,8 +19,8 @@ namespace Station
         public override void Init(RpgStation station)
         {
             _station = station;
-            _savingSystem = _station.GetSystem<SavingSystem>();
-            _sceneSystem = _station.GetSystem<SceneSystem>();
+            _savingSystem = RpgStation.GetSystem<SavingSystem>();
+            _sceneSystem = RpgStation.GetSystem<SceneSystem>();
         }
 
         public override bool HasData()
@@ -33,9 +33,8 @@ namespace Station
         public override void StartSequence()
         {
             var module = _savingSystem.GetModule<PlayersSave>();
-            var dbSystem = _station.GetSystem<DbSystem>();
-            var factionSettingsDb = dbSystem.GetDb<FactionSettingsDb>();
-            var playerClassDb = dbSystem.GetDb<PlayerClassDb>();
+            var factionSettingsDb = RpgStation.GetDb<FactionSettingsDb>();
+            var playerClassDb = RpgStation.GetDb<PlayerClassDb>();
             var defaultFaction = factionSettingsDb.Get().DefaultPlayerFaction;
             var class1 = playerClassDb.GetEntry(CLASS_ID_1);
             var class2 = playerClassDb.GetEntry(CLASS_ID_2);
@@ -72,8 +71,8 @@ namespace Station
 
         private void CreatePlayerInventory()
         {
-            var dbSystem = _station.GetSystem<DbSystem>();
-            var settingsDb = dbSystem.GetDb<ItemsSettingsDb>();
+
+            var settingsDb = RpgStation.GetDb<ItemsSettingsDb>();
             var containerSettings = settingsDb.Get().ContainerSettings;
             var module = _savingSystem.GetModule<PlayerInventorySave>();
             var inventoryList = new ContainersListSave();

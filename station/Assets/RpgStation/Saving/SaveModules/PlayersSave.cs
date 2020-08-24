@@ -16,8 +16,8 @@ public class PlayersSave : SaveModule<Dictionary<string, PlayersData>>
 
     protected override void FetchData()
     {
-        var sceneSystem = RpgStation.GetSystemStatic<SceneSystem>();
-        var teamSystem = RpgStation.GetSystemStatic<TeamSystem>();
+        var sceneSystem = RpgStation.GetSystem<SceneSystem>();
+        var teamSystem = RpgStation.GetSystem<TeamSystem>();
         
         var teamMembers = teamSystem.GetTeamMembers();
   

@@ -9,8 +9,7 @@ namespace Station
         {
             if (_db == null)
             {
-                var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
-                _db = dbSystem.GetDb<FactionDb>();
+                _db = RpgStation.GetDb<FactionDb>();
             }
             
             var sourceFaction = _db.GetEntry(sourceID);

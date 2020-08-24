@@ -63,7 +63,7 @@ namespace Station
 			if (_isLoading) return;
 			_currentScene = sceneName;
 			_isLoading = true;
-			var sceneSystem  = RpgStation.GetSystemStatic<SceneSystem>();
+			var sceneSystem  = RpgStation.GetSystem<SceneSystem>();
 			if (sceneSystem.GetCurrentSceneType() == SceneType.Area)
 			{
 				GameGlobalEvents.OnTriggerSceneSave?.Invoke();

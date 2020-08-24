@@ -12,7 +12,7 @@ namespace Station
         
         private void Awake()
         {
-            inventorySystem = RpgStation.GetSystemStatic<PlayerInventorySystem>();
+            inventorySystem = RpgStation.GetSystem<PlayerInventorySystem>();
         }
 
         public override void SwitchCharacter(BaseCharacter character)

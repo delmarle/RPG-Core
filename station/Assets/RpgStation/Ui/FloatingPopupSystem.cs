@@ -46,9 +46,9 @@ namespace Station
 		private void OnDbReady()
 		{
 			_instance = this;
-			var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
-			_sceneSystem = RpgStation.GetSystemStatic<SceneSystem>();
-			_db = dbSystem.GetDb<FloatingPopupDb>();
+
+			_sceneSystem = RpgStation.GetSystem<SceneSystem>();
+			_db = RpgStation.GetDb<FloatingPopupDb>();
 			_runtimeCache = new Dictionary<string, FloatingPopupModel>();
 			foreach (var entry in _db.Db.Values)
 			{

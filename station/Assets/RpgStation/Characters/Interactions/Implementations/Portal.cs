@@ -16,14 +16,14 @@ namespace Station
     protected override void Setup()
     {
       
-      _sceneSystem = RpgStation.GetSystemStatic<SceneSystem>();
-      var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
+      _sceneSystem = RpgStation.GetSystem<SceneSystem>();
+      var dbSystem = RpgStation.GetSystem<DbSystem>();
       if (dbSystem == null)
       {
         return;
       }
 
-      _sceneDb = dbSystem.GetDb<ScenesDb>();
+      _sceneDb = RpgStation.GetDb<ScenesDb>();
       var sceneData = _sceneDb.GetEntry(destination.SceneId);
       var spawnsData = sceneData.SpawnPoints[destination.SpawnId];
  

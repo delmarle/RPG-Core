@@ -33,7 +33,7 @@ namespace Station
       _animator = GetComponentInChildren<Animator>();
     }
     _characterControl = GetComponent<CharacterControl>();
-    _soundSystem = RpgStation.GetSystemStatic<SoundSystem>();
+    _soundSystem = RpgStation.GetSystem<SoundSystem>();
 
   }
 

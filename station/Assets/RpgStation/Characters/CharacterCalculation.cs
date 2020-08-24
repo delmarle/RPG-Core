@@ -14,7 +14,7 @@ public class CharacterCalculation : ScriptableObject
   
   protected BaseCharacter _character;
   
-  private DbSystem _dbSystem;
+
   protected VitalsDb _vitalDb;
   protected AttributesDb _attributesDb;
   protected StatisticDb _statisticDb;
@@ -23,11 +23,10 @@ public class CharacterCalculation : ScriptableObject
   public  void Setup(BaseCharacter source)
   {
     _character = source;
-    _dbSystem = RpgStation.GetSystemStatic<DbSystem>();
-    _vitalDb = _dbSystem.GetDb<VitalsDb>();
-    _attributesDb = _dbSystem.GetDb<AttributesDb>();
-    _statisticDb = _dbSystem.GetDb<StatisticDb>();
-    _raceDb = _dbSystem.GetDb<RaceDb>();
+    _vitalDb = RpgStation.GetDb<VitalsDb>();
+    _attributesDb = RpgStation.GetDb<AttributesDb>();
+    _statisticDb = RpgStation.GetDb<StatisticDb>();
+    _raceDb = RpgStation.GetDb<RaceDb>();
     
      OnSetup();
   }
@@ -53,10 +52,9 @@ public class CharacterCalculation : ScriptableObject
 
   protected void BuildVital(string vitalId, int raceBonus, int classBonus)
   {
-    _dbSystem = RpgStation.GetSystemStatic<DbSystem>();
-    _vitalDb =  _dbSystem.GetDb<VitalsDb>();
-    _attributesDb = _dbSystem.GetDb<AttributesDb>();
-    _statisticDb = _dbSystem.GetDb<StatisticDb>();
+    _vitalDb =  RpgStation.GetDb<VitalsDb>();
+    _attributesDb = RpgStation.GetDb<AttributesDb>();
+    _statisticDb = RpgStation.GetDb<StatisticDb>();
     
     _cachedBaseVitals.Add(vitalId, raceBonus+classBonus);
     CacheVitalRegen(vitalId);

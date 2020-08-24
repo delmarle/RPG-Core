@@ -24,10 +24,10 @@ namespace Station
 
         public void Initialize()
         {
-            _teamSystem = RpgStation.GetSystemStatic<TeamSystem>();
-            var dbSystems = RpgStation.GetSystemStatic<DbSystem>();
-            _inventorySystem = RpgStation.GetSystemStatic<PlayerInventorySystem>();
-            _itemsSettingsDb = dbSystems.GetDb<ItemsSettingsDb>();
+            _teamSystem = RpgStation.GetSystem<TeamSystem>();
+
+            _inventorySystem = RpgStation.GetSystem<PlayerInventorySystem>();
+            _itemsSettingsDb = RpgStation.GetDb<ItemsSettingsDb>();
             var containerSettings = _itemsSettingsDb.Get().ContainerSettings;
             
             if (containerSettings.PlayerInventoryType == PlayerInventoryType.Shared)

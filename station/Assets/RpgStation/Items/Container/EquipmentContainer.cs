@@ -17,10 +17,8 @@ namespace Station
             _id = id;
             itemDb = itemsDb;
             _container = state ?? new ContainerState {Slots = new Dictionary<int, ItemStack>()};
-            
-            var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
-            _equipmentSlotsDb = dbSystem.GetDb<EquipmentSlotsDb>();
-            _equipmentTypesDb = dbSystem.GetDb<EquipmentTypesDb>();
+            _equipmentSlotsDb = RpgStation.GetDb<EquipmentSlotsDb>();
+            _equipmentTypesDb = RpgStation.GetDb<EquipmentTypesDb>();
 
    
             for (int i = 0; i < _equipmentSlotsDb.Db.Count; i++)

@@ -40,8 +40,7 @@ namespace Station
         {
             UnregisterEvents();
             _containerReference = reference;
-            var dbSystem = RpgStation.GetSystemStatic<DbSystem>();
-            _itemDb = dbSystem.GetDb<ItemsDb>();
+            _itemDb = RpgStation.GetDb<ItemsDb>();
             if (Initialized == false)
             {
                 CacheComponents();

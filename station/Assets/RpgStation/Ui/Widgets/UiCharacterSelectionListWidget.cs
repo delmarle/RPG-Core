@@ -19,7 +19,7 @@ namespace Station
 
         public void Awake()
         {
-            _teamsystem = RpgStation.GetSystemStatic<TeamSystem>();
+            _teamsystem = RpgStation.GetSystem<TeamSystem>();
             foreach (var member in _teamsystem.GetTeamMembers())
             {
                 OnMemberAdded(member);

@@ -14,7 +14,7 @@ namespace Station
     
     protected override void Setup()
     {
-      var _nodeDb = DbSystem.GetDb<ResourcesNodeDb>();
+      var _nodeDb = RpgStation.GetDb<ResourcesNodeDb>();
       var model = _nodeDb.GetEntry(NodeId);
       SetUiName(model.Name.GetValue());
       SetUiIcon( model.Icon);

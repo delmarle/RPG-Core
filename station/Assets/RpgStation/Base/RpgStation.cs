@@ -14,7 +14,7 @@ namespace Station
     
         private readonly Dictionary<Type, Component> _systemsMap = new Dictionary<Type, Component>();
         private static RpgStation _instance;
-        
+        private static DbSystem _dbs;
         #endregion
         #region Mono
         private void Awake()
@@ -59,17 +59,19 @@ namespace Station
             {
                 system.Init(this);
             }
-            Aqm = GetSystem<ThreadQueueSystem>();
+
+            _dbs = FindSystem<DbSystem>();
+            Aqm = FindSystem<ThreadQueueSystem>();
         }
 
-        public T GetSystem<T>() where T : BaseSystem
+        private T FindSystem<T>() where T : BaseSystem
         {
             _systemsMap.TryGetValue(typeof(T), out var found);
             return (T)found;
         }
     
  
-        public static T GetSystemStatic<T>() where T : BaseSystem
+        public static T GetSystem<T>() where T : BaseSystem
         {
             if (_instance == null)
             {
@@ -78,6 +80,11 @@ namespace Station
 
             _instance._systemsMap.TryGetValue(typeof(T), out var found);
             return (T)found;
+        }
+
+        public static T GetDb<T>()
+        {
+            return _dbs.GetDb<T>();
         }
 
     }
