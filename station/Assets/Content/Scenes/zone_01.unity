@@ -570,7 +570,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 214823411}
   m_LocalRotation: {x: 0, y: 0.40290642, z: 0, w: 0.9152412}
-  m_LocalPosition: {x: -23.81, y: 22.31, z: -47.7}
+  m_LocalPosition: {x: -62.77, y: 22.31, z: -16.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 75971427}
@@ -913,7 +913,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400417706}
   m_LocalRotation: {x: 0, y: -0.5099425, z: 0, w: 0.8602085}
-  m_LocalPosition: {x: -27.71, y: 22.31, z: -47.7}
+  m_LocalPosition: {x: -62.88, y: 22.31, z: -15.300001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 75971427}
@@ -2418,7 +2418,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777872839}
   m_LocalRotation: {x: -0, y: -0.39722797, z: 0, w: -0.91771996}
-  m_LocalPosition: {x: -36.53, y: 22.31, z: -51.58}
+  m_LocalPosition: {x: -63.360004, y: 22.31, z: -16.360003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 75971427}
@@ -3801,6 +3801,14 @@ MonoBehaviour:
       ObjectId: 184a36ca-bca9-4b32-a711-93fe55440ae1
       Prefab: {fileID: 0}
       Position: {fileID: 75971426}
+      Unique: 0
+      Weight: 0
+      SaveId: 
+    - Id: 
+      SpawnType: 3
+      ObjectId: 58a13d1a-80ff-4140-b101-60860e5a2d54
+      Prefab: {fileID: 0}
+      Position: {fileID: 1321275152}
       Unique: 0
       Weight: 0
       SaveId: 
@@ -9537,7 +9545,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663235579}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.71, y: 22.31, z: -55.97}
+  m_LocalPosition: {x: -62.88, y: 22.31, z: -17.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 75971427}
@@ -9854,7 +9862,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1795695473}
   m_LocalRotation: {x: 0, y: 0.85851264, z: 0, w: 0.51279235}
-  m_LocalPosition: {x: -21.01, y: 22.31, z: -52.72}
+  m_LocalPosition: {x: -62.63, y: 22.31, z: -16.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 75971427}
