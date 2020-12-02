@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -96,7 +96,9 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
-  m_LightingDataAsset: {fileID: 0}
+    m_LightProbeSampleCountMultiplier: 4
+  m_LightingDataAsset: {fileID: 112000000, guid: 0f9a4d2e899d743938de07f9211e86db,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -534,9 +536,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300004, guid: 8d49a09a94304524facbe132142c49e9, type: 3}
 --- !u!65 &451363487
 BoxCollider:
@@ -840,7 +842,7 @@ Terrain:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599521259}
   m_Enabled: 1
-  serializedVersion: 5
+  serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: bc3e9f340316745dc839bfa6c08fba5d, type: 2}
   m_TreeDistance: 5000
   m_TreeBillboardDistance: 50
@@ -863,6 +865,7 @@ Terrain:
   m_ScaleInLightmap: 0.0256
   m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
   m_GroupingID: 0
+  m_RenderingLayerMask: 1
   m_AllowAutoConnect: 1
 --- !u!4 &599521262
 Transform:
@@ -1077,8 +1080,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 1
+  m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
@@ -1357,9 +1361,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300004, guid: f0ca9a38d78e153409545a9004e226d7, type: 3}
 --- !u!4 &882892118 stripped
 Transform:
@@ -1440,9 +1444,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 05c0c5b9da5734e4790dfa54dcf0748b, type: 3}
 --- !u!4 &962156120 stripped
 Transform:
@@ -2036,6 +2040,8 @@ MonoBehaviour:
       Length: 1
       AnimationId: 0
       StartSound: {fileID: 0}
+      Effect:
+        EffectPrefab: {fileID: 0}
     CancelInteractionMode: 0
     CancelInteractionDistance: 2.5
   destination:
@@ -2127,9 +2133,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300004, guid: f0ca9a38d78e153409545a9004e226d7, type: 3}
 --- !u!4 &1141714671 stripped
 Transform:
@@ -2279,9 +2285,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: b33dd59805f09cb4f94bc163dcdb2dc9, type: 3}
 --- !u!1001 &1283168103
 PrefabInstance:
@@ -2419,9 +2425,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300004, guid: f0ca9a38d78e153409545a9004e226d7, type: 3}
 --- !u!4 &1749405146 stripped
 Transform:
@@ -2773,6 +2779,8 @@ MonoBehaviour:
       Length: 1
       AnimationId: 0
       StartSound: {fileID: 0}
+      Effect:
+        EffectPrefab: {fileID: 0}
     CancelInteractionMode: 0
     CancelInteractionDistance: 2.5
 --- !u!65 &1902056574
@@ -2852,6 +2860,8 @@ MonoBehaviour:
       Length: 1
       AnimationId: 0
       StartSound: {fileID: 0}
+      Effect:
+        EffectPrefab: {fileID: 0}
     CancelInteractionMode: 0
     CancelInteractionDistance: 2.5
   StateSaved: 0
@@ -2884,6 +2894,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
