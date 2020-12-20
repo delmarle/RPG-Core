@@ -8,6 +8,7 @@ namespace Station
         public const string CHARACTER_ID = "character_id";
         public const string NPC_KEY = "npc_id";
         public const string CLASS_ID = "class_id";
+        public const string CLASS_KEY = "class";
         public const string ICON_ID = "icon";
     }
 }
