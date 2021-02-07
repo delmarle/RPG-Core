@@ -643,6 +643,10 @@ namespace Station
         }
         public override float GetStateDuration(string stateName)
         {
+            if (_cacheData == null)
+            {
+                Initialize();
+            }
             if (!_cacheData.ContainsKey(stateName))
             {
                 return 0;

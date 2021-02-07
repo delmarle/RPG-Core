@@ -49,6 +49,10 @@
         public static StationEvent<BaseCharacter> OnCharacterRemoved = new StationEvent<BaseCharacter>();
         public static StationEvent<BaseCharacter> OnLeaderChanged = new StationEvent<BaseCharacter>();
         #endregion
+        
+        #region UI
+        public static readonly StationEvent<UiEventData> OnUiEvent = new StationEvent<UiEventData>();
+        #endregion
     }
 }
 

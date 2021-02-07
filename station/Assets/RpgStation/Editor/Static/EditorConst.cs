@@ -80,6 +80,7 @@
     public const string ITEMS_TAB_SETTINGS_EQUIPMENT_TYPES = "<size=11><b> Equipment Types</b></size>";
     public const string ITEMS_TAB_SETTINGS_CONTAINERS = "<size=11><b> Containers</b></size>";
     public const string ITEMS_TAB_SETTINGS_CRAFTING = "<size=11><b> Crafting</b></size>";
+    
     #endregion
 
   }

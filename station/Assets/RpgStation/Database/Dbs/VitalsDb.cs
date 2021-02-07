@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Station
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = StationConst.BUILD_ASSET_CREATE_PATH+"Db/Vitals")]
     public class VitalsDb : DictGenericDatabase<VitalModel>
     {
         [Serializable] public class LocalDictionary : SerializableDictionary<string, VitalModel> {}

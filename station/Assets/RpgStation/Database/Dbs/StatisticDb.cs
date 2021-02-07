@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Station
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = StationConst.BUILD_ASSET_CREATE_PATH+"Db/Statistics")]
     public class StatisticDb  : DictGenericDatabase<StatisticModel>
     {
         [Serializable] public class StatisticDictionary : SerializableDictionary<string, StatisticModel> {}

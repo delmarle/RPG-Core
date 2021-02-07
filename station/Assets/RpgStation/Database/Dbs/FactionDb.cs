@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Station
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = StationConst.BUILD_ASSET_CREATE_PATH+"Db/Factions")]
     public class FactionDb : DictGenericDatabase<FactionModel>
     {
         [Serializable] public class ElementDictionary : SerializableDictionary<string, FactionModel> {}

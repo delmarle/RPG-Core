@@ -103,7 +103,13 @@ namespace Station
             }
          
             var linkBar = new List<BarStateSave> {mainBarState};
-
+            var defaultSkills = new List<RankProgression>();
+            foreach (var skillToAdd in classModel.OwnedSkills)
+            {
+                var skillProgress = new RankProgression();
+                skillProgress.Id = skillToAdd.Id;
+                defaultSkills.Add(skillProgress);
+            }
             var player = new PlayersData
             {
                 Name = playerName,
@@ -116,7 +122,7 @@ namespace Station
                 FactionId = factionId,
                 LearnedActiveAbilitiesList = classModel.OwnedAbilities,
                 LearnedPassiveAbilitiesList = classModel.OwnedPassiveAbilities,
-                LearnedSkillList = classModel.OwnedSkills,
+                LearnedSkillList = defaultSkills,
                 BarStates = linkBar,
                 VitalStatus = new List<IdIntegerValue>()
             };

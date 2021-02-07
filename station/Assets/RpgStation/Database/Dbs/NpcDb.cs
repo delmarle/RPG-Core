@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Station
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = StationConst.BUILD_ASSET_CREATE_PATH+"Db/Npc")]
     public class NpcDb : DictGenericDatabase<NpcModel>
     {
         [Serializable] public class ElementDictionary : SerializableDictionary<string, NpcModel> {}

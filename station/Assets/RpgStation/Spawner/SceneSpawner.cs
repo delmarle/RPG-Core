@@ -247,7 +247,7 @@ namespace Station
                         chestDb = (ChestNodesDb)BaseDb.GetDbFromEditor(typeof(ChestNodesDb));
                         
                     }
-                    if (chestDb.HasKey(ObjectId) == false) return "";
+                    if (chestDb?.HasKey(ObjectId) == false) return "";
                     var chestEntry = chestDb?.GetEntry(ObjectId);
                     return $"CONTAINER - {chestEntry?.Name.GetValue()} - ";;
             }

@@ -11,8 +11,9 @@ namespace Station
 
         [SerializeField] private UiCharacterPortraitWidget _memberPrefab = null;
         [SerializeField] private Transform _root = null;
-        [SerializeField] private CharacterTabSwitcher _tabSwitcher = null;
+  
         
+        private ICharacterSwitchable[] _componentsToSwitch;
         private Dictionary<BaseCharacter, UiCharacterPortraitWidget> _map = new Dictionary<BaseCharacter, UiCharacterPortraitWidget>();
         private TeamSystem _teamsystem;
         #endregion
@@ -31,6 +32,10 @@ namespace Station
             GameGlobalEvents.OnCharacterRemoved.AddListener(OnMemberRemoved);
         }
 
+        public void ApplyTarget(ICharacterSwitchable[] targets)
+        {
+            _componentsToSwitch = targets;
+        }
         private void OnDestroy()
         {
             GameGlobalEvents.OnCharacterAdded.RemoveListener(OnMemberAdded);
@@ -67,17 +72,20 @@ namespace Station
                 }
             }
 
-            if (_tabSwitcher != null)
+            if (_componentsToSwitch != null)
             {
-                _tabSwitcher.SwitchCharacter(focusCharacter);
+                foreach (var component in _componentsToSwitch)
+                {
+                    component.SwitchCharacter(focusCharacter);
+                }
             }
         }
         #endregion
 }
 
-   public abstract class CharacterTabSwitcher: MonoBehaviour
+   public interface ICharacterSwitchable
    { 
-       public abstract void SwitchCharacter(BaseCharacter character);
+       void SwitchCharacter(BaseCharacter character);
    }
 }
 

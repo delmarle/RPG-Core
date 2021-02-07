@@ -11,7 +11,10 @@ namespace Station
     #region FIELDS
 
     [SerializeField] private TextMeshProUGUI characterName = null;
+    [SerializeField] private TextMeshProUGUI characterRace = null;
     [SerializeField] private TextMeshProUGUI characterClass = null;
+    [SerializeField] private TextMeshProUGUI characterFaction = null;
+    [SerializeField] private TextMeshProUGUI characterGender = null;
     [SerializeField] private UiVitalBarWidget[] _vitals = null;
     [SerializeField] private UiCharacterStatusWidget _statusWidget = null;
     [SerializeField] private BaseAnimation _animation = null;
@@ -26,9 +29,7 @@ namespace Station
     private const string STATE_DEAD = "dead";
 
     #endregion
-
-
-
+    
     #region subscription
 
     public void Setup(BaseCharacter character, StationAction<BaseCharacter> buttonCallback)
@@ -69,12 +70,24 @@ namespace Station
           _statusWidget.Setup(_character);
         }
 
-        characterName.text = (string) _character.GetMeta("name");
-        characterClass.text = (string) _character.GetMeta("class");
-        if (_icon)
+        
+        SetMetaText(characterName, StationConst.CHARACTER_NAME);
+        SetMetaText(characterRace, StationConst.RACE_ID);
+        if (characterRace)
         {
-          _icon.sprite = (Sprite) _character.GetMeta("icon");
+          characterRace.text = _character.GetLocalizedRace();
         }
+        if (characterClass)
+        {
+          characterClass.text=_character.GetLocalizedClass();
+        }
+        if (characterFaction)
+        {
+          characterFaction.text=_character.GetLocalizedFaction();
+        }
+        
+        SetMetaText(characterGender, StationConst.GENDER_ID);
+        SetMetaIcon(_icon, StationConst.ICON_DATA);
 
 
         Subscribe();
@@ -96,22 +109,27 @@ namespace Station
             }
           }
         }
-
-     
-
-        if (_icon != null)
-        {
-          _icon.sprite = (Sprite)character.GetMeta(StationConst.ICON_ID);
-        }
-
-      
         OnVitalsUpdated(character);
         SetStates();
       }
-
-
     }
 
+    private void SetMetaText(TextMeshProUGUI field, string metaKey)
+    {
+      if (field)
+      {
+        field.text = (string) _character.GetMeta(metaKey);
+      }
+    }
+    
+    private void SetMetaIcon(Image field, string metaKey)
+    {
+      if (field)
+      {
+        field.sprite = (Sprite) _character.GetMeta(metaKey);
+      }
+    }
+    
     private void OnDestroy()
     {
       Unsubscribe();
@@ -119,7 +137,6 @@ namespace Station
 
     private void Subscribe()
     {
-      _character.OnCharacterInitialized += OnCharacterInitialized;
       _character.OnVitalsUpdated += OnVitalsUpdated;
       _character.OnDamaged += OnReceiveDamage;
       _character.OnHealed += OnHealed;
@@ -135,7 +152,6 @@ namespace Station
       if (_character == null) return;
 
       _buttonCallback = null;
-      _character.OnCharacterInitialized -= OnCharacterInitialized;
       _character.OnVitalsUpdated -= OnVitalsUpdated;
       _character.OnDamaged -= OnReceiveDamage;
       _character.OnHealed -= OnHealed;
@@ -195,12 +211,6 @@ namespace Station
     {
     }
 
-    private void OnCharacterInitialized(BaseCharacter character)
-    {
-      //  var playerClass = Resource.PlayerClassesDatabase.GetEntry(character.CharacterData.GetClass());
-      //  _icon.sprite = playerClass.Icon;
-    }
-
     public void OnClick()
     {
       if (_character)
@@ -211,12 +221,18 @@ namespace Station
 
     public void SetSelected()
     {
-      _button.interactable = false;
+      if (_button)
+      {
+        _button.interactable = false;
+      }
     }
 
     public void SetNotSelected()
     {
-      _button.interactable = true;
+      if (_button)
+      {
+        _button.interactable = true;
+      }
     }
 
 

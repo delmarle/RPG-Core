@@ -21,11 +21,11 @@ namespace Station
             var PassiveAbilityDb = RpgStation.GetDb<PassiveAbilitiesDb>();
             PlayerClassModel classData = (PlayerClassModel)data[0];
             PlayersData save = (PlayersData)data[1];
-            var model = classDb.GetEntry(save.ClassId);
+            var classModel = classDb.GetEntry(save.ClassId);
          
-            if (model.StatsCalculator)
+            if (classModel.StatsCalculator)
             {
-                var calculatorInstance = Instantiate(model.StatsCalculator, character.transform) as PlayerCalculations;
+                var calculatorInstance = Instantiate(classModel.StatsCalculator, character.transform) as PlayerCalculations;
                 if (calculatorInstance == null)
                 {
                     Debug.LogError("missing calculator");
@@ -35,14 +35,14 @@ namespace Station
                 calculatorInstance.PreSetup(classData);
                 
                 character.Init(baseData.CharacterId,save.RaceId, save.FactionId, save.GenderId, calculatorInstance, save.Name, null, null);
-                character.SetupAction(model.Attack);     
+                character.SetupAction(classModel.Attack);     
                 character.AddMeta(StationConst.CLASS_ID, save.ClassId);
-                character.AddMeta(StationConst.CLASS_KEY, model.Name);
                 character.AddMeta(StationConst.CHARACTER_ID, data[2]);
-                character.AddMeta(StationConst.ICON_ID, model.Icon);
+                character.AddMeta(StationConst.ICON_DATA, classModel.Icon);
                 character.gameObject.name = "[player] "+save.Name;
                 
-                character.SetupStats(model.HealthVital,null,model.EnergyVitals.ToArray());
+                character.SetupStats(classModel.HealthVital,null,classModel.EnergyVitals.ToArray());
+                character.Skills.Setup(character, save.LearnedSkillList);
                 character.Stats.SetVitalsValue(save.VitalStatus);
                 character.GetInputHandler.InitializePlayerInput(PlayerInput.Instance);
                 
@@ -74,7 +74,7 @@ namespace Station
                 foreach (var ab in save.LearnedPassiveAbilitiesList)
                 {
                     var ability = new RuntimePassiveAbility();
-                    ability.Initialize(PassiveAbilityDb.GetEntry(ab.Id),ab.Rename, character);
+                    ability.Initialize(PassiveAbilityDb.GetEntry(ab.Id),ab.Rank, character);
                     passiveList.Add(ability);
                 }
                 

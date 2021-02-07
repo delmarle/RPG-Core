@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Station
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = StationConst.BUILD_ASSET_CREATE_PATH+"Db/Interaction configs")]
     public class InteractionConfigsDb: DictGenericDatabase<InteractionConfig>
     {
         [Serializable] public class InteractionDictionary : SerializableDictionary<string, InteractionConfig> {}

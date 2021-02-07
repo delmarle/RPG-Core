@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Station
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = StationConst.BUILD_ASSET_CREATE_PATH+"Db/Passive abilities")]
     public class PassiveAbilitiesDb : DictGenericDatabase<PassiveAbility>
     {
         [Serializable] public class InteractionDictionary : SerializableDictionary<string, PassiveAbility> {}
@@ -19,7 +19,7 @@ namespace Station
        
         public override string[] ListEntryNames()
         {
-            return _db.Select(entry => entry.Value.Name).ToArray();
+            return _db.Select(entry => entry.Value.Name.GetValue()).ToArray();
         }
      
         public override string ObjectName()

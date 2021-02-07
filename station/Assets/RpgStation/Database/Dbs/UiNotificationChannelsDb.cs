@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Station
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = StationConst.BUILD_ASSET_CREATE_PATH+"Db/Ui notifications")]
     public class UiNotificationChannelsDb : DictGenericDatabase<UiChannelModel>
     {
         [Serializable] public class LocalDictionary : SerializableDictionary<string, UiChannelModel> {}

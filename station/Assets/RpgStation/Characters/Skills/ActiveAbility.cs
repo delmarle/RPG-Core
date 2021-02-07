@@ -9,8 +9,8 @@ namespace Station
   public class PassiveAbility
   {
     //INFO
-    public string Name = "New Ability";
-    public string Description;
+    public LocalizedText Name = new LocalizedText("New Ability");
+    public LocalizedText Description = new LocalizedText("description");
     public Sprite Icon;
 
     public int ParentSkillId;
@@ -23,8 +23,9 @@ namespace Station
   public class ActiveAbility
   {
     //INFO
-    public string Name = "New Ability";
-    public string Description;
+    public LocalizedText Name = new LocalizedText("New Ability");
+    public LocalizedText Description = new LocalizedText("description");
+
     public Sprite Icon;
 
     public int ParentSkillId;

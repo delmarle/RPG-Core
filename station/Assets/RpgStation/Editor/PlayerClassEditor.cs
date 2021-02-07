@@ -516,7 +516,7 @@ namespace Station
                         ability.Id = newKey;
               
                         GUILayout.Space(5);
-                        ability.Rename = EditorGUILayout.IntField("Rank: ", ability.Rename, GUILayout.Width(250));
+                        ability.Rank = EditorGUILayout.IntField("Rank: ", ability.Rank, GUILayout.Width(250));
                         GUILayout.Space(5);
     
                         if (EditorStatic.SizeableButton(65, 16, "DELETE", ""))
@@ -562,7 +562,7 @@ namespace Station
                         skill.Id = newKey;
               
                         GUILayout.Space(5);
-                        skill.Rename = EditorGUILayout.IntField("Rank: ", skill.Rename, GUILayout.Width(250));
+                        skill.Rank = EditorGUILayout.IntField("Rank: ", skill.Rank, GUILayout.Width(250));
                         GUILayout.Space(5);
     
                         if (EditorStatic.SizeableButton(65, 16, "DELETE", ""))

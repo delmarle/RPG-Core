@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace Station
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = StationConst.BUILD_ASSET_CREATE_PATH+"Db/Scenes")]
     public class ScenesDb : DictGenericDatabase<Scene>
     {
         [Serializable] public class LocalDictionary : SerializableDictionary<string, Scene> {}

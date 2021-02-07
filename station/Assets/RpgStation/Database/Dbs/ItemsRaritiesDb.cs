@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Station
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = StationConst.BUILD_ASSET_CREATE_PATH+"Db/ItensRarities")]
     public class ItemsRaritiesDb : DictGenericDatabase<ItemRarity>
     {
 

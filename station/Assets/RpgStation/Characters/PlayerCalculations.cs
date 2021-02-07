@@ -20,7 +20,7 @@ namespace Station
 
     public override void OnSetup()
     {
-      var raceData = _raceDb.GetEntry(_character.GetRace());
+      var raceData = _raceDb.GetEntry(_character.GetRaceID());
       _cachedBaseVitals.Clear();
       _cachedBaseVitalsRegen.Clear();
 
@@ -63,7 +63,7 @@ namespace Station
         int value = 0;
     
         //RACE BONUS
-        value  += _raceDb.GetEntry(_character.GetRace()).GetAttributeRaceBaseValue(key);
+        value  += _raceDb.GetEntry(_character.GetRaceID()).GetAttributeRaceBaseValue(key);
      
         //CLASS BONUS
         value += _data.GetAttributeBonus(key);
@@ -92,7 +92,7 @@ namespace Station
           }
         }
         //RACE BONUS
-        value  += _raceDb.GetEntry(_character.GetRace()).GetAttributeRaceBaseValue(key);
+        value  += _raceDb.GetEntry(_character.GetRaceID()).GetAttributeRaceBaseValue(key);
      
         //CLASS BONUS
         value += _data.GetStatsBonus(key);
@@ -106,7 +106,7 @@ namespace Station
     {
       _cachedBaseVitals.Clear();
       _cachedBaseVitalsRegen.Clear();
-      var raceData = _raceDb.GetEntry(_character.GetRace());
+      var raceData = _raceDb.GetEntry(_character.GetRaceID());
     
       if (_data.UseHealth) { BuildVital(_data.HealthVital.Id, raceData.GetVitalsBonus(_data.HealthVital.Id),_data.HealthVital.Value); }
       if (_data.UseSecondaryHealth) { BuildVital(_data.SecondaryHealthVital.Id, raceData.GetVitalsBonus(_data.SecondaryHealthVital.Id),_data.SecondaryHealthVital.Value); }

@@ -23,24 +23,25 @@ namespace Station
         {
             _prefab = prefab;
             _list = list;
-            _items = new List<GameObject> {prefab};
-            _components = new List<T2>{prefab.GetComponent<T2>()};
+            _items = new List<GameObject> {};
+            _components = new List<T2>{};
             prefab.SetActive(false);
             if (preWarmed > 1)
             {
-                for (int i = 0; i < (preWarmed-1); i++)
+                for (int i = 0; i < (preWarmed); i++)
                 {
                     AddInstance();
                 }
             }
         }
 
-        private void AddInstance()
+        private GameObject AddInstance(bool setActive = false)
         {
             var instance = Object.Instantiate(_prefab, _list.transform, false);
             _items.Add(instance);
             _components.Add(instance.GetComponent<T2>());
-            instance.SetActive(false);
+            instance.SetActive(setActive);
+            return instance;
         }
 
         /// <summary>
@@ -52,14 +53,12 @@ namespace Station
             foreach (var component in _components)
                 expression.Invoke(component);
         }
-
         public T2 FindComponent(Func<T2, bool> condition)
         {
             return _components
                 .Select(item => item)
                 .FirstOrDefault(condition);
         }
-
         public void Generate(IEnumerable<T> items, Action<T, T2> transformer)
         {
             var index = 0;
@@ -69,7 +68,7 @@ namespace Station
                 {
                     GameObject listItem;
                     T2 listComponent;
-                    if (_items.Count > index)
+                    if (_components.Count > index)
                     {
                         // We can use an item from pool
                         listItem = _items[index];
@@ -78,11 +77,8 @@ namespace Station
                     else
                     {
                         // We need to create a new item and add it to the pool
-                        listItem = Object.Instantiate(_prefab, _list.transform, false);
-                        listComponent = listItem.GetComponent<T2>();
-                        _components.Add(listComponent);
-                        _items.Add(listItem);
-                        _components.Add(listComponent);
+                        listItem = AddInstance(true);
+                        listComponent = _components[index];
                     }
 
                     if (typeof(T2) == typeof(GameObject))

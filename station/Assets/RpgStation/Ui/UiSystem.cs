@@ -167,17 +167,20 @@ namespace Station
             return _instance.ShowPanel<T>();
         }
 
-        public static void OpenPanel(string typeName)
+        public static void OpenPanel(Type typeName)
         {
-            Assembly asm = typeof(UiPanel).Assembly;
-            Type source = asm.GetType(typeName);
-            _instance.ShowPanel(source);
+            _instance.ShowPanel(typeName);
         }
 
 
         public static void HidePanel<T>(bool showDefault)
         {
             _instance.Hide(typeof(T), showDefault);
+        }
+        
+        public static void HidePanel(Type typeName)
+        {
+            _instance.Hide(typeName, false);
         }
         #endregion
         

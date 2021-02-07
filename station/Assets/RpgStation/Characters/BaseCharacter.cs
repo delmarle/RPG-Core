@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Station
 {
     
-    public class BaseCharacter : MonoBehaviour
+    public partial class BaseCharacter : MonoBehaviour
     {
         #region FIELDS
 
@@ -13,7 +13,6 @@ namespace Station
         private StationMechanics _mechanics;
 
         public FloatingPopupAnchor FloatingPopupAnchor;
-        public CharacterUpdate OnCharacterInitialized;
         public CharacterUpdate OnVitalsUpdated;
         public CharacterUpdate OnStatisticUpdated;
         public CharacterUpdate OnAttributesUpdated;
@@ -23,9 +22,12 @@ namespace Station
         public CharacterUpdate OnDie;
         public CharacterUpdate OnRevived;
         public CharacterTargetUpdated OnTargetChanged;
-
+        public CharacterSkillUpdate OnSkillUpdated;
+        public CharacterSkillUpdate OnSkillGained;
+        public CharacterSkillUpdate OnSkillRemoved;
         public delegate void CharacterTargetUpdated(BaseCharacter target);
         public delegate void CharacterUpdate(BaseCharacter character);
+        public delegate void CharacterSkillUpdate(BaseCharacter character, RankProgression progress, int data);
         public delegate void CharacterVitalChange(BaseCharacter character, VitalChangeData data);
        
         [SerializeField] private CharacterInputHandler _inputHandler = null;
@@ -36,6 +38,9 @@ namespace Station
 
         private StatsHandler _stats = null;
         public StatsHandler Stats => _stats;
+        
+        private SkillHandler _skills = null;
+        public SkillHandler Skills => _skills;
 
         private CharacterCalculation _calculatorInstance = null;
         public CharacterCalculation Calculator => _calculatorInstance;
@@ -96,7 +101,7 @@ namespace Station
 
         private string _raceId;
 
-        public string GetRace()
+        public string GetRaceID()
         {
             return _raceId;
         }
@@ -108,10 +113,9 @@ namespace Station
             return _genderId;
         }
 
-        
         private string _factionId;
 
-        public string GetFaction()
+        public string GetFactionID()
         {
             return _factionId;
         }
@@ -133,6 +137,16 @@ namespace Station
             }
 
             return "";
+        }
+        
+        public T GetMeta<T>(string key)
+        {
+            if (_meta.ContainsKey(key))
+            {
+                return (T)_meta[key];
+            }
+
+            return default;
         }
 
         [SerializeField]private Renderer _characterVisual;
@@ -176,8 +190,11 @@ namespace Station
             _raceId = raceId;
             _factionId = factionId;
             _genderId = genderId;
-            AddMeta("name", characterName);
-
+            AddMeta(StationConst.CHARACTER_NAME, characterName);
+            AddMeta(StationConst.RACE_ID, raceId);
+            AddMeta(StationConst.GENDER_ID, genderId);
+            AddMeta(StationConst.FACTION_ID, factionId);
+            _skills = new SkillHandler();
             _calculatorInstance = instance;
             
             _calculatorInstance.Setup(this);

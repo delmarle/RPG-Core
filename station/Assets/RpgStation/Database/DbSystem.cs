@@ -25,6 +25,7 @@ namespace Station
             else
             {
                 _dbMap = loaded;
+                BaseCharacter.CacheAllDb();
                 GameGlobalEvents.OnDataBaseLoaded?.Invoke();
             }
         }

@@ -27,7 +27,7 @@ namespace Station
             if (_animationCoroutine != null)
                 StopCoroutine(_animationCoroutine);
 
-            var duration = _animation.GetStateDuration(state);
+            var duration = _animation? _animation.GetStateDuration(state):0;
             _animationCoroutine = AnimationCorroutine(duration + 0.01f, state, callback);
             StartCoroutine(_animationCoroutine);
         }
@@ -84,7 +84,7 @@ namespace Station
 
             var before = _animationCoroutine;
         
-            _animation.PlayState(state);
+            _animation?.PlayState(state);
             yield return StartCoroutine(WaitCorroutine(waitTime));
 
             callback?.Invoke();

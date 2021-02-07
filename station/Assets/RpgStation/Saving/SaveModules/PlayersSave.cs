@@ -46,7 +46,7 @@ public class PlayersSave : SaveModule<Dictionary<string, PlayersData>>
                     Value[key].LastRotation = transformPlayer.rotation.eulerAngles;
                     var playerActionHandler = playerCharacter.Action as RpgActionHandler;
                     Value[key].LearnedActiveAbilitiesList = playerActionHandler?.GetAbilitiesState();
-                    
+                    Value[key].LearnedSkillList = playerCharacter.Skills.GenerateSave();
                 }
             }
         }
@@ -69,7 +69,7 @@ public class PlayersData
 
     public List<IdIntegerValue> VitalStatus; 
     
-    public List<RankedIdSave> LearnedSkillList;
+    public List<RankProgression> LearnedSkillList;
     public List<RankedTimeIdSave> LearnedActiveAbilitiesList;
     public List<RankedIdSave> LearnedPassiveAbilitiesList;
 

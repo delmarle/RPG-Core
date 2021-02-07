@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Station
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = StationConst.BUILD_ASSET_CREATE_PATH+"Db/Items")]
     public class ItemsDb : DictGenericDatabase<BaseItemModel>
     {
         [Serializable] public class LocalDictionary : SerializableDictionary<string, BaseItemModel> {}

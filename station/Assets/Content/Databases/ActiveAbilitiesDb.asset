@@ -21,8 +21,10 @@ MonoBehaviour:
     - 9adb7935-3348-4b88-bba7-09733ef865b4
     - a26c2c09-1251-490d-ac31-fce4397d62c6
     m_values:
-    - Name: self damage
-      Description: 
+    - Name:
+        Key: slash
+      Description:
+        Key: description
       Icon: {fileID: 21300000, guid: bbe66970ad0684898a7599780fb4eebd, type: 3}
       ParentSkillId: 0
       UseRank: 0
@@ -65,8 +67,10 @@ MonoBehaviour:
       Targeting:
         TargetRequiredState: 0
         UsedAbilityTargeting: 0
-    - Name: Health Buff
-      Description: 
+    - Name:
+        Key: health barrier
+      Description:
+        Key: description
       Icon: {fileID: 21300000, guid: 22dd3ed9069ea4f9395d316b543d2f54, type: 3}
       ParentSkillId: 0
       UseRank: 0
@@ -115,8 +119,10 @@ MonoBehaviour:
       Targeting:
         TargetRequiredState: 0
         UsedAbilityTargeting: 2
-    - Name: Healing touch
-      Description: 
+    - Name:
+        Key: healing touch
+      Description:
+        Key: description
       Icon: {fileID: 21300000, guid: 5b6f368a6aafd48b18f097c98b34c0e7, type: 3}
       ParentSkillId: 0
       UseRank: 0
@@ -160,8 +166,10 @@ MonoBehaviour:
       Targeting:
         TargetRequiredState: 0
         UsedAbilityTargeting: 2
-    - Name: Portal to home
-      Description: 
+    - Name:
+        Key: teleport to entrance
+      Description:
+        Key: description
       Icon: {fileID: 21300000, guid: 72a10be6e5eb9426d916eaaed1b57052, type: 3}
       ParentSkillId: 0
       UseRank: 0
@@ -204,8 +212,10 @@ MonoBehaviour:
       Targeting:
         TargetRequiredState: 0
         UsedAbilityTargeting: 0
-    - Name: Heavy Blow
-      Description: 
+    - Name:
+        Key: pince
+      Description:
+        Key: description
       Icon: {fileID: 21300000, guid: 0c6bd05693fe34f33b825c503020f884, type: 3}
       ParentSkillId: 2
       UseRank: 0
@@ -247,8 +257,10 @@ MonoBehaviour:
       Targeting:
         TargetRequiredState: 0
         UsedAbilityTargeting: 4
-    - Name: STR Buff
-      Description: 
+    - Name:
+        Key: health amelioration
+      Description:
+        Key: description
       Icon: {fileID: 21300000, guid: 39ce46976be6941b3aade2eed11f2be8, type: 3}
       ParentSkillId: 0
       UseRank: 0

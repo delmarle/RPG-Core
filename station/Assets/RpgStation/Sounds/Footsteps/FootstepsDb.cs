@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Station
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = StationConst.BUILD_ASSET_CREATE_PATH+"Db/Footsteps")]
     public class FootstepsDb : DictGenericDatabase<FootSoundTemplate>
     {
         public List<string> Surfaces = new List<string>();

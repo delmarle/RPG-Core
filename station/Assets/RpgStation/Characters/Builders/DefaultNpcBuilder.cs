@@ -42,7 +42,7 @@ namespace Station
             character.Init(baseData.CharacterId, model.RaceId, model.FactionId, "Male", calculatorInstance,model.Name, brainInstance, instanceMemory);
             character.SetupAction(model.Attack);     
             character.AddMeta(StationConst.NPC_KEY, baseData.Identifier);
-            character.AddMeta(StationConst.ICON_ID, model.Icon);
+            character.AddMeta(StationConst.ICON_DATA, model.Icon);
             character.gameObject.name = "[npc] "+model.Name;
             character.SetupStats(model.HealthVital,null,model.EnergyVitals.ToArray());
             character.Stats.SetVitalsFull();

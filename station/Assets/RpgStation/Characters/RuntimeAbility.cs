@@ -32,6 +32,8 @@ namespace Station
 
     public AbilityRank CurrentRank => _data.Ranks[_rank];
 
+    public int Rank => _rank;
+
     public void Initialize(ActiveAbility data,int rank, float coolDown,BaseCharacter user, string id)
     {
       _data = data;

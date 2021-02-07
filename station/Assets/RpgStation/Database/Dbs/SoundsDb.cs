@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Station
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = StationConst.BUILD_ASSET_CREATE_PATH+"Db/Sounds")]
     public class SoundsDb : DictGenericDatabase<SoundCategory>
     {
         public List<SoundContainer> PersistentContainers = new List<SoundContainer>();

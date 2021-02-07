@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Station
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = StationConst.BUILD_ASSET_CREATE_PATH+"Db/Chest node")]
     public class ChestNodesDb : DictGenericDatabase<ChestNodeModel>
     {
         [Serializable] public class LocalDictionary : SerializableDictionary<string, ChestNodeModel> {}

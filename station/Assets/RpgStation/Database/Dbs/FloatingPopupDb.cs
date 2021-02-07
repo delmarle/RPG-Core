@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Station
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = StationConst.BUILD_ASSET_CREATE_PATH+"Db/Floating popups")]
     public class FloatingPopupDb : DictGenericDatabase<FloatingPopupModel>
     {
         [Serializable] public class LocalDictionary : SerializableDictionary<string, FloatingPopupModel> {}

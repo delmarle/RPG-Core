@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Station
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = StationConst.BUILD_ASSET_CREATE_PATH+"Db/Equipment types")]
     public class EquipmentTypesDb : DictGenericDatabase<EquipmentTypesModel>
     {
         [Serializable] public class LocalDictionary : SerializableDictionary<string, EquipmentTypesModel> {}

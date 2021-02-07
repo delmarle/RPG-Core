@@ -11,6 +11,7 @@ namespace Station
     [CanEditMultipleObjects]
     public class UiHudLinksEditor : UnityEditor.Editor
     {
+        private static string[] IGNORED_CLASSES = new[] { "UiPanel","UiPanelPlayerSwitchSync"};
         private Type[] baseClassList;
         List<string> ClassAvaillable =  new List<string>();
         private void OnEnable()
@@ -18,7 +19,11 @@ namespace Station
             baseClassList = ReflectionUtils.FindDerivedClasses(typeof(UiPanel)).ToArray();
             foreach (var c in baseClassList)
             {
-                ClassAvaillable.Add(c.FullName);
+                if (IGNORED_CLASSES.Contains(c.Name) == false)
+                {
+                    ClassAvaillable.Add(c.FullName);
+                }
+               
             }
     
 

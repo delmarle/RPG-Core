@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Station
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = StationConst.BUILD_ASSET_CREATE_PATH+"Db/Faction settings")]
     public class FactionSettingsDb : SingleFieldDb<FactionSettingModel>
     {
         public override string ObjectName()

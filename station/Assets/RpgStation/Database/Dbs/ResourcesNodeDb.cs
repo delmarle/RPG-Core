@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Station
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = StationConst.BUILD_ASSET_CREATE_PATH+"Db/Resources nodes")]
     public class ResourcesNodeDb : DictGenericDatabase<ResourceNodeModel>
     {
         [Serializable] public class LocalDictionary : SerializableDictionary<string, ResourceNodeModel> {}

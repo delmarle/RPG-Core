@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Reflection;
+using UnityEngine;
 
 namespace Station
 {
@@ -19,7 +21,9 @@ namespace Station
 
         private void OnClickProfileBtn()
         {
-            UiSystem.OpenPanel(PopupType);
+            Assembly asm = typeof(UiPanel).Assembly;
+            Type source = asm.GetType(PopupType);
+            UiSystem.OpenPanel(source);
         }
     }
 }

@@ -789,17 +789,24 @@ public enum StatusEffectType
       Value = defaultAmount;
     }
   }
+  [Serializable]
+  public class RankProgression
+  {
+    public string Id;
+    public int Rank;
+    public int Progression;
+  }
   
   [Serializable]
   public class RankedIdSave
   {
     public string Id;
-    public int Rename;
+    public int Rank;
 
     public RankedIdSave(string id, int defaultAmount)
     {
       Id = id;
-      Rename = defaultAmount;
+      Rank = defaultAmount;
     }
   }
   

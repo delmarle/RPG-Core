@@ -127,13 +127,13 @@ namespace Station
           GUILayout.BeginHorizontal();
           {
             GUILayout.Label("Name", GUILayout.Width(70));
-            staticData.Name = GUILayout.TextField(staticData.Name);
+            EditorStatic.DrawLocalization(staticData.Name);
           }
           GUILayout.EndHorizontal();
           GUILayout.BeginHorizontal();
           {
             GUILayout.Label("Description", GUILayout.Width(70));
-            staticData.Description = GUILayout.TextArea(staticData.Description, GUILayout.Height(45));
+            EditorStatic.DrawLocalization(staticData.Description);
           }
           GUILayout.EndHorizontal();
           GUILayout.Space(3);

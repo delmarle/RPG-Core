@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -134,20 +135,21 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_text: Damien
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 16bd9c090629f4af18f676bab99e9922, type: 2}
-  m_sharedMaterial: {fileID: -1791029467866175349, guid: 16bd9c090629f4af18f676bab99e9922,
+  m_fontAsset: {fileID: 11400000, guid: 80c53bc42740948f5954155b9c621907, type: 2}
+  m_sharedMaterial: {fileID: 9193332238783404337, guid: 80c53bc42740948f5954155b9c621907,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278235603
+    rgba: 4278235860
   m_fontColor: {r: 0.8301887, g: 0.69628733, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -183,7 +185,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -311,20 +313,21 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_text: Damien
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 16bd9c090629f4af18f676bab99e9922, type: 2}
-  m_sharedMaterial: {fileID: -1791029467866175349, guid: 16bd9c090629f4af18f676bab99e9922,
+  m_fontAsset: {fileID: 11400000, guid: 80c53bc42740948f5954155b9c621907, type: 2}
+  m_sharedMaterial: {fileID: 9193332238783404337, guid: 80c53bc42740948f5954155b9c621907,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4292401368
+    rgba: 4292467161
   m_fontColor: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -360,7 +363,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -809,6 +812,7 @@ MonoBehaviour:
   m_Material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.4862745, g: 0.40392157, b: 0.35686275, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

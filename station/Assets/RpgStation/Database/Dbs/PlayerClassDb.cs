@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Station
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = StationConst.BUILD_ASSET_CREATE_PATH+"Db/Player classes")]
     public class PlayerClassDb : DictGenericDatabase<PlayerClassModel>
     {
         [Serializable] public class LocalDictionary : SerializableDictionary<string, PlayerClassModel> {}
