@@ -27,12 +27,12 @@ namespace Station
       get { return 0; }
     }
 
-    public virtual CastingData CastingData
+    public virtual ActionFxData ActionFxData
     {
       get { return null; }
     }
 
-    public virtual InvokingData InvokingData
+    public virtual ActionFxData InvokingActionData
     {
       get { return null; }
     }
@@ -52,8 +52,7 @@ namespace Station
         _user = owner;
         _action = _user.Action;
     }
-
-    //extend for interact with door, open container, AutoLoop
+    
     public virtual bool CanUse()
     {
 
@@ -118,12 +117,12 @@ namespace Station
         CancelCasting();
       }
 
-      if (CastingData?.Option == ExitMode.CanceledByMovement)
+      if (ActionFxData?.Option == ExitMode.CanceledByMovement)
       {
         ListenMovement();
       }
       _user.Action.DoAction(this);
-      var casting = CastingData;
+      var casting = ActionFxData;
       if (casting != null && casting.HasData)
       {
         if (_user.Action.OnStartCasting != null)
@@ -146,7 +145,7 @@ namespace Station
 
     public void CompleteCasting()
     {
-      var casting = CastingData;
+      var casting = ActionFxData;
       _castingEffectInstance?.Despawn();
       if (casting.Option == ExitMode.CanceledByMovement)
       {
@@ -164,24 +163,21 @@ namespace Station
     {
       _user.Action.DoFinishAction();
       _castingEffectInstance?.Despawn();
-      var casting = CastingData;
-      _user.Action.StopCasting();
+      var casting = ActionFxData;
+      _user.Action.CancelCasting();
       if (casting.Option == ExitMode.CanceledByMovement)
       {
         UnlistenMovement();
       }
       if(_castingTimer != null)_castingTimer.Cancel();
       if(_invokingTimer != null)_invokingTimer.Cancel();
-      if (_user.Action.OnCancelCasting != null)
-      {
-        _user.Action.OnCancelCasting.Invoke(this);
-      }
+    
     }
 
     public void CancelInvoking()
     {
       _user.Action.DoFinishAction();
-      var invoking = InvokingData;
+      var invoking = InvokingActionData;
       if(_invokingTimer != null)_invokingTimer.Cancel();
       if (invoking.Option == ExitMode.CanceledByMovement)
       {
@@ -192,23 +188,23 @@ namespace Station
 
     private void InvokeEffect()
     {
-      var invoking = InvokingData;
+      var invoking = InvokingActionData;
       if (invoking != null && invoking.Option == ExitMode.CanceledByMovement)
       {
         ListenMovement();
       }
-      if (_user.Action.OnStartInvoking != null)
+      if (_user.Action.OnStartAction != null)
       {
-        _user.Action.OnStartInvoking?.Invoke(this);
+        _user.Action.OnStartAction?.Invoke(this);
       }
 
-      if (InvokingData == null)
+      if (InvokingActionData == null)
       {
         _user.Action.OnCompleteInvoking?.Invoke(this);
       }
       else
       {
-        _invokingTimer = Timer.Register(InvokingData.Length, () =>
+        _invokingTimer = Timer.Register(InvokingActionData.Length, () =>
         {
           if (_user.Action.OnCompleteInvoking != null)
           {

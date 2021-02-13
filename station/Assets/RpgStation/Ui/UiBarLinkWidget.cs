@@ -40,7 +40,7 @@ namespace Station
             {
                 if (_bufferedAction is RuntimeAbility ability)
                 {
-                    _handler.TryUseAbility(ability);
+                    _handler.TryUseAction(ability);
                 }
             }
         }

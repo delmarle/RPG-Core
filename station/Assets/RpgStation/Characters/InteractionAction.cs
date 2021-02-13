@@ -47,7 +47,7 @@ namespace Station
             _interactible.Interact(_user);
         }
 
-        public override CastingData CastingData
+        public override ActionFxData ActionFxData
         {
             get
             {
@@ -56,7 +56,7 @@ namespace Station
                     return null;
                 }
 
-                return _interactible.Config.CastingData;
+                return _interactible.Config.actionFxData;
             }
         }
         #endregion

@@ -22,9 +22,9 @@ namespace Station
 
     public string OptionalId => _optionalId;
 
-    public override CastingData CastingData => CurrentRank.Casting;
+    public override ActionFxData ActionFxData => CurrentRank.ActionFx;
 
-    public override InvokingData InvokingData => CurrentRank.Invoking;
+    public override ActionFxData InvokingActionData => CurrentRank.InvokingActionFx;
 
     protected override float CooldownTime => CurrentRank.CoolDown;
 

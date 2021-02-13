@@ -6,16 +6,17 @@ namespace Station
 {
   public class HarvestNode : Interactible
   {
-    public string NodeId;
+   
 
     //Cache
+    public string NodeId;
     private ResourcesNodeDb _nodeDb;
-
+    private ResourceNodeModel _model;
     
     protected override void Setup()
     {
       var _nodeDb = RpgStation.GetDb<ResourcesNodeDb>();
-      var model = _nodeDb.GetEntry(NodeId);
+      ResourceNodeModel model = _nodeDb.GetEntry(NodeId);
       SetUiName(model.Name.GetValue());
       SetUiIcon( model.Icon);
 name += $" | {model.Name.GetValue()}";
@@ -23,8 +24,11 @@ name += $" | {model.Name.GetValue()}";
 
     public override void Interact(BaseCharacter user)
     {
+      user.Action.Interaction.TryInteract(this);
       Debug.Log("harvesting");
     }
+    
+    
   }
 }
 

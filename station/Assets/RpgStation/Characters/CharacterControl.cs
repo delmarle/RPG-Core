@@ -41,19 +41,15 @@ namespace Station
   private float _targetHorizontalSpeed; // In meters/second
   private float _currentHorizontalSpeed; // In meters/second
   private float _currentVerticalSpeed; // In meters/second
-  private bool _blockedByAbility;
   private bool _blockedByAction;
   
   #region Unity Methods
-
-  protected virtual void Awake()
+  
+  
+  public void Setup()
   {
     _controller = GetComponent<CharacterController>();
     _baseCharacter  = GetComponent<BaseCharacter>();
-  }
-  
-  private void Start()
-  {
     if (_baseCharacter)
     {
       var abilities = _baseCharacter.Action;
@@ -62,7 +58,7 @@ namespace Station
         abilities.OnStartCasting += OnStartCasting;
         abilities.OnCancelCasting += OnCancelCasting;
         abilities.OnCompleteCasting += OnCompleteCasting;
-        abilities.OnStartInvoking += OnStartInvoking;
+        abilities.OnStartAction += OnStartInvoking;
         abilities.OnCompleteInvoking += OnCompleteInvoking;
         abilities.OnStartAction+= OnStartAction;
         abilities.OnFinishAction+= OnFinishAction;
@@ -82,7 +78,7 @@ namespace Station
         abilities.OnStartCasting -= OnStartCasting;
         abilities.OnCancelCasting -= OnCancelCasting;
         abilities.OnCompleteCasting -= OnCompleteCasting;
-        abilities.OnStartInvoking -= OnStartInvoking;
+        abilities.OnStartAction -= OnStartInvoking;
         abilities.OnCompleteInvoking -= OnCompleteInvoking;
         abilities.OnStartAction -= OnStartAction;
         abilities.OnFinishAction -= OnFinishAction;
@@ -95,8 +91,8 @@ namespace Station
     if (!_input || _baseCharacter.IsDead) return;
     
     ApplyGravity();
-    MoveVector = _blockedByAbility? Vector3.zero : _input.Movement();
-    if (_blockedByAction || _blockedByAbility)
+    MoveVector = _blockedByAction? Vector3.zero : _input.Movement();
+    if (_blockedByAction)
     {
       MoveVector = Vector3.zero;
       _controlRotation = Quaternion.identity;
@@ -128,7 +124,7 @@ namespace Station
  
     if (IsGrounded) ApplyGravity(true);
     
-    if (!_blockedByAbility &&!_blockedByAction && _input.Jump() && IsGrounded ) Jump();
+    if (!_blockedByAction && _input.Jump() && IsGrounded ) Jump();
     
     UpdateHorizontalSpeed();
     ApplyMotion();
@@ -140,29 +136,30 @@ namespace Station
 
   private void OnStartCasting(CharacterAction data)
   {
-    _blockedByAbility = data.CastingData.Option == ExitMode.BlockMovement;
+    _blockedByAction = data.ActionFxData.Option == ExitMode.BlockMovement;
+    Debug.Log($"isblockedaction: {_blockedByAction}");
     _currentHorizontalSpeed = 0;
   }
 
   private void OnCancelCasting(CharacterAction data)
   {
-    _blockedByAbility = false;
+    _blockedByAction = false;
   }
   
   private void OnCompleteCasting(CharacterAction data)
   {
-    _blockedByAbility = false;
+    _blockedByAction = false;
   }
   
   private void OnStartInvoking(CharacterAction action)
   {
-    if (action.InvokingData == null)
+    if (action.InvokingActionData == null)
     {
-      _blockedByAbility = true;
+      _blockedByAction = true;
     }
     else
     {
-      _blockedByAbility = action.InvokingData.Option == ExitMode.BlockMovement;
+      _blockedByAction = action.InvokingActionData.Option == ExitMode.BlockMovement;
     }
 
     
@@ -170,7 +167,7 @@ namespace Station
   
   private void OnCompleteInvoking(CharacterAction ability)
   {
-    _blockedByAbility = false;
+    _blockedByAction = false;
   }
   
   private void OnFinishAction()

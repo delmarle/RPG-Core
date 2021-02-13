@@ -699,41 +699,6 @@ namespace RPG.Editor
       return data;
     }
 
-    public static CastingData DrawCastingData(CastingData casting, ref bool displayCasting, ref bool displayCastingSound)
-    {
-      EditorGUILayout.BeginHorizontal();
-      displayCasting = LevelFoldout("Casting", displayCasting, 32, Color.white);
-      bool useCasting = casting.HasData;
-      string buttonName = useCasting ? "ON" : "OFF";
-      string iconName = useCasting ? "bullet_green" : "bullet_red";
-      if (SizeableButton(80, 28, buttonName, iconName))
-      {
-        casting.HasData = !casting.HasData;
-      }
-      EditorGUILayout.EndHorizontal();
-      if (displayCasting)
-      {
-   
-        if (casting.HasData)
-        { 
-          casting.Length = EditorGUILayout.FloatField("Casting time: ", casting.Length);
-          casting.AnimationId = EditorGUILayout.IntField("Casting animation ID: ", casting.AnimationId);
-          
-          displayCastingSound = SoundFoldout("Casting sound: ", ref casting.StartSound, displayCastingSound, 28, Color.cyan);
-          if (displayCastingSound)
-          {
-            DrawSoundWidget(ref casting.StartSound, ABILITIES_CATEGORY);
-          }
-
-         // DrawSoundReference(casting.StartSound);
-          casting.Option = (ExitMode)EditorGUILayout.EnumPopup("Mode: ", casting.Option);
-          casting.Effect = DrawVfxData((casting.Effect));
-        }
-      }
-
-     
-      return casting;
-    }
     #endregion
 
     public static void DrawDestination(DestinationModel model)
@@ -796,9 +761,42 @@ namespace RPG.Editor
       {
         EditorGUILayout.HelpBox("Missing entries in the db: "+dictDb.name, MessageType.Warning);
       }
-      
-
       return current;
+    }
+
+    //TODO replace
+    public static ActionFxData DrawActionEffect(string effectType, ref bool isFoldoutOpen, ref bool isSoundFoldoutOpen, ref ActionFxData actionFx)
+    {
+      EditorGUILayout.BeginHorizontal();
+      isFoldoutOpen = LevelFoldout(effectType, isFoldoutOpen, 32, Color.white);
+      bool useCasting = actionFx.HasData;
+      string buttonName = useCasting ? "ON" : "OFF";
+      string iconName = useCasting ? "bullet_green" : "bullet_red";
+      if (SizeableButton(80, 28, buttonName, iconName))
+      {
+        actionFx.HasData = !actionFx.HasData;
+      }
+      EditorGUILayout.EndHorizontal();
+      if (isFoldoutOpen)
+      {
+   
+        if (actionFx.HasData)
+        { 
+          actionFx.Length = EditorGUILayout.FloatField($"{effectType} time: ", actionFx.Length);
+          actionFx.AnimationId = EditorGUILayout.IntField($"{effectType} animation ID: ", actionFx.AnimationId);
+          
+          isSoundFoldoutOpen = SoundFoldout($"{effectType} sound: ", ref actionFx.StartSound, isSoundFoldoutOpen, 28, Color.cyan);
+          if (isSoundFoldoutOpen)
+          {
+            DrawSoundWidget(ref actionFx.StartSound, ABILITIES_CATEGORY);
+          }
+          
+          actionFx.Option = (ExitMode)EditorGUILayout.EnumPopup("Mode: ", actionFx.Option);
+          actionFx.Effect = DrawVfxData(actionFx.Effect);
+        }
+      }
+
+      return actionFx;
     }
   }
 }

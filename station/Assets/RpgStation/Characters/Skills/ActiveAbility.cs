@@ -89,9 +89,9 @@ namespace Station
     public float CastDistance;
     public float CoolDown;
 
-    public CastingData Casting = new CastingData();
+    public ActionFxData InvokingActionFx = new ActionFxData();
+    public ActionFxData ActionFx = new ActionFxData();
 
-    public InvokingData Invoking = new InvokingData();
     //CAST REQUIREMENT:
     public List<IdIntegerValue> VitalsUsed = new List<IdIntegerValue>();
     
@@ -101,7 +101,7 @@ namespace Station
   }
 
   [Serializable]
-  public class CastingData
+  public class ActionFxData
   {
     public bool HasData;
     public ExitMode Option;
@@ -109,16 +109,6 @@ namespace Station
     public int AnimationId;
     public SoundConfig StartSound;
     public VfxData Effect = new VfxData();
-  }
-  
-  [Serializable]
-  public class InvokingData
-  {
-    public ExitMode Option;
-    public float Length = 1;
-    public int AnimationId;
-    public SoundConfig InvokeSound;
-    public VfxData Effect;
   }
 
   [Serializable]

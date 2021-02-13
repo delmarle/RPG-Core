@@ -244,24 +244,12 @@ namespace Station
      
       EditorStatic.DrawThinLine(3);
       var currentRank = data.Ranks[_currentRank];
-  
-      currentRank.Casting = EditorStatic.DrawCastingData(currentRank.Casting, ref _displayCasting, ref displayCastingSound);
+      
+      currentRank.ActionFx = EditorStatic.DrawActionEffect("Casting", ref _displayCasting, ref displayCastingSound, ref  currentRank.ActionFx);
 
       EditorStatic.DrawThinLine(3);
-      _displayInvoking = EditorStatic.LevelFoldout("Invoking", _displayInvoking, 32, Color.white);
-
-      var invoking = currentRank.Invoking;
-      if (_displayInvoking)
-      {
-        invoking.Length = EditorGUILayout.FloatField("Invoke time: ", invoking.Length);
-        invoking.AnimationId = EditorGUILayout.IntField("Invoke animation ID: ", invoking.AnimationId);
-        displayInvokingSound = EditorStatic.SoundFoldout("Casting sound: ", ref invoking.InvokeSound, displayInvokingSound, 28, Color.cyan);
-        if (displayInvokingSound)
-        {
-          EditorStatic.DrawSoundWidget(ref invoking.InvokeSound, "Invoking sound");
-        }
-        invoking.Option = (ExitMode)EditorGUILayout.EnumPopup("Mode: ", invoking.Option);
-      }
+      EditorStatic.DrawActionEffect("Invoke", ref _displayInvoking, ref displayInvokingSound, ref currentRank.InvokingActionFx);
+  
       EditorStatic.DrawThinLine(3);
       
       if (currentRank.ProjectileDrivers.Any() || currentRank.DirectDrivers.Any())

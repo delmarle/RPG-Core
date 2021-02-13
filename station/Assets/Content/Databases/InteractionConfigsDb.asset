@@ -40,6 +40,8 @@ MonoBehaviour:
         Length: 1
         AnimationId: 0
         StartSound: {fileID: 0}
+        Effect:
+          EffectPrefab: {fileID: 0}
       CancelInteractionMode: 0
       CancelInteractionDistance: 3
     - Layer: 8
@@ -58,11 +60,13 @@ MonoBehaviour:
       HoverMode: 0
       InteractionTime: 0
       CastingData:
-        HasData: 0
-        Option: 0
+        HasData: 1
+        Option: 2
         Length: 1
         AnimationId: 0
         StartSound: {fileID: 0}
+        Effect:
+          EffectPrefab: {fileID: 0}
       CancelInteractionMode: 1
       CancelInteractionDistance: 3
     - Layer: 8
@@ -86,6 +90,8 @@ MonoBehaviour:
         Length: 2
         AnimationId: 1
         StartSound: {fileID: 0}
+        Effect:
+          EffectPrefab: {fileID: 0}
       CancelInteractionMode: 0
       CancelInteractionDistance: 3
     - Layer: 8
@@ -109,5 +115,7 @@ MonoBehaviour:
         Length: 0.5
         AnimationId: 0
         StartSound: {fileID: 0}
+        Effect:
+          EffectPrefab: {fileID: 0}
       CancelInteractionMode: 2
       CancelInteractionDistance: 3

@@ -9,45 +9,27 @@ namespace Station
     public class RpgActionHandler : ActionHandler
     {
         #region FIELDS
-        public Dictionary<string, RuntimeAbility> _abilitiesMap = new Dictionary<string, RuntimeAbility>();
         private const float GLOBAL_COOL_DOWN = 0.1f;
         public bool _attacking = false;
         public CharacterAction _nextAction;
-        public Action<CharacterAction, string> OnFailUseAction;
-        
-
         public float _timeBeforeNextAction;
-#endregion
-        public override void TryUseAbility(RuntimeAbility ability)
-        {
-            if (ability.CanUse())
-            {
-                _nextAction = ability;
-            }
-            else
-            {
-                if (OnFailUseAction != null)
-                {
-                    OnFailUseAction(ability, "Cant use");
-                } 
-            }
-            
-        }
+        #endregion
 
-        public List<RankedTimeIdSave>  GetAbilitiesState()
+        public List<RankedTimeIdSave> GetAbilitiesState()
         {
             List<RankedTimeIdSave> stateList = new List<RankedTimeIdSave>();
 
             for (var index = 0; index < _abilities.Count; index++)
             {
                 var runtimeAbility = _abilities[index];
-                RankedTimeIdSave ab = new RankedTimeIdSave(runtimeAbility.OptionalId, runtimeAbility.GetRankIndex(), runtimeAbility.CdTimeLeft());
+                RankedTimeIdSave ab = new RankedTimeIdSave(runtimeAbility.OptionalId, runtimeAbility.GetRankIndex(),
+                    runtimeAbility.CdTimeLeft());
                 stateList.Add(ab);
             }
 
             return stateList;
         }
-        
+
         #region [[ Actions & combat bridges ]]
 
         public override void UpdateLoop()
@@ -67,7 +49,7 @@ namespace Station
                 _timeBeforeNextAction -= Time.deltaTime;
             }
 
-           
+
             if (_attacking)
             {
                 if (_character.Control.IsMoving())
@@ -82,11 +64,8 @@ namespace Station
                 {
                     _character.Control.LerpFaceTarget(target.transform.position);
                 }
-
             }
-          
-            
-           
+
             if (_timeBeforeNextAction <= 0)
             {
                 if (_currentAction != null)
@@ -98,21 +77,19 @@ namespace Station
                 if (_nextAction != null && _nextAction.CanUse())
                 {
                     //action left to do
-                    base.TryUseAbility((RuntimeAbility)_nextAction);
+                    base.TryUseAction((RuntimeAbility) _nextAction);
                     _nextAction = null;
                 }
                 else
                 {
                     if (_attacking)
                     {
-                       
-
                         //no action to do but we are ready
                         if (DefaultAttack.CanUse())
                         {
                             RefreshCombat();
                             var actionLength = DefaultAttack.CalculateActionLength();
-                            _timeBeforeNextAction = actionLength+ GLOBAL_COOL_DOWN;
+                            _timeBeforeNextAction = actionLength + GLOBAL_COOL_DOWN;
                             DefaultAttack.SetCoolDown(0);
                             DefaultAttack.Trigger();
                         }
@@ -147,7 +124,7 @@ namespace Station
         {
             var characterPosition = _character.transform.position;
             RaycastUtils.SphereCastSearchComponentsAroundSource(_character, characterPosition, 4, out var characters);
-            
+
             var filtered = characters.Where(x => _character.ResolveStance(x) != Stance.Ally).ToList();
             filtered.Sort(delegate(BaseCharacter a, BaseCharacter b)
             {
@@ -157,6 +134,5 @@ namespace Station
             });
             return filtered;
         }
-        
     }
 }

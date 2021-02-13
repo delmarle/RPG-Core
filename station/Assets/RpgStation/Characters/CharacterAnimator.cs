@@ -59,7 +59,7 @@ namespace Station
       abilities.OnStartCasting += OnStartCasting;
       abilities.OnCancelCasting += OnCancelCasting;
       abilities.OnCompleteCasting += OnCompleteCasting;
-      abilities.OnStartInvoking += OnStartInvoking;
+      abilities.OnStartAction += OnStartInvoking;
       abilities.OnCompleteInvoking += OnCompleteInvoking;
       abilities.OnStartAction += OnAction;
       abilities.OnSwitchCombat += OnSwitchCombat;
@@ -77,7 +77,8 @@ namespace Station
       abilities.OnStartCasting -= OnStartCasting;
       abilities.OnCancelCasting -= OnCancelCasting;
       abilities.OnCompleteCasting -= OnCompleteCasting;
-      abilities.OnStartInvoking -= OnStartInvoking;
+      
+      abilities.OnStartAction -= OnStartInvoking;
       abilities.OnCompleteInvoking -= OnCompleteInvoking;
       abilities.OnSwitchCombat -= OnSwitchCombat;
       _baseCharacter.OnDie -= OnDie;
@@ -88,13 +89,13 @@ namespace Station
   #region CASTING
   private void OnStartCasting(CharacterAction action)
   {
-    _animator.SetInteger(CastingId, action.CastingData.AnimationId);
-    if (action.CastingData.StartSound)
+    _animator.SetInteger(CastingId, action.ActionFxData.AnimationId);
+    if (action.ActionFxData.StartSound)
     {
-      _soundSystem.PlaySound(action.CastingData.StartSound.name);
+      _soundSystem.PlaySound(action.ActionFxData.StartSound.name);
     }
 
-    if(action.InvokingData != null)_animator.SetInteger(InvokingId, action.InvokingData.AnimationId);
+    if(action.InvokingActionData != null)_animator.SetInteger(InvokingId, action.InvokingActionData.AnimationId);
     _animator.SetBool(CastingState, true);
     _animator.SetBool(InvokingState, false);
     _animator.SetTrigger(AbilityTrigger);

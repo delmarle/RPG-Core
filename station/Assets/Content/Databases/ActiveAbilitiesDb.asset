@@ -31,20 +31,20 @@ MonoBehaviour:
       Ranks:
       - CastDistance: 0
         CoolDown: 0
-        Casting:
+        InvokingActionFx:
           HasData: 1
           Option: 0
           Length: 1
           AnimationId: 0
-          StartSound: {fileID: 11400000, guid: dbc4645349417470f9e4f4d30712a103, type: 2}
+          StartSound: {fileID: 0}
           Effect:
-            EffectPrefab: {fileID: 2349360774553193454, guid: 3228a22491941734bb83ad691d17fcb9,
-              type: 3}
-        Invoking:
+            EffectPrefab: {fileID: 0}
+        ActionFx:
+          HasData: 0
           Option: 0
           Length: 1
           AnimationId: 0
-          InvokeSound: {fileID: 0}
+          StartSound: {fileID: 0}
           Effect:
             EffectPrefab: {fileID: 0}
         VitalsUsed: []
@@ -77,19 +77,20 @@ MonoBehaviour:
       Ranks:
       - CastDistance: 12
         CoolDown: 5
-        Casting:
-          HasData: 1
+        InvokingActionFx:
+          HasData: 0
           Option: 0
           Length: 1
           AnimationId: 0
-          StartSound: {fileID: 11400000, guid: dbc4645349417470f9e4f4d30712a103, type: 2}
+          StartSound: {fileID: 0}
           Effect:
             EffectPrefab: {fileID: 0}
-        Invoking:
+        ActionFx:
+          HasData: 0
           Option: 0
           Length: 1
           AnimationId: 0
-          InvokeSound: {fileID: 0}
+          StartSound: {fileID: 0}
           Effect:
             EffectPrefab: {fileID: 0}
         VitalsUsed: []
@@ -129,21 +130,20 @@ MonoBehaviour:
       Ranks:
       - CastDistance: 0
         CoolDown: 0
-        Casting:
+        InvokingActionFx:
           HasData: 1
           Option: 0
           Length: 1
+          AnimationId: 0
+          StartSound: {fileID: 0}
+          Effect:
+            EffectPrefab: {fileID: 0}
+        ActionFx:
+          HasData: 1
+          Option: 1
+          Length: 1
           AnimationId: 1
           StartSound: {fileID: 11400000, guid: dbc4645349417470f9e4f4d30712a103, type: 2}
-          Effect:
-            EffectPrefab: {fileID: 2349360774553193454, guid: 3228a22491941734bb83ad691d17fcb9,
-              type: 3}
-        Invoking:
-          Option: 0
-          Length: 1
-          AnimationId: 0
-          InvokeSound: {fileID: 11400000, guid: 70cc776b7fefd439ca6139a77420b8fa,
-            type: 2}
           Effect:
             EffectPrefab: {fileID: 0}
         VitalsUsed: []
@@ -176,19 +176,20 @@ MonoBehaviour:
       Ranks:
       - CastDistance: 0
         CoolDown: 0
-        Casting:
+        InvokingActionFx:
           HasData: 0
-          Option: 1
+          Option: 0
           Length: 1
           AnimationId: 0
           StartSound: {fileID: 0}
           Effect:
             EffectPrefab: {fileID: 0}
-        Invoking:
+        ActionFx:
+          HasData: 0
           Option: 0
           Length: 1
           AnimationId: 0
-          InvokeSound: {fileID: 0}
+          StartSound: {fileID: 0}
           Effect:
             EffectPrefab: {fileID: 0}
         VitalsUsed: []
@@ -222,19 +223,20 @@ MonoBehaviour:
       Ranks:
       - CastDistance: 4.94
         CoolDown: 0
-        Casting:
-          HasData: 1
+        InvokingActionFx:
+          HasData: 0
           Option: 0
           Length: 1
           AnimationId: 0
           StartSound: {fileID: 0}
           Effect:
             EffectPrefab: {fileID: 0}
-        Invoking:
+        ActionFx:
+          HasData: 0
           Option: 0
           Length: 1
           AnimationId: 0
-          InvokeSound: {fileID: 0}
+          StartSound: {fileID: 0}
           Effect:
             EffectPrefab: {fileID: 0}
         VitalsUsed: []
@@ -267,7 +269,7 @@ MonoBehaviour:
       Ranks:
       - CastDistance: 12
         CoolDown: 5
-        Casting:
+        InvokingActionFx:
           HasData: 0
           Option: 0
           Length: 1
@@ -275,11 +277,12 @@ MonoBehaviour:
           StartSound: {fileID: 0}
           Effect:
             EffectPrefab: {fileID: 0}
-        Invoking:
+        ActionFx:
+          HasData: 0
           Option: 0
           Length: 1
           AnimationId: 0
-          InvokeSound: {fileID: 0}
+          StartSound: {fileID: 0}
           Effect:
             EffectPrefab: {fileID: 0}
         VitalsUsed: []

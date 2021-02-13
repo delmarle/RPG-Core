@@ -551,7 +551,7 @@ public enum StatusEffectType
     public float InteractionRange = 2;
     public HoverMode HoverMode;
     public float InteractionTime;
-    public CastingData CastingData = new CastingData();
+    public ActionFxData actionFxData = new ActionFxData();
     public CancelInteractionMode CancelInteractionMode;
     public float CancelInteractionDistance = 2.5f;
   }

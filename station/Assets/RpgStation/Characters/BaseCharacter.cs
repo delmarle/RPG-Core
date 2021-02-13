@@ -254,6 +254,7 @@ namespace Station
            _action.SetupDefaultAttack(defaultAttack);
            _action.SetAbilities(new List<RuntimeAbility>(), this);
            _action.Subscribe();
+           _control.Setup();
         }
 
         #region [[ FACTION & TARGETING ]]

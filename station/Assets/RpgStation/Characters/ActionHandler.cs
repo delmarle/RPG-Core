@@ -11,30 +11,26 @@ namespace Station
 
     private const float COMBAT_EXIT_LENGTH = 10;
     public const int LINKED_AMOUNT = 4;
-    private Dictionary<int,BarSlotState> _linkedActivities = new Dictionary<int, BarSlotState>();
     protected List<RuntimeAbility> _abilities = new List<RuntimeAbility>();
-    protected List<PassiveAbility> _passiveAbilities = new List<PassiveAbility>();
     public DefaultAttackAction DefaultAttack = new DefaultAttackAction();
     public InteractionAction Interaction = new InteractionAction();
+    public CharacterAction _currentAction;
     public Action OnAbilitiesChanged;
     protected BaseCharacter _character;
     public bool _inCombat;
-
-    public Action<InteractionAction> OnStartInteracting;
-    public Action<InteractionAction> OnCompleteInteracting;
-    public Action<InteractionAction> OnCancelInteracting;
+    
     public Action<CharacterAction> OnStartCasting;
     public Action<CharacterAction> OnCompleteCasting;
     public Action<CharacterAction> OnCancelCasting;
-    public Action<CharacterAction> OnStartInvoking;
+  //  public Action<CharacterAction> OnStartInvoking;
     public Action<CharacterAction> OnCompleteInvoking;
     public Action<CharacterAction> OnStartAction;
+    public Action<CharacterAction, string> OnFailUseAction;
     public Action OnFinishAction;
     public Action<bool> OnSwitchCombat;
     public Action OnMove;
   
-    public RuntimeAbility _castingAbility;
-    public CharacterAction _currentAction;
+  
     public Dictionary<string, List<BarSlotState>> ActionBinds;
     private float _combatTimeLeft = 0;
     #endregion
@@ -178,8 +174,13 @@ namespace Station
     public void DoFinishAction()
     {
       _currentAction = null;
-      _castingAbility = null;
       OnFinishAction?.Invoke();
+    }
+    
+    public void CancelCasting()
+    {
+      OnCancelCasting?.Invoke(_currentAction);
+      _currentAction = null;
     }
 
     public bool IsUsingAction()
@@ -229,33 +230,30 @@ namespace Station
     #endregion
     #region [[ USE ABILITY ]]
   
-    public void StopCasting()
+
+    public virtual void TryUseAction(CharacterAction action)
     {
-      _castingAbility = null;
-      
-    }
-    
-    public virtual void TryUseAbility(RuntimeAbility ability)
-    {
-      if (_castingAbility == ability)
+      if (_currentAction == action)
       {
         return;
       }
 
-      if (ability.CanUse())
+      if (action.CanUse())
       {
-        if (_castingAbility != null)
+        if (_currentAction != null)
         {
-          _castingAbility.CancelCasting();
+          _currentAction.CancelCasting();
         }
   
-        _castingAbility = ability;
-        ability.StartCasting();
+        _currentAction = action;
+        action.StartCasting();
       }
       else
       {
-        Debug.Log("failed");
-        //FAILED
+        if (OnFailUseAction != null)
+        {
+          OnFailUseAction(action, "Cant use");
+        } 
       }
     }
   
