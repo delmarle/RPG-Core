@@ -200,19 +200,19 @@ namespace Station
 
       if (InvokingActionData == null)
       {
-        _user.Action.OnCompleteInvoking?.Invoke(this);
+        _user.Action.OnFinishAction?.Invoke(this);
       }
       else
       {
         _invokingTimer = Timer.Register(InvokingActionData.Length, () =>
         {
-          if (_user.Action.OnCompleteInvoking != null)
+          if (_user.Action.OnFinishAction != null)
           {
             if (invoking != null && invoking.Option == ExitMode.CanceledByMovement)
             {
               UnlistenMovement();
             }
-            _user.Action.OnCompleteInvoking?.Invoke(this);
+            _user.Action.OnFinishAction?.Invoke(this);
           }
         });
       }

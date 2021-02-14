@@ -13,7 +13,7 @@ namespace Station
         }
 
         protected abstract void Initialize();
-        public abstract void PlayState(string stateName, bool checkIsActiveInHierarchy = false, bool forcePlay = false);
+        public abstract void PlayState(string stateName, bool checkIsActiveInHierarchy = false, bool forcePlay = true);
         public abstract float GetStateDuration(string stateName);
         public abstract void StopAllAnimations();
     }

@@ -243,7 +243,6 @@ namespace Station
           }
           else if (driver.Target == DriverTarget.Target)
           {
-            Debug.Log(target);
             driver.Effects.ApplyEffects(_user, target);
           }
         });

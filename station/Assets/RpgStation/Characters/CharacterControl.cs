@@ -59,7 +59,6 @@ namespace Station
         abilities.OnCancelCasting += OnCancelCasting;
         abilities.OnCompleteCasting += OnCompleteCasting;
         abilities.OnStartAction += OnStartInvoking;
-        abilities.OnCompleteInvoking += OnCompleteInvoking;
         abilities.OnStartAction+= OnStartAction;
         abilities.OnFinishAction+= OnFinishAction;
       }
@@ -79,7 +78,6 @@ namespace Station
         abilities.OnCancelCasting -= OnCancelCasting;
         abilities.OnCompleteCasting -= OnCompleteCasting;
         abilities.OnStartAction -= OnStartInvoking;
-        abilities.OnCompleteInvoking -= OnCompleteInvoking;
         abilities.OnStartAction -= OnStartAction;
         abilities.OnFinishAction -= OnFinishAction;
       }
@@ -137,7 +135,7 @@ namespace Station
   private void OnStartCasting(CharacterAction data)
   {
     _blockedByAction = data.ActionFxData.Option == ExitMode.BlockMovement;
-    Debug.Log($"isblockedaction: {_blockedByAction}");
+
     _currentHorizontalSpeed = 0;
   }
 
@@ -161,16 +159,8 @@ namespace Station
     {
       _blockedByAction = action.InvokingActionData.Option == ExitMode.BlockMovement;
     }
-
-    
   }
-  
-  private void OnCompleteInvoking(CharacterAction ability)
-  {
-    _blockedByAction = false;
-  }
-  
-  private void OnFinishAction()
+  private void OnFinishAction(CharacterAction ability)
   {
     _blockedByAction = false;
   }

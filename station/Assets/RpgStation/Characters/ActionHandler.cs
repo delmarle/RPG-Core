@@ -22,11 +22,10 @@ namespace Station
     public Action<CharacterAction> OnStartCasting;
     public Action<CharacterAction> OnCompleteCasting;
     public Action<CharacterAction> OnCancelCasting;
-  //  public Action<CharacterAction> OnStartInvoking;
-    public Action<CharacterAction> OnCompleteInvoking;
     public Action<CharacterAction> OnStartAction;
+    public Action<CharacterAction> OnFinishAction;
     public Action<CharacterAction, string> OnFailUseAction;
-    public Action OnFinishAction;
+
     public Action<bool> OnSwitchCombat;
     public Action OnMove;
   
@@ -173,8 +172,8 @@ namespace Station
 
     public void DoFinishAction()
     {
+      OnFinishAction?.Invoke(_currentAction);
       _currentAction = null;
-      OnFinishAction?.Invoke();
     }
     
     public void CancelCasting()

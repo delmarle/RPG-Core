@@ -404,11 +404,7 @@ namespace Station
 			Sound sound = null;
 
 			sound = _persistentSoundGroup.GetSound(soundname);
-			if (sound == null)
-			{
-		
-			}
-Debug.Log($"playing {sound.SoundConfig.name} - source: {sound.AudioSource}");
+
 			if(sound != null)
 			{
 				soundEventId = StartSoundEvent(sound, targetParent, targetPosition);

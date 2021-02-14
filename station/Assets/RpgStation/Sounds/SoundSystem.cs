@@ -53,7 +53,6 @@ namespace Station
         #region CONTOLS
         public int PlaySound(string soundId)
         {
-            Debug.Log(soundId);
             return _soundPlayer.Play(soundId);
         }
         

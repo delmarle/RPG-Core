@@ -60,7 +60,7 @@ namespace Station
       abilities.OnCancelCasting += OnCancelCasting;
       abilities.OnCompleteCasting += OnCompleteCasting;
       abilities.OnStartAction += OnStartInvoking;
-      abilities.OnCompleteInvoking += OnCompleteInvoking;
+      abilities.OnFinishAction += OnCompleteInvoking;
       abilities.OnStartAction += OnAction;
       abilities.OnSwitchCombat += OnSwitchCombat;
     }
@@ -79,7 +79,7 @@ namespace Station
       abilities.OnCompleteCasting -= OnCompleteCasting;
       
       abilities.OnStartAction -= OnStartInvoking;
-      abilities.OnCompleteInvoking -= OnCompleteInvoking;
+      abilities.OnFinishAction -= OnCompleteInvoking;
       abilities.OnSwitchCombat -= OnSwitchCombat;
       _baseCharacter.OnDie -= OnDie;
       _baseCharacter.OnRevived -= OnRevived;

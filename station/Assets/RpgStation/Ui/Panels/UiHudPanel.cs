@@ -6,6 +6,7 @@ namespace Station
 {
     public class UiHudPanel : UiPanel
     {
+        [SerializeField] private ActionCastBarWidget _castBar;
         [SerializeField] private LayoutGroup _playerRoot = null;
         [SerializeField] private UiCharacterPortraitWidget _portraitPrefab = null;
         [SerializeField] private UiCharacterTargetWidget _targetWidget = null;
@@ -67,7 +68,8 @@ namespace Station
 
         private void OnLeaderChanged(BaseCharacter FollowedCharacter)
         {
-            _targetWidget.Setup(FollowedCharacter);
+            _targetWidget?.Setup(FollowedCharacter);
+            _castBar?.FollowCharacter(FollowedCharacter);
         }
     }
 
