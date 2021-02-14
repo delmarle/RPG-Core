@@ -40,13 +40,9 @@ namespace Station
 
       GameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderChanged);
       _interactionConfigsDb = RpgStation.GetDb<InteractionConfigsDb>();
-      foreach (var conf in _interactionConfigsDb.Db)
-      {
-        if (GetType() == conf.Value.InteractibleType.Type)
-        {
-          Config = conf.Value;
-        }
-      }
+     
+
+      Config = LoadInteractionConfig();
       
       if (Config.ShowHintMode == ShowHintType.WhileInRange)
       {
@@ -59,6 +55,23 @@ namespace Station
       HideVisual();
     }
 
+    protected virtual InteractionConfig LoadInteractionConfig()
+    {
+      foreach (var conf in _interactionConfigsDb.Db)
+      {
+        if (GetType() == conf.Value.InteractibleType.Type)
+        {
+          return conf.Value;
+        }
+      }
+
+      return null;
+    }
+
+    public virtual ActionFxData GetActionData()
+    {
+      return Config.actionFxData;
+    }
     private void OnLeaderChanged(BaseCharacter newPlayer)
     {
       if (_currentUser)

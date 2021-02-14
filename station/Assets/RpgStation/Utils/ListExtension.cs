@@ -100,6 +100,26 @@ namespace Station
       var idx = foundItems.Any() ? foundItems.FirstOrDefault() : -1;
       return idx;
     }
+
+    public static T GetLast<T>(this IList<T> list)
+    {
+      if (list == null || list.Any() == false)
+      {
+        return default;
+      }
+      
+      return list.LastOrDefault();
+    }
+    
+    public static T GetFirst<T>(this IList<T> list)
+    {
+      if (list == null || list.Any() == false)
+      {
+        return default;
+      }
+      
+      return list.FirstOrDefault();
+    }
   }
 }
 

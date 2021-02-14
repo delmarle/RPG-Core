@@ -33,8 +33,7 @@ MonoBehaviour:
       TryInteractMode: 4
       InteractionRange: 3
       HoverMode: 0
-      InteractionTime: 0
-      CastingData:
+      actionFxData:
         HasData: 0
         Option: 0
         Length: 1
@@ -58,10 +57,9 @@ MonoBehaviour:
       TryInteractMode: 1
       InteractionRange: 2
       HoverMode: 0
-      InteractionTime: 0
-      CastingData:
-        HasData: 1
-        Option: 2
+      actionFxData:
+        HasData: 0
+        Option: 0
         Length: 1
         AnimationId: 0
         StartSound: {fileID: 0}
@@ -83,12 +81,11 @@ MonoBehaviour:
       TryInteractMode: 1
       InteractionRange: 3
       HoverMode: 0
-      InteractionTime: 0
-      CastingData:
-        HasData: 1
+      actionFxData:
+        HasData: 0
         Option: 0
-        Length: 2
-        AnimationId: 1
+        Length: 1
+        AnimationId: 0
         StartSound: {fileID: 0}
         Effect:
           EffectPrefab: {fileID: 0}
@@ -108,11 +105,10 @@ MonoBehaviour:
       TryInteractMode: 1
       InteractionRange: 3.24
       HoverMode: 0
-      InteractionTime: 0
-      CastingData:
-        HasData: 1
+      actionFxData:
+        HasData: 0
         Option: 0
-        Length: 0.5
+        Length: 1
         AnimationId: 0
         StartSound: {fileID: 0}
         Effect:

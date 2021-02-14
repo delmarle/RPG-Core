@@ -10,9 +10,8 @@ namespace Station
         private static int _selectedNodeEntry;
         private static Vector2 _nodeListPropertyScrollPos;
         private static Vector2 _nodeScrollPos;
-        private static bool displayStartSound;
-        private static bool displayStopSound;
-        private static bool displayCollectSound = false;
+        private static bool _isFoldoutOpen;
+        private static bool _isSoundFoldoutOpen;
 
         public static void DrawResourceNodeEditor()
         {
@@ -138,21 +137,7 @@ namespace Station
             EditorStatic.DrawSectionTitle("Node base data", 0);
             nodeModel.CycleLength = EditorGUILayout.FloatField("Time between each cycle: ", nodeModel.CycleLength);
             EditorStatic.DrawThinLine(5);
-            displayStartSound = EditorStatic.SoundFoldout("Start sound: ", ref nodeModel.StartSound, displayStartSound, 28, Color.cyan);
-            if (displayStartSound)
-            {
-                EditorStatic.DrawSoundWidget(ref  nodeModel.StartSound, RESOURCE_NODE_CATEGORY);
-            }
-            displayCollectSound = EditorStatic.SoundFoldout("Collect sound: ", ref nodeModel.CollectSound, displayCollectSound, 28, Color.cyan);
-            if (displayCollectSound)
-            {
-                EditorStatic.DrawSoundWidget(ref  nodeModel.CollectSound, RESOURCE_NODE_CATEGORY);
-            }
-            displayStopSound = EditorStatic.SoundFoldout("Stop sound: ", ref nodeModel.StopSound, displayStopSound, 28, Color.cyan);
-            if (displayStopSound)
-            {
-                EditorStatic.DrawSoundWidget(ref  nodeModel.StopSound, RESOURCE_NODE_CATEGORY);
-            }
+            nodeModel.FxData = EditorStatic.DrawActionEffect("Collect Action", ref _isFoldoutOpen, ref _isSoundFoldoutOpen, ref nodeModel.FxData);
         }
     }
 }

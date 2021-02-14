@@ -550,7 +550,7 @@ public enum StatusEffectType
     public InteractType TryInteractMode;
     public float InteractionRange = 2;
     public HoverMode HoverMode;
-    public float InteractionTime;
+
     public ActionFxData actionFxData = new ActionFxData();
     public CancelInteractionMode CancelInteractionMode;
     public float CancelInteractionDistance = 2.5f;
@@ -962,10 +962,8 @@ public enum StatusEffectType
     public List<LootModel> Loots = new List<LootModel>();
     //mode
     public float CycleLength = 1;
-    public SoundConfig StartSound;
-    public SoundConfig CollectSound;
-    public SoundConfig StopSound;
-    
+    public ActionFxData FxData;
+
   }
 
   [Serializable]
@@ -976,6 +974,7 @@ public enum StatusEffectType
     public int QuantityMax = 1;
     public float Chance = 100;
   }
+  
   
   [Serializable]
   public class ChestNodeModel: IStationIcon

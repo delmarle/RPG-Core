@@ -33,9 +33,14 @@ MonoBehaviour:
         QuantityMax: 1
         Chance: 100
       CycleLength: 1
-      StartSound: {fileID: 0}
-      CollectSound: {fileID: 0}
-      StopSound: {fileID: 0}
+      FxData:
+        HasData: 1
+        Option: 1
+        Length: 3
+        AnimationId: 1
+        StartSound: {fileID: 0}
+        Effect:
+          EffectPrefab: {fileID: 0}
     - Name:
         Key: Blue stone vein
       Description:
@@ -47,9 +52,14 @@ MonoBehaviour:
         QuantityMax: 1
         Chance: 100
       CycleLength: 1
-      StartSound: {fileID: 0}
-      CollectSound: {fileID: 0}
-      StopSound: {fileID: 0}
+      FxData:
+        HasData: 1
+        Option: 1
+        Length: 3
+        AnimationId: 0
+        StartSound: {fileID: 0}
+        Effect:
+          EffectPrefab: {fileID: 0}
     - Name:
         Key: Branch
       Description:
@@ -77,6 +87,11 @@ MonoBehaviour:
         QuantityMax: 1
         Chance: 37
       CycleLength: 1
-      StartSound: {fileID: 0}
-      CollectSound: {fileID: 0}
-      StopSound: {fileID: 0}
+      FxData:
+        HasData: 1
+        Option: 1
+        Length: 3
+        AnimationId: 0
+        StartSound: {fileID: 0}
+        Effect:
+          EffectPrefab: {fileID: 0}

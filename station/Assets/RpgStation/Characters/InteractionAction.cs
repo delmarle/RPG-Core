@@ -24,7 +24,7 @@ namespace Station
                 return 0;
             }
 
-            return _interactible.Config.InteractionTime;
+            return _interactible.GetActionData().Length;
         }
 
         public override bool CanUse()
@@ -47,18 +47,8 @@ namespace Station
             _interactible.Interact(_user);
         }
 
-        public override ActionFxData ActionFxData
-        {
-            get
-            {
-                if (_interactible == null)
-                {
-                    return null;
-                }
+        public override ActionFxData ActionFxData => _interactible == null ? null : _interactible.GetActionData();
 
-                return _interactible.Config.actionFxData;
-            }
-        }
         #endregion
         
      
