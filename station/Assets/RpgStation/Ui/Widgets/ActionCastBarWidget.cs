@@ -16,7 +16,7 @@ namespace Station
         }
         private const string START_CASTING_STATE = "start_casting";
         private const string CANCEL_CASTING_STATE = "cancel_casting";
-        private const string FINISH_CASTING_STATE = "finish_casting";
+        private const string DO_NOTHING = "finish_casting";
 
         private const string START_ACTION_STATE = "start_action";
         private const string FINISH_ACTION_STATE = "finish_action";
@@ -85,7 +85,7 @@ namespace Station
         {
             _castingAction = null;
             _currentAction = action;
-            _animation.PlayState(FINISH_CASTING_STATE);
+            _animation.PlayState(DO_NOTHING);
             _state = ActionState.Action;
         }
         
@@ -93,8 +93,17 @@ namespace Station
         {
             _castingAction = null;
             _currentAction = action;
-            _animation.PlayState(START_ACTION_STATE);
-            _state = ActionState.Action;
+            if (action.InvokingActionData == null)
+            {
+                _animation.PlayState(DO_NOTHING);
+                _state = ActionState.None;
+            }
+            else
+            {
+                _animation.PlayState(START_ACTION_STATE);
+                _state = ActionState.Action;
+                
+            }
             _actionTime = action.CalculateActionLength();
         }
 
@@ -102,8 +111,16 @@ namespace Station
         {
             _castingAction = null;
             _currentAction = null;
-            _animation.PlayState(FINISH_ACTION_STATE);
             _state = ActionState.None;
+            
+            if (action?.InvokingActionData == null)
+            {
+                _animation.PlayState(DO_NOTHING);
+            }
+            else
+            {
+                _animation.PlayState(FINISH_ACTION_STATE);
+            }
         }
         #endregion
 

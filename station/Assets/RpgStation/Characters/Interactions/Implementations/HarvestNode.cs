@@ -32,17 +32,29 @@ name += $" | {_model.Name.GetValue()}";
         var entry = _resourceStack.GetLast();
         _resourceStack.RemoveAt(_resourceStack.Count -1);
         Debug.Log($"harvesting {entry[0].ItemId} count = {entry.Count}");
+        CollectOnce(entry, user);
         if (_resourceStack.Any() == false)
         {
           //destroy
-          Destroy(gameObject);
+          DeSpawn();
         }
       }
       else
       {
         //destroy
-        Destroy(gameObject);
+        DeSpawn();
       }
+    }
+
+    private void CollectOnce(List<ItemStack> listStack, BaseCharacter receiver)
+    {
+      var playerInventorySystem = RpgStation.GetSystem<PlayerInventorySystem>();
+      var playerContainer = playerInventorySystem.GetContainer(receiver.GetCharacterId());
+      foreach (var stack in listStack)
+      {
+        playerContainer.AddItem(stack);
+      }
+  
     }
 
     private void GenerateResourceStack()
@@ -65,6 +77,11 @@ name += $" | {_model.Name.GetValue()}";
         }
         _resourceStack.Add(listStack);
       }
+    }
+
+    private void DeSpawn()
+    {
+      Destroy(gameObject);
     }
 
     public override ActionFxData GetActionData()
