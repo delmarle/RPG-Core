@@ -17,8 +17,8 @@ MonoBehaviour:
     - ea153205-5dca-4c53-8a87-24a07e8251ee
     - b92e2e15-0784-4981-916b-3a920c8fd004
     m_values:
-    - Name: feed_widget
+    - Identifier: {fileID: 11400000, guid: 6a2eab985e59344fabe81a4a819c261a, type: 2}
       Elements: []
-    - Name: confirmation_popup
+    - Identifier: {fileID: 11400000, guid: 3c42e041f99b644069e15d10226cb72d, type: 2}
       Elements:
       - {fileID: 8524901454652808687, guid: a66828ddc021e4649b1053ddf81b32b8, type: 3}

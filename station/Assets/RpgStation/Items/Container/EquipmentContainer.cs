@@ -58,7 +58,7 @@ namespace Station
             return true;
         }
 
-        public override bool CanAddItem(string itemName)
+        public override bool CanAddItem(ItemStack stack)
         {
             return true;
         }

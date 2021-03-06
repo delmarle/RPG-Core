@@ -43,6 +43,10 @@ MonoBehaviour:
           EffectPrefab: {fileID: 0}
       CancelInteractionMode: 0
       CancelInteractionDistance: 3
+      FailNotificationChannels:
+      - {fileID: 11400000, guid: 3c42e041f99b644069e15d10226cb72d, type: 2}
+      ResultNotificationChannels:
+      - {fileID: 11400000, guid: 3c42e041f99b644069e15d10226cb72d, type: 2}
     - Layer: 8
       InteractibleType:
         _classRef: Station.HarvestNode, Assembly-CSharp
@@ -67,6 +71,10 @@ MonoBehaviour:
           EffectPrefab: {fileID: 0}
       CancelInteractionMode: 1
       CancelInteractionDistance: 3
+      FailNotificationChannels:
+      - {fileID: 11400000, guid: 3c42e041f99b644069e15d10226cb72d, type: 2}
+      ResultNotificationChannels:
+      - {fileID: 11400000, guid: 6a2eab985e59344fabe81a4a819c261a, type: 2}
     - Layer: 8
       InteractibleType:
         _classRef: Station.Portal, Assembly-CSharp
@@ -91,6 +99,9 @@ MonoBehaviour:
           EffectPrefab: {fileID: 0}
       CancelInteractionMode: 0
       CancelInteractionDistance: 3
+      FailNotificationChannels:
+      - {fileID: 11400000, guid: 3c42e041f99b644069e15d10226cb72d, type: 2}
+      ResultNotificationChannels: []
     - Layer: 8
       InteractibleType:
         _classRef: Station.ChestNode, Assembly-CSharp
@@ -115,3 +126,7 @@ MonoBehaviour:
           EffectPrefab: {fileID: 0}
       CancelInteractionMode: 2
       CancelInteractionDistance: 3
+      FailNotificationChannels:
+      - {fileID: 11400000, guid: 3c42e041f99b644069e15d10226cb72d, type: 2}
+      ResultNotificationChannels:
+      - {fileID: 11400000, guid: 6a2eab985e59344fabe81a4a819c261a, type: 2}

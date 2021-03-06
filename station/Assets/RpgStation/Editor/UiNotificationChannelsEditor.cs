@@ -1,4 +1,5 @@
-﻿using RPG.Editor;
+﻿using System.Collections.Generic;
+using RPG.Editor;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,7 +8,8 @@ namespace Station
     public static class UiNotificationChannelsEditor 
     {
          private static UiNotificationChannelsDb _db;
-
+         private static bool _isEditingChannelName;
+         private static string _editedChannelName;
         private static Vector2 _propertyScrollPos;
         private static int _selectedIndex = 1;
         private static Vector2 _scrollPos;
@@ -84,18 +86,46 @@ namespace Station
         GUILayout.BeginVertical();
         {
           GUILayout.Space(5);
- 
-          
-            GUILayout.Label("Name: ",GUILayout.Width(70));
-            staticData.Name = GUILayout.TextField(staticData.Name);
-          
+          if (staticData.Identifier == null)
+          {
+              _editedChannelName = GUILayout.TextField(_editedChannelName);
+              if (EditorStatic.SizeableButton(150, 32, "Create asset", "cog")&& string.IsNullOrEmpty(_editedChannelName) == false)
+              {
+                  string name = _editedChannelName.Contains(".asset") ? _editedChannelName : _editedChannelName + ".asset";
+                  staticData.Identifier = (ScriptableNotificationChannel)ScriptableHelper.CreateScriptableObject(typeof(ScriptableNotificationChannel), EditorStatic.EDITOR_CHANNEL_ASSETS_PATH, name);
+                  _editedChannelName = string.Empty;
+              }
+          }
+          else
+          {
+              if (_isEditingChannelName)
+              {
+                  _editedChannelName = GUILayout.TextField(_editedChannelName);
+                  if (EditorStatic.SizeableButton(150, 32, "Save", ""))
+                  {
+                      staticData.Identifier.name = _editedChannelName;
+                      ScriptableHelper.RenameScriptAbleAsset( staticData.Identifier, _editedChannelName);
+                      _editedChannelName = string.Empty;
+                      _isEditingChannelName = false;
+                  }
+              }
+              else
+              {
+                  GUILayout.Label(staticData.Identifier.name, EditorStatic.SectionTitle);
+                  if (EditorStatic.SizeableButton(150, 32, "Edit", ""))
+                  {
+                      staticData.Identifier.name = _editedChannelName;
+                      _isEditingChannelName = true;
+                  }
+              }
+          }
 
         }
         GUILayout.EndVertical();
         if (EditorStatic.ButtonDelete())
         {
           if (EditorUtility.DisplayDialog("Delete data?",
-            "Do you want to delete: "+staticData.Name,"Delete","Cancel"))
+            "Do you want to delete: "+staticData.Identifier,"Delete","Cancel"))
           {
             _db.Remove(staticData);
             EditorStatic.ResetFocus();
@@ -130,8 +160,34 @@ namespace Station
       }
 
     }
-        #endregion
-    }
 
+          public static void DrawNotificationList(ref List<ScriptableNotificationChannel> list, string listName)
+          {
+              EditorGUILayout.BeginVertical("box");
+              EditorStatic.DrawSectionTitle(28, $"Notification: {listName}");
+
+              for (int i = 0; i < list.Count; i++)
+              {
+                 
+                  EditorGUILayout.BeginHorizontal();
+                  list[i] = (ScriptableNotificationChannel)EditorGUILayout.ObjectField(list[i], typeof(ScriptableNotificationChannel));
+                  if (EditorStatic.SizeableButton(32,18, "X", ""))
+                  {
+                      list.RemoveAt(i);
+                      GUIUtility.ExitGUI();
+                  }
+                  EditorGUILayout.EndHorizontal();
+              }
+
+
+              if (EditorStatic.ButtonAdd())
+              {
+                  list.Add(null);
+              }
+              EditorGUILayout.EndVertical();
+          }
+
+          #endregion
+    }
 }
 

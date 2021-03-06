@@ -30,14 +30,27 @@ name += $" | {_model.Name.GetValue()}";
       if (_resourceStack.Any())
       {
         var entry = _resourceStack.GetLast();
-        _resourceStack.RemoveAt(_resourceStack.Count -1);
-        Debug.Log($"harvesting {entry[0].ItemId} count = {entry.Count}");
-        CollectOnce(entry, user);
-        if (_resourceStack.Any() == false)
+        if (CanAddStack(entry, user))
         {
-          //destroy
-          DeSpawn();
+          _resourceStack.RemoveAt(_resourceStack.Count -1);
+          Debug.Log($"harvesting {entry[0].ItemId} count = {entry.Count}");
+          CollectOnce(entry, user);
+          if (_resourceStack.Any() == false)
+          {
+            //destroy
+            DeSpawn();
+          }
         }
+        else
+        {
+
+          if (Config.FailNotificationChannels.Any())
+          {
+            var dict = new Dictionary<string, object> {{UiConstants.TEXT_MESSAGE, $"Your inventory is too full to collect the item {GetObjectName()}"}};
+            UiNotificationSystem.ShowNotification(Config.FailNotificationChannels, dict);
+          }
+        }
+       
       }
       else
       {
@@ -46,15 +59,34 @@ name += $" | {_model.Name.GetValue()}";
       }
     }
 
+
+    private bool CanAddStack(List<ItemStack> listStack, BaseCharacter receiver)
+    {
+      var playerInventorySystem = RpgStation.GetSystem<PlayerInventorySystem>();
+      var playerContainer = playerInventorySystem.GetContainer(receiver.GetCharacterId());
+      foreach (var stack in listStack)
+      {
+        if (playerContainer.CanAddItem(stack) == false)
+        {
+          return false;
+        }
+      }
+      return true;
+    }
     private void CollectOnce(List<ItemStack> listStack, BaseCharacter receiver)
     {
       var playerInventorySystem = RpgStation.GetSystem<PlayerInventorySystem>();
       var playerContainer = playerInventorySystem.GetContainer(receiver.GetCharacterId());
       foreach (var stack in listStack)
       {
+        if (Config.ResultNotificationChannels.Any())
+        {
+          var dict = new Dictionary<string, object> {{UiConstants.ITEM_STACK, stack}};
+          UiNotificationSystem.ShowNotification(Config.ResultNotificationChannels, dict);
+        }
         playerContainer.AddItem(stack);
       }
-  
+     
     }
 
     private void GenerateResourceStack()
@@ -69,9 +101,11 @@ name += $" | {_model.Name.GetValue()}";
         {
           if (lootEntry.Chance > Random.value * 100)
           {
-            ItemStack stack = new ItemStack();
-            stack.ItemCount = Random.Range(lootEntry.QuantityMin, lootEntry.QuantityMax);
-            stack.ItemId = lootEntry.ItemId;
+            ItemStack stack = new ItemStack
+            {
+              ItemCount = Random.Range(lootEntry.QuantityMin, lootEntry.QuantityMax), 
+              ItemId = lootEntry.ItemId
+            };
             listStack.Add(stack);
           }
         }

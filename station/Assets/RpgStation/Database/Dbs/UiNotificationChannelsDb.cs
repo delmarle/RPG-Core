@@ -20,7 +20,7 @@ namespace Station
 
         public override string[] ListEntryNames()
         {
-            return _db.Select(entry => entry.Value.Name).ToArray();
+            return _db.Select(entry => entry.Value.Identifier?.name).ToArray();
         }
         
         public override string ObjectName()
@@ -28,11 +28,11 @@ namespace Station
             return "Channel";
         }
 
-        public UiChannelModel GetChannelByName(string channelName)
+        public UiChannelModel GetChannelByName(ScriptableNotificationChannel channelName)
         {
             foreach (var model in _db.Values)
             {
-                if (model.Name == channelName)
+                if (model.Identifier == channelName)
                     return model;
             }
             return null;

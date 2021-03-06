@@ -177,10 +177,9 @@ namespace Station
           case CancelInteractionMode.ByMoving:
             break;
         }
+        UiNotificationChannelsEditor.DrawNotificationList(ref current.FailNotificationChannels, "failed");
+        UiNotificationChannelsEditor.DrawNotificationList(ref current.ResultNotificationChannels, "result");
         GUILayout.EndVertical();
-
-     
-
       }
       GUILayout.EndHorizontal();
     }

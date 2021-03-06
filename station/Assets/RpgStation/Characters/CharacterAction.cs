@@ -178,8 +178,8 @@ namespace Station
     {
       _user.Action.DoFinishAction();
       var invoking = InvokingActionData;
-      if(_invokingTimer != null)_invokingTimer.Cancel();
-      if (invoking.Option == ExitMode.CanceledByMovement)
+      _invokingTimer?.Cancel();
+      if (invoking?.Option == ExitMode.CanceledByMovement)
       {
         UnlistenMovement();
       }

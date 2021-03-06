@@ -9,6 +9,7 @@
     private const string EDITOR_DB_PATH = "Assets/Content/Databases/";
     public const string EDITOR_SOUND_GROUP_PATH = "Assets/Content/SoundsGroups/";
     public const string EDITOR_FOOTSTEPS_TEMPLATES_PATH = "Assets/Content/FootStepsTemplates/";
+    public const string EDITOR_CHANNEL_ASSETS_PATH = "Assets/Content/ChannelsAssets/";
     public const string EDITOR_SOUND_GROUP_NAME = "sound_groups";
     public const string EDITOR_ADDRESSABLE_PATH = "Assets/AddressableAssetsData/AddressableAssetSettings.asset";
     

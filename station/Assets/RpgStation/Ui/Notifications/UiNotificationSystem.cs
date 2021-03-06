@@ -11,7 +11,7 @@ namespace Station
 
         private static UiNotificationSystem _instance;
         private UiNotificationChannelsDb _channelsDb;
-        private Dictionary<string, List<UiNotificationElement>> _channelMaps = new Dictionary<string, List<UiNotificationElement>>();
+        private Dictionary<ScriptableNotificationChannel, List<UiNotificationElement>> _channelMaps = new Dictionary<ScriptableNotificationChannel, List<UiNotificationElement>>();
         #endregion
        
         #region initialization & registration
@@ -20,8 +20,6 @@ namespace Station
             GameGlobalEvents.OnDataBaseLoaded.AddListener(OnDataBaseReady);
             _instance = this;
         }
-
-    
 
         protected override void OnDispose()
         {
@@ -34,7 +32,7 @@ namespace Station
             _channelsDb = RpgStation.GetDb<UiNotificationChannelsDb>();
             foreach (var dbEntry in _channelsDb.Db)
             {
-                string channel = dbEntry.Value.Name;
+                var channel = dbEntry.Value.Identifier;
                 foreach (var element in dbEntry.Value.Elements)
                 {
                     
@@ -52,7 +50,7 @@ namespace Station
             }
         }
         
-        public void RegisterElement(string channel, UiNotificationElement element)
+        public void RegisterElement(ScriptableNotificationChannel channel, UiNotificationElement element)
         {
             var channelModel = _channelsDb.GetChannelByName(channel);
             if (channelModel == null)
@@ -72,7 +70,7 @@ namespace Station
             }
         }
         
-        public void UnRegisterElement(string channel, UiNotificationElement element)
+        public void UnRegisterElement(ScriptableNotificationChannel channel, UiNotificationElement element)
         {
             if (_channelMaps.ContainsKey(channel))
             {
@@ -94,7 +92,8 @@ namespace Station
         }
 
         #endregion
-        public void _ShowNotification(string channel, Dictionary<string, object> data)
+
+        private void _ShowNotification(ScriptableNotificationChannel channel, Dictionary<string, object> data)
         {
             if (_channelMaps.ContainsKey(channel))
             {
@@ -106,9 +105,25 @@ namespace Station
             }
         }
         
-        public static void ShowNotification(string channel, Dictionary<string, object> data)
+        public static void ShowNotification(ScriptableNotificationChannel channel, Dictionary<string, object> data)
         {
+            if (_instance == null) return;
+            
            _instance._ShowNotification(channel,data);
+        }
+        
+        public static void ShowNotification(List<ScriptableNotificationChannel> channels, Dictionary<string, object> data)
+        {
+            if (_instance == null) return;
+
+            foreach (var channel in channels)
+            {
+                if (channel != null)
+                {
+                    _instance._ShowNotification(channel,data);
+                }
+            }
+            
         }
     }
     
@@ -119,7 +134,7 @@ namespace Station
         [Serializable]
         public class UiChannelModel
         {
-            public string Name;
+            public ScriptableNotificationChannel Identifier;
             public List<UiNotificationElement> Elements = new List<UiNotificationElement>();
         }
 }

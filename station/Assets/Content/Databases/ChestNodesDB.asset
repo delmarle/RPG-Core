@@ -33,6 +33,7 @@ MonoBehaviour:
       ReferencePrefab:
         m_AssetGUID: 
         m_SubObjectName: 
+        m_SubObjectType: 
       Prefab: {fileID: 927331186997692488, guid: e565a88b3b09e449c9faf66a0fabb900,
         type: 3}
       OpenSound: {fileID: 0}

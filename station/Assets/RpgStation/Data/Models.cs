@@ -554,6 +554,10 @@ public enum StatusEffectType
     public ActionFxData actionFxData = new ActionFxData();
     public CancelInteractionMode CancelInteractionMode;
     public float CancelInteractionDistance = 2.5f;
+    //NOTIFICATIONS
+    public List<ScriptableNotificationChannel> FailNotificationChannels = new List<ScriptableNotificationChannel>();
+    public List<ScriptableNotificationChannel> ResultNotificationChannels = new List<ScriptableNotificationChannel>();
+
   }
 
   [Serializable]

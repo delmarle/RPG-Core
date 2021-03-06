@@ -107,7 +107,7 @@ namespace Station
                    {
                    }
                   
-                   if (destinationContainer.CanAddItem(_item.ItemId))
+                   if (destinationContainer.CanAddItem(_item))
                    {
                      //  destinationHandler.  
                      sourceContainer.TryMoveSlot(_slotIndex, destinationContainer, destinationSlot._slotIndex);

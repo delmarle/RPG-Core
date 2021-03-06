@@ -15,18 +15,18 @@ namespace Station
         protected ItemsDb itemDb;
         
         public abstract bool ItemAllowed(int slot, BaseItemModel itemModel);
-        public abstract bool CanAddItem(string itemName);
+        public abstract bool CanAddItem(ItemStack stack);
         
         public void ClearSlot(int id)
         {
             _container.Slots[id].Reset();
-            OnContentChanged.Invoke();
+            OnContentChanged?.Invoke();
         }
         
         public void AddItemCount(int id, int count)
         {
             _container.Slots[id].ItemCount +=count;
-            OnContentChanged.Invoke();
+            OnContentChanged?.Invoke();
         }
        
         public void CopySlotToLocalSlot(int id, BaseItemContainer destinationContainer, int destinationSlotId, bool updateEvent = true)
@@ -36,7 +36,7 @@ namespace Station
             _container.Slots[id].Reset();
             if (updateEvent)
             {
-                OnContentChanged.Invoke();
+                OnContentChanged?.Invoke();
             }
         }
 
@@ -45,7 +45,7 @@ namespace Station
             var fromItem = _container.Slots[id];
             var toItem = to._container.Slots[toId];
             fromItem.Swap(toItem);
-            OnContentChanged.Invoke();
+            OnContentChanged?.Invoke();
         }
         
         protected int FindSlotWithItem(string itemName)
@@ -178,7 +178,7 @@ namespace Station
             OnContentChanged?.Invoke();
             if (to != this)
             {
-                to.OnContentChanged.Invoke();  
+                to.OnContentChanged?.Invoke();  
             }
             
         }
@@ -246,11 +246,11 @@ namespace Station
             return true;
         }
 
-        public override bool CanAddItem(string itemName)
+        public override bool CanAddItem(ItemStack stack)
         {
             for (int i = 0; i < _container.Slots.Count; i++)
             {
-                if (_container.Slots[i].ItemId == itemName || string.IsNullOrEmpty(_container.Slots[i].ItemId))
+                if (_container.Slots[i].ItemId == stack.ItemId || string.IsNullOrEmpty(_container.Slots[i].ItemId))
                     return true;
             }
             

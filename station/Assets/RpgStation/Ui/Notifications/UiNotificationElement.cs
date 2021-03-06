@@ -6,7 +6,7 @@ namespace Station
     //some are already placed
     public class UiNotificationElement : UiElementBase
     {
-        public List<string> Channels = new List<string>();
+        public List<ScriptableNotificationChannel> Channels = new List<ScriptableNotificationChannel>();
         private UiNotificationSystem _notificationSystem;
         
         protected override void Awake()

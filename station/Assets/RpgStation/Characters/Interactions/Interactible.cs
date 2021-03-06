@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,6 +10,8 @@ namespace Station
   public class Interactible : MonoBehaviour
   {
     #region [[FIELDS]]
+
+   
     [SerializeField] private TextMeshProUGUI _interactionName = null;
     [SerializeField] private TextMeshProUGUI _description = null;
     [SerializeField] private Image _icon = null;
@@ -118,8 +121,11 @@ namespace Station
         var distanceFromCharacter = Vector3.Distance(transform.position, character.GetFeet());
         if (distanceFromCharacter > Config.InteractionRange)
         {
-          var dict = new Dictionary<string, object> {{UiConstants.TEXT_MESSAGE, $"Too far to interact with {GetObjectName()}"}};
-          UiNotificationSystem.ShowNotification(UiConstants.FEED_WIDGET, dict);
+          if (Config.FailNotificationChannels.Any())
+          {
+            var dict = new Dictionary<string, object> {{UiConstants.TEXT_MESSAGE, $"Too far to interact with {GetObjectName()}"}};
+            UiNotificationSystem.ShowNotification(Config.FailNotificationChannels, dict);
+          }
           return false;
         }
 
