@@ -266,8 +266,15 @@ namespace Station
         {
             for (int i = 0; i < _container.Slots.Count; i++)
             {
-                if (_container.Slots[i].ItemId == stack.ItemId || string.IsNullOrEmpty(_container.Slots[i].ItemId))
+                if (_container.Slots[i].ItemId == stack.ItemId)
+                {
                     return true;
+                }
+
+                if (string.IsNullOrEmpty(_container.Slots[i].ItemId))
+                {
+                    return true;
+                }
             }
             
             return false;
@@ -289,6 +296,12 @@ namespace Station
         {
             ItemId = item.ItemId;
             ItemCount = item.ItemCount;
+        }
+        
+        public ItemStack(string itemId, int count)
+        {
+            ItemId = itemId;
+            ItemCount = count;
         }
         public void Set(ItemStack item)
         {
@@ -330,7 +343,9 @@ namespace Station
 
         public ContainerState(int size, List<ItemStack> defaultItems)
         {
-            if (defaultItems.Count > size)
+            var itemDb = RpgStation.GetDb<ItemsDb>();
+            var freeSlotRequired = CalculateFreeSlotRequired(defaultItems);
+            if (freeSlotRequired > size)
             {
                 Debug.LogWarning("inventory dont have enough slots");
             }
@@ -341,14 +356,72 @@ namespace Station
                 Slots.Add(i,new ItemStack());
             }
 
-            for (int i = 0; i < defaultItems.Count; i++)
+            var generatedList = GenerateSlotsFromData(defaultItems);
+            for (int i = 0; i < generatedList.Count; i++)
             {
                 if (i <= Slots.Count)
                 {
-                    var itemToAdd = defaultItems[i];
+                    var itemToAdd = generatedList[i];
                     Slots[i] = new ItemStack(itemToAdd);
                 }
             }
+        }
+
+        private int CalculateFreeSlotRequired(List<ItemStack> defaultItems)
+        {
+            var itemDb = RpgStation.GetDb<ItemsDb>();
+            int count = 0;
+
+            foreach (var itemStack in defaultItems)
+            {
+               var itemData = itemDb.GetEntry(itemStack.ItemId);
+               if (itemData.Stackable)
+               {
+                   count += 1;
+               }
+               else
+               {
+                   count += itemStack.ItemCount;
+               }
+            }
+            return count;
+        }
+
+        private List<ItemStack> GenerateSlotsFromData(List<ItemStack> defaultItems)
+        {
+            var itemDb = RpgStation.GetDb<ItemsDb>();
+            var list = new List<ItemStack>();
+            foreach (var itemStack in defaultItems)
+            {
+                int amountToAdd = itemStack.ItemCount;
+                var itemData = itemDb.GetEntry(itemStack.ItemId);
+                if (itemData.Stackable)
+                {
+                    if (amountToAdd <= itemData.MaxStackSize)
+                    {
+                        list.Add(itemStack);
+                    }
+                    else
+                    {
+                        while (amountToAdd>0)
+                        {
+                            int amount = amountToAdd > itemData.MaxStackSize? itemData.MaxStackSize : amountToAdd;
+                            var createdStack =  new ItemStack(itemStack.ItemId, amount);
+                            list.Add(createdStack);
+                            amountToAdd -= amount;
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < amountToAdd; i++)
+                    {
+                        var createdStack =  new ItemStack(itemStack.ItemId, 1);
+                        list.Add(createdStack);
+                    }
+                }
+            }
+            return list;
         }
 
         public ContainerState(Dictionary<int, ItemStack> save)

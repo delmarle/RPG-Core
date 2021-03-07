@@ -68,6 +68,8 @@ namespace Station
             //where this equipement should go
             return 0;
         }
+        
+        
     }
 }
 
