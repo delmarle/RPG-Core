@@ -33,7 +33,7 @@ namespace Station
 
         protected override void OnExecute()
         {
-            
+            if (_path == null) return;
             if (_path.status != NavMeshPathStatus.PathComplete)
             {
             }

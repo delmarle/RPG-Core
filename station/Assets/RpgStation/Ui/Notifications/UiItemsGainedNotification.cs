@@ -115,6 +115,7 @@ namespace Station
                     foreach (var entry in entryToClear)
                     {
                         _spawnedMap.Remove(entry);
+                        entry.Widget.gameObject.SetActive(false);
                     }
                 }
 

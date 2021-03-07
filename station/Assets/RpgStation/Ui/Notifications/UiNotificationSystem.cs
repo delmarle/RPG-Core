@@ -87,7 +87,7 @@ namespace Station
             }
             else
             {
-                Debug.LogError($"the channel assigned to {element.name} called {channel} does not exist");
+                Debug.LogError($"the channel assigned to {element?.name} called {channel} does not exist");
             }
         }
 

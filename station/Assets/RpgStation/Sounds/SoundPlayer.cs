@@ -341,6 +341,7 @@ namespace Station
 		
         private void UpdateSoundEvents()
         {
+	        if (_curPlayingTraceableSounds == null) return;
             for (var i = 0; i < _curPlayingTraceableSounds.Count; i++)
             {
                 _curPlayingTraceableSounds[i].Update();

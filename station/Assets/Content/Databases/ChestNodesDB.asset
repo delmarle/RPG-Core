@@ -30,6 +30,14 @@ MonoBehaviour:
         QuantityMin: 1
         QuantityMax: 1
         Chance: 100
+      - ItemId: 68b9fb57-fa69-4d6c-90c0-8ca9b425cc39
+        QuantityMin: 1
+        QuantityMax: 1
+        Chance: 36
+      - ItemId: df6979bf-fb58-4dc1-bc35-a0e6eb5eec73
+        QuantityMin: 1
+        QuantityMax: 1
+        Chance: 75
       ReferencePrefab:
         m_AssetGUID: 
         m_SubObjectName: 

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46ab6562cf4834ab288230cf04b22f3a, type: 3}
-  m_Name: item_DefaultItemModel_e1514b53-b121-4ee4-85d2-2825a3342412
+  m_Name: item_DefaultItemModel_35b650cc-b1c7-4630-9c37-9731e2e64ac0
   m_EditorClassIdentifier: 
   Name:
-    Key: Iron Ore
+    Key: Old book
   Description:
-    Key: description
-  Icon: {fileID: 21300000, guid: 80095a4d869244b4187d4ff292c2cb08, type: 3}
+    Key: nothing special
+  Icon: {fileID: 21300000, guid: 9372d83453c4c4e699850a06cdaed80f, type: 3}
   RarityKey: 03c5a6c1-49e4-4af4-8662-d10e1286a77e
   CategoryKey: 14ed2e7d-18fb-40d4-86a0-1ab9689dd8fa
-  MaxStackSize: 999
+  MaxStackSize: 1

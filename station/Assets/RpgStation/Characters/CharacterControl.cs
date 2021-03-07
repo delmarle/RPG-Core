@@ -24,6 +24,7 @@ namespace Station
     {
       var movementType = _input.MovementType();
       if (_baseCharacter.Stats == null) return 0;
+      if (_baseCharacter.Stats.Statistics.ContainsKey(Statistic.MOVEMENT_SPEED_ID) == false) return 0;
       var movementStat = _baseCharacter.Stats.Statistics[Statistic.MOVEMENT_SPEED_ID].MaximumValue;
       switch (movementType)
       {

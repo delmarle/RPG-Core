@@ -19,14 +19,19 @@ namespace Station
       _model = _nodeDb.GetEntry(NodeId);
       SetUiName(_model.Name.GetValue());
       SetUiIcon( _model.Icon);
-name += $" | {_model.Name.GetValue()}";
+      name += $" | {_model.Name.GetValue()}";
+      OnSpawn();
+    }
+
+    private void OnSpawn()
+    {
+      GenerateResourceStack();
     }
 
     public override void Interact(BaseCharacter user)
     {
       user.Action.Interaction.TryInteract(this);
-      GenerateResourceStack();
-      
+
       if (_resourceStack.Any())
       {
         var entry = _resourceStack.GetLast();
@@ -93,8 +98,8 @@ name += $" | {_model.Name.GetValue()}";
     {
       _resourceStack.Clear();
       var possibleLoot = _model.Loots;
-      var lootsAmount = _model.CycleLength;
-      for (int i = 0; i < lootsAmount; i++)
+      var collectionCount = _model.CycleLength;
+      for (int i = 0; i < collectionCount; i++)
       {
         var listStack = new List<ItemStack>();
         foreach (var lootEntry in possibleLoot)

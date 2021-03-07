@@ -92,6 +92,7 @@ namespace Station
 
         private void OnTriggerSave()
         {
+            if (_containers == null) return;
             var tempSave = _containers.ToDictionary(container => container.Key, container => container.Value.GetState());
             _playerItemsSave.Value.Containers = tempSave;
             _playerItemsSave.Save();

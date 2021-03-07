@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46ab6562cf4834ab288230cf04b22f3a, type: 3}
-  m_Name: item_DefaultItemModel_e1514b53-b121-4ee4-85d2-2825a3342412
+  m_Name: item_DefaultItemModel_bcbba859-d9b8-4c3b-95ed-8bba5f6dc00a
   m_EditorClassIdentifier: 
   Name:
-    Key: Iron Ore
+    Key: Kunzite
   Description:
-    Key: description
-  Icon: {fileID: 21300000, guid: 80095a4d869244b4187d4ff292c2cb08, type: 3}
-  RarityKey: 03c5a6c1-49e4-4af4-8662-d10e1286a77e
-  CategoryKey: 14ed2e7d-18fb-40d4-86a0-1ab9689dd8fa
+    Key: Rare
+  Icon: {fileID: 21300000, guid: 22078a48302de49aa92e7927706a9893, type: 3}
+  RarityKey: 4d7cf063-3cb6-4736-8812-6ab0154f9c11
+  CategoryKey: c0889d13-428d-4efa-93f1-ef1d385f4c98
   MaxStackSize: 999

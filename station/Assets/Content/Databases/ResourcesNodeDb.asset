@@ -32,7 +32,11 @@ MonoBehaviour:
         QuantityMin: 1
         QuantityMax: 1
         Chance: 100
-      CycleLength: 1
+      - ItemId: 740ff366-7d79-45d2-a8ed-1681179c6295
+        QuantityMin: 1
+        QuantityMax: 1
+        Chance: 50
+      CycleLength: 3
       FxData:
         HasData: 1
         Option: 1
@@ -42,16 +46,20 @@ MonoBehaviour:
         Effect:
           EffectPrefab: {fileID: 0}
     - Name:
-        Key: Blue stone vein
+        Key: Stack of vegetables
       Description:
         Key: contain some resources
-      Icon: {fileID: 21300000, guid: aae2b0cbe756043e588ebe59f476f54b, type: 3}
+      Icon: {fileID: 21300000, guid: 5b6f368a6aafd48b18f097c98b34c0e7, type: 3}
       Loots:
-      - ItemId: 1f2ed9d5-57bf-46ec-a6cc-9adfaca3f45c
+      - ItemId: fbebea25-8c68-471b-8332-f7c4977301e2
         QuantityMin: 1
         QuantityMax: 1
         Chance: 100
-      CycleLength: 1
+      - ItemId: bd1fb3f1-30ec-4f06-ad3d-3782d393a1ea
+        QuantityMin: 1
+        QuantityMax: 1
+        Chance: 47.8
+      CycleLength: 4
       FxData:
         HasData: 1
         Option: 1

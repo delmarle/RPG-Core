@@ -135,7 +135,7 @@ namespace Station
             }
             
             EditorStatic.DrawSectionTitle("Node base data", 0);
-            nodeModel.CycleLength = EditorGUILayout.FloatField("Time between each cycle: ", nodeModel.CycleLength);
+            nodeModel.CycleLength = EditorGUILayout.FloatField("Collection count: ", nodeModel.CycleLength);
             EditorStatic.DrawThinLine(5);
             nodeModel.FxData = EditorStatic.DrawActionEffect("Collect Action", ref _isFoldoutOpen, ref _isSoundFoldoutOpen, ref nodeModel.FxData);
         }
