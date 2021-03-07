@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Station
 {
@@ -47,12 +48,18 @@ namespace Station
                 return false;
             }
 
+           
             if (_slotMaping.ContainsKey(slot) == false)
             {
                 //this slot is missing
                 return false;
             }
-      
+            var slotType = _slotMaping[slot].EquipmentTypeMatching;
+            if (slotType.Contains(equipment.EquipmentType) == false)
+            {
+                Debug.Log($"cant equip here");
+                return false;
+            }
 
             //maybe
             return true;

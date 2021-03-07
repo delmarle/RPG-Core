@@ -165,6 +165,7 @@ namespace Station
                 {
                     //TODO
                     //can slot contain this item 
+                    
                     CopySlotToLocalSlot(fromId, to, toId);
                 }
                 else
