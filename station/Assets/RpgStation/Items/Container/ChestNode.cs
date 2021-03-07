@@ -76,7 +76,9 @@ namespace Station
             }
         
             CachePopup(_cachedContainerPopup);
-            _cachedContainerPopup.Setup(new ContainerReference(SaveId, RpgStation.GetSystem<AreaContainerSystem>()), user);
+            var reference = new ContainerReference(SaveId, RpgStation.GetSystem<AreaContainerSystem>());
+            
+            _cachedContainerPopup.Setup(reference, user, Config.FailNotificationChannels, Config.ResultNotificationChannels);
             _cachedContainerPopup.Show();
             
         }

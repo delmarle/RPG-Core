@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -6,11 +7,17 @@ using UnityEngine.UI;
 
 namespace Station
 {
-    public class UiItemWidget : MonoBehaviour
+    public class UiItemWidget : PooledItem
     {
 
         #region FIELDS
 
+      
+        [Header("animation:")]
+        [SerializeField] private Animation _animation;
+        [SerializeField] private AnimationClip _showClip;
+        [SerializeField] private AnimationClip _hideClip;
+        [Header("fields:")]
         [SerializeField] private RectTransform _root;
         [SerializeField] private TextMeshProUGUI _itemName = null;
         [SerializeField] private TextMeshProUGUI _itemDescription = null;
@@ -18,15 +25,16 @@ namespace Station
         [SerializeField] private TextMeshProUGUI _itemRarity = null;
         [SerializeField] private TextMeshProUGUI _itemCategory = null;
         [SerializeField] private TextMeshProUGUI _itemCount = null;
+
         #endregion
 
-        public void Setup(ItemStack stack)
+        public void Setup(string itemId, int itemCount)
         {
             if (_itemCount)
             {
-                _itemCount.text = stack.ItemCount.ToString();
+                _itemCount.text = itemCount.ToString();
             }
-            Setup(stack.ItemId);
+            Setup(itemId);
         }
         
         public void Setup(string itemId)
@@ -65,11 +73,23 @@ namespace Station
                 var categoryEntry = itemsCategoriesDb.GetEntry(itemData.CategoryKey);
                 _itemCategory.text = categoryEntry.Name.GetValue();
             }
+
+            DoShow();
+        }
+
+        public void DoShow()
+        {
             gameObject.SetActive(true);
-            _root.SetAsFirstSibling();
+            _root.SetAsLastSibling();
+            _animation.clip = _showClip;
+            _animation.Play();
         }
         
-        
+        public void DoHide()
+        {
+            _animation.clip = _hideClip;
+            _animation.Play();
+        }
     }
   
 }

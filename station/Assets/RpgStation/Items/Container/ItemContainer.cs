@@ -183,7 +183,7 @@ namespace Station
             
         }
 
-        public void TryMoveSlotToContainer(int sourceSlotId, BaseItemContainer source)
+        public MoveItemToContainResult TryMoveSlotToContainer(int sourceSlotId, BaseItemContainer source)
         {
             if (source._container.Slots.ContainsKey(sourceSlotId))
             {
@@ -210,6 +210,7 @@ namespace Station
                         else
                         {
                             //container is full
+                            return MoveItemToContainResult.ContainerIsFull;
                         }
                     }
                 }
@@ -218,19 +219,34 @@ namespace Station
                     //There is no item in this slot
                 }
             }
+            source.OnContentChanged?.Invoke();
+            OnContentChanged?.Invoke();
+            return MoveItemToContainResult.Complete;
         }
 
-        public void TryAddAllItemsFromContainer(BaseItemContainer source)
+        public MoveItemToContainResult TryAddAllItemsFromContainer(BaseItemContainer source)
         {
             foreach (var sourceSlot in source.GetState().Slots)
             {
-                TryMoveSlotToContainer(sourceSlot.Key, source);
+                var result = TryMoveSlotToContainer(sourceSlot.Key, source);
+                if (result == MoveItemToContainResult.ContainerIsFull)
+                {
+                    source.OnContentChanged?.Invoke();
+                    OnContentChanged?.Invoke();
+                    return MoveItemToContainResult.ContainerIsFull;
+                }
             }
             source.OnContentChanged?.Invoke();
             OnContentChanged?.Invoke();
+            return MoveItemToContainResult.Complete;
         }
     }
 
+    public enum MoveItemToContainResult
+    {
+        Complete,
+        ContainerIsFull
+    }
     public class ItemContainer: BaseItemContainer
     {
         public ItemContainer(string id, ContainerState state, ItemsDb itemsDb)
@@ -284,6 +300,12 @@ namespace Station
         {
             ItemId = string.Empty;
             ItemCount = 0;
+        }
+
+        public bool HasItem()
+        {
+            return string.IsNullOrEmpty(ItemId) == false;
+            
         }
 
         public void Swap(ItemStack other)

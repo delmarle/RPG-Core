@@ -81,7 +81,7 @@ name += $" | {_model.Name.GetValue()}";
       {
         if (Config.ResultNotificationChannels.Any())
         {
-          var dict = new Dictionary<string, object> {{UiConstants.ITEM_STACK, stack}};
+          var dict = new Dictionary<string, object> {{UiConstants.ITEM_KEY, stack.ItemId}, {UiConstants.ITEM_AMOUNT, stack.ItemCount}};
           UiNotificationSystem.ShowNotification(Config.ResultNotificationChannels, dict);
         }
         playerContainer.AddItem(stack);

@@ -16,7 +16,7 @@
         public const string ORIGIN_POSITION = "origin_position";
         public const string DESTINATION_POSITION = "destination_position";
         public const string ITEM_KEY = "item_key";
-        public const string ITEM_STACK = "item_stack";
+        public const string ITEM_AMOUNT = "item_amount";
     }
 }
 
