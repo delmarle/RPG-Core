@@ -47,6 +47,11 @@ namespace Station
       return null;
     }
 
+    public virtual string GetName()
+    {
+      return null;
+    }
+
     public virtual void Setup(BaseCharacter owner)
     {
         _user = owner;

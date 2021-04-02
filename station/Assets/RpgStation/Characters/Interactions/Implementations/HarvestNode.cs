@@ -38,7 +38,6 @@ namespace Station
         if (CanAddStack(entry, user))
         {
           _resourceStack.RemoveAt(_resourceStack.Count -1);
-          Debug.Log($"harvesting {entry[0].ItemId} count = {entry.Count}");
           CollectOnce(entry, user);
           if (_resourceStack.Any() == false)
           {
@@ -123,10 +122,25 @@ namespace Station
       Destroy(gameObject);
     }
 
+    #region OVERRIDE
+
     public override ActionFxData GetActionData()
     {
       return _model.FxData;
     }
+
+    public override string GetInteractionName()
+    {
+      return _model.Name.GetValue();
+    }
+
+    public override Sprite GetInteractionIcon()
+    {
+      return _model.Icon;
+    }
+
+    #endregion
+   
   }
 }
 

@@ -250,6 +250,7 @@ namespace Station
     }
     public class ItemContainer: BaseItemContainer
     {
+        
         public ItemContainer(string id, ContainerState state, ItemsDb itemsDb)
         {
             _id = id;

@@ -137,6 +137,12 @@ namespace Station
             public ScriptableNotificationChannel Identifier;
             public List<UiNotificationElement> Elements = new List<UiNotificationElement>();
         }
+        
+        [Serializable]
+        public class NotificationConfigsModel
+        {
+            public List<ScriptableNotificationChannel> UseItemFail = new List<ScriptableNotificationChannel>();
+        }
 }
 
 

@@ -91,22 +91,22 @@ MonoBehaviour:
     m_Address: FootstepsDb
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 11400000, guid: 61855eb46213242b7a624b793200ee95, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: 61855eb46213242b7a624b793200ee95, type: 2}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 7102ac8ea59114415b1c7973cbf0c0f9
     m_Address: ChestNodesDb
     m_ReadOnly: 0
     m_SerializedLabels:
     - Databases
-    m_MainAsset: {fileID: 11400000, guid: 7102ac8ea59114415b1c7973cbf0c0f9, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: 7102ac8ea59114415b1c7973cbf0c0f9, type: 2}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 766895e4e75b04de68e0778c9f83de90
     m_Address: FloatingPopupDb
     m_ReadOnly: 0
     m_SerializedLabels:
     - Databases
-    m_MainAsset: {fileID: 11400000, guid: 766895e4e75b04de68e0778c9f83de90, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: 766895e4e75b04de68e0778c9f83de90, type: 2}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 79198aef42dbf4af7acbb2f62931c2ee
     m_Address: PlayerClassDb
     m_ReadOnly: 0
@@ -198,6 +198,12 @@ MonoBehaviour:
     - Databases
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 634f21f1528604e59b02470bd8c2a8d6
+    m_Address: NotificationConfigsDb
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 11400000, guid: 634f21f1528604e59b02470bd8c2a8d6, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 634f21f1528604e59b02470bd8c2a8d6, type: 2}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 74ddb1c5c6fe849afaba132576175fc1, type: 2}
   m_SchemaSet:

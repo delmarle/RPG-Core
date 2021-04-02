@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -10,8 +11,6 @@ namespace Station
   public class Interactible : MonoBehaviour
   {
     #region [[FIELDS]]
-
-   
     [SerializeField] private TextMeshProUGUI _interactionName = null;
     [SerializeField] private TextMeshProUGUI _description = null;
     [SerializeField] private Image _icon = null;
@@ -19,7 +18,7 @@ namespace Station
     public UnityEvent OnStopInteracting;
     [SerializeField] protected BaseAnimation _hint = null;
     [HideInInspector] public InteractionConfig Config;
-    protected DbSystem DbSystem;
+
     protected InteractionConfigsDb _interactionConfigsDb;
     protected UiPopup _cachedPopup;
     protected BaseCharacter _currentUser;
@@ -75,6 +74,12 @@ namespace Station
     {
       return Config.actionFxData;
     }
+    
+    public virtual string GetInteractionName()
+    {return String.Empty;}
+    
+    public virtual Sprite GetInteractionIcon()
+    {return null;}
     private void OnLeaderChanged(BaseCharacter newPlayer)
     {
       if (_currentUser)

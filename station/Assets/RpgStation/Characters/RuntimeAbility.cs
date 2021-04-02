@@ -43,6 +43,11 @@ namespace Station
       SetCoolDown(coolDown);
     }
 
+    public override string GetName()
+    {
+      return _data.Name.GetValue();
+    }
+
     public override Sprite GetIcon()
     {
       return _data.Icon;

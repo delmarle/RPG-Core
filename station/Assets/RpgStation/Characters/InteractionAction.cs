@@ -1,4 +1,6 @@
 ﻿
+using UnityEngine;
+
 namespace Station
 {
     public class InteractionAction : CharacterAction
@@ -16,7 +18,17 @@ namespace Station
       }
 
         #region OVERRIDES
-        
+
+        public override string GetName()
+        {
+            return _interactible.GetInteractionName();
+        }
+
+        public override Sprite GetIcon()
+        {
+            return _interactible.GetInteractionIcon();
+        }
+
         public override float CalculateActionLength()
         {
             if (_interactible == null)

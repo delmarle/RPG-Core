@@ -22,7 +22,7 @@ namespace Station
         private const string FINISH_ACTION_STATE = "finish_action";
 
         private float _sliderTime = 0;
-
+        [SerializeField] private UiWidget _displayWidget;
         [SerializeField] private BaseAnimation _animation;
         [SerializeField] private Slider _bar;
         private BaseCharacter _character;
@@ -71,6 +71,7 @@ namespace Station
             _castingTime = 0;
             _castingAction.CalculateActionLength();
             _state = ActionState.Casting;
+            SetWidgetFromActionData(action);
         }
         
         private void OnCancelCasting(CharacterAction action)
@@ -104,6 +105,7 @@ namespace Station
                 _state = ActionState.Action;
                 
             }
+            SetWidgetFromActionData(action);
             _actionTime = action.CalculateActionLength();
         }
 
@@ -124,6 +126,14 @@ namespace Station
         }
         #endregion
 
+        private void SetWidgetFromActionData(CharacterAction action)
+        {
+            if (_displayWidget)
+            {
+                var widgetData = new WidgetData {VisualValue = action.GetName(), Icon = action.GetIcon(), IconColor = Color.white};
+                _displayWidget.Setup(widgetData);
+            }
+        }
         private void Update()
         {
             if (_state == ActionState.None) return;
