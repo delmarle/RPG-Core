@@ -56,13 +56,12 @@ namespace Station
         public static void DrawSettingsView()
         {
             EditorStatic.DrawSectionTitle(32, "FootstepSettings: ");
-            _db.DefaultFootstepConfig = (SourcePoolConfig)EditorGUILayout.ObjectField("defaultFootstep config: ", _db.DefaultFootstepConfig, typeof(SourcePoolConfig));
+            _db.DefaultFootstepConfig = (SourcePoolConfig)EditorGUILayout.ObjectField("defaultFootstep config: ", _db.DefaultFootstepConfig, typeof(SourcePoolConfig), false);
 
             if (_db.DefaultFootstepConfig == null)
             {
                 if (EditorStatic.SizeableButton(100, 32, "Create default", "plus"))
                 {
-                    string path = EditorStatic.EDITOR_SOUND_GROUP_PATH;
                     _db.DefaultFootstepConfig =
                         ScriptableHelper.CreateScriptableObject<SourcePoolConfig>("Assets/Content/Audio sources/", "default_footstep_pool.asset");
                 }

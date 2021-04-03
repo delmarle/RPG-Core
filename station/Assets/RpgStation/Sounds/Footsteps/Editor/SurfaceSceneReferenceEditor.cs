@@ -127,7 +127,7 @@ namespace Station
                 {
                     var texture = entry.Textures[i];
                     EditorGUILayout.BeginHorizontal();
-                    entry.Textures[i] = (Texture) EditorGUILayout.ObjectField(texture, typeof(Texture));
+                    entry.Textures[i] = (Texture) EditorGUILayout.ObjectField(texture, typeof(Texture), true);
                     if (EditorStatic.Button(true, 18, "DELETE", ""))
                     {
                         entry.Textures.RemoveAt(i);

@@ -170,7 +170,7 @@ namespace Station
               {
                  
                   EditorGUILayout.BeginHorizontal();
-                  list[i] = (ScriptableNotificationChannel)EditorGUILayout.ObjectField(list[i], typeof(ScriptableNotificationChannel));
+                  list[i] = (ScriptableNotificationChannel)EditorGUILayout.ObjectField(list[i], typeof(ScriptableNotificationChannel), false);
                   if (EditorStatic.SizeableButton(32,18, "X", ""))
                   {
                       list.RemoveAt(i);

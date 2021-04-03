@@ -45,12 +45,6 @@ namespace Station
             }
             
         }
-        #if UNITY_EDITOR
-        public override void DrawSpecificEditor()
-        {
-            EditorGUILayout.HelpBox("consume", MessageType.Info);
-        }
-        #endif
     }
 }
 

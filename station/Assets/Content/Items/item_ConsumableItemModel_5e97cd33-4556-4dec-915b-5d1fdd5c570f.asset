@@ -20,3 +20,15 @@ MonoBehaviour:
   RarityKey: 87232d47-d561-4845-ae75-1f2c40a9f3b9
   CategoryKey: c0889d13-428d-4efa-93f1-ef1d385f4c98
   MaxStackSize: 1
+  ForceEffectSelf: 1
+  Effects:
+    EffectName: 
+    Damages: []
+    Heals:
+    - EffectName: healing potion effect
+      EffectIcon: {fileID: 21300000, guid: 6973476152359408492fbfe2baa5e1d0, type: 3}
+      MinValue: 12
+      MaxValue: 45
+    Modifiers: []
+    Teleports: []
+    Resurects: []

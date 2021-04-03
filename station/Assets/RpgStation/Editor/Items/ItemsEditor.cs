@@ -145,6 +145,8 @@ namespace Station
    
             EditorStatic.DrawSectionTitle("Specific data", 0);
             itemModel.DrawSpecificEditor();
+            ItemModelEditorView.Register();
+            ItemModelEditorView.DrawSpecificView(itemModel);
         }
 
         private static void DrawAddButton()

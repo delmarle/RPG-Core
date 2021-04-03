@@ -18,6 +18,15 @@ public static class ReflectionUtils
         return foundTypes; 
     }
 
+    public static List<Type> FindAllClassFromInterface(Type target)
+    {
+
+        var types = AppDomain.CurrentDomain.GetAssemblies()
+            .SelectMany(s => s.GetTypes())
+            .Where(p => target.IsAssignableFrom(p))
+            .Where(t => !t.Equals(target));
+        return types.ToList();
+    }
     public static List<Type> FindAllDbTypes()
     {
         var lookupSingle = typeof(SingleFieldDb<>);

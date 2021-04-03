@@ -283,7 +283,7 @@ namespace Station
                 EditorGUILayout.EndHorizontal();
                 EditorGUILayout.BeginHorizontal();
                 sound.Looping = EditorGUILayout.Toggle("Looping : ", sound.Looping);
-                sound.SourceConfig = (SourcePoolConfig)EditorGUILayout.ObjectField("Pool config:", sound.SourceConfig, typeof(SourcePoolConfig));
+                sound.SourceConfig = (SourcePoolConfig)EditorGUILayout.ObjectField("Pool config:", sound.SourceConfig, typeof(SourcePoolConfig), false);
 
 
                 EditorGUILayout.EndHorizontal();
