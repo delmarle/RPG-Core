@@ -39,15 +39,15 @@ namespace Station
 
         private void CacheDatabases()
         {
-            _itemsDb = RpgStation.GetDb<ItemsDb>();
-            _itemsSettingsDb = RpgStation.GetDb<ItemsSettingsDb>();
+            _itemsDb = GameInstance.GetDb<ItemsDb>();
+            _itemsSettingsDb = GameInstance.GetDb<ItemsSettingsDb>();
         }
 
         private void OnEnterGame()
         {
             CacheDatabases();
             var itemsSettingsModel = _itemsSettingsDb.Get();
-            var saveSystem = RpgStation.GetSystem<SavingSystem>();
+            var saveSystem = GameInstance.GetSystem<SavingSystem>();
             _playerItemsSave = saveSystem.GetModule<PlayerInventorySave>();
             _playersSave = saveSystem.GetModule<PlayersSave>();
             _containers = new Dictionary<string, BaseItemContainer>();
@@ -75,10 +75,7 @@ namespace Station
 
         private void LoadPlayersEquipment()
         {
-            var teamSystem = RpgStation.GetSystem<TeamSystem>();
             var save = _playerItemsSave.Value ?? new ContainersListSave();
-
-
             foreach (var playerPair in _playersSave.Value)
             {
 

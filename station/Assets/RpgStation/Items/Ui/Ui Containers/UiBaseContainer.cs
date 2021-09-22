@@ -24,7 +24,16 @@ namespace Station
 
         public void RegisterEvents()
         {
-            _containerReference.GetContainer().OnContentChanged += UpdateUiSlots;
+            var container = _containerReference.GetContainer();
+            if (container == null)
+            {
+                Debug.LogWarning($"could not find the container");
+            }
+            else
+            {
+                container.OnContentChanged += UpdateUiSlots; 
+            }
+       
         }
 
         public void UnregisterEvents()
@@ -40,7 +49,7 @@ namespace Station
         {
             UnregisterEvents();
             _containerReference = reference;
-            _itemDb = RpgStation.GetDb<ItemsDb>();
+            _itemDb = GameInstance.GetDb<ItemsDb>();
             if (Initialized == false)
             {
                 CacheComponents();

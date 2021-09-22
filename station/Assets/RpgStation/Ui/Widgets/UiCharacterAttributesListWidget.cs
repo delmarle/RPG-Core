@@ -21,7 +21,7 @@ namespace Station
         {
             if (_attributesDb == null)
             {
-                _attributesDb = RpgStation.GetDb<AttributesDb>();
+                _attributesDb = GameInstance.GetDb<AttributesDb>();
             }
             
             if (_attributesList == null)

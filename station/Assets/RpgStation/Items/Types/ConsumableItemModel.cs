@@ -34,7 +34,7 @@ namespace Station
             }
             else
             {
-                var configDb = RpgStation.GetDb<NotificationConfigsDb>();
+                var configDb = GameInstance.GetDb<NotificationConfigsDb>();
                 var channels = configDb.Get().UseItemFail;
                 if (channels.Any())
                 {

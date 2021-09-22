@@ -52,7 +52,7 @@ MonoBehaviour:
         CoolDown: 0
       OwnedSkills:
       - Id: 8a0da681-d925-4114-8f41-748dd408e356
-        Rename: 0
+        Rank: 0
       OwnedPassiveAbilities: []
       CanUpgradeClass: 0
       UpgradeClasses: []
@@ -99,7 +99,7 @@ MonoBehaviour:
         CoolDown: 0
       OwnedSkills:
       - Id: bcbccab9-39af-4518-aa7b-20055d482bdb
-        Rename: 0
+        Rank: 0
       OwnedPassiveAbilities: []
       CanUpgradeClass: 0
       UpgradeClasses: []

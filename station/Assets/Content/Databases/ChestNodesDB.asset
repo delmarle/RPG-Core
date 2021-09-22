@@ -15,6 +15,7 @@ MonoBehaviour:
   _db:
     m_keys:
     - 58a13d1a-80ff-4140-b101-60860e5a2d54
+    - 3137b113-1860-4693-9c66-573fb7c3657e
     m_values:
     - Name:
         Key: Wooden chest
@@ -42,6 +43,38 @@ MonoBehaviour:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
+        m_EditorAssetChanged: 0
+      Prefab: {fileID: 927331186997692488, guid: e565a88b3b09e449c9faf66a0fabb900,
+        type: 3}
+      OpenSound: {fileID: 0}
+      CloseSound: {fileID: 0}
+    - Name:
+        Key: Wooden reinforced chest
+      Description:
+        Key: contain some items
+      Icon: {fileID: 21300000, guid: 9ed5c5bd26de947b091a21174e33f816, type: 3}
+      Loots:
+      - ItemId: 1f2ed9d5-57bf-46ec-a6cc-9adfaca3f45c
+        QuantityMin: 1
+        QuantityMax: 1
+        Chance: 100
+      - ItemId: e33b349d-2be3-4f42-a589-350b753612ec
+        QuantityMin: 1
+        QuantityMax: 5
+        Chance: 100
+      - ItemId: 740ff366-7d79-45d2-a8ed-1681179c6295
+        QuantityMin: 1
+        QuantityMax: 1
+        Chance: 36
+      - ItemId: 398a62d7-43e8-4b7a-9a16-f7606b353e7c
+        QuantityMin: 1
+        QuantityMax: 1
+        Chance: 75
+      ReferencePrefab:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_EditorAssetChanged: 0
       Prefab: {fileID: 927331186997692488, guid: e565a88b3b09e449c9faf66a0fabb900,
         type: 3}
       OpenSound: {fileID: 0}

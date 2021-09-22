@@ -32,8 +32,8 @@ namespace Station
 
         void CacheComponents()
         {
-            _inventorySystem = RpgStation.GetSystem<PlayerInventorySystem>();
-            _teamSystem = RpgStation.GetSystem<TeamSystem>();
+            _inventorySystem = GameInstance.GetSystem<PlayerInventorySystem>();
+            _teamSystem = GameInstance.GetSystem<TeamSystem>();
       //      _containerUiList = new GenericUiList<string, UiContainerWidget>(null, null);//new GenericUiList<UiContainerWidget>(null, null);
             
             //prewarm container widget

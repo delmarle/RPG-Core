@@ -68,6 +68,9 @@ namespace Station
         //CLASS BONUS
         value += _data.GetAttributeBonus(key);
         
+        //EQUIPMENT BONUS
+        value += _character.GetEquipment.GetAttributeBonus(key);
+        
         _cachedBaseAttributes[key] = value;
       }
     }
@@ -96,6 +99,9 @@ namespace Station
      
         //CLASS BONUS
         value += _data.GetStatsBonus(key);
+        
+        //EQUIPMENT BONUS
+        value += _character.GetEquipment.GetStatsBonus(key);
      
         _cachedBaseStatistics[key] = value;
       }
@@ -107,10 +113,34 @@ namespace Station
       _cachedBaseVitals.Clear();
       _cachedBaseVitalsRegen.Clear();
       var raceData = _raceDb.GetEntry(_character.GetRaceID());
-    
-      if (_data.UseHealth) { BuildVital(_data.HealthVital.Id, raceData.GetVitalsBonus(_data.HealthVital.Id),_data.HealthVital.Value); }
-      if (_data.UseSecondaryHealth) { BuildVital(_data.SecondaryHealthVital.Id, raceData.GetVitalsBonus(_data.SecondaryHealthVital.Id),_data.SecondaryHealthVital.Value); }
-      foreach (var vital in _data.EnergyVitals) { BuildVital(vital.Id, raceData.GetVitalsBonus(vital.Id),vital.Value); }
+
+      if (_data.UseHealth)
+      {
+        string healthId = _data.HealthVital.Id;
+        var bonusHealth = _data.HealthVital.Value;
+          
+          ////EQUIPMENT BONUS
+          bonusHealth += _character.GetEquipment.GetVitalBonus(healthId);
+        BuildVital(healthId, raceData.GetVitalsBonus(healthId),bonusHealth);
+      }
+
+      if (_data.UseSecondaryHealth)
+      {
+        string secondHealthId = _data.SecondaryHealthVital.Id;
+        var secondBonusHealth = _data.SecondaryHealthVital.Value;
+        ////EQUIPMENT BONUS
+        secondBonusHealth += _character.GetEquipment.GetVitalBonus(secondHealthId);
+        BuildVital(secondHealthId, raceData.GetVitalsBonus(secondHealthId),secondBonusHealth);
+      }
+
+      foreach (var vital in _data.EnergyVitals)
+      {
+        var vitalBonus = vital.Value;
+        ////EQUIPMENT BONUS
+        vitalBonus += _character.GetEquipment.GetVitalBonus(vital.Id);
+
+        BuildVital(vital.Id, raceData.GetVitalsBonus(vital.Id),vitalBonus);
+      }
     }
 
     public override float GetHitChance(float bonus)

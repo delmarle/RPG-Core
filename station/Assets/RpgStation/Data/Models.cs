@@ -339,7 +339,7 @@ namespace Station
         {
           return ApplyEffectResult.MissingTarget;
         }
-        SceneSystem sceneSystem = RpgStation.GetSystem<SceneSystem>();
+        SceneSystem sceneSystem = GameInstance.GetSystem<SceneSystem>();
         if (sceneSystem.IsTraveling)
         {
           return ApplyEffectResult.Blocked;
@@ -369,8 +369,8 @@ namespace Station
         GameGlobalEvents.OnTriggerSceneSave?.Invoke();
 
         
-        SceneSystem sceneSystem = RpgStation.GetSystem<SceneSystem>();
-        var sceneDb = RpgStation.GetDb<ScenesDb>();
+        SceneSystem sceneSystem = GameInstance.GetSystem<SceneSystem>();
+        var sceneDb = GameInstance.GetDb<ScenesDb>();
         if (sceneSystem.IsTraveling)
         {
           return ApplyEffectResult.Blocked;

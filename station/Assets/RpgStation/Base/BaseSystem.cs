@@ -4,9 +4,9 @@ using UnityEngine;
 public abstract class BaseSystem : MonoBehaviour
 {
    private bool _isInitialized = false;
-   protected RpgStation _station;
+   protected GameInstance _station;
 
-   public void Init(RpgStation station)
+   public void Init(GameInstance station)
    {
       _station = station;
       if (!_isInitialized)

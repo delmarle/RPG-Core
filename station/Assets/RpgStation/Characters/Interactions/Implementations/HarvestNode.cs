@@ -15,7 +15,7 @@ namespace Station
     
     protected override void Setup()
     {
-      var _nodeDb = RpgStation.GetDb<ResourcesNodeDb>();
+      var _nodeDb = GameInstance.GetDb<ResourcesNodeDb>();
       _model = _nodeDb.GetEntry(NodeId);
       SetUiName(_model.Name.GetValue());
       SetUiIcon( _model.Icon);
@@ -66,7 +66,7 @@ namespace Station
 
     private bool CanAddStack(List<ItemStack> listStack, BaseCharacter receiver)
     {
-      var playerInventorySystem = RpgStation.GetSystem<PlayerInventorySystem>();
+      var playerInventorySystem = GameInstance.GetSystem<PlayerInventorySystem>();
       var playerContainer = playerInventorySystem.GetContainer(receiver.GetCharacterId());
       foreach (var stack in listStack)
       {
@@ -79,7 +79,7 @@ namespace Station
     }
     private void CollectOnce(List<ItemStack> listStack, BaseCharacter receiver)
     {
-      var playerInventorySystem = RpgStation.GetSystem<PlayerInventorySystem>();
+      var playerInventorySystem = GameInstance.GetSystem<PlayerInventorySystem>();
       var playerContainer = playerInventorySystem.GetContainer(receiver.GetCharacterId());
       foreach (var stack in listStack)
       {

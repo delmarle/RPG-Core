@@ -13,9 +13,9 @@ namespace Station
    
         public static void CacheAllDb()
         {
-            _playerClassDb = RpgStation.GetDb<PlayerClassDb>();
-            _raceDb = RpgStation.GetDb<RaceDb>();
-            _factionDb = RpgStation.GetDb<FactionDb>();
+            _playerClassDb = GameInstance.GetDb<PlayerClassDb>();
+            _raceDb = GameInstance.GetDb<RaceDb>();
+            _factionDb = GameInstance.GetDb<FactionDb>();
         }
         public string GetLocalizedClass()
         {

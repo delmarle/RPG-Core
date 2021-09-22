@@ -27,8 +27,8 @@ namespace Station
         
         private void OnDbReady()
         {
-            _soundsDb = RpgStation.GetDb<SoundsDb>();
-            _footStepsDb = RpgStation.GetDb<FootstepsDb>();
+            _soundsDb = GameInstance.GetDb<SoundsDb>();
+            _footStepsDb = GameInstance.GetDb<FootstepsDb>();
             _soundPlayer = gameObject.GetComponentInChildren<SoundPlayer>();
             _soundPlayer.Initialize();
             HashSet<SoundConfig> sounds = new HashSet<SoundConfig>();

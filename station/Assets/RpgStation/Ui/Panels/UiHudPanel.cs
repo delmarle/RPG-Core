@@ -29,7 +29,7 @@ namespace Station
         {
             base.Awake();
           
-            _teamSystem = RpgStation.GetSystem<TeamSystem>();
+            _teamSystem = GameInstance.GetSystem<TeamSystem>();
             
             Subscribe();
          

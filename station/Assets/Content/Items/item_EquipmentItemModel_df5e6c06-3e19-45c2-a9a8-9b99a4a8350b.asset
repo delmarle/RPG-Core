@@ -21,3 +21,6 @@ MonoBehaviour:
   CategoryKey: 077c6187-a4f2-4f99-a116-562e0bc7da43
   MaxStackSize: 1
   EquipmentType: be07d218-a62b-4c6c-b918-f4bf9b291100
+  VitalBonuses: []
+  AttributesBonuses: []
+  StatisticsBonuses: []

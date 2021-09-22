@@ -54,9 +54,9 @@ namespace Station
     public void Setup(BaseCharacter source, IdIntegerValue health, IdIntegerValue secondaryHealth, IdIntegerValue[] energies)
     {
  
-      _attributesDb = RpgStation.GetDb<AttributesDb>();
-      _statisticDb = RpgStation.GetDb<StatisticDb>();
-      _vitalsDb = RpgStation.GetDb<VitalsDb>();
+      _attributesDb = GameInstance.GetDb<AttributesDb>();
+      _statisticDb = GameInstance.GetDb<StatisticDb>();
+      _vitalsDb = GameInstance.GetDb<VitalsDb>();
       _character = source;
       BuildAttributes(source);
       BuildStatistics(source);

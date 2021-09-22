@@ -16,9 +16,9 @@ namespace Station
 
         public override void Build(BaseCharacter character, BaseCharacterData baseData, object[] data)
         {
-            var classDb = RpgStation.GetDb<PlayerClassDb>();
-            var ActiveAbilityDb = RpgStation.GetDb<ActiveAbilitiesDb>();
-            var PassiveAbilityDb = RpgStation.GetDb<PassiveAbilitiesDb>();
+            var classDb = GameInstance.GetDb<PlayerClassDb>();
+            var ActiveAbilityDb = GameInstance.GetDb<ActiveAbilitiesDb>();
+            var PassiveAbilityDb = GameInstance.GetDb<PassiveAbilitiesDb>();
             PlayerClassModel classData = (PlayerClassModel)data[0];
             PlayersData save = (PlayersData)data[1];
             var classModel = classDb.GetEntry(save.ClassId);
@@ -33,7 +33,7 @@ namespace Station
                 }
 
                 calculatorInstance.PreSetup(classData);
-                
+                character.gameObject.AddComponent<EquipmentHandler>();
                 character.Init(baseData.CharacterId,save.RaceId, save.FactionId, save.GenderId, calculatorInstance, save.Name, null, null);
                 character.SetupAction(classModel.Attack);     
                 character.AddMeta(StationConst.CLASS_ID, save.ClassId);

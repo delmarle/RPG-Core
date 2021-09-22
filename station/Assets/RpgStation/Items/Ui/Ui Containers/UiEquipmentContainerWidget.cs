@@ -18,7 +18,7 @@ namespace Station
 
         protected override void CacheComponents()
         {
-            var equipSlotDb = RpgStation.GetDb<EquipmentSlotsDb>();
+            var equipSlotDb = GameInstance.GetDb<EquipmentSlotsDb>();
             var slots = _slotMap.Values.ToArray();
             
             for (int i = 0; i < slots.Length; i++)

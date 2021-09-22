@@ -23,7 +23,7 @@ namespace Station
 
         protected override void OnInit()
         {
-            _savingSystem = RpgStation.GetSystem<SavingSystem>();
+            _savingSystem = GameInstance.GetSystem<SavingSystem>();
             GameGlobalEvents.OnSceneStartLoad.AddListener(OnStartLoadScene);
             GameGlobalEvents.OnSceneLoadObjects.AddListener(InitializeTeam);
         }
@@ -49,8 +49,8 @@ namespace Station
 
         private IEnumerator InitializeTeamSequence()
         {
-            _settingsDb = RpgStation.GetDb<GameSettingsDb>();
-            var playerClassDb = RpgStation.GetDb<PlayerClassDb>();
+            _settingsDb = GameInstance.GetDb<GameSettingsDb>();
+            var playerClassDb = GameInstance.GetDb<PlayerClassDb>();
             var mechanics = _settingsDb.Get().Mechanics;
             var playersModule = _savingSystem.GetModule<PlayersSave>();
 

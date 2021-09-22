@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using RPG.Editor;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 namespace Station
@@ -83,6 +84,11 @@ namespace Station
                 EditorGUILayout.LabelField(textLine);
             }
             EditorGUILayout.EndVertical();
+            if (GUI.changed)
+            {
+                EditorUtility.SetDirty(component);
+                EditorSceneManager.MarkSceneDirty(component.gameObject.scene);
+            }
         }
 
     }

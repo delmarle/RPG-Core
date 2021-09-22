@@ -28,7 +28,8 @@ namespace Station
 
         public void OnLoadContainer()
         {
-            _chestNodeDb = RpgStation.GetDb<ChestNodesDb>();
+            _chestNodeDb = GameInstance.GetDb<ChestNodesDb>();
+            _itemsSettingsDb = GameInstance.GetDb<ItemsSettingsDb>();
             if (string.IsNullOrEmpty(ChestNodeModelId))
             {
                 return;
@@ -42,11 +43,11 @@ namespace Station
         private void Initialize(string saveId)
         {
             SaveId = saveId;
-            _containerSystem = RpgStation.GetSystem<AreaContainerSystem>();
+            _containerSystem = GameInstance.GetSystem<AreaContainerSystem>();
 ;
-            _itemDb = RpgStation.GetDb<ItemsDb>();
-            _chestNodeDb = RpgStation.GetDb<ChestNodesDb>();
-            _itemsSettingsDb = RpgStation.GetDb<ItemsSettingsDb>();
+            _itemDb = GameInstance.GetDb<ItemsDb>();
+            _chestNodeDb = GameInstance.GetDb<ChestNodesDb>();
+            _itemsSettingsDb = GameInstance.GetDb<ItemsSettingsDb>();
 
             SetUiName(GetObjectName());
         }
@@ -76,7 +77,7 @@ namespace Station
             }
         
             CachePopup(_cachedContainerPopup);
-            var reference = new ContainerReference(SaveId, RpgStation.GetSystem<AreaContainerSystem>());
+            var reference = new ContainerReference(SaveId, GameInstance.GetSystem<AreaContainerSystem>());
             
             _cachedContainerPopup.Setup(reference, user, Config.FailNotificationChannels, Config.ResultNotificationChannels);
             _cachedContainerPopup.Show();

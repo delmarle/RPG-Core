@@ -9,7 +9,7 @@ namespace Station
         {
             if (_db == null)
             {
-                _db = RpgStation.GetDb<FactionDb>();
+                _db = GameInstance.GetDb<FactionDb>();
             }
             
             var sourceFaction = _db.GetEntry(sourceID);
