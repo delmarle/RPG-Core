@@ -36,7 +36,7 @@ namespace Station
             }
 
             var nodeModel = _chestNodeDb.GetEntry(ChestNodeModelId);
-            var defaultItems = LootUtils.GenerateLootStack(nodeModel.Loots);
+            var defaultItems = LootUtils.GenerateLootStack(nodeModel.LootTable);
             InitializeWithDefaultItems(Guid.NewGuid().ToString(), defaultItems, true);
         }
 

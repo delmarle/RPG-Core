@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5cd4513065f4f9382a9e8e7b9e6dd5, type: 3}
+  m_Name: LootTableDb
+  m_EditorClassIdentifier: 
+  _db:
+    m_keys:
+    - 329328c8-1294-4a00-932f-e314cc4a72ec
+    m_values:
+    - Description: chest_tier_0
+      Loots:
+      - ItemId: 1f2ed9d5-57bf-46ec-a6cc-9adfaca3f45c
+        QuantityMin: 1
+        QuantityMax: 4
+        Chance: 100
+      - ItemId: 1f2ed9d5-57bf-46ec-a6cc-9adfaca3f45c
+        QuantityMin: 1
+        QuantityMax: 2
+        Chance: 100
+      - ItemId: 740ff366-7d79-45d2-a8ed-1681179c6295
+        QuantityMin: 1
+        QuantityMax: 1
+        Chance: 56
