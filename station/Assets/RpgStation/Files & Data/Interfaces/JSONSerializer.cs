@@ -13,7 +13,8 @@ namespace Station
 			{
 				serializedData = JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings
 				{
-					TypeNameHandling = TypeNameHandling.Auto
+					TypeNameHandling = TypeNameHandling.Auto,
+					ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 				});
 			}
 			catch (Exception e)
@@ -32,7 +33,8 @@ namespace Station
 			{
 				unserializedData = JsonConvert.DeserializeObject<T>(serializedData, new JsonSerializerSettings
 				{
-					TypeNameHandling = TypeNameHandling.Auto
+					TypeNameHandling = TypeNameHandling.Auto,
+					ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 				});
 			}
 			catch (Exception e)
