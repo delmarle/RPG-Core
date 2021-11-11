@@ -116,7 +116,15 @@ namespace Station
             return 0;
         }
         
-        
+        public Dictionary<int, string> GetItems()
+        {
+            var dict = new Dictionary<int, string>();
+            for (int i = 0; i < _container.Slots.Count; i++)
+            {
+                dict.Add(i, _container.Slots[i].ItemId);
+            }
+            return dict;
+        }
         public void TryMoveSlot(int fromId, BaseItemContainer to, int toId)
         {
             var itemToMove = _container.Slots[fromId];
@@ -345,7 +353,7 @@ namespace Station
 
         public ContainerState(int size, List<ItemStack> defaultItems)
         {
-            var itemDb = RpgStation.GetDb<ItemsDb>();
+            var itemDb = GameInstance.GetDb<ItemsDb>();
             var freeSlotRequired = CalculateFreeSlotRequired(defaultItems);
             if (freeSlotRequired > size)
             {
@@ -371,7 +379,7 @@ namespace Station
 
         private int CalculateFreeSlotRequired(List<ItemStack> defaultItems)
         {
-            var itemDb = RpgStation.GetDb<ItemsDb>();
+            var itemDb = GameInstance.GetDb<ItemsDb>();
             int count = 0;
 
             foreach (var itemStack in defaultItems)
@@ -391,7 +399,7 @@ namespace Station
 
         private List<ItemStack> GenerateSlotsFromData(List<ItemStack> defaultItems)
         {
-            var itemDb = RpgStation.GetDb<ItemsDb>();
+            var itemDb = GameInstance.GetDb<ItemsDb>();
             var list = new List<ItemStack>();
             foreach (var itemStack in defaultItems)
             {

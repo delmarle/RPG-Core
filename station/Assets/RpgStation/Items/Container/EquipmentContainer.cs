@@ -18,8 +18,8 @@ namespace Station
             _id = id;
             itemDb = itemsDb;
             _container = state ?? new ContainerState {Slots = new Dictionary<int, ItemStack>()};
-            _equipmentSlotsDb = RpgStation.GetDb<EquipmentSlotsDb>();
-            _equipmentTypesDb = RpgStation.GetDb<EquipmentTypesDb>();
+            _equipmentSlotsDb = GameInstance.GetDb<EquipmentSlotsDb>();
+            _equipmentTypesDb = GameInstance.GetDb<EquipmentTypesDb>();
 
    
             for (int i = 0; i < _equipmentSlotsDb.Db.Count; i++)
@@ -75,8 +75,8 @@ namespace Station
             //where this equipement should go
             return 0;
         }
-        
-        
+
+  
     }
 }
 

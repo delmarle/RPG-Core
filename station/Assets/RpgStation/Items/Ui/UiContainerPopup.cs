@@ -37,7 +37,7 @@ namespace Station
 
         public void OnClickCollectSlots()
         {
-            var playerInventorySystem = RpgStation.GetSystem<PlayerInventorySystem>();
+            var playerInventorySystem = GameInstance.GetSystem<PlayerInventorySystem>();
             var playerContainer = playerInventorySystem.GetContainer(_user.GetCharacterId());
             var sourceContainer = _containerReference.GetContainer();
             foreach (var slot in sourceContainer.GetState().Slots)

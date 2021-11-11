@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using RPG.Editor;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 namespace Station
@@ -75,14 +76,13 @@ namespace Station
             EditorStatic.DrawThinLine();
             EditorGUILayout.BeginVertical("box");
             var chestData = _chestDb.GetEntry(component.ChestNodeModelId);
-            foreach (var loot in chestData.Loots)
-            {
-               
-                var item = _itemDb.GetEntry(loot.ItemId);
-                string textLine =  $"  | {loot.QuantityMin} - {loot.QuantityMax} | {item.Name.GetValue()} at {loot.Chance}%";
-                EditorGUILayout.LabelField(textLine);
-            }
+            chestData.LootTable = LootTableEditor.DrawExternalTableReference(chestData.LootTable);
             EditorGUILayout.EndVertical();
+            if (GUI.changed)
+            {
+                EditorUtility.SetDirty(component);
+                EditorSceneManager.MarkSceneDirty(component.gameObject.scene);
+            }
         }
 
     }

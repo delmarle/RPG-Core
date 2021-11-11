@@ -22,8 +22,8 @@ namespace Station
         protected override void OnInit()
         {
            GameGlobalEvents.OnSceneLoadObjects.AddListener(OnEnterScene);
-           _savingSystem = RpgStation.GetSystem<SavingSystem>();
-           _sceneSystem = RpgStation.GetSystem<SceneSystem>();
+           _savingSystem = GameInstance.GetSystem<SavingSystem>();
+           _sceneSystem = GameInstance.GetSystem<SceneSystem>();
 
         }
 
@@ -34,7 +34,7 @@ namespace Station
 
         public void OnEnterScene()
         {
-            _settingsDb = RpgStation.GetDb<GameSettingsDb>();
+            _settingsDb = GameInstance.GetDb<GameSettingsDb>();
 
             var spawnerSave = _savingSystem.GetModule<SpawnerSave>();
             spawnerSave.Load(_sceneSystem.GetCurrentDestination().SceneName);

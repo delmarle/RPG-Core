@@ -150,12 +150,14 @@ namespace Station
         }
 
         [SerializeField]private Renderer _characterVisual;
+        private EquipmentHandler _equipmentHandler;
+        public EquipmentHandler GetEquipment => _equipmentHandler;
         #endregion
 
         private void Awake()
         {
-            _dbSystem = RpgStation.GetSystem<DbSystem>();
-            _gameSettingsDb = RpgStation.GetDb<GameSettingsDb>();
+            _dbSystem = GameInstance.GetSystem<DbSystem>();
+            _gameSettingsDb = GameInstance.GetDb<GameSettingsDb>();
             _control = GetComponent<CharacterControl>();
             _mechanics = _gameSettingsDb.Get().Mechanics;
             FloatingPopupAnchor = GetComponentInChildren<FloatingPopupAnchor>();
@@ -196,7 +198,12 @@ namespace Station
             AddMeta(StationConst.FACTION_ID, factionId);
             _skills = new SkillHandler();
             _calculatorInstance = instance;
-            
+            _equipmentHandler = gameObject.GetComponent<EquipmentHandler>();
+            if (_equipmentHandler)
+            {
+                _equipmentHandler.Setup(this);
+            }
+           
             _calculatorInstance.Setup(this);
             if (brain)
             {

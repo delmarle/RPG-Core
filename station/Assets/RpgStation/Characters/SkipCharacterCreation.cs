@@ -10,17 +10,17 @@ namespace Station
         [SerializeField] private List<ItemStack> _defaultItems = new List<ItemStack>();
         
         //cache
-        private RpgStation _station;
+        private GameInstance _station;
         private SavingSystem _savingSystem;
         private SceneSystem _sceneSystem;
 
         private const string CLASS_ID_1 = "a59e40c4-25f1-4d10-8446-609a31b7856d";
         private const string CLASS_ID_2 = "0e2d0377-2d6e-4bb0-ba06-fe452f782d57";
-        public override void Init(RpgStation station)
+        public override void Init(GameInstance station)
         {
             _station = station;
-            _savingSystem = RpgStation.GetSystem<SavingSystem>();
-            _sceneSystem = RpgStation.GetSystem<SceneSystem>();
+            _savingSystem = GameInstance.GetSystem<SavingSystem>();
+            _sceneSystem = GameInstance.GetSystem<SceneSystem>();
         }
 
         public override bool HasData()
@@ -33,8 +33,8 @@ namespace Station
         public override void StartSequence()
         {
             var module = _savingSystem.GetModule<PlayersSave>();
-            var factionSettingsDb = RpgStation.GetDb<FactionSettingsDb>();
-            var playerClassDb = RpgStation.GetDb<PlayerClassDb>();
+            var factionSettingsDb = GameInstance.GetDb<FactionSettingsDb>();
+            var playerClassDb = GameInstance.GetDb<PlayerClassDb>();
             var defaultFaction = factionSettingsDb.Get().DefaultPlayerFaction;
             var class1 = playerClassDb.GetEntry(CLASS_ID_1);
             var class2 = playerClassDb.GetEntry(CLASS_ID_2);
@@ -72,7 +72,7 @@ namespace Station
         private void CreatePlayerInventory()
         {
 
-            var settingsDb = RpgStation.GetDb<ItemsSettingsDb>();
+            var settingsDb = GameInstance.GetDb<ItemsSettingsDb>();
             var containerSettings = settingsDb.Get().ContainerSettings;
             var module = _savingSystem.GetModule<PlayerInventorySave>();
             var inventoryList = new ContainersListSave();

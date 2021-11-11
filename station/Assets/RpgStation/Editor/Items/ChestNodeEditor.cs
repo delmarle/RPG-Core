@@ -93,45 +93,9 @@ namespace Station
             GUILayout.EndHorizontal();
             
             EditorStatic.DrawThinLine(5);
-            EditorStatic.DrawSectionTitle("Loots", 0);
-            if (EditorStatic.SizeableButton(200, 32,"Add One", "plus"))
-            {
-                nodeModel.Loots.Add(new LootModel());
-            }
-            EditorStatic.DrawLargeLine(5);
-            if (_itemsDb.Count() == 0)
-            {
-                EditorGUILayout.HelpBox("there is no items in the items db", MessageType.Info);
-            }
-            else
-            {
-                foreach (var entryLoot in nodeModel.Loots)
-                {
-                    EditorGUILayout.BeginHorizontal("box");
-                    var foundItem = entryLoot.ItemId != null? _itemsDb.GetEntry(entryLoot.ItemId): null;
-                    if (foundItem == null)
-                    {
-                        entryLoot.ItemId = _itemsDb.GetKey(0);
-                    }
 
-                    int indexItem = _itemsDb.GetIndex(entryLoot.ItemId);
-
-                    indexItem = EditorGUILayout.Popup(indexItem, _itemsDb.ListEntryNames());
-
-                    entryLoot.ItemId = _itemsDb.GetKey(indexItem);
-
-                    entryLoot.Chance = EditorGUILayout.Slider("Drop rate (%): ", entryLoot.Chance, 0, 100);
-                    entryLoot.QuantityMin = EditorGUILayout.IntField("Amount min - max: ", entryLoot.QuantityMin);
-                    entryLoot.QuantityMax = EditorGUILayout.IntField(entryLoot.QuantityMax, GUILayout.Width(60));
-                    if (EditorStatic.SizeableButton(100, 18, "delete", "cross"))
-                    {
-                        nodeModel.Loots.Remove(entryLoot);
-                        GUIUtility.ExitGUI();
-                    }
-
-                    EditorGUILayout.EndHorizontal();
-                }
-            }
+            nodeModel.LootTable = LootTableEditor.DrawExternalTableReference(nodeModel.LootTable);
+            
             
             EditorStatic.DrawSectionTitle("Node base data", 0);
          

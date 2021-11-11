@@ -339,7 +339,7 @@ namespace Station
         {
           return ApplyEffectResult.MissingTarget;
         }
-        SceneSystem sceneSystem = RpgStation.GetSystem<SceneSystem>();
+        SceneSystem sceneSystem = GameInstance.GetSystem<SceneSystem>();
         if (sceneSystem.IsTraveling)
         {
           return ApplyEffectResult.Blocked;
@@ -369,8 +369,8 @@ namespace Station
         GameGlobalEvents.OnTriggerSceneSave?.Invoke();
 
         
-        SceneSystem sceneSystem = RpgStation.GetSystem<SceneSystem>();
-        var sceneDb = RpgStation.GetDb<ScenesDb>();
+        SceneSystem sceneSystem = GameInstance.GetSystem<SceneSystem>();
+        var sceneDb = GameInstance.GetDb<ScenesDb>();
         if (sceneSystem.IsTraveling)
         {
           return ApplyEffectResult.Blocked;
@@ -988,12 +988,19 @@ public enum StatusEffectType
     public Sprite Icon;
     public Sprite GetIcon() => Icon;
     //requirement to collect
-    public List<LootModel> Loots = new List<LootModel>();
+    public string LootTable;
     public AssetReference ReferencePrefab;
     public ChestNode Prefab;
     public SoundConfig OpenSound;
     public SoundConfig CloseSound;
     
+  }
+  
+  [Serializable]
+  public class LootTableModel
+  {
+    public string Description = "new loot table";
+    public List<LootModel> Loots = new List<LootModel>();
   }
   #endregion
   

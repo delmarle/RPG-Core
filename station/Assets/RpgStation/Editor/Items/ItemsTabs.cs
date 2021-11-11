@@ -159,7 +159,7 @@ namespace Station
                         DrawItems();
                         break;
                     case 2:
-                        
+                        LootTableEditor.Draw();
                         break;
                     case 3:
 

@@ -23,7 +23,7 @@ namespace Station
         public void Execute(Func<IEnumerator> executeFunc)
         {
             if (ProxyWithRunner.TaskRunner == null)
-                ProxyWithRunner.TaskRunner = Station.RpgStation.RootGameObject.AddComponent<TaskRunner>();
+                ProxyWithRunner.TaskRunner = Station.GameInstance.RootGameObject.AddComponent<TaskRunner>();
 
             TaskRunner.Fibers.Add(new Fiber(executeFunc.Invoke()));
         }

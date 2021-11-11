@@ -21,7 +21,7 @@ namespace Station
         {
             if (_vitalsDb == null)
             {
-                _vitalsDb = RpgStation.GetDb<VitalsDb>();
+                _vitalsDb = GameInstance.GetDb<VitalsDb>();
             }
            
             if (_vitalsList == null)

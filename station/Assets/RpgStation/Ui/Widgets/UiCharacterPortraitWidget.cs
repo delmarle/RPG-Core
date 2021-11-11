@@ -63,7 +63,7 @@ namespace Station
       }
       else
       {
-        _vitalsDb = RpgStation.GetDb<VitalsDb>();
+        _vitalsDb = GameInstance.GetDb<VitalsDb>();
         _character = character;
         if (_statusWidget != null)
         {

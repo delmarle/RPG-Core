@@ -39,7 +39,7 @@ namespace Station
         
         public void Setup(string itemId)
         {
-            var itemDb  = RpgStation.GetDb<ItemsDb>();
+            var itemDb  = GameInstance.GetDb<ItemsDb>();
 
             var itemData = itemDb.GetEntry(itemId);
             
@@ -61,7 +61,7 @@ namespace Station
 
             if (_itemRarity)
             {
-                var itemsRaritiesDb  = RpgStation.GetDb<ItemsRaritiesDb>();
+                var itemsRaritiesDb  = GameInstance.GetDb<ItemsRaritiesDb>();
                 var rarityEntry = itemsRaritiesDb.GetEntry(itemData.RarityKey);
                 _itemRarity.text = rarityEntry.Name.GetValue();
                 _itemRarity.color = rarityEntry.Color;
@@ -69,7 +69,7 @@ namespace Station
 
             if (_itemCategory)
             {
-                var itemsCategoriesDb  = RpgStation.GetDb<ItemsCategoriesDb>();
+                var itemsCategoriesDb  = GameInstance.GetDb<ItemsCategoriesDb>();
                 var categoryEntry = itemsCategoriesDb.GetEntry(itemData.CategoryKey);
                 _itemCategory.text = categoryEntry.Name.GetValue();
             }

@@ -11,7 +11,7 @@ namespace Station
         
         protected override void Awake()
         {
-            _notificationSystem = RpgStation.GetSystem<UiNotificationSystem>();
+            _notificationSystem = GameInstance.GetSystem<UiNotificationSystem>();
             base.Awake();
             foreach (var channel in Channels)
             {

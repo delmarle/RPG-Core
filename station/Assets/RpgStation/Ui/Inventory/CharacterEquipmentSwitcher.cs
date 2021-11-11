@@ -9,19 +9,32 @@ namespace Station
     {
         [SerializeField] private UiEquipmentContainerWidget _equipmentContainer = null;
         private PlayerInventorySystem inventorySystem;
-        
+        Dictionary<string, UiEquipmentContainerWidget> playerMap = new Dictionary<string, UiEquipmentContainerWidget>();
         private void Awake()
         {
-            inventorySystem = RpgStation.GetSystem<PlayerInventorySystem>();
+            inventorySystem = GameInstance.GetSystem<PlayerInventorySystem>();
+            _equipmentContainer.gameObject.SetActive(false);
         }
 
         public void SwitchCharacter(BaseCharacter character)
         {
-            var containerReference = new ContainerReference(PlayerInventorySystem.PLAYER_EQUIPMENT_KEY+character.GetCharacterId(), inventorySystem);
-            _equipmentContainer.Init(containerReference);
-            _equipmentContainer.UnregisterEvents();
-            _equipmentContainer.RegisterEvents();
-            _equipmentContainer.UpdateUiSlots();
+            
+            string playerId = character.GetCharacterId();
+            if (playerMap.ContainsKey(playerId) == false)
+            {
+                var containerReference = new ContainerReference(PlayerInventorySystem.PLAYER_EQUIPMENT_KEY+playerId, inventorySystem);
+                var uiContainer = Instantiate(_equipmentContainer,transform);
+                playerMap.Add(playerId, uiContainer);
+                uiContainer.Init(containerReference);
+                uiContainer.UnregisterEvents();
+                uiContainer.RegisterEvents();
+                uiContainer.UpdateUiSlots();
+            }
+
+            foreach (var entry in playerMap)
+            {
+                entry.Value.gameObject.SetActive(entry.Key == playerId);
+            }
         }
     }
 

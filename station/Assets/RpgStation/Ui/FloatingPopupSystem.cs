@@ -47,8 +47,8 @@ namespace Station
 		{
 			_instance = this;
 
-			_sceneSystem = RpgStation.GetSystem<SceneSystem>();
-			_db = RpgStation.GetDb<FloatingPopupDb>();
+			_sceneSystem = GameInstance.GetSystem<SceneSystem>();
+			_db = GameInstance.GetDb<FloatingPopupDb>();
 			_runtimeCache = new Dictionary<string, FloatingPopupModel>();
 			foreach (var entry in _db.Db.Values)
 			{

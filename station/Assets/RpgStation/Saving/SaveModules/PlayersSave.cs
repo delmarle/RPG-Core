@@ -10,14 +10,13 @@ public class PlayersSave : SaveModule<Dictionary<string, PlayersData>>
     
     public void AddPlayer(string key, PlayersData data)
     {
-    Debug.Log(key);
         Value.Add(key, data);
     }
 
     protected override void FetchData()
     {
-        var sceneSystem = RpgStation.GetSystem<SceneSystem>();
-        var teamSystem = RpgStation.GetSystem<TeamSystem>();
+        var sceneSystem = GameInstance.GetSystem<SceneSystem>();
+        var teamSystem = GameInstance.GetSystem<TeamSystem>();
         
         var teamMembers = teamSystem.GetTeamMembers();
   

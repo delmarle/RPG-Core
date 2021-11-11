@@ -41,7 +41,7 @@ namespace Station
     {
 
       GameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderChanged);
-      _interactionConfigsDb = RpgStation.GetDb<InteractionConfigsDb>();
+      _interactionConfigsDb = GameInstance.GetDb<InteractionConfigsDb>();
      
 
       Config = LoadInteractionConfig();

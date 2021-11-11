@@ -38,7 +38,7 @@ namespace Station
 
         public override void Show()
         {
-            var teamSystem = RpgStation.GetSystem<TeamSystem>();
+            var teamSystem = GameInstance.GetSystem<TeamSystem>();
             OnLeaderUpdate(teamSystem.GetCurrentLeader());
             base.Show();
         }

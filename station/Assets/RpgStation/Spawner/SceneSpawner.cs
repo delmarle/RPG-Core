@@ -26,7 +26,7 @@ namespace Station
             _mechanics = stationMechanics;
             if (InitMode == InitMode.SAVED)
             {
-                _savingSystem = RpgStation.GetSystem<SavingSystem>();
+                _savingSystem = GameInstance.GetSystem<SavingSystem>();
                
                 var spawnerSave = _savingSystem.GetModule<SpawnerSave>();
                 var spawnStateMap = spawnerSave.GetDataById(SpawnId)?.SpawnsStateMap;
@@ -146,7 +146,7 @@ namespace Station
             {
                 case SpawnObjectType.NPC:
                   
-                    var npcDb = RpgStation.GetDb<NpcDb>();
+                    var npcDb = GameInstance.GetDb<NpcDb>();
                     var npcMeta = npcDb.GetEntry(ObjectId);
                     if (npcMeta == null)
                     {
@@ -172,7 +172,7 @@ namespace Station
                     Object.Instantiate(Prefab, Position.GetPosition(), Quaternion.Euler(Position.GetRotation()));
                     break;
                 case SpawnObjectType.CONTAINER:
-                    var chestDb = RpgStation.GetDb<ChestNodesDb>();
+                    var chestDb = GameInstance.GetDb<ChestNodesDb>();
                     var chestModel = chestDb.GetEntry(ObjectId);
                     if (chestModel == null || chestModel.Prefab == null)
                     {
@@ -198,7 +198,7 @@ namespace Station
                     NpcDb npcDb = null;
                     if (Application.isPlaying)
                     {
-                        var db = RpgStation.GetSystem<DbSystem>();
+                        var db = GameInstance.GetSystem<DbSystem>();
                     }
                     else
                     {
@@ -213,7 +213,7 @@ namespace Station
                     ItemsDb itemDb = null;
                     if (Application.isPlaying)
                     {
-                        var db = RpgStation.GetSystem<DbSystem>();
+                        var db = GameInstance.GetSystem<DbSystem>();
                     }
                     else
                     {
@@ -240,7 +240,7 @@ namespace Station
                     ChestNodesDb chestDb = null;
                     if (Application.isPlaying)
                     {
-                        var db = RpgStation.GetSystem<DbSystem>();
+                        var db = GameInstance.GetSystem<DbSystem>();
                     }
                     else
                     {

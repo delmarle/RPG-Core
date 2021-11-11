@@ -19,7 +19,7 @@ public void Setup()
 {
     if (_statisticsDb == null)
     {
-        _statisticsDb = RpgStation.GetDb<StatisticDb>();
+        _statisticsDb = GameInstance.GetDb<StatisticDb>();
     }
    
     if (_statistics == null)

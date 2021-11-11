@@ -29,7 +29,7 @@ namespace Station
 
         private void OnDataBaseReady()
         {
-            _channelsDb = RpgStation.GetDb<UiNotificationChannelsDb>();
+            _channelsDb = GameInstance.GetDb<UiNotificationChannelsDb>();
             foreach (var dbEntry in _channelsDb.Db)
             {
                 var channel = dbEntry.Value.Identifier;

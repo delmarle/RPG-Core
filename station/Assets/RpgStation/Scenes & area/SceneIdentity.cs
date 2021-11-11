@@ -9,7 +9,7 @@ public class SceneIdentity : MonoBehaviour
 
     private void Awake()
     {
-        var sceneSystem = RpgStation.GetSystem<SceneSystem>();
+        var sceneSystem = GameInstance.GetSystem<SceneSystem>();
         if (sceneSystem)
         {
             sceneSystem.SetCurrentSceneType(_sceneType);
