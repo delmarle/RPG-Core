@@ -16,6 +16,8 @@ namespace Station
         protected override void OnActive(BaseCharacter character)
         {
             _owner = character;
+            _owner.OnDie-= OnDie;
+            _owner.OnDie+= OnDie;
             NavMeshHit closestHit;
 
             if (NavMesh.SamplePosition(gameObject.transform.position, out closestHit, 500f, NavMesh.AllAreas))
@@ -30,8 +32,15 @@ namespace Station
             _agent.enabled = true;
         }
 
+ 
+
         protected override void OnDeactivate(BaseCharacter character)
         {
+            if (_owner)
+            {
+                _owner.OnDie-= OnDie;
+            }
+           
             _agent.enabled = false;
         }
 
@@ -120,7 +129,10 @@ namespace Station
             return hit.position;
         }
         
-       
+        private void OnDie(BaseCharacter character)
+        {
+            Stop();
+        }
     }
 
     public enum MovementType

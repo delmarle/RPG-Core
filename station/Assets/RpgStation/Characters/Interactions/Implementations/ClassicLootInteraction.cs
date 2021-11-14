@@ -12,16 +12,6 @@ namespace Station
         
         protected override void Setup()
         {
-            GameGlobalEvents.OnSceneLoadObjects.AddListener(OnLoadContainer);
-        }
-        
-        protected override void Dispose()
-        {
-            GameGlobalEvents.OnSceneLoadObjects.RemoveListener(OnLoadContainer); 
-        }
-
-        private void OnLoadContainer()
-        {
             _itemsSettingsDb = GameInstance.GetDb<ItemsSettingsDb>();
         }
 
