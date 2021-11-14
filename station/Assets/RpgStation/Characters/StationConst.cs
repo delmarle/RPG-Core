@@ -14,6 +14,8 @@ namespace Station
         public const string FACTION_ID = "faction_id";
         public const string GENDER_ID = "gender_id";
         
+        public const string LOOT_TABLE_KEY = "loot_table_id";
+        
         
         //editor edge case:
         public const string BUILD_ASSET_CREATE_PATH = "RPG-Station/";

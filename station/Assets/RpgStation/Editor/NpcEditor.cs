@@ -186,6 +186,9 @@ namespace Station
             {
                 AttackEditor.DrawAttack(current.Attack);
             }
+            
+            //TOGGLABLE
+            current.LootTable = LootTableEditor.DrawExternalTableReference(current.LootTable);
         }
         
          private static void FirstSection(NpcModel current, int selectedId)

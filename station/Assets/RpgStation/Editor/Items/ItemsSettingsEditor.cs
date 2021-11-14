@@ -274,6 +274,10 @@ namespace Station
                 (UiPopup) EditorGUILayout.ObjectField("Container popup: ", _itemsSettingsDb.Get().ContainerSettings.ContainerPopup, typeof(UiPopup), true);
             _itemsSettingsDb.Get().ContainerSettings.CharacterLootPopup = 
                 (UiPopup) EditorGUILayout.ObjectField("Character loot popup: ", _itemsSettingsDb.Get().ContainerSettings.CharacterLootPopup, typeof(UiPopup), true);
+            
+            _itemsSettingsDb.Get().ContainerSettings.LootInteractionPrefab = 
+                (LootInteractable) EditorGUILayout.ObjectField("Loot interactable prefab: ", _itemsSettingsDb.Get().ContainerSettings.LootInteractionPrefab, typeof(LootInteractable), true);
+
         }
     }
 

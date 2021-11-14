@@ -35,8 +35,19 @@ namespace Station
             {
                 _tempContainer.Add(container.GetId(), container);
             }
+        }
 
+        public void CleanContainer(string containerId)
+        {
+            if (_tempContainer.ContainsKey(containerId))
+            {
+                _tempContainer.Remove(containerId);
+            }
 
+            if (_savedContainer.ContainsKey(containerId))
+            {
+                _savedContainer.Remove(containerId);
+            }
         }
 
         public BaseItemContainer GetContainer(string containerId)

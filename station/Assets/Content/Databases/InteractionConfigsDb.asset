@@ -18,6 +18,8 @@ MonoBehaviour:
     - 04cf1f5b-91a1-4c06-b8a1-2c2868bcb6f6
     - 6f392000-1c94-4f91-a599-fc0619d5e673
     - e89e3284-6b5f-40d2-bc1b-8d685948fdb7
+    - 8b6e9274-5102-4f5b-9a68-e9f67f4b907e
+    - f3d5276e-754f-4c55-a624-00f2d44d6b1e
     m_values:
     - Layer: 8
       InteractibleType:
@@ -49,7 +51,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 3c42e041f99b644069e15d10226cb72d, type: 2}
     - Layer: 8
       InteractibleType:
-        _classRef: Station.HarvestNode, Assembly-CSharp
+        _classRef: Station.ClassicLootInteraction, Assembly-CSharp
       ShowHintMode: 3
       HideHintOptions:
         UseDelay: 0
@@ -59,7 +61,7 @@ MonoBehaviour:
         UseCameraAngle: 0
         CameraAngle: 90
       TryInteractMode: 1
-      InteractionRange: 2
+      InteractionRange: 4
       HoverMode: 0
       actionFxData:
         HasData: 0
@@ -70,14 +72,14 @@ MonoBehaviour:
         Effect:
           EffectPrefab: {fileID: 0}
       CancelInteractionMode: 1
-      CancelInteractionDistance: 3
+      CancelInteractionDistance: 5
       FailNotificationChannels:
       - {fileID: 11400000, guid: 3c42e041f99b644069e15d10226cb72d, type: 2}
       ResultNotificationChannels:
       - {fileID: 11400000, guid: 6a2eab985e59344fabe81a4a819c261a, type: 2}
     - Layer: 8
       InteractibleType:
-        _classRef: Station.Portal, Assembly-CSharp
+        _classRef: Station.HarvestNode, Assembly-CSharp
       ShowHintMode: 3
       HideHintOptions:
         UseDelay: 0
@@ -104,7 +106,7 @@ MonoBehaviour:
       ResultNotificationChannels: []
     - Layer: 8
       InteractibleType:
-        _classRef: Station.ChestNode, Assembly-CSharp
+        _classRef: Station.LootInteractable, Assembly-CSharp
       ShowHintMode: 3
       HideHintOptions:
         UseDelay: 0
@@ -130,3 +132,55 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 3c42e041f99b644069e15d10226cb72d, type: 2}
       ResultNotificationChannels:
       - {fileID: 11400000, guid: 6a2eab985e59344fabe81a4a819c261a, type: 2}
+    - Layer: 0
+      InteractibleType:
+        _classRef: Station.Portal, Assembly-CSharp
+      ShowHintMode: 0
+      HideHintOptions:
+        UseDelay: 0
+        Delay: 5
+        UseDistance: 0
+        Distance: 10
+        UseCameraAngle: 0
+        CameraAngle: 90
+      TryInteractMode: 0
+      InteractionRange: 2
+      HoverMode: 0
+      actionFxData:
+        HasData: 0
+        Option: 0
+        Length: 1
+        AnimationId: 0
+        StartSound: {fileID: 0}
+        Effect:
+          EffectPrefab: {fileID: 0}
+      CancelInteractionMode: 0
+      CancelInteractionDistance: 2.5
+      FailNotificationChannels: []
+      ResultNotificationChannels: []
+    - Layer: 0
+      InteractibleType:
+        _classRef: Station.ChestNode, Assembly-CSharp
+      ShowHintMode: 0
+      HideHintOptions:
+        UseDelay: 0
+        Delay: 5
+        UseDistance: 0
+        Distance: 10
+        UseCameraAngle: 0
+        CameraAngle: 90
+      TryInteractMode: 0
+      InteractionRange: 2
+      HoverMode: 0
+      actionFxData:
+        HasData: 0
+        Option: 0
+        Length: 1
+        AnimationId: 0
+        StartSound: {fileID: 0}
+        Effect:
+          EffectPrefab: {fileID: 0}
+      CancelInteractionMode: 0
+      CancelInteractionDistance: 2.5
+      FailNotificationChannels: []
+      ResultNotificationChannels: []

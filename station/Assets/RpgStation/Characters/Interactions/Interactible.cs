@@ -45,6 +45,7 @@ namespace Station
      
 
       Config = LoadInteractionConfig();
+      if (Config == null) return;
       
       if (Config.ShowHintMode == ShowHintType.WhileInRange)
       {

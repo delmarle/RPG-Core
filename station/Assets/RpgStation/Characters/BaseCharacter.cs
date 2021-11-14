@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Station
@@ -8,6 +9,8 @@ namespace Station
     {
         #region FIELDS
 
+        private AreaContainerSystem _containerSystem;
+        private ItemsDb _itemDb;
         private DbSystem _dbSystem;
         private GameSettingsDb _gameSettingsDb;
         private StationMechanics _mechanics;
@@ -25,6 +28,9 @@ namespace Station
         public CharacterSkillUpdate OnSkillUpdated;
         public CharacterSkillUpdate OnSkillGained;
         public CharacterSkillUpdate OnSkillRemoved;
+
+        private string _instancedLootContainedId;
+        private Interactible _activeLootInteraction;
         public delegate void CharacterTargetUpdated(BaseCharacter target);
         public delegate void CharacterUpdate(BaseCharacter character);
         public delegate void CharacterSkillUpdate(BaseCharacter character, RankProgression progress, int data);
@@ -81,6 +87,7 @@ namespace Station
                         Debug.LogError("died twice");
                     }
 
+                    GenerateLootInteractable();
                     OnDie.Invoke(this);
                 }
 
@@ -157,6 +164,8 @@ namespace Station
         private void Awake()
         {
             _dbSystem = GameInstance.GetSystem<DbSystem>();
+            _containerSystem = GameInstance.GetSystem<AreaContainerSystem>();
+            _itemDb = GameInstance.GetDb<ItemsDb>();
             _gameSettingsDb = GameInstance.GetDb<GameSettingsDb>();
             _control = GetComponent<CharacterControl>();
             _mechanics = _gameSettingsDb.Get().Mechanics;
@@ -286,6 +295,50 @@ namespace Station
             }
         }
 
+        #endregion
+        
+        #region [[ LOOTS ]]
+
+        private LootInteractable _lootInteractable;
+        private void GenerateLootInteractable()
+        {
+            if (_lootInteractable == null)
+            {
+                var settings = GameInstance.GetDb<ItemsSettingsDb>();
+                var prefab = settings.Get().ContainerSettings.LootInteractionPrefab;
+                if (prefab == null) return;
+                
+                _lootInteractable = Instantiate(prefab, transform);
+            }
+            TryGenerateLoot();
+           _lootInteractable.SetContainerReference(_instancedLootContainedId);
+
+        }
+        private void TryGenerateLoot()
+        {
+            ClearPreviousLootContainer();
+            var lootTableId = GetMeta<string>(StationConst.LOOT_TABLE_KEY);
+            if (string.IsNullOrEmpty(lootTableId) == false)
+            {
+                GenerateLoots(lootTableId);
+            }
+        }
+        private void ClearPreviousLootContainer()
+        {
+            if (string.IsNullOrEmpty(_instancedLootContainedId) == false)
+            {
+                _containerSystem.CleanContainer(_instancedLootContainedId);
+            }
+        }
+        public void GenerateLoots(string lootTable)
+        {
+            var defaultItems = LootUtils.GenerateLootStack(lootTable);
+    
+            var containerState = new ContainerState(8, defaultItems);
+            _instancedLootContainedId = Guid.NewGuid().ToString();
+            var container = new ItemContainer(_instancedLootContainedId, containerState, _itemDb);
+            _containerSystem.AddContainer(container, false);
+        }
         #endregion
         
         private void Update()

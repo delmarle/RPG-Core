@@ -37,6 +37,7 @@ MonoBehaviour:
         Value: 25
       AttributesBonuses: []
       StatisticsBonuses: []
+      LootTable: 329328c8-1294-4a00-932f-e314cc4a72ec
       OwnedAbilities: []
       StatsCalculator: {fileID: 11400000, guid: f2fb6755890074a3a92afa231a099f0f,
         type: 2}

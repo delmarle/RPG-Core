@@ -248,8 +248,8 @@ MonoBehaviour:
             Damages:
             - EffectName: 
               EffectIcon: {fileID: 0}
-              MinValue: 15
-              MaxValue: 40
+              MinValue: 44
+              MaxValue: 122
               CriticalBonus: 0
             Heals: []
             Modifiers: []

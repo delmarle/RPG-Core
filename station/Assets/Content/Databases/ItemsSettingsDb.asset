@@ -25,3 +25,5 @@ MonoBehaviour:
         type: 3}
       CharacterLootPopup: {fileID: 4554320079372885168, guid: 9851f4ffd5fb5442fbeb7ddaf6343f2e,
         type: 3}
+      LootInteractionPrefab: {fileID: 962710245782573056, guid: ddf90acd84329499aab54a168cab03dd,
+        type: 3}

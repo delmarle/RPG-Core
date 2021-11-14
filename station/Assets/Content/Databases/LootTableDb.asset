@@ -15,6 +15,7 @@ MonoBehaviour:
   _db:
     m_keys:
     - 329328c8-1294-4a00-932f-e314cc4a72ec
+    - 0a3dd94c-3036-4c0b-9852-3f1460a25f2c
     m_values:
     - Description: chest_tier_0
       Loots:
@@ -30,3 +31,13 @@ MonoBehaviour:
         QuantityMin: 1
         QuantityMax: 1
         Chance: 56
+    - Description: common_enemies_a
+      Loots:
+      - ItemId: 9aa4f344-e304-476f-9308-514194c21fb6
+        QuantityMin: 1
+        QuantityMax: 1
+        Chance: 100
+      - ItemId: 9aa4f344-e304-476f-9308-514194c21fb6
+        QuantityMin: 1
+        QuantityMax: 4
+        Chance: 25

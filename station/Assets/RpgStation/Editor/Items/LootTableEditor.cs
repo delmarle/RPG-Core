@@ -79,6 +79,7 @@ namespace Station
             }
             else
             {
+                GUILayout.BeginHorizontal();
                 //draw assigned version
                 var entriesNames = _lootTableDb.ListEntryNames();
                 int currentIndex = 0;
@@ -89,6 +90,12 @@ namespace Station
                  
                 currentIndex = EditorGUILayout.Popup(currentIndex, entriesNames);
                 tableId = _lootTableDb.GetKey(currentIndex);
+                if (EditorStatic.SizeableButton(120, 60, "disable", ""))
+                {
+                    return string.Empty;
+                }
+
+                GUILayout.EndHorizontal();
             }
             
           

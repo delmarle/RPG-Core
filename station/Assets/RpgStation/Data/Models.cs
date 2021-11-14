@@ -212,6 +212,7 @@ namespace Station
       //faction
       //Ai
       //loot tables
+      public string LootTable;
       //dialogue
       //shop tables
       //counter updates
@@ -915,6 +916,8 @@ public enum StatusEffectType
     //ui prefabs
     public UiPopup ContainerPopup;
     public UiPopup CharacterLootPopup;
+
+    public LootInteractable LootInteractionPrefab;
   }
 
   public enum PlayerInventoryType
