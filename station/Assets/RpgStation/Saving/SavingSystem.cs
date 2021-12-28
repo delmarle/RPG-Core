@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Station.Data;
 using UnityEngine;
 
 
@@ -82,7 +83,7 @@ namespace Station
         }
         
 
-        private void OnSceneInitialize()
+        private void OnSceneInitialize(SceneType sceneType)
         {
            // Debug.Log($" the scene is INIT {GetType()} Path: ");
             

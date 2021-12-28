@@ -15,4 +15,14 @@ public class SceneIdentity : MonoBehaviour
             sceneSystem.SetCurrentSceneType(_sceneType);
         }
     }
+
+    public bool IsArea()
+    {
+        return _sceneType == SceneType.Area;
+    }
+    
+    public bool IsCharacterCreation()
+    {
+        return _sceneType == SceneType.CharacterCreation;
+    }
 }

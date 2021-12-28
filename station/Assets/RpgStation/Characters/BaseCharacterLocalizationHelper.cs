@@ -24,7 +24,7 @@ namespace Station
             {
                 var classId = GetMeta<string>(StationConst.CLASS_ID);
                 var classMeta = _playerClassDb.GetEntry(classId);
-                return classMeta.Name;
+                return classMeta.Name.GetValue();
             }
           
             return "";
@@ -33,13 +33,13 @@ namespace Station
         public string GetLocalizedRace()
         {
             var raceMeta = _raceDb.GetEntry(GetRaceID());
-            return raceMeta.Name;
+            return raceMeta.Name.GetValue();
         }
         
         public string GetLocalizedFaction()
         {
             var factionMeta = _factionDb.GetEntry(GetFactionID());
-            return factionMeta.Name;
+            return factionMeta.Name.GetValue();
         }
         
         public string LocalizedGenderName()

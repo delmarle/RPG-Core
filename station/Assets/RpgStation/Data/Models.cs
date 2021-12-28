@@ -15,7 +15,10 @@ namespace Station
     {
       public StationMechanics Mechanics;
       public BaseCharacterCreation CharacterCreation;
-      public int MaxTeamSize = 1;
+      
+      //PARTY RELATED
+      public int CharacterCreatedCount = 2;
+      public int MaxTeamSize = 2;
     }
 
 
@@ -68,12 +71,21 @@ namespace Station
       public List<IdFloatValue> StatisticBonuses = new List<IdFloatValue>();
       #endregion
     }
+
+    [Serializable]
+    public class GenderModel
+    {
+      public string Key;
+      public LocalizedText Name = new LocalizedText("new gender");
+      public LocalizedText Description= new LocalizedText("");
+      public Sprite Icon;
+    }
     
     [Serializable]
     public class RaceModel
     {
-      public string Name = "New Race";
-      public string Description;
+      public LocalizedText Name = new LocalizedText("new race");
+      public LocalizedText Description= new LocalizedText("");
       public Sprite Icon;
     
       #region [[OPTIONAL]]
@@ -118,8 +130,8 @@ namespace Station
     [Serializable]
     public class PlayerClassModel
     {
-      public string Name = "New class";
-      [Multiline] public string Description;
+      public LocalizedText Name = new LocalizedText("new class");
+      public LocalizedText Description;
       public Sprite Icon;
       public List<RaceMeta> AllowedRaces = new List<RaceMeta>();
       public bool UseHealth;
@@ -187,6 +199,19 @@ namespace Station
         return _statisticsBonusesMap.ContainsKey(statId) ? _statisticsBonusesMap[statId] : 0f;
       }
 
+
+      public bool IsRaceAllowed(string raceId)
+      {
+        foreach (var raceMeta in AllowedRaces)
+        {
+          if (raceMeta.RaceId == raceId)
+          {
+            return true;
+          }
+        }
+
+        return false;
+      }
       #endregion
     }
 
@@ -650,9 +675,9 @@ public enum StatusEffectType
   [Serializable]
   public class FactionModel
   {
-    public string Name = "New Faction";
+    public LocalizedText Name = new LocalizedText("new faction");
     public Sprite Icon;
-    public string Description;
+    public LocalizedText Description = new LocalizedText("");
         
     public int DefaultStance;
     public int StanceToSelf;

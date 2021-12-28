@@ -24,7 +24,7 @@ namespace Station
         
         public override string[] ListEntryNames()
         {
-            return _db.Select(entry => entry.Value.Name).ToArray();
+            return _db.Select(entry => entry.Value.Name.GetValue()).ToArray();
         }
     }
 

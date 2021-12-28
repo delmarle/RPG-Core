@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Station.Data;
 using UnityEngine;
 
 namespace Station
@@ -26,7 +27,7 @@ namespace Station
             GameGlobalEvents.OnSceneLoadObjects.RemoveListener(OnLoadContainer); 
         }
 
-        public void OnLoadContainer()
+        public void OnLoadContainer(SceneType sceneType)
         {
             _chestNodeDb = GameInstance.GetDb<ChestNodesDb>();
             _itemsSettingsDb = GameInstance.GetDb<ItemsSettingsDb>();

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Station.Data;
 using UnityEngine;
 
 namespace Station
@@ -35,24 +36,27 @@ namespace Station
             GameGlobalEvents.OnSceneLoadObjects.RemoveListener(InitializeTeam);
         }
 
-        private void InitializeTeam()
+        private void InitializeTeam(SceneType sceneType)
         {
-            StartCoroutine(InitializeTeamSequence());
+            StartCoroutine(InitializeTeamSequence(sceneType));
         }
         
-        private void OnStartLoadScene()
+        private void OnStartLoadScene(SceneType sceneType)
         {
             _leader = null;
             _characters = new List<BaseCharacter>();
         }
 
 
-        private IEnumerator InitializeTeamSequence()
+        private IEnumerator InitializeTeamSequence(SceneType sceneType)
         {
-            _settingsDb = GameInstance.GetDb<GameSettingsDb>();
-            var playerClassDb = GameInstance.GetDb<PlayerClassDb>();
-            var mechanics = _settingsDb.Get().Mechanics;
-            var playersModule = _savingSystem.GetModule<PlayersSave>();
+
+            if (sceneType == SceneType.Area)
+            {
+                _settingsDb = GameInstance.GetDb<GameSettingsDb>();
+                var playerClassDb = GameInstance.GetDb<PlayerClassDb>();
+                var mechanics = _settingsDb.Get().Mechanics;
+                var playersModule = _savingSystem.GetModule<PlayersSave>();
 
             foreach (var playerPair in playersModule.Value)
             {
@@ -104,6 +108,8 @@ namespace Station
                 first.AddMeta("identity", IdentityType.MainPlayer.ToString());
             }
            
+            }
+       
 
             yield return null;
         }

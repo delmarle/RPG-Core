@@ -11,9 +11,12 @@ namespace Station
         
         public void Setup(BaseCharacter source, List<RankProgression> skillsToAdd)
         {
-            foreach (var entry in skillsToAdd)
+            if (skillsToAdd != null)
             {
-                Skills.Add(entry.Id, entry);
+                foreach (var entry in skillsToAdd)
+                {
+                    Skills.Add(entry.Id, entry);
+                }
             }
         }
 

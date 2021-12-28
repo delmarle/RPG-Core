@@ -61,7 +61,7 @@ namespace Station
         {
             if (_inventoryType == PlayerInventoryType.Shared)
             {
-                var save = _playerItemsSave.Value ?? new ContainersListSave();
+                var save = _playerItemsSave?.Value ?? new ContainersListSave();
 
                 var state = save.GetContainerById(PLAYER_INVENTORY_KEY);
                 var sharedContainer = new ItemContainer(PLAYER_INVENTORY_KEY, state, _itemsDb);
@@ -75,21 +75,26 @@ namespace Station
 
         private void LoadPlayersEquipment()
         {
-            var save = _playerItemsSave.Value ?? new ContainersListSave();
-            foreach (var playerPair in _playersSave.Value)
-            {
-
-                string id = PLAYER_EQUIPMENT_KEY + playerPair.Key;
-                var equipmentState = save.GetContainerById(id);
-                var playerEquipmentContainer = new EquipmentContainer(id, equipmentState, _itemsDb);
-                _containers.Add(id, playerEquipmentContainer);
-            }
             
+            var save = _playerItemsSave?.Value ?? new ContainersListSave();
+            if (_playersSave?.Value != null)
+            {
+                foreach (var playerPair in _playersSave?.Value)
+                {
+
+                    string id = PLAYER_EQUIPMENT_KEY + playerPair.Key;
+                    var equipmentState = save.GetContainerById(id);
+                    var playerEquipmentContainer = new EquipmentContainer(id, equipmentState, _itemsDb);
+                    _containers.Add(id, playerEquipmentContainer);
+                }
+            }
         }
 
         private void OnTriggerSave()
         {
             if (_containers == null) return;
+            if (_playerItemsSave.Value == null) return;
+            
             var tempSave = _containers.ToDictionary(container => container.Key, container => container.Value.GetState());
             _playerItemsSave.Value.Containers = tempSave;
             _playerItemsSave.Save();

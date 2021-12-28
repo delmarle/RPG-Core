@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Database:
     Mechanics: {fileID: 11400000, guid: 4d3c998167c7d45be907e8845f7a59b9, type: 2}
-    CharacterCreation: {fileID: 11400000, guid: ce9cecb5b332341d1843268870a4494b,
+    CharacterCreation: {fileID: 11400000, guid: 52144828433024f98ba37dab7b1c29c5,
       type: 2}
-    MaxTeamSize: 1
+    CharacterCreatedCount: 2
+    MaxTeamSize: 3

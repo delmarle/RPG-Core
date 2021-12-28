@@ -149,8 +149,7 @@ namespace Station
                 EditorGUILayout.HelpBox("Select a Class", MessageType.Info);
                 return;
             }
-
-            entry.Name = EditorGUILayout.TextField("Name: ", entry.Name);
+            EditorStatic.DrawLocalization(entry.Name, "Name: ");
             ClassPanel(entry, _selectedEntryIndex);
         }
         
@@ -236,9 +235,13 @@ namespace Station
                 GUILayout.BeginVertical();
                 {
                     GUILayout.Space(5);
-                    current.Name = EditorGUILayout.TextField("Name ", current.Name);
-                    current.Description = EditorStatic.DrawTextArea("Description: ", current.Description);
-
+                    EditorStatic.DrawLocalization(current.Name, "Name :");
+                    GUILayout.BeginHorizontal();
+                    {
+                        GUILayout.Label("Description",GUILayout.Width(70));
+                        EditorStatic.DrawLocalizationLabel(current.Description, 45);
+                    }
+                    GUILayout.EndHorizontal();
                     GUILayout.Space(3);
                 }
                 GUILayout.EndVertical();

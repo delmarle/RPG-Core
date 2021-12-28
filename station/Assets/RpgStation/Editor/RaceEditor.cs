@@ -111,13 +111,13 @@ namespace Station
           GUILayout.BeginHorizontal();
           {
             GUILayout.Label("Name",GUILayout.Width(70));
-            raceStaticData.Name = GUILayout.TextField(raceStaticData.Name);
+            EditorStatic.DrawLocalization(raceStaticData.Name); 
           }
           GUILayout.EndHorizontal();
           GUILayout.BeginHorizontal();
           {
             GUILayout.Label("Description",GUILayout.Width(70));
-            raceStaticData.Description = GUILayout.TextArea(raceStaticData.Description,GUILayout.Height(45));
+            EditorStatic.DrawLocalizationLabel(raceStaticData.Description, 45);
           }
           GUILayout.EndHorizontal();
           GUILayout.Space(3);

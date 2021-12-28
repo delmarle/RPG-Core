@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8758007fc6ef4410a76d78c8c0f793f, type: 3}
+  m_Name: Simple Character Creation
+  m_EditorClassIdentifier: 
+  _destinationId: 93436f6d-41e9-441a-a2a3-58e5cc7b4e4b
+  _defaultItems: []
+  scene: simple_character_creation
+  Classes:
+  - a59e40c4-25f1-4d10-8446-609a31b7856d
+  - 0e2d0377-2d6e-4bb0-ba06-fe452f782d57
+  Factions:
+  - 80054ef2-9410-4d10-bc02-794e4cec6f76
+  - d9ba39c4-6ca8-466f-a70e-a2da923bfcf7
+  - 49fb2357-2e84-4f05-a822-f2b5fa88a7af
+  Races:
+  - 1316bc69-70ad-4577-9cfd-e29b35c8a18b
+  - ab0f2709-8835-4817-8d45-9be2a9345d66
+  Genders:
+  - Key: male
+    Name:
+      Key: Male
+    Description:
+      Key: 
+    Icon: {fileID: 21300000, guid: 6343b124311844f4fa8c9b253f2bb1dc, type: 3}
+  - Key: female
+    Name:
+      Key: Female
+    Description:
+      Key: 
+    Icon: {fileID: 21300000, guid: 6343b124311844f4fa8c9b253f2bb1dc, type: 3}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Malee;
+using Station.Data;
 using UnityEngine;
 using Weighted_Randomizer;
 using Object = UnityEngine.Object;
@@ -184,7 +185,7 @@ namespace Station
                     //if saved
                         //have save
               
-                    instance.OnLoadContainer();
+                    instance.OnLoadContainer(SceneType.Area);
                     //create loot table from loot table id
                     break;
             }

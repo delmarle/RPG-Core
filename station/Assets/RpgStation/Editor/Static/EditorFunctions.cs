@@ -738,6 +738,12 @@ namespace RPG.Editor
       //TODO
       localization.Key = EditorGUILayout.TextField(fieldName, localization.Key);
     }
+    
+    public static void DrawLocalizationLabel(LocalizedText localization, int height,string fieldName = null)
+    {
+      //TODO
+      localization.Key = EditorGUILayout.TextField(fieldName, localization.Key, GUILayout.Height(height));
+    }
 
     #endregion
 

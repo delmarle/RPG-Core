@@ -19,34 +19,42 @@ MonoBehaviour:
     - 49fb2357-2e84-4f05-a822-f2b5fa88a7af
     - 58aa1065-2f7d-4587-a660-5ed255f5e27a
     m_values:
-    - Name: Alliance
-      Icon: {fileID: 0}
-      Description: 
+    - Name:
+        Key: Marauder
+      Icon: {fileID: 21300000, guid: 1185458cf932b41ee9dda538a92b9ac8, type: 3}
+      Description:
+        Key: North of myrkgard
       DefaultStance: 2
       StanceToSelf: 1
       Relations:
         m_keys: []
         m_values: 
-    - Name: Northern
-      Icon: {fileID: 0}
-      Description: 
+    - Name:
+        Key: Forester
+      Icon: {fileID: 21300000, guid: 54ff9da60114841938dfe6aa658c8fcb, type: 3}
+      Description:
+        Key: Woods of silverpine
       DefaultStance: 2
       StanceToSelf: 2
       Relations:
         m_keys: []
         m_values: 
-    - Name: Celt
-      Icon: {fileID: 0}
-      Description: 
+    - Name:
+        Key: Syndicate
+      Icon: {fileID: 21300000, guid: 7b92e235e21574ff49e72a89b213a93a, type: 3}
+      Description:
+        Key: share of aszra
       DefaultStance: 2
       StanceToSelf: 2
       Relations:
         m_keys:
         - 80054ef2-9410-4d10-bc02-794e4cec6f76
         m_values: 03000000
-    - Name: Aliens
-      Icon: {fileID: 21300000, guid: 8cffe4504d48d784aa1269ffe7fa4a0f, type: 3}
-      Description: 
+    - Name:
+        Key: Hostile Creatures
+      Icon: {fileID: 21300000, guid: 2c04fcd0f2f924ff1961cab2185f2e45, type: 3}
+      Description:
+        Key: 
       DefaultStance: 2
       StanceToSelf: 0
       Relations:

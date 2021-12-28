@@ -26,7 +26,7 @@ namespace Station
 		private bool _isLoading;
 		private string _currentScene;
 		private float _progress;
-
+		private SceneType _currentSceneLoadedType;
 		public float Progress => _progress;
 
 		private void MakeSingleton()
@@ -58,9 +58,11 @@ namespace Station
 
 		#endregion
 
-		public void LoadScene(string sceneName)
+		public void LoadScene(string sceneName, SceneType sceneType)
 		{
 			if (_isLoading) return;
+
+			_currentSceneLoadedType = sceneType;
 			_currentScene = sceneName;
 			_isLoading = true;
 			var sceneSystem  = GameInstance.GetSystem<SceneSystem>();
@@ -69,7 +71,7 @@ namespace Station
 				GameGlobalEvents.OnTriggerSceneSave?.Invoke();
 			}
 
-			GameGlobalEvents.OnSceneStartLoad?.Invoke();
+			GameGlobalEvents.OnSceneStartLoad?.Invoke(sceneType);
 			UpdateProgressEvent(0);
 			_canvas.gameObject.SetActive(true);
 #if DOTWEEN
@@ -102,7 +104,7 @@ namespace Station
 			}
 			
 			yield return _waitForEndOfFrame;
-			GameGlobalEvents.OnSceneInitialize?.Invoke();
+			GameGlobalEvents.OnSceneInitialize?.Invoke(_currentSceneLoadedType);
 
 			while (_progress<1f)
 			{
@@ -110,7 +112,7 @@ namespace Station
 				yield return null;
 			}
 			yield return new WaitForSeconds(0.2f);
-			GameGlobalEvents.OnSceneLoadObjects?.Invoke();
+			GameGlobalEvents.OnSceneLoadObjects?.Invoke(_currentSceneLoadedType);
 
 #if DOTWEEN
 			_tweener = UiTween.SetCanvasFade(Ease.Linear, _canvas, false, FadeTime, DelayBeforeFadeOut);
@@ -131,16 +133,13 @@ namespace Station
 			#endif
 			
 			_isLoading = false;
-			GameGlobalEvents.OnSceneReady?.Invoke();
+			GameGlobalEvents.OnSceneReady?.Invoke(_currentSceneLoadedType);
 		}
 
 		public void UpdateProgressEvent(float progress)
 		{
 			_progress = progress;
-			if (OnLoadingProgress != null)
-			{
-				OnLoadingProgress.Invoke(progress);
-			}
+			OnLoadingProgress?.Invoke(progress);
 		}
 
 		private AsyncOperation LoadSceneAsync(string sceneName)

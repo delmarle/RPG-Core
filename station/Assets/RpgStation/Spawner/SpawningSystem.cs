@@ -2,6 +2,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Station.Data;
 using UnityEngine;
 using Weighted_Randomizer;
 using Debug = UnityEngine.Debug;
@@ -32,8 +33,13 @@ namespace Station
             GameGlobalEvents.OnSceneLoadObjects.RemoveListener(OnEnterScene);
         }
 
-        public void OnEnterScene()
+        public void OnEnterScene(SceneType sceneType)
         {
+            if (sceneType != SceneType.Area) return;
+            
+            var sceneSystem = GameInstance.GetSystem<SceneSystem>();
+            if (sceneSystem.IsCharacterCreation) return;
+            
             _settingsDb = GameInstance.GetDb<GameSettingsDb>();
 
             var spawnerSave = _savingSystem.GetModule<SpawnerSave>();

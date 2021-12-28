@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Content/Scenes/zone_02.unity
     guid: 78be0b237e5f14c819b39a07ee4e23da
+  - enabled: 1
+    path: Assets/Content/Scenes/simple_character_creation.unity
+    guid: b2274602266b14164b68e9906b33b2b1
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: d1a16f9bdebc54a36b55fe84ee173044,
       type: 2}

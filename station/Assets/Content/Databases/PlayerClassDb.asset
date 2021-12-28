@@ -17,16 +17,17 @@ MonoBehaviour:
     - a59e40c4-25f1-4d10-8446-609a31b7856d
     - 0e2d0377-2d6e-4bb0-ba06-fe452f782d57
     m_values:
-    - Name: warrior
-      Description: 
+    - Name:
+        Key: Warrior
+      Description: Good with melee weapons
       Icon: {fileID: 21300000, guid: 59e4679de48b6403f8eb9bd4950427f6, type: 3}
       AllowedRaces:
       - RaceId: 1316bc69-70ad-4577-9cfd-e29b35c8a18b
         MaleAddressPrefab: human_male
         FemaleAddressPrefab: human_male
       - RaceId: ab0f2709-8835-4817-8d45-9be2a9345d66
-        MaleAddressPrefab: 
-        FemaleAddressPrefab: 
+        MaleAddressPrefab: human_male
+        FemaleAddressPrefab: human_male
       UseHealth: 1
       HealthVital:
         Id: a8710699-ce84-46b7-8c19-b5c7cc0f361d
@@ -70,8 +71,9 @@ MonoBehaviour:
         Speed: 1.4
       FootSoundTemplate: {fileID: 11400000, guid: c383c57e2c95342e7a8c1196b716e930,
         type: 2}
-    - Name: Mage
-      Description: 
+    - Name:
+        Key: Mage
+      Description: Consume a lot of mana
       Icon: {fileID: 21300000, guid: d174066fc123c4f1ea80954ba8dc0599, type: 3}
       AllowedRaces:
       - RaceId: 1316bc69-70ad-4577-9cfd-e29b35c8a18b

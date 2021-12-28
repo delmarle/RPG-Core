@@ -4814,6 +4814,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7306304466038120117}
   - component: {fileID: 962710245782573056}
+  - component: {fileID: 7552179607340302340}
   m_Layer: 0
   m_Name: classic_loot_interactable
   m_TagString: Untagged
@@ -4886,6 +4887,19 @@ MonoBehaviour:
     CancelInteractionDistance: 2.5
     FailNotificationChannels: []
     ResultNotificationChannels: []
+--- !u!65 &7552179607340302340
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8083485989790226700}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8086342655144014127
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,7 +14,12 @@ namespace Station
         private GameSettingsDb _settingsDb;
         private PlayersSave _playersSave;
         private bool _isTraveling = false;
+        private bool _isLoadingScene = false;
+        private bool _isCharacterCreationScene = false;
+        public bool IsCharacterCreation => _isCharacterCreationScene;
+        
         public bool IsTraveling => _isTraveling;
+        public bool IsLoadingScene => _isLoadingScene;
         private TravelModel _currentDestination;
         public TravelModel GetCurrentDestination() => _currentDestination;
         
@@ -88,12 +93,23 @@ namespace Station
             }
         }
 
+        public void LoadNormalScene(string sceneName, SceneType sceneType)
+        {
+            _isLoadingScene = true;
+            var loadingScreen = _settingsDb.Get().Mechanics.LoadingScreen;
+            LoadSceneTask task = new LoadSceneTask(sceneName, loadingScreen, sceneType);
+             task.SetEndCallback(OnZoneSceneDone);
+            task.Execute();
+        }
+
+  
+
         /// <summary>
         /// will start travel sequence where a new scene is loaded
         /// </summary>
         public void TravelToZone(TravelModel model)
         {
-            
+            _isLoadingScene = true;
             if (model == null)
             {
                 model = new TravelModel();
@@ -108,15 +124,20 @@ namespace Station
             }
 
             _currentDestination = model;
-            LoadingSceneTask task = new LoadingSceneTask(model, _settingsDb.Get().Mechanics.LoadingScreen);
+            LoadAreaTask task = new LoadAreaTask(model, _settingsDb.Get().Mechanics.LoadingScreen);
             task.SetEndCallback(OnZoneLoadingDone);
             task.Execute();
         }
 
         private void OnZoneLoadingDone(ITemplateTask<bool> arg1, bool arg2, Exception arg3, object arg4)
         {
-            
+            _isLoadingScene = false;
             _isTraveling = false;
+        }
+        
+        private void OnZoneSceneDone(ITemplateTask<bool> arg1, bool arg2, Exception arg3, object arg4)
+        {
+            _isLoadingScene = false;
         }
 
         public void SetCurrentSceneType(SceneType sceneType)

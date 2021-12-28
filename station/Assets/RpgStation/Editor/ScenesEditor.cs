@@ -93,7 +93,7 @@ namespace Station
           GUILayout.BeginHorizontal();
           {
             GUILayout.Label("Name",GUILayout.Width(70));
-            scene.VisualName = GUILayout.TextField(scene.VisualName);
+            GUILayout.Label(scene.VisualName);
           }
           GUILayout.EndHorizontal();
           
@@ -107,6 +107,11 @@ namespace Station
             }
 
             scene.Reference.SceneAsset = EditorGUILayout.ObjectField( scene.Reference.SceneAsset,typeof(SceneAsset), true);
+
+            if (scene.Reference.SceneAsset != null)
+            {
+              scene.VisualName = scene.Reference.SceneAsset.name;
+            }
           }
           GUILayout.EndHorizontal();
         }

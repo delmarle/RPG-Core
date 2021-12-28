@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Station.Data;
 
 namespace Station
 {
@@ -82,9 +83,13 @@ namespace Station
             _areaContainersSave.Initialize();
         }
         
-        private void OnSceneInitialize()
+        private void OnSceneInitialize(SceneType sceneType)
         {
+            if (sceneType != SceneType.Area) return;
+            
             var itemDb = GameInstance.GetDb<ItemsDb>();
+            if (_sceneSystem.GetCurrentDestination() == null) return;
+            
             _areaContainersSave.Load(_sceneSystem.GetCurrentDestination().SceneName);
             _savedContainer = new Dictionary<string, BaseItemContainer>();
             if (_areaContainersSave.Value == null)

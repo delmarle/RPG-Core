@@ -18,9 +18,11 @@ MonoBehaviour:
     - ab0f2709-8835-4817-8d45-9be2a9345d66
     - bd81baa9-becb-4179-bbef-147611432d15
     m_values:
-    - Name: human
-      Description: 
-      Icon: {fileID: 21300000, guid: 2ae02f309e37a7b468a607a66bbc4e6d, type: 3}
+    - Name:
+        Key: human
+      Description:
+        Key: Traditional biped humanoids
+      Icon: {fileID: 21300000, guid: 073a8df13bee946309db2761048c806a, type: 3}
       AttributeBonuses:
       - Id: 5c60fbf5-9faa-43f3-8cef-fcc0c89184a9
         Value: 18
@@ -35,9 +37,11 @@ MonoBehaviour:
         Value: 100
       - Id: 4cf62f6b-fafb-437f-9ca1-5981aa823211
         Value: 100
-    - Name: elf
-      Description: 
-      Icon: {fileID: 0}
+    - Name:
+        Key: Elf
+      Description:
+        Key: Longest ears in the wood
+      Icon: {fileID: 21300000, guid: 9f5b683a446f34f5e86cb6e24f6691be, type: 3}
       AttributeBonuses:
       - Id: 5c60fbf5-9faa-43f3-8cef-fcc0c89184a9
         Value: 18
@@ -52,8 +56,10 @@ MonoBehaviour:
         Value: 100
       - Id: 4cf62f6b-fafb-437f-9ca1-5981aa823211
         Value: 100
-    - Name: Alien
-      Description: 
+    - Name:
+        Key: Cat people
+      Description:
+        Key: 
       Icon: {fileID: 0}
       AttributeBonuses:
       - Id: 5c60fbf5-9faa-43f3-8cef-fcc0c89184a9

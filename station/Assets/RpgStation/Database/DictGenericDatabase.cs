@@ -72,6 +72,23 @@ namespace Station
     {
       return Db.Keys.ElementAt(index);
     }
+    
+    public string GetKey(T entryCompared)
+    {
+      int index = 0;
+
+      foreach (var entry in Db.Values)
+      {
+        if (entry == entryCompared)
+        {
+          return GetKey(index);
+        }
+
+        index++;
+      }
+
+      return string.Empty;
+    }
 
     public void Duplicate(int index)
     {
