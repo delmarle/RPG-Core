@@ -20,6 +20,7 @@ MonoBehaviour:
     - e89e3284-6b5f-40d2-bc1b-8d685948fdb7
     - 8b6e9274-5102-4f5b-9a68-e9f67f4b907e
     - f3d5276e-754f-4c55-a624-00f2d44d6b1e
+    - 03133146-d325-4378-ae1e-bc738c0078fa
     m_values:
     - Layer: 8
       InteractibleType:
@@ -33,7 +34,7 @@ MonoBehaviour:
         UseCameraAngle: 0
         CameraAngle: 90
       TryInteractMode: 4
-      InteractionRange: 3
+      InteractionRange: 4
       HoverMode: 0
       actionFxData:
         HasData: 0
@@ -89,7 +90,7 @@ MonoBehaviour:
         UseCameraAngle: 0
         CameraAngle: 90
       TryInteractMode: 1
-      InteractionRange: 3
+      InteractionRange: 4
       HoverMode: 0
       actionFxData:
         HasData: 0
@@ -116,7 +117,7 @@ MonoBehaviour:
         UseCameraAngle: 0
         CameraAngle: 90
       TryInteractMode: 1
-      InteractionRange: 3.24
+      InteractionRange: 4
       HoverMode: 0
       actionFxData:
         HasData: 0
@@ -145,6 +146,32 @@ MonoBehaviour:
         CameraAngle: 90
       TryInteractMode: 0
       InteractionRange: 2
+      HoverMode: 0
+      actionFxData:
+        HasData: 0
+        Option: 0
+        Length: 1
+        AnimationId: 0
+        StartSound: {fileID: 0}
+        Effect:
+          EffectPrefab: {fileID: 0}
+      CancelInteractionMode: 0
+      CancelInteractionDistance: 2.5
+      FailNotificationChannels: []
+      ResultNotificationChannels: []
+    - Layer: 8
+      InteractibleType:
+        _classRef: Station.EntityInteraction, Assembly-CSharp
+      ShowHintMode: 3
+      HideHintOptions:
+        UseDelay: 0
+        Delay: 5
+        UseDistance: 1
+        Distance: 6
+        UseCameraAngle: 0
+        CameraAngle: 90
+      TryInteractMode: 1
+      InteractionRange: 4
       HoverMode: 0
       actionFxData:
         HasData: 0

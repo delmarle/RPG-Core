@@ -26,10 +26,17 @@ namespace Station
             {
                 _dbMap = loaded;
                 BaseCharacter.CacheAllDb();
+                SetupSpecificDBs();
                 GameGlobalEvents.OnDataBaseLoaded?.Invoke();
             }
         }
 
+        private void SetupSpecificDBs()
+        {
+            var settings = GameInstance.GetDb<GameSettingsDb>();
+            settings.Get().CacheData();
+        }
+        
         protected override void OnDispose()
         {
             

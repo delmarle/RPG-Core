@@ -5,7 +5,8 @@ using UnityEngine;
 
 namespace Station
 {
-    public class NpcEditor
+    public class 
+        NpcEditor
     {
         #region FIELDS
         private static FactionDb _factionDb;
@@ -155,9 +156,9 @@ namespace Station
             FirstSection(current, selectedId);
             current.PrefabId = EditorGUILayout.TextField("Prefab id: ", current.PrefabId);
             current.Brain = (CharacterBrain)EditorGUILayout.ObjectField("Brain Prefab: ", current.Brain, typeof(CharacterBrain), false);
-            EditorStatic.DrawThinLine(10);
+            EditorStatic.DrawLargeLine(5);
             RaceSection(current);
-            EditorStatic.DrawThinLine(10);
+            EditorStatic.DrawLargeLine(5);
             _showStats = EditorStatic.LevelFoldout("Statistics / Attributes / Vitals", _showStats, 28, Color.white);
             if (_showStats)
             {
@@ -165,30 +166,34 @@ namespace Station
                 GUILayout.Space(5);
                 current.StatsCalculator = (CharacterCalculation) EditorGUILayout.ObjectField("Calculator: ", current.StatsCalculator, typeof(CharacterCalculation), false);
                 EditorStatic.DrawBonusWidget(current.AttributesBonuses, "Attribute Bonus:", _attributesDb);
-                EditorStatic.DrawThinLine(10);
+                EditorStatic.DrawThinLine(5);
                 HealthVitalSection(current);
-                EditorStatic.DrawThinLine(10);
+                EditorStatic.DrawThinLine(5);
                 VitalBonusSection(current);
-                EditorStatic.DrawThinLine(10);
+                EditorStatic.DrawThinLine(5);
                 EditorStatic.DrawBonusWidget(current.StatisticsBonuses, "Statistic Bonus:", _statisticsDb);
             }
             
-            EditorStatic.DrawThinLine(10);
+            EditorStatic.DrawLargeLine(5);
             _showAbilitie = EditorStatic.LevelFoldout("Owned Abilities", _showAbilitie, 28, Color.white);
             if (_showAbilitie)
             {
                 ExtraAbilitiesSection(current);
             }
 
-            EditorStatic.DrawThinLine(10);
+            EditorStatic.DrawLargeLine(5);
             _showAttack = EditorStatic.LevelFoldout("Attacking", _showAttack, 28, Color.white);
             if (_showAttack)
             {
                 AttackEditor.DrawAttack(current.Attack);
             }
-            
+            EditorStatic.DrawLargeLine(5);
             //TOGGLABLE
-            current.LootTable = LootTableEditor.DrawExternalTableReference(current.LootTable);
+            
+            current.LootTable = LootTableEditor.DrawExternalTableReference(current.LootTable, "Loot table:");
+            EditorStatic.DrawLargeLine(5);
+            current.InteractionLines =
+                InteractionEditor.DrawInteractionLineList(current.InteractionLines, "Interactions:");
         }
         
          private static void FirstSection(NpcModel current, int selectedId)

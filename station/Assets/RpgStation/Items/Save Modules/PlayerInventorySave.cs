@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Station
 {
@@ -8,6 +9,7 @@ namespace Station
     }
 
 
+    [Serializable]
     public class ContainersListSave
     {
         public Dictionary<string, ContainerState> Containers = new Dictionary<string, ContainerState>();

@@ -26,6 +26,9 @@ namespace Station
             
             AddModule<AreaContainersSave>(new AreaContainersSave());
             GetModule<AreaContainersSave>().Initialize();
+            
+            AddModule<CounterSaveModules>(new CounterSaveModules());
+            GetModule<CounterSaveModules>().Initialize();
         }
 
         protected override void OnDispose()

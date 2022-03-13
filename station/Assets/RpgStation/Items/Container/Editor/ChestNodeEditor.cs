@@ -76,7 +76,7 @@ namespace Station
             EditorStatic.DrawThinLine();
             EditorGUILayout.BeginVertical("box");
             var chestData = _chestDb.GetEntry(component.ChestNodeModelId);
-            chestData.LootTable = LootTableEditor.DrawExternalTableReference(chestData.LootTable);
+            chestData.LootTable = LootTableEditor.DrawExternalTableReference(chestData.LootTable, "Chest Table:");
             EditorGUILayout.EndVertical();
             if (GUI.changed)
             {

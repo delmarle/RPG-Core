@@ -9,6 +9,7 @@ namespace RPG.Editor
     public static GUILayoutOption ToolbarHeight;
     
     public static GUIContent[] FootStepsToolbarOptions;  
+    public static GUIContent[] FieldsPrefabsToolbarOptions;  
 
     #endregion
 
@@ -31,6 +32,12 @@ namespace RPG.Editor
       FootStepsToolbarOptions[0] = new GUIContent("<size=11><b> Settings</b></size>", GetEditorTexture("zone"), "");
       FootStepsToolbarOptions[1] = new GUIContent("<size=11><b>  Surfaces</b></size>",GetEditorTexture("legend"),"");
       FootStepsToolbarOptions[2] = new GUIContent("<size=11><b> Templates</b></size>", GetEditorTexture("zone"), "");
+      
+      FieldsPrefabsToolbarOptions = new GUIContent[3];
+      FieldsPrefabsToolbarOptions[0] = new GUIContent("<size=11><b> Fields</b></size>", GetEditorTexture("toolbar_add"), "");
+      FieldsPrefabsToolbarOptions[1] = new GUIContent("<size=11><b>  Ui Popups prefabs</b></size>",GetEditorTexture("legend"),"");
+      FieldsPrefabsToolbarOptions[2] = new GUIContent("<size=11><b> Pooled prefabs</b></size>", GetEditorTexture("arrow_repeat"), "");
+
     }
   }
 }

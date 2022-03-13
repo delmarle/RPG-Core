@@ -70,6 +70,8 @@ namespace Station
             return _limbs.GetLimb(limbName);
         }
 
+        private EntityInteraction _interaction;
+
         private bool _isDead;
 
         public bool IsDead
@@ -271,6 +273,13 @@ namespace Station
            _action.SetAbilities(new List<RuntimeAbility>(), this);
            _action.Subscribe();
            _control.Setup();
+        }
+
+        public void SetupInteraction(EntityInteraction interaction, List<InteractionLine> lines)
+        {
+            _interaction = interaction;
+            interaction.SetCharacterOwner(this);
+            interaction.SetTopics(lines);
         }
 
         #region [[ FACTION & TARGETING ]]

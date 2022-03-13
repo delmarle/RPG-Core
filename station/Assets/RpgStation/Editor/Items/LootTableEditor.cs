@@ -54,32 +54,40 @@ namespace Station
 
         #region [[DRAW EXTERNAL TABLE REFERENCE]]
 
-        public static string DrawExternalTableReference(string tableId)
+        public static string DrawExternalTableReference(string tableId, string widgetName)
         {
             CacheDbs();
+            GUILayout.BeginHorizontal();
+            if (string.IsNullOrEmpty(widgetName) == false)
+            {
+                GUILayout.Label(widgetName);
+            }
             if (string.IsNullOrEmpty(tableId))
             {
-                GUILayout.BeginHorizontal();
+               
+              
+
+            
                 if (_lootTableDb.Count() > 0)
                 {
-                    if (EditorStatic.SizeableButton(120, 60, "use existing table", ""))
+                    if (EditorStatic.SizeableButton(120, 22, "use existing table", ""))
                     {
                         tableId = _lootTableDb.GetKey(0);
                     } 
                 }
                 
-                if (EditorStatic.SizeableButton(120, 60, "create new table", ""))
+                if (EditorStatic.SizeableButton(120, 22, "create new table", ""))
                 {
                     _lootTableDb.Add(new LootTableModel());
                     var lastIndex = _lootTableDb.Count() - 1;
                     tableId = _lootTableDb.GetKey(lastIndex);
                     _lootTableDb.ForceRefresh(); 
                 }
-                GUILayout.EndHorizontal();
+               
             }
             else
             {
-                GUILayout.BeginHorizontal();
+        
                 //draw assigned version
                 var entriesNames = _lootTableDb.ListEntryNames();
                 int currentIndex = 0;
@@ -90,15 +98,15 @@ namespace Station
                  
                 currentIndex = EditorGUILayout.Popup(currentIndex, entriesNames);
                 tableId = _lootTableDb.GetKey(currentIndex);
-                if (EditorStatic.SizeableButton(120, 60, "disable", ""))
+                if (EditorStatic.SizeableButton(120, 22, "disable", ""))
                 {
                     return string.Empty;
                 }
 
-                GUILayout.EndHorizontal();
+         
             }
             
-          
+            GUILayout.EndHorizontal();
             return tableId;
         }
 

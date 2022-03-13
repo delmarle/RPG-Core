@@ -15,6 +15,7 @@ MonoBehaviour:
   _db:
     m_keys:
     - 184a36ca-bca9-4b32-a711-93fe55440ae1
+    - f13322f5-3d8c-43aa-811e-ef5ee0168333
     m_values:
     - Name: Baby Chomper
       Description: 
@@ -38,6 +39,7 @@ MonoBehaviour:
       AttributesBonuses: []
       StatisticsBonuses: []
       LootTable: 329328c8-1294-4a00-932f-e314cc4a72ec
+      InteractionLines: []
       OwnedAbilities: []
       StatsCalculator: {fileID: 11400000, guid: f2fb6755890074a3a92afa231a099f0f,
         type: 2}
@@ -50,4 +52,39 @@ MonoBehaviour:
           CriticalBonus: 0
         CriticalChance: 0
         Range: 4
+        Speed: 1.4
+    - Name: The guide
+      Description: 
+      Icon: {fileID: 21300000, guid: f6f409759d4f44d7e8d080ce81d5e162, type: 3}
+      RaceId: 1316bc69-70ad-4577-9cfd-e29b35c8a18b
+      FactionId: 80054ef2-9410-4d10-bc02-794e4cec6f76
+      PrefabId: the_guide
+      Brain: {fileID: 0}
+      UseHealth: 0
+      HealthVital:
+        Id: a8710699-ce84-46b7-8c19-b5c7cc0f361d
+        Value: 12
+      UseSecondaryHealth: 0
+      SecondaryHealthVital:
+        Id: health
+        Value: 0
+      EnergyVitals: []
+      AttributesBonuses: []
+      StatisticsBonuses: []
+      LootTable: 
+      InteractionLines:
+      - {fileID: 11400000, guid: cc43c41bbace543ae8b88fc1253f7a8f, type: 2}
+      - {fileID: 11400000, guid: 33adf0e188a89455aaf931b47d756c6a, type: 2}
+      OwnedAbilities: []
+      StatsCalculator: {fileID: 11400000, guid: f2fb6755890074a3a92afa231a099f0f,
+        type: 2}
+      Attack:
+        BaseDamage:
+          EffectName: 
+          EffectIcon: {fileID: 0}
+          MinValue: 5
+          MaxValue: 22
+          CriticalBonus: 0
+        CriticalChance: 0
+        Range: 2
         Speed: 1.4

@@ -21,6 +21,10 @@ MonoBehaviour:
     m_Address: chomper
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 6e9b0b4f2e8934b4bb26ad4b4f02337f
+    m_Address: the_guide
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 74ddb1c5c6fe849afaba132576175fc1, type: 2}
   m_SchemaSet:

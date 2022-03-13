@@ -94,7 +94,7 @@ namespace Station
             
             EditorStatic.DrawThinLine(5);
 
-            nodeModel.LootTable = LootTableEditor.DrawExternalTableReference(nodeModel.LootTable);
+            nodeModel.LootTable = LootTableEditor.DrawExternalTableReference(nodeModel.LootTable, "Chest table:");
             
             
             EditorStatic.DrawSectionTitle("Node base data", 0);

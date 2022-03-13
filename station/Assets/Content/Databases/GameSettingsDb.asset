@@ -18,3 +18,18 @@ MonoBehaviour:
       type: 2}
     CharacterCreatedCount: 2
     MaxTeamSize: 3
+    _cachedUniquePopup:
+    - {fileID: 4554320079372885168, guid: 9851f4ffd5fb5442fbeb7ddaf6343f2e, type: 3}
+    - {fileID: 8438948625452705951, guid: 9622de3c490164f06b123d874df2e5b3, type: 3}
+    _cachedFields:
+    - Id: character_speed
+      TypeField: 1
+      ValueInt: 0
+      ValueFloat: 1
+      ValueString: 
+      ValueBool: 0
+    _poolPrefabs:
+    - Id: entity_interaction
+      Prefab: {fileID: 6414167901985936576, guid: a3ab61d34790a46668f43b6d8395503b,
+        type: 3}
+      InitialAmount: 0

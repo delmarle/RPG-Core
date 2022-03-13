@@ -21,16 +21,28 @@ namespace Station
         protected override void OnInit()
         {
             GameGlobalEvents.OnBeforeLeaveScene.AddListener(ClearCache);
+            GameGlobalEvents.OnDataBaseLoaded.AddListener(CacheAllUniquePopups);
             _instance = this;
         }
 
         protected override void OnDispose()
         {
             GameGlobalEvents.OnBeforeLeaveScene.RemoveListener(ClearCache);
+            GameGlobalEvents.OnDataBaseLoaded.RemoveListener(CacheAllUniquePopups);
             ClearCache();
             _instance = null;
         }
-        
+
+        private void CacheAllUniquePopups()
+        {
+            var settingsDb = GameInstance.GetDb<GameSettingsDb>();
+            foreach (var popup in settingsDb.Get()._cachedUniquePopup)
+            {
+                var instancePopup = (UiPopup)Instantiate(popup);
+                DontDestroyOnLoad(instancePopup);
+                _uniquePopups.Add(instancePopup.PopupUniqueId, instancePopup);
+            }
+        }
         
         private void ClearCache()
         {
@@ -189,32 +201,14 @@ namespace Station
         //can show over others
         #region UNIQUE POPUPS
 
-        private T _showUniquePopup<T>(string popupId, UiPopup prefab) where T : UiPopup
+        private T _getUniquePopup<T>(string popupId) where T : UiPopup
         {
-            T instancePopup = GetUniquePopup<T>(popupId, prefab);
-            if (instancePopup == null)
-            {
-                Debug.LogError("missing popup");
-            }
-
-            instancePopup.Show();
-            return instancePopup;
-        }
-
-        private T _getUniquePopup<T>(string popupId, UiPopup prefab) where T : UiPopup
-        {
-            T instancePopup;
             if (_uniquePopups.ContainsKey(popupId))
             {
-                instancePopup = (T)_uniquePopups[popupId];
+                return (T)_uniquePopups[popupId];
             }
-            else
-            {
-                instancePopup = (T)Instantiate(prefab);
-                DontDestroyOnLoad(instancePopup);
-                _uniquePopups.Add(popupId, instancePopup);
-            }
-            return instancePopup;
+
+            return null;
         }
         
         private void _hideUniquePopup<T>(string popupId) where T : UiPopup
@@ -227,19 +221,14 @@ namespace Station
         }
         
         //STATIC VERSIONS
-        public static T ShowUniquePopup<T>(string popupId, UiPopup prefab) where T : UiPopup
-        {
-            return _instance._showUniquePopup<T>(popupId, prefab);
-        }
-
         public static void HideUniquePopup<T>(string popupId)where T : UiPopup
         {
             _instance._hideUniquePopup<T>(popupId);
         }
 
-        public static T GetUniquePopup<T>(string popupId, UiPopup prefab) where T : UiPopup
+        public static T GetUniquePopup<T>(string popupId) where T : UiPopup
         {
-            return _instance._getUniquePopup<T>(popupId, prefab);
+            return _instance._getUniquePopup<T>(popupId);
         }
 
         #endregion

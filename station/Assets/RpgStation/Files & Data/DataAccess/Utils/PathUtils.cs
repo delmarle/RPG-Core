@@ -4,6 +4,7 @@ public static class PathUtils
 {
     private const string EDITOR_SOUNDS_PATH = "Assets/Content/Sounds/";
     private const string EDITOR_ITEMS_PATH = "Assets/Content/Items/";
+    private const string EDITOR_INTERACTION_PATH = "Assets/Content/Interaction/";
     
     public static string GetStreamingAssetsPath()
     {
@@ -39,5 +40,10 @@ public static class PathUtils
     public static string BuildItemPath()
     {
         return EDITOR_ITEMS_PATH;
+    }
+    
+    public static string BuildInteractionPath()
+    {
+        return EDITOR_INTERACTION_PATH;
     }
 }

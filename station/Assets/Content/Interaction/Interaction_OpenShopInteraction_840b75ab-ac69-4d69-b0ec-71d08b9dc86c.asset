@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c2f49f8f2bb4e9c8287edf96632d1e, type: 3}
+  m_Name: Interaction_OpenShopInteraction_840b75ab-ac69-4d69-b0ec-71d08b9dc86c
+  m_EditorClassIdentifier: 
+  _conditions: []
+  _characterConditions: []
+  _lockedText:
+    Key: 
+  _unlockedText:
+    Key: 

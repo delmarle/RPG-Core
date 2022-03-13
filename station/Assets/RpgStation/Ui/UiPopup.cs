@@ -6,9 +6,11 @@ namespace Station
 {
     public class UiPopup : UiElementAnim
     {
+        public string PopupUniqueId;
+        
 
         //show using type , return instance id
-    
+
     } 
 
 }

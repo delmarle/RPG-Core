@@ -74,7 +74,7 @@ namespace Station
                     return;
                 }
                 
-                _cachedContainerPopup = UiSystem.GetUniquePopup<UiContainerPopup>(UiContainerPopup.POPUP_KEY, prefab);
+                _cachedContainerPopup = UiSystem.GetUniquePopup<UiContainerPopup>(UiContainerPopup.POPUP_KEY);
             }
         
             CachePopup(_cachedContainerPopup);

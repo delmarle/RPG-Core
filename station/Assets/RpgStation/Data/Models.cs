@@ -19,8 +19,112 @@ namespace Station
       //PARTY RELATED
       public int CharacterCreatedCount = 2;
       public int MaxTeamSize = 2;
+      
+      public List<UiPopup> _cachedUniquePopup = new List<UiPopup>();
+      public List<FieldVariable> _cachedFields = new List<FieldVariable>();
+      public List<PrefabReference> _poolPrefabs = new List<PrefabReference>();
+      
+      #region CACHING
+      private Dictionary<string, PrefabReference> _prefabsMap = new Dictionary<string, PrefabReference>();
+      private Dictionary<string, FieldVariable> _fieldsMap = new Dictionary<string, FieldVariable>();
+      private Dictionary<string, UiPopup> _popupsMap = new Dictionary<string, UiPopup>();
+
+      public void CacheData()
+      {
+        foreach (var entry in _cachedUniquePopup)
+        {
+          if (_popupsMap.ContainsKey(entry.PopupUniqueId) == false)
+          {
+            _popupsMap.Add(entry.PopupUniqueId, entry);
+          }
+          else
+          {
+            Debug.LogError($"DUPLICATE UNIQUE POPUP KEY: {entry.PopupUniqueId}. this need to be changed or removed");
+          }
+        }
+        
+        foreach (var entry in _cachedFields)
+        {
+          if (_fieldsMap.ContainsKey(entry.Id) == false)
+          {
+            _fieldsMap.Add(entry.Id, entry);
+          }
+          else
+          {
+            Debug.LogError($"DUPLICATE UNIQUE FIELD KEY: {entry.Id}. this need to be changed or removed");
+          }
+        }
+        
+        foreach (var entry in _poolPrefabs)
+        {
+          if (_prefabsMap.ContainsKey(entry.Id) == false)
+          {
+            _prefabsMap.Add(entry.Id, entry);
+          }
+          else
+          {
+            Debug.LogError($"DUPLICATE UNIQUE prefab KEY: {entry.Id}. this need to be changed or removed");
+          }
+        }
+      }
+
+      public PrefabReference GetPrefab(string key)
+      {
+        if (_prefabsMap.ContainsKey(key))
+        {
+          return _prefabsMap[key];
+        }
+
+        Debug.LogWarning($"[GetPrefab] no entry found for {key}");
+        return null;
+      }
+      
+      public FieldVariable GetField(string key)
+      {
+        if (_fieldsMap.ContainsKey(key))
+        {
+          return _fieldsMap[key];
+        }
+
+        Debug.LogWarning($"[GetField] no entry found for {key}");
+        return null;
+      }
+      public UiPopup GetPopupPrefab(string key)
+      {
+        if (_popupsMap.ContainsKey(key))
+        {
+          return _popupsMap[key];
+        }
+
+        Debug.LogWarning($"[GetPopupPrefab] no entry found for {key}");
+        return null;
+      }
+      #endregion
     }
 
+    [Serializable]
+    public class FieldVariable
+    {
+      public string Id;
+      public FieldType TypeField;
+      public int ValueInt;
+      public float ValueFloat;
+      public string ValueString;
+      public bool ValueBool;
+    }
+    
+    [Serializable]
+    public class PrefabReference
+    {
+      public string Id;
+      public GameObject Prefab;
+      public int InitialAmount;
+    }
+
+    public enum FieldType
+    {
+      Int,Float,String,Bool
+    }
 
     [Serializable]
     public class DestinationModel
@@ -233,12 +337,11 @@ namespace Station
       public List<IdIntegerValue> EnergyVitals = new List<IdIntegerValue>();
       public List<IdIntegerValue> AttributesBonuses = new List<IdIntegerValue>();
       public List<IdFloatValue> StatisticsBonuses = new List<IdFloatValue>();
-
-      //faction
-      //Ai
-      //loot tables
+      
       public string LootTable;
-      //dialogue
+      
+      public List<InteractionLine> InteractionLines = new List<InteractionLine>();
+      
       //shop tables
       //counter updates
 

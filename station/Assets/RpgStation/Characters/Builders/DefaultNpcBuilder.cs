@@ -16,7 +16,17 @@ namespace Station
         public override void Build(BaseCharacter character, BaseCharacterData baseData, object[] data)
         {
             NpcModel model = (NpcModel)data[0];
-            
+            var gameSettings = GameInstance.GetDb<GameSettingsDb>().Get();
+
+            bool hasInteraction = model.InteractionLines?.Count > 0;
+            if (hasInteraction)
+            {
+                var prefab = gameSettings.GetPrefab("entity_interaction");
+                var instanceInteraction = Instantiate(prefab.Prefab, character.transform);
+                var component = instanceInteraction.GetComponent<EntityInteraction>();
+                instanceInteraction.transform.position = character.GetCenter();
+                character.SetupInteraction(component,model.InteractionLines);
+            }
             
             if (model.StatsCalculator == null)
             {

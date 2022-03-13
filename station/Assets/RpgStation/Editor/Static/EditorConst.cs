@@ -29,6 +29,7 @@
     public const string CONFIG_TAB_UI_CHANNELS = "<size=11><b> Ui Notification Channels</b></size>";
     public const string CONFIG_TAB_SOUNDS = "<size=11><b> Sounds</b></size>";
     public const string CONFIG_TAB_FOOTSTEPS = "<size=11><b> Footsteps</b></size>";
+    public const string CONFIG_TAB_UI_PREFABS = "<size=11><b> Fields and Prefabs</b></size>";
     
     //[[STATS TAB]]
     public const string STATS_TAB_ATTRIBUTES = "<size=11><b> Attributes</b></size>";
