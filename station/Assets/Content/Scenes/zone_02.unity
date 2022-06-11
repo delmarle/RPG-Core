@@ -1235,6 +1235,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44542fb152de9441388d8deb5d43fc1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SaveSettings:
+    SaveOnExit: 0
+    SaveOnEnter: 0
+    AutoSaveTimer: 0
+  CreatePlayerTeam: 1
 --- !u!1001 &864714982
 PrefabInstance:
   m_ObjectHideFlags: 0

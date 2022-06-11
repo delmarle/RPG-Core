@@ -240,15 +240,15 @@ namespace Station
       #region [[ Require ]]
       EditorGUILayout.BeginHorizontal( GUILayout.ExpandWidth(true));
       EditorGUILayout.BeginVertical(style2, GUILayout.ExpandWidth(true),  GUILayout.Height(100));
-      EditorStatic.DrawBonusWidget(data.Ranks[_currentRank].VitalsUsed, "Vital Consumed", _vitalsDb);
+      RpgEditorStatic.DrawBonusWidget(data.Ranks[_currentRank].VitalsUsed, "Vital Consumed", _vitalsDb);
      
       EditorStatic.DrawThinLine(3);
       var currentRank = data.Ranks[_currentRank];
       
-      currentRank.ActionFx = EditorStatic.DrawActionEffect("Casting", ref _displayCasting, ref displayCastingSound, ref  currentRank.ActionFx);
+      currentRank.ActionFx = RpgEditorStatic.DrawActionEffect("Casting", ref _displayCasting, ref displayCastingSound, ref  currentRank.ActionFx);
 
       EditorStatic.DrawThinLine(3);
-      EditorStatic.DrawActionEffect("Invoke", ref _displayInvoking, ref displayInvokingSound, ref currentRank.InvokingActionFx);
+      RpgEditorStatic.DrawActionEffect("Invoke", ref _displayInvoking, ref displayInvokingSound, ref currentRank.InvokingActionFx);
   
       EditorStatic.DrawThinLine(3);
       

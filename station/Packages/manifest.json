@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.delmarle.core": "https://github.com/delmarle/com.delmarle.core.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.addressables": "1.19.19",
     "com.unity.collab-proxy": "1.15.15",

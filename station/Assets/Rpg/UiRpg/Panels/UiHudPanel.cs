@@ -56,13 +56,13 @@ namespace Station
 
         private void Subscribe()
         {
-            GameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderChanged);
+            RpgGameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderChanged);
         }
         
         
         private void UnSubscribe()
         {
-            GameGlobalEvents.OnLeaderChanged.RemoveListener(OnLeaderChanged);
+            RpgGameGlobalEvents.OnLeaderChanged.RemoveListener(OnLeaderChanged);
         }
 
 

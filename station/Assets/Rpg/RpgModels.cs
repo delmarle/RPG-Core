@@ -357,7 +357,7 @@ namespace Station
         {
           return ApplyEffectResult.MissingTarget;
         }
-        SceneSystem sceneSystem = GameInstance.GetSystem<SceneSystem>();
+        RpgSceneSystem sceneSystem = GameInstance.GetSystem<RpgSceneSystem>();
         if (sceneSystem.IsTraveling)
         {
           return ApplyEffectResult.Blocked;
@@ -380,7 +380,7 @@ namespace Station
       public override ApplyEffectResult ApplyEffect(BaseCharacter source, BaseCharacter target)
       {
         GameInstance.EndGameMode();
-        SceneSystem sceneSystem = GameInstance.GetSystem<SceneSystem>();
+        RpgSceneSystem sceneSystem = GameInstance.GetSystem<RpgSceneSystem>();
         var sceneDb = GameInstance.GetDb<ScenesDb>();
         if (sceneSystem.IsTraveling)
         {

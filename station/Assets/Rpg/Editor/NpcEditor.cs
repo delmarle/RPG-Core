@@ -165,13 +165,13 @@ namespace Station
                 EditorGUILayout.HelpBox("BONUS ADDED TO SELECTED RACE STARTING VALUES", MessageType.Info);
                 GUILayout.Space(5);
                 current.StatsCalculator = (CharacterCalculation) EditorGUILayout.ObjectField("Calculator: ", current.StatsCalculator, typeof(CharacterCalculation), false);
-                EditorStatic.DrawBonusWidget(current.AttributesBonuses, "Attribute Bonus:", _attributesDb);
+                RpgEditorStatic.DrawBonusWidget(current.AttributesBonuses, "Attribute Bonus:", _attributesDb);
                 EditorStatic.DrawThinLine(5);
                 HealthVitalSection(current);
                 EditorStatic.DrawThinLine(5);
                 VitalBonusSection(current);
                 EditorStatic.DrawThinLine(5);
-                EditorStatic.DrawBonusWidget(current.StatisticsBonuses, "Statistic Bonus:", _statisticsDb);
+                RpgEditorStatic.DrawBonusWidget(current.StatisticsBonuses, "Statistic Bonus:", _statisticsDb);
             }
             
             EditorStatic.DrawLargeLine(5);

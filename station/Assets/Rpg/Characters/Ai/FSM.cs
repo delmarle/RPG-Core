@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Malee;
+
 using UnityEngine;
 
 namespace Station
@@ -129,10 +129,6 @@ namespace Station
 
     }
     
-    [System.Serializable]
-    public class TransitionList : ReorderableArray<FSMStateTransition> {
-    }
-
     [Serializable]
     public class FSMStateTransition
     {

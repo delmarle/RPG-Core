@@ -156,12 +156,12 @@ namespace Station
       EditorStatic.DrawThinLine(10);
       if (_vitalsDb.Count() > 0)
       {
-        EditorStatic.DrawBonusWidget( attributeStaticData.VitalBonuses,"Vital bonus per point:", _vitalsDb);
+        RpgEditorStatic.DrawBonusWidget( attributeStaticData.VitalBonuses,"Vital bonus per point:", _vitalsDb);
       }
       EditorStatic.DrawThinLine(10);
       if (_attributesDb.Count() > 0)
       {
-        EditorStatic.DrawBonusWidget(attributeStaticData.StatisticBonuses, "Statistic bonus per point:", _statisticsDb);
+        RpgEditorStatic.DrawBonusWidget(attributeStaticData.StatisticBonuses, "Statistic bonus per point:", _statisticsDb);
       }
 
    

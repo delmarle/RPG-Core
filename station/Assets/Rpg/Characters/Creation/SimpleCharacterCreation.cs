@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Station.Data;
 using UnityEngine;
 
 namespace Station
@@ -73,7 +72,7 @@ namespace Station
         public override void StartSequence()
         {
             GameGlobalEvents.OnEnterGame.Invoke();
-            _sceneSystem.LoadNormalScene(scene, SceneType.CharacterCreation, null);
+            _sceneSystem.LoadNormalScene(scene, null);
             while (_sceneSystem.IsLoadingScene)
             {
                  return;
@@ -158,7 +157,7 @@ namespace Station
                 SceneId = _destinationId, 
                 SpawnId = 0
             };
-            var rpgSceneSystem =  GameInstance.GetSystem<SceneSystem>();
+            var rpgSceneSystem =  GameInstance.GetSystem<RpgSceneSystem>();
             rpgSceneSystem.InjectDestinationInSave(destinationModel);
             module.Save();
             //go to zone

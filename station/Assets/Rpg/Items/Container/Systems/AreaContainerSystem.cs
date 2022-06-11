@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Station.Data;
 
 namespace Station
 {
@@ -10,7 +9,7 @@ namespace Station
         private Dictionary<string, BaseItemContainer> _tempContainer = new Dictionary<string, BaseItemContainer>();
         private Dictionary<string, BaseItemContainer> _savedContainer;
         private AreaContainersSave _areaContainersSave;
-        private SceneSystem _sceneSystem;
+        private RpgSceneSystem _sceneSystem;
         #region OVERRIDES
         protected override void OnInit()
         {
@@ -81,14 +80,14 @@ namespace Station
         private void OnEnterGame()
         {
             var saveSystem = GameInstance.GetSystem<SavingSystem>();
-            _sceneSystem =  GameInstance.GetSystem<SceneSystem>();
+            _sceneSystem =  GameInstance.GetSystem<RpgSceneSystem>();
             _areaContainersSave = saveSystem.GetModule<AreaContainersSave>();
             _areaContainersSave.Initialize();
         }
         
-        private void OnSceneInitialize(SceneType sceneType)
+        private void OnSceneInitialize()
         {
-            if (sceneType != SceneType.Area) return;
+          //  if (sceneType != SceneType.Area) return;
             
             var itemDb = GameInstance.GetDb<ItemsDb>();
             if (_sceneSystem.GetCurrentDestination() == null) return;

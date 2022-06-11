@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Station
 {
-    public static partial class GameGlobalEvents
+    public static  class RpgGameGlobalEvents
     {
         
         #region TEAM

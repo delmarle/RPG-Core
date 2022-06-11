@@ -168,13 +168,13 @@ namespace Station
                 GUILayout.Space(5);
                 current.StatsCalculator = (CharacterCalculation) EditorGUILayout.ObjectField("Calculator: ",
                     current.StatsCalculator, typeof(CharacterCalculation), false);
-                EditorStatic.DrawBonusWidget(current.AttributesBonuses, "Attribute Bonus:", _attributesDb);
+                RpgEditorStatic.DrawBonusWidget(current.AttributesBonuses, "Attribute Bonus:", _attributesDb);
                 EditorStatic.DrawThinLine(10);
                 HealthVitalSection(current);
                 EditorStatic.DrawThinLine(10);
                 VitalBonusSection(current);
                 EditorStatic.DrawThinLine(10);
-                EditorStatic.DrawBonusWidget(current.StatisticsBonuses, "Statistic Bonus:", _statisticsDb);
+                RpgEditorStatic.DrawBonusWidget(current.StatisticsBonuses, "Statistic Bonus:", _statisticsDb);
             }
 
             EditorStatic.DrawThinLine(10);

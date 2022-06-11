@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Malee;
-using Station.Data;
+
 using UnityEngine;
 using Weighted_Randomizer;
 using Object = UnityEngine.Object;
@@ -16,7 +15,7 @@ namespace Station
         public int SpawnAmount;
         public EntitiesSelectionMode entitiesSelectionMode;
         public ReSpawnMode ReSpawnMode;
-        [Reorderable] public SpawnDataList DataList = new SpawnDataList();
+        public SpawnDataList DataList = new SpawnDataList();
 
         //cached
         private SavingSystem _savingSystem;
@@ -36,7 +35,7 @@ namespace Station
                     //init it
                     if (entitiesSelectionMode == EntitiesSelectionMode.EACH)
                     {
-                        foreach (var spawnableData in DataList)
+                        foreach (var spawnableData in DataList.Data)
                         {
                             spawnableData.SpawnEntity(_mechanics);
                             spawnerSave.AddEntry(SpawnId, spawnableData.Id, "todo_data");
@@ -62,7 +61,7 @@ namespace Station
             {
                 if (entitiesSelectionMode == EntitiesSelectionMode.EACH)
                 {
-                    foreach (var spawnableData in DataList)
+                    foreach (var spawnableData in DataList.Data)
                     {
                         spawnableData.SpawnEntity(_mechanics);
                     }
@@ -86,7 +85,7 @@ namespace Station
 
         public SpawnData GetDataById(string id)
         {
-            foreach (var entry in DataList)
+            foreach (var entry in DataList.Data)
             {
                 if (entry.Id == id) return entry;
             }
@@ -96,16 +95,16 @@ namespace Station
     }
 
     [Serializable]
-    public class SpawnDataList : ReorderableArray<SpawnData>
+    public class SpawnDataList 
     {
         private StaticWeightedRandomizer<SpawnData> _weightedRandomizer = null;
-        
+        public List<SpawnData> Data = new List<SpawnData>();
         public  StaticWeightedRandomizer<SpawnData> GetRandomizer()
         {
             if (_weightedRandomizer == null)
             {
                 _weightedRandomizer = new StaticWeightedRandomizer<SpawnData>();
-                foreach (var data in ToArray())
+                foreach (var data in Data.ToArray())
                 {
                     _weightedRandomizer.Add(data,data.Weight);
                 }
@@ -185,7 +184,7 @@ namespace Station
                     //if saved
                         //have save
               
-                    instance.OnLoadContainer(SceneType.Area);
+                    instance.OnLoadContainer();
                     //create loot table from loot table id
                     break;
             }

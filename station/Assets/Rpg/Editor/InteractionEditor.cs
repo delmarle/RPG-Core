@@ -166,7 +166,7 @@ namespace Station
           }
           GUILayout.Space(3);
         }
-        current.actionFxData = EditorStatic.DrawActionEffect("Interaction", ref _showCastingData, ref _showCastingSound, ref current.actionFxData);
+        current.actionFxData = RpgEditorStatic.DrawActionEffect("Interaction", ref _showCastingData, ref _showCastingSound, ref current.actionFxData);
         
         current.CancelInteractionMode = (CancelInteractionMode)EditorGUILayout.EnumPopup("Cancel interaction mode:", current.CancelInteractionMode);
         switch (current.CancelInteractionMode)

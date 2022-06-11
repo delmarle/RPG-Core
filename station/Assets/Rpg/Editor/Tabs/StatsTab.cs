@@ -29,11 +29,11 @@ namespace Station
     GUILayout.BeginVertical("box",GUILayout.Width(EditorStatic.LIST_VIEW_WIDTH),GUILayout.ExpandHeight(true));
     {
         var  toolbarOptions = new GUIContent[5];
-        toolbarOptions[0] = new GUIContent(EditorStatic.STATS_TAB_ATTRIBUTES,null, "");
-        toolbarOptions[1] = new GUIContent(EditorStatic.STATS_TAB_VITALS, null, "");
-        toolbarOptions[2] = new GUIContent(EditorStatic.STATS_TAB_STATISTICS, null, "");
-        toolbarOptions[3] = new GUIContent(EditorStatic.STATS_TAB_ELEMENTS, null, "");
-        toolbarOptions[4] = new GUIContent(EditorStatic.STATS_TAB_STATUS_EFFECTS, null, "");
+        toolbarOptions[0] = new GUIContent(RpgEditorStatic.STATS_TAB_ATTRIBUTES,null, "");
+        toolbarOptions[1] = new GUIContent(RpgEditorStatic.STATS_TAB_VITALS, null, "");
+        toolbarOptions[2] = new GUIContent(RpgEditorStatic.STATS_TAB_STATISTICS, null, "");
+        toolbarOptions[3] = new GUIContent(RpgEditorStatic.STATS_TAB_ELEMENTS, null, "");
+        toolbarOptions[4] = new GUIContent(RpgEditorStatic.STATS_TAB_STATUS_EFFECTS, null, "");
         var previousIndex = _toolBarIndex;
         var height = 40 * toolbarOptions.Length;
         _toolBarIndex = GUILayout.SelectionGrid(_toolBarIndex, toolbarOptions,1,EditorStatic.ToolBarStyle,GUILayout.Height(height));

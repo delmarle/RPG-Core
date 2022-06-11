@@ -5,21 +5,14 @@ using UnityEngine;
 
 namespace RPG.Editor
 {
-  public static partial class EditorStatic
+  public static class RpgEditorStatic
   {
     #region FIELDS
     //[[GAME CONFIG TAB]]
     public const string CONFIG_TAB_GAMEPLAY = "<size=11><b> Gameplay</b></size>";
     public const string CONFIG_TAB_CHARACTER_CREATION = "<size=11><b> Character Creation</b></size>";
     public const string CONFIG_TAB_DIFFICULTY = "<size=11><b> Difficulty</b></size>";
-    public const string CONFIG_TAB_OPTIONS = "<size=11><b> Options</b></size>";
-    public const string CONFIG_TAB_PLATFORMS = "<size=11><b> Platforms</b></size>";
-    public const string CONFIG_TAB_INPUT_EVENTS = "<size=11><b> Input Events</b></size>";
-    public const string CONFIG_TAB_FLOATING_POPUPS = "<size=11><b> Floating Popups</b></size>";
-    public const string CONFIG_TAB_UI_CHANNELS = "<size=11><b> Ui Notification Channels</b></size>";
-    public const string CONFIG_TAB_SOUNDS = "<size=11><b> Sounds</b></size>";
-    public const string CONFIG_TAB_FOOTSTEPS = "<size=11><b> Footsteps</b></size>";
-    public const string CONFIG_TAB_UI_PREFABS = "<size=11><b> Fields and Prefabs</b></size>";
+
     
     //[[STATS TAB]]
     public const string STATS_TAB_ATTRIBUTES = "<size=11><b> Attributes</b></size>";
@@ -78,11 +71,11 @@ namespace RPG.Editor
     public static ActionFxData DrawActionEffect(string effectType, ref bool isFoldoutOpen, ref bool isSoundFoldoutOpen, ref ActionFxData actionFx)
     {
       EditorGUILayout.BeginHorizontal();
-      isFoldoutOpen = LevelFoldout(effectType, isFoldoutOpen, 32, Color.white);
+      isFoldoutOpen = EditorStatic.LevelFoldout(effectType, isFoldoutOpen, 32, Color.white);
       bool useCasting = actionFx.HasData;
       string buttonName = useCasting ? "ON" : "OFF";
       string iconName = useCasting ? "bullet_green" : "bullet_red";
-      if (SizeableButton(80, 28, buttonName, iconName))
+      if (EditorStatic.SizeableButton(80, 28, buttonName, iconName))
       {
         actionFx.HasData = !actionFx.HasData;
       }
@@ -95,10 +88,10 @@ namespace RPG.Editor
           actionFx.Length = EditorGUILayout.FloatField($"{effectType} time: ", actionFx.Length);
           actionFx.AnimationId = EditorGUILayout.IntField($"{effectType} animation ID: ", actionFx.AnimationId);
           
-          isSoundFoldoutOpen = SoundFoldout($"{effectType} sound: ", ref actionFx.StartSound, isSoundFoldoutOpen, 28, Color.cyan);
+          isSoundFoldoutOpen = EditorStatic.SoundFoldout($"{effectType} sound: ", ref actionFx.StartSound, isSoundFoldoutOpen, 28, Color.cyan);
           if (isSoundFoldoutOpen)
           {
-            DrawSoundWidget(ref actionFx.StartSound, ABILITIES_CATEGORY);
+            EditorStatic.DrawSoundWidget(ref actionFx.StartSound, ABILITIES_CATEGORY);
           }
           
           actionFx.Option = (ExitMode)EditorGUILayout.EnumPopup("Mode: ", actionFx.Option);
@@ -123,8 +116,8 @@ namespace RPG.Editor
     public static void DrawBonusWidget<T>(List<IdFloatValue> current, string bonusName, DictGenericDatabase<T> dict) where T : class
     {
       EditorGUILayout.BeginHorizontal();
-      DrawSectionTitle(bonusName, 350, 3);
-      if (SizeableButton(100, 22, "Add", "plus")) { current.Add(new IdFloatValue(dict.GetKey(0), 5)); }
+      EditorStatic.DrawSectionTitle(bonusName, 350, 3);
+      if (EditorStatic.SizeableButton(100, 22, "Add", "plus")) { current.Add(new IdFloatValue(dict.GetKey(0), 5)); }
       EditorGUILayout.EndHorizontal();
       for (var index = 0; index < current.Count; index++)
       {
@@ -138,7 +131,7 @@ namespace RPG.Editor
           bonus.Value = EditorGUILayout.FloatField(bonus.Value, GUILayout.Width(125));
           GUILayout.Space(5);
 
-          if (SizeableButton(65, 16, "DELETE", ""))
+          if (EditorStatic.SizeableButton(65, 16, "DELETE", ""))
           {
             current.Remove(bonus);
             return;
@@ -151,8 +144,8 @@ namespace RPG.Editor
     public static void DrawBonusWidget<T>(List<IdIntegerValue> current, string bonusName, DictGenericDatabase<T> dict) where T : class
     {
       EditorGUILayout.BeginHorizontal();
-      DrawSectionTitle(bonusName, 350, 3);
-      if (SizeableButton(100, 22, "Add", "plus")) { current.Add(new IdIntegerValue(dict.GetKey(0), 5)); }
+      EditorStatic.DrawSectionTitle(bonusName, 350, 3);
+      if (EditorStatic.SizeableButton(100, 22, "Add", "plus")) { current.Add(new IdIntegerValue(dict.GetKey(0), 5)); }
       EditorGUILayout.EndHorizontal();
       for (var index = 0; index < current.Count; index++)
       {
@@ -172,7 +165,7 @@ namespace RPG.Editor
           bonus.Value = EditorGUILayout.IntField(bonus.Value, GUILayout.Width(125));
           GUILayout.Space(5);
 
-          if (SizeableButton(65, 16, "DELETE", ""))
+          if (EditorStatic.SizeableButton(65, 16, "DELETE", ""))
           {
             current.Remove(bonus);
             return;

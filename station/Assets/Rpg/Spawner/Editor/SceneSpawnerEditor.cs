@@ -50,7 +50,7 @@ namespace Station
             EditorGUILayout.BeginHorizontal();
             if (EditorStatic.Button(true, 32, "Add", "plus"))
             {
-                spawner.DataList.Add(new SpawnData());
+                spawner.DataList.Data.Add(new SpawnData());
                 GUIUtility.ExitGUI();
             }
 
@@ -60,7 +60,7 @@ namespace Station
 
             EditorGUILayout.EndHorizontal();
             EditorStatic.DrawThinLine(2);
-            for (var index = 0; index < spawner.DataList.Count; index++)
+            for (var index = 0; index < spawner.DataList.Data.Count; index++)
             {
                 DrawEntry(index, spawner);
             }
@@ -75,7 +75,7 @@ namespace Station
 
         private void SetStatesSizes(SceneSpawner spawner)
         {
-            while (_entriesStates.Count < spawner.DataList.Count)
+            while (_entriesStates.Count < spawner.DataList.Data.Count)
             {
                 _entriesStates.Add(false);
             }
@@ -110,7 +110,7 @@ namespace Station
 
         private void DrawEntry(int index, SceneSpawner spawner)
         {
-            var entry = spawner.DataList[index];
+            var entry = spawner.DataList.Data[index];
             var highestWeight = HighestWeight(spawner);
             if (entry == null) return;
             EditorGUILayout.Space();
@@ -125,7 +125,7 @@ namespace Station
             _entriesStates[index] = LevelFoldout(description, _entriesStates[index]);
             if (EditorStatic.SizeableButton(20, 16, "X", ""))
             {
-                spawner.DataList.RemoveAt(index);
+                spawner.DataList.Data.RemoveAt(index);
 
                 return;
             }
@@ -171,7 +171,7 @@ namespace Station
         private int HighestWeight(SceneSpawner spawner)
         {
             int highest = 0;
-            foreach (var entry in spawner.DataList)
+            foreach (var entry in spawner.DataList.Data)
             {
                 if (entry.Weight > highest)
                 {

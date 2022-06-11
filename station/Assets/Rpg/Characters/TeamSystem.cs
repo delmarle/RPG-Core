@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Station.Data;
 using UnityEngine;
+
 
 namespace Station
 {
@@ -26,14 +26,12 @@ namespace Station
         {
             _savingSystem = GameInstance.GetSystem<SavingSystem>();
             GameGlobalEvents.OnSceneStartLoad.AddListener(OnStartLoadScene);
-            GameGlobalEvents.OnSceneLoadObjects.AddListener(InitializeTeam);
         }
 
        
         protected override void OnDispose()
         {
             GameGlobalEvents.OnSceneStartLoad.RemoveListener(OnStartLoadScene);
-            GameGlobalEvents.OnSceneLoadObjects.RemoveListener(InitializeTeam);
         }
 
         protected override void OnDataBaseReady()
@@ -41,79 +39,79 @@ namespace Station
             BaseCharacter.CacheAllDb();
         }
 
-        private void InitializeTeam(SceneType sceneType)
+        public void InitializeTeam()
         {
-            StartCoroutine(InitializeTeamSequence(sceneType));
+            StartCoroutine(InitializeTeamSequence());
         }
         
-        private void OnStartLoadScene(SceneType sceneType)
+        private void OnStartLoadScene()
         {
             _leader = null;
             _characters = new List<BaseCharacter>();
         }
 
 
-        private IEnumerator InitializeTeamSequence(SceneType sceneType)
+        private IEnumerator InitializeTeamSequence()
         {
-
-            if (sceneType == SceneType.Area)
-            {
+            Debug.LogError("InitializeTeamSequence");
+//TODO call this from other place
+         //   if (sceneType == SceneType.Area)
+            //{
                 _settingsDb = GameInstance.GetDb<RpgSettingsDb>();
                 var playerClassDb = GameInstance.GetDb<PlayerClassDb>();
                 var mechanics = _settingsDb.Get().Mechanics;
                 var playersModule = _savingSystem.GetModule<PlayersSave>();
 
-            foreach (var playerPair in playersModule.Value)
-            {
-                
-                var player = playerPair.Value;
-                var classData = playerClassDb.GetEntry(player.ClassId);
-                var characterData = new List<object>
+                foreach (var playerPair in playersModule.Value)
                 {
-                    classData, player, playerPair.Key
-                };
-                string prefabId = null;
-                foreach (var entry in classData.AllowedRaces)
-                {
-                    if (entry.RaceId == player.RaceId)
+                    var player = playerPair.Value;
+                    var classData = playerClassDb.GetEntry(player.ClassId);
+                    var characterData = new List<object>
                     {
-                        prefabId = player.GenderId == "male"?entry.MaleAddressPrefab : entry.FemaleAddressPrefab;
+                        classData, player, playerPair.Key
+                    };
+                    string prefabId = null;
+                    foreach (var entry in classData.AllowedRaces)
+                    {
+                        if (entry.RaceId == player.RaceId)
+                        {
+                            prefabId = player.GenderId == "male" ? entry.MaleAddressPrefab : entry.FemaleAddressPrefab;
+                        }
                     }
+
+                    BaseCharacterData baseData = new BaseCharacterData
+                    {
+                        CharacterId = playerPair.Key,
+                        Gender = player.GenderId,
+                        Identifier = player.ClassId,
+                        RaceId = player.RaceId,
+                        Position = player.LastPosition,
+                        Rotation = player.LastRotation,
+                        CharacterType = new PlayerCharacterType()
+                    };
+                    var task = mechanics.InstantiateCharacter(baseData, characterData.ToArray(), null, prefabId);
+                    while (task.GetResult() == null)
+                    {
+                        yield return null;
+                    }
+
+                    AddTeamMember(task.GetResult());
                 }
 
-                BaseCharacterData baseData = new BaseCharacterData
+                yield return null;
+
+                var first = _characters.FirstOrDefault();
+
+                _mechanics = _settingsDb.Get().Mechanics;
+                InitializeCamera();
+                InitializeUi();
+                yield return null;
+                if (first != null)
                 {
-                    CharacterId =  playerPair.Key,
-                    Gender = player.GenderId,
-                    Identifier = player.ClassId,
-                    RaceId = player.RaceId,
-                    Position = player.LastPosition,
-                    Rotation = player.LastRotation,
-                    CharacterType = new PlayerCharacterType()
-                };
-                var task = mechanics.InstantiateCharacter(baseData, characterData.ToArray(), null, prefabId);
-                while (task.GetResult() == null)
-                {
-                    yield return null;
+                    SetLeader(first);
+                    first.AddMeta("identity", IdentityType.ControlledCharacter.ToString());
                 }
-                AddTeamMember(task.GetResult());
-            }
-
-            yield return null;
-
-            var first = _characters.FirstOrDefault();
-         
-            _mechanics = _settingsDb.Get().Mechanics;
-            InitializeCamera();
-            InitializeUi();
-            yield return null;
-            if (first != null)
-            {
-                SetLeader(first);
-                first.AddMeta("identity", IdentityType.ControlledCharacter.ToString());
-            }
-           
-            }
+           // }
        
 
             yield return null;
@@ -134,13 +132,13 @@ namespace Station
         private void AddTeamMember(BaseCharacter character)
         {
             _characters.Add(character);
-            GameGlobalEvents.OnCharacterAdded?.Invoke(character);
+            RpgGameGlobalEvents.OnCharacterAdded?.Invoke(character);
         }
 
         private void RemoveTeamMember(BaseCharacter character)
         {
             _characters.Add(character);
-            GameGlobalEvents.OnCharacterRemoved?.Invoke(character);
+            RpgGameGlobalEvents.OnCharacterRemoved?.Invoke(character);
         }
 
         private void SetLeader(BaseCharacter character)
@@ -154,7 +152,7 @@ namespace Station
             SetCharacterControllable(character);
             _cameraController.SetTarget(character.transform);
             _leader = character;
-            GameGlobalEvents.OnLeaderChanged?.Invoke(character);
+            RpgGameGlobalEvents.OnLeaderChanged?.Invoke(character);
         }
 
         public void RequestLeaderChange(BaseCharacter character)

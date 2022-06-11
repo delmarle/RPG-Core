@@ -2,7 +2,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using Station.Data;
+
 using UnityEngine;
 using Weighted_Randomizer;
 using Debug = UnityEngine.Debug;
@@ -15,7 +15,7 @@ namespace Station
         private RpgSettingsDb _settingsDb;
  
         private SavingSystem _savingSystem;
-        private SceneSystem _sceneSystem;
+        private RpgSceneSystem _sceneSystem;
         
         private SceneSpawner[] _cacheSpawnsData;
         #endregion
@@ -24,7 +24,7 @@ namespace Station
         {
            GameGlobalEvents.OnSceneLoadObjects.AddListener(OnEnterScene);
            _savingSystem = GameInstance.GetSystem<SavingSystem>();
-           _sceneSystem = GameInstance.GetSystem<SceneSystem>();
+           _sceneSystem = GameInstance.GetSystem<RpgSceneSystem>();
 
         }
 
@@ -38,9 +38,9 @@ namespace Station
             
         }
 
-        public void OnEnterScene(SceneType sceneType)
+        public void OnEnterScene()
         {
-            if (sceneType != SceneType.Area) return;
+            //if (sceneType != SceneType.Area) return;
             
             _cacheSpawnsData = FindObjectsOfType<SceneSpawner>();
             if (_cacheSpawnsData == null) return;

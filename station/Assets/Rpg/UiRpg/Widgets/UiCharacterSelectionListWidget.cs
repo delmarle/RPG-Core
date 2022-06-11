@@ -28,8 +28,8 @@ namespace Station
 
             OnCharacterSelected(_teamsystem.GetTeamMembers().FirstOrDefault());
             
-            GameGlobalEvents.OnCharacterAdded.AddListener(OnMemberAdded);
-            GameGlobalEvents.OnCharacterRemoved.AddListener(OnMemberRemoved);
+            RpgGameGlobalEvents.OnCharacterAdded.AddListener(OnMemberAdded);
+            RpgGameGlobalEvents.OnCharacterRemoved.AddListener(OnMemberRemoved);
         }
 
         public void ApplyTarget(ICharacterSwitchable[] targets)
@@ -38,8 +38,8 @@ namespace Station
         }
         private void OnDestroy()
         {
-            GameGlobalEvents.OnCharacterAdded.RemoveListener(OnMemberAdded);
-            GameGlobalEvents.OnCharacterRemoved.RemoveListener(OnMemberRemoved);
+            RpgGameGlobalEvents.OnCharacterAdded.RemoveListener(OnMemberAdded);
+            RpgGameGlobalEvents.OnCharacterRemoved.RemoveListener(OnMemberRemoved);
         }
 
         #region DELEGATES

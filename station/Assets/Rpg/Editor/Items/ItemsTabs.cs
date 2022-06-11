@@ -131,14 +131,14 @@ namespace Station
             GUILayout.BeginVertical("box",GUILayout.Width(EditorStatic.LIST_VIEW_WIDTH),GUILayout.ExpandHeight(true));
             {
                 var  toolbarOptions = new GUIContent[8];
-                toolbarOptions[0] = new GUIContent(EditorStatic.ITEMS_TAB_SETTINGS,null, "");
-                toolbarOptions[1] = new GUIContent(EditorStatic.ITEMS_TAB_ITEMS,null, "");
-                toolbarOptions[2] = new GUIContent(EditorStatic.ITEMS_TAB_LOOT_TABLES, null, "");
-                toolbarOptions[3] = new GUIContent(EditorStatic.ITEMS_TAB_CURRENCIES, null, "");
-                toolbarOptions[4] = new GUIContent(EditorStatic.ITEMS_TAB_SHOPS, null, "");
-                toolbarOptions[5] = new GUIContent(EditorStatic.ITEMS_TAB_CRAFT, null, "");
-                toolbarOptions[6] = new GUIContent(EditorStatic.ITEMS_TAB_RESOURCES_NODES, null, "");
-                toolbarOptions[7] = new GUIContent(EditorStatic.ITEMS_TAB_CHEST_NODES, null, "");
+                toolbarOptions[0] = new GUIContent(RpgEditorStatic.ITEMS_TAB_SETTINGS,null, "");
+                toolbarOptions[1] = new GUIContent(RpgEditorStatic.ITEMS_TAB_ITEMS,null, "");
+                toolbarOptions[2] = new GUIContent(RpgEditorStatic.ITEMS_TAB_LOOT_TABLES, null, "");
+                toolbarOptions[3] = new GUIContent(RpgEditorStatic.ITEMS_TAB_CURRENCIES, null, "");
+                toolbarOptions[4] = new GUIContent(RpgEditorStatic.ITEMS_TAB_SHOPS, null, "");
+                toolbarOptions[5] = new GUIContent(RpgEditorStatic.ITEMS_TAB_CRAFT, null, "");
+                toolbarOptions[6] = new GUIContent(RpgEditorStatic.ITEMS_TAB_RESOURCES_NODES, null, "");
+                toolbarOptions[7] = new GUIContent(RpgEditorStatic.ITEMS_TAB_CHEST_NODES, null, "");
                 var height = 40 * toolbarOptions.Length;
                 _toolBarIndex = GUILayout.SelectionGrid(_toolBarIndex, toolbarOptions,1,EditorStatic.ToolBarStyle,GUILayout.Height(height));
             }

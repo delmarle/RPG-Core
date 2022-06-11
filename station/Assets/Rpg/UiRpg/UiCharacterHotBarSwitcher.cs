@@ -27,16 +27,16 @@ namespace Station
 
             OnLeaderChanged(_teamsystem.GetTeamMembers().FirstOrDefault());
             
-            GameGlobalEvents.OnCharacterAdded.AddListener(OnMemberAdded);
-            GameGlobalEvents.OnCharacterRemoved.AddListener(OnMemberRemoved);
-            GameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderChanged);
+            RpgGameGlobalEvents.OnCharacterAdded.AddListener(OnMemberAdded);
+            RpgGameGlobalEvents.OnCharacterRemoved.AddListener(OnMemberRemoved);
+            RpgGameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderChanged);
         }
 
         private void OnDestroy()
         {
-            GameGlobalEvents.OnCharacterAdded.RemoveListener(OnMemberAdded);
-            GameGlobalEvents.OnCharacterRemoved.RemoveListener(OnMemberRemoved);
-            GameGlobalEvents.OnLeaderChanged.RemoveListener(OnLeaderChanged);
+            RpgGameGlobalEvents.OnCharacterAdded.RemoveListener(OnMemberAdded);
+            RpgGameGlobalEvents.OnCharacterRemoved.RemoveListener(OnMemberRemoved);
+            RpgGameGlobalEvents.OnLeaderChanged.RemoveListener(OnLeaderChanged);
         }
 
         #region DELEGATES

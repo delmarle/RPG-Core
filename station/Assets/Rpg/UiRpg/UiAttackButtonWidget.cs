@@ -13,14 +13,14 @@ namespace Station
 
         private void Awake()
         {
-            GameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderChanged);
+            RpgGameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderChanged);
             //var teamSystem = RpgStation.GetSystemStatic<TeamSystem>();
             //OnLeaderChanged(teamSystem.GetCurrentLeader());
         }
 
         private void OnDestroy()
         {
-            GameGlobalEvents.OnLeaderChanged.RemoveListener(OnLeaderChanged);
+            RpgGameGlobalEvents.OnLeaderChanged.RemoveListener(OnLeaderChanged);
         }
 
         private void OnLeaderChanged(BaseCharacter leader)

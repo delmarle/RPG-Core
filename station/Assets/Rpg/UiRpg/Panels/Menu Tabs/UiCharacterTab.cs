@@ -24,14 +24,14 @@ namespace Station
             _vitalsListWidget.Setup();
             _statsListWidget.Setup();
             _charSelection.ApplyTarget(new ICharacterSwitchable[] {this});
-            GameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderUpdate);
+            RpgGameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderUpdate);
             base.Awake();
         }
 
         protected void OnDestroy()
         {
             UnFollowCharacter();
-            GameGlobalEvents.OnLeaderChanged.RemoveListener(OnLeaderUpdate);
+            RpgGameGlobalEvents.OnLeaderChanged.RemoveListener(OnLeaderUpdate);
         }
 
         #endregion

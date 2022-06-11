@@ -60,11 +60,11 @@ namespace Station
 
             EditorStatic.DrawThinLine();
             effect.ModifierType = (ModifierType)EditorGUILayout.EnumPopup(effect.ModifierType);
-            EditorStatic.DrawBonusWidget(effect.AttributesBuffs, "Attributes Buffs", attributesDb);
+            RpgEditorStatic.DrawBonusWidget(effect.AttributesBuffs, "Attributes Buffs", attributesDb);
             EditorStatic.DrawThinLine();
-            EditorStatic.DrawBonusWidget(effect.VitalsBuffs, "Vitals Buffs", vitalsDb);
+            RpgEditorStatic.DrawBonusWidget(effect.VitalsBuffs, "Vitals Buffs", vitalsDb);
             EditorStatic.DrawThinLine();
-            EditorStatic.DrawBonusWidget(effect.StatisticsBuffs, "Statistics Buffs", statisticsDb);
+            RpgEditorStatic.DrawBonusWidget(effect.StatisticsBuffs, "Statistics Buffs", statisticsDb);
         }
     }
 

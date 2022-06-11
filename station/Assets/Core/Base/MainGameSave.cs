@@ -1,7 +1,0 @@
-using UnityEngine;
-
-namespace Station
-{
-   
-}
-

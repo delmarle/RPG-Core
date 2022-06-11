@@ -15,6 +15,8 @@ namespace Station
         public const string GENDER_ID = "gender_id";
         
         public const string LOOT_TABLE_KEY = "loot_table_id";
+        
+        public const string BUILD_ASSET_CREATE_PATH = "StationAssets/";
     }
 }
 

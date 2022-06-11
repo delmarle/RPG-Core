@@ -1,11 +1,10 @@
 using System;
 using System.Linq;
-using Station.Data;
 using UnityEngine;
 
 namespace Station
 {
-    public partial class SceneSystem
+    public class RpgSceneSystem: BaseSystem
     {
         private TravelModel _currentDestination;
         public TravelModel GetCurrentDestination() => _currentDestination;
@@ -16,22 +15,23 @@ namespace Station
         public bool IsTraveling => _isTraveling;
         private PlayersSave _playersSave;
         private SavingSystem _savingSystem;
-     
-        private SceneType _currentSceneType;
-        protected void OnInitOverride()
+        private ScenesDb _scenesDb;
+        private GameSettingsDb _settingsDb;
+        protected override void OnInit()
         {
-            GameGlobalEvents.OnDataBaseLoaded.AddListener(OnDataBaseReadyCallback);
-            _savingSystem = GameInstance.GetSystem<SavingSystem>();
-            _playersSave = _savingSystem.GetModule<PlayersSave>();
+           
         }
         
-        protected void OnDisposeOverride()
+        protected override void OnDispose()
         {
-            GameGlobalEvents.OnDataBaseLoaded.RemoveListener(OnDataBaseReadyCallback);
         }
 
-        private void OnDataBaseReadyCallback()
+        protected override void OnDataBaseReady()
         {
+            _savingSystem = GameInstance.GetSystem<SavingSystem>();
+            _scenesDb = GameInstance.GetDb<ScenesDb>();
+            _settingsDb = GameInstance.GetDb<GameSettingsDb>();
+            _playersSave = _savingSystem.GetModule<PlayersSave>();
             _scenesDb = GameInstance.GetDb<ScenesDb>();
             _settingsDb = GameInstance.GetDb<GameSettingsDb>();
             _rpgSettingsDb = GameInstance.GetDb<RpgSettingsDb>();

@@ -10,13 +10,13 @@ namespace Station
   {
     [Destination] public DestinationModel destination;
   
-    private SceneSystem _sceneSystem;
+    private RpgSceneSystem _sceneSystem;
     private ScenesDb _sceneDb;
     
     protected override void Setup()
     {
       
-      _sceneSystem = GameInstance.GetSystem<SceneSystem>();
+      _sceneSystem = GameInstance.GetSystem<RpgSceneSystem>();
       var dbSystem = GameInstance.GetSystem<DbSystem>();
       if (dbSystem == null)
       {

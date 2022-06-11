@@ -24,7 +24,7 @@ namespace Station
     private void Awake()
     {
       _instance = this;
-      GameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderChanged);
+      RpgGameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderChanged);
       GameGlobalEvents.OnBeforeLeaveScene.AddListener(OnBeforeLeaveScene);
     }
 
@@ -45,7 +45,7 @@ namespace Station
     private void OnDestroy()
     {
       _instance = null;
-      GameGlobalEvents.OnLeaderChanged.RemoveListener(OnLeaderChanged);
+      RpgGameGlobalEvents.OnLeaderChanged.RemoveListener(OnLeaderChanged);
     }
 
     private void EnableInteractions()

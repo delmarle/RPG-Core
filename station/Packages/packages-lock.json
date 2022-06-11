@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.delmarle.core": {
+      "version": "https://github.com/delmarle/com.delmarle.core.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "0e59339261cd0f448aa68a8e867cbbbd566211fe"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,

@@ -154,7 +154,7 @@ namespace Station
       GUILayout.Space(3);
       vitalStaticData.UsageType = (VitalModel.VitalType)EditorGUILayout.EnumPopup("Type",vitalStaticData.UsageType,GUILayout.ExpandWidth(true));
       EditorStatic.DrawThinLine(10);
-      EditorStatic.DrawBonusWidget(vitalStaticData.AttributesBonuses, "Regen bonus per stat point:", _attributesDb);
+      RpgEditorStatic.DrawBonusWidget(vitalStaticData.AttributesBonuses, "Regen bonus per stat point:", _attributesDb);
     }
         #endregion
     }

@@ -28,19 +28,11 @@ namespace RPG.Editor
     {
       GUILayout.BeginVertical("box",GUILayout.Width(EditorStatic.LIST_VIEW_WIDTH),GUILayout.ExpandHeight(true));
       {
-        var  toolbarOptions = new GUIContent[11];
-        toolbarOptions[0] = new GUIContent(EditorStatic.CONFIG_TAB_GAMEPLAY,null, "");
-        toolbarOptions[1] = new GUIContent(EditorStatic.CONFIG_TAB_CHARACTER_CREATION,null, "");
-        toolbarOptions[2] = new GUIContent(EditorStatic.CONFIG_TAB_DIFFICULTY, null, "");
-        toolbarOptions[3] = new GUIContent(EditorStatic.CONFIG_TAB_OPTIONS, null, "");
-        toolbarOptions[4] = new GUIContent(EditorStatic.CONFIG_TAB_PLATFORMS, null, "");
-        toolbarOptions[5] = new GUIContent(EditorStatic.CONFIG_TAB_INPUT_EVENTS, null, "");
-        toolbarOptions[6] = new GUIContent(EditorStatic.CONFIG_TAB_FLOATING_POPUPS, null, "");
-        toolbarOptions[7] = new GUIContent(EditorStatic.CONFIG_TAB_UI_CHANNELS, null, "");
-        toolbarOptions[8] = new GUIContent(EditorStatic.CONFIG_TAB_SOUNDS, null, "");
-        toolbarOptions[9] = new GUIContent(EditorStatic.CONFIG_TAB_FOOTSTEPS, null, "");
-        toolbarOptions[10] = new GUIContent(EditorStatic.CONFIG_TAB_UI_PREFABS, null, "");
-        
+        var  toolbarOptions = new GUIContent[3];
+        toolbarOptions[0] = new GUIContent(RpgEditorStatic.CONFIG_TAB_GAMEPLAY,null, "");
+        toolbarOptions[1] = new GUIContent(RpgEditorStatic.CONFIG_TAB_CHARACTER_CREATION,null, "");
+        toolbarOptions[2] = new GUIContent(RpgEditorStatic.CONFIG_TAB_DIFFICULTY, null, "");
+         
         var height = 40 * toolbarOptions.Length;
         _toolBarIndex = GUILayout.SelectionGrid(_toolBarIndex, toolbarOptions,1,EditorStatic.ToolBarStyle,GUILayout.Height(height));
       }
@@ -59,33 +51,6 @@ namespace RPG.Editor
             break;
           case 1:
             CharacterCreationEditor.Draw();
-            break;
-          case 2:
-
-            break;
-          case 3:
-
-            break;
-          case 4:
-          //  PlatformsConfigEditor.DrawContent();
-            break;
-          case 5:
-           // InputEventEditor.DrawContent();
-            break;
-          case 6:
-              FloatingPopupEditor.DrawContent();
-            break;
-          case 7:
-            UiNotificationChannelsEditor.DrawContent();
-            break;
-          case 8:
-            SoundTabEditor.DrawContent();
-            break;
-          case 9:
-            FootStepsTabEditor.DrawContent();
-            break;
-          case 10:
-            FieldsPrefabsEditor.DrawContent();
             break;
         }
         

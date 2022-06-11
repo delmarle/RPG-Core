@@ -9,7 +9,7 @@ namespace Station
   {
     int _toolBarIndex;
     
-    [MenuItem("Tools/Core RPG")]
+    [MenuItem("Tools/RPG")]
     private static void ShowWindow()
     {
       EditorStatic.LoadStyles();

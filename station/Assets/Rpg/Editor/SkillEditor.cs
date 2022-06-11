@@ -521,9 +521,9 @@ namespace Station
         if (_levelsState[index])
         {
           level.PointToNext = EditorGUILayout.IntField("Point required ", level.PointToNext);
-          EditorStatic.DrawBonusWidget(level.AttributesBonuses,"Attributes Bonus:", _attributesDb);
-          EditorStatic.DrawBonusWidget(level.StatisticBonuses,"Statistic Bonus:", _statisticDb);
-          EditorStatic.DrawBonusWidget(level.VitalBonuses,"Vitals Bonus:", _vitalsDb);
+          RpgEditorStatic.DrawBonusWidget(level.AttributesBonuses,"Attributes Bonus:", _attributesDb);
+          RpgEditorStatic.DrawBonusWidget(level.StatisticBonuses,"Statistic Bonus:", _statisticDb);
+          RpgEditorStatic.DrawBonusWidget(level.VitalBonuses,"Vitals Bonus:", _vitalsDb);
           EditorStatic.DrawThinLine();
           
           if (EditorStatic.Button(true, 32, "Add active ability granted", "plus"))

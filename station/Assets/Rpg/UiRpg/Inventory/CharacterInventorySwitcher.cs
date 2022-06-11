@@ -73,12 +73,12 @@ namespace Station
 
         private void OnEnable()
         {
-            GameGlobalEvents.OnCharacterAdded.AddListener(OnCharacterAdded);
+            RpgGameGlobalEvents.OnCharacterAdded.AddListener(OnCharacterAdded);
         }
 
         private void OnDisable()
         {
-            GameGlobalEvents.OnCharacterAdded.RemoveListener(OnCharacterAdded);
+            RpgGameGlobalEvents.OnCharacterAdded.RemoveListener(OnCharacterAdded);
         }
 
         #endregion

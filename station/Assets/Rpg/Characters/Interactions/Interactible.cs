@@ -33,14 +33,14 @@ namespace Station
 
     private void OnDestroy()
     {
-      GameGlobalEvents.OnLeaderChanged.RemoveListener(OnLeaderChanged);
+      RpgGameGlobalEvents.OnLeaderChanged.RemoveListener(OnLeaderChanged);
       Dispose();
     }
 
     private void Initialize()
     {
 
-      GameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderChanged);
+      RpgGameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderChanged);
       _interactionConfigsDb = GameInstance.GetDb<InteractionConfigsDb>();
      
 

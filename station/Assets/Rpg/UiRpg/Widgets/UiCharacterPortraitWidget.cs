@@ -143,7 +143,7 @@ namespace Station
       _character.OnDie += OnDie;
       _character.OnRevived += OnRespawn;
 
-      GameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderChanged);
+      RpgGameGlobalEvents.OnLeaderChanged.AddListener(OnLeaderChanged);
 
     }
 
@@ -157,7 +157,7 @@ namespace Station
       _character.OnHealed -= OnHealed;
       _character.OnDie -= OnDie;
       _character.OnRevived -= OnRespawn;
-      GameGlobalEvents.OnLeaderChanged.RemoveListener(OnLeaderChanged);
+      RpgGameGlobalEvents.OnLeaderChanged.RemoveListener(OnLeaderChanged);
     }
 
 

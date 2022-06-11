@@ -109,9 +109,9 @@ namespace Station
                 
                 EditorStatic.DrawThinLine(10);
                 var _statisticsDb = (StatisticDb) BaseDb.GetDbFromEditor(typeof(StatisticDb));
-                EditorStatic.DrawBonusWidget(equipment.StatisticsBonuses, "Statistic Bonus:", _statisticsDb);
+                RpgEditorStatic.DrawBonusWidget(equipment.StatisticsBonuses, "Statistic Bonus:", _statisticsDb);
                 var _attributesDb = (AttributesDb) BaseDb.GetDbFromEditor(typeof(AttributesDb));
-                EditorStatic.DrawBonusWidget(equipment.AttributesBonuses, "Attributes Bonus:", _attributesDb);
+                RpgEditorStatic.DrawBonusWidget(equipment.AttributesBonuses, "Attributes Bonus:", _attributesDb);
                 VitalBonusSection(equipment);
             }
         }

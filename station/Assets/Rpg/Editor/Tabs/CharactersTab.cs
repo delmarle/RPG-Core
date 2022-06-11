@@ -27,10 +27,10 @@ namespace Station.Editor
             GUILayout.BeginVertical("box",GUILayout.Width(EditorStatic.LIST_VIEW_WIDTH),GUILayout.ExpandHeight(true));
             {
                 var  toolbarOptions = new GUIContent[4];
-                toolbarOptions[0] = new GUIContent(EditorStatic.CHARACTERS_TAB_RACES,null, "");
-                toolbarOptions[1] = new GUIContent(EditorStatic.CHARACTERS_TAB_PLAYER_CLASSES,null, "");
-                toolbarOptions[2] = new GUIContent(EditorStatic.CHARACTERS_TAB_NPC, null, "");
-                toolbarOptions[3] = new GUIContent(EditorStatic.CHARACTERS_TAB_PETS, null, "");
+                toolbarOptions[0] = new GUIContent(RpgEditorStatic.CHARACTERS_TAB_RACES,null, "");
+                toolbarOptions[1] = new GUIContent(RpgEditorStatic.CHARACTERS_TAB_PLAYER_CLASSES,null, "");
+                toolbarOptions[2] = new GUIContent(RpgEditorStatic.CHARACTERS_TAB_NPC, null, "");
+                toolbarOptions[3] = new GUIContent(RpgEditorStatic.CHARACTERS_TAB_PETS, null, "");
                 
                 var height = 40 * toolbarOptions.Length;
                 _toolBarIndex = GUILayout.SelectionGrid(_toolBarIndex, toolbarOptions,1,EditorStatic.ToolBarStyle,GUILayout.Height(height));

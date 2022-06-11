@@ -52,7 +52,7 @@ namespace Station
                 SceneId = "93436f6d-41e9-441a-a2a3-58e5cc7b4e4b", 
                 SpawnId = 0
             };
-            var rpgSceneSystem =  GameInstance.GetSystem<SceneSystem>();
+            var rpgSceneSystem =  GameInstance.GetSystem<RpgSceneSystem>();
             rpgSceneSystem.InjectDestinationInSave(destinationModel);
             module.Save();
             //go to zone

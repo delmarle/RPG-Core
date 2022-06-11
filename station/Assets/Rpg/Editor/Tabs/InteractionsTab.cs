@@ -28,7 +28,7 @@ namespace Station
             GUILayout.BeginVertical("box",GUILayout.Width(EditorStatic.LIST_VIEW_WIDTH),GUILayout.ExpandHeight(true));
             {
                 var  toolbarOptions = new GUIContent[1];
-                toolbarOptions[0] = new GUIContent(EditorStatic.INTERACTION_TAB_CONFIGURATION,null, "");
+                toolbarOptions[0] = new GUIContent(RpgEditorStatic.INTERACTION_TAB_CONFIGURATION,null, "");
       
                 var previousIndex = _toolBarIndex;
                 var height = 40 * toolbarOptions.Length;

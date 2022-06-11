@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using Station.Data;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -45,7 +44,7 @@ namespace Station
                 }
                 
                 SendProgress(_loader.Progress);
-                _loader.LoadScene(_model.SceneName, SceneType.Area);
+                _loader.LoadScene(_model.SceneName);
                 _state = StateLoading.LoadingScene;
                 
                 while (_state != StateLoading.InitializeScene)
@@ -68,7 +67,7 @@ namespace Station
 
         }
         
-        private void OnSceneStartInitialize(SceneType type)
+        private void OnSceneStartInitialize()
         {
             _state = StateLoading.InitializeScene;
         }
