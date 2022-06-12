@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using RPG.Editor;
 using UnityEditor;
 using UnityEngine;
@@ -44,6 +45,7 @@ namespace Station
 
         private static void DrawAttributesList()
         {
+         
             AutoResizeDb();
             _selectedIndex = EditorStatic.DrawGenericList(_localDb, _selectedIndex, _propertyScrollPos,out _propertyScrollPos,"bullet_yellow",false);
         }
@@ -51,17 +53,15 @@ namespace Station
 
         private static void AutoResizeDb()
         {
-    
-            var foundClasses = ReflectionUtils.GetClassList<Interactible>();
-            var size = foundClasses.Length;
+            var foundClass = ReflectionUtils.FindDerivedClasses(typeof(Interactible)).ToArray();
+            var size = foundClass.Length;
 
-     
             while (_localDb.Count()>size) _localDb.Remove(_localDb.GetEntry(_localDb.Count()-1));
             while (_localDb.Count() < size) _localDb.Add(new InteractionConfig());
 
             for (int i = 0; i < _localDb.Count(); i++)
             {
-                _localDb.GetEntry(i).InteractibleType = foundClasses[i];
+                _localDb.GetEntry(i).InteractibleType = foundClass[i];
             }
         }
         

@@ -47,7 +47,7 @@ namespace Station
       
       GUILayout.Label(new GUIContent(EditorStatic.WINDOW_TITLE, EditorStatic.GetEditorTexture("core_small")), EditorStatic.PublisherNameStyle);
       EditorStatic.Space();
-      _toolBarIndex = GUILayout.Toolbar(_toolBarIndex, EditorStatic.ToolbarOptions, EditorStatic.ToolBarStyle,
+      _toolBarIndex = GUILayout.Toolbar(_toolBarIndex, EditorStatic.RpgToolbarOptions, EditorStatic.ToolBarStyle,
         EditorStatic.ToolbarHeight);
     }
 
