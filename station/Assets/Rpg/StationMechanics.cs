@@ -41,7 +41,6 @@ namespace Station
 
         public  virtual void CreateUi()
         {
-            Debug.LogError("CreateUi");
             Instantiate(UiPrefab);
         }
 

@@ -208,7 +208,11 @@ namespace Station
 
     public virtual void OnCancelInteraction(BaseCharacter user)
     {
-      _currentUser.Action.OnMove -= OnCharacterMove; 
+      if (_currentUser != null)
+      {
+        _currentUser.Action.OnMove -= OnCharacterMove; 
+      }
+      
       UnregisterCachedPopup();
       _currentUser = null;
       OnStopInteracting.Invoke();

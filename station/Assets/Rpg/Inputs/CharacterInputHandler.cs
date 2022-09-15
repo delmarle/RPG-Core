@@ -8,12 +8,12 @@ namespace Station
     [SerializeField] private CharacterControl characterControl = null;
     [SerializeField] private AiCharacterInput _aiInput = null;
   
-    private PlayerInput _playerInput;
+    private RpgInput _playerInput;
     //private BaseInput _previousInput;
     public bool UseAi = false;
     #endregion
   
-    public void InitializePlayerInput(PlayerInput player)
+    public void InitializePlayerInput(RpgInput player)
     {
       var bc = characterControl.GetComponent<BaseCharacter>();
       if (_aiInput)

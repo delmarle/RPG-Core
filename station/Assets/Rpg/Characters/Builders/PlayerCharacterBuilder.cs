@@ -44,7 +44,7 @@ namespace Station
                 character.SetupStats(classModel.HealthVital,null,classModel.EnergyVitals.ToArray());
                 character.Skills.Setup(character, save.LearnedSkillList);
                 character.Stats.SetVitalsValue(save.VitalStatus);
-                character.GetInputHandler.InitializePlayerInput(PlayerInput.Instance);
+                character.GetInputHandler.InitializePlayerInput(RpgInput.Instance);
                 
                 #region ABILITIES
                 //load from save

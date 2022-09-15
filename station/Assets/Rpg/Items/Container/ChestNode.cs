@@ -86,7 +86,6 @@ namespace Station
         
         public override void OnCancelInteraction(BaseCharacter user)
         {
-            Debug.Log("cancel");
             UiSystem.HideUniquePopup<UiContainerPopup>(UiContainerPopup.POPUP_KEY);
             _cachedContainerPopup.Hide();
             base.OnCancelInteraction(user);
@@ -98,6 +97,5 @@ namespace Station
             return chestModel.Name.GetValue();
         }
     }
-
 }
 

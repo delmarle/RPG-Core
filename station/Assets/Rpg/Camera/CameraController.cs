@@ -13,7 +13,7 @@ namespace Station
   private float _rotationSmoothing = 15.0f;
 
   // private fields
-  private PlayerInput _input;
+  private RpgInput _input;
   private Transform _rig; // The root transform of the camera rig
   private Transform _pivot; // The point at which the camera pivots around
   private Quaternion _pivotTargetLocalRotation; // Controls the X Rotation (Tilt Rotation)
@@ -23,7 +23,7 @@ namespace Station
 
   private void Start()
   {
-    _input = PlayerInput.Instance;
+    _input = RpgInput.Instance;
     _pivot = transform.parent;
     _rig = _pivot.parent;
 

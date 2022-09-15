@@ -53,7 +53,6 @@ namespace Station
 
         private IEnumerator InitializeTeamSequence()
         {
-            Debug.LogError("InitializeTeamSequence");
 //TODO call this from other place
          //   if (sceneType == SceneType.Area)
             //{

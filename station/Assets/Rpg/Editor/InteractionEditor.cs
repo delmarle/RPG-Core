@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using RPG.Editor;
 using UnityEditor;
 using UnityEngine;
@@ -51,9 +52,8 @@ namespace Station
 
         private static void AutoResizeDb()
         {
-    
-            var foundClasses = ReflectionUtils.GetClassList<Interactible>();
-            var size = foundClasses.Length;
+          var foundClasses = ReflectionUtils.FindDerivedClasses(typeof(Interactible)).ToList();
+            var size = foundClasses.Count;
 
      
             while (_localDb.Count()>size) _localDb.Remove(_localDb.GetEntry(_localDb.Count()-1));
