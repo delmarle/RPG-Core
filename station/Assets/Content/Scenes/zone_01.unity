@@ -4053,6 +4053,14 @@ MonoBehaviour:
       Unique: 0
       Weight: 0
       SaveId: 
+    - Id: 
+      SpawnType: 0
+      ObjectId: f13322f5-3d8c-43aa-811e-ef5ee0168333
+      Prefab: {fileID: 0}
+      Position: {fileID: 1364355381}
+      Unique: 0
+      Weight: 0
+      SaveId: 
 --- !u!4 &1370599730
 Transform:
   m_ObjectHideFlags: 0

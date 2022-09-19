@@ -29,6 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -19.08358, y: 19.962917, z: -61.778156}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6441955258820824900}
   m_Father: {fileID: 0}
@@ -587,6 +588,16 @@ PrefabInstance:
       propertyPath: m_textInfo.characterCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3471230262134117578, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 6414167901985936576}
+    - target: {fileID: 3471230262134117578, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
+        type: 3}
+      propertyPath: offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3978468586624676615, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -620,7 +631,7 @@ PrefabInstance:
     - target: {fileID: 4069083502978321303, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
         type: 3}
       propertyPath: m_Name
-      value: Canvas_worldspace_objects (1)
+      value: Canvas_screen_objects
       objectReference: {fileID: 0}
     - target: {fileID: 4540129389678594779, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
         type: 3}
@@ -711,6 +722,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: icon
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474414040942180961, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474414040942180961, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474414040942180961, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474414040942180961, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474414040942180961, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474414040942180961, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5782228073563243877, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
         type: 3}
@@ -955,17 +996,17 @@ PrefabInstance:
     - target: {fileID: 8184416671147294895, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8184416671147294895, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000029206276
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8184416671147294895, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8184416671147294895, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
         type: 3}
@@ -1064,12 +1105,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 537d9b2fd8e3b4fe59fbc2a194092756, type: 3}
---- !u!224 &6441955258820824900 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8184416671147294895, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
-    type: 3}
-  m_PrefabInstance: {fileID: 2950578710035337195}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2315011942934314961 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 635602024756310074, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
@@ -1106,3 +1141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &6441955258820824900 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8184416671147294895, guid: 537d9b2fd8e3b4fe59fbc2a194092756,
+    type: 3}
+  m_PrefabInstance: {fileID: 2950578710035337195}
+  m_PrefabAsset: {fileID: 0}

@@ -356,6 +356,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5c9ed5b8209f64d14ac9bbb2b79cdcfc, type: 2}
   - {fileID: 11400000, guid: 979d83d3006c24da29546a183da3163a, type: 2}
   - {fileID: 11400000, guid: e8fe627bd668e4f01aac823da9a30464, type: 2}
+  - {fileID: 11400000, guid: 0686d2265de413c42b1c5ec1b1b303e2, type: 2}
   DefaultGameMode: {fileID: 0}
 --- !u!114 &433975985
 MonoBehaviour:

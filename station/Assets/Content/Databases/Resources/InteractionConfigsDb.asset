@@ -102,10 +102,10 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 3c42e041f99b644069e15d10226cb72d, type: 2}
       ResultNotificationChannels:
       - {fileID: 11400000, guid: 6a2eab985e59344fabe81a4a819c261a, type: 2}
-    - Layer: 0
+    - Layer: 8
       InteractibleType:
         _classRef: Station.EntityInteraction, Assembly-CSharp
-      ShowHintMode: 0
+      ShowHintMode: 3
       HideHintOptions:
         UseDelay: 0
         Delay: 5
@@ -114,7 +114,7 @@ MonoBehaviour:
         UseCameraAngle: 0
         CameraAngle: 90
       TryInteractMode: 1
-      InteractionRange: 4.4
+      InteractionRange: 3
       HoverMode: 0
       actionFxData:
         HasData: 0
@@ -126,7 +126,8 @@ MonoBehaviour:
           EffectPrefab: {fileID: 0}
       CancelInteractionMode: 0
       CancelInteractionDistance: 2.5
-      FailNotificationChannels: []
+      FailNotificationChannels:
+      - {fileID: 11400000, guid: 3c42e041f99b644069e15d10226cb72d, type: 2}
       ResultNotificationChannels: []
     - Layer: 0
       InteractibleType:

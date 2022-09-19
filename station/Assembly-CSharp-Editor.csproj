@@ -80,6 +80,7 @@
      <Compile Include="Assets\Rpg\Editor\Tabs\StatsTab.cs" />
      <Compile Include="Assets\Rpg\Editor\Items\ChestNodeEditor.cs" />
      <Compile Include="Assets\Rpg\Editor\FactionSettingsEditor.cs" />
+     <Compile Include="Assets\Rpg\Currencies\Editor\CurrencyEditor.cs" />
      <Reference Include="UnityEngine">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.9f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>

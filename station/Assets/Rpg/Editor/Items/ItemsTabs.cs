@@ -1,4 +1,5 @@
 ﻿using RPG.Editor;
+using Station.Editor;
 using UnityEditor;
 using UnityEngine;
 
@@ -162,7 +163,7 @@ namespace Station
                         LootTableEditor.Draw();
                         break;
                     case 3:
-
+                        CurrencyEditor.Draw();
                         break;
                     case 6:
                         DrawResourceNodeEditor();

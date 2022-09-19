@@ -217,6 +217,8 @@
      <Compile Include="Assets\Rpg\Characters\CharacterEventsData.cs" />
      <Compile Include="Assets\Rpg\Camera\CameraController.cs" />
      <Compile Include="Assets\Rpg\UiRpg\UiFollow.cs" />
+     <Compile Include="Assets\Rpg\Currencies\CurrencyModel.cs" />
+     <Compile Include="Assets\Rpg\Dbs\CurrenciesDb.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Content\Models\Environments\3D Game Kit - Environment Pack\Shaders\Alien.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
