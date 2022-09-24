@@ -7,6 +7,7 @@ namespace Station
     {
         public override void FetchData()
         {
+            if (Value == null) return;
             var playerInvSystem = GameInstance.GetSystem<PlayerInventorySystem>();
             Value.Containers = playerInvSystem.BuildPlayerInventorySaveState();
         }

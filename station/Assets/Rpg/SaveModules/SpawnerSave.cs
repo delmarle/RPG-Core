@@ -6,6 +6,11 @@ namespace Station
 {
     public class SpawnerSave :  AreaSaveModule<Dictionary<string, SpawnerData>>
     {
+        protected override void BuildDefaultData()
+        {
+            Value = new Dictionary<string, SpawnerData>();
+        }
+
         public void AddEntry(string spawnerId, string entryId, object state)
         {
             if (Value == null)

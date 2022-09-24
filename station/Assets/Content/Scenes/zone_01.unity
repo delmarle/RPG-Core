@@ -1090,7 +1090,7 @@ MonoBehaviour:
   SaveSettings:
     SaveOnExit: 1
     SaveOnEnter: 1
-    AutoSaveTimer: 0
+    AutoSaveTimer: 20
   CreatePlayerTeam: 1
 --- !u!1001 &648915238
 PrefabInstance:

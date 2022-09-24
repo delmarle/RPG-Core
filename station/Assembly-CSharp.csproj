@@ -50,6 +50,7 @@
      <Compile Include="Assets\Rpg\Characters\Interactions\Implementations\interaction topics\EntityInteraction.cs" />
      <Compile Include="Assets\Rpg\Characters\RpgActionHandler.cs" />
      <Compile Include="Assets\Rpg\Characters\Creation\BaseCharacterCreation.cs" />
+     <Compile Include="Assets\Rpg\UiRpg\UiFollow.cs" />
      <Compile Include="Assets\Rpg\Characters\Stats\Statistic.cs" />
      <Compile Include="Assets\Rpg\Characters\Interactions\Implementations\LootInteractable.cs" />
      <Compile Include="Assets\Rpg\Characters\CharacterCalculation.cs" />
@@ -134,6 +135,7 @@
      <Compile Include="Assets\Rpg\Inputs\CharacterInputHandler.cs" />
      <Compile Include="Assets\Rpg\UiRpg\Widgets\Skills &amp; Abilities\UiSkillDisplayWidget.cs" />
      <Compile Include="Assets\Rpg\Items\Ui\UiContainerPopup.cs" />
+     <Compile Include="Assets\Rpg\Dbs\CurrenciesDb.cs" />
      <Compile Include="Assets\Rpg\DefaultMechanics.cs" />
      <Compile Include="Assets\Rpg\Spawner\Position Provider\PositionProvider.cs" />
      <Compile Include="Assets\Rpg\Characters\Ai\CharacterMemoryHandler.cs" />
@@ -197,6 +199,7 @@
      <Compile Include="Assets\Rpg\UiRpg\UiHudLinks.cs" />
      <Compile Include="Assets\Rpg\Faction\UiFactionWidget.cs" />
      <Compile Include="Assets\Rpg\Vfx\BaseVfxPlayer.cs" />
+     <Compile Include="Assets\Rpg\Currencies\CurrencyModel.cs" />
      <Compile Include="Assets\Rpg\Characters\Interactions\Tracking system\Area.cs" />
      <Compile Include="Assets\Rpg\Items\Types\DefaultItemModel.cs" />
      <Compile Include="Assets\Rpg\Characters\Interactions\Tracking system\CollisionTargetTracker.cs" />
@@ -216,9 +219,7 @@
      <Compile Include="Assets\Rpg\Items\Save Modules\AreaContainersSave.cs" />
      <Compile Include="Assets\Rpg\Characters\CharacterEventsData.cs" />
      <Compile Include="Assets\Rpg\Camera\CameraController.cs" />
-     <Compile Include="Assets\Rpg\UiRpg\UiFollow.cs" />
-     <Compile Include="Assets\Rpg\Currencies\CurrencyModel.cs" />
-     <Compile Include="Assets\Rpg\Dbs\CurrenciesDb.cs" />
+     <Compile Include="Assets\Rpg\Currencies\CurrencyHandler.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Content\Models\Environments\3D Game Kit - Environment Pack\Shaders\Alien.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -504,7 +505,7 @@
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
      </Reference>
      <Reference Include="DOTween">
-     <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\PackageCache\com.delmarle.core@06d6c30f37\Runtime\Core\External\DOTween\DOTween.dll</HintPath>
+     <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\PackageCache\com.delmarle.core@16eb272c52\Runtime\Core\External\DOTween\DOTween.dll</HintPath>
      </Reference>
      <Reference Include="netstandard">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.9f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -917,17 +918,11 @@
      <Reference Include="Unity.Services.Core">
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
      </Reference>
-     <Reference Include="Core.Editor">
-     <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Core.Editor.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.Services.Core.Analytics">
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Services.Core.Environments">
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
-     </Reference>
-     <Reference Include="Core">
-     <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Core.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Timeline.Editor">
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
@@ -940,6 +935,12 @@
      </Reference>
      <Reference Include="Unity.ScriptableBuildPipeline.Editor">
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Core.Editor">
+     <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Core.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Core">
+     <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Core.dll</HintPath>
      </Reference>
      <Reference Include="DOTween.Modules">
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\DOTween.Modules.dll</HintPath>

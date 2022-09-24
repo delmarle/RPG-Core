@@ -12,6 +12,7 @@ namespace Station
             var settingsDb = GameInstance.GetDb<ItemsSettingsDb>();
             var containerSettings = settingsDb.Get().ContainerSettings;
             var module = savingSystem.GetModule<PlayerInventorySave>();
+         
             var inventoryList = new ContainersListSave();
             var inventory = new ContainerState(containerSettings.InitialPlayerInventorySize, detaultItems);
             if (containerSettings.PlayerInventoryType == PlayerInventoryType.Shared)
@@ -24,7 +25,11 @@ namespace Station
 
             inventoryList.Containers.Add(PlayerInventorySystem.PLAYER_INVENTORY_KEY, inventory);
             module.Value = inventoryList;
-            module.Save();
+          
+            module.Save(false);
+            
+         //   moduleGeneral.Value =  new GeneralPlayerData();
+         //   moduleGeneral.Save();
         }
 
     }

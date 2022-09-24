@@ -18,6 +18,11 @@ namespace Station
        
         private Dictionary<string, BaseItemContainer> _containers;
         private PlayerInventoryType _inventoryType;
+
+        /// <summary>
+        /// CURRENCIES
+        /// </summary>
+        private CurrencyHandler _currencyHandler;
         #endregion
         #region initialization
         protected override void OnInit()
@@ -49,8 +54,9 @@ namespace Station
             _playersSave = saveSystem.GetModule<PlayersSave>();
             _containers = new Dictionary<string, BaseItemContainer>();
             _inventoryType = itemsSettingsModel.ContainerSettings.PlayerInventoryType;
-
+            
             LoadPlayerInventories();
+            LoadPlayerCurrencies();
             LoadPlayersEquipment();
         }
 
@@ -70,6 +76,27 @@ namespace Station
             {
                 //TODO add one for each player
             }
+        }
+
+        private void LoadPlayerCurrencies()
+        {
+      /*
+            var saveSystem = GameInstance.GetSystem<SavingSystem>();
+            var saveModule = saveSystem.GetModule<GeneralPlayerSave>();
+            _currencyHandler = new CurrencyHandler();
+            var save = saveModule?.Value ?? new GeneralPlayerData();
+            var state = save.CurrenciesStatus;
+            _currencyHandler.Load(state);
+            */
+        }
+
+        public List<IdIntegerValue> GetCurrenciesState()
+        {
+            if (_currencyHandler == null)
+            {
+                return new List<IdIntegerValue>();
+            }
+            return _currencyHandler.GenerateSaveState();
         }
 
         private void LoadPlayersEquipment()

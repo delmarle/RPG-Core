@@ -69,6 +69,7 @@
      <Compile Include="Assets\Rpg\Editor\AbilityEffectEditor.cs" />
      <Compile Include="Assets\Rpg\Editor\VitalsEditor.cs" />
      <Compile Include="Assets\Rpg\Editor\MainEditorWindow.cs" />
+     <Compile Include="Assets\Rpg\Currencies\Editor\CurrencyEditor.cs" />
      <Compile Include="Assets\Rpg\Editor\Items\ItemsEditor.cs" />
      <Compile Include="Assets\Rpg\Editor\NpcEditor.cs" />
      <Compile Include="Assets\Rpg\Items\Container\Editor\ChestNodeEditor.cs" />
@@ -80,7 +81,6 @@
      <Compile Include="Assets\Rpg\Editor\Tabs\StatsTab.cs" />
      <Compile Include="Assets\Rpg\Editor\Items\ChestNodeEditor.cs" />
      <Compile Include="Assets\Rpg\Editor\FactionSettingsEditor.cs" />
-     <Compile Include="Assets\Rpg\Currencies\Editor\CurrencyEditor.cs" />
      <Reference Include="UnityEngine">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.9f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>
@@ -337,7 +337,7 @@
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
      </Reference>
      <Reference Include="DOTweenEditor">
-     <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\PackageCache\com.delmarle.core@06d6c30f37\Editor\DOTweenEditor.dll</HintPath>
+     <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\PackageCache\com.delmarle.core@16eb272c52\Editor\DOTweenEditor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Plastic.Antlr3.Runtime">
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
@@ -352,7 +352,7 @@
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
      </Reference>
      <Reference Include="DOTween">
-     <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\PackageCache\com.delmarle.core@06d6c30f37\Runtime\Core\External\DOTween\DOTween.dll</HintPath>
+     <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\PackageCache\com.delmarle.core@16eb272c52\Runtime\Core\External\DOTween\DOTween.dll</HintPath>
      </Reference>
      <Reference Include="nunit.framework">
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
@@ -783,17 +783,11 @@
      <Reference Include="Unity.Services.Core">
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
      </Reference>
-     <Reference Include="Core.Editor">
-     <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Core.Editor.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.Services.Core.Analytics">
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Services.Core.Environments">
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
-     </Reference>
-     <Reference Include="Core">
-     <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Core.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Timeline.Editor">
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
@@ -806,6 +800,12 @@
      </Reference>
      <Reference Include="Unity.ScriptableBuildPipeline.Editor">
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Core.Editor">
+     <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Core.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Core">
+     <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Core.dll</HintPath>
      </Reference>
      <Reference Include="DOTween.Modules">
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\DOTween.Modules.dll</HintPath>

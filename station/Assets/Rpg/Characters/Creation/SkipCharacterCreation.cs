@@ -54,7 +54,7 @@ namespace Station
             };
             var rpgSceneSystem =  GameInstance.GetSystem<RpgSceneSystem>();
             rpgSceneSystem.InjectDestinationInSave(destinationModel);
-            module.Save();
+            module.Save(false);
             //go to zone
             TravelModel model = new TravelModel();
             model.SceneName = "zone_01";

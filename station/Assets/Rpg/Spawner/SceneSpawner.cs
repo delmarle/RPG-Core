@@ -30,7 +30,8 @@ namespace Station
                
                 var spawnerSave = _savingSystem.GetModule<SpawnerSave>();
                 var spawnStateMap = spawnerSave.GetDataById(SpawnId)?.SpawnsStateMap;
-                if (spawnStateMap == null || spawnStateMap.Count == 0)
+                bool hasNotSpawned = spawnStateMap == null || spawnStateMap.Count == 0;
+                if (hasNotSpawned)
                 {
                     //init it
                     if (entitiesSelectionMode == EntitiesSelectionMode.EACH)

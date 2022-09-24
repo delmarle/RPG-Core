@@ -159,7 +159,7 @@ namespace Station
             };
             var rpgSceneSystem =  GameInstance.GetSystem<RpgSceneSystem>();
             rpgSceneSystem.InjectDestinationInSave(destinationModel);
-            module.Save();
+            module.Save(false);
             //go to zone
             var sceneEntry = _scenesDb.GetEntry(_destinationId);
             TravelModel model = new TravelModel {SceneName = sceneEntry.VisualName};
