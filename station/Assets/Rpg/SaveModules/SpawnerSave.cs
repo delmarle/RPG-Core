@@ -4,28 +4,28 @@ using UnityEngine;
 
 namespace Station
 {
-    public class SpawnerSave :  AreaSaveModule<Dictionary<string, SpawnerData>>
+    public class SpawnerSave :  AreaSaveModule<Dictionary<string, SpawnerState>>
     {
         protected override void BuildDefaultData()
         {
-            Value = new Dictionary<string, SpawnerData>();
+            Value = new Dictionary<string, SpawnerState>();
         }
 
-        public void AddEntry(string spawnerId, string entryId, object state)
+        public void AddEntry(string spawnerId, string entryId, EntityState state)
         {
             if (Value == null)
             {
-                Value = new Dictionary<string, SpawnerData>();
+                Value = new Dictionary<string, SpawnerState>();
             }
 
             if (Value.ContainsKey(spawnerId) == false)
             {
-                Value.Add(spawnerId, new SpawnerData());
+                Value.Add(spawnerId, new SpawnerState());
             }
 
             if (Value[spawnerId].SpawnsStateMap == null)
             {
-                Value[spawnerId].SpawnsStateMap = new Dictionary<string, object>();
+                Value[spawnerId].SpawnsStateMap = new Dictionary<string, EntityState>();
             }
 
             if (Value[spawnerId].SpawnsStateMap.ContainsKey(entryId) == false)
@@ -38,7 +38,7 @@ namespace Station
             }
         }
 
-        public SpawnerData GetDataById(string id)
+        public SpawnerState GetDataById(string id)
         {
             if (Value != null && Value.ContainsKey(id))
             {
@@ -50,14 +50,43 @@ namespace Station
     }
 
     [Serializable]
-    public class SpawnerData
+    public class SpawnerState
     {
         //string: ID of the entry in the spawner
         //string: json state
             //npc: position, rotation, vitals
             //prefab: position, rotation, exist
             //container: position, rotation, content
-        public Dictionary<string, object> SpawnsStateMap = new Dictionary<string, object>();
+        public Dictionary<string, EntityState> SpawnsStateMap = new Dictionary<string, EntityState>();
+    }
+
+    [Serializable]
+    public class EntityState
+    {
+        //SHARED
+        public string EntityId;
+        public SpawnObjectType EntityType; //NPC, ITEM, PREFAB, CONTAINER
+        public Vector3 Position;
+        public Vector3 Rotation;
+        
+        //NPC
+        public List<IdIntegerValue> VitalStatus;
+        
+        //Container
+        public ContainerState Container;
+        public List<IdIntegerValue> Currencies;
+    }
+
+    public interface IEntityState
+    {
+        EntityState GetState();
+    }
+
+    public class EntityReference
+    {
+        public SpawnObjectType EntityType;
+        public BaseCharacter Character;
+        public Transform Object;
     }
 
 }

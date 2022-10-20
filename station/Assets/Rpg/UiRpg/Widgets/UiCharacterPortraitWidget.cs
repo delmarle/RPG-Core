@@ -9,7 +9,7 @@ namespace Station
   public class UiCharacterPortraitWidget : MonoBehaviour
   {
     #region FIELDS
-
+    
     [SerializeField] private TextMeshProUGUI characterName = null;
     [SerializeField] private TextMeshProUGUI characterRace = null;
     [SerializeField] private TextMeshProUGUI characterClass = null;

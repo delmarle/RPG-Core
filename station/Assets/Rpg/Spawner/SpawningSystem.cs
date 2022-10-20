@@ -1,11 +1,6 @@
-﻿
-
-using System.Collections;
-using System.Collections.Generic;
-
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Weighted_Randomizer;
-using Debug = UnityEngine.Debug;
 
 namespace Station
 {
@@ -17,7 +12,7 @@ namespace Station
         private SavingSystem _savingSystem;
         private RpgSceneSystem _sceneSystem;
         
-        private SceneSpawner[] _cacheSpawnsData;
+        private BaseSceneSpawner[] _cacheSpawnsData;
         #endregion
 
         protected override void OnInit()
@@ -42,7 +37,7 @@ namespace Station
         {
             //if (sceneType != SceneType.Area) return;
             
-            _cacheSpawnsData = FindObjectsOfType<SceneSpawner>();
+            _cacheSpawnsData = FindObjectsOfType<BaseSceneSpawner>();
             if (_cacheSpawnsData == null) return;
 
             

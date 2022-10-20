@@ -8,10 +8,8 @@ using Object = UnityEngine.Object;
 
 namespace Station
 {
-    public class SceneSpawner : MonoBehaviour
+    public class SceneSpawner : BaseSceneSpawner
     {
-        public InitMode InitMode;
-        public string SpawnId;
         public int SpawnAmount;
         public EntitiesSelectionMode entitiesSelectionMode;
         public ReSpawnMode ReSpawnMode;
@@ -20,68 +18,34 @@ namespace Station
         //cached
         private SavingSystem _savingSystem;
         private StationMechanics _mechanics;
+      
 
-        public void Init(StationMechanics stationMechanics)
+        public override void Init(StationMechanics stationMechanics)
         {
             _mechanics = stationMechanics;
-            if (InitMode == InitMode.SAVED)
-            {
-                _savingSystem = GameInstance.GetSystem<SavingSystem>();
-               
-                var spawnerSave = _savingSystem.GetModule<SpawnerSave>();
-                var spawnStateMap = spawnerSave.GetDataById(SpawnId)?.SpawnsStateMap;
-                bool hasNotSpawned = spawnStateMap == null || spawnStateMap.Count == 0;
-                if (hasNotSpawned)
-                {
-                    //init it
-                    if (entitiesSelectionMode == EntitiesSelectionMode.EACH)
-                    {
-                        foreach (var spawnableData in DataList.Data)
-                        {
-                            spawnableData.SpawnEntity(_mechanics);
-                            spawnerSave.AddEntry(SpawnId, spawnableData.Id, "todo_data");
-                        }
-                    }
-                    else if (entitiesSelectionMode == EntitiesSelectionMode.RANDOM_FROM_AMOUNT)
-                    {
-                    }
 
-                  //  spawnerSave.Save();
-                }
-                else
+            if (entitiesSelectionMode == EntitiesSelectionMode.EACH)
+            {
+                foreach (var spawnableData in DataList.Data)
                 {
-                
-                    foreach (var spawnedEntries in spawnStateMap)
+                    var id = Guid.NewGuid().ToString();
+                    spawnableData.SpawnEntity(_mechanics, id, reference =>
                     {
-                    
-                        // spawnedEntries.Value
-                    }
+                        AddCachedEntity(id, reference);
+                    });
                 }
             }
-            else if(InitMode == InitMode.ALWAYS)
+            else if (entitiesSelectionMode == EntitiesSelectionMode.RANDOM_FROM_AMOUNT)
             {
-                if (entitiesSelectionMode == EntitiesSelectionMode.EACH)
+                //selects
+                var randomizer = DataList.GetRandomizer();
+                for (int i = 0; i < SpawnAmount; i++)
                 {
-                    foreach (var spawnableData in DataList.Data)
-                    {
-                        spawnableData.SpawnEntity(_mechanics);
-                    }
+                    var data = randomizer.NextWithReplacement();
+                    //data.SpawnEntity(_mechanics);
                 }
-                else if (entitiesSelectionMode == EntitiesSelectionMode.RANDOM_FROM_AMOUNT)
-                {
-                    //selects
-                    var randomizer = DataList.GetRandomizer();
-                    for (int i = 0; i < SpawnAmount; i++)
-                    {
-                        var data = randomizer.NextWithReplacement();
-                        data.SpawnEntity(_mechanics);
-                    }
-                }
-
             }
-
-          
-
+            
         }
 
         public SpawnData GetDataById(string id)
@@ -134,13 +98,14 @@ namespace Station
             return string.Compare(Id, other.Id, StringComparison.Ordinal);
         }
 
-        public void SpawnEntity(StationMechanics mechanics)
+        public void SpawnEntity(StationMechanics mechanics, string instanceID, Action<EntityReference> callback)
         {
             if (Position == null)
             {
                 Debug.LogError("missing position provider: "+Id);
                 return;
             }
+            
 
             Position.Generate();
             switch (SpawnType)
@@ -164,6 +129,14 @@ namespace Station
                     List<object> data = new List<object>();
                     data.Add(npcMeta);
                     InstantiateCharacterTask npcTask = new InstantiateCharacterTask(npcMeta.PrefabId, baseData, data.ToArray(), mechanics);
+                    npcTask.SetEndCallback((task, character, unused, unused2) =>
+                    {
+                        EntityReference entRef = new EntityReference
+                        {
+                            EntityType = SpawnObjectType.NPC, Character = character
+                        };
+                        callback.Invoke(entRef);
+                    });
                     npcTask.Execute();
                     break;
                 case SpawnObjectType.ITEM:
@@ -262,12 +235,6 @@ namespace Station
         ITEM,
         PREFAB, 
         CONTAINER
-    }
-
-    public enum InitMode
-    {
-        SAVED,
-        ALWAYS
     }
 
     public enum EntitiesSelectionMode

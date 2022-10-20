@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Station
 {
     
-    public partial class BaseCharacter : CoreCharacter
+    public partial class BaseCharacter : CoreCharacter, IEntityState
     {
         #region FIELDS
 
@@ -366,6 +366,12 @@ namespace Station
         }
         #endregion
 
+        public EntityState GetState()
+        {
+            var st = new EntityState();
+
+            return st;
+        }
     }
 
     public enum Stance

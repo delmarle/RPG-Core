@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using RPG.Editor;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -6,9 +6,9 @@ using UnityEngine;
 
 namespace Station
 {
-    [CustomEditor(typeof(PersistantSceneSpawner))]
+    [CustomEditor(typeof(SceneSpawner))]
     [CanEditMultipleObjects]
-    public class PersistantSceneSpawnerEditor : UnityEditor.Editor
+    public class BasetSceneSpawnerEditor : UnityEditor.Editor
     {
         public List<bool> _entriesStates = new List<bool>();
         private NpcDb _npcDb;
@@ -26,9 +26,9 @@ namespace Station
         {
             Cache();
             EditorGUI.BeginChangeCheck();
-            var spawner = (PersistantSceneSpawner) target;
+            var spawner = (SceneSpawner) target;
             SetStatesSizes(spawner);
-            spawner.SpawnId = EditorGUILayout.TextField("save id: ", spawner.SpawnId);
+           
 
             spawner.entitiesSelectionMode =
                 (EntitiesSelectionMode) EditorGUILayout.EnumPopup("Entities selection mode: ",
@@ -67,7 +67,7 @@ namespace Station
             }
         }
 
-        private void SetStatesSizes(PersistantSceneSpawner spawner)
+        private void SetStatesSizes(SceneSpawner spawner)
         {
             while (_entriesStates.Count < spawner.DataList.Data.Count)
             {
@@ -102,7 +102,7 @@ namespace Station
             return display;
         }
 
-        private void DrawEntry(int index, PersistantSceneSpawner spawner)
+        private void DrawEntry(int index, SceneSpawner spawner)
         {
             var entry = spawner.DataList.Data[index];
             var highestWeight = HighestWeight(spawner);
@@ -162,7 +162,7 @@ namespace Station
             }
         }
 
-        private int HighestWeight(PersistantSceneSpawner spawner)
+        private int HighestWeight(SceneSpawner spawner)
         {
             int highest = 0;
             foreach (var entry in spawner.DataList.Data)
