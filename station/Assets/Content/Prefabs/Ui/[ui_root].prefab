@@ -1501,6 +1501,8 @@ GameObject:
   - component: {fileID: 3975009200649060916}
   - component: {fileID: 3623224823922114288}
   - component: {fileID: 1854161422751337888}
+  - component: {fileID: 3805064609208463396}
+  - component: {fileID: 8229808652460830561}
   m_Layer: 5
   m_Name: Canvas_characters
   m_TagString: Untagged
@@ -1617,6 +1619,7 @@ MonoBehaviour:
   _hideAnimation: Hide
   DefaultPanel: 0
   _charaterTab: {fileID: 2431728491287406994}
+  _inventoryTab: {fileID: 8229808652460830561}
 --- !u!114 &5353047505646622449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1973,7 +1976,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _charSelection: {fileID: 4867052295814927319}
-  _characterWidget: {fileID: 3870546097773457457}
+  _characterWidget: {fileID: 3805064609208463396}
   _statsListWidget: {fileID: 3975009200649060916}
   _vitalsListWidget: {fileID: 1854161422751337888}
   _attributesListWidget: {fileID: 3623224823922114288}
@@ -2022,6 +2025,53 @@ MonoBehaviour:
   _layout: {fileID: 5303842944466817884}
   _vitalPrefab: {fileID: 1897032296899000456, guid: 5b35c53f1039a43e189d27ca28ce8cfd,
     type: 3}
+--- !u!114 &3805064609208463396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929625241116510875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f322946fcff49d788f96f47da8246c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: {fileID: 8818492101592411021}
+  characterRace: {fileID: 3680362266562443617}
+  characterClass: {fileID: 909641569261193375}
+  characterFaction: {fileID: 6247011398477507783}
+  characterGender: {fileID: 9107884956381490940}
+  _vitals: []
+  _statusWidget: {fileID: 0}
+  _animation: {fileID: 0}
+  _button: {fileID: 0}
+  _icon: {fileID: 0}
+--- !u!114 &8229808652460830561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929625241116510875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04bda1c7f01a46139274cac419d3cc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ForceHide: 0
+  ForceResetPosition: 0
+  ShowSound: {fileID: 0}
+  HideSound: {fileID: 0}
+  OnHide:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShow:
+    m_PersistentCalls:
+      m_Calls: []
+  _charSelection: {fileID: 4867052295814927319}
+  characterInventorySwitcher: {fileID: 8195945070988860528}
+  characterEquipmentSwitcher: {fileID: 7160799149286389992}
 --- !u!1 &929625241812247196
 GameObject:
   m_ObjectHideFlags: 0
@@ -3636,7 +3686,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087906202884938763}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
@@ -3657,7 +3707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding:
     m_Left: 4
-    m_Right: 0
+    m_Right: 4
     m_Top: 4
     m_Bottom: 0
   m_ChildAlignment: 0
@@ -12649,8 +12699,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2261186754698667621}
-  - component: {fileID: 3870546097773457457}
-  - component: {fileID: 6622646660948110455}
   m_Layer: 5
   m_Name: root
   m_TagString: Untagged
@@ -12680,53 +12728,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3870546097773457457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8140201014636700238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3f322946fcff49d788f96f47da8246c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterName: {fileID: 8818492101592411021}
-  characterRace: {fileID: 3680362266562443617}
-  characterClass: {fileID: 909641569261193375}
-  characterFaction: {fileID: 6247011398477507783}
-  characterGender: {fileID: 9107884956381490940}
-  _vitals: []
-  _statusWidget: {fileID: 0}
-  _animation: {fileID: 0}
-  _button: {fileID: 0}
-  _icon: {fileID: 0}
---- !u!114 &6622646660948110455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8140201014636700238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d04bda1c7f01a46139274cac419d3cc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ForceHide: 0
-  ForceResetPosition: 0
-  ShowSound: {fileID: 0}
-  HideSound: {fileID: 0}
-  OnHide:
-    m_PersistentCalls:
-      m_Calls: []
-  OnShow:
-    m_PersistentCalls:
-      m_Calls: []
-  _charSelection: {fileID: 4867052295814927319}
-  characterInventorySwitcher: {fileID: 8195945070988860528}
-  characterEquipmentSwitcher: {fileID: 7160799149286389992}
 --- !u!1 &8276425356926162929
 GameObject:
   m_ObjectHideFlags: 0

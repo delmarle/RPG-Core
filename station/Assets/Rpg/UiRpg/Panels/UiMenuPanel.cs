@@ -9,13 +9,21 @@ namespace Station
         #region FIELDS
 
         [SerializeField] private UiCharacterTab _charaterTab;
-    
+        [SerializeField] private UiPlayerInventoryTab _inventoryTab;
         #endregion
 
         public override void Show()
         {
             base.Show();
             _charaterTab.Show();
+            _inventoryTab.Show();
+        }
+
+        public override void Hide()
+        {
+            base.Hide();
+            _charaterTab.Hide();
+            _inventoryTab.Hide();
         }
     }
 }
