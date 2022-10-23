@@ -34,9 +34,6 @@ namespace Station
         {
             _inventorySystem = GameInstance.GetSystem<PlayerInventorySystem>();
             _teamSystem = GameInstance.GetSystem<TeamSystem>();
-      //      _containerUiList = new GenericUiList<string, UiContainerWidget>(null, null);//new GenericUiList<UiContainerWidget>(null, null);
-            
-            //prewarm container widget
         }
         #endregion
 
@@ -63,14 +60,6 @@ namespace Station
         
         private void OnContainerChanged(string containerId)
         {
-            
-        }
-
-    
-
-        void LoadData()
-        {
-            var team = _teamSystem.GetTeamMembers();
             
         }
 

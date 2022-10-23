@@ -12,18 +12,24 @@ namespace Station
         Dictionary<string, UiEquipmentContainerWidget> playerMap = new Dictionary<string, UiEquipmentContainerWidget>();
         private void Awake()
         {
-            inventorySystem = GameInstance.GetSystem<PlayerInventorySystem>();
+            if (inventorySystem == null)
+            {
+                inventorySystem = GameInstance.GetSystem<PlayerInventorySystem>();
+            }
             _equipmentContainer.gameObject.SetActive(false);
         }
 
         public void SwitchCharacter(BaseCharacter character)
         {
-            
+            if (inventorySystem == null)
+            {
+                inventorySystem = GameInstance.GetSystem<PlayerInventorySystem>();
+            }
             string playerId = character.GetCharacterId();
             if (playerMap.ContainsKey(playerId) == false)
             {
                 var containerReference = new ContainerReference(PlayerInventorySystem.PLAYER_EQUIPMENT_KEY+playerId, inventorySystem);
-                var uiContainer = Instantiate(_equipmentContainer,transform);
+                UiEquipmentContainerWidget uiContainer = Instantiate(_equipmentContainer,transform);
                 playerMap.Add(playerId, uiContainer);
                 uiContainer.Init(containerReference);
                 uiContainer.UnregisterEvents();

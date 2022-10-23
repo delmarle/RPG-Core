@@ -9,14 +9,13 @@ namespace Station
         #region FIELDS
 
         [SerializeField] private UiCharacterTab _charaterTab;
-        [SerializeField] private UiTabsButtonWidgets _tabsButtonWidgets;
+    
         #endregion
 
         public override void Show()
         {
             base.Show();
-            _tabsButtonWidgets.OnOpen();
-         
+            _charaterTab.Show();
         }
     }
 }
