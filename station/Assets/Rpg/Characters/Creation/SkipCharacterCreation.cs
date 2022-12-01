@@ -41,7 +41,7 @@ namespace Station
             var player1 =CharacterUtils.CreateCharacterSave(class1, "Damien", "1316bc69-70ad-4577-9cfd-e29b35c8a18b",
                 CLASS_ID_1, "male", defaultFaction,"93436f6d-41e9-441a-a2a3-58e5cc7b4e4b", Vector3.up + Vector3.left);
             var player2 = CharacterUtils.CreateCharacterSave(class2, "Enzo", "1316bc69-70ad-4577-9cfd-e29b35c8a18b",
-                CLASS_ID_1, "male", defaultFaction,"93436f6d-41e9-441a-a2a3-58e5cc7b4e4b", Vector3.up + Vector3.left);
+                CLASS_ID_2, "male", defaultFaction,"93436f6d-41e9-441a-a2a3-58e5cc7b4e4b", Vector3.up + Vector3.left);
             module.Value = new Dictionary<string, PlayersData>();
             string player1Key = Guid.NewGuid().ToString();
             module.AddPlayer(player1Key, player1);
