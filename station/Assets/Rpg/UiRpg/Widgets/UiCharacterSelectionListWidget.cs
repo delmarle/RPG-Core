@@ -13,7 +13,7 @@ namespace Station
         [SerializeField] private Transform _root = null;
   
         
-        private ICharacterSwitchable[] _componentsToSwitch;
+        private HashSet<ICharacterSwitchable> _componentsToSwitch = new HashSet<ICharacterSwitchable>();
         private Dictionary<BaseCharacter, UiCharacterPortraitWidget> _map = new Dictionary<BaseCharacter, UiCharacterPortraitWidget>();
         private TeamSystem _teamsystem;
         #endregion
@@ -34,7 +34,10 @@ namespace Station
 
         public void ApplyTarget(ICharacterSwitchable[] targets)
         {
-            _componentsToSwitch = targets;
+            foreach (var tt in targets)
+            {
+                _componentsToSwitch.Add(tt);
+            }
         }
         private void OnDestroy()
         {
