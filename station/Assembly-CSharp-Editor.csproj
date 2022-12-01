@@ -46,6 +46,7 @@
      <Compile Include="Assets\Rpg\Editor\FactionEditor.cs" />
      <Compile Include="Assets\Rpg\Editor\GamePlayEditor.cs" />
      <Compile Include="Assets\Rpg\Editor\Tabs\SkillTab.cs" />
+     <Compile Include="Assets\Rpg\Spawner\Editor\BaseSceneSpawnerEditor.cs" />
      <Compile Include="Assets\Rpg\Editor\ActiveAbilityEditor.cs" />
      <Compile Include="Assets\Rpg\Editor\Static\EditorRpg.cs" />
      <Compile Include="Assets\Rpg\Editor\RaceEditor.cs" />
@@ -783,11 +784,17 @@
      <Reference Include="Unity.Services.Core">
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
      </Reference>
+     <Reference Include="Core.Editor">
+     <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Core.Editor.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.Services.Core.Analytics">
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Services.Core.Environments">
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
+     </Reference>
+     <Reference Include="Core">
+     <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Core.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Timeline.Editor">
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
@@ -800,12 +807,6 @@
      </Reference>
      <Reference Include="Unity.ScriptableBuildPipeline.Editor">
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Core.Editor">
-     <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Core.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Core">
-     <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\Core.dll</HintPath>
      </Reference>
      <Reference Include="DOTween.Modules">
      <HintPath>C:\Users\damien\Desktop\unity projects\station\Library\ScriptAssemblies\DOTween.Modules.dll</HintPath>
