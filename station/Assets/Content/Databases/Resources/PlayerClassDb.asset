@@ -19,7 +19,8 @@ MonoBehaviour:
     m_values:
     - Name:
         Key: Warrior
-      Description: Good with melee weapons
+      Description:
+        Key: 
       Icon: {fileID: 21300000, guid: 59e4679de48b6403f8eb9bd4950427f6, type: 3}
       AllowedRaces:
       - RaceId: 1316bc69-70ad-4577-9cfd-e29b35c8a18b
@@ -73,7 +74,8 @@ MonoBehaviour:
         type: 2}
     - Name:
         Key: Mage
-      Description: Consume a lot of mana
+      Description:
+        Key: 
       Icon: {fileID: 21300000, guid: d174066fc123c4f1ea80954ba8dc0599, type: 3}
       AllowedRaces:
       - RaceId: 1316bc69-70ad-4577-9cfd-e29b35c8a18b
