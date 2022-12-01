@@ -5,7 +5,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "16eb272c52c5ff9ca9ff0a3234ba869caf8bead9"
+      "hash": "c564feaeb0b3572e3715eb06b327af65462d9785"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
@@ -28,7 +28,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.collab-proxy": {
-      "version": "1.17.2",
+      "version": "1.17.6",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -44,7 +44,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.rider": {
-      "version": "3.0.15",
+      "version": "3.0.16",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -69,7 +69,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.inputsystem": {
-      "version": "1.4.2",
+      "version": "1.4.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -92,7 +92,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.services.core": {
-      "version": "1.4.2",
+      "version": "1.6.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {
