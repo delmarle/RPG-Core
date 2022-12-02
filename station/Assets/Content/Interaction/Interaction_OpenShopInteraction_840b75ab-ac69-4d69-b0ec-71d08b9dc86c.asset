@@ -15,6 +15,6 @@ MonoBehaviour:
   _conditions: []
   _characterConditions: []
   _lockedText:
-    Key: 
+    Key: cant buy
   _unlockedText:
-    Key: 
+    Key: I want to buy stuff

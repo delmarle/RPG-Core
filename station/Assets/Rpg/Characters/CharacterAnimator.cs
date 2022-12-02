@@ -89,16 +89,21 @@ namespace Station
   #region CASTING
   private void OnStartCasting(CharacterAction action)
   {
-    _animator.SetInteger(CastingId, action.ActionFxData.AnimationId);
+    bool hasValidAnimation = action.ActionFxData.AnimationId >= 0;
+   
     if (action.ActionFxData.StartSound)
     {
       _soundSystem.PlaySound(action.ActionFxData.StartSound.name);
     }
 
-    if(action.InvokingActionData != null)_animator.SetInteger(InvokingId, action.InvokingActionData.AnimationId);
-    _animator.SetBool(CastingState, true);
-    _animator.SetBool(InvokingState, false);
-    _animator.SetTrigger(AbilityTrigger);
+    if (hasValidAnimation)
+    {
+      if(action.InvokingActionData != null)_animator.SetInteger(InvokingId, action.InvokingActionData.AnimationId);
+      _animator.SetInteger(CastingId, action.ActionFxData.AnimationId);
+      _animator.SetBool(CastingState, true);
+      _animator.SetBool(InvokingState, false);
+      _animator.SetTrigger(AbilityTrigger);
+    }
   }
   
   private void OnCancelCasting(CharacterAction ability)

@@ -28,8 +28,15 @@ namespace Station
                 _cachedInteractionPopup = UiSystem.GetUniquePopup<UiInteractionPopup>(UiInteractionPopup.POPUP_ID);
             }
 
-            _cachedInteractionPopup.SetData(_owner, user, Topics);
+            _cachedInteractionPopup.SetData(_owner, user, this, Topics);
             _cachedInteractionPopup.Show();
+        }
+
+        public override void OnCancelInteraction(BaseCharacter user)
+        {
+            UiSystem.HideUniquePopup<UiInteractionPopup>(UiInteractionPopup.POPUP_ID);
+            _cachedInteractionPopup.Hide();
+            base.OnCancelInteraction(user);
         }
 
         public override string GetInteractionName()

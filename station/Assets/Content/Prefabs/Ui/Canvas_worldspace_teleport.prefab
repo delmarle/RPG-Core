@@ -92,8 +92,8 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 6
-  m_PreferredHeight: 6
+  m_PreferredWidth: 3
+  m_PreferredHeight: 3
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
@@ -191,12 +191,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 3
-    m_Right: 3
+    m_Left: 1
+    m_Right: 1
     m_Top: 1
     m_Bottom: 1
   m_ChildAlignment: 4
-  m_Spacing: 2
+  m_Spacing: 1
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
@@ -568,7 +568,7 @@ GameObject:
   - component: {fileID: 1972487136506882625}
   - component: {fileID: 4211992540501696932}
   - component: {fileID: 6875998906632562609}
-  - component: {fileID: 8635149658070528239}
+  - component: {fileID: 1984064503}
   m_Layer: 5
   m_Name: container
   m_TagString: Untagged
@@ -637,7 +637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
---- !u!114 &8635149658070528239
+--- !u!114 &1984064503
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -686,7 +686,7 @@ RectTransform:
   - {fileID: 1972487136506882625}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -63.341003, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -711,7 +711,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -5
   m_TargetDisplay: 0
 --- !u!114 &8139068349829063342
 MonoBehaviour:
@@ -1062,8 +1062,8 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 6
-  m_PreferredHeight: 6
+  m_PreferredWidth: 3
+  m_PreferredHeight: 3
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
@@ -1168,7 +1168,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 15.7
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535

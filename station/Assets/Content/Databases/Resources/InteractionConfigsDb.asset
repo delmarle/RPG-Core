@@ -114,17 +114,17 @@ MonoBehaviour:
         UseCameraAngle: 0
         CameraAngle: 90
       TryInteractMode: 1
-      InteractionRange: 3
+      InteractionRange: 6
       HoverMode: 0
       actionFxData:
-        HasData: 0
-        Option: 0
-        Length: 1
-        AnimationId: 0
+        HasData: 1
+        Option: 1
+        Length: 0
+        AnimationId: -1
         StartSound: {fileID: 0}
         Effect:
           EffectPrefab: {fileID: 0}
-      CancelInteractionMode: 0
+      CancelInteractionMode: 2
       CancelInteractionDistance: 2.5
       FailNotificationChannels:
       - {fileID: 11400000, guid: 3c42e041f99b644069e15d10226cb72d, type: 2}
@@ -151,7 +151,7 @@ MonoBehaviour:
         StartSound: {fileID: 0}
         Effect:
           EffectPrefab: {fileID: 0}
-      CancelInteractionMode: 0
+      CancelInteractionMode: 2
       CancelInteractionDistance: 2.5
       FailNotificationChannels: []
       ResultNotificationChannels: []

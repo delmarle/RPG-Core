@@ -20,7 +20,8 @@ namespace Station
         [SerializeField] private UiButton _prefabEntry = null;
         
         private GenericUiList<InteractionLine, UiButton> _entriesList;
-
+        private BaseCharacter _owner;
+        private Interactible _interaction;
         
         #endregion
 
@@ -30,8 +31,10 @@ namespace Station
             _entriesList = new GenericUiList<InteractionLine, UiButton>(_prefabEntry.gameObject, _entriesRoot);
         }
 
-        public void SetData(BaseCharacter owner, BaseCharacter demander, List<InteractionLine> interactions)
+        public void SetData(BaseCharacter owner, BaseCharacter demander,Interactible interaction, List<InteractionLine> interactions)
         {
+            _owner = owner;
+            _interaction = interaction;
             _entriesList.Generate(interactions, (data, button) =>
             {
                 if (data.CanTrigger(demander))
@@ -47,8 +50,9 @@ namespace Station
         
         public void OnDeselect()
         {
-            Debug.Log("deselect");
-            //Mouse was clicked outside
+            _owner.Action.CancelCasting();
+           _interaction.OnCancelInteraction(_owner);
+           //Mouse was clicked outside
             Hide();
         }
     }
