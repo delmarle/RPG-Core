@@ -1,13 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 
 namespace Station
 {
     public class CurrencyHandler
     {
-        Dictionary<string, int> currencies = new Dictionary<string, int>();
+        private Dictionary<string, int> currencies = new Dictionary<string, int>();
         
         
         

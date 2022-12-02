@@ -80,14 +80,12 @@ namespace Station
 
         private void LoadPlayerCurrencies()
         {
-      /*
             var saveSystem = GameInstance.GetSystem<SavingSystem>();
-            var saveModule = saveSystem.GetModule<GeneralPlayerSave>();
+            var saveModule = saveSystem.GetModule<PlayerGeneralSave>();
             _currencyHandler = new CurrencyHandler();
-            var save = saveModule?.Value ?? new GeneralPlayerData();
+            var save = saveModule?.Value ?? new PlayerGeneralData();
             var state = save.CurrenciesStatus;
             _currencyHandler.Load(state);
-            */
         }
 
         public List<IdIntegerValue> GetCurrenciesState()
@@ -97,6 +95,11 @@ namespace Station
                 return new List<IdIntegerValue>();
             }
             return _currencyHandler.GenerateSaveState();
+        }
+
+        public CurrencyHandler GetCurrencyHandler()
+        {
+            return _currencyHandler;
         }
 
         private void LoadPlayersEquipment()

@@ -223,6 +223,7 @@
      <Compile Include="Assets\Rpg\Items\Save Modules\AreaContainersSave.cs" />
      <Compile Include="Assets\Rpg\Characters\CharacterEventsData.cs" />
      <Compile Include="Assets\Rpg\Camera\CameraController.cs" />
+     <Compile Include="Assets\Rpg\SaveModules\PlayerGeneralSave.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\Rpg\Characters\Interactions\Tracking system" />
      <Folder Include="Assets\Content\Models\Characters\3D Game Kit - Character Pack" />
