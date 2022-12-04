@@ -15,6 +15,18 @@ MonoBehaviour:
   Description:
     Key: description
   Name:
-    Key: currency
-  Icon: {fileID: 0}
-  SubValues: []
+    Key: Copper
+  Icon: {fileID: 21300000, guid: 25437539e6675b44bad434a6347e55d1, type: 3}
+  SubValues:
+  - Name:
+      Key: Silver
+    Icon: {fileID: 21300000, guid: edf832986a61b1c48a5f5b3b61d94450, type: 3}
+    PreviousEquivalent: 100
+  - Name:
+      Key: Gold
+    Icon: {fileID: 21300000, guid: 9a391a7716710784383b749b28a6ed3a, type: 3}
+    PreviousEquivalent: 100
+  - Name:
+      Key: Platinum
+    Icon: {fileID: 21300000, guid: 2b57a5daffc71d748ad29eb714da408c, type: 3}
+    PreviousEquivalent: 1000

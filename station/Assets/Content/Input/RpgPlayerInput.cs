@@ -184,6 +184,17 @@ public partial class @RpgPlayerInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""6fe8f389-c83b-4449-9ada-344745281f07"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InteractionPrimary"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""3c22a8e3-96e5-4c5f-af67-f10b45ffe36f"",
                     ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",

@@ -8,6 +8,8 @@ namespace Station
         [SerializeField] private UiCharacterSelectionListWidget _charSelection;
         [SerializeField] private CharacterInventorySwitcher characterInventorySwitcher = null;
         [SerializeField] private CharacterEquipmentSwitcher characterEquipmentSwitcher = null;
+        [SerializeField] private UiCurrencyWidget _currencyWudget = null;
+        [SerializeField] private CurrencyModel _mainCurrency;
         
         private PlayerInventorySystem _inventorySystem;
         private TeamSystem _teamSystem;
@@ -44,6 +46,8 @@ namespace Station
             base.Show();
             _inventorySystem.OnContainerChanged.AddListener(OnContainerChanged);
             characterInventorySwitcher.RegisterAllEvents();
+            _inventorySystem.GetCurrencyHandler().OnChanged.AddListener(OnUpdateCurrency);
+            RefreshCurrencies();
         }
         
         public override void Hide()
@@ -51,6 +55,7 @@ namespace Station
             _inventorySystem.OnContainerChanged.RemoveListener(OnContainerChanged);
             characterInventorySwitcher.UnRegisterAllEvents();
             base.Hide();
+            _inventorySystem.GetCurrencyHandler().OnChanged.RemoveListener(OnUpdateCurrency);
         }
 
         public void ClosePanel()
@@ -66,6 +71,18 @@ namespace Station
         public void SwitchCharacter(BaseCharacter character)
         {
             
+        }
+
+        private void OnUpdateCurrency(CurrencyHandler.CurrencyChange changeType, CurrencyModel model, long updatedValue, long amount)
+        {
+            if (_mainCurrency != model) return;
+            RefreshCurrencies();
+        }
+        private void RefreshCurrencies()
+        {
+            var handler = _inventorySystem.GetCurrencyHandler();
+            long amount = handler.GetCurrencyAmount(_mainCurrency);
+            _currencyWudget.DisplayAmount(_mainCurrency, amount, false);
         }
     }
 

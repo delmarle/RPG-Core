@@ -159,6 +159,7 @@ namespace Station.Editor
 
         private static void DrawCurrency()
         {
+            EditorGUI.BeginChangeCheck();
             var currencyCount = _currenciesDb.Count();
             if (_selectedEntryIndex == -1) return;
             if (currencyCount == 0) return;
@@ -196,6 +197,12 @@ namespace Station.Editor
                 subValue.Icon = (Sprite)EditorGUILayout.ObjectField("Icon:", subValue.Icon, typeof(Sprite), false);
             }
             EditorStatic.DrawThinLine();
+            if (EditorGUI.EndChangeCheck() && currency != null)
+            {
+                EditorUtility.SetDirty(currency);
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();  
+            }
         }
     }
 }

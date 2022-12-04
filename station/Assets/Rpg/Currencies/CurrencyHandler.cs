@@ -6,8 +6,11 @@ namespace Station
     public class CurrencyHandler
     {
         private Dictionary<string, int> currencies = new Dictionary<string, int>();
-        
-        
+        public StationEvent<CurrencyChange,CurrencyModel,long, long> OnChanged = new StationEvent<CurrencyChange,CurrencyModel,long, long>();
+        public enum CurrencyChange
+        {
+            Increase,Decrease
+        }
         
         #region Save and LOAD
 
@@ -35,23 +38,24 @@ namespace Station
         
         #region Transaction
 
-        public bool HasEnoughCurrency(string model, int requiredAmount)
+        public bool HasEnoughCurrency(CurrencyModel model, int requiredAmount)
         {
-            if (currencies.ContainsKey(model))
+            if (currencies.ContainsKey(model.name))
             {
-                return currencies[model] >= requiredAmount;
+                return currencies[model.name] >= requiredAmount;
             }
             return false;
         }
 
-        public void AddCurrency(string model, int amount, bool playerCurrencyEvent = false)
+        public void AddCurrency(CurrencyModel model, int amount, bool playerCurrencyEvent = false)
         {
-            if (currencies.ContainsKey(model) == false)
+            if (currencies.ContainsKey(model.name) == false)
             {
-                currencies.Add(model, 0);
+                currencies.Add(model.name, 0);
             }
             
-            currencies[model] += amount;
+            currencies[model.name] += amount;
+            OnChanged.Invoke(CurrencyChange.Increase, model, currencies[model.name], amount);
         }
         
         public void AddCurrencies(Dictionary<string, int> addedCurrencies, bool playerCurrencyEvent = false)
@@ -65,29 +69,43 @@ namespace Station
             
                 currencies[ac.Key] += ac.Value;
             }
+            
+            OnChanged.Invoke(CurrencyChange.Increase, null,0,0);
         }
 
         public void RemoveAllCurrencies()
         {
             currencies.Clear();
+            OnChanged.Invoke(CurrencyChange.Decrease, null, 0, 0);
         }
 
-        public void RemoveCurrency(string model, int removedAmount)
+        public void RemoveCurrency(CurrencyModel model, int removedAmount)
         {
-            if (currencies.ContainsKey(model) == false)
+            if (currencies.ContainsKey(model.name) == false)
             {
                 //error
                 return;
             }
             
             
-            if (currencies[model] < removedAmount)
+            if (currencies[model.name] < removedAmount)
             {
                 //error
                 return;
             }
             
-            currencies[model] -= removedAmount;
+            currencies[model.name] -= removedAmount;
+            OnChanged.Invoke(CurrencyChange.Decrease, model, currencies[model.name], removedAmount);
+        }
+
+        public long GetCurrencyAmount(CurrencyModel key)
+        {
+            if (currencies.ContainsKey(key.name))
+            {
+                return currencies[key.name];
+            }
+
+            return 0;
         }
         #endregion
     }
