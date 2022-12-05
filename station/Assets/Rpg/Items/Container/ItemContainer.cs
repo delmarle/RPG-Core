@@ -6,7 +6,12 @@ namespace Station
 {
     public abstract class BaseItemContainer
     {
-        protected const int INVALID_NUMBER = -1;
+        #region CURRENCIES
+
+        public CurrencyHandler CurrencyHandler;
+
+        #endregion
+        private const int INVALID_NUMBER = -1;
         public StationAction OnContentChanged;
         protected ContainerState _container;
         public ContainerState GetState() => _container;
@@ -346,6 +351,7 @@ namespace Station
     [Serializable]
     public class ContainerState
     {
+        public Dictionary<string, long> Currencies;
         public Dictionary<int, ItemStack> Slots;
         public ContainerState()
         {

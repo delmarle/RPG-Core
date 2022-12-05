@@ -5,7 +5,7 @@ namespace Station
 {
     public class CurrencyHandler
     {
-        private Dictionary<string, int> currencies = new Dictionary<string, int>();
+        private Dictionary<string, long> currencies = new Dictionary<string, long>();
         public StationEvent<CurrencyChange,CurrencyModel,long, long> OnChanged = new StationEvent<CurrencyChange,CurrencyModel,long, long>();
         public enum CurrencyChange
         {
@@ -14,7 +14,7 @@ namespace Station
         
         #region Save and LOAD
 
-        public void Load(List<IdIntegerValue> currencyState)
+        public void Load(List<IdLongValue> currencyState)
         {
             if (currencyState != null)
             {
@@ -25,12 +25,12 @@ namespace Station
             }
         }
 
-        public List<IdIntegerValue> GenerateSaveState()
+        public List<IdLongValue> GenerateSaveState()
         {
-            var state = new List<IdIntegerValue>();
+            var state = new List<IdLongValue>();
             foreach (var c in currencies)
             {
-                state.Add(new IdIntegerValue(c.Key, c.Value));
+                state.Add(new IdLongValue(c.Key, c.Value));
             }
             return state;
         }

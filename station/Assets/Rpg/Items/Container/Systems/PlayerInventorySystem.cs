@@ -88,11 +88,11 @@ namespace Station
             _currencyHandler.Load(state);
         }
 
-        public List<IdIntegerValue> GetCurrenciesState()
+        public List<IdLongValue> GetCurrenciesState()
         {
             if (_currencyHandler == null)
             {
-                return new List<IdIntegerValue>();
+                return new List<IdLongValue>();
             }
             return _currencyHandler.GenerateSaveState();
         }

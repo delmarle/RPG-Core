@@ -36,8 +36,9 @@ namespace Station
             }
 
             var nodeModel = _chestNodeDb.GetEntry(ChestNodeModelId);
-            var defaultItems = LootUtils.GenerateLootStack(nodeModel.LootTable);
-            InitializeWithDefaultItems(Guid.NewGuid().ToString(), defaultItems, true);
+            var items = LootUtils.GenerateLootStack(nodeModel.LootTable);
+            var currencies = LootUtils.GenerateCurrencies(nodeModel.LootTable);
+            InitializeWithDefaultItems(Guid.NewGuid().ToString(), items, currencies, true);
         }
 
         private void Initialize(string saveId)
@@ -52,10 +53,11 @@ namespace Station
             SetUiName(GetObjectName());
         }
 
-        private void InitializeWithDefaultItems(string id, List<ItemStack> items, bool saved)
+        private void InitializeWithDefaultItems(string id, List<ItemStack> items, Dictionary<string, long> currencies, bool saved)
         {
             Initialize(id);
             var containerState = new ContainerState(8, items);
+            containerState.Currencies = currencies;
             var container = new ItemContainer(id, containerState, _itemDb);
             _containerSystem.AddContainer(container, saved);
         }

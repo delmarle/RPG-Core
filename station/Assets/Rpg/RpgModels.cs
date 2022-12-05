@@ -769,6 +769,19 @@ public enum StatusEffectType
       Value = defaultAmount;
     }
   }
+  
+  [Serializable]
+  public class IdLongValue
+  {
+    public string Id;
+    public long Value;
+    
+    public IdLongValue(string id, long defaultAmount)
+    {
+      Id = id;
+      Value = defaultAmount;
+    }
+  }
   [Serializable]
   public class RankProgression
   {
@@ -936,6 +949,16 @@ public enum StatusEffectType
     public float Chance = 100;
   }
   
+  [Serializable]
+  public class CurrencyLootModel
+  {
+    public CurrencyModel Currency;
+    public long AmountMin = 1;
+    public long AmountMax = 10;
+    public float Chance = 100;
+  }
+
+  
   
   [Serializable]
   public class ChestNodeModel: IStationIcon
@@ -958,6 +981,7 @@ public enum StatusEffectType
   {
     public string Description = "new loot table";
     public List<LootModel> Loots = new List<LootModel>();
+    public List<CurrencyLootModel> Currencies = new List<CurrencyLootModel>();
   }
   #endregion
 }

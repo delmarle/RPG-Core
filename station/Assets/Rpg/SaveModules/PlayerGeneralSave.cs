@@ -16,6 +16,6 @@ namespace Station
     [Serializable]
     public class PlayerGeneralData
     {
-        public List<IdIntegerValue> CurrenciesStatus = new List<IdIntegerValue>();
+        public List<IdLongValue> CurrenciesStatus = new List<IdLongValue>();
     }
 }

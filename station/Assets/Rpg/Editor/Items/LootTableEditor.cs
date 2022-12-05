@@ -137,34 +137,34 @@ namespace Station
       GUILayout.EndHorizontal();
     }
 
-    private static void LootTablePanel(LootTableModel lootStaticData,int selectedRace)
+    private static void LootTablePanel(LootTableModel lootStaticData,int tableSelected)
     {
       GUILayout.Label("EDIT RACE:",GUILayout.Width(70));
       EditorStatic.DrawLargeLine(5);
       GUILayout.BeginHorizontal(GUILayout.ExpandWidth(true));
       { 
           GUILayout.BeginVertical();
-        {
-          GUILayout.Space(5);
-          GUILayout.BeginHorizontal();
           {
-            GUILayout.Label("Name",GUILayout.Width(70));
-            lootStaticData.Description = GUILayout.TextField(lootStaticData.Description);
+              GUILayout.Space(5);
+              GUILayout.BeginHorizontal();
+              {
+                  GUILayout.Label("Name",GUILayout.Width(70));
+                  lootStaticData.Description = GUILayout.TextField(lootStaticData.Description);
+              }
+              GUILayout.EndHorizontal();
+              GUILayout.Space(3);
           }
-          GUILayout.EndHorizontal();
-          GUILayout.Space(3);
-        }
-        GUILayout.EndVertical();
-        if (EditorStatic.ButtonDelete())
-        {
-          if (EditorUtility.DisplayDialog("Delete loot Table?",
-            "Do you want to delete: "+lootStaticData.Description,"Delete","Cancel"))
+          GUILayout.EndVertical();
+          if (EditorStatic.ButtonDelete())
           {
-              _lootTableDb.Remove(lootStaticData);
-            EditorStatic.ResetFocus();
-            return;
+              if (EditorUtility.DisplayDialog("Delete loot Table?",
+                  "Do you want to delete: "+lootStaticData.Description,"Delete","Cancel"))
+              {
+                  _lootTableDb.Remove(lootStaticData);
+                  EditorStatic.ResetFocus();
+                  return;
+              }
           }
-        }
       }
       GUILayout.EndHorizontal();
       EditorStatic.DrawThinLine(10);
@@ -179,7 +179,7 @@ namespace Station
             CacheDbs();
             
             EditorStatic.DrawSectionTitle("Loots", 0);
-            if (EditorStatic.SizeableButton(200, 32,"Add One", "plus"))
+            if (EditorStatic.SizeableButton(200, 32,"Add Loot", "plus"))
             {
                 model.Loots.Add(new LootModel());
             }
@@ -211,6 +211,39 @@ namespace Station
                     if (EditorStatic.SizeableButton(100, 18, "delete", "cross"))
                     {
                         model.Loots.Remove(entryLoot);
+                        GUIUtility.ExitGUI();
+                    }
+
+                    EditorGUILayout.EndHorizontal();
+                }
+            }
+            
+            
+            EditorStatic.DrawSectionTitle("Currencies", 0);
+            if (EditorStatic.SizeableButton(200, 32,"Add Currency", "plus"))
+            {
+                model.Currencies.Add(new CurrencyLootModel());
+            }
+            EditorStatic.DrawLargeLine(5);
+            
+            if (_itemsDb.Count() == 0)
+            {
+                EditorGUILayout.HelpBox("there is no items in the items db", MessageType.Info);
+            }
+            else
+            {
+                foreach (var currencyLootModel in model.Currencies)
+                {
+                    EditorGUILayout.BeginHorizontal("box");
+               
+                    currencyLootModel.Currency = (CurrencyModel)EditorGUILayout.ObjectField("currency: ", currencyLootModel.Currency, typeof(CurrencyModel), false);
+               
+                    currencyLootModel.Chance = EditorGUILayout.Slider("Drop rate (%): ", currencyLootModel.Chance, 0, 100);
+                    currencyLootModel.AmountMin = EditorGUILayout.LongField("Amount min-max: ", currencyLootModel.AmountMin);
+                    currencyLootModel.AmountMax =  EditorGUILayout.LongField(currencyLootModel.AmountMax);
+                    if (EditorStatic.SizeableButton(100, 18, "delete", "cross"))
+                    {
+                        model.Currencies.Remove(currencyLootModel);
                         GUIUtility.ExitGUI();
                     }
 

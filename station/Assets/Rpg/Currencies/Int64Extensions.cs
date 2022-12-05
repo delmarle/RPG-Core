@@ -64,6 +64,6 @@ public static class Int64Extensions
     }
 
     // STRING CONVERSION:
-    public static int Digits_String(this long n) =>
-        n.ToString().Length;
+    public static int Digits_String(this long n) => n.ToString().Length;
+    
 }
