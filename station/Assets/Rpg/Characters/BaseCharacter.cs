@@ -312,10 +312,10 @@ namespace Station
         public void GenerateLoots(string lootTable)
         {
             var defaultItems = LootUtils.GenerateLootStack(lootTable);
-    
+            var currencies = LootUtils.GenerateCurrencies(lootTable);
             var containerState = new ContainerState(8, defaultItems);
             _instancedLootContainedId = Guid.NewGuid().ToString();
-            var container = new ItemContainer(_instancedLootContainedId, containerState, _itemDb);
+            var container = new ItemContainer(_instancedLootContainedId, containerState, _itemDb, currencies);
             _containerSystem.AddContainer(container, false);
         }
         #endregion

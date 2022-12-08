@@ -31,6 +31,11 @@ MonoBehaviour:
         QuantityMin: 1
         QuantityMax: 1
         Chance: 56
+      Currencies:
+      - Currency: {fileID: 11400000, guid: 8044c4d29ba94ad47b5ffcf0312b8413, type: 2}
+        AmountMin: 1
+        AmountMax: 10
+        Chance: 100
     - Description: common_enemies_a
       Loots:
       - ItemId: 9aa4f344-e304-476f-9308-514194c21fb6
@@ -41,3 +46,4 @@ MonoBehaviour:
         QuantityMin: 1
         QuantityMax: 4
         Chance: 25
+      Currencies: []

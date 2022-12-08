@@ -7,16 +7,23 @@ namespace Station
     public class UiContainerPopup : UiPopup
     {
         public const string POPUP_KEY = "container_popup";
+        [SerializeField] private UiCurrencyWidget _currencies = null;
         [SerializeField] private UiContainerWidget _containerWidget = null;
         private ContainerReference _containerReference;
         private BaseCharacter _user;
         private List<ScriptableNotificationChannel> _failedChannels;
         private List<ScriptableNotificationChannel> _resultChannels;
+        private CurrenciesDb _currencyDb;
         
-
-
+        private void CacheComponents()
+        {
+            if (_currencyDb != null) return;
+            
+            _currencyDb = GameInstance.GetDb<CurrenciesDb>();
+        }
         public void Setup(ContainerReference containerReference, BaseCharacter user, List<ScriptableNotificationChannel> failedChannels, List<ScriptableNotificationChannel> resultChannels)
         {
+            CacheComponents();
             _user = user;
             _failedChannels = failedChannels;
             _resultChannels = resultChannels;
@@ -28,10 +35,18 @@ namespace Station
             base.Show();
             _containerWidget.RegisterEvents();
             _containerWidget.UpdateUiSlots();
+            
+            var currencyHandler = _containerReference.GetContainer().CurrencyContainer;
+            currencyHandler.OnChanged.AddListener(OnCurrencyChange);
+            RefreshCurrencies();
         }
+
         public override void Hide()
         {
             _containerWidget.UnregisterEvents();
+            var currencyHandler = _containerReference.GetContainer().CurrencyContainer;
+            currencyHandler.OnChanged.RemoveListener(OnCurrencyChange);
+            
             base.Hide();
         }
 
@@ -73,7 +88,27 @@ namespace Station
             
      
         }
+
         
+        private void OnCurrencyChange(CurrencyContainer.CurrencyChange arg1, CurrencyModel arg2, long arg3, long arg4)
+        {
+            RefreshCurrencies();
+        }
+        private void RefreshCurrencies()
+        {
+            var currencyHandler = _containerReference.GetContainer().CurrencyContainer;
+            if (currencyHandler.GetCurrencies.Any())
+            {
+                KeyValuePair<string, long> mainCurrency = currencyHandler.GetCurrencies.FirstOrDefault();
+                var currencyModel = _currencyDb.GetEntry(mainCurrency.Key);
+                _currencies.DisplayAmount(currencyModel,mainCurrency.Value, true);
+            }
+            else
+            {
+                //no currency
+                _currencies.DisplayAmount(null, 0, true);
+            }
+        }
     }
 }
 

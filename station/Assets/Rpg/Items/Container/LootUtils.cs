@@ -27,7 +27,7 @@ namespace Station
                         }
                         long amount = _staticRandom.NextLong(model.AmountMin, model.AmountMax);
                         
-                        currencies.Add(model.Currency.name, amount);
+                        currencies.Add(model.Currency.Key, amount);
                     }
                 }
             }

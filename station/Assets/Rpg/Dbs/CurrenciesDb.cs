@@ -19,6 +19,10 @@ namespace Station
             set => _db.CopyFrom (value);
         }
 
+        public override void OnAdd(string key, CurrencyModel v)
+        {
+            v.Key = key;
+        }
 
         public override string[] ListEntryNames()
         {

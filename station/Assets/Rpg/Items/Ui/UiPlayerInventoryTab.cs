@@ -73,7 +73,7 @@ namespace Station
             
         }
 
-        private void OnUpdateCurrency(CurrencyHandler.CurrencyChange changeType, CurrencyModel model, long updatedValue, long amount)
+        private void OnUpdateCurrency(CurrencyContainer.CurrencyChange changeType, CurrencyModel model, long updatedValue, long amount)
         {
             if (_mainCurrency != model) return;
             RefreshCurrencies();

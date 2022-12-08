@@ -19,10 +19,7 @@ namespace Station
         private Dictionary<string, BaseItemContainer> _containers;
         private PlayerInventoryType _inventoryType;
 
-        /// <summary>
-        /// CURRENCIES
-        /// </summary>
-        private CurrencyHandler _currencyHandler;
+
         #endregion
         #region initialization
         protected override void OnInit()
@@ -56,7 +53,6 @@ namespace Station
             _inventoryType = itemsSettingsModel.ContainerSettings.PlayerInventoryType;
             
             LoadPlayerInventories();
-            LoadPlayerCurrencies();
             LoadPlayersEquipment();
         }
 
@@ -69,7 +65,7 @@ namespace Station
                 var save = playerItemsSaveModule?.Value ?? new ContainersListSave();
 
                 var state = save.GetContainerById(PLAYER_INVENTORY_KEY);
-                var sharedContainer = new ItemContainer(PLAYER_INVENTORY_KEY, state, _itemsDb);
+                var sharedContainer = new ItemContainer(PLAYER_INVENTORY_KEY, state, _itemsDb, state.Currencies);
                 _containers.Add(PLAYER_INVENTORY_KEY, sharedContainer);
             }
             else
@@ -78,28 +74,15 @@ namespace Station
             }
         }
 
-        private void LoadPlayerCurrencies()
+        public CurrencyContainer GetCurrencyHandler()
         {
-            var saveSystem = GameInstance.GetSystem<SavingSystem>();
-            var saveModule = saveSystem.GetModule<PlayerGeneralSave>();
-            _currencyHandler = new CurrencyHandler();
-            var save = saveModule?.Value ?? new PlayerGeneralData();
-            var state = save.CurrenciesStatus;
-            _currencyHandler.Load(state);
-        }
-
-        public List<IdLongValue> GetCurrenciesState()
-        {
-            if (_currencyHandler == null)
+            if (_containers.ContainsKey(PLAYER_INVENTORY_KEY) == false)
             {
-                return new List<IdLongValue>();
+                return null;
             }
-            return _currencyHandler.GenerateSaveState();
-        }
-
-        public CurrencyHandler GetCurrencyHandler()
-        {
-            return _currencyHandler;
+            var playerContainer = _containers[PLAYER_INVENTORY_KEY];
+           
+            return  playerContainer.CurrencyContainer;
         }
 
         private void LoadPlayersEquipment()

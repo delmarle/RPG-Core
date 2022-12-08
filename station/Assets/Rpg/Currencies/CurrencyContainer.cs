@@ -3,9 +3,16 @@ using System.Collections.Generic;
 
 namespace Station
 {
-    public class CurrencyHandler
+    public class CurrencyContainer
     {
-        private Dictionary<string, long> currencies = new Dictionary<string, long>();
+        public CurrencyContainer(Dictionary<string, long> data)
+        {
+            currencies = data;
+        }
+        
+        private Dictionary<string, long> currencies;
+        public Dictionary<string, long> GetCurrencies => currencies;
+        
         public StationEvent<CurrencyChange,CurrencyModel,long, long> OnChanged = new StationEvent<CurrencyChange,CurrencyModel,long, long>();
         public enum CurrencyChange
         {

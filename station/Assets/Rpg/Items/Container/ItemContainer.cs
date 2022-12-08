@@ -8,7 +8,7 @@ namespace Station
     {
         #region CURRENCIES
 
-        public CurrencyHandler CurrencyHandler;
+        public CurrencyContainer CurrencyContainer;
 
         #endregion
         private const int INVALID_NUMBER = -1;
@@ -264,11 +264,12 @@ namespace Station
     public class ItemContainer: BaseItemContainer
     {
         
-        public ItemContainer(string id, ContainerState state, ItemsDb itemsDb)
+        public ItemContainer(string id, ContainerState state, ItemsDb itemsDb, Dictionary<string, long> currencies)
         {
             _id = id;
             _container = state;
             itemDb = itemsDb;
+            CurrencyContainer = new CurrencyContainer(currencies);
         }
         
 
@@ -439,13 +440,10 @@ namespace Station
             }
             return list;
         }
-
         public ContainerState(Dictionary<int, ItemStack> save)
         {
             Slots = save;
         }
-
-        
     }
 }
 
