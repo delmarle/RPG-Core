@@ -104,7 +104,7 @@ namespace Station
             foreach (var entry in save.Containers)
             {
                 ContainerState state = entry.Value;
-                _savedContainer.Add(entry.Key, new ItemContainer(entry.Key, state, itemDb, state.Currencies));
+                _savedContainer.Add(entry.Key, new ItemContainer(entry.Key, state, itemDb));
             }
         }
         

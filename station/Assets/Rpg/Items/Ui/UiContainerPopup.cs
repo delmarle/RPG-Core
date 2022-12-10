@@ -14,14 +14,16 @@ namespace Station
         private List<ScriptableNotificationChannel> _failedChannels;
         private List<ScriptableNotificationChannel> _resultChannels;
         private CurrenciesDb _currencyDb;
-        
+
         private void CacheComponents()
         {
             if (_currencyDb != null) return;
-            
+
             _currencyDb = GameInstance.GetDb<CurrenciesDb>();
         }
-        public void Setup(ContainerReference containerReference, BaseCharacter user, List<ScriptableNotificationChannel> failedChannels, List<ScriptableNotificationChannel> resultChannels)
+
+        public void Setup(ContainerReference containerReference, BaseCharacter user,
+            List<ScriptableNotificationChannel> failedChannels, List<ScriptableNotificationChannel> resultChannels)
         {
             CacheComponents();
             _user = user;
@@ -30,25 +32,30 @@ namespace Station
             _containerReference = containerReference;
             _containerWidget.Init(containerReference);
         }
+
         public override void Show()
         {
+            if (IsVisible) return;
+            
             base.Show();
             _containerWidget.RegisterEvents();
             _containerWidget.UpdateUiSlots();
-            
-            var currencyHandler = _containerReference.GetContainer().CurrencyContainer;
-            currencyHandler.OnChanged.AddListener(OnCurrencyChange);
+
+            var currencyHandler = _containerReference.GetContainer();
+            currencyHandler.OnCurrencyChanged.AddListener(OnCurrencyChange);
             RefreshCurrencies();
         }
 
         public override void Hide()
         {
             _containerWidget.UnregisterEvents();
-            var currencyHandler = _containerReference.GetContainer().CurrencyContainer;
-            currencyHandler.OnChanged.RemoveListener(OnCurrencyChange);
-            
+            var currencyHandler = _containerReference.GetContainer();
+            currencyHandler.OnCurrencyChanged.RemoveListener(OnCurrencyChange);
+
             base.Hide();
         }
+
+        #region Buttons
 
         public void OnClickCollectSlots()
         {
@@ -70,33 +77,47 @@ namespace Station
                             var dict = new Dictionary<string, object> {{UiConstants.TEXT_MESSAGE, msg}};
                             UiNotificationSystem.ShowNotification(_failedChannels, dict);
                         }
+
                         return;
                     }
                     else
                     {
                         if (_resultChannels.Any())
                         {
-                            var dict = new Dictionary<string, object> {{UiConstants.ITEM_KEY, cachedId}, {UiConstants.ITEM_AMOUNT, cachedAmount}};
+                            var dict = new Dictionary<string, object>
+                                {{UiConstants.ITEM_KEY, cachedId}, {UiConstants.ITEM_AMOUNT, cachedAmount}};
 
                             UiNotificationSystem.ShowNotification(_resultChannels, dict);
                         }
-                       
-                      
+
+
                     }
                 }
             }
-            
-     
+
+
         }
 
+
+        public void OnClickGetCurrency()
+        {
+            var playerInventorySystem = GameInstance.GetSystem<PlayerInventorySystem>();
+            var playerContainer = playerInventorySystem.GetContainer(_user.GetCharacterId());
+            var sourceContainer = _containerReference.GetContainer();
+            CurrenciesUtils.TransferCurrencies(sourceContainer, playerContainer);
+        }
+
+    #endregion
         
-        private void OnCurrencyChange(CurrencyContainer.CurrencyChange arg1, CurrencyModel arg2, long arg3, long arg4)
+
+        
+        private void OnCurrencyChange(BaseItemContainer.CurrencyChange arg1, CurrencyModel arg2, long arg3, long arg4)
         {
             RefreshCurrencies();
         }
         private void RefreshCurrencies()
         {
-            var currencyHandler = _containerReference.GetContainer().CurrencyContainer;
+            var currencyHandler = _containerReference.GetContainer();
             if (currencyHandler.GetCurrencies.Any())
             {
                 KeyValuePair<string, long> mainCurrency = currencyHandler.GetCurrencies.FirstOrDefault();

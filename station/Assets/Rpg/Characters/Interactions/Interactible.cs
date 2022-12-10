@@ -174,6 +174,10 @@ namespace Station
     {
       if (_cachedPopup)
       {
+        if (_cachedPopup.IsVisible)
+        {
+          return;
+        }
         Debug.LogError("already have a popup cached");
         
       }

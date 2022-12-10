@@ -7,9 +7,88 @@ namespace Station
     public abstract class BaseItemContainer
     {
         #region CURRENCIES
+        protected Dictionary<string, long> Currencies;
+        public Dictionary<string, long> GetCurrencies => Currencies;
+        
+        public enum CurrencyChange
+        {
+            Increase,Decrease
+        }
+        public StationEvent<CurrencyChange,CurrencyModel,long, long> OnCurrencyChanged = new StationEvent<CurrencyChange,CurrencyModel,long, long>();
+        
+        
+        #region Transaction
 
-        public CurrencyContainer CurrencyContainer;
+        public bool HasEnoughCurrency(CurrencyModel model, int requiredAmount)
+        {
+            if (Currencies.ContainsKey(model.name))
+            {
+                return Currencies[model.name] >= requiredAmount;
+            }
+            return false;
+        }
 
+        public void AddCurrency(CurrencyModel model, int amount, bool playerCurrencyEvent = false)
+        {
+            if (Currencies.ContainsKey(model.name) == false)
+            {
+                Currencies.Add(model.name, 0);
+            }
+            
+            Currencies[model.name] += amount;
+            OnCurrencyChanged.Invoke(CurrencyChange.Increase, model, Currencies[model.name], amount);
+        }
+        
+        public void AddCurrencies(Dictionary<string, long> addedCurrencies, bool playerCurrencyEvent = false)
+        {
+            foreach (var ac in addedCurrencies)
+            {
+                if (Currencies.ContainsKey(ac.Key) == false)
+                {
+                    Currencies.Add(ac.Key, 0);
+                }
+            
+                Currencies[ac.Key] += ac.Value;
+            }
+            
+            OnCurrencyChanged.Invoke(CurrencyChange.Increase, null,0,0);
+        }
+
+        public void RemoveAllCurrencies()
+        {
+            Currencies.Clear();
+            OnCurrencyChanged.Invoke(CurrencyChange.Decrease, null, 0, 0);
+        }
+
+        public void RemoveCurrency(CurrencyModel model, int removedAmount)
+        {
+            if (Currencies.ContainsKey(model.name) == false)
+            {
+                //error
+                return;
+            }
+            
+            
+            if (Currencies[model.name] < removedAmount)
+            {
+                //error
+                return;
+            }
+            
+            Currencies[model.name] -= removedAmount;
+            OnCurrencyChanged.Invoke(CurrencyChange.Decrease, model, Currencies[model.name], removedAmount);
+        }
+
+        public long GetCurrencyAmount(CurrencyModel key)
+        {
+            if (Currencies.ContainsKey(key.Key))
+            {
+                return Currencies[key.Key];
+            }
+
+            return 0;
+        }
+        #endregion
         #endregion
         private const int INVALID_NUMBER = -1;
         public StationAction OnContentChanged;
@@ -264,12 +343,12 @@ namespace Station
     public class ItemContainer: BaseItemContainer
     {
         
-        public ItemContainer(string id, ContainerState state, ItemsDb itemsDb, Dictionary<string, long> currencies)
+        public ItemContainer(string id, ContainerState state, ItemsDb itemsDb)
         {
             _id = id;
             _container = state;
             itemDb = itemsDb;
-            CurrencyContainer = new CurrencyContainer(currencies);
+            Currencies = state.Currencies ?? new Dictionary<string, long>();
         }
         
 
@@ -354,10 +433,14 @@ namespace Station
     {
         public Dictionary<string, long> Currencies;
         public Dictionary<int, ItemStack> Slots;
+        #region CONSTRUCTORS
         public ContainerState()
         {
         }
-
+        public ContainerState(Dictionary<int, ItemStack> save)
+        {
+            Slots = save;
+        }
         public ContainerState(int size, List<ItemStack> defaultItems)
         {
             var itemDb = GameInstance.GetDb<ItemsDb>();
@@ -383,7 +466,8 @@ namespace Station
                 }
             }
         }
-
+        #endregion
+        #region ITEMS
         private int CalculateFreeSlotRequired(List<ItemStack> defaultItems)
         {
             var itemDb = GameInstance.GetDb<ItemsDb>();
@@ -440,10 +524,14 @@ namespace Station
             }
             return list;
         }
-        public ContainerState(Dictionary<int, ItemStack> save)
-        {
-            Slots = save;
-        }
+        #endregion
+
+        #region CURRENCIES
+
+        
+
+        #endregion
+  
     }
 }
 

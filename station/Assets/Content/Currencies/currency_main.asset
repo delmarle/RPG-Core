@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Description:
     Key: description
+  Key: e84e4451-e4a1-4c74-bfdc-fc2080369a44
   Name:
     Key: Copper
   Icon: {fileID: 21300000, guid: 25437539e6675b44bad434a6347e55d1, type: 3}

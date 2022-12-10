@@ -58,7 +58,7 @@ namespace Station
             Initialize(id);
             var containerState = new ContainerState(8, items);
             containerState.Currencies = currencies;
-            var container = new ItemContainer(id, containerState, _itemDb, currencies);
+            var container = new ItemContainer(id, containerState, _itemDb);
             _containerSystem.AddContainer(container, saved);
         }
 

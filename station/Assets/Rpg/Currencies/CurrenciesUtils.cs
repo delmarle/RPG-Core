@@ -1,12 +1,18 @@
 using System;
 using System.Collections.Generic;
+using Station;
 
 public static class CurrenciesUtils 
 {
     public static List<long> GetVisualRepresentation(CurrencyModel model,long amount)
     {
-        int subValuesCount = model.SubValues.Count;
         List<long>tempValues = new List<long>();
+        if (model == null)
+        {
+            return tempValues;
+        }
+        int subValuesCount = model.SubValues.Count;
+       
         tempValues.Add(amount);
         foreach (var subValue in model.SubValues)
         {
@@ -59,5 +65,13 @@ public static class CurrenciesUtils
     public static int GetDigits( int number, int highestDigit, int numDigits)
     {
         return (number / (int)Math.Pow(10, highestDigit - numDigits)) % (int)Math.Pow(10, numDigits);
+    }
+
+    public static void TransferCurrencies(BaseItemContainer containerToEmpty, BaseItemContainer containerToAdd)
+    {
+        var currencies = containerToEmpty.GetCurrencies;
+        containerToAdd.AddCurrencies(currencies);
+        containerToEmpty.RemoveAllCurrencies();
+        
     }
 }

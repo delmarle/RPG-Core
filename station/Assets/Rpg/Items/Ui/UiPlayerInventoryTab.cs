@@ -46,7 +46,7 @@ namespace Station
             base.Show();
             _inventorySystem.OnContainerChanged.AddListener(OnContainerChanged);
             characterInventorySwitcher.RegisterAllEvents();
-            _inventorySystem.GetCurrencyHandler().OnChanged.AddListener(OnUpdateCurrency);
+            _inventorySystem.GetContainer().OnCurrencyChanged.AddListener(OnUpdateCurrency);
             RefreshCurrencies();
         }
         
@@ -55,7 +55,7 @@ namespace Station
             _inventorySystem.OnContainerChanged.RemoveListener(OnContainerChanged);
             characterInventorySwitcher.UnRegisterAllEvents();
             base.Hide();
-            _inventorySystem.GetCurrencyHandler().OnChanged.RemoveListener(OnUpdateCurrency);
+            _inventorySystem.GetContainer().OnCurrencyChanged.RemoveListener(OnUpdateCurrency);
         }
 
         public void ClosePanel()
@@ -73,14 +73,14 @@ namespace Station
             
         }
 
-        private void OnUpdateCurrency(CurrencyContainer.CurrencyChange changeType, CurrencyModel model, long updatedValue, long amount)
+        private void OnUpdateCurrency(BaseItemContainer.CurrencyChange changeType, CurrencyModel model, long updatedValue, long amount)
         {
             if (_mainCurrency != model) return;
             RefreshCurrencies();
         }
         private void RefreshCurrencies()
         {
-            var handler = _inventorySystem.GetCurrencyHandler();
+            var handler = _inventorySystem.GetContainer();
             long amount = handler.GetCurrencyAmount(_mainCurrency);
             _currencyWudget.DisplayAmount(_mainCurrency, amount, false);
         }

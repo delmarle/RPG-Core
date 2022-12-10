@@ -62,7 +62,6 @@
      <Compile Include="Assets\Rpg\Items\Container\ChestNode.cs" />
      <Compile Include="Assets\Rpg\Characters\Creation\Ui\UiValidateCharacterPanel.cs" />
      <Compile Include="Assets\Rpg\Characters\Stats\Attribute.cs" />
-     <Compile Include="Assets\Rpg\Currencies\CurrencyHandler.cs" />
      <Compile Include="Assets\Rpg\Characters\Creation\SkipCharacterCreation.cs" />
      <Compile Include="Assets\Rpg\Items\Container\EquipmentContainer.cs" />
      <Compile Include="Assets\Rpg\Characters\Stats\VitalModifier.cs" />
@@ -136,6 +135,7 @@
      <Compile Include="Assets\Rpg\Dbs\EquipmentSlotsDb.cs" />
      <Compile Include="Assets\Rpg\Faction\UiSelectFactionPanel.cs" />
      <Compile Include="Assets\Rpg\Dbs\ChestNodesDb.cs" />
+     <Compile Include="Assets\Rpg\Currencies\CurrenciesUtils.cs" />
      <Compile Include="Assets\Rpg\Inputs\CharacterInputHandler.cs" />
      <Compile Include="Assets\Rpg\UiRpg\Widgets\Skills &amp; Abilities\UiSkillDisplayWidget.cs" />
      <Compile Include="Assets\Rpg\Items\Ui\UiContainerPopup.cs" />
@@ -208,10 +208,12 @@
      <Compile Include="Assets\Rpg\Items\Types\DefaultItemModel.cs" />
      <Compile Include="Assets\Rpg\Characters\Interactions\Tracking system\CollisionTargetTracker.cs" />
      <Compile Include="Assets\Rpg\Conditions Implementation\ConditionTeamCount.cs" />
+     <Compile Include="Assets\Rpg\Currencies\Int64Extensions.cs" />
      <Compile Include="Assets\Rpg\UiRpg\Widgets\UiCharacterPortraitWidget.cs" />
      <Compile Include="Assets\Rpg\Characters\Interactions\Implementations\Portal.cs" />
      <Compile Include="Assets\Rpg\Characters\Creation\Ui\UiSelectClassPanel.cs" />
      <Compile Include="Assets\Rpg\Dbs\ItemsDb.cs" />
+     <Compile Include="Assets\Rpg\Currencies\Ui\UiCurrencyWidget.cs" />
      <Compile Include="Assets\Rpg\Characters\CharacterEventChild.cs" />
      <Compile Include="Assets\Rpg\Characters\Skills\BaseAbilityDriver.cs" />
      <Compile Include="Assets\Rpg\Faction\DefaultFactionHandler.cs" />
@@ -223,7 +225,6 @@
      <Compile Include="Assets\Rpg\Items\Save Modules\AreaContainersSave.cs" />
      <Compile Include="Assets\Rpg\Characters\CharacterEventsData.cs" />
      <Compile Include="Assets\Rpg\Camera\CameraController.cs" />
-     <Compile Include="Assets\Rpg\SaveModules\PlayerGeneralSave.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\Rpg\Characters\Interactions\Tracking system" />
      <Folder Include="Assets\Content\Models\Characters\3D Game Kit - Character Pack" />
@@ -251,8 +252,8 @@
      <Folder Include="Assets\Content\Models\Environments\3D Game Kit - Environment Pack\Environment\Vegetation\Misc\Textures" />
      <Folder Include="Assets\Content\Models\Characters\3D Game Kit - Character Pack\Characters" />
      <Folder Include="Assets\Rpg\Items" />
+     <Folder Include="Assets\Rpg\Currencies\Ui" />
      <Folder Include="Assets\TextMesh Pro\Resources\Sprite Assets" />
-     <Folder Include="Assets\Content\Currency" />
      <Folder Include="Assets\Rpg\Characters\Ai\Conditions" />
      <Folder Include="Assets\Rpg\UiRpg\Inventory" />
      <Folder Include="Assets\Content\Models\Environments\3D Game Kit - Environment Pack\Environment\Vegetation\Large\Models" />

@@ -65,24 +65,13 @@ namespace Station
                 var save = playerItemsSaveModule?.Value ?? new ContainersListSave();
 
                 var state = save.GetContainerById(PLAYER_INVENTORY_KEY);
-                var sharedContainer = new ItemContainer(PLAYER_INVENTORY_KEY, state, _itemsDb, state.Currencies);
+                var sharedContainer = new ItemContainer(PLAYER_INVENTORY_KEY, state, _itemsDb);
                 _containers.Add(PLAYER_INVENTORY_KEY, sharedContainer);
             }
             else
             {
                 //TODO add one for each player
             }
-        }
-
-        public CurrencyContainer GetCurrencyHandler()
-        {
-            if (_containers.ContainsKey(PLAYER_INVENTORY_KEY) == false)
-            {
-                return null;
-            }
-            var playerContainer = _containers[PLAYER_INVENTORY_KEY];
-           
-            return  playerContainer.CurrencyContainer;
         }
 
         private void LoadPlayersEquipment()
@@ -113,13 +102,17 @@ namespace Station
         }
         #endregion
 
-        public BaseItemContainer GetContainer(string containerId)
+        public BaseItemContainer GetContainer(string containerId = null)
         {
 
-            if (_containers.ContainsKey(containerId))
+            if (string.IsNullOrEmpty(containerId) == false)
             {
-                return _containers[containerId];
+                if (_containers.ContainsKey(containerId))
+                {
+                    return _containers[containerId];
+                }
             }
+          
 
             if (_inventoryType == PlayerInventoryType.Shared)
             {

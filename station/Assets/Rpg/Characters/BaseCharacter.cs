@@ -315,7 +315,7 @@ namespace Station
             var currencies = LootUtils.GenerateCurrencies(lootTable);
             var containerState = new ContainerState(8, defaultItems);
             _instancedLootContainedId = Guid.NewGuid().ToString();
-            var container = new ItemContainer(_instancedLootContainedId, containerState, _itemDb, currencies);
+            var container = new ItemContainer(_instancedLootContainedId, containerState, _itemDb);
             _containerSystem.AddContainer(container, false);
         }
         #endregion
