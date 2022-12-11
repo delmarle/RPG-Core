@@ -197,8 +197,7 @@ namespace Station
 
                     if (itemDb == null || itemDb.HasKey(ObjectId) == false) return "";
                     var itemEntry = itemDb?.GetEntry(ObjectId);
-                    return $"Item - {itemEntry?.Name.GetValue()} - ";;
-                    break;
+                    return $"Item - {itemEntry?.Name.GetValue()} - ";
                 case SpawnObjectType.PREFAB:
                     
                     if (Prefab == null)

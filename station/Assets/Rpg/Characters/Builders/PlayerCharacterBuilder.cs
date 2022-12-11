@@ -36,9 +36,9 @@ namespace Station
                 character.gameObject.AddComponent<EquipmentHandler>();
                 character.Init(baseData.CharacterId,save.RaceId, save.FactionId, save.GenderId, calculatorInstance, save.Name, null, null);
                 character.SetupAction(classModel.Attack);     
-                character.AddMeta(StationConst.CLASS_ID, save.ClassId);
-                character.AddMeta(StationConst.CHARACTER_ID, data[2]);
-                character.AddMeta(StationConst.ICON_DATA, classModel.Icon);
+                character.AddMeta(RpgConst.CLASS_ID, save.ClassId);
+                character.AddMeta(RpgConst.CHARACTER_ID, data[2]);
+                character.AddMeta(RpgConst.ICON_DATA, classModel.Icon);
                 character.gameObject.name = "[player] "+save.Name;
                 
                 character.SetupStats(classModel.HealthVital,null,classModel.EnergyVitals.ToArray());

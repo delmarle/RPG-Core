@@ -41,13 +41,13 @@ namespace Station
 
         public override string GetInteractionName()
         {
-            return _owner.GetMeta<string>(StationConst.CHARACTER_NAME);
+            return _owner.GetMeta<string>(RpgConst.CHARACTER_NAME);
         }
 
         protected override void Setup()
         {
             base.Setup();
-            SetUiName(_owner.GetMeta<string>(StationConst.CHARACTER_NAME));
+            SetUiName(_owner.GetMeta<string>(RpgConst.CHARACTER_NAME));
         }
     }
 }

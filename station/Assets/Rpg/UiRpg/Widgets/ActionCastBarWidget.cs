@@ -20,8 +20,7 @@ namespace Station
 
         private const string START_ACTION_STATE = "start_action";
         private const string FINISH_ACTION_STATE = "finish_action";
-
-        private float _sliderTime = 0;
+        
         [SerializeField] private UiWidget _displayWidget;
         [SerializeField] private BaseAnimation _animation;
         [SerializeField] private Slider _bar;

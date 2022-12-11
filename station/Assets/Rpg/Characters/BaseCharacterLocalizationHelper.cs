@@ -19,10 +19,10 @@ namespace Station
         }
         public string GetLocalizedClass()
         {
-            var characterType = GetMeta(StationConst.CHARACTER_TYPE);
+            var characterType = GetMeta(RpgConst.CHARACTER_TYPE);
             if (characterType.GetType() == typeof(PlayerCharacterType))
             {
-                var classId = GetMeta<string>(StationConst.CLASS_ID);
+                var classId = GetMeta<string>(RpgConst.CLASS_ID);
                 var classMeta = _playerClassDb.GetEntry(classId);
                 return classMeta.Name.GetValue();
             }

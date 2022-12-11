@@ -51,9 +51,9 @@ namespace Station
 
             character.Init(baseData.CharacterId, model.RaceId, model.FactionId, "Male", calculatorInstance,model.Name, brainInstance, instanceMemory);
             character.SetupAction(model.Attack);     
-            character.AddMeta(StationConst.NPC_KEY, baseData.Identifier);
-            character.AddMeta(StationConst.ICON_DATA, model.Icon);
-            character.AddMeta(StationConst.LOOT_TABLE_KEY, model.LootTable);
+            character.AddMeta(RpgConst.NPC_KEY, baseData.Identifier);
+            character.AddMeta(RpgConst.ICON_DATA, model.Icon);
+            character.AddMeta(RpgConst.LOOT_TABLE_KEY, model.LootTable);
             character.gameObject.name = "[npc] "+model.Name;
             character.SetupStats(model.HealthVital,null,model.EnergyVitals.ToArray());
             character.Stats.SetVitalsFull();

@@ -183,10 +183,10 @@ namespace Station
             _raceId = raceId;
             _factionId = factionId;
             _genderId = genderId;
-            AddMeta(StationConst.CHARACTER_NAME, characterName);
-            AddMeta(StationConst.RACE_ID, raceId);
-            AddMeta(StationConst.GENDER_ID, genderId);
-            AddMeta(StationConst.FACTION_ID, factionId);
+            AddMeta(RpgConst.CHARACTER_NAME, characterName);
+            AddMeta(RpgConst.RACE_ID, raceId);
+            AddMeta(RpgConst.GENDER_ID, genderId);
+            AddMeta(RpgConst.FACTION_ID, factionId);
             _skills = new SkillHandler();
             _calculatorInstance = instance;
             _equipmentHandler = gameObject.GetComponent<EquipmentHandler>();
@@ -296,7 +296,7 @@ namespace Station
         private void TryGenerateLoot()
         {
             ClearPreviousLootContainer();
-            var lootTableId = GetMeta<string>(StationConst.LOOT_TABLE_KEY);
+            var lootTableId = GetMeta<string>(RpgConst.LOOT_TABLE_KEY);
             if (string.IsNullOrEmpty(lootTableId) == false)
             {
                 GenerateLoots(lootTableId);

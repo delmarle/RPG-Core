@@ -2,7 +2,7 @@
 namespace Station
 {
     
-    public partial class StationConst
+    public class RpgConst
     {
         public const string CHARACTER_TYPE = "character_type";
         public const string CHARACTER_ID = "character_id";

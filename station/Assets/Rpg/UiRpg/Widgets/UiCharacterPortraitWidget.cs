@@ -71,8 +71,8 @@ namespace Station
         }
 
         
-        SetMetaText(characterName, StationConst.CHARACTER_NAME);
-        SetMetaText(characterRace, StationConst.RACE_ID);
+        SetMetaText(characterName, RpgConst.CHARACTER_NAME);
+        SetMetaText(characterRace, RpgConst.RACE_ID);
         if (characterRace)
         {
           characterRace.text = _character.GetLocalizedRace();
@@ -86,8 +86,8 @@ namespace Station
           characterFaction.text=_character.GetLocalizedFaction();
         }
         
-        SetMetaText(characterGender, StationConst.GENDER_ID);
-        SetMetaIcon(_icon, StationConst.ICON_DATA);
+        SetMetaText(characterGender, RpgConst.GENDER_ID);
+        SetMetaIcon(_icon, RpgConst.ICON_DATA);
 
 
         Subscribe();

@@ -34,7 +34,7 @@ public class PlayersSave : SaveModule<Dictionary<string, PlayersData>>
                 foreach (var playerCharacter in teamMembers)
                 {
                    
-                    var key = (string)playerCharacter.GetMeta(StationConst.CHARACTER_ID);
+                    var key = (string)playerCharacter.GetMeta(RpgConst.CHARACTER_ID);
                     if (Value.ContainsKey(key) == false)
                     {
                         Value.Add(key, new PlayersData());

@@ -34,7 +34,7 @@ namespace Station
 
             var component = operationHandle.Result.GetComponent<BaseCharacter>();
             component.transform.SetPositionAndRotation(_baseData.Position, Quaternion.Euler(_baseData.Rotation));
-            component.AddMeta(StationConst.CHARACTER_TYPE, _baseData.CharacterType);
+            component.AddMeta(RpgConst.CHARACTER_TYPE, _baseData.CharacterType);
             _mechanics.OnBuildCharacter(component, _baseData, _data);
             
             FinishTask(component);
