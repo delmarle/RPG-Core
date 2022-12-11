@@ -7,8 +7,8 @@ namespace Station
     public abstract class BaseItemContainer
     {
         #region CURRENCIES
-        protected Dictionary<string, long> Currencies;
-        public Dictionary<string, long> GetCurrencies => Currencies;
+      
+        public Dictionary<string, long> GetCurrencies => _container.Currencies;
         
         public enum CurrencyChange
         {
@@ -21,34 +21,34 @@ namespace Station
 
         public bool HasEnoughCurrency(CurrencyModel model, int requiredAmount)
         {
-            if (Currencies.ContainsKey(model.name))
+            if (_container.Currencies.ContainsKey(model.Key))
             {
-                return Currencies[model.name] >= requiredAmount;
+                return _container.Currencies[model.Key] >= requiredAmount;
             }
             return false;
         }
 
         public void AddCurrency(CurrencyModel model, int amount, bool playerCurrencyEvent = false)
         {
-            if (Currencies.ContainsKey(model.name) == false)
+            if (_container.Currencies.ContainsKey(model.Key) == false)
             {
-                Currencies.Add(model.name, 0);
+                _container.Currencies.Add(model.Key, 0);
             }
             
-            Currencies[model.name] += amount;
-            OnCurrencyChanged.Invoke(CurrencyChange.Increase, model, Currencies[model.name], amount);
+            _container.Currencies[model.Key] += amount;
+            OnCurrencyChanged.Invoke(CurrencyChange.Increase, model, _container.Currencies[model.Key], amount);
         }
         
         public void AddCurrencies(Dictionary<string, long> addedCurrencies, bool playerCurrencyEvent = false)
         {
             foreach (var ac in addedCurrencies)
             {
-                if (Currencies.ContainsKey(ac.Key) == false)
+                if (_container.Currencies.ContainsKey(ac.Key) == false)
                 {
-                    Currencies.Add(ac.Key, 0);
+                    _container.Currencies.Add(ac.Key, 0);
                 }
             
-                Currencies[ac.Key] += ac.Value;
+                _container.Currencies[ac.Key] += ac.Value;
             }
             
             OnCurrencyChanged.Invoke(CurrencyChange.Increase, null,0,0);
@@ -56,34 +56,34 @@ namespace Station
 
         public void RemoveAllCurrencies()
         {
-            Currencies.Clear();
+            _container.Currencies.Clear();
             OnCurrencyChanged.Invoke(CurrencyChange.Decrease, null, 0, 0);
         }
 
         public void RemoveCurrency(CurrencyModel model, int removedAmount)
         {
-            if (Currencies.ContainsKey(model.name) == false)
+            if (_container.Currencies.ContainsKey(model.Key) == false)
             {
                 //error
                 return;
             }
             
             
-            if (Currencies[model.name] < removedAmount)
+            if (_container.Currencies[model.Key] < removedAmount)
             {
                 //error
                 return;
             }
             
-            Currencies[model.name] -= removedAmount;
-            OnCurrencyChanged.Invoke(CurrencyChange.Decrease, model, Currencies[model.name], removedAmount);
+            _container.Currencies[model.Key] -= removedAmount;
+            OnCurrencyChanged.Invoke(CurrencyChange.Decrease, model, _container.Currencies[model.Key], removedAmount);
         }
 
         public long GetCurrencyAmount(CurrencyModel key)
         {
-            if (Currencies.ContainsKey(key.Key))
+            if (_container.Currencies.ContainsKey(key.Key))
             {
-                return Currencies[key.Key];
+                return _container.Currencies[key.Key];
             }
 
             return 0;
@@ -348,7 +348,7 @@ namespace Station
             _id = id;
             _container = state;
             itemDb = itemsDb;
-            Currencies = state.Currencies ?? new Dictionary<string, long>();
+            _container.Currencies = state.Currencies ?? new Dictionary<string, long>();
         }
         
 
