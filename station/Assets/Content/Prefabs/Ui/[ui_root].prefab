@@ -1662,85 +1662,7 @@ MonoBehaviour:
         Index: 0
         Material: {fileID: 0}
       setActiveActionData:
-        Target: {fileID: 0}
-        Active: 1
-      setTransformActionData:
-        Target: {fileID: 0}
-        Position: {x: 0, y: 0, z: 0}
-        Rotation: {x: 0, y: 0, z: 0}
-        Scale: {x: 1, y: 1, z: 1}
-      tweenColorActionData:
-        Target: []
-        TargetColor: {r: 0, g: 0, b: 0, a: 0}
-        MaterialId: 0
-        Duration: 0
-      tweenSharedColorActionData:
-        Target: []
-        TargetColor: {r: 0, g: 0, b: 0, a: 0}
-        MaterialId: 0
-        Duration: 0
-      setPropertyActionData:
-        Targets: []
-        TransformType: 0
-        Value: 0
-      setCanvasGroupStateActionData:
-        CanvasGroups: []
-        Alpha: 0
-        Interact: 0
-        BlockRayCasts: 0
-      setCanvasInteractionActionData:
-        CanvasGroup: {fileID: 0}
-        Interact: 0
-      stopAnimationActionData:
-        Clip: 
-      setTextActionData:
-        TextComponent: {fileID: 0}
-        Text: 
-      updateLocalizationActionData:
-        TextComponent: {fileID: 0}
-        Key: 
-      updateTextColorActionData:
-        TextComponent: {fileID: 0}
-        Color: {r: 0, g: 0, b: 0, a: 0}
-      SetImageColorActionModel:
-        Image: {fileID: 0}
-        Color: {r: 0, g: 0, b: 0, a: 0}
-      setGraphicsRayCasterActionData:
-        RayCasters: []
-        IsEnabled: 0
-      setRectPropertyActionData:
-        Targets: []
-        TransformType: 0
-        Value: 0
-    - uiAction: 7
-      animationActionData:
-        Clip: 
-        Weight: 0.5
-        Layer: 0
-      updateSpriteActionData:
-        Image: {fileID: 0}
-        Sprite: {fileID: 0}
-      updateCanvasGroupActionData:
-        CanvasGroup: {fileID: 0}
-        Alpha: 0
-        Interact: 0
-        BlockRayCasts: 0
-      enableMeshActionData:
-        MeshRenderer: {fileID: 0}
-        Enabled: 0
-      colliderActionData:
-        Collider: {fileID: 0}
-        Enabled: 0
-      changeMaterialActionData:
-        Renderer: {fileID: 0}
-        Index: 0
-        Material: {fileID: 0}
-      changeMaterialsActionData:
-        Renderers: []
-        Index: 0
-        Material: {fileID: 0}
-      setActiveActionData:
-        Target: {fileID: 0}
+        Target: {fileID: 8140201014636700238}
         Active: 1
       setTransformActionData:
         Target: {fileID: 0}
@@ -1821,85 +1743,7 @@ MonoBehaviour:
         Index: 0
         Material: {fileID: 0}
       setActiveActionData:
-        Target: {fileID: 0}
-        Active: 0
-      setTransformActionData:
-        Target: {fileID: 0}
-        Position: {x: 0, y: 0, z: 0}
-        Rotation: {x: 0, y: 0, z: 0}
-        Scale: {x: 1, y: 1, z: 1}
-      tweenColorActionData:
-        Target: []
-        TargetColor: {r: 0, g: 0, b: 0, a: 0}
-        MaterialId: 0
-        Duration: 0
-      tweenSharedColorActionData:
-        Target: []
-        TargetColor: {r: 0, g: 0, b: 0, a: 0}
-        MaterialId: 0
-        Duration: 0
-      setPropertyActionData:
-        Targets: []
-        TransformType: 0
-        Value: 0
-      setCanvasGroupStateActionData:
-        CanvasGroups: []
-        Alpha: 0
-        Interact: 0
-        BlockRayCasts: 0
-      setCanvasInteractionActionData:
-        CanvasGroup: {fileID: 0}
-        Interact: 0
-      stopAnimationActionData:
-        Clip: 
-      setTextActionData:
-        TextComponent: {fileID: 0}
-        Text: 
-      updateLocalizationActionData:
-        TextComponent: {fileID: 0}
-        Key: 
-      updateTextColorActionData:
-        TextComponent: {fileID: 0}
-        Color: {r: 0, g: 0, b: 0, a: 0}
-      SetImageColorActionModel:
-        Image: {fileID: 0}
-        Color: {r: 0, g: 0, b: 0, a: 0}
-      setGraphicsRayCasterActionData:
-        RayCasters: []
-        IsEnabled: 0
-      setRectPropertyActionData:
-        Targets: []
-        TransformType: 0
-        Value: 0
-    - uiAction: 7
-      animationActionData:
-        Clip: 
-        Weight: 0.5
-        Layer: 0
-      updateSpriteActionData:
-        Image: {fileID: 0}
-        Sprite: {fileID: 0}
-      updateCanvasGroupActionData:
-        CanvasGroup: {fileID: 0}
-        Alpha: 0
-        Interact: 0
-        BlockRayCasts: 0
-      enableMeshActionData:
-        MeshRenderer: {fileID: 0}
-        Enabled: 0
-      colliderActionData:
-        Collider: {fileID: 0}
-        Enabled: 0
-      changeMaterialActionData:
-        Renderer: {fileID: 0}
-        Index: 0
-        Material: {fileID: 0}
-      changeMaterialsActionData:
-        Renderers: []
-        Index: 0
-        Material: {fileID: 0}
-      setActiveActionData:
-        Target: {fileID: 0}
+        Target: {fileID: 8140201014636700238}
         Active: 0
       setTransformActionData:
         Target: {fileID: 0}
@@ -14451,6 +14295,56 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 436756801601691601}
     m_Modifications:
+    - target: {fileID: -7164653141002127627, guid: 904419574f553e94394f53196eebddeb,
+        type: 3}
+      propertyPath: _icons.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -7164653141002127627, guid: 904419574f553e94394f53196eebddeb,
+        type: 3}
+      propertyPath: _values.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -7164653141002127627, guid: 904419574f553e94394f53196eebddeb,
+        type: 3}
+      propertyPath: _icons.Array.data[0]
+      value: 
+      objectReference: {fileID: 416169857353754906}
+    - target: {fileID: -7164653141002127627, guid: 904419574f553e94394f53196eebddeb,
+        type: 3}
+      propertyPath: _icons.Array.data[1]
+      value: 
+      objectReference: {fileID: 8417244790688240522}
+    - target: {fileID: -7164653141002127627, guid: 904419574f553e94394f53196eebddeb,
+        type: 3}
+      propertyPath: _icons.Array.data[2]
+      value: 
+      objectReference: {fileID: 8417244789547495528}
+    - target: {fileID: -7164653141002127627, guid: 904419574f553e94394f53196eebddeb,
+        type: 3}
+      propertyPath: _icons.Array.data[3]
+      value: 
+      objectReference: {fileID: 8417244791001075207}
+    - target: {fileID: -7164653141002127627, guid: 904419574f553e94394f53196eebddeb,
+        type: 3}
+      propertyPath: _values.Array.data[0]
+      value: 
+      objectReference: {fileID: 3982971599054486729}
+    - target: {fileID: -7164653141002127627, guid: 904419574f553e94394f53196eebddeb,
+        type: 3}
+      propertyPath: _values.Array.data[1]
+      value: 
+      objectReference: {fileID: 5066791871492818127}
+    - target: {fileID: -7164653141002127627, guid: 904419574f553e94394f53196eebddeb,
+        type: 3}
+      propertyPath: _values.Array.data[2]
+      value: 
+      objectReference: {fileID: 5066791870642177546}
+    - target: {fileID: -7164653141002127627, guid: 904419574f553e94394f53196eebddeb,
+        type: 3}
+      propertyPath: _values.Array.data[3]
+      value: 
+      objectReference: {fileID: 5066791870935931462}
     - target: {fileID: 5772579053950814636, guid: 904419574f553e94394f53196eebddeb,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -14816,9 +14710,32 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8997460832665446042, guid: 904419574f553e94394f53196eebddeb,
+        type: 3}
+      propertyPath: _mainCurrency
+      value: 
+      objectReference: {fileID: 11400000, guid: 8044c4d29ba94ad47b5ffcf0312b8413,
+        type: 2}
+    - target: {fileID: 8997460832665446042, guid: 904419574f553e94394f53196eebddeb,
+        type: 3}
+      propertyPath: _currencyWidget
+      value: 
+      objectReference: {fileID: 8693878253854826994}
     m_RemovedComponents:
     - {fileID: 7057806506302454737, guid: 904419574f553e94394f53196eebddeb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 904419574f553e94394f53196eebddeb, type: 3}
+--- !u!114 &416169857353754906 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7057806507549097501, guid: 904419574f553e94394f53196eebddeb,
+    type: 3}
+  m_PrefabInstance: {fileID: 7220631227046090503}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &416169857451597569 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7057806507442456582, guid: 904419574f553e94394f53196eebddeb,
@@ -14869,3 +14786,99 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3982971599054486729 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6013024897720150990, guid: 904419574f553e94394f53196eebddeb,
+    type: 3}
+  m_PrefabInstance: {fileID: 7220631227046090503}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5066791870642177546 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2478116160426086669, guid: 904419574f553e94394f53196eebddeb,
+    type: 3}
+  m_PrefabInstance: {fileID: 7220631227046090503}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5066791870935931462 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2478116160719408449, guid: 904419574f553e94394f53196eebddeb,
+    type: 3}
+  m_PrefabInstance: {fileID: 7220631227046090503}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5066791871492818127 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2478116160135386056, guid: 904419574f553e94394f53196eebddeb,
+    type: 3}
+  m_PrefabInstance: {fileID: 7220631227046090503}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8417244789547495528 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1217337845192107887, guid: 904419574f553e94394f53196eebddeb,
+    type: 3}
+  m_PrefabInstance: {fileID: 7220631227046090503}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8417244790688240522 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1217337846199092365, guid: 904419574f553e94394f53196eebddeb,
+    type: 3}
+  m_PrefabInstance: {fileID: 7220631227046090503}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8417244791001075207 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1217337846445938944, guid: 904419574f553e94394f53196eebddeb,
+    type: 3}
+  m_PrefabInstance: {fileID: 7220631227046090503}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8693878253854826994 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -7164653141002127627, guid: 904419574f553e94394f53196eebddeb,
+    type: 3}
+  m_PrefabInstance: {fileID: 7220631227046090503}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416169857451597570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fec1414a1ede7d49a8e4c59260b9e47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

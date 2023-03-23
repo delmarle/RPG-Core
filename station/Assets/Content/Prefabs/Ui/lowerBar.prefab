@@ -2572,6 +2572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7057806507442456582}
   - component: {fileID: 8997460832665446042}
+  - component: {fileID: -7164653141002127627}
   m_Layer: 5
   m_Name: lowerBar
   m_TagString: Untagged
@@ -2613,6 +2614,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ee240c838766924caecec2156bf1577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7164653141002127627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7057806507442456581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fec1414a1ede7d49a8e4c59260b9e47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _values: []
+  _icons: []
 --- !u!1 &7057806507487726850
 GameObject:
   m_ObjectHideFlags: 0
