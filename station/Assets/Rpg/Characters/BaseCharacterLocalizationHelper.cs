@@ -47,6 +47,30 @@ namespace Station
             //todo
             return GetGender();
         }
+
+        public string GetLocalizedName()
+        {
+            return GetMeta(RpgConst.CHARACTER_NAME).ToString();
+        }
+        
+        public string GetLocalizedRole()
+        {
+            var characterType = GetMeta(RpgConst.CHARACTER_TYPE);
+            if (characterType.GetType() == typeof(PlayerCharacterType))
+            {
+                var classId = GetMeta<string>(RpgConst.CLASS_ID);
+                var classMeta = _playerClassDb.GetEntry(classId);
+                return classMeta.Name.GetValue();
+            }
+          
+            return "";
+        }
+        
+        public Sprite GetLocalizedIcon()
+        {
+
+            return GetMeta<Sprite>(RpgConst.ICON_DATA);
+        }
     }
 }
 

@@ -15,6 +15,7 @@ namespace Station
         
         [SerializeField] private TextMeshProUGUI _nameText = null;
         [SerializeField] private TextMeshProUGUI _roleText = null;
+        [SerializeField] private Image _icon = null;
 
         [SerializeField] private LayoutGroup _entriesRoot = null;
         [SerializeField] private UiButton _prefabEntry = null;
@@ -35,6 +36,11 @@ namespace Station
         {
             _owner = owner;
             _interaction = interaction;
+
+            _nameText.text = _owner.GetLocalizedName();
+            _roleText.text = _owner.GetLocalizedRole();
+            _icon.sprite = _owner.GetLocalizedIcon();
+            
             _entriesList.Generate(interactions, (data, button) =>
             {
                 if (data.CanTrigger(demander))

@@ -48,6 +48,7 @@ namespace Station
         {
             base.Setup();
             SetUiName(_owner.GetMeta<string>(RpgConst.CHARACTER_NAME));
+            SetUiIcon(_owner.GetMeta<Sprite>(RpgConst.ICON_DATA));
         }
     }
 }
