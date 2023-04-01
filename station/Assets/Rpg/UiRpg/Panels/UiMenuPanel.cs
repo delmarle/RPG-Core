@@ -14,6 +14,7 @@ namespace Station
 
         public override void Show()
         {
+            Debug.Log($"show {name}");
             base.Show();
             _charaterTab.Show();
             _inventoryTab.Show();

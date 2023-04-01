@@ -1092,6 +1092,8 @@ MonoBehaviour:
     SaveOnEnter: 1
     AutoSaveTimer: 20
   CreatePlayerTeam: 1
+  _showUiEvent: {fileID: 11400000, guid: f5bb4f8e5874348b0989e89df49f6d54, type: 2}
+  _showUiDelay: 3
 --- !u!1001 &648915238
 PrefabInstance:
   m_ObjectHideFlags: 0

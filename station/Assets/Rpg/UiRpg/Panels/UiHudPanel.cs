@@ -10,7 +10,7 @@ namespace Station
         [SerializeField] private LayoutGroup _playerRoot = null;
         [SerializeField] private UiCharacterPortraitWidget _portraitPrefab = null;
         [SerializeField] private UiCharacterTargetWidget _targetWidget = null;
-        [SerializeField] private UiEventData _initialEventData;
+
         
         private GenericUiList<BaseCharacter, UiCharacterPortraitWidget> _PlayerWidgets = null;
         private TeamSystem _teamSystem = null;
@@ -20,9 +20,7 @@ namespace Station
         {
             base.Start();
             _PlayerWidgets = new GenericUiList<BaseCharacter, UiCharacterPortraitWidget>(_portraitPrefab.gameObject, _playerRoot);
-            GameGlobalEvents.OnUiEvent.Invoke(_initialEventData);
             SetList(_teamSystem.GetTeamMembers());
-            UiSystem.OpenPanel<UiHudPanel>();
         }
 
         protected override void Awake()

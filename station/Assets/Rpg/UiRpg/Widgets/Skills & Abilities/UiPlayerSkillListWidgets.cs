@@ -9,9 +9,9 @@ namespace Station
     public class UiPlayerSkillListWidgets : MonoBehaviour
     {
         #region FIELDS
-        private GenericUiList<RankProgression, UiSkillDisplayWidget> _skillList;
-        private GameObject _skillDisplayPrefab;
-        private LayoutGroup _skillLayoutGroup;
+        [SerializeField] private GenericUiList<RankProgression, UiSkillDisplayWidget> _skillList;
+        [SerializeField] private GameObject _skillDisplayPrefab;
+        [SerializeField] private LayoutGroup _skillLayoutGroup;
         #endregion
         private void Awake()
         {
@@ -21,12 +21,10 @@ namespace Station
         public void UpdateSkillList(BaseCharacter target)
         {
             var listSkills = target.Skills.GenerateSave();
-           
             
             _skillList.Generate(listSkills, (entry, item) =>
             {
-               // item.Setup(this, _itemDb, _containerReference);
-                //item.SetData(entry);
+                item.Setup(target, entry);
             });
         }
         //switch characters

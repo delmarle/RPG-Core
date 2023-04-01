@@ -58,6 +58,11 @@ namespace Station
     }
 
     #region [[ ABILITIES ]]
+
+    public List<RuntimeAbility> GetRuntimeAbilities()
+    {
+      return _abilities;
+    }
     public virtual void SetAbilities(List<RuntimeAbility> list, BaseCharacter character)
     {
       DefaultAttack.Setup(character);

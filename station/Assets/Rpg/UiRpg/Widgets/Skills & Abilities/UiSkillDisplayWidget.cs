@@ -10,31 +10,37 @@ namespace Station
     {
         #region FIELDS
 
+        [SerializeField] private SkillDb _db;
         [SerializeField] private TextMeshProUGUI _name;
         [SerializeField] private TextMeshProUGUI _description;
         [SerializeField] private Image _icon;
         [SerializeField] private TextMeshProUGUI _rank;
+        [SerializeField] private LocalizedText _rankLocalization;
+        
         #endregion
-        public void Setup(BaseCharacter owner, RuntimeAbility ability)
+        public void Setup(BaseCharacter owner, RankProgression skillProgress)
         {
+            var skillMeta = _db.GetEntry(skillProgress.Id);
             if (_name)
             {
-                _name.text = ability.Data.Name.GetValue();
+                _name.text = skillMeta.Name;
             }
             if (_description)
             {
-                _description.text = ability.Data.Description.GetValue();
+                _description.text = skillMeta.Description;
             }
             if (_icon)
             {
-                _icon.sprite = ability.Data.Icon;
+                _icon.sprite = skillMeta.Icon;
             }
 
             if (_rank)
             {
-                _rank.text = ability.Rank.ToString();
+                string rankLoc = string.Format(_rankLocalization.GetValue(), skillProgress.Rank+1);
+                _rank.text = rankLoc;
             }
         }
+        
     }
 }
 
