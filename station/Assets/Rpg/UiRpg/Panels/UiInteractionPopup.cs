@@ -22,7 +22,9 @@ namespace Station
         
         private GenericUiList<InteractionLine, UiButton> _entriesList;
         private BaseCharacter _owner;
-        private Interactible _interaction;
+        private BaseCharacter _demander;
+        private Interactible _interactionComponent;
+        private List<InteractionLine> _interactions;
         
         #endregion
 
@@ -35,12 +37,14 @@ namespace Station
         public void SetData(BaseCharacter owner, BaseCharacter demander,Interactible interaction, List<InteractionLine> interactions)
         {
             _owner = owner;
-            _interaction = interaction;
+            _demander = demander;
+            _interactionComponent = interaction;
+            _interactions = interactions;
 
             _nameText.text = _owner.GetLocalizedName();
             _roleText.text = _owner.GetLocalizedRole();
             _icon.sprite = _owner.GetLocalizedIcon();
-            
+            int index = 0;
             _entriesList.Generate(interactions, (data, button) =>
             {
                 if (data.CanTrigger(demander))
@@ -51,13 +55,23 @@ namespace Station
                 {
                     button.SetName(data.GetLockedLocalization());
                 }
+                
+                button.SetIndex(index);
+                button.SetCallBack(OnClickInteraction);
+                index++;
             });
         }
-        
+
+        private void OnClickInteraction(int interactionIndex)
+        {
+            var clickedEntry = _interactions[interactionIndex];
+            clickedEntry.Trigger(_owner, _demander);
+        }
+
         public void OnDeselect()
         {
             _owner.Action.CancelCasting();
-           _interaction.OnCancelInteraction(_owner);
+           _interactionComponent.OnCancelInteraction(_owner);
            //Mouse was clicked outside
             Hide();
         }

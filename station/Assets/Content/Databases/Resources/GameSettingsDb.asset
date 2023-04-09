@@ -21,6 +21,7 @@ MonoBehaviour:
     _cachedUniquePopup:
     - {fileID: 4554320079372885168, guid: 9851f4ffd5fb5442fbeb7ddaf6343f2e, type: 3}
     - {fileID: 8438948625452705951, guid: 9622de3c490164f06b123d874df2e5b3, type: 3}
+    - {fileID: 1116715918857676787, guid: 9c31850986e3a4b07b8545e4e5abe9e8, type: 3}
     _cachedFields:
     - Id: character_speed
       TypeField: 1

@@ -55,6 +55,6 @@ namespace Station
             return true;
         }
         
-        public virtual void Trigger(){}
+        public virtual void Trigger(BaseCharacter owner, BaseCharacter demander){}
     }
 }

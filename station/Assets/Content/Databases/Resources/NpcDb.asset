@@ -16,6 +16,7 @@ MonoBehaviour:
     m_keys:
     - 184a36ca-bca9-4b32-a711-93fe55440ae1
     - f13322f5-3d8c-43aa-811e-ef5ee0168333
+    - f2e83a68-23d4-4c8a-87f9-480892f3b8fd
     m_values:
     - Name: Baby Chomper
       Description: 
@@ -75,9 +76,43 @@ MonoBehaviour:
       InteractionLines:
       - {fileID: 11400000, guid: cc43c41bbace543ae8b88fc1253f7a8f, type: 2}
       - {fileID: 11400000, guid: 33adf0e188a89455aaf931b47d756c6a, type: 2}
+      - {fileID: 11400000, guid: f90ba3ee77b5944369bcd3d5fd3f9ad6, type: 2}
       OwnedAbilities: []
       StatsCalculator: {fileID: 11400000, guid: f2fb6755890074a3a92afa231a099f0f,
         type: 2}
+      Attack:
+        BaseDamage:
+          EffectName: 
+          EffectIcon: {fileID: 0}
+          MinValue: 5
+          MaxValue: 22
+          CriticalBonus: 0
+        CriticalChance: 0
+        Range: 2
+        Speed: 1.4
+    - Name: Andrew Potato
+      Description: SkillTrainer
+      Icon: {fileID: 0}
+      RaceId: 1316bc69-70ad-4577-9cfd-e29b35c8a18b
+      FactionId: 80054ef2-9410-4d10-bc02-794e4cec6f76
+      PrefabId: 
+      Brain: {fileID: 0}
+      UseHealth: 0
+      HealthVital:
+        Id: health
+        Value: 0
+      UseSecondaryHealth: 0
+      SecondaryHealthVital:
+        Id: health
+        Value: 0
+      EnergyVitals: []
+      AttributesBonuses: []
+      StatisticsBonuses: []
+      LootTable: 
+      InteractionLines:
+      - {fileID: 0}
+      OwnedAbilities: []
+      StatsCalculator: {fileID: 0}
       Attack:
         BaseDamage:
           EffectName: 

@@ -39,7 +39,7 @@ namespace Station
             }
             else
             {
-                Debug.LogWarning($"skill already added");
+                Debug.LogWarning("skill already added");
             }
         }
 
@@ -52,7 +52,7 @@ namespace Station
             }
             else
             {
-                Debug.LogWarning($"skill cant be removed");
+                Debug.LogWarning("skill cant be removed");
             }
         }
 
@@ -60,12 +60,25 @@ namespace Station
         {
             if (Skills.ContainsKey(skillId))
             {
-                //TODO enable specific progression here
                 Skills[skillId].Progression += progress;
             }
             else
             {
-                Debug.LogWarning($"skill missing for progression");
+                Debug.LogWarning("skill missing for progression");
+            }
+        }
+        
+        public void AddSkillRank(string skillId)
+        {
+            if (Skills.ContainsKey(skillId))
+            {
+                Skills[skillId].Progression = 0;
+                Skills[skillId].Rank ++;
+                //TODO learned something new?
+            }
+            else
+            {
+                Debug.LogWarning("skill missing for rank increase");
             }
         }
     }
