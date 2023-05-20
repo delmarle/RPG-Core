@@ -8,6 +8,8 @@ namespace Station
     [CreateAssetMenu]
     public class TrainSkillInteraction : InteractionLine
     {
+        public List<TrainSkillData> SkillTrained = new List<TrainSkillData>();
+        
         public override void Trigger(BaseCharacter owner, BaseCharacter demander)
         {
             var trainSkillPopup = UiSystem.GetUniquePopup<UiSkillTrainPopup>(UiSkillTrainPopup.POPUP_ID);
@@ -29,6 +31,8 @@ namespace Station
 public class TrainSkillData
 {
     public string SkillId;
+
+    public TrainSkillRankData[] TrainableRank;
     //can learn each rank : rank, requirement, cost
 
     public SkillData GetSkillData()
@@ -42,4 +46,10 @@ public class TrainSkillData
 
         return null;
     }
+}
+
+[Serializable]
+public class TrainSkillRankData
+{
+    
 }

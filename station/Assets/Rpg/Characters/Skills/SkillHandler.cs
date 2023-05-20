@@ -81,6 +81,16 @@ namespace Station
                 Debug.LogWarning("skill missing for rank increase");
             }
         }
+
+        public int GetSkillRank(string skillId)
+        {
+            if (Skills.ContainsKey(skillId))
+            {
+                return Skills[skillId].Rank;
+            }
+
+            return -1;
+        }
     }
 }
 

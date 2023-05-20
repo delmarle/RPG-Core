@@ -16,6 +16,7 @@ namespace Station
         [SerializeField] private Image _icon;
         [SerializeField] private TextMeshProUGUI _rank;
         [SerializeField] private LocalizedText _rankLocalization;
+        [SerializeField] private StateAnimation _animation;
         
         #endregion
         public void Setup(BaseCharacter owner, RankProgression skillProgress)
@@ -40,7 +41,35 @@ namespace Station
                 _rank.text = rankLoc;
             }
         }
-        
+
+        public void SetupAsTrain(BaseCharacter owner, TrainSkillData trainSkill)
+        {
+            var skillMeta = _db.GetEntry(trainSkill.SkillId);
+            bool hasSkill = owner.Skills.Skills.ContainsKey(trainSkill.SkillId);
+            int playerSkillRank = owner.Skills.GetSkillRank(trainSkill.SkillId);
+            bool isNotLastRank = hasSkill && trainSkill.TrainableRank.Length > playerSkillRank;
+            if (_name)
+            {
+                _name.text = skillMeta.Name;
+            }
+
+            if (_animation)
+            {
+                _animation.PlayState(hasSkill? "state_has_skill":"state_not_learned");
+                _animation.PlayState(isNotLastRank? "state_not_last_rank":"state_last_rank");
+            }
+            //can be trained or not
+            if (hasSkill)
+            {
+                //has skill
+                //rank trainable
+                
+            }
+            else
+            {
+                //not learned yet
+            }
+        }
     }
 }
 
