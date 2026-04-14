@@ -1,2 +1,2 @@
-This software as an RPG framework may not be resold, redistributed or otherwise conveyed to a third party.
+This software as an RPG framework may not be resold directly, you may branch it and reuse in your own plugin/project commercially without restrictions.
 it can be used in you comercial game without restriction.
